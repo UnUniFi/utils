@@ -143,6 +143,7 @@
               "projects/eurx-website/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/eurx-website/src/styles.css"
             ],
             "scripts": []
@@ -207,6 +208,7 @@
               "projects/eurx-website/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/eurx-website/src/styles.css"
             ],
             "scripts": []

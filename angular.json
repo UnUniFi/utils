@@ -5,7 +5,14 @@
   "projects": {
     "jpyx-website": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "root": "projects/jpyx-website",
       "sourceRoot": "projects/jpyx-website/src",
       "prefix": "app",
@@ -103,9 +110,7 @@
               "projects/jpyx-website/tsconfig.spec.json",
               "projects/jpyx-website/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -124,7 +129,14 @@
     },
     "eurx-website": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "root": "projects/eurx-website",
       "sourceRoot": "projects/eurx-website/src",
       "prefix": "app",
@@ -222,9 +234,7 @@
               "projects/eurx-website/tsconfig.spec.json",
               "projects/eurx-website/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -243,7 +253,14 @@
     },
     "cosmoscan-extension": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "root": "projects/cosmoscan-extension",
       "sourceRoot": "projects/cosmoscan-extension/src",
       "prefix": "app",
@@ -345,9 +362,7 @@
               "projects/cosmoscan-extension/tsconfig.spec.json",
               "projects/cosmoscan-extension/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

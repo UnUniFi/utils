@@ -1,0 +1,37 @@
+<mat-drawer-container>
+  <mat-drawer
+    #drawer
+    class="mat-elevation-z16"
+    [mode]="drawerMode$ | async"
+    [opened]="drawerOpened$ | async"
+  >
+    <mat-toolbar class="mat-elevation-z4 toolbar" color="primary">
+      <button mat-icon-button routerLink="/">
+        <img class="icon" src="assets/images/jasmine.svg" />
+      </button>
+      <h1>JPYX</h1>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item routerLink="/">Home</mat-list-item>
+      <mat-list-item routerLink="/docs">Documentation</mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar class="mat-elevation-z4 toolbar" color="primary">
+      <button mat-icon-button fxHide fxShow.xs (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span fxFlex="auto"></span>
+      <button mat-button routerLink="apply-validator">
+        Apply validator
+      </button>
+      <a mat-button href="https://github.com/lcnem/jpyx" target="_blank">
+        <img src="assets/images/github-circle-white-transparent.svg" />
+        GitHub
+      </a>
+    </mat-toolbar>
+    <div class="container">
+      <ng-content></ng-content>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

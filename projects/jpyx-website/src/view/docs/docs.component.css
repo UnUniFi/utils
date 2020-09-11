@@ -1,0 +1,8 @@
+pre {
+  font-family: Consolas;
+  color: white;
+  background-color: #222222;
+  border-radius: 6px;
+  padding: 12px;
+  overflow: auto;
+}

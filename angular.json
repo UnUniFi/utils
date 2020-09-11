@@ -23,9 +23,7 @@
               "projects/jpyx-website/src/favicon.ico",
               "projects/jpyx-website/src/assets"
             ],
-            "styles": [
-              "projects/jpyx-website/src/styles.css"
-            ],
+            "styles": ["projects/jpyx-website/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -87,9 +85,7 @@
               "projects/jpyx-website/src/favicon.ico",
               "projects/jpyx-website/src/assets"
             ],
-            "styles": [
-              "projects/jpyx-website/src/styles.css"
-            ],
+            "styles": ["projects/jpyx-website/src/styles.css"],
             "scripts": []
           }
         },
@@ -101,9 +97,7 @@
               "projects/jpyx-website/tsconfig.spec.json",
               "projects/jpyx-website/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -140,9 +134,7 @@
               "projects/eurx-website/src/favicon.ico",
               "projects/eurx-website/src/assets"
             ],
-            "styles": [
-              "projects/eurx-website/src/styles.css"
-            ],
+            "styles": ["projects/eurx-website/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -204,9 +196,7 @@
               "projects/eurx-website/src/favicon.ico",
               "projects/eurx-website/src/assets"
             ],
-            "styles": [
-              "projects/eurx-website/src/styles.css"
-            ],
+            "styles": ["projects/eurx-website/src/styles.css"],
             "scripts": []
           }
         },
@@ -218,9 +208,7 @@
               "projects/eurx-website/tsconfig.spec.json",
               "projects/eurx-website/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -257,10 +245,9 @@
               "projects/cosmoscan-extension/src/favicon.ico",
               "projects/cosmoscan-extension/src/assets"
             ],
-            "styles": [
-              "projects/cosmoscan-extension/src/styles.css"
-            ],
-            "scripts": []
+            "styles": ["projects/cosmoscan-extension/src/styles.css"],
+            "scripts": [],
+            "baseHref": "/botany/"
           },
           "configurations": {
             "production": {
@@ -321,9 +308,7 @@
               "projects/cosmoscan-extension/src/favicon.ico",
               "projects/cosmoscan-extension/src/assets"
             ],
-            "styles": [
-              "projects/cosmoscan-extension/src/styles.css"
-            ],
+            "styles": ["projects/cosmoscan-extension/src/styles.css"],
             "scripts": []
           }
         },
@@ -335,9 +320,7 @@
               "projects/cosmoscan-extension/tsconfig.spec.json",
               "projects/cosmoscan-extension/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -353,7 +336,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": "4152d467-0804-4d43-94b1-eb26956857b7"
   },

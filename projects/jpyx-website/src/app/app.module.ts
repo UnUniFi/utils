@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { DocsComponent } from './docs/docs.component';
-import { ViewModule } from '@view/view.module';
-import { HomeModule } from '@view/home/home.module';
-import { DocsModule } from '@view/docs/docs.module';
+import { ViewModule } from '@view-j/view.module';
+import { HomeModule } from '@view-j/home/home.module';
+import { DocsModule } from '@view-j/docs/docs.module';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +18,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { LoadingDialogModule } from 'ng-loading-dialog';
-import { MaterialModule } from '@view/material.module';
+import { MaterialModule } from '@view-j/material.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, DocsComponent],

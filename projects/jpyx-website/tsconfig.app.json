@@ -7,10 +7,4 @@
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": ["src/**/*.d.ts"],
-  "paths": {
-    "@app/*": ["src/app/*"],
-    "@environments/*": ["src/environments/*"],
-    "@model/*": ["src/model/*"],
-    "@view/*": ["src/view/*"]
-  }
 }

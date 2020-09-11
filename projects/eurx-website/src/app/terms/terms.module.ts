@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TermsRoutingModule } from './terms-routing.module';
 import { TermsComponent } from './terms.component';
-import { TermsModule } from '@view/terms/terms.module';
+import { TermsModule } from '@view-e/terms/terms.module';
 
 @NgModule({
   declarations: [TermsComponent],

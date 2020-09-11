@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TermsComponent } from './terms.component';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@view/material.module';
+import { MaterialModule } from '@view-j/material.module';
 
 @NgModule({
   declarations: [TermsComponent],

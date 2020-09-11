@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@view/material.module';
+import { MaterialModule } from '@view-e/material.module';
 
 @NgModule({
   declarations: [HomeComponent],

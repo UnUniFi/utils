@@ -6,13 +6,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
 import { HomeComponent } from './home/home.component';
-import { ViewModule } from 'src/view/view.module';
-import { HomeModule } from '@view/home/home.module';
-import { ToolbarModule } from '@view/toolbar/toolbar.module';
+import { ViewModule } from '@view-ce/view.module';
+import { HomeModule } from '@view-ce/home/home.module';
+import { ToolbarModule } from '@view-ce/toolbar/toolbar.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -22,9 +20,6 @@ import { ToolbarModule } from '@view/toolbar/toolbar.module';
     MatSnackBarModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-    }),
     ViewModule,
     HomeModule,
     ToolbarModule,

@@ -12,9 +12,21 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "strict": true,
+    "paths": {
+      "@app-j/*": ["projects/jpyx-website/src/app/*"],
+      "@environments-j/*": ["projects/jpyx-website/src/environments/*"],
+      "@model-j/*": ["projects/jpyx-website/src/model/*"],
+      "@view-j/*": ["projects/jpyx-website/src/view/*"],
+      "@app-e/*": ["projects/eurx-website/src/app/*"],
+      "@environments-e/*": ["projects/eurx-website/src/environments/*"],
+      "@model-e/*": ["projects/eurx-website/src/model/*"],
+      "@view-e/*": ["projects/eurx-website/src/view/*"],
+      "@app-ce/*": ["projects/cosmoscan-extension/src/app/*"],
+      "@environments-ce/*": ["projects/cosmoscan-extension/src/environments/*"],
+      "@model-ce/*": ["projects/cosmoscan-extension/src/model/*"],
+      "@view-ce/*": ["projects/cosmoscan-extension/src/view/*"]
+    }
   }
 }

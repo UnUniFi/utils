@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
+import { ToolbarComponent } from './toolbar.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@view-ce/material.module';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [ToolbarComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -15,6 +15,6 @@ import { MaterialModule } from '@view-ce/material.module';
     FlexLayoutModule,
     MaterialModule,
   ],
-  exports: [HomeComponent],
+  exports: [ToolbarComponent],
 })
-export class HomeModule {}
+export class ToolbarModule {}

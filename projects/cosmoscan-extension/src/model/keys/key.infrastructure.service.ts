@@ -7,8 +7,8 @@ import { auth } from 'cosmos-client/x/auth';
 import { bank } from 'cosmos-client/x/bank';
 import { PrivKeySecp256k1, PrivKeyEd25519, AccAddress } from 'cosmos-client';
 import { PrivKeySr25519 } from 'cosmos-client/tendermint/types/sr25519';
-import { CosmosSDKService } from '@model/index';
-import { environment } from '@environments/environment';
+import { CosmosSDKService } from '@model-ce/index';
+import { environment } from '@environments-ce/environment';
 
 @Injectable({
   providedIn: 'root',

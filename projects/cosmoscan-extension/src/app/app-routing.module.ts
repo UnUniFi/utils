@@ -9,7 +9,8 @@ const routes: Routes = [
   },
   {
     path: 'cdps',
-    loadChildren: () => import('./cdps/cdps.module').then((m) => m.AppCdpsModule),
+    loadChildren: () =>
+      import('./cdps/cdps.module').then((m) => m.AppCdpsModule),
   },
 ];
 

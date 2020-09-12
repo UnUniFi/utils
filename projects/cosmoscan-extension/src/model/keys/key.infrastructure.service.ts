@@ -24,7 +24,7 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
     });
   }
 
-  private getPrivKey(type: KeyType, privateKey: string) {
+  getPrivKey(type: KeyType, privateKey: string) {
     const privKeyBuffer = Buffer.from(privateKey, 'base64');
     switch (type) {
       case KeyType.SECP256K1:

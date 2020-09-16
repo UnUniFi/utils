@@ -1,1 +1,5 @@
-<view-deposit></view-deposit>
+<view-deposit
+  [key]="key$ | async"
+  [owner]="owner$ | async"
+  [denom]="denom$ | async"
+></view-deposit>

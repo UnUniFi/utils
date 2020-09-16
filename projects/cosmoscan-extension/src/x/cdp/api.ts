@@ -39,8 +39,6 @@ export interface CreateCdpReq {
 }
 
 export interface CdpAccount {
-  height: string;
-  result: {
     account_number: number;
     address: string;
     coins: Coin[];
@@ -48,7 +46,6 @@ export interface CdpAccount {
     permissions: string[];
     public_key: string;
     sequence: number;
-  }[];
 }
 
 export interface CollateralParam {
@@ -73,8 +70,6 @@ export interface DebtParam {
 }
 
 export interface CdpParameters {
-  height: string;
-  result: {
     circuit_breaker: boolean;
     collateral_params: CollateralParam[];
     debt_auction_lot: string;
@@ -84,6 +79,7 @@ export interface CdpParameters {
     savings_distribution_frequency: string;
     surplus_auction_lot: string;
     surplus_auction_threshold: string;
+}
   };
 }
 

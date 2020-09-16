@@ -9,10 +9,7 @@ import {
 } from '../../../model/index';
 import { Key } from '@model-ce/keys/key.model';
 import { CreateCdpOnSubmitEvent } from '@view-ce/cdps/create/create.component';
-import {
-  cdpAccountsGet,
-  cdpParametersGet,
-} from 'projects/cosmoscan-extension/src/x/cdp/module';
+import { cdpParametersGet } from 'projects/cosmoscan-extension/src/x/cdp/module';
 import { CdpParameters } from 'projects/cosmoscan-extension/src/x/cdp/api';
 
 @Component({
@@ -37,7 +34,9 @@ export class CreateComponent implements OnInit {
     this.key$ = this.keyID$.pipe(
       mergeMap((keyId: string) => this.keyService.get(keyId)),
     );
-    this.cdpParams$ = from(cdpParametersGet(this.cosmosSdk.sdk));
+    this.cdpParams$ = from(cdpParametersGet(this.cosmosSdk.sdk)).pipe(
+      map((param) => param.result),
+    );
   }
 
   ngOnInit(): void {

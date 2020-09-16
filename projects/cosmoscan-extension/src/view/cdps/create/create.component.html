@@ -20,9 +20,7 @@
         matInput
         required
       >
-        <mat-template
-          *ngFor="let param of cdpParams?.result?.collateral_params || []"
-        >
+        <mat-template *ngFor="let param of cdpParams?.collateral_params || []">
           <mat-option [value]="param.denom">{{ param.denom }}</mat-option>
         </mat-template>
       </mat-select>
@@ -46,7 +44,7 @@
       <mat-label>Principal Denom</mat-label>
       <input
         #principalDenomRef
-        [(ngModel)]="cdpParams?.result?.debt_param.denom"
+        [(ngModel)]="cdpParams?.debt_param.denom"
         name="principal-denom"
         matInput
         readonly

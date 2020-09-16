@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Key } from '@model-ce/keys/key.model';
 import { Coin } from 'cosmos-client/api';
+import { CdpParameters } from 'projects/cosmoscan-extension/src/x/cdp/api';
 
 export type CreateCdpOnSubmitEvent = {
   key: Key;
@@ -18,16 +19,29 @@ export class CreateComponent implements OnInit {
   @Input()
   key?: Key;
 
+  @Input()
+  cdpParams?: CdpParameters;
+
   @Output()
   appSubmit: EventEmitter<CreateCdpOnSubmitEvent>;
 
+  public collateral: Coin;
+  public principal: Coin;
+
   constructor() {
     this.appSubmit = new EventEmitter();
+    this.collateral = {
+      denom: '',
+      amount: '',
+    };
+    this.principal = {
+      denom: '',
+      amount: '',
+    };
   }
 
   ngOnInit(): void {}
 
-  //todo: Put denom and amount together
   onSubmit(
     collateralDenom: string,
     collateralAmount: string,

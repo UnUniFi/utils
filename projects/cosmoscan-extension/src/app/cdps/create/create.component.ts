@@ -1,10 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, mergeMap, tap } from 'rxjs/operators';
-import { CdpService, KeyService } from '../../../model/index';
+import { from, Observable } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
+import {
+  CdpApplicationService,
+  CosmosSDKService,
+  KeyService,
+} from '../../../model/index';
 import { Key } from '@model-ce/keys/key.model';
 import { CreateCdpOnSubmitEvent } from '@view-ce/cdps/create/create.component';
+import {
+  cdpAccountsGet,
+  cdpParametersGet,
+} from 'projects/cosmoscan-extension/src/x/cdp/module';
+import { CdpParameters } from 'projects/cosmoscan-extension/src/x/cdp/api';
 
 @Component({
   selector: 'app-create',
@@ -14,10 +23,13 @@ import { CreateCdpOnSubmitEvent } from '@view-ce/cdps/create/create.component';
 export class CreateComponent implements OnInit {
   keyID$: Observable<string>;
   key$: Observable<Key | undefined>;
+  cdpParams$: Observable<CdpParameters | undefined>;
+
   constructor(
     private readonly route: ActivatedRoute,
     private readonly keyService: KeyService,
-    private readonly cdpService: CdpService,
+    private readonly cdpApplicationService: CdpApplicationService,
+    private readonly cosmosSdk: CosmosSDKService,
   ) {
     this.keyID$ = this.route.queryParams.pipe(
       map((params) => params['key_id']),
@@ -25,13 +37,15 @@ export class CreateComponent implements OnInit {
     this.key$ = this.keyID$.pipe(
       mergeMap((keyId: string) => this.keyService.get(keyId)),
     );
+    this.cdpParams$ = from(cdpParametersGet(this.cosmosSdk.sdk));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    cdpParametersGet(this.cosmosSdk.sdk).then((res) => console.log(res));
+  }
 
-  async onSubmit($event: CreateCdpOnSubmitEvent) {
-    //todo: move this call to application service
-    this.cdpService.createCDP(
+  onSubmit($event: CreateCdpOnSubmitEvent) {
+    this.cdpApplicationService.createCDP(
       $event.key,
       $event.privateKey,
       $event.collateral,

@@ -1,1 +1,5 @@
-<view-create [key]="key$ | async" (appSubmit)="onSubmit($event)"></view-create>
+<view-create
+  [key]="key$ | async"
+  [cdpParams]="cdpParams$ | async"
+  (appSubmit)="onSubmit($event)"
+></view-create>

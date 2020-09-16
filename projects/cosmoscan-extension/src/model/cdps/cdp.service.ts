@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Coin } from 'cosmos-client/api';
+import { BroadcastTxCommitResult, Coin } from 'cosmos-client/api';
 import { CdpInfrastructureService } from './cdp.infrastructure.service';
 import { Key } from '../keys/key.model';
 
@@ -21,7 +21,17 @@ export class CdpService {
     this.iCdpInfrastructure = cdpInfrastructure;
   }
 
-  createCDP(key: Key, privateKey: string, collateral: Coin, principal: Coin) {
-    this.iCdpInfrastructure.createCDP(key, privateKey, collateral, principal);
+  createCDP(
+    key: Key,
+    privateKey: string,
+    collateral: Coin,
+    principal: Coin,
+  ): Promise<BroadcastTxCommitResult> {
+    return this.iCdpInfrastructure.createCDP(
+      key,
+      privateKey,
+      collateral,
+      principal,
+    );
   }
 }

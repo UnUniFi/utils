@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Coin } from 'cosmos-client/api';
+import { BroadcastTxCommitResult, Coin } from 'cosmos-client/api';
 import { auth } from 'cosmos-client/x/auth';
 import { AccAddress } from 'cosmos-client';
 import { CosmosSDKService } from '@model-ce/index';
@@ -26,7 +26,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     privateKey: string,
     collateral: Coin,
     principal: Coin,
-  ): Promise<void> {
+  ): Promise<BroadcastTxCommitResult> {
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const sender = AccAddress.fromPublicKey(privKey.getPubKey());
     const account = await auth
@@ -58,9 +58,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       account.sequence.toString(),
     );
 
-    const result = await auth
+    return auth
       .txsPost(this.cosmosSDK.sdk, signedStdTx, 'block')
       .then((res) => res.data);
-    console.log('result', result);
   }
 }

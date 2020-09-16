@@ -14,7 +14,7 @@
     <h3 matSubheader>CDPs</h3>
     <mat-divider></mat-divider>
     <ng-container *ngFor="let cdp of cdps">
-      <mat-list-item [routerLink]="[cdp.cdp.collateral.denom, cdp.cdp.owner]">
+      <mat-list-item [routerLink]="[cdp.cdp.owner, cdp.cdp.collateral.denom]">
         <mat-icon matListIcon [ngStyle]="{ color: getColorCode(cdp) }"
           >circle</mat-icon
         >

@@ -1,1 +1,29 @@
-<p>cdps works!</p>
+<ng-container *ngIf="cdps === null; then loading; else loaded"> </ng-container>
+<ng-template #loading>
+  <mat-progress-spinner
+    [diameter]="60"
+    [mode]="'indeterminate'"
+  ></mat-progress-spinner>
+</ng-template>
+<ng-template #loaded>
+  <ng-container *ngIf="cdps?.length > 0; then exist; else empty">
+  </ng-container>
+</ng-template>
+<ng-template #exist>
+  <mat-nav-list>
+    <h3 matSubheader>CDPs</h3>
+    <mat-divider></mat-divider>
+    <ng-container *ngFor="let cdp of cdps">
+      <mat-list-item [routerLink]="[cdp.cdp.owner, cdp.cdp.collateral.denom]">
+        <mat-icon matListIcon [ngStyle]="{ color: getColorCode(cdp) }"
+          >circle</mat-icon
+        >
+        <span>{{ cdp.cdp.collateral.denom }}</span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-nav-list>
+</ng-template>
+<ng-template #empty>
+  <p class="empty">There is no key.</p>
+</ng-template>

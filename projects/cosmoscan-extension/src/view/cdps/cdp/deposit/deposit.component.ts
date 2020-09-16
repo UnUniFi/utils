@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Key } from '@model-ce/keys/key.model';
+import { Coin } from 'cosmos-client/api';
 
 @Component({
   selector: 'view-deposit',
@@ -6,7 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deposit.component.css'],
 })
 export class DepositComponent implements OnInit {
-  constructor() {}
+  @Input()
+  key?: Key;
+
+  @Input()
+  owner?: string;
+
+  @Input()
+  denom?: string;
+
+  public collateral_amount: string;
+
+  constructor() {
+    this.collateral_amount = '';
+  }
 
   ngOnInit(): void {}
+
+  onSubmit(
+    collateralDenom: string,
+    collateralAmount: string,
+    ownerAddr: string,
+    privateKey: string,
+  ) {
+    console.log({ collateralDenom, collateralAmount, ownerAddr, privateKey });
+  }
 }

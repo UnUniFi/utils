@@ -4,7 +4,19 @@
 
 export const environment = {
   production: false,
-} as any;
+  env: 'development',
+  url: 'http://127.0.0.1:8080',
+  chain_id: 'jpyx-1',
+  bech32_prefix: {
+    acc_addr: 'jpyx',
+    acc_pub: 'jpyxpub',
+    val_addr: 'jpyxvaloper',
+    val_pub: 'jpyxvaloperpub',
+    cons_addr: 'jpyxvalcons',
+    cons_pub: 'jpyxvalconspub',
+  },
+  indexed_db_name: 'jpyx',
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

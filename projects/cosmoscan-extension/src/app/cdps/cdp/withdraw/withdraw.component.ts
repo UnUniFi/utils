@@ -35,6 +35,11 @@ export class WithdrawComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit($event: WithdrawCdpOnSubmitEvent) {
-    console.log('onSubmit', $event);
+    this.cdpApplicationService.withdrawCDP(
+      $event.key,
+      $event.privateKey,
+      $event.ownerAddr,
+      $event.collateral,
+    );
   }
 }

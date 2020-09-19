@@ -1,5 +1,5 @@
-import { CosmosSDK, codec } from 'cosmos-client';
-import { CdpApi, CreateCdpReq } from './api';
+import { CosmosSDK, codec, AccAddress } from 'cosmos-client';
+import { CdpApi, CreateCdpReq, RepayCdpReq } from './api';
 
 export function cdpAccountsGet(sdk: CosmosSDK) {
   return new CdpApi(undefined, sdk.url)
@@ -18,4 +18,18 @@ export function cdpPost(sdk: CosmosSDK, req: CreateCdpReq) {
     res.data = codec.fromJSONString(JSON.stringify(res.data));
     return res;
   });
+}
+
+export function cdpOwnerDenomRepayPost(
+  sdk: CosmosSDK,
+  ownerAddr: AccAddress,
+  denom: string,
+  req: RepayCdpReq,
+) {
+  return new CdpApi(undefined, sdk.url)
+    .cdpOwnerDenomRepayPost(ownerAddr, denom, req)
+    .then((res) => {
+      res.data = codec.fromJSONString(JSON.stringify(res.data));
+      return res;
+    });
 }

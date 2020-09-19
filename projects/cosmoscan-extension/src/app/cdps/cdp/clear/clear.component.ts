@@ -43,4 +43,14 @@ export class ClearComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onSubmit($event: ClearCdpOnSubmitEvent) {
+    this.cdpApplicationService.repayCDP(
+      $event.key,
+      $event.privateKey,
+      $event.ownerAddr,
+      $event.denom,
+      $event.payment,
+    );
+  }
 }

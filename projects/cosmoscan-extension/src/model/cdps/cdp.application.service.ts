@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AccAddress } from 'cosmos-client';
 import { Coin } from 'cosmos-client/api';
 import { LoadingDialogService } from 'ng-loading-dialog';
 import { Key } from '../keys/key.model';
@@ -31,6 +32,42 @@ export class CdpApplicationService {
         collateral,
         principal,
       );
+      if (res.code !== undefined && res.raw_log !== undefined) {
+        throw new Error(res.raw_log);
+      }
+      txHash = res.txhash;
+    } catch (error) {
+      const msg = error.toString();
+      this.snackBar.open(`Error has occured: ${msg}`, undefined, {
+        duration: 6000,
+      });
+      return;
+    } finally {
+      dialogRef.close();
+    }
+
+    this.snackBar.open('Successfully sent', undefined, {
+      duration: 6000,
+    });
+  }
+
+  async depositCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ) {
+    const dialogRef = this.loadingDialog.open('Sending');
+
+    let txHash: string | undefined;
+    try {
+      const res: any = await this.cdp.depositCDP(
+        key,
+        privateKey,
+        ownerAddr,
+        collateral,
+      );
+      console.log('res', res);
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }

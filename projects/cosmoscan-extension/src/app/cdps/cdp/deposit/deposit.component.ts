@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { KeyService } from '@model-ce/index';
+import { CdpApplicationService, KeyService } from '@model-ce/index';
 import { Key } from '@model-ce/keys/key.model';
+import { DepositCdpOnSubmitEvent } from '@view-ce/cdps/cdp/deposit/deposit.component';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 
@@ -19,6 +20,7 @@ export class DepositComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly keyService: KeyService,
+    private readonly cdpApplicationService: CdpApplicationService,
   ) {
     this.keyID$ = this.route.queryParams.pipe(
       map((params) => params['key_id']),
@@ -28,9 +30,17 @@ export class DepositComponent implements OnInit {
     );
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.denom$ = this.route.params.pipe(map((params) => params['denom']));
-
-    this.route.params.subscribe(console.log);
   }
 
   ngOnInit(): void {}
+
+  onSubmit($event: DepositCdpOnSubmitEvent) {
+    console.log('onSubmit', $event);
+    this.cdpApplicationService.depositCDP(
+      $event.key,
+      $event.privateKey,
+      $event.ownerAddr,
+      $event.collateral,
+    );
+  }
 }

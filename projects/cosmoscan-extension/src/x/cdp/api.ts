@@ -66,13 +66,13 @@ export interface DepositCdpReq {
 }
 
 export interface CdpAccount {
-    account_number: number;
-    address: string;
-    coins: Coin[];
-    name: string;
-    permissions: string[];
-    public_key: string;
-    sequence: number;
+  account_number: number;
+  address: string;
+  coins: Coin[];
+  name: string;
+  permissions: string[];
+  public_key: string;
+  sequence: number;
 }
 
 export interface CollateralParam {
@@ -97,17 +97,15 @@ export interface DebtParam {
 }
 
 export interface CdpParameters {
-    circuit_breaker: boolean;
-    collateral_params: CollateralParam[];
-    debt_auction_lot: string;
-    debt_auction_threshold: string;
-    debt_param: DebtParam;
-    global_debt_limit: Coin;
-    savings_distribution_frequency: string;
-    surplus_auction_lot: string;
-    surplus_auction_threshold: string;
-}
-  };
+  circuit_breaker: boolean;
+  collateral_params: CollateralParam[];
+  debt_auction_lot: string;
+  debt_auction_threshold: string;
+  debt_param: DebtParam;
+  global_debt_limit: Coin;
+  savings_distribution_frequency: string;
+  surplus_auction_lot: string;
+  surplus_auction_threshold: string;
 }
 
 /**
@@ -339,7 +337,7 @@ export const CdpApiFp = function (configuration?: Configuration) {
     ): (
       axios?: AxiosInstance,
       basePath?: string,
-    ) => AxiosPromise<CdpParameters> {
+    ) => AxiosPromise<{ height: string; result: CdpParameters }> {
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH,

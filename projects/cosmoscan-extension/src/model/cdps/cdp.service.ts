@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BroadcastTxCommitResult, Coin } from 'cosmos-client/api';
 import { CdpInfrastructureService } from './cdp.infrastructure.service';
 import { Key } from '../keys/key.model';
+import { AccAddress } from 'cosmos-client';
 
 export interface ICdpInfrastructure {
   createCDP(
@@ -9,6 +10,12 @@ export interface ICdpInfrastructure {
     privateKey: string,
     collateral: Coin,
     principal: Coin,
+  ): Promise<any>;
+  withdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
   ): Promise<any>;
 }
 
@@ -32,6 +39,20 @@ export class CdpService {
       privateKey,
       collateral,
       principal,
+    );
+  }
+
+  withdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ) {
+    return this.iCdpInfrastructure.withdrawCDP(
+      key,
+      privateKey,
+      ownerAddr,
+      collateral,
     );
   }
 }

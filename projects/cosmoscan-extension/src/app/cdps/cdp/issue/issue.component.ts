@@ -43,4 +43,14 @@ export class IssueComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onSubmit($event: IssueCdpOnSubmitEvent) {
+    this.cdpApplicationService.drawCDP(
+      $event.key,
+      $event.privateKey,
+      $event.ownerAddr,
+      $event.denom,
+      $event.principal,
+    );
+  }
 }

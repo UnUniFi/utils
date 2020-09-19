@@ -350,7 +350,7 @@ export const CdpApiFp = function (configuration?: Configuration) {
     ): (
       axios?: AxiosInstance,
       basePath?: string,
-    ) => AxiosPromise<CdpParameters> {
+    ) => AxiosPromise<{ height: string; result: CdpParameters }> {
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH,

@@ -13,6 +13,22 @@ export function cdpParametersGet(sdk: CosmosSDK) {
     .then((res) => res.data);
 }
 
+export function cdpCdpsCdpGet(
+  sdk: CosmosSDK,
+  ownerAddr: string,
+  collateralDenom: string,
+) {
+  return new CdpApi(undefined, sdk.url)
+    .cdpCdpsCdpGet(ownerAddr, collateralDenom)
+    .then((res) => res.data);
+}
+
+export function cdpCdpsDenomGet(sdk: CosmosSDK, collateralDenom: string) {
+  return new CdpApi(undefined, sdk.url)
+    .cdpCdpsDenomGet(collateralDenom)
+    .then((res) => res.data);
+}
+
 export function cdpPost(sdk: CosmosSDK, req: CreateCdpReq) {
   return new CdpApi(undefined, sdk.url).cdpPost(req).then((res) => {
     res.data = codec.fromJSONString(JSON.stringify(res.data));

@@ -35,7 +35,6 @@ export class DepositComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit($event: DepositCdpOnSubmitEvent) {
-    console.log('onSubmit', $event);
     this.cdpApplicationService.depositCDP(
       $event.key,
       $event.privateKey,

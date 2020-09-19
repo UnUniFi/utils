@@ -15,9 +15,7 @@ export class KeyApplicationService {
     private readonly snackBar: MatSnackBar,
     private readonly loadingDialog: LoadingDialogService,
     private readonly key: KeyService,
-  ) {
-    console.log('KeyApplicationService', router, snackBar, loadingDialog, key);
-  }
+  ) {}
 
   async create(id: string, type: KeyType, privateKey: string) {
     const key = await this.key.get(id);

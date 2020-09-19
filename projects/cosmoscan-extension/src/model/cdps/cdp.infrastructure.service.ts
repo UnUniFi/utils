@@ -69,14 +69,11 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     ownerAddr: AccAddress,
     collateral: Coin,
   ): Promise<BroadcastTxCommitResult> {
-    console.log('depositCDP', key, privateKey, ownerAddr, collateral);
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const sender = AccAddress.fromPublicKey(privKey.getPubKey());
     const account = await auth
       .accountsAddressGet(this.cosmosSDK.sdk, sender)
       .then((res) => res.data.result);
-
-    console.log('account', account);
 
     const unsignedStdTx = await cdpOwnerDenomDepositsPost(
       this.cosmosSDK.sdk,
@@ -99,8 +96,6 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
         collateral,
       },
     ).then((res) => res.data);
-
-    console.log('unsigned std tx', unsignedStdTx);
 
     const signedStdTx = auth.signStdTx(
       this.cosmosSDK.sdk,

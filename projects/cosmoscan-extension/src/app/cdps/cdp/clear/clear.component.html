@@ -1,1 +1,7 @@
-<view-clear></view-clear>
+<view-clear
+  [key]="key$ | async"
+  [owner]="owner$ | async"
+  [denom]="denom$ | async"
+  [paymentDenom]="paymentDenom$ | async"
+  (appSubmit)="onSubmit($event)"
+></view-clear>

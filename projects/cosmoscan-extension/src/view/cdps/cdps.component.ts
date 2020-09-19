@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CDP } from '../../x/cdp/api';
+import * as crypto from 'crypto';
 
 @Component({
   selector: 'view-cdps',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cdps.component.css'],
 })
 export class CdpsComponent implements OnInit {
+  @Input()
+  cdps?: CDP[];
+
   constructor() {}
 
   ngOnInit(): void {}

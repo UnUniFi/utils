@@ -77,7 +77,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
     const unsignedStdTx = await cdpOwnerDenomWithdrawPost(
       this.cosmosSDK.sdk,
-      ownerAddr.toBech32(),
+      ownerAddr,
       collateral.denom ?? '',
       {
         base_req: {

@@ -5,8 +5,17 @@ import { Coin } from 'cosmos-client/api';
 import { IKeyInfrastructure } from './key.service';
 import { auth } from 'cosmos-client/x/auth';
 import { bank } from 'cosmos-client/x/bank';
-import { PrivKeySecp256k1, PrivKeyEd25519, AccAddress } from 'cosmos-client';
-import { PrivKeySr25519 } from 'cosmos-client/tendermint/types/sr25519';
+import {
+  PrivKeySecp256k1,
+  PrivKeyEd25519,
+  AccAddress,
+  PubKeySecp256k1,
+  PubKeyEd25519,
+} from 'cosmos-client';
+import {
+  PrivKeySr25519,
+  PubKeySr25519,
+} from 'cosmos-client/tendermint/types/sr25519';
 import { CosmosSDKService } from '@model-ce/index';
 import { environment } from '@environments-ce/environment';
 
@@ -22,6 +31,18 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
     this.db.version(1).stores({
       keys: '++index, &id, type, public_key',
     });
+  }
+
+  getPubKey(type: KeyType, publicKey: string) {
+    const publicKeyBuffer = Buffer.from(publicKey, 'base64');
+    switch (type) {
+      case KeyType.SECP256K1:
+        return new PubKeySecp256k1(publicKeyBuffer);
+      case KeyType.ED25519:
+        return new PubKeyEd25519(publicKeyBuffer);
+      case KeyType.SR25519:
+        return new PubKeySr25519(publicKeyBuffer);
+    }
   }
 
   getPrivKey(type: KeyType, privateKey: string) {

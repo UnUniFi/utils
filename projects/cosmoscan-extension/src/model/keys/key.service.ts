@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Coin } from 'cosmos-client/api';
+import { PrivKeySecp256k1, PrivKeyEd25519 } from 'cosmos-client';
+import { PrivKeySr25519 } from 'cosmos-client/tendermint/types/sr25519';
 import { Key, KeyType } from './key.model';
 import { KeyInfrastructureService } from './key.infrastructure.service';
 
 export interface IKeyInfrastructure {
+  getPrivKey(
+    type: KeyType,
+    privateKey: string,
+  ): PrivKeySecp256k1 | PrivKeyEd25519 | PrivKeySr25519;
   getPrivateKeyFromMnemonic(mnemonic: string): Promise<string>;
   get(id: string): Promise<Key | undefined>;
   keys(): Promise<Key[]>;

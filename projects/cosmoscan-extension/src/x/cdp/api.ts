@@ -11,6 +11,52 @@ import {
 } from 'cosmos-client/base';
 import { AccAddress } from 'cosmos-client';
 
+export interface CollateralParam {
+  auction_size: string;
+  conversion_factor: string;
+  debt_limit: Coin;
+  denom: string;
+  liquidation_market_id: string;
+  liquidation_penalty: string;
+  liquidation_ratio: string;
+  prefix: number;
+  spot_market_id: string;
+  stability_fee: string;
+}
+
+export interface DebtParam {
+  conversion_factor: string;
+  debt_floor: string;
+  denom: string;
+  reference_asset: string;
+  savings_rate: string;
+}
+
+export interface CdpParameters {
+  circuit_breaker: boolean;
+  collateral_params: CollateralParam[];
+  debt_auction_lot: string;
+  debt_auction_threshold: string;
+  debt_param: DebtParam;
+  global_debt_limit: Coin;
+  savings_distribution_frequency: string;
+  surplus_auction_lot: string;
+  surplus_auction_threshold: string;
+}
+
+export interface CDP {
+  cdp: {
+    id: string;
+    owner: string;
+    collateral: Coin;
+    principal: Coin;
+    accumulated_fees: Coin;
+    fees_updated: string;
+  };
+  collateral_value: Coin;
+  collateralization_ratio: string;
+}
+
 export interface CreateCdpReq {
   /**
    *
@@ -65,6 +111,33 @@ export interface DepositCdpReq {
   collateral?: Coin;
 }
 
+export interface WithdrawCdpReq {
+  /**
+   *
+   * @type {BaseReq}
+   * @memberof DepositCdpReq
+   */
+  base_req?: BaseReq;
+  /**
+   *
+   * @type {AccAddress}
+   * @memberof DepositCdpReq
+   */
+  owner?: AccAddress;
+  /**
+   *
+   * @type {AccAddress}
+   * @memberof DepositCdpReq
+   */
+  depositor?: AccAddress;
+  /**
+   *
+   * @type {Coin}
+   * @memberof DepositCdpReq
+   */
+  collateral?: Coin;
+}
+
 export interface CdpAccount {
   account_number: number;
   address: string;
@@ -73,52 +146,6 @@ export interface CdpAccount {
   permissions: string[];
   public_key: string;
   sequence: number;
-}
-
-export interface CollateralParam {
-  auction_size: string;
-  conversion_factor: string;
-  debt_limit: Coin;
-  denom: string;
-  liquidation_market_id: string;
-  liquidation_penalty: string;
-  liquidation_ratio: string;
-  prefix: number;
-  spot_market_id: string;
-  stability_fee: string;
-}
-
-export interface DebtParam {
-  conversion_factor: string;
-  debt_floor: string;
-  denom: string;
-  reference_asset: string;
-  savings_rate: string;
-}
-
-export interface CdpParameters {
-  circuit_breaker: boolean;
-  collateral_params: CollateralParam[];
-  debt_auction_lot: string;
-  debt_auction_threshold: string;
-  debt_param: DebtParam;
-  global_debt_limit: Coin;
-  savings_distribution_frequency: string;
-  surplus_auction_lot: string;
-  surplus_auction_threshold: string;
-}
-
-export interface CDP {
-  cdp: {
-    id: string;
-    owner: string;
-    collateral: Coin;
-    principal: Coin;
-    accumulated_fees: Coin;
-    fees_updated: string;
-  };
-  collateral_value: Coin;
-  collateralization_ratio: string;
 }
 
 /**
@@ -398,6 +425,70 @@ export const CdpApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       };
     },
+    /**
+     *
+     * @summary Remove collateral from an existing cdp
+     * @param {string} ownerAddr
+     * @param {string} denom
+     * @param {WithdrawCdpReq} withdrawCdpReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpOwnerDenomWithdrawPost(
+      ownerAddr: string,
+      denom: string,
+      withdrawCdpReq: WithdrawCdpReq,
+      options: any = {},
+    ): RequestArgs {
+      if (withdrawCdpReq === undefined || withdrawCdpReq === null) {
+        throw new RequiredError(
+          'withdrawCdpReq',
+          'Required parameter withdrawCdpReq was null or undefined when calling cdpPost.',
+        );
+      }
+
+      const localVarPath = `/cdp/${ownerAddr}/${denom}/withdraw`;
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      };
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      const needsSerialization =
+        typeof withdrawCdpReq !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.data = needsSerialization
+        ? JSON.stringify(withdrawCdpReq !== undefined ? withdrawCdpReq : {})
+        : withdrawCdpReq || '';
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
   };
 };
 
@@ -576,6 +667,36 @@ export const CdpApiFp = function (configuration?: Configuration) {
         return axios.request(axiosRequestArgs);
       };
     },
+    /**
+     *
+     * @summary Remove collateral from an existing cdp
+     * @param {string} ownerAddr
+     * @param {string} denom
+     * @param {WithdrawCdpReq} withdrawCdpReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpOwnerDenomWithdrawPost(
+      ownerAddr: string,
+      denom: string,
+      withdrawCdpReq: WithdrawCdpReq,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<StdTx> {
+      const localVarAxiosArgs = CdpApiAxiosParamCreator(
+        configuration,
+      ).cdpOwnerDenomWithdrawPost(ownerAddr, denom, withdrawCdpReq, options);
+
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH,
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        };
+        return axios.request(axiosRequestArgs);
+      };
+    },
   };
 };
 
@@ -685,6 +806,30 @@ export class CdpApi extends BaseAPI {
       ownerAddr,
       denom,
       depositCdpReq,
+      options,
+    )(this.axios as AxiosInstance, this.basePath);
+  }
+
+  /**
+   *
+   * @summary Remove collateral from an existing cdp
+   * @param {string} ownerAddr
+   * @param {string} denom
+   * @param {WithdrawCdpReq} withdrawCdpReq
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CdpApi
+   */
+  public cdpOwnerDenomWithdrawPost(
+    ownerAddr: string,
+    denom: string,
+    withdrawCdpReq: WithdrawCdpReq,
+    options?: any,
+  ) {
+    return CdpApiFp(this.configuration).cdpOwnerDenomWithdrawPost(
+      ownerAddr,
+      denom,
+      withdrawCdpReq,
       options,
     )(this.axios as AxiosInstance, this.basePath);
   }

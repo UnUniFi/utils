@@ -17,6 +17,12 @@ export interface ICdpInfrastructure {
     ownerAddr: AccAddress,
     collateral: Coin,
   ): Promise<any>;
+  withdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ): Promise<any>;
 }
 
 @Injectable({
@@ -49,6 +55,20 @@ export class CdpService {
     collateral: Coin,
   ) {
     return this.iCdpInfrastructure.depositCDP(
+      key,
+      privateKey,
+      ownerAddr,
+      collateral,
+    );
+  }
+
+  withdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ) {
+    return this.iCdpInfrastructure.withdrawCDP(
       key,
       privateKey,
       ownerAddr,

@@ -49,3 +49,17 @@ export function cdpOwnerDenomDepositsPost(
       return res;
     });
 }
+
+export function cdpOwnerDenomWithdrawPost(
+  sdk: CosmosSDK,
+  ownerAddr: string,
+  denom: string,
+  req: DepositCdpReq,
+) {
+  return new CdpApi(undefined, sdk.url)
+    .cdpOwnerDenomWithdrawPost(ownerAddr, denom, req)
+    .then((res) => {
+      res.data = codec.fromJSONString(JSON.stringify(res.data));
+      return res;
+    });
+}

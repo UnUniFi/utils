@@ -5,7 +5,7 @@ import { AccAddress } from 'cosmos-client';
 import { CosmosSDKService } from '@model-ce/index';
 import { Key } from '../keys/key.model';
 import { ICdpInfrastructure } from './cdp.service';
-import { cdpPost } from '../../x/cdp/module';
+import { cdpOwnerDenomDepositsPost, cdpPost } from '../../x/cdp/module';
 import { KeyInfrastructureService } from '../keys/key.infrastructure.service';
 import { IKeyInfrastructure } from '../keys/key.service';
 
@@ -40,7 +40,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
         chain_id: this.cosmosSDK.sdk.chainID,
         account_number: account.account_number.toString(),
         sequence: account.sequence.toString(),
-        gas: '',
+        gas: '300000',
         gas_adjustment: '',
         fees: [],
         simulate: false,
@@ -49,6 +49,58 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       collateral,
       principal,
     }).then((res) => res.data);
+
+    const signedStdTx = auth.signStdTx(
+      this.cosmosSDK.sdk,
+      privKey,
+      unsignedStdTx,
+      account.account_number.toString(),
+      account.sequence.toString(),
+    );
+
+    return auth
+      .txsPost(this.cosmosSDK.sdk, signedStdTx, 'block')
+      .then((res) => res.data);
+  }
+
+  async depositCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ): Promise<BroadcastTxCommitResult> {
+    console.log('depositCDP', key, privateKey, ownerAddr, collateral);
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const sender = AccAddress.fromPublicKey(privKey.getPubKey());
+    const account = await auth
+      .accountsAddressGet(this.cosmosSDK.sdk, sender)
+      .then((res) => res.data.result);
+
+    console.log('account', account);
+
+    const unsignedStdTx = await cdpOwnerDenomDepositsPost(
+      this.cosmosSDK.sdk,
+      ownerAddr.toBech32(),
+      collateral.denom ?? '',
+      {
+        base_req: {
+          from: sender.toBech32(),
+          memo: '',
+          chain_id: this.cosmosSDK.sdk.chainID,
+          account_number: account.account_number.toString(),
+          sequence: account.sequence.toString(),
+          gas: '300000',
+          gas_adjustment: '',
+          fees: [],
+          simulate: false,
+        },
+        owner: ownerAddr,
+        depositor: account.address,
+        collateral,
+      },
+    ).then((res) => res.data);
+
+    console.log('unsigned std tx', unsignedStdTx);
 
     const signedStdTx = auth.signStdTx(
       this.cosmosSDK.sdk,

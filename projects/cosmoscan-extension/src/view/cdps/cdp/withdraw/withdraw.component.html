@@ -1,1 +1,65 @@
-<p>withdraw works!</p>
+<form
+  #formRef="ngForm"
+  (submit)="
+    onSubmit(
+      privateKeyRef.value,
+      ownerRef.value,
+      collateralDenomRef.value,
+      collateralAmountRef.value
+    )
+  "
+>
+  <div>
+    <mat-form-field fxFlex="auto">
+      <mat-label>Collateral Denom</mat-label>
+      <input
+        #collateralDenomRef
+        [(ngModel)]="denom"
+        name="collateral-denom"
+        matInput
+        readonly
+      />
+    </mat-form-field>
+    <mat-form-field fxFlex="auto">
+      <mat-label>Collateral Amount</mat-label>
+      <input
+        #collateralAmountRef
+        [(ngModel)]="collateral_amount"
+        name="collateral-amount"
+        matInput
+        type="number"
+        pattern="^\d+$"
+        [min]="0"
+      />
+    </mat-form-field>
+  </div>
+  <mat-form-field fxFill>
+    <mat-label>Owner</mat-label>
+    <input #ownerRef [(ngModel)]="owner" name="owner" matInput readonly />
+  </mat-form-field>
+  <mat-form-field fxFill>
+    <mat-label>ID</mat-label>
+    <input
+      #idRef
+      type="text"
+      name="id"
+      [ngModel]="key?.id"
+      autocomplete="username"
+      matInput
+      readonly
+    />
+  </mat-form-field>
+  <mat-form-field fxFill>
+    <mat-label>Private key</mat-label>
+    <input
+      #privateKeyRef
+      ngModel
+      type="password"
+      name="privateKey"
+      autocomplete="current-password"
+      matInput
+      required
+    />
+  </mat-form-field>
+  <button mat-flat-button [disabled]="formRef.invalid">Submit</button>
+</form>

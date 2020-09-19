@@ -27,7 +27,7 @@ const routes: Routes = [
     component: DepositComponent,
   },
   {
-    path: ':cdp_id/withdraw',
+    path: ':owner/:denom/withdraw',
     component: WithdrawComponent,
   },
   {

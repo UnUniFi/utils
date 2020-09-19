@@ -13,11 +13,7 @@ export class CdpsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      console.log('cdps', this.cdps);
-    }, 5000);
-  }
+  ngOnInit(): void {}
 
   getColorCode(cdp: CDP) {
     const hash = crypto

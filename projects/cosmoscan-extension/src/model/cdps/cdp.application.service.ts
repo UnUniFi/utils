@@ -86,4 +86,40 @@ export class CdpApplicationService {
       duration: 6000,
     });
   }
+
+  async withdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ) {
+    const dialogRef = this.loadingDialog.open('Sending');
+
+    let txHash: string | undefined;
+    try {
+      const res: any = await this.cdp.withdrawCDP(
+        key,
+        privateKey,
+        ownerAddr,
+        collateral,
+      );
+      console.log('res', res);
+      if (res.code !== undefined && res.raw_log !== undefined) {
+        throw new Error(res.raw_log);
+      }
+      txHash = res.txhash;
+    } catch (error) {
+      const msg = error.toString();
+      this.snackBar.open(`Error has occured: ${msg}`, undefined, {
+        duration: 6000,
+      });
+      return;
+    } finally {
+      dialogRef.close();
+    }
+
+    this.snackBar.open('Successfully sent', undefined, {
+      duration: 6000,
+    });
+  }
 }

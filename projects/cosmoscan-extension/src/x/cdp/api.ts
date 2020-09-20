@@ -84,6 +84,33 @@ export interface CreateCdpReq {
   principal?: Coin;
 }
 
+export interface DepositCdpReq {
+  /**
+   *
+   * @type {BaseReq}
+   * @memberof DepositCdpReq
+   */
+  base_req?: BaseReq;
+  /**
+   *
+   * @type {AccAddress}
+   * @memberof DepositCdpReq
+   */
+  owner?: AccAddress;
+  /**
+   *
+   * @type {AccAddress}
+   * @memberof DepositCdpReq
+   */
+  depositor?: AccAddress;
+  /**
+   *
+   * @type {Coin}
+   * @memberof DepositCdpReq
+   */
+  collateral?: Coin;
+}
+
 export interface WithdrawCdpReq {
   /**
    *
@@ -336,6 +363,72 @@ export const CdpApiAxiosParamCreator = function (
     },
     /**
      *
+     * @summary Deposit collateral to an existing cdp
+     * @param {string} ownerAddr
+     * @param {string} denom
+     * @param {DepositCdpReq} depositCdpReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpOwnerDenomDepositsPost(
+      ownerAddr: AccAddress,
+      denom: string,
+      depositCdpReq: DepositCdpReq,
+      options: any = {},
+    ): RequestArgs {
+      if (depositCdpReq === undefined || depositCdpReq === null) {
+        throw new RequiredError(
+          'depositCdpReq',
+          'Required parameter depositCdpReq was null or undefined when calling cdpPost.',
+        );
+      }
+
+      const localVarPath = `/cdp/${ownerAddr.toBech32()}/${denom}/deposits`;
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      };
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      const needsSerialization =
+        typeof depositCdpReq !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.data = needsSerialization
+        ? JSON.stringify(depositCdpReq !== undefined ? depositCdpReq : {})
+        : depositCdpReq || '';
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+    /**
+     *
      * @summary Remove collateral from an existing cdp
      * @param {AccAddress} ownerAddr
      * @param {string} denom
@@ -548,6 +641,38 @@ export const CdpApiFp = function (configuration?: Configuration) {
     },
     /**
      *
+     * @summary Deposit collateral to an existing cdp
+     * @param {string} ownerAddr
+     * @param {string} denom
+     * @param {DepositCdpReq} depositCdpReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpOwnerDenomDepositsPost(
+      ownerAddr: AccAddress,
+      denom: string,
+      depositCdpReq: DepositCdpReq,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<StdTx> {
+      const localVarAxiosArgs = CdpApiAxiosParamCreator(
+        configuration,
+      ).cdpOwnerDenomDepositsPost(ownerAddr, denom, depositCdpReq, options);
+
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH,
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        };
+        return axios.request(axiosRequestArgs);
+      };
+    },
+  };
+};
+    /**
+     *
      * @summary Remove collateral from an existing cdp
      * @param {AccAddress} ownerAddr
      * @param {string} denom
@@ -579,7 +704,6 @@ export const CdpApiFp = function (configuration?: Configuration) {
     },
   };
 };
-
 /**
  * CdpApi - object-oriented interface
  * @export
@@ -665,6 +789,31 @@ export class CdpApi extends BaseAPI {
       this.basePath,
     );
   }
+
+  /**
+   *
+   * @summary Deposit collateral to an existing cdp
+   * @param {AccAddress} ownerAddr
+   * @param {string} denom
+   * @param {DepositCdpReq} depositCdpReq
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CdpApi
+   */
+  public cdpOwnerDenomDepositsPost(
+    ownerAddr: AccAddress,
+    denom: string,
+    depositCdpReq: DepositCdpReq,
+    options?: any,
+  ) {
+    return CdpApiFp(this.configuration).cdpOwnerDenomDepositsPost(
+      ownerAddr,
+      denom,
+      depositCdpReq,
+      options,
+    )(this.axios as AxiosInstance, this.basePath);
+  }
+}
   /**
    *
    * @summary Remove collateral from an existing cdp

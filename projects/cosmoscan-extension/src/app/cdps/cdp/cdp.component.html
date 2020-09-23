@@ -1,1 +1,7 @@
-<view-cdp></view-cdp>
+<view-cdp
+  [owner]="owner$ | async"
+  [denom]="denom$ | async"
+  [params]="params$ | async"
+  [cdp]="cdp$ | async"
+  [deposits]="deposits$ | async"
+></view-cdp>

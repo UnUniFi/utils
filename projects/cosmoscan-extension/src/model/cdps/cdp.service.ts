@@ -11,12 +11,34 @@ export interface ICdpInfrastructure {
     collateral: Coin,
     principal: Coin,
   ): Promise<any>;
+
+  drawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    denom: string,
+    principal: Coin,
+  ): Promise<any>;
   repayCDP(
     key: Key,
     privateKey: string,
     ownerAddr: AccAddress,
     denom: string,
     payment: Coin,
+  ): Promise<any>;
+
+  depositCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ): Promise<any>;
+
+  withdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
   ): Promise<any>;
 }
 
@@ -43,6 +65,22 @@ export class CdpService {
     );
   }
 
+  drawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    denom: string,
+    principal: Coin,
+  ): Promise<BroadcastTxCommitResult> {
+    return this.iCdpInfrastructure.drawCDP(
+      key,
+      privateKey,
+      ownerAddr,
+      denom,
+      principal,
+    );
+  }
+
   repayCDP(
     key: Key,
     privateKey: string,
@@ -56,6 +94,34 @@ export class CdpService {
       ownerAddr,
       denom,
       payment,
+    );
+  }
+
+  depositCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ) {
+    return this.iCdpInfrastructure.depositCDP(
+      key,
+      privateKey,
+      ownerAddr,
+      collateral,
+    );
+  }
+
+  withdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ) {
+    return this.iCdpInfrastructure.withdrawCDP(
+      key,
+      privateKey,
+      ownerAddr,
+      collateral,
     );
   }
 }

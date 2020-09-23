@@ -23,15 +23,15 @@ const routes: Routes = [
     component: CdpComponent,
   },
   {
-    path: ':cdp_id/deposit',
+    path: ':owner/:denom/deposit',
     component: DepositComponent,
   },
   {
-    path: ':cdp_id/withdraw',
+    path: ':owner/:denom/withdraw',
     component: WithdrawComponent,
   },
   {
-    path: ':cdp_id/issue',
+    path: ':owner/:denom/issue',
     component: IssueComponent,
   },
   {

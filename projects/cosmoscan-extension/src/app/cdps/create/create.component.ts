@@ -39,9 +39,7 @@ export class CreateComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    cdpParametersGet(this.cosmosSdk.sdk).then((res) => console.log(res));
-  }
+  ngOnInit(): void {}
 
   onSubmit($event: CreateCdpOnSubmitEvent) {
     this.cdpApplicationService.createCDP(

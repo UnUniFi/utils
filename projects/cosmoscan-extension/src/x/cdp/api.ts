@@ -83,7 +83,32 @@ export interface CreateCdpReq {
    */
   principal?: Coin;
 }
-
+export interface DrawCdpReq {
+  /**
+   *
+   * @type {BaseReq}
+   * @memberof CreateCdpReq
+   */
+  base_req?: BaseReq;
+  /**
+   *
+   * @type {AccAddress}
+   * @memberof CreateCdpReq
+   */
+  owner?: AccAddress;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateCdpReq
+   */
+  denom?: string;
+  /**
+   *
+   * @type {Coin}
+   * @memberof CreateCdpReq
+   */
+  principal?: Coin;
+}
 export interface DepositCdpReq {
   /**
    *
@@ -361,6 +386,72 @@ export const CdpApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       };
     },
+
+    /**
+     * @summary Create debt in an existing cdp and send the newly minted asset to your account
+     * @param {AccAddress} ownerAddr
+     * @param {string} denom
+     * @param {DrawCdpReq} drawCdpReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CdpApi
+     */
+    cdpOwnerDenomDrawPost(
+      ownerAddr: AccAddress,
+      denom: string,
+      drawCdpReq: DrawCdpReq,
+      options: any = {},
+    ): RequestArgs {
+      if (drawCdpReq === undefined || drawCdpReq === null) {
+        throw new RequiredError(
+          'drawCdpReq',
+          'Required parameter drawCdpReq was null or undefined when calling cdpPost.',
+        );
+      }
+
+      const localVarPath = `/cdp/${ownerAddr.toBech32()}/${denom}/draw`;
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      };
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      const needsSerialization =
+        typeof drawCdpReq !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.data = needsSerialization
+        ? JSON.stringify(drawCdpReq !== undefined ? drawCdpReq : {})
+        : drawCdpReq || '';
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+
     /**
      *
      * @summary Deposit collateral to an existing cdp
@@ -425,8 +516,6 @@ export const CdpApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       };
     },
-  };
-};
     /**
      *
      * @summary Remove collateral from an existing cdp
@@ -641,6 +730,37 @@ export const CdpApiFp = function (configuration?: Configuration) {
     },
     /**
      *
+     * @summary Create debt in an existing cdp and send the newly minted asset to your account
+     * @param {AccAddress} ownerAddr
+     * @param {string} denom
+     * @param {DrawCdpReq} drawCdpReq
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CdpApi
+     */
+    cdpOwnerDenomDrawPost(
+      ownerAddr: AccAddress,
+      denom: string,
+      drawCdpReq: DrawCdpReq,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<StdTx> {
+      const localVarAxiosArgs = CdpApiAxiosParamCreator(
+        configuration,
+      ).cdpOwnerDenomDrawPost(ownerAddr, denom, drawCdpReq, options);
+
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH,
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        };
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
      * @summary Deposit collateral to an existing cdp
      * @param {string} ownerAddr
      * @param {string} denom
@@ -669,8 +789,6 @@ export const CdpApiFp = function (configuration?: Configuration) {
         return axios.request(axiosRequestArgs);
       };
     },
-  };
-};
     /**
      *
      * @summary Remove collateral from an existing cdp
@@ -792,6 +910,30 @@ export class CdpApi extends BaseAPI {
 
   /**
    *
+   * @summary Create debt in an existing cdp and send the newly minted asset to your account
+   * @param {AccAddress} ownerAddr
+   * @param {string} denom
+   * @param {DrawCdpReq} drawCdpReq
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CdpApi
+   */
+  public cdpOwnerDenomDrawPost(
+    ownerAddr: AccAddress,
+    denom: string,
+    drawCdpReq: DrawCdpReq,
+    options?: any,
+  ) {
+    return CdpApiFp(this.configuration).cdpOwnerDenomDrawPost(
+      ownerAddr,
+      denom,
+      drawCdpReq,
+      options,
+    )(this.axios as AxiosInstance, this.basePath);
+  }
+
+  /**
+   *
    * @summary Deposit collateral to an existing cdp
    * @param {AccAddress} ownerAddr
    * @param {string} denom
@@ -813,7 +955,6 @@ export class CdpApi extends BaseAPI {
       options,
     )(this.axios as AxiosInstance, this.basePath);
   }
-}
   /**
    *
    * @summary Remove collateral from an existing cdp

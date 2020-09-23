@@ -31,7 +31,7 @@ const routes: Routes = [
     component: WithdrawComponent,
   },
   {
-    path: ':cdp_id/issue',
+    path: ':owner/:denom/issue',
     component: IssueComponent,
   },
   {

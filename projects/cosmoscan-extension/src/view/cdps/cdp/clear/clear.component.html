@@ -1,1 +1,87 @@
-<p>clear works!</p>
+<form
+  #formRef="ngForm"
+  (submit)="
+    onSubmit(
+      privateKeyRef.value,
+      ownerRef.value,
+      collateralDenomRef.value,
+      paymentDenomRef.value,
+      paymentAmountRef.value
+    )
+  "
+>
+  <mat-form-field fxFill>
+    <mat-label>Collateral Denom</mat-label>
+    <input
+      #collateralDenomRef
+      [(ngModel)]="denom"
+      name="collateral-denom"
+      matInput
+      readonly
+      required
+    />
+  </mat-form-field>
+  <div>
+    <mat-form-field fxFlex="auto">
+      <mat-label>Payment Denom</mat-label>
+      <input
+        #paymentDenomRef
+        [(ngModel)]="paymentDenom"
+        name="payment-denom"
+        matInput
+        readonly
+        required
+      />
+    </mat-form-field>
+    <mat-form-field fxFlex="auto">
+      <mat-label>Payment Amount</mat-label>
+      <input
+        #paymentAmountRef
+        [(ngModel)]="payment_amount"
+        name="payment-amount"
+        matInput
+        type="number"
+        pattern="^\d+$"
+        [min]="0"
+        required
+      />
+    </mat-form-field>
+  </div>
+  <mat-form-field fxFill>
+    <mat-label>Owner</mat-label>
+    <input
+      #ownerRef
+      [(ngModel)]="owner"
+      name="owner"
+      matInput
+      readonly
+      required
+    />
+  </mat-form-field>
+  <mat-form-field fxFill>
+    <mat-label>ID</mat-label>
+    <input
+      #idRef
+      type="text"
+      name="id"
+      [ngModel]="key?.id"
+      autocomplete="username"
+      matInput
+      readonly
+      required
+    />
+  </mat-form-field>
+  <mat-form-field fxFill>
+    <mat-label>Private key</mat-label>
+    <input
+      #privateKeyRef
+      ngModel
+      type="password"
+      name="privateKey"
+      autocomplete="current-password"
+      matInput
+      required
+    />
+  </mat-form-field>
+  <button mat-flat-button [disabled]="formRef.invalid">Submit</button>
+</form>

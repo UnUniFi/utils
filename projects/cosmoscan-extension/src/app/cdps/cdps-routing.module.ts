@@ -35,7 +35,7 @@ const routes: Routes = [
     component: IssueComponent,
   },
   {
-    path: ':cdp_id/clear',
+    path: ':owner/:denom/clear',
     component: ClearComponent,
   },
 ];

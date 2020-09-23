@@ -11,12 +11,20 @@ export interface ICdpInfrastructure {
     collateral: Coin,
     principal: Coin,
   ): Promise<any>;
+
   drawCDP(
     key: Key,
     privateKey: string,
     ownerAddr: AccAddress,
     denom: string,
     principal: Coin,
+  ): Promise<any>;
+  repayCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    denom: string,
+    payment: Coin,
   ): Promise<any>;
 
   depositCDP(
@@ -70,6 +78,22 @@ export class CdpService {
       ownerAddr,
       denom,
       principal,
+    );
+  }
+
+  repayCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    denom: string,
+    payment: Coin,
+  ): Promise<BroadcastTxCommitResult> {
+    return this.iCdpInfrastructure.repayCDP(
+      key,
+      privateKey,
+      ownerAddr,
+      denom,
+      payment,
     );
   }
 

@@ -109,6 +109,32 @@ export interface DrawCdpReq {
    */
   principal?: Coin;
 }
+export interface RepayCdpReq {
+  /**
+   *
+   * @type {BaseReq}
+   * @memberof RepayCdpReq
+   */
+  base_req?: BaseReq;
+  /**
+   *
+   * @type {AccAddress}
+   * @memberof RepayCdpReq
+   */
+  owner?: AccAddress;
+  /**
+   *
+   * @type {string}
+   * @memberof RepayCdpReq
+   */
+  denom?: string;
+  /**
+   *
+   * @type {Coin}
+   * @memberof RepayCdpReq
+   */
+  payment?: Coin;
+}
 export interface DepositCdpReq {
   /**
    *
@@ -454,6 +480,71 @@ export const CdpApiAxiosParamCreator = function (
 
     /**
      *
+     * @summary Cancel out debt in an existing cdp
+     * @param {AccAddress} ownerAddr
+     * @param {string} denom
+     * @param {RepayCdpReq} repayCdpRequestBody
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpOwnerDenomRepayPost(
+      ownerAddr: AccAddress,
+      denom: string,
+      repayCdpReq: RepayCdpReq,
+      options: any = {},
+    ): RequestArgs {
+      if (repayCdpReq === undefined || repayCdpReq === null) {
+        throw new RequiredError(
+          'repayCdpReq',
+          'Required parameter repayCdpReq was null or undefined when calling cdpPost.',
+        );
+      }
+
+      const localVarPath = `/cdp/${ownerAddr.toBech32()}/${denom}/repay`;
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      };
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      const needsSerialization =
+        typeof repayCdpReq !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.data = needsSerialization
+        ? JSON.stringify(repayCdpReq !== undefined ? repayCdpReq : {})
+        : repayCdpReq || '';
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+
+    /**
+     *
      * @summary Deposit collateral to an existing cdp
      * @param {string} ownerAddr
      * @param {string} denom
@@ -728,6 +819,7 @@ export const CdpApiFp = function (configuration?: Configuration) {
         return axios.request(axiosRequestArgs);
       };
     },
+
     /**
      *
      * @summary Create debt in an existing cdp and send the newly minted asset to your account
@@ -759,6 +851,37 @@ export const CdpApiFp = function (configuration?: Configuration) {
         return axios.request(axiosRequestArgs);
       };
     },
+    /**
+     *
+     * @summary Cancel out debt in an existing cdp
+     * @param {AccAddress} ownerAddr
+     * @param {string} denom
+     * @param {RepayCdpReq} repayCdpRequestBody
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpOwnerDenomRepayPost(
+      ownerAddr: AccAddress,
+      denom: string,
+      repayCdpReq: RepayCdpReq,
+      options?: any,
+    ): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<StdTx> {
+      const localVarAxiosArgs = CdpApiAxiosParamCreator(
+        configuration,
+      ).cdpOwnerDenomRepayPost(ownerAddr, denom, repayCdpReq, options);
+
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH,
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        };
+        return axios.request(axiosRequestArgs);
+      };
+    },
+
     /**
      *
      * @summary Deposit collateral to an existing cdp
@@ -928,6 +1051,30 @@ export class CdpApi extends BaseAPI {
       ownerAddr,
       denom,
       drawCdpReq,
+      options,
+    )(this.axios as AxiosInstance, this.basePath);
+  }
+
+  /**
+   *
+   * @summary Cancel out debt in an existing cdp
+   * @param {AccAddress} ownerAddr
+   * @param {string} denom
+   * @param {RepayCdpReq} repayCdpRequestBody
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CdpApi
+   */
+  public cdpOwnerDenomRepayPost(
+    ownerAddr: AccAddress,
+    denom: string,
+    repayCdpReq: RepayCdpReq,
+    options?: any,
+  ) {
+    return CdpApiFp(this.configuration).cdpOwnerDenomRepayPost(
+      ownerAddr,
+      denom,
+      repayCdpReq,
       options,
     )(this.axios as AxiosInstance, this.basePath);
   }

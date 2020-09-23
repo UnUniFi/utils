@@ -5,11 +5,13 @@ import { AccAddress } from 'cosmos-client';
 import { CosmosSDKService } from '@model-ce/index';
 import { Key } from '../keys/key.model';
 import { ICdpInfrastructure } from './cdp.service';
-<<<<<<< HEAD
-import { cdpOwnerDenomDrawPost, cdpPost } from '../../x/cdp/module';
-=======
-import { cdpOwnerDenomWithdrawPost, cdpPost } from '../../x/cdp/module';
->>>>>>> 6eefa8905acbb86221fba00792fd9486fb783a5d
+import {
+  cdpPost,
+  cdpOwnerDenomDrawPost,
+  cdpOwnerDenomRepayPost,
+  cdpOwnerDenomDepositsPost,
+  cdpOwnerDenomWithdrawPost,
+} from '../../x/cdp/module';
 import { KeyInfrastructureService } from '../keys/key.infrastructure.service';
 import { IKeyInfrastructure } from '../keys/key.service';
 
@@ -115,98 +117,145 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       .then((res) => res.data);
   }
 
-  
-async depositCDP(
-  key: Key,
-  privateKey: string,
-  ownerAddr: AccAddress,
-  collateral: Coin,
-): Promise<BroadcastTxCommitResult> {
-  const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
-  const sender = AccAddress.fromPublicKey(privKey.getPubKey());
-  const account = await auth
-    .accountsAddressGet(this.cosmosSDK.sdk, sender)
-    .then((res) => res.data.result);
+  async repayCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    denom: string,
+    payment: Coin,
+  ): Promise<BroadcastTxCommitResult> {
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const sender = AccAddress.fromPublicKey(privKey.getPubKey());
+    const account = await auth
+      .accountsAddressGet(this.cosmosSDK.sdk, sender)
+      .then((res) => res.data.result);
 
-  const unsignedStdTx = await cdpOwnerDenomDepositsPost(
-    this.cosmosSDK.sdk,
-    ownerAddr,
-    collateral.denom ?? '',
-    {
-      base_req: {
-        from: sender.toBech32(),
-        memo: '',
-        chain_id: this.cosmosSDK.sdk.chainID,
-        account_number: account.account_number.toString(),
-        sequence: account.sequence.toString(),
-        gas: '300000',
-        gas_adjustment: '',
-        fees: [],
-        simulate: false,
+    const unsignedStdTx = await cdpOwnerDenomRepayPost(
+      this.cosmosSDK.sdk,
+      ownerAddr,
+      denom,
+      {
+        base_req: {
+          from: sender.toBech32(),
+          memo: '',
+          chain_id: this.cosmosSDK.sdk.chainID,
+          account_number: account.account_number.toString(),
+          sequence: account.sequence.toString(),
+          gas: '300000',
+          gas_adjustment: '',
+          fees: [],
+          simulate: false,
+        },
+        owner: ownerAddr,
+        denom: denom,
+        payment,
       },
-      owner: ownerAddr,
-      depositor: account.address,
-      collateral,
-    },
-  ).then((res) => res.data);
+    ).then((res) => res.data);
 
-  const signedStdTx = auth.signStdTx(
-    this.cosmosSDK.sdk,
-    privKey,
-    unsignedStdTx,
-    account.account_number.toString(),
-    account.sequence.toString(),
-  );
+    const signedStdTx = auth.signStdTx(
+      this.cosmosSDK.sdk,
+      privKey,
+      unsignedStdTx,
+      account.account_number.toString(),
+      account.sequence.toString(),
+    );
 
-  return auth
-    .txsPost(this.cosmosSDK.sdk, signedStdTx, 'block')
-    .then((res) => res.data);
-}
+    return auth
+      .txsPost(this.cosmosSDK.sdk, signedStdTx, 'block')
+      .then((res) => res.data);
+  }
 
-async withdrawCDP(
-  key: Key,
-  privateKey: string,
-  ownerAddr: AccAddress,
-  collateral: Coin,
-): Promise<BroadcastTxCommitResult> {
-  const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
-  const sender = AccAddress.fromPublicKey(privKey.getPubKey());
-  const account = await auth
-    .accountsAddressGet(this.cosmosSDK.sdk, sender)
-    .then((res) => res.data.result);
+  async depositCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ): Promise<BroadcastTxCommitResult> {
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const sender = AccAddress.fromPublicKey(privKey.getPubKey());
+    const account = await auth
+      .accountsAddressGet(this.cosmosSDK.sdk, sender)
+      .then((res) => res.data.result);
 
-  const unsignedStdTx = await cdpOwnerDenomWithdrawPost(
-    this.cosmosSDK.sdk,
-    ownerAddr,
-    collateral.denom ?? '',
-    {
-      base_req: {
-        from: sender.toBech32(),
-        memo: '',
-        chain_id: this.cosmosSDK.sdk.chainID,
-        account_number: account.account_number.toString(),
-        sequence: account.sequence.toString(),
-        gas: '',
-        gas_adjustment: '',
-        fees: [],
-        simulate: false,
+    const unsignedStdTx = await cdpOwnerDenomDepositsPost(
+      this.cosmosSDK.sdk,
+      ownerAddr,
+      collateral.denom ?? '',
+      {
+        base_req: {
+          from: sender.toBech32(),
+          memo: '',
+          chain_id: this.cosmosSDK.sdk.chainID,
+          account_number: account.account_number.toString(),
+          sequence: account.sequence.toString(),
+          gas: '300000',
+          gas_adjustment: '',
+          fees: [],
+          simulate: false,
+        },
+        owner: ownerAddr,
+        depositor: account.address,
+        collateral,
       },
-      owner: ownerAddr,
-      depositor: account.address,
-      collateral,
-    },
-  ).then((res) => res.data);
+    ).then((res) => res.data);
 
-  const signedStdTx = auth.signStdTx(
-    this.cosmosSDK.sdk,
-    privKey,
-    unsignedStdTx,
-    account.account_number.toString(),
-    account.sequence.toString(),
-  );
+    const signedStdTx = auth.signStdTx(
+      this.cosmosSDK.sdk,
+      privKey,
+      unsignedStdTx,
+      account.account_number.toString(),
+      account.sequence.toString(),
+    );
 
-  return auth
-    .txsPost(this.cosmosSDK.sdk, signedStdTx, 'block')
-    .then((res) => res.data);
-}
+    return auth
+      .txsPost(this.cosmosSDK.sdk, signedStdTx, 'block')
+      .then((res) => res.data);
+  }
+
+  async withdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: AccAddress,
+    collateral: Coin,
+  ): Promise<BroadcastTxCommitResult> {
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const sender = AccAddress.fromPublicKey(privKey.getPubKey());
+    const account = await auth
+      .accountsAddressGet(this.cosmosSDK.sdk, sender)
+      .then((res) => res.data.result);
+
+    const unsignedStdTx = await cdpOwnerDenomWithdrawPost(
+      this.cosmosSDK.sdk,
+      ownerAddr,
+      collateral.denom ?? '',
+      {
+        base_req: {
+          from: sender.toBech32(),
+          memo: '',
+          chain_id: this.cosmosSDK.sdk.chainID,
+          account_number: account.account_number.toString(),
+          sequence: account.sequence.toString(),
+          gas: '',
+          gas_adjustment: '',
+          fees: [],
+          simulate: false,
+        },
+        owner: ownerAddr,
+        depositor: account.address,
+        collateral,
+      },
+    ).then((res) => res.data);
+
+    const signedStdTx = auth.signStdTx(
+      this.cosmosSDK.sdk,
+      privKey,
+      unsignedStdTx,
+      account.account_number.toString(),
+      account.sequence.toString(),
+    );
+
+    return auth
+      .txsPost(this.cosmosSDK.sdk, signedStdTx, 'block')
+      .then((res) => res.data);
+  }
 }

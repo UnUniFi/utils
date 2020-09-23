@@ -20,19 +20,29 @@ export function cdpParametersGet(sdk: CosmosSDK) {
     .then((res) => res.data);
 }
 
-export function cdpCdpsCdpGet(
+export function cdpCdpsCdpOwnerDenomGet(
   sdk: CosmosSDK,
-  ownerAddr: string,
-  collateralDenom: string,
+  ownerAddr: AccAddress,
+  denom: string,
 ) {
   return new CdpApi(undefined, sdk.url)
-    .cdpCdpsCdpGet(ownerAddr, collateralDenom)
+    .cdpCdpsCdpOwnerDenomGet(ownerAddr, denom)
     .then((res) => res.data);
 }
 
-export function cdpCdpsDenomGet(sdk: CosmosSDK, collateralDenom: string) {
+export function cdpCdpsDenomDenomGet(sdk: CosmosSDK, collateralDenom: string) {
   return new CdpApi(undefined, sdk.url)
-    .cdpCdpsDenomGet(collateralDenom)
+    .cdpCdpsDenomDenomGet(collateralDenom)
+    .then((res) => res.data);
+}
+
+export function cdpCdpsCdpDepositsOwnerDenomGet(
+  sdk: CosmosSDK,
+  ownerAddr: AccAddress,
+  denom: string,
+) {
+  return new CdpApi(undefined, sdk.url)
+    .cdpCdpsCdpDepositsOwnerDenomGet(ownerAddr, denom)
     .then((res) => res.data);
 }
 

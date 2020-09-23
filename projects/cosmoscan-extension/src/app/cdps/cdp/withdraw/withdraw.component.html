@@ -1,1 +1,6 @@
-<view-withdraw></view-withdraw>
+<view-withdraw
+  [key]="key$ | async"
+  [owner]="owner$ | async"
+  [denom]="denom$ | async"
+  (appSubmit)="onSubmit($event)"
+></view-withdraw>

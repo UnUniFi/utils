@@ -36,10 +36,15 @@
                 <span class="column-name">Collateral: </span>
                 <span class="column-value"
                   >{{ cdp.cdp.collateral.amount }}
-                  {{ cdp.cdp.collateral.denom }}</span
-                >
+                  {{ cdp.cdp.collateral.denom }}
+                  <ng-template [ngIf]="!!withdrawLimit">
+                    (Available: {{ withdrawLimit }}
+                    {{ cdp.cdp.collateral.denom }})
+                  </ng-template>
+                </span>
               </div>
             </mat-list-item>
+
             <mat-list-item>
               <div
                 class="column-container"
@@ -75,10 +80,14 @@
                 <span class="column-name">Principal: </span>
                 <span class="column-value"
                   >{{ cdp.cdp.principal.amount }}
-                  {{ cdp.cdp.principal.denom }}</span
-                >
+                  {{ cdp.cdp.principal.denom }}
+                  <ng-template [ngIf]="!!issueLimit">
+                    (Available: {{ issueLimit }} {{ cdp.cdp.principal.denom }})
+                  </ng-template>
+                </span>
               </div>
             </mat-list-item>
+
             <mat-list-item>
               <div
                 class="column-container"
@@ -117,6 +126,7 @@
                   {{ cdp.cdp.accumulated_fees.denom }}</span
                 >
               </div>
+              <mat-divider [inset]="true"></mat-divider>
             </mat-list-item>
             <mat-list-item>
               <div
@@ -124,14 +134,41 @@
                 fxLayout="row"
                 fxLayoutAlign="space-between"
               >
-                <span class="column-name"> Updated </span>
+                <span class="column-name"> Fees Updated </span>
                 <span class="column-value">
                   {{ cdp.cdp.fees_updated }}
                 </span>
               </div>
               <mat-divider [inset]="true"></mat-divider>
             </mat-list-item>
-
+            <mat-list-item>
+              <div
+                class="column-container"
+                fxLayout="row"
+                fxLayoutAlign="space-between"
+              >
+                <span class="column-name">Spot Price: </span>
+                <span class="column-value"
+                  >{{ spotPrice.price }} [{{ spotPrice.market_id }}]</span
+                >
+              </div>
+              <mat-divider [inset]="true"></mat-divider>
+            </mat-list-item>
+            <mat-list-item>
+              <div
+                class="column-container"
+                fxLayout="row"
+                fxLayoutAlign="space-between"
+              >
+                <span class="column-name">Liquadation Price: </span>
+                <span class="column-value"
+                  >{{ liquidationPrice.price }} [{{
+                    liquidationPrice.market_id
+                  }}]</span
+                >
+              </div>
+              <mat-divider [inset]="true"></mat-divider>
+            </mat-list-item>
             <mat-list-item>
               <div
                 class="column-container"
@@ -149,7 +186,7 @@
         </mat-card-content>
       </mat-card>
 
-      <div>
+      <div class="deposit-container">
         <h4>Deposits</h4>
         <mat-card>
           <mat-card-content>

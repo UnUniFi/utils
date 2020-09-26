@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CosmosSDKService } from '@model-ce/index';
+import {
+  getSpotPriceStream,
+  getLiquidationPriceStream,
+} from '../../../utils/stream';
+import { getWithdrawLimit, getIssueLimit } from '../../../utils/function';
+
 import { AccAddress } from 'cosmos-client';
 import {
   CDP,
@@ -14,6 +20,7 @@ import {
 } from 'projects/cosmoscan-extension/src/x/cdp/module';
 import { from, Observable, pipe, zip } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { Price } from 'projects/cosmoscan-extension/src/x/pricefeed/api';
 
 @Component({
   selector: 'app-cdp',
@@ -26,6 +33,11 @@ export class CdpComponent implements OnInit {
   params$: Observable<CdpParameters>;
   cdp$: Observable<CDP>;
   deposits$: Observable<Deposit[]>;
+
+  spotPrice$: Observable<Price>;
+  liquidationPrice$: Observable<Price>;
+  withdrawLimit$: Observable<number>;
+  issueLimit$: Observable<number>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -60,6 +72,28 @@ export class CdpComponent implements OnInit {
       ),
       map((data) => data.result),
     );
+
+    this.spotPrice$ = getSpotPriceStream(
+      this.cosmosSdk.sdk,
+      this.denom$,
+      this.params$,
+    );
+
+    this.liquidationPrice$ = getLiquidationPriceStream(
+      this.cosmosSdk.sdk,
+      this.denom$,
+      this.params$,
+    );
+
+    this.withdrawLimit$ = zip(this.cdp$, this.params$, this.spotPrice$).pipe(
+      map(([cdp, params, price]) => getWithdrawLimit(cdp, params, price)),
+    );
+
+    this.issueLimit$ = zip(
+      this.cdp$,
+      this.params$,
+      this.liquidationPrice$,
+    ).pipe(map(([cdp, params, price]) => getIssueLimit(cdp, params, price)));
   }
 
   ngOnInit(): void {}

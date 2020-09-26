@@ -23,6 +23,18 @@ export class CdpComponent implements OnInit {
   @Input()
   deposits?: Deposit[];
 
+  @Input()
+  spotPrice?: number;
+
+  @Input()
+  liquidationPrice?: number;
+
+  @Input()
+  withdrawLimit?: number;
+
+  @Input()
+  issueLimit?: number;
+
   constructor() {}
 
   ngOnInit(): void {

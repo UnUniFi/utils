@@ -57,6 +57,12 @@ export interface CDP {
   collateralization_ratio: string;
 }
 
+export interface Deposit {
+  cdp_id: string;
+  depositor: string;
+  amount: Coin;
+}
+
 export interface CreateCdpReq {
   /**
    *
@@ -207,6 +213,13 @@ export const CdpApiAxiosParamCreator = function (
   configuration?: Configuration,
 ) {
   return {
+    /**
+     *
+     * @summary Get CDP Accounts
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CdpApi
+     */
     cdpAccountsGet(options: any = {}): RequestArgs {
       const localVarPath = '/cdp/accounts';
       const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -243,6 +256,13 @@ export const CdpApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       };
     },
+    /**
+     *
+     * @summary Get the current global cdp module parameters
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CdpApi
+     */
     cdpParametersGet(options: any = {}): RequestArgs {
       const localVarPath = '/cdp/parameters';
       const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
@@ -279,12 +299,20 @@ export const CdpApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       };
     },
-    cdpCdpsCdpGet(
-      ownerAddr: string,
-      collateralDenom: string,
+    /**
+     *
+     * @summary Get a CDP by the owner address and the collateral name
+     * @param {AccAddress} [ownerAddr] Owner Address
+     * @param {string} [denom] Collateral Denom
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpCdpsCdpOwnerDenomGet(
+      ownerAddr: AccAddress,
+      denom: string,
       options: any = {},
     ): RequestArgs {
-      const localVarPath = `/cdp/cdps/cdp/${ownerAddr}/${collateralDenom}`;
+      const localVarPath = `/cdp/cdps/cdp/${ownerAddr.toBech32()}/${denom}`;
       const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
       let baseOptions;
       if (configuration) {
@@ -319,8 +347,66 @@ export const CdpApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       };
     },
-    cdpCdpsDenomGet(collateralDenom: string, options: any = {}): RequestArgs {
+    /**
+     *
+     * @summary Get all CDPs collateralized with the specified asset
+     * @param {string} collateralDenom
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpCdpsDenomDenomGet(
+      collateralDenom: string,
+      options: any = {},
+    ): RequestArgs {
       const localVarPath = `/cdp/cdps/denom/${collateralDenom}`;
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      };
+
+      delete localVarUrlObj.search;
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @summary Get the deposits of a CDP.
+     * @param {AccAddress} [ownerAddr] Owner Address
+     * @param {string} [denom] Collateral Denom
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpCdpsCdpDepositsOwnerDenomGet(
+      ownerAddr: AccAddress,
+      denom: string,
+      options: any = {},
+    ): RequestArgs {
+      const localVarPath = `/cdp/cdps/cdp/deposits/${ownerAddr.toBech32()}/${denom}`;
       const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
       let baseOptions;
       if (configuration) {
@@ -735,14 +821,14 @@ export const CdpApiFp = function (configuration?: Configuration) {
     /**
      *
      * @summary Get a CDP by the owner address and the collateral name
-     * @param {string} ownerAddr
-     * @param {string} collateralDenom
+     * @param {AccAddress} [ownerAddr] Owner Address
+     * @param {string} [denom] Collateral Denom
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cdpCdpsCdpGet(
-      ownerAddr: string,
-      collateralDenom: string,
+    cdpCdpsCdpOwnerDenomGet(
+      ownerAddr: AccAddress,
+      denom: string,
       options?: any,
     ): (
       axios?: AxiosInstance,
@@ -754,7 +840,7 @@ export const CdpApiFp = function (configuration?: Configuration) {
       ) => {
         const localVarAxiosArgs = CdpApiAxiosParamCreator(
           configuration,
-        ).cdpCdpsCdpGet(ownerAddr, collateralDenom, options);
+        ).cdpCdpsCdpOwnerDenomGet(ownerAddr, denom, options);
 
         const axiosRequestArgs = {
           ...localVarAxiosArgs.options,
@@ -770,7 +856,7 @@ export const CdpApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    cdpCdpsDenomGet(
+    cdpCdpsDenomDenomGet(
       collateralDenom: string,
       options?: any,
     ): (
@@ -783,7 +869,38 @@ export const CdpApiFp = function (configuration?: Configuration) {
       ) => {
         const localVarAxiosArgs = CdpApiAxiosParamCreator(
           configuration,
-        ).cdpCdpsDenomGet(collateralDenom, options);
+        ).cdpCdpsDenomDenomGet(collateralDenom, options);
+
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        };
+        return axios.request(axiosRequestArgs);
+      };
+    },
+    /**
+     *
+     * @summary Get the deposits of a CDP.
+     * @param {AccAddress} [ownerAddr] Owner Address
+     * @param {string} [denom] Collateral Denom
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    cdpCdpsCdpDepositsOwnerDenomGet(
+      ownerAddr: AccAddress,
+      denom: string,
+      options?: any,
+    ): (
+      axios?: AxiosInstance,
+      basePath?: string,
+    ) => AxiosPromise<{ height: string; result: Deposit[] }> {
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH,
+      ) => {
+        const localVarAxiosArgs = CdpApiAxiosParamCreator(
+          configuration,
+        ).cdpCdpsCdpDepositsOwnerDenomGet(ownerAddr, denom, options);
 
         const axiosRequestArgs = {
           ...localVarAxiosArgs.options,
@@ -983,20 +1100,20 @@ export class CdpApi extends BaseAPI {
   /**
    *
    * @summary Get a CDP by the owner address and the collateral name
-   * @param {string} ownerAddr
-   * @param {string} collateralDenom
+   * @param {AccAddress} [ownerAddr] Owner Address
+   * @param {string} [denom] Collateral Denom
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CdpApi
    */
-  public cdpCdpsCdpGet(
-    ownerAddr: string,
-    collateralDenom: string,
+  public cdpCdpsCdpOwnerDenomGet(
+    ownerAddr: AccAddress,
+    denom: string,
     options?: any,
   ) {
-    return CdpApiFp(this.configuration).cdpCdpsCdpGet(
+    return CdpApiFp(this.configuration).cdpCdpsCdpOwnerDenomGet(
       ownerAddr,
-      collateralDenom,
+      denom,
       options,
     )(this.axios as AxiosInstance, this.basePath);
   }
@@ -1009,9 +1126,30 @@ export class CdpApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CdpApi
    */
-  public cdpCdpsDenomGet(collateralDenom: string, options?: any) {
-    return CdpApiFp(this.configuration).cdpCdpsDenomGet(
+  public cdpCdpsDenomDenomGet(collateralDenom: string, options?: any) {
+    return CdpApiFp(this.configuration).cdpCdpsDenomDenomGet(
       collateralDenom,
+      options,
+    )(this.axios as AxiosInstance, this.basePath);
+  }
+
+  /**
+   *
+   * @summary Get the deposits of a CDP.
+   * @param {AccAddress} [ownerAddr] Owner Address
+   * @param {string} [denom] Collateral Denom
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CdpApi
+   */
+  public cdpCdpsCdpDepositsOwnerDenomGet(
+    ownerAddr: AccAddress,
+    denom: string,
+    options?: any,
+  ) {
+    return CdpApiFp(this.configuration).cdpCdpsCdpDepositsOwnerDenomGet(
+      ownerAddr,
+      denom,
       options,
     )(this.axios as AxiosInstance, this.basePath);
   }

@@ -4,7 +4,7 @@ import { ApplyValidatorComponent } from './apply-validator.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@view-j/material.module';
+import { MaterialModule } from '@view-w/material.module';
 
 @NgModule({
   declarations: [ApplyValidatorComponent],

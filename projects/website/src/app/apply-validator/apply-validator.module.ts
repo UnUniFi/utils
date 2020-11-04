@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ApplyValidatorRoutingModule } from './apply-validator-routing.module';
 import { ApplyValidatorComponent } from './apply-validator.component';
-import { ApplyValidatorModule } from '@view-j/apply-validator/apply-validator.module';
+import { ApplyValidatorModule } from '@view-w/apply-validator/apply-validator.module';
 
 @NgModule({
   declarations: [ApplyValidatorComponent],

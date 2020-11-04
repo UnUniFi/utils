@@ -8,18 +8,6 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/jpyx-website/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/jpyx-website/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/eurx-website/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/eurx-website/tsconfig.spec.json"
-    },
-    {
       "path": "./projects/cosmoscan-extension/tsconfig.app.json"
     },
     {

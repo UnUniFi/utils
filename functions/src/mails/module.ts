@@ -15,7 +15,7 @@ export const send = functions.https.onCall(
     context
   ) => {
     const body = `Dear ${data.name}
-Your application for JPYX validator has been accepted.
+Your application for JPYX, EURX validator has been accepted.
 If you are elected as a validator, you will have an email from us.
 If you don't have an email from us, it means that you are not elected.
 
@@ -30,7 +30,7 @@ Comment: ${data.comment}
         functions.config().gas.send_mail,
         qs.stringify({
           email: data.email,
-          subject: "Application for JPYX validator has been accepted",
+          subject: "Application for JPYX, EURX validator has been accepted",
           body: body,
           type: "info",
         })

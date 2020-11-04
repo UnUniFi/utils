@@ -19,7 +19,7 @@ const routes: Routes = [
   },
 
   {
-    path: ':cdp_id',
+    path: ':owner/:denom',
     component: CdpComponent,
   },
   {

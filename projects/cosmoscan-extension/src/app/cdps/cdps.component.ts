@@ -7,7 +7,7 @@ import { auth } from 'cosmos-client/x/auth';
 import { from, Observable, zip } from 'rxjs';
 import { filter, map, mergeMap, tap } from 'rxjs/operators';
 import { CDP } from '../../x/cdp/api';
-import { cdpCdpsCdpGet, cdpParametersGet } from '../../x/cdp/module';
+import { cdpCdpsCdpOwnerDenomGet, cdpParametersGet } from '../../x/cdp/module';
 
 @Component({
   selector: 'app-cdps',
@@ -36,8 +36,8 @@ export class CdpsComponent implements OnInit {
       mergeMap((address) =>
         auth.accountsAddressGet(this.cosmosSdk.sdk, address),
       ),
-      map((res) => res.data && res.data.result.address?.toBech32()),
-      filter((address): address is string => address !== undefined),
+      map((res) => res.data && res.data.result.address),
+      filter((address): address is AccAddress => address !== undefined),
     );
 
     const collateralDenoms$ = from(cdpParametersGet(this.cosmosSdk.sdk)).pipe(
@@ -48,7 +48,7 @@ export class CdpsComponent implements OnInit {
       mergeMap(([address, denoms]) =>
         Promise.all(
           denoms.map((denom) =>
-            cdpCdpsCdpGet(this.cosmosSdk.sdk, address, denom),
+            cdpCdpsCdpOwnerDenomGet(this.cosmosSdk.sdk, address, denom),
           ),
         ),
       ),

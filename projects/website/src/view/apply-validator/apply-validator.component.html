@@ -1,0 +1,87 @@
+<h1>Apply Validator</h1>
+<p>
+  In JPYX or EURX blockchain, 100 validators will validate the block of
+  blockchain. Exclude two validators which the development team run, 98
+  validators are elected among applyer of this form.
+</p>
+<form
+  #formRef="ngForm"
+  (submit)="
+    onSubmit(
+      nameRef.value,
+      emailRef.value,
+      companyRef.value,
+      countryRef.value,
+      addressRef.value,
+      commentRef.value
+    )
+  "
+>
+  <mat-form-field fxFill>
+    <mat-label>Name</mat-label>
+    <input #nameRef matInput required ngNodel name="name" />
+  </mat-form-field>
+  <mat-form-field fxFill>
+    <mat-label>Email</mat-label>
+    <input
+      #emailRef
+      matInput
+      type="email"
+      pattern=".+@.+\..+"
+      required
+      ngNodel
+      name="email"
+    />
+  </mat-form-field>
+  <mat-form-field fxFill>
+    <mat-label>Company</mat-label>
+    <input #companyRef matInput ngNodel name="company" />
+  </mat-form-field>
+  <mat-form-field fxFill>
+    <mat-label>Country</mat-label>
+    <input #countryRef matInput required ngNodel name="country" />
+  </mat-form-field>
+  <mat-form-field fxFill>
+    <mat-label>Address</mat-label>
+    <input #addressRef matInput required ngNodel name="address" />
+  </mat-form-field>
+
+  <p>
+    Please write why you are suitable to be a validator, how you can contribute
+    to the ecosystem of JPYX, EURX and other related ecosystems (Cosmos,
+    Binance, Kava). This field will be used for judgement of being validators.
+  </p>
+  <mat-form-field fxFill>
+    <mat-label>Comment</mat-label>
+    <textarea
+      #commentRef
+      matInput
+      required
+      rows="12"
+      style="resize: none"
+      ngModel
+      name="comment"
+    >
+    </textarea>
+  </mat-form-field>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div fxLayout="column">
+      <div>
+        <mat-checkbox #check1Ref required ngModel name="check1">
+          I'm agree to terms.
+        </mat-checkbox>
+        <a mat-button color="primary" href="/terms" target="_blank">
+          <span>terms</span>
+          <mat-icon>open_in_new</mat-icon>
+        </a>
+      </div>
+
+      <mat-checkbox required ngModel name="check2">
+        I'm not a antisocial force.
+      </mat-checkbox>
+    </div>
+    <button mat-flat-button color="primary" [disabled]="formRef.invalid">
+      Submit
+    </button>
+  </div>
+</form>

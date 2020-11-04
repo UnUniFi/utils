@@ -1,0 +1,149 @@
+<h3>Environment</h3>
+
+<p>This is an example for Ubuntu.</p>
+<p>You can replace "jpyx" with "eurx".</p>
+
+<pre>
+apt update
+apt install build-essential
+cd ~
+wget https://dl.google.com/go/go1.14.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.14.linux-amd64.tar.gz
+echo export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bashrc
+source ~/.bashrc
+</pre>
+
+<h3>Install</h3>
+<pre>
+mkdir -p /usr/local/src/github.com/lcnem
+cd /usr/local/src/github.com/lcnem
+git clone https://github.com/lcnem/jpyx.git
+cd jpyx
+git checkout v0.1.0
+make install
+</pre>
+
+<h3>Setup genesis.json</h3>
+<pre>
+jpyxd init [moniker] --chain-id jpyx-1
+cd /usr/local/src/github.com/lcnem/jpyx
+cp launch/genesis.json ~/.jpyxd/config/genesis.json
+</pre>
+
+<h3>Setup services</h3>
+<pre>
+jpyxcli config chain-id jpyx-1
+jpyxcli config trust-node true
+</pre>
+
+<h4>Daemon service</h4>
+
+<pre>
+vi /etc/systemd/system/jpyxd.service
+</pre>
+
+<pre>
+[Unit]
+Description=JPYX Node
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=/root/go/bin/jpyxd start
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+
+<pre>
+systemctl enable jpyxd
+</pre>
+
+<h4>REST service</h4>
+<pre>
+vi /etc/systemd/system/jpyxrest.service
+</pre>
+
+<pre>
+[Unit]
+Description=JPYX Rest
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=/root/go/bin/jpyxcli rest-server
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+
+<pre>
+systemctl enable jpyxrest
+</pre>
+
+<mat-divider></mat-divider>
+
+<h3>Price oracle</h3>
+<pre>
+apt install nodejs npm
+cd /usr/local/src/github.com/lcnem
+git clone https://github.com/lcnem/jpyx-tools.git
+cd jpyx-tools/scripts
+npm i
+</pre>
+<pre>
+vi .env
+</pre>
+<pre>
+# the chain-id
+CHAIN_ID="jpyx-1"
+
+# REST endpoint
+LCD_URL="http://localhost:1317"
+
+# Cron tab for how frequently prices will be posted (ex: 1 minute)
+CRONTAB="* * * * *"
+
+# bip39 mnemonic of oracle
+MNEMONIC="secret words go here"
+
+# List of markets the oracle will post prices for. See pricefeed parameters for the list of active markets.
+MARKET_IDS="bnb:jpy,bnb:jpy:30"
+
+# percentage deviation from previous price needed to trigger a new price - (example 0.5%)
+DEVIATION="0.005"
+
+# how long (in seconds) each price will remain valid - this value should be equal to the amount of time it takes for you to respond to a server outage (example 4 hours )
+EXPIRY="14400"
+
+# how long (in seconds) before the oracle will consider a price expiring and post a new price, regardless of the value of deviation.
+# for example, if this is set to 600, the oracle will post a price any time the current posted price is expiring in less than 600 seconds.
+EXPIRY_THRESHOLD="300"
+</pre>
+
+<pre>
+vi /etc/systemd/system/oracle.service
+</pre>
+<pre>
+[Service]
+User=root
+Group=root
+WorkingDirectory=/usr/local/src/github.com/lcnem/jpyx-tools/scripts
+ExecStart=/usr/bin/nodejs oracle.js
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+
+<pre>
+systemctl enable oracle
+</pre>

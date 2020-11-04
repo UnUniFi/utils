@@ -24,6 +24,12 @@
     },
     {
       "path": "./projects/cosmoscan-extension/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/website/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/website/tsconfig.spec.json"
     }
   ]
 }

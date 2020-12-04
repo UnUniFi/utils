@@ -1,8 +1,8 @@
-.circle-animation {
+.heading {
   height: 100vh;
 }
 
-.circle-animation::after {
+.heading::after {
   content: '';
   position: absolute;
   height: 100vh;
@@ -14,22 +14,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.circle-animation .jasmine {
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  top: 20vh;
-  right: 60vw;
-}
-
-.circle-animation .eustoma {
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  top: 60vh;
-  right: 5vw;
 }
 
 .section {

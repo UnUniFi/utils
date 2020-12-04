@@ -1,21 +1,22 @@
 <div class="heading" fxLayout="row" fxLayoutAlign="center center">
-  <div fxFlex="50%" fxFlex.lt-md="75%" style="z-index: 100">
+  <div fxFlex="50%" fxFlex.lt-md="75%">
     <h2>Stable coin on blockchain interoperability network</h2>
-    <h3>Get rewards by being validators</h3>
-    <button mat-flat-button color="primary" routerLink="apply-validator">
-      To be a validator
+    <h3>Get rewards by being a validator</h3>
+    <button
+      mat-stroked-button
+      fxFill
+      color="primary"
+      routerLink="apply-validator"
+      style="padding: 32px"
+    >
+      Be a validator
     </button>
   </div>
 </div>
 <div class="section">
   <h2>JPYX Blockchain</h2>
-  <div
-    fxLayout="row wrap"
-    fxFlex="50%"
-    fxFlex.xs="100%"
-    fxLayoutGap="16px grid"
-  >
-    <div>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="50%" fxFlex.xs="100%">
       <mat-card>
         <mat-card-header>
           <img mat-card-avatar src="assets/images/jasmine.svg" />
@@ -24,7 +25,7 @@
         </mat-card-header>
       </mat-card>
     </div>
-    <div>
+    <div fxFlex="50%" fxFlex.xs="100%">
       <mat-card>
         <mat-card-header>
           <img mat-card-avatar src="assets/images/jpyx.svg" />
@@ -37,13 +38,8 @@
 </div>
 <div class="section">
   <h2>EURX Blockchain</h2>
-  <div
-    fxLayout="row wrap"
-    fxFlex="50%"
-    fxFlex.xs="100%"
-    fxLayoutGap="16px grid"
-  >
-    <div>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="50%" fxFlex.xs="100%">
       <mat-card>
         <mat-card-header>
           <img mat-card-avatar src="assets/images/eustoma.svg" />
@@ -52,7 +48,7 @@
         </mat-card-header>
       </mat-card>
     </div>
-    <div>
+    <div fxFlex="50%" fxFlex.xs="100%">
       <mat-card>
         <mat-card-header>
           <img mat-card-avatar src="assets/images/eurx.svg" />
@@ -66,36 +62,51 @@
 
 <div class="section">
   <h2>Jasmine ($JSMN), Eustoma ($ESTM) token distribution</h2>
-  <p>
-    We absolutely do not do initial coin offerings or token sales. Every token
-    will be distributed in return of your actions like being a validator.
-  </p>
-  <table class="table">
-    <tr>
-      <th>Usage</th>
-      <th>Percentage of usage / supply</th>
-    </tr>
-    <tr>
-      <td>Donation for Kava team</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <td>Rewards for open source commitment to JPYX, EURX project</td>
-      <td>9%</td>
-    </tr>
-    <tr>
-      <td>Assignment for development team</td>
-      <td>30%</td>
-    </tr>
-    <tr>
-      <td>Assignment for validators</td>
-      <td>30%</td>
-    </tr>
-    <tr>
-      <td>Assignment for business partners</td>
-      <td>30%</td>
-    </tr>
-  </table>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Donation for Kava team</mat-card-title>
+          <mat-card-subtitle>1%</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title
+            >Rewards for open source commitment to JPYX, EURX
+            project</mat-card-title
+          >
+          <mat-card-subtitle>9%</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Assignment for development team</mat-card-title>
+          <mat-card-subtitle>30%</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Assignment for validators</mat-card-title>
+          <mat-card-subtitle>30%</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Assignment for business partners</mat-card-title>
+          <mat-card-subtitle>30%</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
 </div>
 
 <div class="section">
@@ -109,7 +120,13 @@
     Jasmine ($JSMN), Eustoma ($ESTM) tokens.
   </p>
   <div fxLayout="row-reverse">
-    <button mat-button color="primary" routerLink="apply-validator">
+    <button
+      mat-stroked-button
+      fxFlex
+      color="primary"
+      routerLink="apply-validator"
+      style="padding: 32px"
+    >
       See more
     </button>
   </div>
@@ -121,6 +138,24 @@
     Our project is a fork project of Kava. We want to contribute to Cosmos
     ecosystem and also Kava ecosystem.
   </p>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="100%">
+      <a
+        href="https://kava.io"
+        target="_blank"
+        matRipple
+        style="display: block; text-decoration: none"
+      >
+        <mat-card>
+          <mat-card-header>
+            <img mat-card-avatar src="assets/images/kava.svg" />
+            <mat-card-title>Kava</mat-card-title>
+            <mat-card-subtitle>https://kava.io</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </a>
+    </div>
+  </div>
 </div>
 
 <div class="section">
@@ -129,10 +164,26 @@
     The developer of JPYX, EURX blockchain is LCNEM, Inc. who is a leading
     technologist of Cosmos blockchain technologies in Japan.
   </p>
-  <div fxLayout="row-reverse">
-    <a mat-button color="primary" href="https://lcnem.com" target="_blank">
-      See more
-    </a>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="100%">
+      <a
+        href="https://lcnem.com"
+        target="_blank"
+        matRipple
+        style="display: block; text-decoration: none"
+      >
+        <mat-card>
+          <mat-card-header>
+            <img
+              mat-card-avatar
+              src="https://lcnem.com/assets/images/lcnem.svg"
+            />
+            <mat-card-title>LCNEM, Inc.</mat-card-title>
+            <mat-card-subtitle>https://lcnem.com</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </a>
+    </div>
   </div>
 
   <h3>Contributions</h3>
@@ -140,55 +191,129 @@
     We've already done some little contributions to Cosmos ecosystems. We will
     continue to contribute to Cosmos ecosystem and also Kava ecosystem.
   </p>
-  <ul>
-    <li>
+
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="50%" fxFlex.xs="100%">
       <a
         href="https://github.com/cosmos-client/cosmos-client-ts"
         target="_blank"
+        matRipple
+        style="display: block; text-decoration: none"
       >
-        cosmos-client
+        <mat-card>
+          <mat-card-header>
+            <img
+              mat-card-avatar
+              src="assets/images/github-circle-white-transparent.svg"
+            />
+            <mat-card-title>cosmos-client</mat-card-title>
+            <mat-card-subtitle>github.com</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </a>
-    </li>
-    <li>
-      <a href="https://github.com/cosmos/scaffold" target="_blank">
-        cosmos scaffold
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <a
+        href="https://github.com/cosmos/scaffold"
+        target="_blank"
+        matRipple
+        style="display: block; text-decoration: none"
+      >
+        <mat-card>
+          <mat-card-header>
+            <img
+              mat-card-avatar
+              src="assets/images/github-circle-white-transparent.svg"
+            />
+            <mat-card-title>cosmos scaffold</mat-card-title>
+            <mat-card-subtitle>github.com</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </a>
-    </li>
-    <li>
-      <a href="https://github.com/cosmos/modules" target="_blank">
-        cosmos modules
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <a
+        href="https://github.com/cosmos/modules"
+        target="_blank"
+        matRipple
+        style="display: block; text-decoration: none"
+      >
+        <mat-card>
+          <mat-card-header>
+            <img
+              mat-card-avatar
+              src="assets/images/github-circle-white-transparent.svg"
+            />
+            <mat-card-title>cosmos modules</mat-card-title>
+            <mat-card-subtitle>github.com</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </a>
-    </li>
-    <li>
-      <a href="https://github.com/lcnem/proximax-pegzone" target="_blank">
-        proximax-pegzone
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <a
+        href="https://github.com/lcnem/proximax-pegzone"
+        target="_blank"
+        matRipple
+        style="display: block; text-decoration: none"
+      >
+        <mat-card>
+          <mat-card-header>
+            <img
+              mat-card-avatar
+              src="assets/images/github-circle-white-transparent.svg"
+            />
+            <mat-card-title>proximax-pegzone</mat-card-title>
+            <mat-card-subtitle>github.com</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </a>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>
 <div class="section">
   <h2>Contact</h2>
   <p>
     To contact us in JPYX, EURX topic, please create an issue ticket in GitHub.
   </p>
-  <div fxLayout="row-reverse" fxLayoutGap="12px">
-    <a
-      mat-flat-button
-      color="primary"
-      href="https://github.com/lcnem/jpyx/issues"
-      target="_blank"
-    >
-      <img src="assets/images/github-circle-white-transparent.svg" />
-      JPYX GitHub Issues
-    </a>
-    <a
-      mat-flat-button
-      color="primary"
-      href="https://github.com/lcnem/eurx/issues"
-      target="_blank"
-    >
-      <img src="assets/images/github-circle-white-transparent.svg" />
-      EURX GitHub Issues
-    </a>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <a
+        href="https://github.com/lcnem/jpyx/issues"
+        target="_blank"
+        matRipple
+        style="display: block; text-decoration: none"
+      >
+        <mat-card>
+          <mat-card-header>
+            <img
+              mat-card-avatar
+              src="assets/images/github-circle-white-transparent.svg"
+            />
+            <mat-card-title>JPYX GitHub Issues</mat-card-title>
+            <mat-card-subtitle>github.com</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </a>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <a
+        href="https://github.com/lcnem/eurx/issues"
+        target="_blank"
+        matRipple
+        style="display: block; text-decoration: none"
+      >
+        <mat-card>
+          <mat-card-header>
+            <img
+              mat-card-avatar
+              src="assets/images/github-circle-white-transparent.svg"
+            />
+            <mat-card-title>EURX GitHub Issues</mat-card-title>
+            <mat-card-subtitle>github.com</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </a>
+    </div>
   </div>
 </div>

@@ -1,5 +1,10 @@
 mat-drawer-container {
   height: 100%;
+
+  background-image: url('/assets/images/circle-animation.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 mat-drawer {

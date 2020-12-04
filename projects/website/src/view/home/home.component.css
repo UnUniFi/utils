@@ -2,19 +2,6 @@
   height: 100vh;
 }
 
-.heading::after {
-  content: '';
-  position: absolute;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  background-image: url('/assets/images/circle-animation.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 .section {
   margin: 60px 0;

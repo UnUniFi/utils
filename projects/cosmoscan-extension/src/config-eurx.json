@@ -1,0 +1,12 @@
+{
+  "url": "http://127.0.0.1:1317",
+  "chain_id": "eurx-1",
+  "bech32_prefix": {
+    "acc_addr": "eurx",
+    "acc_pub": "eurxpub",
+    "val_addr": "eurxvaloper",
+    "val_pub": "eurxvaloperpub",
+    "cons_addr": "eurxvalcons",
+    "cons_pub": "eurxvalconspub"
+  }
+}

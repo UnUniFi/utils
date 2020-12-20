@@ -1,0 +1,12 @@
+{
+  "url": "http://127.0.0.1:1317",
+  "chain_id": "jpyx-1",
+  "bech32_prefix": {
+    "acc_addr": "jpyx",
+    "acc_pub": "jpyxpub",
+    "val_addr": "jpyxvaloper",
+    "val_pub": "jpyxvaloperpub",
+    "cons_addr": "jpyxvalcons",
+    "cons_pub": "jpyxvalconspub"
+  }
+}

@@ -1,6 +1,6 @@
 name: Angular CI website
 
-on: [pull_request]
+on: [push]
 
 jobs:
   build:

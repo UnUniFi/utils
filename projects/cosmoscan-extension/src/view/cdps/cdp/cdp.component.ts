@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Deposit } from 'cosmos-client/api';
-import { CDP, CdpParameters } from 'projects/cosmoscan-extension/src/x/cdp/api';
+import {
+  CDP,
+  CdpParameters,
+  Deposit,
+} from 'projects/cosmoscan-extension/src/x/cdp/api';
+import { Price } from 'projects/cosmoscan-extension/src/x/pricefeed/api';
 
 @Component({
   selector: 'view-cdp',
@@ -9,31 +13,31 @@ import { CDP, CdpParameters } from 'projects/cosmoscan-extension/src/x/cdp/api';
 })
 export class CdpComponent implements OnInit {
   @Input()
-  owner?: string;
+  owner?: string | null;
 
   @Input()
-  denom?: string;
+  denom?: string | null;
 
   @Input()
-  params?: CdpParameters;
+  params?: CdpParameters | null;
 
   @Input()
-  cdp?: CDP;
+  cdp?: CDP | null;
 
   @Input()
-  deposits?: Deposit[];
+  deposits?: Deposit[] | null;
 
   @Input()
-  spotPrice?: number;
+  spotPrice?: Price | null;
 
   @Input()
-  liquidationPrice?: number;
+  liquidationPrice?: Price | null;
 
   @Input()
-  withdrawLimit?: number;
+  withdrawLimit?: number | null;
 
   @Input()
-  issueLimit?: number;
+  issueLimit?: number | null;
 
   constructor() {}
 

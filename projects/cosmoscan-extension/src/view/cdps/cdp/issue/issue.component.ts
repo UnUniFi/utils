@@ -18,16 +18,16 @@ export type IssueCdpOnSubmitEvent = {
 })
 export class IssueComponent implements OnInit {
   @Input()
-  key?: Key;
+  key?: Key | null;
 
   @Input()
-  owner?: string;
+  owner?: string | null;
 
   @Input()
-  denom?: string;
+  denom?: string | null;
 
   @Input()
-  principalDenom?: string;
+  principalDenom?: string | null;
 
   @Output()
   appSubmit: EventEmitter<IssueCdpOnSubmitEvent>;

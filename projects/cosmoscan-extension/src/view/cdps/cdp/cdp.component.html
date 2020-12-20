@@ -35,11 +35,11 @@
               >
                 <span class="column-name">Collateral: </span>
                 <span class="column-value"
-                  >{{ cdp.cdp.collateral.amount }}
-                  {{ cdp.cdp.collateral.denom }}
+                  >{{ cdp?.cdp?.collateral?.amount }}
+                  {{ cdp?.cdp?.collateral?.denom }}
                   <ng-template [ngIf]="!!withdrawLimit">
                     (Available: {{ withdrawLimit }}
-                    {{ cdp.cdp.collateral.denom }})
+                    {{ cdp?.cdp?.collateral?.denom }})
                   </ng-template>
                 </span>
               </div>
@@ -55,14 +55,14 @@
                 <span class="column-value">
                   <a
                     mat-stroked-button
-                    [href]="'/botany/cdps/' + owner + '/' + denom + '/deposit'"
+                    href="/botany/cdps/{{ owner }}/{{ denom }}/deposit"
                     target="_blank"
                     >Deposit</a
                   >
                   <a
                     class="withdraw-button"
                     mat-stroked-button
-                    [href]="'/botany/cdps/' + owner + '/' + denom + '/withdraw'"
+                    href="/botany/cdps/{{ owner }}/{{ denom }}/withdraw"
                     target="_blank"
                     >Withdraw</a
                   >
@@ -79,10 +79,11 @@
               >
                 <span class="column-name">Principal: </span>
                 <span class="column-value"
-                  >{{ cdp.cdp.principal.amount }}
-                  {{ cdp.cdp.principal.denom }}
+                  >{{ cdp?.cdp?.principal?.amount }}
+                  {{ cdp?.cdp?.principal?.denom }}
                   <ng-template [ngIf]="!!issueLimit">
-                    (Available: {{ issueLimit }} {{ cdp.cdp.principal.denom }})
+                    (Available: {{ issueLimit }}
+                    {{ cdp?.cdp?.principal?.denom }})
                   </ng-template>
                 </span>
               </div>
@@ -98,14 +99,14 @@
                 <span class="column-value">
                   <a
                     mat-stroked-button
-                    [href]="'/botany/cdps/' + owner + '/' + denom + '/issue'"
+                    href="/botany/cdps/{{ owner }}/{{ denom }}/issue"
                     target="_blank"
                     >Issue</a
                   >
                   <a
                     class="clear-button"
                     mat-stroked-button
-                    [href]="'/botany/cdps/' + owner + '/' + denom + '/clear'"
+                    href="/botany/cdps/{{ owner }}/{{ denom }}/clear"
                     target="_blank"
                     >Clear</a
                   >
@@ -122,8 +123,8 @@
               >
                 <span class="column-name">Fees: </span>
                 <span class="column-value"
-                  >{{ cdp.cdp.accumulated_fees.amount }}
-                  {{ cdp.cdp.accumulated_fees.denom }}</span
+                  >{{ cdp?.cdp?.accumulated_fees?.amount }}
+                  {{ cdp?.cdp?.accumulated_fees?.denom }}</span
                 >
               </div>
               <mat-divider [inset]="true"></mat-divider>
@@ -136,7 +137,7 @@
               >
                 <span class="column-name"> Fees Updated </span>
                 <span class="column-value">
-                  {{ cdp.cdp.fees_updated }}
+                  {{ cdp?.cdp?.fees_updated }}
                 </span>
               </div>
               <mat-divider [inset]="true"></mat-divider>
@@ -149,7 +150,7 @@
               >
                 <span class="column-name">Spot Price: </span>
                 <span class="column-value"
-                  >{{ spotPrice.price }} [{{ spotPrice.market_id }}]</span
+                  >{{ spotPrice?.price }} [{{ spotPrice?.market_id }}]</span
                 >
               </div>
               <mat-divider [inset]="true"></mat-divider>
@@ -162,8 +163,8 @@
               >
                 <span class="column-name">Liquadation Price: </span>
                 <span class="column-value"
-                  >{{ liquidationPrice.price }} [{{
-                    liquidationPrice.market_id
+                  >{{ liquidationPrice?.price }} [{{
+                    liquidationPrice?.market_id
                   }}]</span
                 >
               </div>
@@ -177,7 +178,7 @@
               >
                 <span class="column-name">Collateralization Ratio: </span>
                 <span class="column-value">{{
-                  cdp.collateralization_ratio
+                  cdp?.collateralization_ratio
                 }}</span>
               </div>
               <mat-divider [inset]="true"></mat-divider>
@@ -198,7 +199,8 @@
               >
                 <span class="column-name">{{ deposit.depositor }}</span>
                 <span class="column-value"
-                  >{{ deposit.amount.amount }} {{ deposit.amount.denom }}</span
+                  >{{ deposit.amount?.amount }}
+                  {{ deposit.amount?.denom }}</span
                 >
               </div>
             </mat-list>

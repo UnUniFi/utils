@@ -20,9 +20,13 @@
         matInput
         required
       >
-        <mat-template *ngFor="let param of cdpParams?.collateral_params || []">
+        <ng-template
+          ngFor
+          let-param
+          [ngForOf]="cdpParams?.collateral_params || []"
+        >
           <mat-option [value]="param.denom">{{ param.denom }}</mat-option>
-        </mat-template>
+        </ng-template>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="auto">
@@ -44,7 +48,7 @@
       <mat-label>Principal Denom</mat-label>
       <input
         #principalDenomRef
-        [(ngModel)]="cdpParams?.debt_param.denom"
+        [(ngModel)]="(cdpParams?.debt_param)!.denom"
         name="principal-denom"
         matInput
         readonly
@@ -54,7 +58,7 @@
       <mat-label>Principal Amount</mat-label>
       <input
         #principalAmountRef
-        [(ngModel)]="principal.amount"
+        [(ngModel)]="principal!.amount"
         name="principal-amount"
         matInput
         type="number"

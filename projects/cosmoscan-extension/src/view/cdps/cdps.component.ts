@@ -9,7 +9,7 @@ import * as crypto from 'crypto';
 })
 export class CdpsComponent implements OnInit {
   @Input()
-  cdps?: CDP[];
+  cdps?: CDP[] | null;
 
   constructor() {}
 

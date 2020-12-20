@@ -18,16 +18,16 @@ export type ClearCdpOnSubmitEvent = {
 })
 export class ClearComponent implements OnInit {
   @Input()
-  key?: Key;
+  key?: Key | null;
 
   @Input()
-  owner?: string;
+  owner?: string | null;
 
   @Input()
-  denom?: string;
+  denom?: string | null;
 
   @Input()
-  paymentDenom?: string;
+  paymentDenom?: string | null;
 
   @Output()
   appSubmit: EventEmitter<ClearCdpOnSubmitEvent>;

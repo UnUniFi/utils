@@ -17,10 +17,10 @@ export type CreateCdpOnSubmitEvent = {
 })
 export class CreateComponent implements OnInit {
   @Input()
-  key?: Key;
+  key?: Key | null;
 
   @Input()
-  cdpParams?: CdpParameters;
+  cdpParams?: CdpParameters | null;
 
   @Output()
   appSubmit: EventEmitter<CreateCdpOnSubmitEvent>;

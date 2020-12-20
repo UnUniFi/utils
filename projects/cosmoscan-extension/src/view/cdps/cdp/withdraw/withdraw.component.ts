@@ -17,13 +17,13 @@ export type WithdrawCdpOnSubmitEvent = {
 })
 export class WithdrawComponent implements OnInit {
   @Input()
-  key?: Key;
+  key?: Key | null;
 
   @Input()
-  owner?: string;
+  owner?: string | null;
 
   @Input()
-  denom?: string;
+  denom?: string | null;
 
   @Output()
   appSubmit: EventEmitter<WithdrawCdpOnSubmitEvent>;

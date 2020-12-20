@@ -14,3 +14,12 @@
     - cosmoscan は HTTP 直下
     - cosmoscan-extension は`botany`フォルダ以下
 - 上記の Docker イメージを Docker Compose で管理
+
+## Run
+
+```bash
+cd ..
+git clone https://github.com/lcnem/cosmoscan.git
+npm run bundle
+docker-compose up -d
+```

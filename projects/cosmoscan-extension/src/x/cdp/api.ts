@@ -242,7 +242,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
 
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -285,7 +285,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
 
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -333,7 +333,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
 
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -379,7 +379,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
 
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -427,7 +427,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
 
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -478,7 +478,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -543,7 +543,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -608,7 +608,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -673,7 +673,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {
@@ -737,7 +737,7 @@ export const CdpApiAxiosParamCreator = function (
         ...options.query,
       };
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {

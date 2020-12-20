@@ -48,7 +48,7 @@ export const PricefeedApiAxiosParamCreator = function (
         ...options.query,
       };
 
-      delete localVarUrlObj.search;
+      delete (localVarUrlObj as any).search;
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {};
       localVarRequestOptions.headers = {

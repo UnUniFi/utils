@@ -26,7 +26,8 @@
       "@environments-w/*": ["projects/website/src/environments/*"],
       "@model-w/*": ["projects/website/src/model/*"],
       "@view-w/*": ["projects/website/src/view/*"],
-    }
+    },
+    "resolveJsonModule": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

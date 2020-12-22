@@ -11,6 +11,7 @@ FROM node:12.14.1 as build-stage
 
 WORKDIR /root/app
 COPY ./botany /root/app/
+COPY ./botany/projects/cosmoscan-extension/src/config-jpyx.json /root/app/projects/botany/src/config.json
 RUN npm install
 
 RUN npm run build --prod --output-path=./dist/out

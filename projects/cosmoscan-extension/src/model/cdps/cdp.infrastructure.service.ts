@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BroadcastTxCommitResult, Coin } from 'cosmos-client/api';
 import { auth } from 'cosmos-client/x/auth';
 import { AccAddress } from 'cosmos-client';
-import { CosmosSDKService } from '@model-ce/index';
+import { CosmosSDKService } from '@model-ce/cosmos-sdk.service';
 import { Key } from '../keys/key.model';
 import { ICdpInfrastructure } from './cdp.service';
 import {

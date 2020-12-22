@@ -16,8 +16,7 @@ import {
   PrivKeySr25519,
   PubKeySr25519,
 } from 'cosmos-client/tendermint/types/sr25519';
-import { CosmosSDKService } from '@model-ce/index';
-import { environment } from '@environments-ce/environment';
+import { CosmosSDKService } from '@model-ce/cosmos-sdk.service';
 
 @Injectable({
   providedIn: 'root',

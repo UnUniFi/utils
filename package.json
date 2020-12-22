@@ -9,8 +9,7 @@
     "build:cosmoscan": "ng build --project cosmoscan-extension",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "bundle": "docker build . -t cosmoscan-with-extension"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

@@ -20,6 +20,6 @@
 ```bash
 cd ..
 git clone https://github.com/lcnem/cosmoscan.git
-npm run bundle
+cd botany
 docker-compose up -d
 ```

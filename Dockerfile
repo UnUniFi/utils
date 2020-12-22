@@ -1,7 +1,7 @@
 FROM node:12.14.1 as build-stage-outside
 
 WORKDIR /root/app
-COPY ../cosmoscan/* /root/app/
+COPY ../cosmoscan/ /root/app/
 COPY projects/cosmoscan-extension/src/config-jpyx.json /root/app/src/config.json
 RUN npm install
 

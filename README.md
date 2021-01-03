@@ -17,10 +17,17 @@
 
 ## Run
 
+### JPYX
+
 ```bash
-cd ..
-git clone https://github.com/lcnem/cosmoscan.git
-cd botany
+cd docker/jpyx
+docker-compose up -d
+```
+
+### EURX
+
+```bash
+cd docker/eurx
 docker-compose up -d
 ```
 

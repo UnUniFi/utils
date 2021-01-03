@@ -2,10 +2,10 @@ version: '3'
 services:
   botany:
     container_name: cosmoscan-with-extension
-    image: lcnem/cosmoscan-botany
+    image: lcnem/cosmoscan-jpyx
     # build:
-    #   context: ../
-    #   dockerfile: ./botany/Dockerfile
+    #   context: ../../../
+    #   dockerfile: ./botany/docker/jpyx/Dockerfile
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:

@@ -26,8 +26,18 @@ docker-compose up -d
 
 ## Build Docker
 
+### JPYX
+
 ```bash
 cd ..
 git clone https://github.com/lcnem/cosmoscan.git
-docker build -f ./botany/Dockerfile -t lcnem/cosmoscan-extension-botany .
+docker build . -f ./botany/docker/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx
+```
+
+### EURX
+
+```bash
+cd ..
+git clone https://github.com/lcnem/cosmoscan.git
+docker build . -f ./botany/docker/eurx/Dockerfile -t lcnem/cosmoscan-eurx
 ```

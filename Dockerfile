@@ -5,7 +5,7 @@ COPY ./cosmoscan/ /root/app/
 COPY ./botany/projects/cosmoscan-extension/src/config-jpyx.json /root/app/src/config.json
 RUN npm install
 
-RUN npm run build --prod --output-path=./dist/out
+RUN npm run build --prod
 
 FROM node:12.14.1 as build-stage
 
@@ -14,11 +14,11 @@ COPY ./botany /root/app/
 COPY ./botany/projects/cosmoscan-extension/src/config-jpyx.json /root/app/projects/botany/src/config.json
 RUN npm install
 
-RUN npm run build --prod --output-path=./dist/out
+RUN npm run build:cosmoscan --prod
 
 FROM nginx:1.15
 
-COPY --from=build-stage-outside /root/app/dist/out/ /usr/share/nginx/html
-COPY --from=build-stage /root/app/dist/out/ /usr/share/nginx/html/botany
+COPY --from=build-stage-outside /root/app/dist/cosmoscan/ /usr/share/nginx/html
+COPY --from=build-stage /root/app/dist/cosmoscan-extension/ /usr/share/nginx/html/botany
 
 COPY ./botany/nginx.conf /etc/nginx/nginx.conf

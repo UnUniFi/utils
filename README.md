@@ -23,3 +23,11 @@ git clone https://github.com/lcnem/cosmoscan.git
 cd botany
 docker-compose up -d
 ```
+
+## Build Docker
+
+```bash
+cd ..
+git clone https://github.com/lcnem/cosmoscan.git
+docker build -f ./botany/Dockerfile -t lcnem/cosmoscan-extension-botany .
+```

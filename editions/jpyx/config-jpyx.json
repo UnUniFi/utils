@@ -1,5 +1,9 @@
 {
-  "url": "http://127.0.0.1:1317",
+  "url": {
+    "protocol": "",
+    "hostname": "",
+    "port": 1317
+  },
   "chain_id": "jpyx-1",
   "bech32_prefix": {
     "acc_addr": "jpyx",

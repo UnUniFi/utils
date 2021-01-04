@@ -10,8 +10,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "bundle:jpyx": "docker build .. -f ./editions/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx",
-    "bundle:eurx": "docker build .. -f ./editions/eurx/Dockerfile -t lcnem/cosmoscan-eurx"
+    "bundle:jpyx": "docker build .. -f ./projects/cosmoscan-extension/editions/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx",
+    "bundle:eurx": "docker build .. -f ./projects/cosmoscan-extension/editions/eurx/Dockerfile -t lcnem/cosmoscan-eurx",
+    "bundle:pricefeed": "docker build ./projects/pricefeed/ -f ./projects/pricefeed/Dockerfile -t lcnem/botany-pricefeed"
   },
   "private": true,
   "dependencies": {

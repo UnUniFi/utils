@@ -4,8 +4,8 @@ services:
     container_name: cosmoscan-jpyx
     image: lcnem/cosmoscan-jpyx
     # build:
-    #   context: ../../../
-    #   dockerfile: ./botany/docker/jpyx/Dockerfile
+    #   context: ../../../../../
+    #   dockerfile: ./botany/projects/cosmoscan-extension/editions/jpyx/Dockerfile
     volumes:
       - ../../nginx.conf:/etc/nginx/nginx.conf
     ports:

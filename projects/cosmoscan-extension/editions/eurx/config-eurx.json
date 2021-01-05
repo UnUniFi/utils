@@ -12,5 +12,6 @@
     "val_pub": "eurxvaloperpub",
     "cons_addr": "eurxvalcons",
     "cons_pub": "eurxvalconspub"
-  }
+  },
+  "extensions": [{ "name": "EURX", "link": "/botany" }]
 }

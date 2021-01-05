@@ -12,5 +12,6 @@
     "val_pub": "jpyxvaloperpub",
     "cons_addr": "jpyxvalcons",
     "cons_pub": "jpyxvalconspub"
-  }
+  },
+  "extensions": [{ "name": "JPYX", "link": "/botany" }]
 }

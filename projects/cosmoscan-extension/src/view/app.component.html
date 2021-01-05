@@ -13,6 +13,16 @@
     </mat-toolbar>
 
     <mat-nav-list>
+      <a mat-list-item href="/">Home</a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item href="/keys">Keys</a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item href="/validators">Validators</a>
+    </mat-nav-list>
+
+    <mat-nav-list>
       <mat-list-item routerLink="/">
         {{ extensions && extensions[0].name }}
       </mat-list-item>

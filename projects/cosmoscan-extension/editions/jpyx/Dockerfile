@@ -12,7 +12,7 @@ WORKDIR /root/app
 COPY ./botany /root/app/
 COPY ./botany/projects/cosmoscan-extension/editions/jpyx/config-jpyx.json /root/app/projects/botany/src/config.json
 RUN npm install
-RUN npm run build:cosmoscan -- --prod
+RUN npm run build:cosmoscan -- --prod --base-href=/jpyx/
 
 FROM nginx:1.15
 

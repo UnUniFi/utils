@@ -37,8 +37,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/cosmoscan-extension/src/styles.css"
             ],
-            "scripts": [],
-            "baseHref": "/botany/"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -250,5 +249,5 @@
   "cli": {
     "analytics": "4152d467-0804-4d43-94b1-eb26956857b7"
   },
-  "defaultProject": "jpyx-website"
+  "defaultProject": "website"
 }

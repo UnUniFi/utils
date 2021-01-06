@@ -13,5 +13,5 @@
     "cons_addr": "jpyxvalcons",
     "cons_pub": "jpyxvalconspub"
   },
-  "extensions": [{ "name": "JPYX", "link": "/botany" }]
+  "extensions": [{ "name": "JPYX", "link": "/jpyx" }]
 }

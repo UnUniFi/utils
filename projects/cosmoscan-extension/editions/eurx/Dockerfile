@@ -12,7 +12,7 @@ WORKDIR /root/app
 COPY ./botany /root/app/
 COPY ./botany/projects/cosmoscan-extension/editions/eurx/config-eurx.json /root/app/projects/botany/src/config.json
 RUN npm install
-RUN npm run build:cosmoscan -- --prod
+RUN npm run build:cosmoscan -- --prod --base-href=/eurx/
 
 FROM nginx:1.15
 

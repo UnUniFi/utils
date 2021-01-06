@@ -6,6 +6,9 @@ import {
   MsgDeposit,
   MsgWithdraw,
 } from './types';
+// export * as cdp from './module';
+import * as cdp from './module';
+export { cdp };
 export * from './types';
 
 codec.registerCodec('cdp/MsgCreateCDP', MsgCreateCDP, MsgCreateCDP.fromJSON);

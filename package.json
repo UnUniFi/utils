@@ -10,8 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "bundle:jpyx": "docker build .. -f ./projects/cosmoscan-extension/editions/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx",
-    "bundle:eurx": "docker build .. -f ./projects/cosmoscan-extension/editions/eurx/Dockerfile -t lcnem/cosmoscan-eurx",
+    "bundle:jpyx": "cp .dockerignore ../.dockerignore ; docker build .. -f ./projects/cosmoscan-extension/editions/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx ; rm ../.dockerignore ;",
+    "bundle:eurx": "cp .dockerignore ../.dockerignore ; docker build .. -f ./projects/cosmoscan-extension/editions/eurx/Dockerfile -t lcnem/cosmoscan-eurx ; rm ../.dockerignore ;",
     "bundle:pricefeed": "docker build ./projects/pricefeed/ -f ./projects/pricefeed/Dockerfile -t lcnem/botany-pricefeed"
   },
   "private": true,
@@ -35,10 +35,11 @@
     "ng-min-max": "^11.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
+    "webpack": "^4.44.1",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^10.0.1",
+    "@angular-builders/custom-webpack": "^11.0.0",
     "@angular-devkit/build-angular": "~0.1100.5",
     "@angular/cli": "~11.0.5",
     "@angular/compiler-cli": "~11.0.5",

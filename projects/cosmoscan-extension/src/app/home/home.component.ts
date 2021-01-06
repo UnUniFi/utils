@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, timer } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
-import { auth } from 'cosmos-client/x/auth';
-import { PaginatedQueryTxs } from 'cosmos-client/api';
-import { CosmosSDKService } from '@model-ce/index';
+import { map, mergeMap } from 'rxjs/operators';
+import { CosmosSDKService } from '@model-ce/cosmos-sdk.service';
+import { cdp } from '../../x/cdp';
+import { CdpParameters } from '../../x/cdp/api';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +11,13 @@ import { CosmosSDKService } from '@model-ce/index';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  txs$: Observable<PaginatedQueryTxs>;
+  params$: Observable<CdpParameters>;
   constructor(private cosmosSDK: CosmosSDKService) {
-    this.txs$ = timer(0, 60 * 1000).pipe(
-      mergeMap((_) => auth.txsGet(this.cosmosSDK.sdk).then((res) => res.data)),
+    const timer$ = timer(0, 60 * 1000);
+
+    this.params$ = timer$.pipe(
+      mergeMap((_) => cdp.cdpParametersGet(this.cosmosSDK.sdk)),
+      map((res) => res.result),
     );
   }
 

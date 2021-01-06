@@ -1,4 +1,4 @@
-import { CosmosSDK, codec, AccAddress } from 'cosmos-client';
+import { CosmosSDK } from 'cosmos-client';
 import { PricefeedApi } from './api';
 
 export function pricefeedPriceMarketIdGet(sdk: CosmosSDK, marketId: string) {

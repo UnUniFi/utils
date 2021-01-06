@@ -17,4 +17,4 @@ RUN npm run build:cosmoscan -- --prod --base-href=/eurx/
 FROM nginx:1.15
 
 COPY --from=build-stage-outside /root/app/dist/cosmoscan/ /usr/share/nginx/html
-COPY --from=build-stage /root/app/dist/cosmoscan-extension/ /usr/share/nginx/html/botany
+COPY --from=build-stage /root/app/dist/cosmoscan-extension/ /usr/share/nginx/html/eurx

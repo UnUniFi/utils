@@ -13,5 +13,8 @@
     "cons_addr": "eurxvalcons",
     "cons_pub": "eurxvalconspub"
   },
-  "extensions": [{ "name": "EURX", "link": "/eurx" }]
+  "extension": {
+    "navigations": [{ "name": "EURX", "link": "/eurx" }],
+    "message_actions": [""]
+  }
 }

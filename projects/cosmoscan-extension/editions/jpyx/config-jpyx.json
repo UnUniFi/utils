@@ -13,5 +13,8 @@
     "cons_addr": "jpyxvalcons",
     "cons_pub": "jpyxvalconspub"
   },
-  "extensions": [{ "name": "JPYX", "link": "/jpyx" }]
+  "extension": {
+    "navigations": [{ "name": "JPYX", "link": "/jpyx" }],
+    "message_actions": [""]
+  }
 }

@@ -11,12 +11,14 @@ import { HomeComponent } from './home/home.component';
 import { ViewModule } from '@view-ce/view.module';
 import { HomeModule } from '@view-ce/home/home.module';
 import { ToolbarModule } from '@view-ce/toolbar/toolbar.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     LoadingDialogModule,
+    MatDialogModule,
     MatSnackBarModule,
     AppRoutingModule,
     BrowserAnimationsModule,

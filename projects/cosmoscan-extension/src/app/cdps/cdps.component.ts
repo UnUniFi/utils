@@ -17,6 +17,7 @@ import { cdpCdpsCdpOwnerDenomGet, cdpParametersGet } from '../../x/cdp/module';
 export class CdpsComponent implements OnInit {
   keyID$: Observable<string>;
   cdps$: Observable<CDP[]>;
+
   constructor(
     private readonly route: ActivatedRoute,
     private readonly keyService: KeyService,

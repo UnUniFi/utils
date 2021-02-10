@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Key } from '@model/keys/key.model';
+import { Key } from '@model-ce/keys/key.model';
 import * as crypto from 'crypto';
 
 @Component({

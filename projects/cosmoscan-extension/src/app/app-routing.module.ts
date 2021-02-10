@@ -8,9 +8,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'cdps',
-    loadChildren: () =>
-      import('./cdps/cdps.module').then((m) => m.AppCdpsModule),
+    path: 'cdp',
+    loadChildren: () => import('./cdp/cdp.module').then((m) => m.AppCdpModule),
   },
 ];
 

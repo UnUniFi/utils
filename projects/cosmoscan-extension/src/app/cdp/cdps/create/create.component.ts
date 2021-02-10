@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { from, Observable } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import {
   CdpApplicationService,
   CosmosSDKService,
   KeyService,
-} from '@model-ce/index';
+} from '../../../../model/index';
 import { Key } from '@model-ce/keys/key.model';
-import { IssueCdpOnSubmitEvent } from '@view-ce/cdps/cdp/issue/issue.component';
+import { CreateCdpOnSubmitEvent } from '@view-ce/cdp/cdps/create/create.component';
 import { cdpParametersGet } from 'projects/cosmoscan-extension/src/x/cdp/module';
-import { from, Observable } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { CdpParameters } from 'projects/cosmoscan-extension/src/x/cdp/api';
 
 @Component({
-  selector: 'app-issue',
-  templateUrl: './issue.component.html',
-  styleUrls: ['./issue.component.css'],
+  selector: 'app-create',
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.css'],
 })
-export class IssueComponent implements OnInit {
+export class CreateComponent implements OnInit {
   keyID$: Observable<string>;
   key$: Observable<Key | undefined>;
-  owner$: Observable<string>;
-  denom$: Observable<string>;
-  principalDenom$: Observable<string>;
+  cdpParams$: Observable<CdpParameters | undefined>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -35,21 +34,18 @@ export class IssueComponent implements OnInit {
     this.key$ = this.keyID$.pipe(
       mergeMap((keyId: string) => this.keyService.get(keyId)),
     );
-    this.owner$ = this.route.params.pipe(map((params) => params['owner']));
-    this.denom$ = this.route.params.pipe(map((params) => params['denom']));
-    this.principalDenom$ = from(cdpParametersGet(this.cosmosSdk.sdk)).pipe(
-      map((param) => param.result.debt_param.denom),
+    this.cdpParams$ = from(cdpParametersGet(this.cosmosSdk.sdk)).pipe(
+      map((param) => param.result),
     );
   }
 
   ngOnInit(): void {}
 
-  onSubmit($event: IssueCdpOnSubmitEvent) {
-    this.cdpApplicationService.drawCDP(
+  onSubmit($event: CreateCdpOnSubmitEvent) {
+    this.cdpApplicationService.createCDP(
       $event.key,
       $event.privateKey,
-      $event.ownerAddr,
-      $event.denom,
+      $event.collateral,
       $event.principal,
     );
   }

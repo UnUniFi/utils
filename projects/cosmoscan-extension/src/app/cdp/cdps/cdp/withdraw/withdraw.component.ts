@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CdpApplicationService, KeyService } from '@model-ce/index';
 import { Key } from '@model-ce/keys/key.model';
-import { DepositCdpOnSubmitEvent } from '@view-ce/cdps/cdp/deposit/deposit.component';
+import { WithdrawCdpOnSubmitEvent } from '@view-ce/cdp/cdps/cdp/withdraw/withdraw.component';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-deposit',
-  templateUrl: './deposit.component.html',
-  styleUrls: ['./deposit.component.css'],
+  selector: 'app-withdraw',
+  templateUrl: './withdraw.component.html',
+  styleUrls: ['./withdraw.component.css'],
 })
-export class DepositComponent implements OnInit {
+export class WithdrawComponent implements OnInit {
   keyID$: Observable<string>;
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
@@ -34,8 +34,8 @@ export class DepositComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit($event: DepositCdpOnSubmitEvent) {
-    this.cdpApplicationService.depositCDP(
+  onSubmit($event: WithdrawCdpOnSubmitEvent) {
+    this.cdpApplicationService.withdrawCDP(
       $event.key,
       $event.privateKey,
       $event.ownerAddr,

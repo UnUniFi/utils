@@ -4,8 +4,8 @@ import { CosmosSDKService } from '@model-ce/index';
 import {
   getSpotPriceStream,
   getLiquidationPriceStream,
-} from '../../../utils/stream';
-import { getWithdrawLimit, getIssueLimit } from '../../../utils/function';
+} from '../../../../utils/stream';
+import { getWithdrawLimit, getIssueLimit } from '../../../../utils/function';
 
 import { AccAddress } from 'cosmos-client';
 import {

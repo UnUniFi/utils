@@ -6,8 +6,11 @@ import { AccAddress } from 'cosmos-client';
 import { auth } from 'cosmos-client/x/auth';
 import { from, Observable, zip } from 'rxjs';
 import { filter, map, mergeMap, tap } from 'rxjs/operators';
-import { CDP } from '../../x/cdp/api';
-import { cdpCdpsCdpOwnerDenomGet, cdpParametersGet } from '../../x/cdp/module';
+import { CDP } from '../../../x/cdp/api';
+import {
+  cdpCdpsCdpOwnerDenomGet,
+  cdpParametersGet,
+} from '../../../x/cdp/module';
 
 @Component({
   selector: 'app-cdps',

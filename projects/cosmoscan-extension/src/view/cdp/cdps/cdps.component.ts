@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CDP } from '../../x/cdp/api';
+import { CDP } from '../../../x/cdp/api';
 import * as crypto from 'crypto';
 
 @Component({

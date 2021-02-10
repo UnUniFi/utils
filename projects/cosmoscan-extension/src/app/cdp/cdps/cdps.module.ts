@@ -9,13 +9,13 @@ import { DepositComponent } from './cdp/deposit/deposit.component';
 import { WithdrawComponent } from './cdp/withdraw/withdraw.component';
 import { IssueComponent } from './cdp/issue/issue.component';
 import { ClearComponent } from './cdp/clear/clear.component';
-import { CdpsModule } from '@view-ce/cdps/cdps.module';
-import { CreateModule } from '@view-ce/cdps/create/create.module';
-import { CdpModule } from '@view-ce/cdps/cdp/cdp.module';
-import { WithdrawModule } from '@view-ce/cdps/cdp/withdraw/withdraw.module';
-import { DepositModule } from '@view-ce/cdps/cdp/deposit/deposit.module';
-import { IssueModule } from '@view-ce/cdps/cdp/issue/issue.module';
-import { ClearModule } from '@view-ce/cdps/cdp/clear/clear.module';
+import { CdpsModule } from '@view-ce/cdp/cdps/cdps.module';
+import { CreateModule } from '@view-ce/cdp/cdps/create/create.module';
+import { CdpModule } from '@view-ce/cdp/cdps/cdp/cdp.module';
+import { WithdrawModule } from '@view-ce/cdp/cdps/cdp/withdraw/withdraw.module';
+import { DepositModule } from '@view-ce/cdp/cdps/cdp/deposit/deposit.module';
+import { IssueModule } from '@view-ce/cdp/cdps/cdp/issue/issue.module';
+import { ClearModule } from '@view-ce/cdp/cdps/cdp/clear/clear.module';
 
 @NgModule({
   declarations: [

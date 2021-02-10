@@ -6,7 +6,7 @@ import {
   KeyService,
 } from '@model-ce/index';
 import { Key } from '@model-ce/keys/key.model';
-import { ClearCdpOnSubmitEvent } from '@view-ce/cdps/cdp/clear/clear.component';
+import { ClearCdpOnSubmitEvent } from '@view-ce/cdp/cdps/cdp/clear/clear.component';
 import { cdpParametersGet } from 'projects/cosmoscan-extension/src/x/cdp/module';
 import { from, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';

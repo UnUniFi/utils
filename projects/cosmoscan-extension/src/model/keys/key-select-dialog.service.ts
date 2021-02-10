@@ -12,10 +12,10 @@ import { KeyStoreService } from './key.store.service';
 })
 export class KeySelectDialogService {
   constructor(
+    private readonly router: Router,
     private readonly dialog: MatDialog,
     private readonly key: KeyService,
     private readonly keyStore: KeyStoreService,
-    private readonly router: Router,
   ) {}
 
   async open() {

@@ -13,7 +13,6 @@ const routes: Routes = [
   {
     path: '',
     component: CdpsComponent,
-    canActivate: [KeySelectGuard],
   },
   {
     path: 'create',

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AccAddress } from 'cosmos-client';
 import { Coin } from 'cosmos-client/api';
 import { LoadingDialogService } from 'ng-loading-dialog';
@@ -11,8 +12,9 @@ import { CdpService } from './cdp.service';
 })
 export class CdpApplicationService {
   constructor(
-    private readonly loadingDialog: LoadingDialogService,
+    private readonly router: Router,
     private readonly snackBar: MatSnackBar,
+    private readonly loadingDialog: LoadingDialogService,
     private readonly cdp: CdpService,
   ) {}
 
@@ -24,7 +26,7 @@ export class CdpApplicationService {
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
-    let txHash: string | undefined;
+    let txhash: string | undefined;
     try {
       const res: any = await this.cdp.createCDP(
         key,
@@ -35,7 +37,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txHash = res.txhash;
+      txhash = res.txhash;
     } catch (error) {
       const msg = error.toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -49,6 +51,8 @@ export class CdpApplicationService {
     this.snackBar.open('Successfully sent', undefined, {
       duration: 6000,
     });
+
+    await this.router.navigate(['txs', txhash]);
   }
 
   async drawCDP(
@@ -60,7 +64,7 @@ export class CdpApplicationService {
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
-    let txHash: string | undefined;
+    let txhash: string | undefined;
     try {
       const res: any = await this.cdp.drawCDP(
         key,
@@ -72,7 +76,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txHash = res.txhash;
+      txhash = res.txhash;
     } catch (error) {
       const msg = error.toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -86,6 +90,8 @@ export class CdpApplicationService {
     this.snackBar.open('Successfully sent', undefined, {
       duration: 6000,
     });
+
+    await this.router.navigate(['txs', txhash]);
   }
 
   async repayCDP(
@@ -97,7 +103,7 @@ export class CdpApplicationService {
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
-    let txHash: string | undefined;
+    let txhash: string | undefined;
     try {
       const res: any = await this.cdp.repayCDP(
         key,
@@ -109,7 +115,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txHash = res.txhash;
+      txhash = res.txhash;
     } catch (error) {
       const msg = error.toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -123,6 +129,8 @@ export class CdpApplicationService {
     this.snackBar.open('Successfully sent', undefined, {
       duration: 6000,
     });
+
+    await this.router.navigate(['txs', txhash]);
   }
 
   async depositCDP(
@@ -133,7 +141,7 @@ export class CdpApplicationService {
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
-    let txHash: string | undefined;
+    let txhash: string | undefined;
     try {
       const res: any = await this.cdp.depositCDP(
         key,
@@ -145,7 +153,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txHash = res.txhash;
+      txhash = res.txhash;
     } catch (error) {
       const msg = error.toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -159,6 +167,8 @@ export class CdpApplicationService {
     this.snackBar.open('Successfully sent', undefined, {
       duration: 6000,
     });
+
+    await this.router.navigate(['txs', txhash]);
   }
 
   async withdrawCDP(
@@ -169,7 +179,7 @@ export class CdpApplicationService {
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
-    let txHash: string | undefined;
+    let txhash: string | undefined;
     try {
       const res: any = await this.cdp.withdrawCDP(
         key,
@@ -181,7 +191,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txHash = res.txhash;
+      txhash = res.txhash;
     } catch (error) {
       const msg = error.toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -195,5 +205,7 @@ export class CdpApplicationService {
     this.snackBar.open('Successfully sent', undefined, {
       duration: 6000,
     });
+
+    await this.router.navigate(['txs', txhash]);
   }
 }

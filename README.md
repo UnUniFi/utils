@@ -20,14 +20,14 @@
 ### JPYX
 
 ```bash
-cd docker/jpyx
+cd projects/cosmoscan-extension/editions/jpyx
 docker-compose up -d
 ```
 
 ### EURX
 
 ```bash
-cd docker/eurx
+cd projects/cosmoscan-extension/editions/eurx
 docker-compose up -d
 ```
 

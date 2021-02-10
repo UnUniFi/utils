@@ -27,12 +27,6 @@ export interface IKeyInfrastructure {
   list(): Promise<Key[]>;
   set(id: string, type: KeyType, privateKey: string): Promise<void>;
   delete(id: string): Promise<void>;
-  send(
-    key: Key,
-    toAddress: string,
-    amount: Coin[],
-    privateKey: string,
-  ): Promise<string>;
 }
 
 @Injectable({
@@ -66,9 +60,5 @@ export class KeyService {
 
   delete(id: string) {
     return this.iKeyInfrastructure.delete(id);
-  }
-
-  send(key: Key, toAddress: string, amount: Coin[], privateKey: string) {
-    return this.iKeyInfrastructure.send(key, toAddress, amount, privateKey);
   }
 }

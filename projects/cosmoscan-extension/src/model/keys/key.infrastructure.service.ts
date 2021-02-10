@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
 import Dexie from 'dexie';
 import { Key, KeyType } from './key.model';
-import { Coin } from 'cosmos-client/api';
 import { IKeyInfrastructure } from './key.service';
-import { auth } from 'cosmos-client/x/auth';
-import { bank } from 'cosmos-client/x/bank';
 import {
   PrivKeySecp256k1,
   PrivKeyEd25519,
-  AccAddress,
   PubKeySecp256k1,
   PubKeyEd25519,
 } from 'cosmos-client';
@@ -33,7 +29,7 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
   }
 
   getPubKey(type: KeyType, publicKey: string) {
-    const publicKeyBuffer = Buffer.from(publicKey, 'base64');
+    const publicKeyBuffer = Buffer.from(publicKey, 'hex');
     switch (type) {
       case KeyType.SECP256K1:
         return new PubKeySecp256k1(publicKeyBuffer);
@@ -45,7 +41,7 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
   }
 
   getPrivKey(type: KeyType, privateKey: string) {
-    const privKeyBuffer = Buffer.from(privateKey, 'base64');
+    const privKeyBuffer = Buffer.from(privateKey, 'hex');
     switch (type) {
       case KeyType.SECP256K1:
         return new PrivKeySecp256k1(privKeyBuffer);
@@ -59,7 +55,7 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
   async getPrivateKeyFromMnemonic(mnemonic: string) {
     return (
       await this.cosmosSDK.sdk.generatePrivKeyFromMnemonic(mnemonic)
-    ).toString('base64');
+    ).toString('hex');
   }
 
   /**
@@ -122,46 +118,5 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
    */
   async delete(id: string) {
     await this.db.table('keys').where('id').equals(id).delete();
-  }
-
-  async send(key: Key, toAddress: string, amount: Coin[], privateKey: string) {
-    const privKey = this.getPrivKey(key.type, privateKey);
-    const fromAddress = AccAddress.fromPublicKey(privKey.getPubKey());
-    const account = await auth
-      .accountsAddressGet(this.cosmosSDK.sdk, fromAddress)
-      .then((res) => res.data.result);
-
-    const toAddress_ = AccAddress.fromBech32(toAddress);
-
-    const unsignedStdTx = await bank
-      .accountsAddressTransfersPost(this.cosmosSDK.sdk, toAddress_, {
-        base_req: {
-          from: fromAddress.toBech32(),
-          memo: '',
-          chain_id: this.cosmosSDK.sdk.chainID,
-          account_number: account.account_number.toString(),
-          sequence: account.sequence.toString(),
-          gas: '',
-          gas_adjustment: '',
-          fees: [],
-          simulate: false,
-        },
-        amount: amount,
-      })
-      .then((res) => res.data);
-
-    const signedStdTx = auth.signStdTx(
-      this.cosmosSDK.sdk,
-      privKey,
-      unsignedStdTx,
-      account.account_number.toString(),
-      account.sequence.toString(),
-    );
-
-    const result = await auth
-      .txsPost(this.cosmosSDK.sdk, signedStdTx, 'block')
-      .then((res) => res.data);
-
-    return result.txhash || '';
   }
 }

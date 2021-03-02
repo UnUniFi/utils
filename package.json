@@ -12,7 +12,8 @@
     "e2e": "ng e2e",
     "bundle:jpyx": "cp .dockerignore ../.dockerignore ; docker build .. -f ./projects/cosmoscan-extension/editions/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx ; rm ../.dockerignore ;",
     "bundle:eurx": "cp .dockerignore ../.dockerignore ; docker build .. -f ./projects/cosmoscan-extension/editions/eurx/Dockerfile -t lcnem/cosmoscan-eurx ; rm ../.dockerignore ;",
-    "bundle:pricefeed": "docker build ./projects/pricefeed/ -f ./projects/pricefeed/Dockerfile -t lcnem/botany-pricefeed"
+    "bundle:pricefeed": "docker build ./projects/pricefeed/ -f ./projects/pricefeed/Dockerfile -t lcnem/botany-pricefeed",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -43,12 +44,15 @@
     "@angular-devkit/build-angular": "~0.1101.4",
     "@angular/cli": "~11.1.4",
     "@angular/compiler-cli": "~11.1.2",
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/axios": "^0.14.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "axios": "^0.20.0",
     "codelyzer": "^6.0.0",
+    "husky": "^5.1.2",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.3",

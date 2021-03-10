@@ -1,0 +1,99 @@
+name: Node.js CI
+
+on: pull_request
+
+jobs:
+  filter:
+    runs-on: ubuntu-latest
+    outputs:
+      angular-cosmoscan: ${{ steps.filter.outputs.angular-cosmoscan }}
+      angular-website: ${{ steps.filter.outputs.angular-website }}
+      functions: ${{ steps.filter.outputs.functions }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            angular-cosmoscan:
+              - 'projects/cosmoscan-extension/**'
+            angular-website:
+              - 'projects/website/**'
+            functions:
+              - 'functions/**'
+  angular-cosmoscan:
+    needs: filter
+    if: ${{ needs.filter.outputs.angular-cosmoscan == 'true' }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+      - run: npm run build --if-present --project cosmoscan-extension
+      - run: npm run test -- --watch=false --browsers=ChromeHeadless
+        env:
+          CI: true
+  angular-website:
+    needs: filter
+    if: ${{ needs.filter.outputs.angular-website == 'true' }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+      - run: npm run build --if-present --project website
+      - run: npm run test -- --watch=false --browsers=ChromeHeadless
+        env:
+          CI: true
+  functions:
+    needs: filter
+    if: ${{ needs.filter.outputs.functions == 'true' }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - run: npm install
+      working-directory: ./functions
+    - run: npm run build --if-present
+      working-directory: ./functions

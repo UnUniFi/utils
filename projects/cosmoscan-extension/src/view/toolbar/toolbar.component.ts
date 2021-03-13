@@ -9,7 +9,7 @@ import {
 import { NgModel } from '@angular/forms';
 
 @Component({
-  // tslint:disable-next-line
+  // eslint-disable-next-line
   selector: 'view-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css'],

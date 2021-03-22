@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 rm -r proto
+rm -r proto-thirdparty
 mkdir proto
 cp -r ~/src/github.com/lcnem/jpyx/proto ./proto/jpyx
 cp -r ~/src/github.com/lcnem/jpyx/proto-thirdparty ./proto-thirdparty
@@ -31,3 +32,4 @@ npx pbts \
   ./src/proto.js
 
 rm -r proto
+rm -r proto-thirdparty

@@ -1,7 +1,6 @@
-version: '3'
+version: "3"
 services:
   cosmoscan-eurx:
-    container_name: cosmoscan-eurx
     image: lcnem/cosmoscan-eurx
     # build:
     #   context: ../../../../../

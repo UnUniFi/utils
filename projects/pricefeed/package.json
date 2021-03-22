@@ -20,13 +20,10 @@
   },
   "homepage": "https://github.com/lcnem/pricefeed#readme",
   "dependencies": {
-    "@kava-labs/javascript-sdk": "^2.0.0",
-    "@kava-labs/sig": "^0.1.0",
-    "@types/axios": "^0.14.0",
-    "@types/node-cron": "^2.0.3",
     "axios": "^0.19.2",
+    "botany-client": "^0.3.4",
     "ccxt": "^1.33.22",
-    "cosmos-client": "^0.39.0",
+    "cosmos-client": "^0.42.2-3",
     "dotenv": "^8.2.0",
     "log-timestamp": "^0.3.0",
     "node-cron": "^2.0.3",
@@ -34,7 +31,9 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/node": "^14.6.0",
+    "@types/node-cron": "^2.0.3",
     "nodemon": "^2.0.4"
   },
   "nodemonConfig": {

@@ -1,22 +1,14 @@
 import {
-  CosmosSDK,
-  PrivKeySecp256k1,
-  AccAddress,
-  Address,
-  Prefix,
+  cosmosclient, rest, cosmos, google
 } from "cosmos-client";
-import { auth, BaseAccount, StdTx } from "cosmos-client/x/auth";
-import axios, { AxiosInstance } from "axios";
+import { rest as botanyrest, botany } from 'botany-client';
 import * as utils from "./utils";
-//import { MsgPostPrice } from "./x/pricefeed";
+import Long from 'long'
 import { IFxClient } from "./clients/fx/interface";
 import { OraclePrice } from "./domain/oracle-price";
 import CcxtClient from "./clients/ccxt";
 import { FIAT_CURRENCIES } from "./constants/currency";
 import { Ticker } from "./domain/market-price";
-
-const kava = require("@kava-labs/javascript-sdk");
-const sig = require("@kava-labs/sig");
 
 require("dotenv").config();
 require("log-timestamp");
@@ -25,12 +17,9 @@ require("log-timestamp");
  * Price oracle class for posting prices to Kava.
  */
 export class PriceOracle {
-  private sdk: CosmosSDK;
-  private apiClient: AxiosInstance;
-  private privKey: Promise<PrivKeySecp256k1>;
+  private sdk: cosmosclient.CosmosSDK;
+  private privKey: Promise<cosmosclient.secp256k1.PrivKey>;
   private ccxt: CcxtClient;
-
-  private client: any;
 
   constructor(
     private marketIDs: string[],
@@ -56,39 +45,21 @@ export class PriceOracle {
       throw new Error("must specify percentage deviation");
     }
 
-    this.sdk = new CosmosSDK(url, chainID);
-    this.apiClient = axios.create({
-      baseURL: url,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      responseType: "json",
-    });
-    this.privKey = this.sdk
+    this.sdk = new cosmosclient.CosmosSDK(url, chainID);
+    this.privKey = cosmosclient
       .generatePrivKeyFromMnemonic(mnemonic)
-      .then((buffer) => new PrivKeySecp256k1(buffer));
+      .then((buffer) => new cosmosclient.secp256k1.PrivKey({ key: buffer }));
     if (bech32Prefix) {
-      Address.setBech32Prefix(
-        bech32Prefix,
-        bech32Prefix + Prefix.Public,
-        bech32Prefix + Prefix.Validator + Prefix.Operator,
-        bech32Prefix + Prefix.Validator + Prefix.Operator + Prefix.Public,
-        bech32Prefix + Prefix.Validator + Prefix.Consensus,
-        bech32Prefix + Prefix.Validator + Prefix.Consensus + Prefix.Public,
-      );
+      cosmosclient.config.bech32Prefix = {
+        accAddr: bech32Prefix,
+        accPub: bech32Prefix + cosmosclient.AddressPrefix.Public,
+        valAddr: bech32Prefix + cosmosclient.AddressPrefix.Validator + cosmosclient.AddressPrefix.Operator,
+        valPub: bech32Prefix + cosmosclient.AddressPrefix.Validator + cosmosclient.AddressPrefix.Operator + cosmosclient.AddressPrefix.Public,
+        consAddr: bech32Prefix + cosmosclient.AddressPrefix.Validator + cosmosclient.AddressPrefix.Consensus,
+        consPub: bech32Prefix + cosmosclient.AddressPrefix.Validator + cosmosclient.AddressPrefix.Consensus + cosmosclient.AddressPrefix.Public,
+      };
     }
     this.ccxt = new CcxtClient();
-
-    this.client = new kava.KavaClient(url);
-    //this.client.setWallet(mnemonic, "", legacyHDPath);
-    this.client.wallet = sig.createWalletFromMnemonic(
-      mnemonic,
-      "",
-      bech32Prefix,
-      "m/44'/118'/0'/0/0",
-    );
-    this.client.setBroadcastMode("sync");
-    this.client.initChain();
   }
 
   /**
@@ -96,10 +67,13 @@ export class PriceOracle {
    */
   async postPrices() {
     const privKey = await this.privKey;
-    const address = AccAddress.fromPublicKey(privKey.getPubKey());
-    const account = await auth
-      .accountsAddressGet(this.sdk, address)
-      .then((res) => res.data.result);
+    const address = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
+    const account = await rest.cosmos.auth.account(this.sdk, address)
+      .then((res) => res.data.account && cosmosclient.codec.unpackAny(res.data.account));
+
+    if (!(account instanceof cosmos.auth.v1beta1.BaseAccount)) {
+      throw Error('not a BaseAccount')
+    }
 
     await this.getLatestFiatCurrencyPrices();
 
@@ -171,14 +145,14 @@ export class PriceOracle {
 
   async fetchTickers(marketID: string) {
     switch (marketID) {
-      case "bnb:jpy":
-      case "bnb:eur":
-        return this.ccxt.fetchTickers(FIAT_CURRENCIES, "BNB");
-      case "bnb:jpy:30":
-      case "bnb:eur:30": {
+      case "btc:jpy":
+      case "btc:eur":
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, "BTC");
+      case "btc:jpy:30":
+      case "btc:eur:30": {
         const candleSticls = await this.ccxt.fetchCandleSticks(
           FIAT_CURRENCIES,
-          "BNB",
+          "BTC",
           "1m",
           30,
         );
@@ -245,18 +219,16 @@ export class PriceOracle {
    * @param {String} fetchedPrice the fetched price
    */
   async validatePricePosting(
-    address: AccAddress,
+    address: cosmosclient.AccAddress,
     marketID: string,
     fetchedPrice: number,
   ) {
     // Fetch the previous prices of all markets
     let previousPrices;
     try {
-      const response = await this.apiClient.get(
-        `/pricefeed/rawprices/${marketID}`,
-      );
+      const response = await botanyrest.botany.pricefeed.allRawPrices(this.sdk, marketID)
       if (response.status === 200) {
-        previousPrices = response.data.result;
+        previousPrices = response.data.prices || [];
       } else {
         throw response.statusText;
       }
@@ -266,9 +238,14 @@ export class PriceOracle {
     }
     // Get this oracle's previously posted price for this market
     const previousPrice = utils.getPreviousPrice(
-      previousPrices,
+      previousPrices.map(price => ({
+        market_id: price.market_id || '',
+        oracle_address: price.oracle_address || '',
+        price: price.price || '',
+        expiry: price.expiry || ''
+      })),
       marketID,
-      address.toBech32(),
+      address.toString(),
     );
 
     if (
@@ -300,7 +277,7 @@ export class PriceOracle {
   async postNewPrice(
     fetchedPrice: number,
     marketID: string,
-    account: BaseAccount,
+    account: cosmos.auth.v1beta1.BaseAccount,
     index: number,
   ) {
     if (!fetchedPrice) {
@@ -315,7 +292,6 @@ export class PriceOracle {
     expiryDate = new Date(
       expiryDate.getTime() + Number.parseInt(this.expiry) * 1000,
     );
-    const newExpiry = expiryDate.toISOString().split(".")[0] + "Z"; // Remove ms from ISO format
     const sequence = String(Number(account.sequence ?? 0) + index);
 
     console.log(
@@ -338,7 +314,54 @@ export class PriceOracle {
     // );
     // return await auth.txsPost(this.sdk, signedStdTx, "block");
 
-    return this.client.postPrice(marketID, newPrice, newExpiry, sequence);
+    // return this.client.postPrice(marketID, newPrice, newExpiry, sequence);
+    const privKey = await this.privKey;
+
+    // build tx
+    const msgPostPrice = new botany.pricefeed.MsgPostPrice({
+      from: account.address,
+      market_id: marketID,
+      price: newPrice,
+      expiry: new google.protobuf.Timestamp({
+        seconds: Long.fromNumber(expiryDate.getUTCSeconds()),
+      })
+    });
+
+    const txBody = new cosmos.tx.v1beta1.TxBody({
+      messages: [cosmosclient.codec.packAny(msgPostPrice)],
+    });
+    const authInfo = new cosmos.tx.v1beta1.AuthInfo({
+      signer_infos: [
+        {
+          public_key: cosmosclient.codec.packAny(privKey.pubKey()),
+          mode_info: {
+            single: {
+              mode: cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+            },
+          },
+          sequence: account.sequence,
+        },
+      ],
+      fee: {
+        gas_limit: cosmosclient.Long.fromString('200000'),
+      },
+    });
+
+    // sign
+    const txBuilder = new cosmosclient.TxBuilder(this.sdk, txBody, authInfo);
+    const signDoc = txBuilder.signDoc(account.account_number);
+    txBuilder.addSignature(privKey, signDoc);
+
+    // broadcast
+    try {
+      const res = await rest.cosmos.tx.broadcastTx(this.sdk, {
+        tx_bytes: txBuilder.txBytes(),
+        mode: rest.cosmos.tx.BroadcastTxMode.Block,
+      });
+      console.log(res);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   checkPriceIsValid(data: {
@@ -360,12 +383,12 @@ export class PriceOracle {
 
   marketIdToCcxtSymbol(marketId: string) {
     switch (marketId) {
-      case "bnb:jpy":
-      case "bnb:jpy:30":
-        return "BNB/JPY";
-      case "bnb:eur":
-      case "bnb:eur:30":
-        return "BNB/EUR";
+      case "btc:jpy":
+      case "btc:jpy:30":
+        return "BTC/JPY";
+      case "btc:eur":
+      case "btc:eur:30":
+        return "BTC/EUR";
       default:
         throw new Error(`Unsupported martketId: ${marketId}`);
     }

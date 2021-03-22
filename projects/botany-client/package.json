@@ -1,6 +1,6 @@
 {
   "name": "botany-client",
-  "version": "0.3.0",
+  "version": "0.3.4",
   "description": "REST API Client for JPYX and EURX (Cosmos SDK) Blockchain",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,6 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build": "tsc --build --clean && tsc && node bundle",
-    "preinstall": "cd ../core && npm i && npm run build",
     "gen:openapi": "bash ./gen-openapi.sh",
     "gen:proto": "bash ./gen-proto.sh"
   },

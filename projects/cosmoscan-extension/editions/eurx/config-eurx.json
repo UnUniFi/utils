@@ -1,9 +1,4 @@
 {
-  "url": {
-    "protocol": "",
-    "hostname": "",
-    "port": 1317
-  },
   "chain_id": "eurx-1",
   "bech32_prefix": {
     "acc_addr": "eurx",
@@ -14,7 +9,14 @@
     "cons_pub": "eurxvalconspub"
   },
   "extension": {
-    "navigations": [{ "name": "EURX", "link": "/eurx" }],
-    "message_actions": [""]
+    "navigations": [
+      {
+        "name": "EURX",
+        "link": "/eurx"
+      }
+    ],
+    "message_actions": [
+      ""
+    ]
   }
 }

@@ -1,4 +1,4 @@
-FROM node:12.14.1 as build-stage-outside
+FROM node:12.14.1 as build-stage-base
 
 WORKDIR /root/app
 COPY ./cosmoscan/ /root/app/
@@ -16,5 +16,5 @@ RUN npm run build:cosmoscan -- --prod --base-href=/eurx/
 
 FROM nginx:1.15
 
-COPY --from=build-stage-outside /root/app/dist/cosmoscan/ /usr/share/nginx/html
-COPY --from=build-stage /root/app/dist/cosmoscan-extension/ /usr/share/nginx/html/eurx
+COPY --from=build-stage-base /root/app/dist/cosmoscan/ /usr/share/nginx/html/
+COPY --from=build-stage /root/app/dist/cosmoscan-extension/ /usr/share/nginx/html/eurx/

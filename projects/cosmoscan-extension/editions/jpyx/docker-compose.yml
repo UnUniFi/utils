@@ -1,7 +1,6 @@
 version: '3'
 services:
   cosmoscan-jpyx:
-    container_name: cosmoscan-jpyx
     image: lcnem/cosmoscan-jpyx
     # build:
     #   context: ../../../../../

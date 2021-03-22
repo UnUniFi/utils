@@ -1,7 +1,8 @@
-FROM node:12
+FROM node:14
 
 COPY . .
 
-RUN npm install && npm run build
+RUN npm install
+RUN npm run build
 
 CMD ["npm","run", "start:prod"]

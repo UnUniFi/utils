@@ -20,6 +20,561 @@ import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
+ * 
+ * @export
+ * @interface BotanyAuctionParams
+ */
+export interface BotanyAuctionParams {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyAuctionParams
+     */
+    max_auction_duration?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyAuctionParams
+     */
+    bid_duration?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyAuctionParams
+     */
+    increment_surplus?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyAuctionParams
+     */
+    increment_debt?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyAuctionParams
+     */
+    increment_collateral?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyAuctionQueryAllAuctionResponse
+ */
+export interface BotanyAuctionQueryAllAuctionResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse200Auctions>}
+     * @memberof BotanyAuctionQueryAllAuctionResponse
+     */
+    auctions?: Array<InlineResponse200Auctions>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof BotanyAuctionQueryAllAuctionResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyAuctionQueryGetAuctionResponse
+ */
+export interface BotanyAuctionQueryGetAuctionResponse {
+    /**
+     * 
+     * @type {InlineResponse200Auctions}
+     * @memberof BotanyAuctionQueryGetAuctionResponse
+     */
+    auction?: InlineResponse200Auctions;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyAuctionQueryParamsResponse
+ */
+export interface BotanyAuctionQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse2002Params}
+     * @memberof BotanyAuctionQueryParamsResponse
+     */
+    params?: InlineResponse2002Params;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyCdpCdp
+ */
+export interface BotanyCdpCdp {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCdp
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCdp
+     */
+    owner?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCdp
+     */
+    type?: string;
+    /**
+     * 
+     * @type {InlineResponse2003Collateral}
+     * @memberof BotanyCdpCdp
+     */
+    collateral?: InlineResponse2003Collateral;
+    /**
+     * 
+     * @type {InlineResponse2003Collateral}
+     * @memberof BotanyCdpCdp
+     */
+    principal?: InlineResponse2003Collateral;
+    /**
+     * 
+     * @type {InlineResponse2003Collateral}
+     * @memberof BotanyCdpCdp
+     */
+    accumulated_fees?: InlineResponse2003Collateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCdp
+     */
+    fees_updated?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCdp
+     */
+    interest_factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyCdpCollateralParam
+ */
+export interface BotanyCdpCollateralParam {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    denom?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    liquidation_ratio?: string;
+    /**
+     * 
+     * @type {InlineResponse2003Collateral}
+     * @memberof BotanyCdpCollateralParam
+     */
+    debt_limit?: InlineResponse2003Collateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    stability_fee?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    auction_size?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    liquidation_penalty?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof BotanyCdpCollateralParam
+     */
+    prefix?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    spot_market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    liquidation_market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    keeper_reward_percentage?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    check_collateralization_index_count?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpCollateralParam
+     */
+    conversion_factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyCdpDebtParam
+ */
+export interface BotanyCdpDebtParam {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpDebtParam
+     */
+    denom?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpDebtParam
+     */
+    reference_asset?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpDebtParam
+     */
+    conversion_factor?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpDebtParam
+     */
+    debt_floor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyCdpParams
+ */
+export interface BotanyCdpParams {
+    /**
+     * 
+     * @type {Array<InlineResponse2005ParamsCollateralParams>}
+     * @memberof BotanyCdpParams
+     */
+    collateral_params?: Array<InlineResponse2005ParamsCollateralParams>;
+    /**
+     * 
+     * @type {InlineResponse2005ParamsDebtParam}
+     * @memberof BotanyCdpParams
+     */
+    debt_param?: InlineResponse2005ParamsDebtParam;
+    /**
+     * 
+     * @type {InlineResponse2003Collateral}
+     * @memberof BotanyCdpParams
+     */
+    global_debt_limit?: InlineResponse2003Collateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpParams
+     */
+    surplus_auction_threshold?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpParams
+     */
+    surplus_auction_lot?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpParams
+     */
+    debt_auction_threshold?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpParams
+     */
+    debt_auction_lot?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BotanyCdpParams
+     */
+    circuit_breaker?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyCdpQueryAllCdpResponse
+ */
+export interface BotanyCdpQueryAllCdpResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse2003Cdp>}
+     * @memberof BotanyCdpQueryAllCdpResponse
+     */
+    cdp?: Array<InlineResponse2003Cdp>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof BotanyCdpQueryAllCdpResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyCdpQueryGetCdpResponse
+ */
+export interface BotanyCdpQueryGetCdpResponse {
+    /**
+     * 
+     * @type {InlineResponse2003Cdp}
+     * @memberof BotanyCdpQueryGetCdpResponse
+     */
+    cdp?: InlineResponse2003Cdp;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyCdpQueryParamsResponse
+ */
+export interface BotanyCdpQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse2005Params}
+     * @memberof BotanyCdpQueryParamsResponse
+     */
+    params?: InlineResponse2005Params;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedCurrentPrice
+ */
+export interface BotanyPricefeedCurrentPrice {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedCurrentPrice
+     */
+    market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedCurrentPrice
+     */
+    price?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedMarket
+ */
+export interface BotanyPricefeedMarket {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedMarket
+     */
+    market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedMarket
+     */
+    base_asset?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedMarket
+     */
+    quote_asset?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof BotanyPricefeedMarket
+     */
+    oracles?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BotanyPricefeedMarket
+     */
+    active?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedParams
+ */
+export interface BotanyPricefeedParams {
+    /**
+     * 
+     * @type {Array<InlineResponse2009Markets>}
+     * @memberof BotanyPricefeedParams
+     */
+    markets?: Array<InlineResponse2009Markets>;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedPostedPrice
+ */
+export interface BotanyPricefeedPostedPrice {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedPostedPrice
+     */
+    market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedPostedPrice
+     */
+    oracle_address?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedPostedPrice
+     */
+    price?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyPricefeedPostedPrice
+     */
+    expiry?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedQueryAllMarketResponse
+ */
+export interface BotanyPricefeedQueryAllMarketResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse2009Markets>}
+     * @memberof BotanyPricefeedQueryAllMarketResponse
+     */
+    markets?: Array<InlineResponse2009Markets>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof BotanyPricefeedQueryAllMarketResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedQueryAllOracleResponse
+ */
+export interface BotanyPricefeedQueryAllOracleResponse {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof BotanyPricefeedQueryAllOracleResponse
+     */
+    oracles?: Array<string>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof BotanyPricefeedQueryAllOracleResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedQueryAllPriceResponse
+ */
+export interface BotanyPricefeedQueryAllPriceResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse20011Price>}
+     * @memberof BotanyPricefeedQueryAllPriceResponse
+     */
+    prices?: Array<InlineResponse20011Price>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof BotanyPricefeedQueryAllPriceResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedQueryAllRawPriceResponse
+ */
+export interface BotanyPricefeedQueryAllRawPriceResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse20012Prices>}
+     * @memberof BotanyPricefeedQueryAllRawPriceResponse
+     */
+    prices?: Array<InlineResponse20012Prices>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof BotanyPricefeedQueryAllRawPriceResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedQueryGetPriceResponse
+ */
+export interface BotanyPricefeedQueryGetPriceResponse {
+    /**
+     * 
+     * @type {InlineResponse20011Price}
+     * @memberof BotanyPricefeedQueryGetPriceResponse
+     */
+    price?: InlineResponse20011Price;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyPricefeedQueryParamsResponse
+ */
+export interface BotanyPricefeedQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse20013Params}
+     * @memberof BotanyPricefeedQueryParamsResponse
+     */
+    params?: InlineResponse20013Params;
+}
+/**
  * message SomeRequest {          Foo some_parameter = 1;          PageRequest pagination = 2;  }
  * @export
  * @interface CosmosBaseQueryV1beta1PageRequest
@@ -377,7 +932,7 @@ export interface InlineResponse2003 {
      * @type {Array<InlineResponse2003Cdp>}
      * @memberof InlineResponse2003
      */
-    Cdp?: Array<InlineResponse2003Cdp>;
+    cdp?: Array<InlineResponse2003Cdp>;
     /**
      * 
      * @type {InlineResponse200Pagination}
@@ -470,7 +1025,7 @@ export interface InlineResponse2004 {
      * @type {InlineResponse2003Cdp}
      * @memberof InlineResponse2004
      */
-    Cdp?: InlineResponse2003Cdp;
+    cdp?: InlineResponse2003Cdp;
 }
 /**
  * 
@@ -1004,359 +1559,6 @@ export interface InlineResponseDefault1Details {
 /**
  * 
  * @export
- * @interface JpyxAuctionParams
- */
-export interface JpyxAuctionParams {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxAuctionParams
-     */
-    max_auction_duration?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxAuctionParams
-     */
-    bid_duration?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxAuctionParams
-     */
-    increment_surplus?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxAuctionParams
-     */
-    increment_debt?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxAuctionParams
-     */
-    increment_collateral?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxAuctionQueryAllAuctionResponse
- */
-export interface JpyxAuctionQueryAllAuctionResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse200Auctions>}
-     * @memberof JpyxAuctionQueryAllAuctionResponse
-     */
-    auctions?: Array<InlineResponse200Auctions>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof JpyxAuctionQueryAllAuctionResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface JpyxAuctionQueryGetAuctionResponse
- */
-export interface JpyxAuctionQueryGetAuctionResponse {
-    /**
-     * 
-     * @type {InlineResponse200Auctions}
-     * @memberof JpyxAuctionQueryGetAuctionResponse
-     */
-    auction?: InlineResponse200Auctions;
-}
-/**
- * 
- * @export
- * @interface JpyxAuctionQueryParamsResponse
- */
-export interface JpyxAuctionQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse2002Params}
-     * @memberof JpyxAuctionQueryParamsResponse
-     */
-    params?: InlineResponse2002Params;
-}
-/**
- * 
- * @export
- * @interface JpyxCdpCDP
- */
-export interface JpyxCdpCDP {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCDP
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCDP
-     */
-    owner?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCDP
-     */
-    type?: string;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof JpyxCdpCDP
-     */
-    collateral?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof JpyxCdpCDP
-     */
-    principal?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof JpyxCdpCDP
-     */
-    accumulated_fees?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCDP
-     */
-    fees_updated?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCDP
-     */
-    interest_factor?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxCdpCollateralParam
- */
-export interface JpyxCdpCollateralParam {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    denom?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    liquidation_ratio?: string;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof JpyxCdpCollateralParam
-     */
-    debt_limit?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    stability_fee?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    auction_size?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    liquidation_penalty?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof JpyxCdpCollateralParam
-     */
-    prefix?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    spot_market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    liquidation_market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    keeper_reward_percentage?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    check_collateralization_index_count?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpCollateralParam
-     */
-    conversion_factor?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxCdpDebtParam
- */
-export interface JpyxCdpDebtParam {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpDebtParam
-     */
-    denom?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpDebtParam
-     */
-    reference_asset?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpDebtParam
-     */
-    conversion_factor?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpDebtParam
-     */
-    debt_floor?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxCdpParams
- */
-export interface JpyxCdpParams {
-    /**
-     * 
-     * @type {Array<InlineResponse2005ParamsCollateralParams>}
-     * @memberof JpyxCdpParams
-     */
-    collateral_params?: Array<InlineResponse2005ParamsCollateralParams>;
-    /**
-     * 
-     * @type {InlineResponse2005ParamsDebtParam}
-     * @memberof JpyxCdpParams
-     */
-    debt_param?: InlineResponse2005ParamsDebtParam;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof JpyxCdpParams
-     */
-    global_debt_limit?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpParams
-     */
-    surplus_auction_threshold?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpParams
-     */
-    surplus_auction_lot?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpParams
-     */
-    debt_auction_threshold?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxCdpParams
-     */
-    debt_auction_lot?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof JpyxCdpParams
-     */
-    circuit_breaker?: boolean;
-}
-/**
- * 
- * @export
- * @interface JpyxCdpQueryAllCdpResponse
- */
-export interface JpyxCdpQueryAllCdpResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse2003Cdp>}
-     * @memberof JpyxCdpQueryAllCdpResponse
-     */
-    Cdp?: Array<InlineResponse2003Cdp>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof JpyxCdpQueryAllCdpResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface JpyxCdpQueryGetCdpResponse
- */
-export interface JpyxCdpQueryGetCdpResponse {
-    /**
-     * 
-     * @type {InlineResponse2003Cdp}
-     * @memberof JpyxCdpQueryGetCdpResponse
-     */
-    Cdp?: InlineResponse2003Cdp;
-}
-/**
- * 
- * @export
- * @interface JpyxCdpQueryParamsResponse
- */
-export interface JpyxCdpQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse2005Params}
-     * @memberof JpyxCdpQueryParamsResponse
-     */
-    params?: InlineResponse2005Params;
-}
-/**
- * 
- * @export
  * @interface JpyxIncentiveMultiplier
  */
 export interface JpyxIncentiveMultiplier {
@@ -1524,208 +1726,6 @@ export interface JpyxJsmndistQueryParamsResponse {
      */
     params?: InlineResponse2008Params;
 }
-/**
- * 
- * @export
- * @interface JpyxPricefeedCurrentPrice
- */
-export interface JpyxPricefeedCurrentPrice {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedCurrentPrice
-     */
-    market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedCurrentPrice
-     */
-    price?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedMarket
- */
-export interface JpyxPricefeedMarket {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedMarket
-     */
-    market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedMarket
-     */
-    base_asset?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedMarket
-     */
-    quote_asset?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof JpyxPricefeedMarket
-     */
-    oracles?: Array<string>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof JpyxPricefeedMarket
-     */
-    active?: boolean;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedParams
- */
-export interface JpyxPricefeedParams {
-    /**
-     * 
-     * @type {Array<InlineResponse2009Markets>}
-     * @memberof JpyxPricefeedParams
-     */
-    markets?: Array<InlineResponse2009Markets>;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedPostedPrice
- */
-export interface JpyxPricefeedPostedPrice {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedPostedPrice
-     */
-    market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedPostedPrice
-     */
-    oracle_address?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedPostedPrice
-     */
-    price?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxPricefeedPostedPrice
-     */
-    expiry?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedQueryAllMarketResponse
- */
-export interface JpyxPricefeedQueryAllMarketResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse2009Markets>}
-     * @memberof JpyxPricefeedQueryAllMarketResponse
-     */
-    markets?: Array<InlineResponse2009Markets>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof JpyxPricefeedQueryAllMarketResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedQueryAllOracleResponse
- */
-export interface JpyxPricefeedQueryAllOracleResponse {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof JpyxPricefeedQueryAllOracleResponse
-     */
-    oracles?: Array<string>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof JpyxPricefeedQueryAllOracleResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedQueryAllPriceResponse
- */
-export interface JpyxPricefeedQueryAllPriceResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse20011Price>}
-     * @memberof JpyxPricefeedQueryAllPriceResponse
-     */
-    prices?: Array<InlineResponse20011Price>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof JpyxPricefeedQueryAllPriceResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedQueryAllRawPriceResponse
- */
-export interface JpyxPricefeedQueryAllRawPriceResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse20012Prices>}
-     * @memberof JpyxPricefeedQueryAllRawPriceResponse
-     */
-    prices?: Array<InlineResponse20012Prices>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof JpyxPricefeedQueryAllRawPriceResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedQueryGetPriceResponse
- */
-export interface JpyxPricefeedQueryGetPriceResponse {
-    /**
-     * 
-     * @type {InlineResponse20011Price}
-     * @memberof JpyxPricefeedQueryGetPriceResponse
-     */
-    price?: InlineResponse20011Price;
-}
-/**
- * 
- * @export
- * @interface JpyxPricefeedQueryParamsResponse
- */
-export interface JpyxPricefeedQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse20013Params}
-     * @memberof JpyxPricefeedQueryParamsResponse
-     */
-    params?: InlineResponse20013Params;
-}
 
 /**
  * QueryApi - axios parameter creator
@@ -1745,7 +1745,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling auction.');
             }
-            const localVarPath = `/jpyx/auction/auctions/{id}`
+            const localVarPath = `/botany/auction/auctions/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -1786,7 +1786,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         auctionAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/auction/auctions`;
+            const localVarPath = `/botany/auction/auctions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -1838,7 +1838,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         auctionParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/auction/params`;
+            const localVarPath = `/botany/auction/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -1918,7 +1918,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             if (id === null || id === undefined) {
                 throw new RequiredError('id','Required parameter id was null or undefined when calling cdp.');
             }
-            const localVarPath = `/jpyx/cdp/cdps/{id}`
+            const localVarPath = `/botany/cdp/cdps/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -1963,7 +1963,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         cdpAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/cdp/cdps`;
+            const localVarPath = `/botany/cdp/cdps`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -2015,7 +2015,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         cdpParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/cdp/params`;
+            const localVarPath = `/botany/cdp/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -2128,7 +2128,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         marketAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/pricefeed/markets`;
+            const localVarPath = `/botany/pricefeed/markets`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -2189,7 +2189,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             if (marketId === null || marketId === undefined) {
                 throw new RequiredError('marketId','Required parameter marketId was null or undefined when calling oracleAll.');
             }
-            const localVarPath = `/jpyx/pricefeed/markets/{market_id}/oracles`
+            const localVarPath = `/botany/pricefeed/markets/{market_id}/oracles`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -2247,7 +2247,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             if (marketId === null || marketId === undefined) {
                 throw new RequiredError('marketId','Required parameter marketId was null or undefined when calling price.');
             }
-            const localVarPath = `/jpyx/pricefeed/markets/{market_id}/price`
+            const localVarPath = `/botany/pricefeed/markets/{market_id}/price`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -2288,7 +2288,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         priceAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/pricefeed/prices`;
+            const localVarPath = `/botany/pricefeed/prices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -2340,7 +2340,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         pricefeedParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/pricefeed/params`;
+            const localVarPath = `/botany/pricefeed/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -2385,7 +2385,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             if (marketId === null || marketId === undefined) {
                 throw new RequiredError('marketId','Required parameter marketId was null or undefined when calling rawPriceAll.');
             }
-            const localVarPath = `/jpyx/pricefeed/markets/{market_id}/raw_prices`
+            const localVarPath = `/botany/pricefeed/markets/{market_id}/raw_prices`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');

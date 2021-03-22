@@ -4,8 +4,11 @@ rm -r proto
 rm -r proto-thirdparty
 mkdir proto
 cp -r ~/src/github.com/lcnem/jpyx/proto ./proto/jpyx
-cp -r ~/src/github.com/lcnem/jpyx/proto-thirdparty ./proto-thirdparty
 cp -r ~/src/github.com/lcnem/eurx/proto ./proto/eurx
+cp -r ~/src/github.com/lcnem/jpyx/proto-thirdparty ./proto-thirdparty
+rm -r ./proto/eurx/auction
+rm -r ./proto/eurx/cdp
+rm -r ./proto/eurx/pricefeed
 
 proto_dirs=$(find ./proto -path -prune -o -name '*.proto' -print0 | xargs -0 -n1 dirname | sort | uniq)
 proto_files=()

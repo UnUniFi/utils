@@ -1,0 +1,27 @@
+{
+  "name": "botany-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint \"src/**/*\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "build": "tsc --build --clean && tsc && node bundle",
+    "preinstall": "cd ../core && npm i && npm run build",
+    "gen:openapi": "bash ./gen-openapi.sh",
+    "gen:proto": "bash ./gen-proto.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cosmos-client": "^0.42.2-3"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/long": "^4.0.1",
+    "@types/yaml": "^1.9.7",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.3"
+  }
+}

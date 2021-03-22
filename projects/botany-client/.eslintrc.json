@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "../../.eslintrc.jest.json",
+    "../../.eslintrc.prettier.json",
+    "../../.eslintrc.typescript.json"
+  ],
+  "parserOptions": {
+    "project": "projects/botany-client/tsconfig.json",
+    "sourceType": "module"
+  }
+}

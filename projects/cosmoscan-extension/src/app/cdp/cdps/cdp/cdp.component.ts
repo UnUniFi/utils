@@ -6,21 +6,11 @@ import {
   getLiquidationPriceStream,
 } from '../../../../utils/stream';
 import { getWithdrawLimit, getIssueLimit } from '../../../../utils/function';
-
-import { AccAddress } from 'cosmos-client';
-import {
-  CDP,
-  CdpParameters,
-  Deposit,
-} from 'projects/cosmoscan-extension/src/x/cdp/api';
-import {
-  cdpCdpsCdpDepositsOwnerDenomGet,
-  cdpCdpsCdpOwnerDenomGet,
-  cdpParametersGet,
-} from 'projects/cosmoscan-extension/src/x/cdp/module';
+import { cosmosclient } from 'cosmos-client';
+import { rest, botany } from 'botany-client'
 import { from, Observable, pipe, zip } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { Price } from 'projects/cosmoscan-extension/src/x/pricefeed/api';
+import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'projects/botany-client/src/openapi-eurx';
 
 @Component({
   selector: 'app-cdp',
@@ -30,12 +20,12 @@ import { Price } from 'projects/cosmoscan-extension/src/x/pricefeed/api';
 export class CdpComponent implements OnInit {
   owner$: Observable<string>;
   denom$: Observable<string>;
-  params$: Observable<CdpParameters>;
-  cdp$: Observable<CDP>;
-  deposits$: Observable<Deposit[]>;
+  params$: Observable<botany.cdp.IParams>;
+  cdp$: Observable<InlineResponse2004Cdp1>;
+  deposits$: Observable<InlineResponse2006Deposits[]>;
 
-  spotPrice$: Observable<Price>;
-  liquidationPrice$: Observable<Price>;
+  spotPrice$: Observable<botany.pricefeed.ICurrentPrice>;
+  liquidationPrice$: Observable<botany.pricefeed.ICurrentPrice>;
   withdrawLimit$: Observable<number>;
   issueLimit$: Observable<number>;
 
@@ -47,30 +37,30 @@ export class CdpComponent implements OnInit {
     this.denom$ = this.route.params.pipe(map((params) => params['denom']));
     const ownerAndDenom$ = zip(this.owner$, this.denom$);
 
-    this.params$ = from(cdpParametersGet(this.cosmosSdk.sdk)).pipe(
-      map((data) => data.result),
+    this.params$ = from(rest.botany.cdp.params(this.cosmosSdk.sdk)).pipe(
+      map((data) => data.data.params!),
     );
 
     this.cdp$ = ownerAndDenom$.pipe(
       mergeMap(([ownerAddr, denom]: string[]) =>
-        cdpCdpsCdpOwnerDenomGet(
+        rest.botany.cdp.cdp(
           this.cosmosSdk.sdk,
-          AccAddress.fromBech32(ownerAddr),
+          cosmosclient.AccAddress.fromString(ownerAddr),
           denom,
         ),
       ),
-      map((data) => data.result),
+      map(res => res.data.cdp!),
     );
 
     this.deposits$ = ownerAndDenom$.pipe(
       mergeMap(([ownerAddr, denom]: string[]) =>
-        cdpCdpsCdpDepositsOwnerDenomGet(
+        rest.botany.cdp.allDeposits(
           this.cosmosSdk.sdk,
-          AccAddress.fromBech32(ownerAddr),
+          cosmosclient.AccAddress.fromString(ownerAddr),
           denom,
         ),
       ),
-      map((data) => data.result),
+      map(res => res.data.deposits || []),
     );
 
     this.spotPrice$ = getSpotPriceStream(
@@ -86,15 +76,15 @@ export class CdpComponent implements OnInit {
     );
 
     this.withdrawLimit$ = zip(this.cdp$, this.params$, this.spotPrice$).pipe(
-      map(([cdp, params, price]) => getWithdrawLimit(cdp, params, price)),
+      map(([cdp, params, price]) => getWithdrawLimit(cdp.cdp!, params, price)),
     );
 
     this.issueLimit$ = zip(
       this.cdp$,
       this.params$,
       this.liquidationPrice$,
-    ).pipe(map(([cdp, params, price]) => getIssueLimit(cdp, params, price)));
+    ).pipe(map(([cdp, params, price]) => getIssueLimit(cdp.cdp!, params, price)));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

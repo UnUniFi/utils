@@ -1,9 +1,10 @@
 import { botany } from 'botany-client'
+import { InlineResponse2004Cdp, } from 'projects/botany-client/src/openapi-eurx';
 
 export const getWithdrawLimit = (
-  cdp: botany.cdp.Cdp,
-  cdpParams: botany.cdp.Params,
-  spotPrice: botany.pricefeed.CurrentPrice,
+  cdp: InlineResponse2004Cdp,
+  cdpParams: botany.cdp.IParams,
+  spotPrice: botany.pricefeed.ICurrentPrice,
 ) => {
   const collateralDenom = cdp.collateral?.denom;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
@@ -16,7 +17,7 @@ export const getWithdrawLimit = (
     cdpParams.debt_param?.conversion_factor || '0',
   );
 
-  const collateralParams = cdpParams.collateral_params.find(
+  const collateralParams = cdpParams.collateral_params?.find(
     (param) => param.denom === collateralDenom,
   );
   if (collateralParams === undefined) {
@@ -28,7 +29,7 @@ export const getWithdrawLimit = (
   const collateralConversionFactor = Number.parseInt(
     collateralParams?.conversion_factor || '0',
   );
-  const price = Number.parseFloat(spotPrice.price);
+  const price = Number.parseFloat(spotPrice?.price || '0');
 
   const conversionFactor = Math.pow(
     10,
@@ -42,9 +43,9 @@ export const getWithdrawLimit = (
 };
 
 export const getIssueLimit = (
-  cdp: botany.cdp.Cdp,
-  cdpParams: botany.cdp.Params,
-  liquidationPrice: botany.pricefeed.CurrentPrice,
+  cdp: InlineResponse2004Cdp,
+  cdpParams: botany.cdp.IParams,
+  liquidationPrice: botany.pricefeed.ICurrentPrice,
 ) => {
   const collateralDenom = cdp.collateral?.denom;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
@@ -57,7 +58,7 @@ export const getIssueLimit = (
     cdpParams.debt_param?.conversion_factor || '0',
   );
 
-  const collateralParams = cdpParams.collateral_params.find(
+  const collateralParams = cdpParams.collateral_params?.find(
     (param) => param.denom === collateralDenom,
   );
   if (collateralParams === undefined) {

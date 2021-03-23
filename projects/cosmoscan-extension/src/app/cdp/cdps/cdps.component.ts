@@ -6,6 +6,7 @@ import { cosmosclient } from 'cosmos-client';
 import { botany, rest } from 'botany-client';
 import { from, Observable, zip } from 'rxjs';
 import { filter, map, mergeMap, tap } from 'rxjs/operators';
+import { InlineResponse2005 } from 'projects/botany-client/src/openapi-eurx';
 @Component({
   selector: 'app-cdps',
   templateUrl: './cdps.component.html',
@@ -13,7 +14,7 @@ import { filter, map, mergeMap, tap } from 'rxjs/operators';
 })
 export class CdpsComponent implements OnInit {
   keyID$: Observable<string>;
-  cdps$: Observable<botany.cdp.Cdp[]>;
+  cdps$: Observable<InlineResponse2005[]>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -41,11 +42,11 @@ export class CdpsComponent implements OnInit {
       mergeMap(([address, denoms]) =>
         Promise.all(
           denoms.map((denom) =>
-            rest.botany.cdp.allCdps(this.cosmosSdk.sdk, address, denom),
+            rest.botany.cdp.cdp(this.cosmosSdk.sdk, address, denom),
           ),
         ),
       ),
-      map((result) => result.map((res) => res.result)),
+      map((result) => result.map((res) => res.data)),
     );
   }
 

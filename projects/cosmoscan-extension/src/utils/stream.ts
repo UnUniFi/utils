@@ -5,11 +5,11 @@ import { map, mergeMap, filter } from 'rxjs/operators';
 
 const getCollateralParamsStream = (
   denom: Observable<string>,
-  cdpParams: Observable<botany.cdp.Params>,
+  cdpParams: Observable<botany.cdp.IParams>,
 ) =>
   zip(denom, cdpParams).pipe(
     map(([denom, params]) =>
-      params.collateral_params.find((param) => param.denom === denom),
+      params.collateral_params?.find((param) => param.denom === denom),
     ),
     filter(
       (collateralParams): collateralParams is botany.cdp.CollateralParam =>
@@ -20,7 +20,7 @@ const getCollateralParamsStream = (
 export const getSpotPriceStream = (
   sdk: cosmosclient.CosmosSDK,
   denom: Observable<string>,
-  cdpParams: Observable<botany.cdp.Params>,
+  cdpParams: Observable<botany.cdp.IParams>,
 ) => {
   return getCollateralParamsStream(denom, cdpParams).pipe(
     mergeMap((collateralParams) =>
@@ -33,7 +33,7 @@ export const getSpotPriceStream = (
 export const getLiquidationPriceStream = (
   sdk: cosmosclient.CosmosSDK,
   denom: Observable<string>,
-  cdpParams: Observable<botany.cdp.Params>,
+  cdpParams: Observable<botany.cdp.IParams>,
 ) => {
   return getCollateralParamsStream(denom, cdpParams).pipe(
     mergeMap((collateralParams) =>

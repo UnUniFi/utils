@@ -9,8 +9,7 @@ import {
 } from '../../../../model/index';
 import { Key } from '@model-ce/keys/key.model';
 import { CreateCdpOnSubmitEvent } from '@view-ce/cdp/cdps/create/create.component';
-import { cdpParametersGet } from 'projects/cosmoscan-extension/src/x/cdp/module';
-import { CdpParameters } from 'projects/cosmoscan-extension/src/x/cdp/api';
+import { botany, rest } from 'botany-client';
 
 @Component({
   selector: 'app-create',
@@ -20,7 +19,7 @@ import { CdpParameters } from 'projects/cosmoscan-extension/src/x/cdp/api';
 export class CreateComponent implements OnInit {
   keyID$: Observable<string>;
   key$: Observable<Key | undefined>;
-  cdpParams$: Observable<CdpParameters | undefined>;
+  cdpParams$: Observable<botany.cdp.IParams | undefined>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -34,12 +33,12 @@ export class CreateComponent implements OnInit {
     this.key$ = this.keyID$.pipe(
       mergeMap((keyId: string) => this.keyService.get(keyId)),
     );
-    this.cdpParams$ = from(cdpParametersGet(this.cosmosSdk.sdk)).pipe(
-      map((param) => param.result),
+    this.cdpParams$ = from(rest.botany.cdp.params(this.cosmosSdk.sdk)).pipe(
+      map((param) => param.data.params),
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit($event: CreateCdpOnSubmitEvent) {
     this.cdpApplicationService.createCDP(

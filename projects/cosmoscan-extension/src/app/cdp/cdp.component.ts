@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, timer } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { CosmosSDKService } from '@model-ce/cosmos-sdk.service';
-import { cdp } from '../../x/cdp';
-import { CdpParameters } from '../../x/cdp/api';
+import { botany, rest } from 'botany-client'
 
 @Component({
   selector: 'app-cdp',
@@ -11,15 +10,15 @@ import { CdpParameters } from '../../x/cdp/api';
   styleUrls: ['./cdp.component.css'],
 })
 export class CdpComponent implements OnInit {
-  params$: Observable<CdpParameters>;
+  params$: Observable<botany.cdp.IParams>;
   constructor(private cosmosSDK: CosmosSDKService) {
     const timer$ = timer(0, 60 * 1000);
 
     this.params$ = timer$.pipe(
-      mergeMap((_) => cdp.cdpParametersGet(this.cosmosSDK.sdk)),
-      map((res) => res.result),
+      mergeMap((_) => rest.botany.cdp.params(this.cosmosSDK.sdk)),
+      map((res) => res.data.params!),
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

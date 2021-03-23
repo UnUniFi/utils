@@ -7,7 +7,7 @@ import {
 } from '@model-ce/index';
 import { Key } from '@model-ce/keys/key.model';
 import { IssueCdpOnSubmitEvent } from '@view-ce/cdp/cdps/cdp/issue/issue.component';
-import { cdpParametersGet } from 'projects/cosmoscan-extension/src/x/cdp/module';
+import { rest } from 'botany-client'
 import { from, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 
@@ -37,12 +37,12 @@ export class IssueComponent implements OnInit {
     );
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.denom$ = this.route.params.pipe(map((params) => params['denom']));
-    this.principalDenom$ = from(cdpParametersGet(this.cosmosSdk.sdk)).pipe(
-      map((param) => param.result.debt_param.denom),
+    this.principalDenom$ = from(rest.botany.cdp.params(this.cosmosSdk.sdk)).pipe(
+      map((res) => res.data.params?.debt_param?.denom || ''),
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit($event: IssueCdpOnSubmitEvent) {
     this.cdpApplicationService.drawCDP(

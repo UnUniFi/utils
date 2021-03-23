@@ -1,20 +1,19 @@
-import { CDP, CdpParameters } from '../x/cdp/api';
-import { Price } from '../x/pricefeed/api';
+import { botany } from 'botany-client'
 
 export const getWithdrawLimit = (
-  cdp: CDP,
-  cdpParams: CdpParameters,
-  spotPrice: Price,
+  cdp: botany.cdp.Cdp,
+  cdpParams: botany.cdp.Params,
+  spotPrice: botany.pricefeed.CurrentPrice,
 ) => {
-  const collateralDenom = cdp.cdp.collateral.denom;
-  const currentCollateralAmount = Number.parseInt(cdp.cdp.collateral.amount!);
-  const currentPrincipalAmount = Number.parseInt(cdp.cdp.principal.amount!);
+  const collateralDenom = cdp.collateral?.denom;
+  const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
+  const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(
-    cdp.cdp.accumulated_fees.amount!,
+    cdp.accumulated_fees?.amount!,
   );
   const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
   const principalConversionFactor = Number.parseInt(
-    cdpParams.debt_param.conversion_factor,
+    cdpParams.debt_param?.conversion_factor || '0',
   );
 
   const collateralParams = cdpParams.collateral_params.find(
@@ -24,10 +23,10 @@ export const getWithdrawLimit = (
     throw new Error(`Parameters for ${collateralDenom} not found`);
   }
   const liquidationRatio = Number.parseFloat(
-    collateralParams.liquidation_ratio,
+    collateralParams?.liquidation_ratio || '0',
   );
   const collateralConversionFactor = Number.parseInt(
-    collateralParams.conversion_factor,
+    collateralParams?.conversion_factor || '0',
   );
   const price = Number.parseFloat(spotPrice.price);
 
@@ -38,24 +37,24 @@ export const getWithdrawLimit = (
 
   return Math.floor(
     currentCollateralAmount -
-      (liquidationRatio * principalTotal * conversionFactor) / price,
+    (liquidationRatio * principalTotal * conversionFactor) / price,
   );
 };
 
 export const getIssueLimit = (
-  cdp: CDP,
-  cdpParams: CdpParameters,
-  liquidationPrice: Price,
+  cdp: botany.cdp.Cdp,
+  cdpParams: botany.cdp.Params,
+  liquidationPrice: botany.pricefeed.CurrentPrice,
 ) => {
-  const collateralDenom = cdp.cdp.collateral.denom;
-  const currentCollateralAmount = Number.parseInt(cdp.cdp.collateral.amount!);
-  const currentPrincipalAmount = Number.parseInt(cdp.cdp.principal.amount!);
+  const collateralDenom = cdp.collateral?.denom;
+  const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
+  const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(
-    cdp.cdp.accumulated_fees.amount!,
+    cdp.accumulated_fees?.amount!,
   );
   const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
   const principalConversionFactor = Number.parseInt(
-    cdpParams.debt_param.conversion_factor,
+    cdpParams.debt_param?.conversion_factor || '0',
   );
 
   const collateralParams = cdpParams.collateral_params.find(
@@ -65,10 +64,10 @@ export const getIssueLimit = (
     throw new Error(`Parameters for ${collateralDenom} not found`);
   }
   const liquidationRatio = Number.parseFloat(
-    collateralParams.liquidation_ratio,
+    collateralParams.liquidation_ratio || '0',
   );
   const collateralConversionFactor = Number.parseInt(
-    collateralParams.conversion_factor,
+    collateralParams.conversion_factor || '0',
   );
   const price = Number.parseFloat(liquidationPrice.price!);
 
@@ -87,6 +86,6 @@ export const getIssueLimit = (
 
   return Math.floor(
     (currentCollateralAmount * price * conversionFactor) / liquidationRatio -
-      principalTotal,
+    principalTotal,
   );
 };

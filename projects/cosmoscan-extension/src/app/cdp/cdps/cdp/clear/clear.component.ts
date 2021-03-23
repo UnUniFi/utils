@@ -7,9 +7,9 @@ import {
 } from '@model-ce/index';
 import { Key } from '@model-ce/keys/key.model';
 import { ClearCdpOnSubmitEvent } from '@view-ce/cdp/cdps/cdp/clear/clear.component';
-import { cdpParametersGet } from 'projects/cosmoscan-extension/src/x/cdp/module';
 import { from, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { rest } from 'botany-client'
 
 @Component({
   selector: 'app-clear',
@@ -37,12 +37,12 @@ export class ClearComponent implements OnInit {
     );
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.denom$ = this.route.params.pipe(map((params) => params['denom']));
-    this.paymentDenom$ = from(cdpParametersGet(this.cosmosSdk.sdk)).pipe(
-      map((param) => param.result.debt_param.denom),
+    this.paymentDenom$ = from(rest.botany.cdp.params(this.cosmosSdk.sdk)).pipe(
+      map((param) => param.data.params?.debt_param?.denom || ''),
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit($event: ClearCdpOnSubmitEvent) {
     this.cdpApplicationService.repayCDP(

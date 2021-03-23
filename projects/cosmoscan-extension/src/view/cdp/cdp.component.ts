@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CdpParameters } from '../../x/cdp/api';
+import { botany } from 'botany-client';
 
 @Component({
   selector: 'view-cdp',
@@ -8,9 +8,9 @@ import { CdpParameters } from '../../x/cdp/api';
 })
 export class CdpComponent implements OnInit {
   @Input()
-  params?: CdpParameters | null;
+  params?: botany.cdp.Params | null;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

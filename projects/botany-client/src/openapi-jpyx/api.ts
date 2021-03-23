@@ -104,6 +104,31 @@ export interface BotanyAuctionQueryParamsResponse {
 /**
  * 
  * @export
+ * @interface BotanyCdpAugmentedCdp
+ */
+export interface BotanyCdpAugmentedCdp {
+    /**
+     * 
+     * @type {InlineResponse2004Cdp}
+     * @memberof BotanyCdpAugmentedCdp
+     */
+    cdp?: InlineResponse2004Cdp;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof BotanyCdpAugmentedCdp
+     */
+    collateral_value?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpAugmentedCdp
+     */
+    collateralization_ratio?: string;
+}
+/**
+ * 
+ * @export
  * @interface BotanyCdpCdp
  */
 export interface BotanyCdpCdp {
@@ -127,22 +152,22 @@ export interface BotanyCdpCdp {
     type?: string;
     /**
      * 
-     * @type {InlineResponse2003Collateral}
+     * @type {InlineResponse2004CdpCollateral}
      * @memberof BotanyCdpCdp
      */
-    collateral?: InlineResponse2003Collateral;
+    collateral?: InlineResponse2004CdpCollateral;
     /**
      * 
-     * @type {InlineResponse2003Collateral}
+     * @type {InlineResponse2004CdpCollateral}
      * @memberof BotanyCdpCdp
      */
-    principal?: InlineResponse2003Collateral;
+    principal?: InlineResponse2004CdpCollateral;
     /**
      * 
-     * @type {InlineResponse2003Collateral}
+     * @type {InlineResponse2004CdpCollateral}
      * @memberof BotanyCdpCdp
      */
-    accumulated_fees?: InlineResponse2003Collateral;
+    accumulated_fees?: InlineResponse2004CdpCollateral;
     /**
      * 
      * @type {string}
@@ -182,10 +207,10 @@ export interface BotanyCdpCollateralParam {
     liquidation_ratio?: string;
     /**
      * 
-     * @type {InlineResponse2003Collateral}
+     * @type {InlineResponse2004CdpCollateral}
      * @memberof BotanyCdpCollateralParam
      */
-    debt_limit?: InlineResponse2003Collateral;
+    debt_limit?: InlineResponse2004CdpCollateral;
     /**
      * 
      * @type {string}
@@ -275,27 +300,52 @@ export interface BotanyCdpDebtParam {
 /**
  * 
  * @export
+ * @interface BotanyCdpDeposit
+ */
+export interface BotanyCdpDeposit {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpDeposit
+     */
+    cdp_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyCdpDeposit
+     */
+    depositor?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof BotanyCdpDeposit
+     */
+    amount?: InlineResponse2004CdpCollateral;
+}
+/**
+ * 
+ * @export
  * @interface BotanyCdpParams
  */
 export interface BotanyCdpParams {
     /**
      * 
-     * @type {Array<InlineResponse2005ParamsCollateralParams>}
+     * @type {Array<InlineResponse2007ParamsCollateralParams>}
      * @memberof BotanyCdpParams
      */
-    collateral_params?: Array<InlineResponse2005ParamsCollateralParams>;
+    collateral_params?: Array<InlineResponse2007ParamsCollateralParams>;
     /**
      * 
-     * @type {InlineResponse2005ParamsDebtParam}
+     * @type {InlineResponse2007ParamsDebtParam}
      * @memberof BotanyCdpParams
      */
-    debt_param?: InlineResponse2005ParamsDebtParam;
+    debt_param?: InlineResponse2007ParamsDebtParam;
     /**
      * 
-     * @type {InlineResponse2003Collateral}
+     * @type {InlineResponse2004CdpCollateral}
      * @memberof BotanyCdpParams
      */
-    global_debt_limit?: InlineResponse2003Collateral;
+    global_debt_limit?: InlineResponse2004CdpCollateral;
     /**
      * 
      * @type {string}
@@ -330,15 +380,28 @@ export interface BotanyCdpParams {
 /**
  * 
  * @export
+ * @interface BotanyCdpQueryAllAccountResponse
+ */
+export interface BotanyCdpQueryAllAccountResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse200Auctions>}
+     * @memberof BotanyCdpQueryAllAccountResponse
+     */
+    accounts?: Array<InlineResponse200Auctions>;
+}
+/**
+ * 
+ * @export
  * @interface BotanyCdpQueryAllCdpResponse
  */
 export interface BotanyCdpQueryAllCdpResponse {
     /**
      * 
-     * @type {Array<InlineResponse2003Cdp>}
+     * @type {Array<InlineResponse2004Cdp1>}
      * @memberof BotanyCdpQueryAllCdpResponse
      */
-    cdp?: Array<InlineResponse2003Cdp>;
+    cdp?: Array<InlineResponse2004Cdp1>;
     /**
      * 
      * @type {InlineResponse200Pagination}
@@ -349,15 +412,28 @@ export interface BotanyCdpQueryAllCdpResponse {
 /**
  * 
  * @export
+ * @interface BotanyCdpQueryAllDepositResponse
+ */
+export interface BotanyCdpQueryAllDepositResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse2006Deposits>}
+     * @memberof BotanyCdpQueryAllDepositResponse
+     */
+    deposits?: Array<InlineResponse2006Deposits>;
+}
+/**
+ * 
+ * @export
  * @interface BotanyCdpQueryGetCdpResponse
  */
 export interface BotanyCdpQueryGetCdpResponse {
     /**
      * 
-     * @type {InlineResponse2003Cdp}
+     * @type {InlineResponse2004Cdp1}
      * @memberof BotanyCdpQueryGetCdpResponse
      */
-    cdp?: InlineResponse2003Cdp;
+    cdp?: InlineResponse2004Cdp1;
 }
 /**
  * 
@@ -367,10 +443,10 @@ export interface BotanyCdpQueryGetCdpResponse {
 export interface BotanyCdpQueryParamsResponse {
     /**
      * 
-     * @type {InlineResponse2005Params}
+     * @type {InlineResponse2007Params}
      * @memberof BotanyCdpQueryParamsResponse
      */
-    params?: InlineResponse2005Params;
+    params?: InlineResponse2007Params;
 }
 /**
  * 
@@ -436,10 +512,10 @@ export interface BotanyPricefeedMarket {
 export interface BotanyPricefeedParams {
     /**
      * 
-     * @type {Array<InlineResponse2009Markets>}
+     * @type {Array<InlineResponse20011Markets>}
      * @memberof BotanyPricefeedParams
      */
-    markets?: Array<InlineResponse2009Markets>;
+    markets?: Array<InlineResponse20011Markets>;
 }
 /**
  * 
@@ -480,10 +556,10 @@ export interface BotanyPricefeedPostedPrice {
 export interface BotanyPricefeedQueryAllMarketResponse {
     /**
      * 
-     * @type {Array<InlineResponse2009Markets>}
+     * @type {Array<InlineResponse20011Markets>}
      * @memberof BotanyPricefeedQueryAllMarketResponse
      */
-    markets?: Array<InlineResponse2009Markets>;
+    markets?: Array<InlineResponse20011Markets>;
     /**
      * 
      * @type {InlineResponse200Pagination}
@@ -518,10 +594,10 @@ export interface BotanyPricefeedQueryAllOracleResponse {
 export interface BotanyPricefeedQueryAllPriceResponse {
     /**
      * 
-     * @type {Array<InlineResponse20011Price>}
+     * @type {Array<InlineResponse20013Price>}
      * @memberof BotanyPricefeedQueryAllPriceResponse
      */
-    prices?: Array<InlineResponse20011Price>;
+    prices?: Array<InlineResponse20013Price>;
     /**
      * 
      * @type {InlineResponse200Pagination}
@@ -537,10 +613,10 @@ export interface BotanyPricefeedQueryAllPriceResponse {
 export interface BotanyPricefeedQueryAllRawPriceResponse {
     /**
      * 
-     * @type {Array<InlineResponse20012Prices>}
+     * @type {Array<InlineResponse20014Prices>}
      * @memberof BotanyPricefeedQueryAllRawPriceResponse
      */
-    prices?: Array<InlineResponse20012Prices>;
+    prices?: Array<InlineResponse20014Prices>;
     /**
      * 
      * @type {InlineResponse200Pagination}
@@ -556,10 +632,10 @@ export interface BotanyPricefeedQueryAllRawPriceResponse {
 export interface BotanyPricefeedQueryGetPriceResponse {
     /**
      * 
-     * @type {InlineResponse20011Price}
+     * @type {InlineResponse20013Price}
      * @memberof BotanyPricefeedQueryGetPriceResponse
      */
-    price?: InlineResponse20011Price;
+    price?: InlineResponse20013Price;
 }
 /**
  * 
@@ -569,10 +645,10 @@ export interface BotanyPricefeedQueryGetPriceResponse {
 export interface BotanyPricefeedQueryParamsResponse {
     /**
      * 
-     * @type {InlineResponse20013Params}
+     * @type {InlineResponse20015Params}
      * @memberof BotanyPricefeedQueryParamsResponse
      */
-    params?: InlineResponse20013Params;
+    params?: InlineResponse20015Params;
 }
 /**
  * message SomeRequest {          Foo some_parameter = 1;          PageRequest pagination = 2;  }
@@ -733,16 +809,54 @@ export interface InlineResponse2001 {
 export interface InlineResponse20010 {
     /**
      * 
-     * @type {Array<string>}
+     * @type {InlineResponse20010Params}
      * @memberof InlineResponse20010
      */
-    oracles?: Array<string>;
+    params?: InlineResponse20010Params;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse20010Params
+ */
+export interface InlineResponse20010Params {
     /**
      * 
-     * @type {InlineResponse200Pagination}
-     * @memberof InlineResponse20010
+     * @type {boolean}
+     * @memberof InlineResponse20010Params
      */
-    pagination?: InlineResponse200Pagination;
+    active?: boolean;
+    /**
+     * 
+     * @type {Array<InlineResponse20010ParamsPeriods>}
+     * @memberof InlineResponse20010Params
+     */
+    periods?: Array<InlineResponse20010ParamsPeriods>;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse20010ParamsPeriods
+ */
+export interface InlineResponse20010ParamsPeriods {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20010ParamsPeriods
+     */
+    start?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20010ParamsPeriods
+     */
+    end?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20010ParamsPeriods
+     */
+    inflation?: string;
 }
 /**
  * 
@@ -752,29 +866,53 @@ export interface InlineResponse20010 {
 export interface InlineResponse20011 {
     /**
      * 
-     * @type {InlineResponse20011Price}
+     * @type {Array<InlineResponse20011Markets>}
      * @memberof InlineResponse20011
      */
-    price?: InlineResponse20011Price;
+    markets?: Array<InlineResponse20011Markets>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof InlineResponse20011
+     */
+    pagination?: InlineResponse200Pagination;
 }
 /**
  * 
  * @export
- * @interface InlineResponse20011Price
+ * @interface InlineResponse20011Markets
  */
-export interface InlineResponse20011Price {
+export interface InlineResponse20011Markets {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20011Price
+     * @memberof InlineResponse20011Markets
      */
     market_id?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20011Price
+     * @memberof InlineResponse20011Markets
      */
-    price?: string;
+    base_asset?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20011Markets
+     */
+    quote_asset?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof InlineResponse20011Markets
+     */
+    oracles?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof InlineResponse20011Markets
+     */
+    active?: boolean;
 }
 /**
  * 
@@ -784,10 +922,10 @@ export interface InlineResponse20011Price {
 export interface InlineResponse20012 {
     /**
      * 
-     * @type {Array<InlineResponse20012Prices>}
+     * @type {Array<string>}
      * @memberof InlineResponse20012
      */
-    prices?: Array<InlineResponse20012Prices>;
+    oracles?: Array<string>;
     /**
      * 
      * @type {InlineResponse200Pagination}
@@ -798,59 +936,34 @@ export interface InlineResponse20012 {
 /**
  * 
  * @export
- * @interface InlineResponse20012Prices
- */
-export interface InlineResponse20012Prices {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse20012Prices
-     */
-    market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse20012Prices
-     */
-    oracle_address?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse20012Prices
-     */
-    price?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse20012Prices
-     */
-    expiry?: string;
-}
-/**
- * 
- * @export
  * @interface InlineResponse20013
  */
 export interface InlineResponse20013 {
     /**
      * 
-     * @type {InlineResponse20013Params}
+     * @type {InlineResponse20013Price}
      * @memberof InlineResponse20013
      */
-    params?: InlineResponse20013Params;
+    price?: InlineResponse20013Price;
 }
 /**
  * 
  * @export
- * @interface InlineResponse20013Params
+ * @interface InlineResponse20013Price
  */
-export interface InlineResponse20013Params {
+export interface InlineResponse20013Price {
     /**
      * 
-     * @type {Array<InlineResponse2009Markets>}
-     * @memberof InlineResponse20013Params
+     * @type {string}
+     * @memberof InlineResponse20013Price
      */
-    markets?: Array<InlineResponse2009Markets>;
+    market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20013Price
+     */
+    price?: string;
 }
 /**
  * 
@@ -860,14 +973,90 @@ export interface InlineResponse20013Params {
 export interface InlineResponse20014 {
     /**
      * 
-     * @type {Array<InlineResponse20011Price>}
+     * @type {Array<InlineResponse20014Prices>}
      * @memberof InlineResponse20014
      */
-    prices?: Array<InlineResponse20011Price>;
+    prices?: Array<InlineResponse20014Prices>;
     /**
      * 
      * @type {InlineResponse200Pagination}
      * @memberof InlineResponse20014
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse20014Prices
+ */
+export interface InlineResponse20014Prices {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20014Prices
+     */
+    market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20014Prices
+     */
+    oracle_address?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20014Prices
+     */
+    price?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20014Prices
+     */
+    expiry?: string;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse20015
+ */
+export interface InlineResponse20015 {
+    /**
+     * 
+     * @type {InlineResponse20015Params}
+     * @memberof InlineResponse20015
+     */
+    params?: InlineResponse20015Params;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse20015Params
+ */
+export interface InlineResponse20015Params {
+    /**
+     * 
+     * @type {Array<InlineResponse20011Markets>}
+     * @memberof InlineResponse20015Params
+     */
+    markets?: Array<InlineResponse20011Markets>;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse20016
+ */
+export interface InlineResponse20016 {
+    /**
+     * 
+     * @type {Array<InlineResponse20013Price>}
+     * @memberof InlineResponse20016
+     */
+    prices?: Array<InlineResponse20013Price>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof InlineResponse20016
      */
     pagination?: InlineResponse200Pagination;
 }
@@ -929,90 +1118,10 @@ export interface InlineResponse2002Params {
 export interface InlineResponse2003 {
     /**
      * 
-     * @type {Array<InlineResponse2003Cdp>}
+     * @type {Array<InlineResponse200Auctions>}
      * @memberof InlineResponse2003
      */
-    cdp?: Array<InlineResponse2003Cdp>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof InlineResponse2003
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2003Cdp
- */
-export interface InlineResponse2003Cdp {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2003Cdp
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2003Cdp
-     */
-    owner?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2003Cdp
-     */
-    type?: string;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof InlineResponse2003Cdp
-     */
-    collateral?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof InlineResponse2003Cdp
-     */
-    principal?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof InlineResponse2003Cdp
-     */
-    accumulated_fees?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2003Cdp
-     */
-    fees_updated?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2003Cdp
-     */
-    interest_factor?: string;
-}
-/**
- * Coin defines a token with a denomination and an amount.  NOTE: The amount field is an Int which implements the custom method signatures required by gogoproto.
- * @export
- * @interface InlineResponse2003Collateral
- */
-export interface InlineResponse2003Collateral {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2003Collateral
-     */
-    denom?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2003Collateral
-     */
-    amount?: string;
+    accounts?: Array<InlineResponse200Auctions>;
 }
 /**
  * 
@@ -1022,10 +1131,115 @@ export interface InlineResponse2003Collateral {
 export interface InlineResponse2004 {
     /**
      * 
-     * @type {InlineResponse2003Cdp}
+     * @type {Array<InlineResponse2004Cdp1>}
      * @memberof InlineResponse2004
      */
-    cdp?: InlineResponse2003Cdp;
+    cdp?: Array<InlineResponse2004Cdp1>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof InlineResponse2004
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2004Cdp
+ */
+export interface InlineResponse2004Cdp {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2004Cdp
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2004Cdp
+     */
+    owner?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2004Cdp
+     */
+    type?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2004Cdp
+     */
+    collateral?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2004Cdp
+     */
+    principal?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2004Cdp
+     */
+    accumulated_fees?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2004Cdp
+     */
+    fees_updated?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2004Cdp
+     */
+    interest_factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2004Cdp1
+ */
+export interface InlineResponse2004Cdp1 {
+    /**
+     * 
+     * @type {InlineResponse2004Cdp}
+     * @memberof InlineResponse2004Cdp1
+     */
+    cdp?: InlineResponse2004Cdp;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2004Cdp1
+     */
+    collateral_value?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2004Cdp1
+     */
+    collateralization_ratio?: string;
+}
+/**
+ * Coin defines a token with a denomination and an amount.  NOTE: The amount field is an Int which implements the custom method signatures required by gogoproto.
+ * @export
+ * @interface InlineResponse2004CdpCollateral
+ */
+export interface InlineResponse2004CdpCollateral {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2004CdpCollateral
+     */
+    denom?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2004CdpCollateral
+     */
+    amount?: string;
 }
 /**
  * 
@@ -1035,181 +1249,10 @@ export interface InlineResponse2004 {
 export interface InlineResponse2005 {
     /**
      * 
-     * @type {InlineResponse2005Params}
+     * @type {InlineResponse2004Cdp1}
      * @memberof InlineResponse2005
      */
-    params?: InlineResponse2005Params;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2005Params
- */
-export interface InlineResponse2005Params {
-    /**
-     * 
-     * @type {Array<InlineResponse2005ParamsCollateralParams>}
-     * @memberof InlineResponse2005Params
-     */
-    collateral_params?: Array<InlineResponse2005ParamsCollateralParams>;
-    /**
-     * 
-     * @type {InlineResponse2005ParamsDebtParam}
-     * @memberof InlineResponse2005Params
-     */
-    debt_param?: InlineResponse2005ParamsDebtParam;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof InlineResponse2005Params
-     */
-    global_debt_limit?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005Params
-     */
-    surplus_auction_threshold?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005Params
-     */
-    surplus_auction_lot?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005Params
-     */
-    debt_auction_threshold?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005Params
-     */
-    debt_auction_lot?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InlineResponse2005Params
-     */
-    circuit_breaker?: boolean;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2005ParamsCollateralParams
- */
-export interface InlineResponse2005ParamsCollateralParams {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    denom?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    liquidation_ratio?: string;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    debt_limit?: InlineResponse2003Collateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    stability_fee?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    auction_size?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    liquidation_penalty?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    prefix?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    spot_market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    liquidation_market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    keeper_reward_percentage?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    check_collateralization_index_count?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsCollateralParams
-     */
-    conversion_factor?: string;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2005ParamsDebtParam
- */
-export interface InlineResponse2005ParamsDebtParam {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsDebtParam
-     */
-    denom?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsDebtParam
-     */
-    reference_asset?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsDebtParam
-     */
-    conversion_factor?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2005ParamsDebtParam
-     */
-    debt_floor?: string;
+    cdp?: InlineResponse2004Cdp1;
 }
 /**
  * 
@@ -1219,97 +1262,35 @@ export interface InlineResponse2005ParamsDebtParam {
 export interface InlineResponse2006 {
     /**
      * 
-     * @type {InlineResponse2006Params}
+     * @type {Array<InlineResponse2006Deposits>}
      * @memberof InlineResponse2006
      */
-    params?: InlineResponse2006Params;
+    deposits?: Array<InlineResponse2006Deposits>;
 }
 /**
  * 
  * @export
- * @interface InlineResponse2006Params
+ * @interface InlineResponse2006Deposits
  */
-export interface InlineResponse2006Params {
-    /**
-     * 
-     * @type {Array<InlineResponse2006ParamsJpyxMintingRewardPeriods>}
-     * @memberof InlineResponse2006Params
-     */
-    jpyx_minting_reward_periods?: Array<InlineResponse2006ParamsJpyxMintingRewardPeriods>;
-    /**
-     * 
-     * @type {Array<InlineResponse2006ParamsClaimMultipliers>}
-     * @memberof InlineResponse2006Params
-     */
-    claim_multipliers?: Array<InlineResponse2006ParamsClaimMultipliers>;
+export interface InlineResponse2006Deposits {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse2006Params
+     * @memberof InlineResponse2006Deposits
      */
-    claim_end?: string;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2006ParamsClaimMultipliers
- */
-export interface InlineResponse2006ParamsClaimMultipliers {
+    cdp_id?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse2006ParamsClaimMultipliers
+     * @memberof InlineResponse2006Deposits
      */
-    name?: string;
+    depositor?: string;
     /**
      * 
-     * @type {string}
-     * @memberof InlineResponse2006ParamsClaimMultipliers
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2006Deposits
      */
-    months_lockup?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2006ParamsClaimMultipliers
-     */
-    factor?: string;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2006ParamsJpyxMintingRewardPeriods
- */
-export interface InlineResponse2006ParamsJpyxMintingRewardPeriods {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InlineResponse2006ParamsJpyxMintingRewardPeriods
-     */
-    active?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2006ParamsJpyxMintingRewardPeriods
-     */
-    collateral_type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2006ParamsJpyxMintingRewardPeriods
-     */
-    start?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2006ParamsJpyxMintingRewardPeriods
-     */
-    end?: string;
-    /**
-     * 
-     * @type {InlineResponse2003Collateral}
-     * @memberof InlineResponse2006ParamsJpyxMintingRewardPeriods
-     */
-    rewards_per_second?: InlineResponse2003Collateral;
+    amount?: InlineResponse2004CdpCollateral;
 }
 /**
  * 
@@ -1319,10 +1300,181 @@ export interface InlineResponse2006ParamsJpyxMintingRewardPeriods {
 export interface InlineResponse2007 {
     /**
      * 
-     * @type {Array<InlineResponse2003Collateral>}
+     * @type {InlineResponse2007Params}
      * @memberof InlineResponse2007
      */
-    balances?: Array<InlineResponse2003Collateral>;
+    params?: InlineResponse2007Params;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2007Params
+ */
+export interface InlineResponse2007Params {
+    /**
+     * 
+     * @type {Array<InlineResponse2007ParamsCollateralParams>}
+     * @memberof InlineResponse2007Params
+     */
+    collateral_params?: Array<InlineResponse2007ParamsCollateralParams>;
+    /**
+     * 
+     * @type {InlineResponse2007ParamsDebtParam}
+     * @memberof InlineResponse2007Params
+     */
+    debt_param?: InlineResponse2007ParamsDebtParam;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2007Params
+     */
+    global_debt_limit?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007Params
+     */
+    surplus_auction_threshold?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007Params
+     */
+    surplus_auction_lot?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007Params
+     */
+    debt_auction_threshold?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007Params
+     */
+    debt_auction_lot?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof InlineResponse2007Params
+     */
+    circuit_breaker?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2007ParamsCollateralParams
+ */
+export interface InlineResponse2007ParamsCollateralParams {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    denom?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    liquidation_ratio?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    debt_limit?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    stability_fee?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    auction_size?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    liquidation_penalty?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    prefix?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    spot_market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    liquidation_market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    keeper_reward_percentage?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    check_collateralization_index_count?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsCollateralParams
+     */
+    conversion_factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2007ParamsDebtParam
+ */
+export interface InlineResponse2007ParamsDebtParam {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsDebtParam
+     */
+    denom?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsDebtParam
+     */
+    reference_asset?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsDebtParam
+     */
+    conversion_factor?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2007ParamsDebtParam
+     */
+    debt_floor?: string;
 }
 /**
  * 
@@ -1345,41 +1497,84 @@ export interface InlineResponse2008 {
 export interface InlineResponse2008Params {
     /**
      * 
-     * @type {boolean}
+     * @type {Array<InlineResponse2008ParamsJpyxMintingRewardPeriods>}
      * @memberof InlineResponse2008Params
      */
-    active?: boolean;
+    jpyx_minting_reward_periods?: Array<InlineResponse2008ParamsJpyxMintingRewardPeriods>;
     /**
      * 
-     * @type {Array<InlineResponse2008ParamsPeriods>}
+     * @type {Array<InlineResponse2008ParamsClaimMultipliers>}
      * @memberof InlineResponse2008Params
      */
-    periods?: Array<InlineResponse2008ParamsPeriods>;
+    claim_multipliers?: Array<InlineResponse2008ParamsClaimMultipliers>;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2008Params
+     */
+    claim_end?: string;
 }
 /**
  * 
  * @export
- * @interface InlineResponse2008ParamsPeriods
+ * @interface InlineResponse2008ParamsClaimMultipliers
  */
-export interface InlineResponse2008ParamsPeriods {
+export interface InlineResponse2008ParamsClaimMultipliers {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse2008ParamsPeriods
+     * @memberof InlineResponse2008ParamsClaimMultipliers
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2008ParamsClaimMultipliers
+     */
+    months_lockup?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2008ParamsClaimMultipliers
+     */
+    factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2008ParamsJpyxMintingRewardPeriods
+ */
+export interface InlineResponse2008ParamsJpyxMintingRewardPeriods {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
+     */
+    active?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
+     */
+    collateral_type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
      */
     start?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse2008ParamsPeriods
+     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
      */
     end?: string;
     /**
      * 
-     * @type {string}
-     * @memberof InlineResponse2008ParamsPeriods
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
      */
-    inflation?: string;
+    rewards_per_second?: InlineResponse2004CdpCollateral;
 }
 /**
  * 
@@ -1389,53 +1584,10 @@ export interface InlineResponse2008ParamsPeriods {
 export interface InlineResponse2009 {
     /**
      * 
-     * @type {Array<InlineResponse2009Markets>}
+     * @type {Array<InlineResponse2004CdpCollateral>}
      * @memberof InlineResponse2009
      */
-    markets?: Array<InlineResponse2009Markets>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof InlineResponse2009
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2009Markets
- */
-export interface InlineResponse2009Markets {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2009Markets
-     */
-    market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2009Markets
-     */
-    base_asset?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2009Markets
-     */
-    quote_asset?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof InlineResponse2009Markets
-     */
-    oracles?: Array<string>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InlineResponse2009Markets
-     */
-    active?: boolean;
+    balances?: Array<InlineResponse2004CdpCollateral>;
 }
 /**
  * `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message.  Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type.  Example 1: Pack and unpack a message in C++.      Foo foo = ...;     Any any;     any.PackFrom(foo);     ...     if (any.UnpackTo(&foo)) {       ...     }  Example 2: Pack and unpack a message in Java.      Foo foo = ...;     Any any = Any.pack(foo);     ...     if (any.is(Foo.class)) {       foo = any.unpack(Foo.class);     }   Example 3: Pack and unpack a message in Python.      foo = Foo(...)     any = Any()     any.Pack(foo)     ...     if any.Is(Foo.DESCRIPTOR):       any.Unpack(foo)       ...   Example 4: Pack and unpack a message in Go       foo := &pb.Foo{...}      any, err := ptypes.MarshalAny(foo)      ...      foo := &pb.Foo{}      if err := ptypes.UnmarshalAny(any, foo); err != nil {        ...      }  The pack methods provided by protobuf library will by default use \'type.googleapis.com/full.type.name\' as the type URL and the unpack methods only use the fully qualified type name after the last \'/\' in the type URL, for example \"foo.bar.com/x/y.z\" will yield type name \"y.z\".   JSON ==== The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example:      package google.profile;     message Person {       string first_name = 1;       string last_name = 2;     }      {       \"@type\": \"type.googleapis.com/google.profile.Person\",       \"firstName\": <string>,       \"lastName\": <string>     }  If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message [google.protobuf.Duration][]):      {       \"@type\": \"type.googleapis.com/google.protobuf.Duration\",       \"value\": \"1.212s\"     }
@@ -1589,16 +1741,16 @@ export interface JpyxIncentiveMultiplier {
 export interface JpyxIncentiveParams {
     /**
      * 
-     * @type {Array<InlineResponse2006ParamsJpyxMintingRewardPeriods>}
+     * @type {Array<InlineResponse2008ParamsJpyxMintingRewardPeriods>}
      * @memberof JpyxIncentiveParams
      */
-    jpyx_minting_reward_periods?: Array<InlineResponse2006ParamsJpyxMintingRewardPeriods>;
+    jpyx_minting_reward_periods?: Array<InlineResponse2008ParamsJpyxMintingRewardPeriods>;
     /**
      * 
-     * @type {Array<InlineResponse2006ParamsClaimMultipliers>}
+     * @type {Array<InlineResponse2008ParamsClaimMultipliers>}
      * @memberof JpyxIncentiveParams
      */
-    claim_multipliers?: Array<InlineResponse2006ParamsClaimMultipliers>;
+    claim_multipliers?: Array<InlineResponse2008ParamsClaimMultipliers>;
     /**
      * 
      * @type {string}
@@ -1614,10 +1766,10 @@ export interface JpyxIncentiveParams {
 export interface JpyxIncentiveQueryParamsResponse {
     /**
      * 
-     * @type {InlineResponse2006Params}
+     * @type {InlineResponse2008Params}
      * @memberof JpyxIncentiveQueryParamsResponse
      */
-    params?: InlineResponse2006Params;
+    params?: InlineResponse2008Params;
 }
 /**
  * 
@@ -1651,10 +1803,10 @@ export interface JpyxIncentiveRewardPeriod {
     end?: string;
     /**
      * 
-     * @type {InlineResponse2003Collateral}
+     * @type {InlineResponse2004CdpCollateral}
      * @memberof JpyxIncentiveRewardPeriod
      */
-    rewards_per_second?: InlineResponse2003Collateral;
+    rewards_per_second?: InlineResponse2004CdpCollateral;
 }
 /**
  * 
@@ -1670,10 +1822,10 @@ export interface JpyxJsmndistParams {
     active?: boolean;
     /**
      * 
-     * @type {Array<InlineResponse2008ParamsPeriods>}
+     * @type {Array<InlineResponse20010ParamsPeriods>}
      * @memberof JpyxJsmndistParams
      */
-    periods?: Array<InlineResponse2008ParamsPeriods>;
+    periods?: Array<InlineResponse20010ParamsPeriods>;
 }
 /**
  * 
@@ -1708,10 +1860,10 @@ export interface JpyxJsmndistPeriod {
 export interface JpyxJsmndistQueryGetBalancesResponse {
     /**
      * 
-     * @type {Array<InlineResponse2003Collateral>}
+     * @type {Array<InlineResponse2004CdpCollateral>}
      * @memberof JpyxJsmndistQueryGetBalancesResponse
      */
-    balances?: Array<InlineResponse2003Collateral>;
+    balances?: Array<InlineResponse2004CdpCollateral>;
 }
 /**
  * 
@@ -1721,10 +1873,10 @@ export interface JpyxJsmndistQueryGetBalancesResponse {
 export interface JpyxJsmndistQueryParamsResponse {
     /**
      * 
-     * @type {InlineResponse2008Params}
+     * @type {InlineResponse20010Params}
      * @memberof JpyxJsmndistQueryParamsResponse
      */
-    params?: InlineResponse2008Params;
+    params?: InlineResponse20010Params;
 }
 
 /**
@@ -1733,6 +1885,42 @@ export interface JpyxJsmndistQueryParamsResponse {
  */
 export const QueryApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accountAll: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/botany/cdp/accounts`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                queryParameters.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                queryParameters.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary this line is used by starport scaffolding # 2
@@ -1908,18 +2096,23 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary this line is used by starport scaffolding # 2
-         * @param {string} id 
-         * @param {string} [collateralType] 
+         * @param {string} owner 
+         * @param {string} collateralType 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cdp: async (id: string, collateralType?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling cdp.');
+        cdp: async (owner: string, collateralType: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'owner' is not null or undefined
+            if (owner === null || owner === undefined) {
+                throw new RequiredError('owner','Required parameter owner was null or undefined when calling cdp.');
             }
-            const localVarPath = `/botany/cdp/cdps/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // verify required parameter 'collateralType' is not null or undefined
+            if (collateralType === null || collateralType === undefined) {
+                throw new RequiredError('collateralType','Required parameter collateralType was null or undefined when calling cdp.');
+            }
+            const localVarPath = `/botany/cdp/cdps/owners/{owner}/collateral-types/{collateral_type}/cdp`
+                .replace(`{${"owner"}}`, encodeURIComponent(String(owner)))
+                .replace(`{${"collateral_type"}}`, encodeURIComponent(String(collateralType)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -1930,10 +2123,6 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (collateralType !== undefined) {
-                localVarQueryParameter['collateral_type'] = collateralType;
-            }
 
 
     
@@ -2016,6 +2205,54 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          */
         cdpParams: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/cdp/params`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            const queryParameters = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                queryParameters.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                queryParameters.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} owner 
+         * @param {string} collateralType 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        depositAll: async (owner: string, collateralType: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'owner' is not null or undefined
+            if (owner === null || owner === undefined) {
+                throw new RequiredError('owner','Required parameter owner was null or undefined when calling depositAll.');
+            }
+            // verify required parameter 'collateralType' is not null or undefined
+            if (collateralType === null || collateralType === undefined) {
+                throw new RequiredError('collateralType','Required parameter collateralType was null or undefined when calling depositAll.');
+            }
+            const localVarPath = `/botany/cdp/deposits/owners/{owner}/collateral-types/{collateral_type}`
+                .replace(`{${"owner"}}`, encodeURIComponent(String(owner)))
+                .replace(`{${"collateral_type"}}`, encodeURIComponent(String(collateralType)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -2443,6 +2680,18 @@ export const QueryApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async accountAll(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2003>> {
+            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).accountAll(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary this line is used by starport scaffolding # 2
          * @param {string} id 
          * @param {*} [options] Override http request option.
@@ -2489,7 +2738,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async balances(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2007>> {
+        async balances(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2009>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).balances(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2499,13 +2748,13 @@ export const QueryApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary this line is used by starport scaffolding # 2
-         * @param {string} id 
-         * @param {string} [collateralType] 
+         * @param {string} owner 
+         * @param {string} collateralType 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cdp(id: string, collateralType?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2004>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).cdp(id, collateralType, options);
+        async cdp(owner: string, collateralType: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2005>> {
+            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).cdp(owner, collateralType, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2520,7 +2769,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cdpAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2003>> {
+        async cdpAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2004>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).cdpAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2532,8 +2781,22 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cdpParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2005>> {
+        async cdpParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2007>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).cdpParams(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @param {string} owner 
+         * @param {string} collateralType 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async depositAll(owner: string, collateralType: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2006>> {
+            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).depositAll(owner, collateralType, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -2544,7 +2807,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async incentiveParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2006>> {
+        async incentiveParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2008>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).incentiveParams(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2556,7 +2819,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async jsmndistParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2008>> {
+        async jsmndistParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20010>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).jsmndistParams(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2573,7 +2836,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async marketAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2009>> {
+        async marketAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20011>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).marketAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2590,7 +2853,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async oracleAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20010>> {
+        async oracleAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20012>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).oracleAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2603,7 +2866,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async price(marketId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20011>> {
+        async price(marketId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20013>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).price(marketId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2619,7 +2882,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async priceAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20014>> {
+        async priceAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20016>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).priceAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2631,7 +2894,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pricefeedParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20013>> {
+        async pricefeedParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20015>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).pricefeedParams(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2648,7 +2911,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rawPriceAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20012>> {
+        async rawPriceAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20014>> {
             const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
@@ -2664,6 +2927,14 @@ export const QueryApiFp = function(configuration?: Configuration) {
  */
 export const QueryApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accountAll(options?: any): AxiosPromise<InlineResponse2003> {
+            return QueryApiFp(configuration).accountAll(options).then((request) => request(axios, basePath));
+        },
         /**
          * 
          * @summary this line is used by starport scaffolding # 2
@@ -2700,19 +2971,19 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        balances(options?: any): AxiosPromise<InlineResponse2007> {
+        balances(options?: any): AxiosPromise<InlineResponse2009> {
             return QueryApiFp(configuration).balances(options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary this line is used by starport scaffolding # 2
-         * @param {string} id 
-         * @param {string} [collateralType] 
+         * @param {string} owner 
+         * @param {string} collateralType 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cdp(id: string, collateralType?: string, options?: any): AxiosPromise<InlineResponse2004> {
-            return QueryApiFp(configuration).cdp(id, collateralType, options).then((request) => request(axios, basePath));
+        cdp(owner: string, collateralType: string, options?: any): AxiosPromise<InlineResponse2005> {
+            return QueryApiFp(configuration).cdp(owner, collateralType, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2723,7 +2994,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cdpAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse2003> {
+        cdpAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse2004> {
             return QueryApiFp(configuration).cdpAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2731,15 +3002,25 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cdpParams(options?: any): AxiosPromise<InlineResponse2005> {
+        cdpParams(options?: any): AxiosPromise<InlineResponse2007> {
             return QueryApiFp(configuration).cdpParams(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} owner 
+         * @param {string} collateralType 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        depositAll(owner: string, collateralType: string, options?: any): AxiosPromise<InlineResponse2006> {
+            return QueryApiFp(configuration).depositAll(owner, collateralType, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        incentiveParams(options?: any): AxiosPromise<InlineResponse2006> {
+        incentiveParams(options?: any): AxiosPromise<InlineResponse2008> {
             return QueryApiFp(configuration).incentiveParams(options).then((request) => request(axios, basePath));
         },
         /**
@@ -2747,7 +3028,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        jsmndistParams(options?: any): AxiosPromise<InlineResponse2008> {
+        jsmndistParams(options?: any): AxiosPromise<InlineResponse20010> {
             return QueryApiFp(configuration).jsmndistParams(options).then((request) => request(axios, basePath));
         },
         /**
@@ -2760,7 +3041,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        marketAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse2009> {
+        marketAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20011> {
             return QueryApiFp(configuration).marketAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2773,7 +3054,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        oracleAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20010> {
+        oracleAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20012> {
             return QueryApiFp(configuration).oracleAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2782,7 +3063,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        price(marketId: string, options?: any): AxiosPromise<InlineResponse20011> {
+        price(marketId: string, options?: any): AxiosPromise<InlineResponse20013> {
             return QueryApiFp(configuration).price(marketId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2794,7 +3075,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        priceAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20014> {
+        priceAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20016> {
             return QueryApiFp(configuration).priceAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2802,7 +3083,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pricefeedParams(options?: any): AxiosPromise<InlineResponse20013> {
+        pricefeedParams(options?: any): AxiosPromise<InlineResponse20015> {
             return QueryApiFp(configuration).pricefeedParams(options).then((request) => request(axios, basePath));
         },
         /**
@@ -2815,7 +3096,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rawPriceAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20012> {
+        rawPriceAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20014> {
             return QueryApiFp(configuration).rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
     };
@@ -2828,6 +3109,16 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export class QueryApi extends BaseAPI {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QueryApi
+     */
+    public accountAll(options?: any) {
+        return QueryApiFp(this.configuration).accountAll(options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary this line is used by starport scaffolding # 2
@@ -2878,14 +3169,14 @@ export class QueryApi extends BaseAPI {
     /**
      * 
      * @summary this line is used by starport scaffolding # 2
-     * @param {string} id 
-     * @param {string} [collateralType] 
+     * @param {string} owner 
+     * @param {string} collateralType 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QueryApi
      */
-    public cdp(id: string, collateralType?: string, options?: any) {
-        return QueryApiFp(this.configuration).cdp(id, collateralType, options).then((request) => request(this.axios, this.basePath));
+    public cdp(owner: string, collateralType: string, options?: any) {
+        return QueryApiFp(this.configuration).cdp(owner, collateralType, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2910,6 +3201,18 @@ export class QueryApi extends BaseAPI {
      */
     public cdpParams(options?: any) {
         return QueryApiFp(this.configuration).cdpParams(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} owner 
+     * @param {string} collateralType 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QueryApi
+     */
+    public depositAll(owner: string, collateralType: string, options?: any) {
+        return QueryApiFp(this.configuration).depositAll(owner, collateralType, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

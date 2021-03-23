@@ -1,8 +1,8 @@
 import { cosmosclient } from 'cosmos-client';
 import { QueryApi } from '../../../openapi-eurx';
 
-export function cdp(sdk: cosmosclient.CosmosSDK, id: string) {
-  return new QueryApi(undefined, sdk.url).cdp(id);
+export function cdp(sdk: cosmosclient.CosmosSDK, owner: cosmosclient.AccAddress, collateralType: string) {
+  return new QueryApi(undefined, sdk.url).cdp(owner.toString(), collateralType);
 }
 
 export function allCdps(
@@ -22,4 +22,12 @@ export function allCdps(
 
 export function params(sdk: cosmosclient.CosmosSDK) {
   return new QueryApi(undefined, sdk.url).cdpParams();
+}
+
+export function allAccounts(sdk: cosmosclient.CosmosSDK) {
+  return new QueryApi(undefined, sdk.url).accountAll();
+}
+
+export function allDeposits(sdk: cosmosclient.CosmosSDK, owner: cosmosclient.AccAddress, collateralType: string) {
+  return new QueryApi(undefined, sdk.url).depositAll(owner.toString(), collateralType);
 }

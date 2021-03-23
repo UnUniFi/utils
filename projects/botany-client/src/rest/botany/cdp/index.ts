@@ -3,8 +3,6 @@ import { botany } from '../../../proto';
 
 export * as cdp from './module';
 
-cosmosclient.codec.register('/botany.cdp.AugmentedCdp', botany.cdp.AugmentedCdp);
-cosmosclient.codec.register('/botany.cdp.Cdp', botany.cdp.Cdp);
 cosmosclient.codec.register('/botany.cdp.MsgCreateCdp', botany.cdp.MsgCreateCdp);
 cosmosclient.codec.register('/botany.cdp.MsgDeposit', botany.cdp.MsgDeposit);
 cosmosclient.codec.register('/botany.cdp.MsgDrawDebt', botany.cdp.MsgDrawDebt);

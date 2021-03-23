@@ -12967,6 +12967,72 @@ export const botany = $root.botany = (() => {
              * @variation 2
              */
 
+            /**
+             * Callback as used by {@link botany.cdp.Query#accountAll}.
+             * @memberof botany.cdp.Query
+             * @typedef AccountAllCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.cdp.QueryAllAccountResponse} [response] QueryAllAccountResponse
+             */
+
+            /**
+             * Calls AccountAll.
+             * @function accountAll
+             * @memberof botany.cdp.Query
+             * @instance
+             * @param {botany.cdp.IQueryAllAccountRequest} request QueryAllAccountRequest message or plain object
+             * @param {botany.cdp.Query.AccountAllCallback} callback Node-style callback called with the error, if any, and QueryAllAccountResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Query.prototype.accountAll = function accountAll(request, callback) {
+                return this.rpcCall(accountAll, $root.botany.cdp.QueryAllAccountRequest, $root.botany.cdp.QueryAllAccountResponse, request, callback);
+            }, "name", { value: "AccountAll" });
+
+            /**
+             * Calls AccountAll.
+             * @function accountAll
+             * @memberof botany.cdp.Query
+             * @instance
+             * @param {botany.cdp.IQueryAllAccountRequest} request QueryAllAccountRequest message or plain object
+             * @returns {Promise<botany.cdp.QueryAllAccountResponse>} Promise
+             * @variation 2
+             */
+
+            /**
+             * Callback as used by {@link botany.cdp.Query#depositAll}.
+             * @memberof botany.cdp.Query
+             * @typedef DepositAllCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.cdp.QueryAllDepositResponse} [response] QueryAllDepositResponse
+             */
+
+            /**
+             * Calls DepositAll.
+             * @function depositAll
+             * @memberof botany.cdp.Query
+             * @instance
+             * @param {botany.cdp.IQueryAllDepositRequest} request QueryAllDepositRequest message or plain object
+             * @param {botany.cdp.Query.DepositAllCallback} callback Node-style callback called with the error, if any, and QueryAllDepositResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Query.prototype.depositAll = function depositAll(request, callback) {
+                return this.rpcCall(depositAll, $root.botany.cdp.QueryAllDepositRequest, $root.botany.cdp.QueryAllDepositResponse, request, callback);
+            }, "name", { value: "DepositAll" });
+
+            /**
+             * Calls DepositAll.
+             * @function depositAll
+             * @memberof botany.cdp.Query
+             * @instance
+             * @param {botany.cdp.IQueryAllDepositRequest} request QueryAllDepositRequest message or plain object
+             * @returns {Promise<botany.cdp.QueryAllDepositResponse>} Promise
+             * @variation 2
+             */
+
             return Query;
         })();
 
@@ -13304,7 +13370,7 @@ export const botany = $root.botany = (() => {
              * Properties of a QueryGetCdpRequest.
              * @memberof botany.cdp
              * @interface IQueryGetCdpRequest
-             * @property {Long|null} [id] QueryGetCdpRequest id
+             * @property {string|null} [owner] QueryGetCdpRequest owner
              * @property {string|null} [collateral_type] QueryGetCdpRequest collateral_type
              */
 
@@ -13324,12 +13390,12 @@ export const botany = $root.botany = (() => {
             }
 
             /**
-             * QueryGetCdpRequest id.
-             * @member {Long} id
+             * QueryGetCdpRequest owner.
+             * @member {string} owner
              * @memberof botany.cdp.QueryGetCdpRequest
              * @instance
              */
-            QueryGetCdpRequest.prototype.id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+            QueryGetCdpRequest.prototype.owner = "";
 
             /**
              * QueryGetCdpRequest collateral_type.
@@ -13351,8 +13417,8 @@ export const botany = $root.botany = (() => {
             QueryGetCdpRequest.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.id);
+                if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.owner);
                 if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.collateral_type);
                 return writer;
@@ -13390,7 +13456,7 @@ export const botany = $root.botany = (() => {
                     let tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
-                        message.id = reader.uint64();
+                        message.owner = reader.string();
                         break;
                     case 2:
                         message.collateral_type = reader.string();
@@ -13430,9 +13496,9 @@ export const botany = $root.botany = (() => {
             QueryGetCdpRequest.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.id != null && message.hasOwnProperty("id"))
-                    if (!$util.isInteger(message.id) && !(message.id && $util.isInteger(message.id.low) && $util.isInteger(message.id.high)))
-                        return "id: integer|Long expected";
+                if (message.owner != null && message.hasOwnProperty("owner"))
+                    if (!$util.isString(message.owner))
+                        return "owner: string expected";
                 if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
                     if (!$util.isString(message.collateral_type))
                         return "collateral_type: string expected";
@@ -13451,15 +13517,8 @@ export const botany = $root.botany = (() => {
                 if (object instanceof $root.botany.cdp.QueryGetCdpRequest)
                     return object;
                 let message = new $root.botany.cdp.QueryGetCdpRequest();
-                if (object.id != null)
-                    if ($util.Long)
-                        (message.id = $util.Long.fromValue(object.id)).unsigned = true;
-                    else if (typeof object.id === "string")
-                        message.id = parseInt(object.id, 10);
-                    else if (typeof object.id === "number")
-                        message.id = object.id;
-                    else if (typeof object.id === "object")
-                        message.id = new $util.LongBits(object.id.low >>> 0, object.id.high >>> 0).toNumber(true);
+                if (object.owner != null)
+                    message.owner = String(object.owner);
                 if (object.collateral_type != null)
                     message.collateral_type = String(object.collateral_type);
                 return message;
@@ -13479,18 +13538,11 @@ export const botany = $root.botany = (() => {
                     options = {};
                 let object = {};
                 if (options.defaults) {
-                    if ($util.Long) {
-                        let long = new $util.Long(0, 0, true);
-                        object.id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                    } else
-                        object.id = options.longs === String ? "0" : 0;
+                    object.owner = "";
                     object.collateral_type = "";
                 }
-                if (message.id != null && message.hasOwnProperty("id"))
-                    if (typeof message.id === "number")
-                        object.id = options.longs === String ? String(message.id) : message.id;
-                    else
-                        object.id = options.longs === String ? $util.Long.prototype.toString.call(message.id) : options.longs === Number ? new $util.LongBits(message.id.low >>> 0, message.id.high >>> 0).toNumber(true) : message.id;
+                if (message.owner != null && message.hasOwnProperty("owner"))
+                    object.owner = message.owner;
                 if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
                     object.collateral_type = message.collateral_type;
                 return object;
@@ -13516,7 +13568,7 @@ export const botany = $root.botany = (() => {
              * Properties of a QueryGetCdpResponse.
              * @memberof botany.cdp
              * @interface IQueryGetCdpResponse
-             * @property {botany.cdp.ICdp|null} [cdp] QueryGetCdpResponse cdp
+             * @property {botany.cdp.IAugmentedCdp|null} [cdp] QueryGetCdpResponse cdp
              */
 
             /**
@@ -13536,7 +13588,7 @@ export const botany = $root.botany = (() => {
 
             /**
              * QueryGetCdpResponse cdp.
-             * @member {botany.cdp.ICdp|null|undefined} cdp
+             * @member {botany.cdp.IAugmentedCdp|null|undefined} cdp
              * @memberof botany.cdp.QueryGetCdpResponse
              * @instance
              */
@@ -13555,7 +13607,7 @@ export const botany = $root.botany = (() => {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.cdp != null && Object.hasOwnProperty.call(message, "cdp"))
-                    $root.botany.cdp.Cdp.encode(message.cdp, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    $root.botany.cdp.AugmentedCdp.encode(message.cdp, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 return writer;
             };
 
@@ -13591,7 +13643,7 @@ export const botany = $root.botany = (() => {
                     let tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
-                        message.cdp = $root.botany.cdp.Cdp.decode(reader, reader.uint32());
+                        message.cdp = $root.botany.cdp.AugmentedCdp.decode(reader, reader.uint32());
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -13629,7 +13681,7 @@ export const botany = $root.botany = (() => {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
                 if (message.cdp != null && message.hasOwnProperty("cdp")) {
-                    let error = $root.botany.cdp.Cdp.verify(message.cdp);
+                    let error = $root.botany.cdp.AugmentedCdp.verify(message.cdp);
                     if (error)
                         return "cdp." + error;
                 }
@@ -13651,7 +13703,7 @@ export const botany = $root.botany = (() => {
                 if (object.cdp != null) {
                     if (typeof object.cdp !== "object")
                         throw TypeError(".botany.cdp.QueryGetCdpResponse.cdp: object expected");
-                    message.cdp = $root.botany.cdp.Cdp.fromObject(object.cdp);
+                    message.cdp = $root.botany.cdp.AugmentedCdp.fromObject(object.cdp);
                 }
                 return message;
             };
@@ -13672,7 +13724,7 @@ export const botany = $root.botany = (() => {
                 if (options.defaults)
                     object.cdp = null;
                 if (message.cdp != null && message.hasOwnProperty("cdp"))
-                    object.cdp = $root.botany.cdp.Cdp.toObject(message.cdp, options);
+                    object.cdp = $root.botany.cdp.AugmentedCdp.toObject(message.cdp, options);
                 return object;
             };
 
@@ -13876,7 +13928,7 @@ export const botany = $root.botany = (() => {
              * Properties of a QueryAllCdpResponse.
              * @memberof botany.cdp
              * @interface IQueryAllCdpResponse
-             * @property {Array.<botany.cdp.ICdp>|null} [cdp] QueryAllCdpResponse cdp
+             * @property {Array.<botany.cdp.IAugmentedCdp>|null} [cdp] QueryAllCdpResponse cdp
              * @property {cosmos.base.query.v1beta1.IPageResponse|null} [pagination] QueryAllCdpResponse pagination
              */
 
@@ -13898,7 +13950,7 @@ export const botany = $root.botany = (() => {
 
             /**
              * QueryAllCdpResponse cdp.
-             * @member {Array.<botany.cdp.ICdp>} cdp
+             * @member {Array.<botany.cdp.IAugmentedCdp>} cdp
              * @memberof botany.cdp.QueryAllCdpResponse
              * @instance
              */
@@ -13926,7 +13978,7 @@ export const botany = $root.botany = (() => {
                     writer = $Writer.create();
                 if (message.cdp != null && message.cdp.length)
                     for (let i = 0; i < message.cdp.length; ++i)
-                        $root.botany.cdp.Cdp.encode(message.cdp[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        $root.botany.cdp.AugmentedCdp.encode(message.cdp[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 if (message.pagination != null && Object.hasOwnProperty.call(message, "pagination"))
                     $root.cosmos.base.query.v1beta1.PageResponse.encode(message.pagination, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
@@ -13966,7 +14018,7 @@ export const botany = $root.botany = (() => {
                     case 1:
                         if (!(message.cdp && message.cdp.length))
                             message.cdp = [];
-                        message.cdp.push($root.botany.cdp.Cdp.decode(reader, reader.uint32()));
+                        message.cdp.push($root.botany.cdp.AugmentedCdp.decode(reader, reader.uint32()));
                         break;
                     case 2:
                         message.pagination = $root.cosmos.base.query.v1beta1.PageResponse.decode(reader, reader.uint32());
@@ -14010,7 +14062,7 @@ export const botany = $root.botany = (() => {
                     if (!Array.isArray(message.cdp))
                         return "cdp: array expected";
                     for (let i = 0; i < message.cdp.length; ++i) {
-                        let error = $root.botany.cdp.Cdp.verify(message.cdp[i]);
+                        let error = $root.botany.cdp.AugmentedCdp.verify(message.cdp[i]);
                         if (error)
                             return "cdp." + error;
                     }
@@ -14042,7 +14094,7 @@ export const botany = $root.botany = (() => {
                     for (let i = 0; i < object.cdp.length; ++i) {
                         if (typeof object.cdp[i] !== "object")
                             throw TypeError(".botany.cdp.QueryAllCdpResponse.cdp: object expected");
-                        message.cdp[i] = $root.botany.cdp.Cdp.fromObject(object.cdp[i]);
+                        message.cdp[i] = $root.botany.cdp.AugmentedCdp.fromObject(object.cdp[i]);
                     }
                 }
                 if (object.pagination != null) {
@@ -14073,7 +14125,7 @@ export const botany = $root.botany = (() => {
                 if (message.cdp && message.cdp.length) {
                     object.cdp = [];
                     for (let j = 0; j < message.cdp.length; ++j)
-                        object.cdp[j] = $root.botany.cdp.Cdp.toObject(message.cdp[j], options);
+                        object.cdp[j] = $root.botany.cdp.AugmentedCdp.toObject(message.cdp[j], options);
                 }
                 if (message.pagination != null && message.hasOwnProperty("pagination"))
                     object.pagination = $root.cosmos.base.query.v1beta1.PageResponse.toObject(message.pagination, options);
@@ -14092,6 +14144,744 @@ export const botany = $root.botany = (() => {
             };
 
             return QueryAllCdpResponse;
+        })();
+
+        cdp.QueryAllAccountRequest = (function() {
+
+            /**
+             * Properties of a QueryAllAccountRequest.
+             * @memberof botany.cdp
+             * @interface IQueryAllAccountRequest
+             */
+
+            /**
+             * Constructs a new QueryAllAccountRequest.
+             * @memberof botany.cdp
+             * @classdesc Represents a QueryAllAccountRequest.
+             * @implements IQueryAllAccountRequest
+             * @constructor
+             * @param {botany.cdp.IQueryAllAccountRequest=} [properties] Properties to set
+             */
+            function QueryAllAccountRequest(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified QueryAllAccountRequest message. Does not implicitly {@link botany.cdp.QueryAllAccountRequest.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.QueryAllAccountRequest
+             * @static
+             * @param {botany.cdp.IQueryAllAccountRequest} message QueryAllAccountRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            QueryAllAccountRequest.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified QueryAllAccountRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryAllAccountRequest.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.QueryAllAccountRequest
+             * @static
+             * @param {botany.cdp.IQueryAllAccountRequest} message QueryAllAccountRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            QueryAllAccountRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a QueryAllAccountRequest message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.QueryAllAccountRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.QueryAllAccountRequest} QueryAllAccountRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            QueryAllAccountRequest.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.QueryAllAccountRequest();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a QueryAllAccountRequest message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.QueryAllAccountRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.QueryAllAccountRequest} QueryAllAccountRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            QueryAllAccountRequest.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a QueryAllAccountRequest message.
+             * @function verify
+             * @memberof botany.cdp.QueryAllAccountRequest
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            QueryAllAccountRequest.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a QueryAllAccountRequest message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.QueryAllAccountRequest
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.QueryAllAccountRequest} QueryAllAccountRequest
+             */
+            QueryAllAccountRequest.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.QueryAllAccountRequest)
+                    return object;
+                return new $root.botany.cdp.QueryAllAccountRequest();
+            };
+
+            /**
+             * Creates a plain object from a QueryAllAccountRequest message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.QueryAllAccountRequest
+             * @static
+             * @param {botany.cdp.QueryAllAccountRequest} message QueryAllAccountRequest
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            QueryAllAccountRequest.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this QueryAllAccountRequest to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.QueryAllAccountRequest
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            QueryAllAccountRequest.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return QueryAllAccountRequest;
+        })();
+
+        cdp.QueryAllAccountResponse = (function() {
+
+            /**
+             * Properties of a QueryAllAccountResponse.
+             * @memberof botany.cdp
+             * @interface IQueryAllAccountResponse
+             * @property {Array.<google.protobuf.IAny>|null} [accounts] QueryAllAccountResponse accounts
+             */
+
+            /**
+             * Constructs a new QueryAllAccountResponse.
+             * @memberof botany.cdp
+             * @classdesc Represents a QueryAllAccountResponse.
+             * @implements IQueryAllAccountResponse
+             * @constructor
+             * @param {botany.cdp.IQueryAllAccountResponse=} [properties] Properties to set
+             */
+            function QueryAllAccountResponse(properties) {
+                this.accounts = [];
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * QueryAllAccountResponse accounts.
+             * @member {Array.<google.protobuf.IAny>} accounts
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @instance
+             */
+            QueryAllAccountResponse.prototype.accounts = $util.emptyArray;
+
+            /**
+             * Encodes the specified QueryAllAccountResponse message. Does not implicitly {@link botany.cdp.QueryAllAccountResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @static
+             * @param {botany.cdp.IQueryAllAccountResponse} message QueryAllAccountResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            QueryAllAccountResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.accounts != null && message.accounts.length)
+                    for (let i = 0; i < message.accounts.length; ++i)
+                        $root.google.protobuf.Any.encode(message.accounts[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified QueryAllAccountResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryAllAccountResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @static
+             * @param {botany.cdp.IQueryAllAccountResponse} message QueryAllAccountResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            QueryAllAccountResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a QueryAllAccountResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.QueryAllAccountResponse} QueryAllAccountResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            QueryAllAccountResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.QueryAllAccountResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        if (!(message.accounts && message.accounts.length))
+                            message.accounts = [];
+                        message.accounts.push($root.google.protobuf.Any.decode(reader, reader.uint32()));
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a QueryAllAccountResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.QueryAllAccountResponse} QueryAllAccountResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            QueryAllAccountResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a QueryAllAccountResponse message.
+             * @function verify
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            QueryAllAccountResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.accounts != null && message.hasOwnProperty("accounts")) {
+                    if (!Array.isArray(message.accounts))
+                        return "accounts: array expected";
+                    for (let i = 0; i < message.accounts.length; ++i) {
+                        let error = $root.google.protobuf.Any.verify(message.accounts[i]);
+                        if (error)
+                            return "accounts." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a QueryAllAccountResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.QueryAllAccountResponse} QueryAllAccountResponse
+             */
+            QueryAllAccountResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.QueryAllAccountResponse)
+                    return object;
+                let message = new $root.botany.cdp.QueryAllAccountResponse();
+                if (object.accounts) {
+                    if (!Array.isArray(object.accounts))
+                        throw TypeError(".botany.cdp.QueryAllAccountResponse.accounts: array expected");
+                    message.accounts = [];
+                    for (let i = 0; i < object.accounts.length; ++i) {
+                        if (typeof object.accounts[i] !== "object")
+                            throw TypeError(".botany.cdp.QueryAllAccountResponse.accounts: object expected");
+                        message.accounts[i] = $root.google.protobuf.Any.fromObject(object.accounts[i]);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a QueryAllAccountResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @static
+             * @param {botany.cdp.QueryAllAccountResponse} message QueryAllAccountResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            QueryAllAccountResponse.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.arrays || options.defaults)
+                    object.accounts = [];
+                if (message.accounts && message.accounts.length) {
+                    object.accounts = [];
+                    for (let j = 0; j < message.accounts.length; ++j)
+                        object.accounts[j] = $root.google.protobuf.Any.toObject(message.accounts[j], options);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this QueryAllAccountResponse to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.QueryAllAccountResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            QueryAllAccountResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return QueryAllAccountResponse;
+        })();
+
+        cdp.QueryAllDepositRequest = (function() {
+
+            /**
+             * Properties of a QueryAllDepositRequest.
+             * @memberof botany.cdp
+             * @interface IQueryAllDepositRequest
+             * @property {string|null} [owner] QueryAllDepositRequest owner
+             * @property {string|null} [collateral_type] QueryAllDepositRequest collateral_type
+             */
+
+            /**
+             * Constructs a new QueryAllDepositRequest.
+             * @memberof botany.cdp
+             * @classdesc Represents a QueryAllDepositRequest.
+             * @implements IQueryAllDepositRequest
+             * @constructor
+             * @param {botany.cdp.IQueryAllDepositRequest=} [properties] Properties to set
+             */
+            function QueryAllDepositRequest(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * QueryAllDepositRequest owner.
+             * @member {string} owner
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @instance
+             */
+            QueryAllDepositRequest.prototype.owner = "";
+
+            /**
+             * QueryAllDepositRequest collateral_type.
+             * @member {string} collateral_type
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @instance
+             */
+            QueryAllDepositRequest.prototype.collateral_type = "";
+
+            /**
+             * Encodes the specified QueryAllDepositRequest message. Does not implicitly {@link botany.cdp.QueryAllDepositRequest.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @static
+             * @param {botany.cdp.IQueryAllDepositRequest} message QueryAllDepositRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            QueryAllDepositRequest.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.owner);
+                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.collateral_type);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified QueryAllDepositRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryAllDepositRequest.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @static
+             * @param {botany.cdp.IQueryAllDepositRequest} message QueryAllDepositRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            QueryAllDepositRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a QueryAllDepositRequest message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.QueryAllDepositRequest} QueryAllDepositRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            QueryAllDepositRequest.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.QueryAllDepositRequest();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.owner = reader.string();
+                        break;
+                    case 2:
+                        message.collateral_type = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a QueryAllDepositRequest message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.QueryAllDepositRequest} QueryAllDepositRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            QueryAllDepositRequest.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a QueryAllDepositRequest message.
+             * @function verify
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            QueryAllDepositRequest.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.owner != null && message.hasOwnProperty("owner"))
+                    if (!$util.isString(message.owner))
+                        return "owner: string expected";
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    if (!$util.isString(message.collateral_type))
+                        return "collateral_type: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a QueryAllDepositRequest message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.QueryAllDepositRequest} QueryAllDepositRequest
+             */
+            QueryAllDepositRequest.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.QueryAllDepositRequest)
+                    return object;
+                let message = new $root.botany.cdp.QueryAllDepositRequest();
+                if (object.owner != null)
+                    message.owner = String(object.owner);
+                if (object.collateral_type != null)
+                    message.collateral_type = String(object.collateral_type);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a QueryAllDepositRequest message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @static
+             * @param {botany.cdp.QueryAllDepositRequest} message QueryAllDepositRequest
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            QueryAllDepositRequest.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.owner = "";
+                    object.collateral_type = "";
+                }
+                if (message.owner != null && message.hasOwnProperty("owner"))
+                    object.owner = message.owner;
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    object.collateral_type = message.collateral_type;
+                return object;
+            };
+
+            /**
+             * Converts this QueryAllDepositRequest to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.QueryAllDepositRequest
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            QueryAllDepositRequest.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return QueryAllDepositRequest;
+        })();
+
+        cdp.QueryAllDepositResponse = (function() {
+
+            /**
+             * Properties of a QueryAllDepositResponse.
+             * @memberof botany.cdp
+             * @interface IQueryAllDepositResponse
+             * @property {Array.<botany.cdp.IDeposit>|null} [deposits] QueryAllDepositResponse deposits
+             */
+
+            /**
+             * Constructs a new QueryAllDepositResponse.
+             * @memberof botany.cdp
+             * @classdesc Represents a QueryAllDepositResponse.
+             * @implements IQueryAllDepositResponse
+             * @constructor
+             * @param {botany.cdp.IQueryAllDepositResponse=} [properties] Properties to set
+             */
+            function QueryAllDepositResponse(properties) {
+                this.deposits = [];
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * QueryAllDepositResponse deposits.
+             * @member {Array.<botany.cdp.IDeposit>} deposits
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @instance
+             */
+            QueryAllDepositResponse.prototype.deposits = $util.emptyArray;
+
+            /**
+             * Encodes the specified QueryAllDepositResponse message. Does not implicitly {@link botany.cdp.QueryAllDepositResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @static
+             * @param {botany.cdp.IQueryAllDepositResponse} message QueryAllDepositResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            QueryAllDepositResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.deposits != null && message.deposits.length)
+                    for (let i = 0; i < message.deposits.length; ++i)
+                        $root.botany.cdp.Deposit.encode(message.deposits[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified QueryAllDepositResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryAllDepositResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @static
+             * @param {botany.cdp.IQueryAllDepositResponse} message QueryAllDepositResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            QueryAllDepositResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a QueryAllDepositResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.QueryAllDepositResponse} QueryAllDepositResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            QueryAllDepositResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.QueryAllDepositResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        if (!(message.deposits && message.deposits.length))
+                            message.deposits = [];
+                        message.deposits.push($root.botany.cdp.Deposit.decode(reader, reader.uint32()));
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a QueryAllDepositResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.QueryAllDepositResponse} QueryAllDepositResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            QueryAllDepositResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a QueryAllDepositResponse message.
+             * @function verify
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            QueryAllDepositResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.deposits != null && message.hasOwnProperty("deposits")) {
+                    if (!Array.isArray(message.deposits))
+                        return "deposits: array expected";
+                    for (let i = 0; i < message.deposits.length; ++i) {
+                        let error = $root.botany.cdp.Deposit.verify(message.deposits[i]);
+                        if (error)
+                            return "deposits." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a QueryAllDepositResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.QueryAllDepositResponse} QueryAllDepositResponse
+             */
+            QueryAllDepositResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.QueryAllDepositResponse)
+                    return object;
+                let message = new $root.botany.cdp.QueryAllDepositResponse();
+                if (object.deposits) {
+                    if (!Array.isArray(object.deposits))
+                        throw TypeError(".botany.cdp.QueryAllDepositResponse.deposits: array expected");
+                    message.deposits = [];
+                    for (let i = 0; i < object.deposits.length; ++i) {
+                        if (typeof object.deposits[i] !== "object")
+                            throw TypeError(".botany.cdp.QueryAllDepositResponse.deposits: object expected");
+                        message.deposits[i] = $root.botany.cdp.Deposit.fromObject(object.deposits[i]);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a QueryAllDepositResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @static
+             * @param {botany.cdp.QueryAllDepositResponse} message QueryAllDepositResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            QueryAllDepositResponse.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.arrays || options.defaults)
+                    object.deposits = [];
+                if (message.deposits && message.deposits.length) {
+                    object.deposits = [];
+                    for (let j = 0; j < message.deposits.length; ++j)
+                        object.deposits[j] = $root.botany.cdp.Deposit.toObject(message.deposits[j], options);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this QueryAllDepositResponse to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.QueryAllDepositResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            QueryAllDepositResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return QueryAllDepositResponse;
         })();
 
         cdp.Cdp = (function() {

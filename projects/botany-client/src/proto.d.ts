@@ -5543,6 +5543,34 @@ export namespace botany {
              * @returns Promise
              */
             public cdpAll(request: botany.cdp.IQueryAllCdpRequest): Promise<botany.cdp.QueryAllCdpResponse>;
+
+            /**
+             * Calls AccountAll.
+             * @param request QueryAllAccountRequest message or plain object
+             * @param callback Node-style callback called with the error, if any, and QueryAllAccountResponse
+             */
+            public accountAll(request: botany.cdp.IQueryAllAccountRequest, callback: botany.cdp.Query.AccountAllCallback): void;
+
+            /**
+             * Calls AccountAll.
+             * @param request QueryAllAccountRequest message or plain object
+             * @returns Promise
+             */
+            public accountAll(request: botany.cdp.IQueryAllAccountRequest): Promise<botany.cdp.QueryAllAccountResponse>;
+
+            /**
+             * Calls DepositAll.
+             * @param request QueryAllDepositRequest message or plain object
+             * @param callback Node-style callback called with the error, if any, and QueryAllDepositResponse
+             */
+            public depositAll(request: botany.cdp.IQueryAllDepositRequest, callback: botany.cdp.Query.DepositAllCallback): void;
+
+            /**
+             * Calls DepositAll.
+             * @param request QueryAllDepositRequest message or plain object
+             * @returns Promise
+             */
+            public depositAll(request: botany.cdp.IQueryAllDepositRequest): Promise<botany.cdp.QueryAllDepositResponse>;
         }
 
         namespace Query {
@@ -5567,6 +5595,20 @@ export namespace botany {
              * @param [response] QueryAllCdpResponse
              */
             type CdpAllCallback = (error: (Error|null), response?: botany.cdp.QueryAllCdpResponse) => void;
+
+            /**
+             * Callback as used by {@link botany.cdp.Query#accountAll}.
+             * @param error Error, if any
+             * @param [response] QueryAllAccountResponse
+             */
+            type AccountAllCallback = (error: (Error|null), response?: botany.cdp.QueryAllAccountResponse) => void;
+
+            /**
+             * Callback as used by {@link botany.cdp.Query#depositAll}.
+             * @param error Error, if any
+             * @param [response] QueryAllDepositResponse
+             */
+            type DepositAllCallback = (error: (Error|null), response?: botany.cdp.QueryAllDepositResponse) => void;
         }
 
         /** Properties of a QueryParamsRequest. */
@@ -5732,8 +5774,8 @@ export namespace botany {
         /** Properties of a QueryGetCdpRequest. */
         interface IQueryGetCdpRequest {
 
-            /** QueryGetCdpRequest id */
-            id?: (Long|null);
+            /** QueryGetCdpRequest owner */
+            owner?: (string|null);
 
             /** QueryGetCdpRequest collateral_type */
             collateral_type?: (string|null);
@@ -5748,8 +5790,8 @@ export namespace botany {
              */
             constructor(properties?: botany.cdp.IQueryGetCdpRequest);
 
-            /** QueryGetCdpRequest id. */
-            public id: Long;
+            /** QueryGetCdpRequest owner. */
+            public owner: string;
 
             /** QueryGetCdpRequest collateral_type. */
             public collateral_type: string;
@@ -5822,7 +5864,7 @@ export namespace botany {
         interface IQueryGetCdpResponse {
 
             /** QueryGetCdpResponse cdp */
-            cdp?: (botany.cdp.ICdp|null);
+            cdp?: (botany.cdp.IAugmentedCdp|null);
         }
 
         /** Represents a QueryGetCdpResponse. */
@@ -5835,7 +5877,7 @@ export namespace botany {
             constructor(properties?: botany.cdp.IQueryGetCdpResponse);
 
             /** QueryGetCdpResponse cdp. */
-            public cdp?: (botany.cdp.ICdp|null);
+            public cdp?: (botany.cdp.IAugmentedCdp|null);
 
             /**
              * Encodes the specified QueryGetCdpResponse message. Does not implicitly {@link botany.cdp.QueryGetCdpResponse.verify|verify} messages.
@@ -5988,7 +6030,7 @@ export namespace botany {
         interface IQueryAllCdpResponse {
 
             /** QueryAllCdpResponse cdp */
-            cdp?: (botany.cdp.ICdp[]|null);
+            cdp?: (botany.cdp.IAugmentedCdp[]|null);
 
             /** QueryAllCdpResponse pagination */
             pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
@@ -6004,7 +6046,7 @@ export namespace botany {
             constructor(properties?: botany.cdp.IQueryAllCdpResponse);
 
             /** QueryAllCdpResponse cdp. */
-            public cdp: botany.cdp.ICdp[];
+            public cdp: botany.cdp.IAugmentedCdp[];
 
             /** QueryAllCdpResponse pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
@@ -6068,6 +6110,338 @@ export namespace botany {
 
             /**
              * Converts this QueryAllCdpResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryAllAccountRequest. */
+        interface IQueryAllAccountRequest {
+        }
+
+        /** Represents a QueryAllAccountRequest. */
+        class QueryAllAccountRequest implements IQueryAllAccountRequest {
+
+            /**
+             * Constructs a new QueryAllAccountRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IQueryAllAccountRequest);
+
+            /**
+             * Encodes the specified QueryAllAccountRequest message. Does not implicitly {@link botany.cdp.QueryAllAccountRequest.verify|verify} messages.
+             * @param message QueryAllAccountRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IQueryAllAccountRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryAllAccountRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryAllAccountRequest.verify|verify} messages.
+             * @param message QueryAllAccountRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IQueryAllAccountRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryAllAccountRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryAllAccountRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllAccountRequest;
+
+            /**
+             * Decodes a QueryAllAccountRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryAllAccountRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllAccountRequest;
+
+            /**
+             * Verifies a QueryAllAccountRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryAllAccountRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryAllAccountRequest
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllAccountRequest;
+
+            /**
+             * Creates a plain object from a QueryAllAccountRequest message. Also converts values to other types if specified.
+             * @param message QueryAllAccountRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.QueryAllAccountRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryAllAccountRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryAllAccountResponse. */
+        interface IQueryAllAccountResponse {
+
+            /** QueryAllAccountResponse accounts */
+            accounts?: (google.protobuf.IAny[]|null);
+        }
+
+        /** Represents a QueryAllAccountResponse. */
+        class QueryAllAccountResponse implements IQueryAllAccountResponse {
+
+            /**
+             * Constructs a new QueryAllAccountResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IQueryAllAccountResponse);
+
+            /** QueryAllAccountResponse accounts. */
+            public accounts: google.protobuf.IAny[];
+
+            /**
+             * Encodes the specified QueryAllAccountResponse message. Does not implicitly {@link botany.cdp.QueryAllAccountResponse.verify|verify} messages.
+             * @param message QueryAllAccountResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IQueryAllAccountResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryAllAccountResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryAllAccountResponse.verify|verify} messages.
+             * @param message QueryAllAccountResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IQueryAllAccountResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryAllAccountResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryAllAccountResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllAccountResponse;
+
+            /**
+             * Decodes a QueryAllAccountResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryAllAccountResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllAccountResponse;
+
+            /**
+             * Verifies a QueryAllAccountResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryAllAccountResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryAllAccountResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllAccountResponse;
+
+            /**
+             * Creates a plain object from a QueryAllAccountResponse message. Also converts values to other types if specified.
+             * @param message QueryAllAccountResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.QueryAllAccountResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryAllAccountResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryAllDepositRequest. */
+        interface IQueryAllDepositRequest {
+
+            /** QueryAllDepositRequest owner */
+            owner?: (string|null);
+
+            /** QueryAllDepositRequest collateral_type */
+            collateral_type?: (string|null);
+        }
+
+        /** Represents a QueryAllDepositRequest. */
+        class QueryAllDepositRequest implements IQueryAllDepositRequest {
+
+            /**
+             * Constructs a new QueryAllDepositRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IQueryAllDepositRequest);
+
+            /** QueryAllDepositRequest owner. */
+            public owner: string;
+
+            /** QueryAllDepositRequest collateral_type. */
+            public collateral_type: string;
+
+            /**
+             * Encodes the specified QueryAllDepositRequest message. Does not implicitly {@link botany.cdp.QueryAllDepositRequest.verify|verify} messages.
+             * @param message QueryAllDepositRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IQueryAllDepositRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryAllDepositRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryAllDepositRequest.verify|verify} messages.
+             * @param message QueryAllDepositRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IQueryAllDepositRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryAllDepositRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryAllDepositRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllDepositRequest;
+
+            /**
+             * Decodes a QueryAllDepositRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryAllDepositRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllDepositRequest;
+
+            /**
+             * Verifies a QueryAllDepositRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryAllDepositRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryAllDepositRequest
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllDepositRequest;
+
+            /**
+             * Creates a plain object from a QueryAllDepositRequest message. Also converts values to other types if specified.
+             * @param message QueryAllDepositRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.QueryAllDepositRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryAllDepositRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryAllDepositResponse. */
+        interface IQueryAllDepositResponse {
+
+            /** QueryAllDepositResponse deposits */
+            deposits?: (botany.cdp.IDeposit[]|null);
+        }
+
+        /** Represents a QueryAllDepositResponse. */
+        class QueryAllDepositResponse implements IQueryAllDepositResponse {
+
+            /**
+             * Constructs a new QueryAllDepositResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IQueryAllDepositResponse);
+
+            /** QueryAllDepositResponse deposits. */
+            public deposits: botany.cdp.IDeposit[];
+
+            /**
+             * Encodes the specified QueryAllDepositResponse message. Does not implicitly {@link botany.cdp.QueryAllDepositResponse.verify|verify} messages.
+             * @param message QueryAllDepositResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IQueryAllDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryAllDepositResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryAllDepositResponse.verify|verify} messages.
+             * @param message QueryAllDepositResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IQueryAllDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryAllDepositResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryAllDepositResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllDepositResponse;
+
+            /**
+             * Decodes a QueryAllDepositResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryAllDepositResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllDepositResponse;
+
+            /**
+             * Verifies a QueryAllDepositResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryAllDepositResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryAllDepositResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllDepositResponse;
+
+            /**
+             * Creates a plain object from a QueryAllDepositResponse message. Also converts values to other types if specified.
+             * @param message QueryAllDepositResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.QueryAllDepositResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryAllDepositResponse to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };

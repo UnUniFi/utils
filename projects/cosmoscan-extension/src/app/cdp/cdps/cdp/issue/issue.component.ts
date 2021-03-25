@@ -48,7 +48,6 @@ export class IssueComponent implements OnInit {
     this.cdpApplicationService.drawCDP(
       $event.key,
       $event.privateKey,
-      $event.ownerAddr,
       $event.denom,
       $event.principal,
     );

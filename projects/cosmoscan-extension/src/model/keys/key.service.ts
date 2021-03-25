@@ -1,27 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Coin } from 'cosmos-client/api';
-import {
-  PrivKeySecp256k1,
-  PrivKeyEd25519,
-  PubKeySecp256k1,
-  PubKeyEd25519,
-} from 'cosmos-client';
-import {
-  PrivKeySr25519,
-  PubKeySr25519,
-} from 'cosmos-client/tendermint/types/sr25519';
 import { Key, KeyType } from './key.model';
 import { KeyInfrastructureService } from './key.infrastructure.service';
+import { cosmosclient } from 'cosmos-client';
 
 export interface IKeyInfrastructure {
-  getPrivKey(
-    type: KeyType,
-    privateKey: string,
-  ): PrivKeySecp256k1 | PrivKeyEd25519 | PrivKeySr25519;
-  getPubKey(
-    type: KeyType,
-    publicKey: string,
-  ): PubKeySecp256k1 | PubKeyEd25519 | PubKeySr25519;
+  getPrivKey(type: KeyType, privateKey: string): cosmosclient.PrivKey;
+  getPubKey(type: KeyType, publicKey: string): cosmosclient.PubKey;
   getPrivateKeyFromMnemonic(mnemonic: string): Promise<string>;
   get(id: string): Promise<Key | undefined>;
   list(): Promise<Key[]>;
@@ -38,8 +22,12 @@ export class KeyService {
     this.iKeyInfrastructure = keyInfrastructure;
   }
 
-  getPubKey(keyType: KeyType, pubkey: string) {
-    return this.iKeyInfrastructure.getPubKey(keyType, pubkey);
+  getPrivKey(type: KeyType, privateKey: string) {
+    return this.iKeyInfrastructure.getPrivKey(type, privateKey);
+  }
+
+  getPubKey(type: KeyType, publicKey: string) {
+    return this.iKeyInfrastructure.getPubKey(type, publicKey);
   }
 
   getPrivateKeyFromMnemonic(mnemonic: string) {

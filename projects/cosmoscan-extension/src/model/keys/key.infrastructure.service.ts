@@ -3,16 +3,9 @@ import Dexie from 'dexie';
 import { Key, KeyType } from './key.model';
 import { IKeyInfrastructure } from './key.service';
 import {
-  PrivKeySecp256k1,
-  PrivKeyEd25519,
-  PubKeySecp256k1,
-  PubKeyEd25519,
+  cosmosclient
 } from 'cosmos-client';
-import {
-  PrivKeySr25519,
-  PubKeySr25519,
-} from 'cosmos-client/tendermint/types/sr25519';
-import { CosmosSDKService } from '@model-ce/cosmos-sdk.service';
+import { CosmosSDKService } from '../../model/cosmos-sdk.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,33 +21,34 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
     });
   }
 
-  getPubKey(type: KeyType, publicKey: string) {
-    const publicKeyBuffer = Buffer.from(publicKey, 'hex');
-    switch (type) {
-      case KeyType.SECP256K1:
-        return new PubKeySecp256k1(publicKeyBuffer);
-      case KeyType.ED25519:
-        return new PubKeyEd25519(publicKeyBuffer);
-      case KeyType.SR25519:
-        return new PubKeySr25519(publicKeyBuffer);
-    }
-  }
-
   getPrivKey(type: KeyType, privateKey: string) {
     const privKeyBuffer = Buffer.from(privateKey, 'hex');
     switch (type) {
       case KeyType.SECP256K1:
-        return new PrivKeySecp256k1(privKeyBuffer);
+        return new cosmosclient.secp256k1.PrivKey({ key: privKeyBuffer });
       case KeyType.ED25519:
-        return new PrivKeyEd25519(privKeyBuffer);
+        throw Error('not supported yet')
       case KeyType.SR25519:
-        return new PrivKeySr25519(privKeyBuffer);
+        throw Error('not supported yet')
+    }
+  }
+
+  getPubKey(type: KeyType, publicKey: string) {
+    const pubKeyBuffer = Buffer.from(publicKey, 'hex');
+    switch (type) {
+      case KeyType.SECP256K1:
+        return new cosmosclient.secp256k1.PubKey({ key: pubKeyBuffer });
+      case KeyType.ED25519:
+        throw Error('not supported yet')
+      case KeyType.SR25519:
+        throw Error('not supported yet')
     }
   }
 
   async getPrivateKeyFromMnemonic(mnemonic: string) {
-    return (
-      await this.cosmosSDK.sdk.generatePrivKeyFromMnemonic(mnemonic)
+
+    return Buffer.from(
+      await cosmosclient.generatePrivKeyFromMnemonic(mnemonic)
     ).toString('hex');
   }
 
@@ -102,7 +96,7 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
     }
 
     const privKey = this.getPrivKey(type, privateKey);
-    const publicKey = privKey.getPubKey().toBase64();
+    const publicKey = Buffer.from(privKey.pubKey().bytes()).toString('hex');
 
     const data: Key = {
       id,

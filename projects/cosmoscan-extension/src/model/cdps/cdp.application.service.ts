@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AccAddress } from 'cosmos-client';
-import { Coin } from 'cosmos-client/api';
+import { cosmosclient, cosmos } from 'cosmos-client';
 import { LoadingDialogService } from 'ng-loading-dialog';
 import { Key } from '../keys/key.model';
 import { CdpService } from './cdp.service';
@@ -16,13 +15,13 @@ export class CdpApplicationService {
     private readonly snackBar: MatSnackBar,
     private readonly loadingDialog: LoadingDialogService,
     private readonly cdp: CdpService,
-  ) {}
+  ) { }
 
   async createCDP(
     key: Key,
     privateKey: string,
-    collateral: Coin,
-    principal: Coin,
+    collateral: cosmos.base.v1beta1.ICoin,
+    principal: cosmos.base.v1beta1.ICoin,
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
@@ -58,9 +57,8 @@ export class CdpApplicationService {
   async drawCDP(
     key: Key,
     privateKey: string,
-    ownerAddr: AccAddress,
     denom: string,
-    principal: Coin,
+    principal: cosmos.base.v1beta1.ICoin,
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
@@ -69,7 +67,6 @@ export class CdpApplicationService {
       const res: any = await this.cdp.drawCDP(
         key,
         privateKey,
-        ownerAddr,
         denom,
         principal,
       );
@@ -97,9 +94,8 @@ export class CdpApplicationService {
   async repayCDP(
     key: Key,
     privateKey: string,
-    ownerAddr: AccAddress,
     denom: string,
-    payment: Coin,
+    payment: cosmos.base.v1beta1.ICoin,
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
@@ -108,7 +104,6 @@ export class CdpApplicationService {
       const res: any = await this.cdp.repayCDP(
         key,
         privateKey,
-        ownerAddr,
         denom,
         payment,
       );
@@ -136,8 +131,8 @@ export class CdpApplicationService {
   async depositCDP(
     key: Key,
     privateKey: string,
-    ownerAddr: AccAddress,
-    collateral: Coin,
+    ownerAddr: cosmosclient.AccAddress,
+    collateral: cosmos.base.v1beta1.ICoin,
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
@@ -174,8 +169,8 @@ export class CdpApplicationService {
   async withdrawCDP(
     key: Key,
     privateKey: string,
-    ownerAddr: AccAddress,
-    collateral: Coin,
+    ownerAddr: cosmosclient.AccAddress,
+    collateral: cosmos.base.v1beta1.ICoin,
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 

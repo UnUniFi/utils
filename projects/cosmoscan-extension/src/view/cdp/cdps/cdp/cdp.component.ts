@@ -1,10 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  CDP,
-  CdpParameters,
-  Deposit,
-} from 'projects/cosmoscan-extension/src/x/cdp/api';
-import { Price } from 'projects/cosmoscan-extension/src/x/pricefeed/api';
+import { botany } from 'botany-client';
+import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'projects/botany-client/dist/openapi-eurx';
 
 @Component({
   selector: 'view-cdp',
@@ -19,19 +15,19 @@ export class CdpComponent implements OnInit {
   denom?: string | null;
 
   @Input()
-  params?: CdpParameters | null;
+  params?: botany.cdp.IParams | null;
 
   @Input()
-  cdp?: CDP | null;
+  cdp?: InlineResponse2004Cdp1 | null;
 
   @Input()
-  deposits?: Deposit[] | null;
+  deposits?: InlineResponse2006Deposits[] | null;
 
   @Input()
-  spotPrice?: Price | null;
+  spotPrice?: botany.pricefeed.ICurrentPrice | null;
 
   @Input()
-  liquidationPrice?: Price | null;
+  liquidationPrice?: botany.pricefeed.ICurrentPrice | null;
 
   @Input()
   withdrawLimit?: number | null;
@@ -39,7 +35,7 @@ export class CdpComponent implements OnInit {
   @Input()
   issueLimit?: number | null;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     setTimeout(() => {

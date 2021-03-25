@@ -16,7 +16,8 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": ["es2020", "dom"],
+    "lib": ["es2018", "dom"],
+    "types": ["node"],
     "paths": {
       "@app-ce/*": ["projects/cosmoscan-extension/src/app/*"],
       "@environments-ce/*": ["projects/cosmoscan-extension/src/environments/*"],
@@ -27,7 +28,8 @@
       "@model-w/*": ["projects/website/src/model/*"],
       "@view-w/*": ["projects/website/src/view/*"]
     },
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

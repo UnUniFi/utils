@@ -37,7 +37,8 @@ export class IssueComponent implements OnInit {
     );
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.denom$ = this.route.params.pipe(map((params) => params['denom']));
-    this.principalDenom$ = from(rest.botany.cdp.params(this.cosmosSdk.sdk)).pipe(
+    this.principalDenom$ = this.cosmosSdk.sdk$.pipe(
+      mergeMap(sdk => rest.botany.cdp.params(sdk.rest)),
       map((res) => res.data.params?.debt_param?.denom || ''),
     );
   }

@@ -37,7 +37,8 @@ export class ClearComponent implements OnInit {
     );
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.denom$ = this.route.params.pipe(map((params) => params['denom']));
-    this.paymentDenom$ = from(rest.botany.cdp.params(this.cosmosSdk.sdk)).pipe(
+    this.paymentDenom$ = this.cosmosSdk.sdk$.pipe(
+      mergeMap(sdk => rest.botany.cdp.params(sdk.rest)),
       map((param) => param.data.params?.debt_param?.denom || ''),
     );
   }
@@ -48,7 +49,6 @@ export class ClearComponent implements OnInit {
     this.cdpApplicationService.repayCDP(
       $event.key,
       $event.privateKey,
-      $event.ownerAddr,
       $event.denom,
       $event.payment,
     );

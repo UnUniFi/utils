@@ -8,7 +8,7 @@ import { botany } from 'botany-client';
 })
 export class CdpComponent implements OnInit {
   @Input()
-  params?: botany.cdp.Params | null;
+  params?: botany.cdp.IParams | null;
 
   constructor() { }
 

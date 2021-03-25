@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, timer } from 'rxjs';
+import { combineLatest, Observable, timer } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { CosmosSDKService } from '@model-ce/cosmos-sdk.service';
 import { botany, rest } from 'botany-client'
@@ -14,8 +14,8 @@ export class CdpComponent implements OnInit {
   constructor(private cosmosSDK: CosmosSDKService) {
     const timer$ = timer(0, 60 * 1000);
 
-    this.params$ = timer$.pipe(
-      mergeMap((_) => rest.botany.cdp.params(this.cosmosSDK.sdk)),
+    this.params$ = combineLatest([this.cosmosSDK.sdk$, timer$]).pipe(
+      mergeMap(([sdk, _]) => rest.botany.cdp.params(sdk.rest)),
       map((res) => res.data.params!),
     );
   }

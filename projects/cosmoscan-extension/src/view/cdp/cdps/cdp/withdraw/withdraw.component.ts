@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Key } from '@model-ce/keys/key.model';
-import { AccAddress } from 'cosmos-client';
-import { Coin } from 'cosmos-client/api';
+import { cosmosclient, cosmos } from 'cosmos-client';
 
 export type WithdrawCdpOnSubmitEvent = {
   key: Key;
   privateKey: string;
-  ownerAddr: AccAddress;
-  collateral: Coin;
+  ownerAddr: cosmosclient.AccAddress;
+  collateral: cosmos.base.v1beta1.ICoin;
 };
 
 @Component({
@@ -35,7 +34,7 @@ export class WithdrawComponent implements OnInit {
     this.collateral_amount = '';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit(
     privateKey: string,
@@ -46,7 +45,7 @@ export class WithdrawComponent implements OnInit {
     this.appSubmit.emit({
       key: this.key!,
       privateKey: privateKey,
-      ownerAddr: AccAddress.fromBech32(ownerAddr),
+      ownerAddr: cosmosclient.AccAddress.fromString(ownerAddr),
       collateral: {
         denom: collateralDenom,
         amount: collateralAmount,

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CDP } from '../../../x/cdp/api';
 import * as crypto from 'crypto';
+import { InlineResponse2004Cdp1 } from 'projects/botany-client/dist/openapi-eurx';
 
 @Component({
   selector: 'view-cdps',
@@ -9,16 +9,16 @@ import * as crypto from 'crypto';
 })
 export class CdpsComponent implements OnInit {
   @Input()
-  cdps?: CDP[] | null;
+  cdps?: InlineResponse2004Cdp1[] | null;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  getColorCode(cdp: CDP) {
+  getColorCode(cdp: InlineResponse2004Cdp1) {
     const hash = crypto
       .createHash('sha256')
-      .update(Buffer.from(`${cdp.cdp.owner}/${cdp.cdp.collateral.denom}`))
+      .update(Buffer.from(`${cdp.cdp!.owner}/${cdp.cdp!.collateral!.denom}`))
       .digest()
       .toString('hex');
 

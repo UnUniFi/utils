@@ -1,4 +1,5 @@
 {
+  "chain_id": "jpyx-1-test",
   "bech32_prefix": {
     "acc_addr": "jpyx",
     "acc_pub": "jpyxpub",

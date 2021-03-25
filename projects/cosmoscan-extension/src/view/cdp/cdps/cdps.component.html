@@ -22,11 +22,11 @@
   </ng-template>
   <ng-template #exist>
     <ng-container *ngFor="let cdp of cdps">
-      <mat-list-item [routerLink]="[cdp.cdp.owner, cdp.cdp.collateral.denom]">
+      <mat-list-item [routerLink]="[cdp.cdp?.owner, cdp.cdp?.collateral?.denom]">
         <mat-icon matListIcon [ngStyle]="{ color: getColorCode(cdp) }">
           circle
         </mat-icon>
-        <span>{{ cdp.cdp.collateral.denom }}</span>
+        <span>{{ cdp.cdp?.collateral?.denom }}</span>
       </mat-list-item>
       <mat-divider></mat-divider>
     </ng-container>

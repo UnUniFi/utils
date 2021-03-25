@@ -25,13 +25,14 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     collateral: cosmos.base.v1beta1.ICoin,
     principal: cosmos.base.v1beta1.ICoin,
   ) {
+    const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey()
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
     const account = await rest.cosmos.auth
-      .account(this.cosmosSDK.sdk, sender)
+      .account(sdk.rest, sender)
       .then((res) => res.data.account && cosmosclient.codec.unpackAny(res.data.account))
       .catch((_) => undefined);
 
@@ -69,11 +70,11 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
 
     // sign
-    const txBuilder = new cosmosclient.TxBuilder(this.cosmosSDK.sdk, txBody, authInfo);
+    const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
     const signDoc = txBuilder.signDoc(account.account_number);
     txBuilder.addSignature(privKey, signDoc);
 
-    return await rest.cosmos.tx.broadcastTx(this.cosmosSDK.sdk, {
+    return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
       mode: rest.cosmos.tx.BroadcastTxMode.Block,
     });
@@ -85,13 +86,14 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     denom: string,
     principal: cosmos.base.v1beta1.ICoin,
   ) {
+    const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey()
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
     const account = await rest.cosmos.auth
-      .account(this.cosmosSDK.sdk, sender)
+      .account(sdk.rest, sender)
       .then((res) => res.data.account && cosmosclient.codec.unpackAny(res.data.account))
       .catch((_) => undefined);
 
@@ -128,11 +130,11 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
 
     // sign
-    const txBuilder = new cosmosclient.TxBuilder(this.cosmosSDK.sdk, txBody, authInfo);
+    const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
     const signDoc = txBuilder.signDoc(account.account_number);
     txBuilder.addSignature(privKey, signDoc);
 
-    return await rest.cosmos.tx.broadcastTx(this.cosmosSDK.sdk, {
+    return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
       mode: rest.cosmos.tx.BroadcastTxMode.Block,
     });
@@ -144,13 +146,14 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     denom: string,
     payment: cosmos.base.v1beta1.ICoin,
   ) {
+    const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey()
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
     const account = await rest.cosmos.auth
-      .account(this.cosmosSDK.sdk, sender)
+      .account(sdk.rest, sender)
       .then((res) => res.data.account && cosmosclient.codec.unpackAny(res.data.account))
       .catch((_) => undefined);
 
@@ -187,11 +190,11 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
 
     // sign
-    const txBuilder = new cosmosclient.TxBuilder(this.cosmosSDK.sdk, txBody, authInfo);
+    const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
     const signDoc = txBuilder.signDoc(account.account_number);
     txBuilder.addSignature(privKey, signDoc);
 
-    return await rest.cosmos.tx.broadcastTx(this.cosmosSDK.sdk, {
+    return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
       mode: rest.cosmos.tx.BroadcastTxMode.Block,
     });
@@ -203,13 +206,14 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     ownerAddr: cosmosclient.AccAddress,
     collateral: cosmos.base.v1beta1.ICoin,
   ) {
+    const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey()
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
     const account = await rest.cosmos.auth
-      .account(this.cosmosSDK.sdk, sender)
+      .account(sdk.rest, sender)
       .then((res) => res.data.account && cosmosclient.codec.unpackAny(res.data.account))
       .catch((_) => undefined);
 
@@ -247,11 +251,11 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
 
     // sign
-    const txBuilder = new cosmosclient.TxBuilder(this.cosmosSDK.sdk, txBody, authInfo);
+    const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
     const signDoc = txBuilder.signDoc(account.account_number);
     txBuilder.addSignature(privKey, signDoc);
 
-    return await rest.cosmos.tx.broadcastTx(this.cosmosSDK.sdk, {
+    return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
       mode: rest.cosmos.tx.BroadcastTxMode.Block,
     });
@@ -263,14 +267,14 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     ownerAddr: cosmosclient.AccAddress,
     collateral: cosmos.base.v1beta1.ICoin,
   ) {
-
+    const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey()
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
     const account = await rest.cosmos.auth
-      .account(this.cosmosSDK.sdk, sender)
+      .account(sdk.rest, sender)
       .then((res) => res.data.account && cosmosclient.codec.unpackAny(res.data.account))
       .catch((_) => undefined);
 
@@ -308,11 +312,11 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
 
     // sign
-    const txBuilder = new cosmosclient.TxBuilder(this.cosmosSDK.sdk, txBody, authInfo);
+    const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
     const signDoc = txBuilder.signDoc(account.account_number);
     txBuilder.addSignature(privKey, signDoc);
 
-    return await rest.cosmos.tx.broadcastTx(this.cosmosSDK.sdk, {
+    return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
       mode: rest.cosmos.tx.BroadcastTxMode.Block,
     });

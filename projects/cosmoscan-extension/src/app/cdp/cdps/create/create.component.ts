@@ -33,7 +33,8 @@ export class CreateComponent implements OnInit {
     this.key$ = this.keyID$.pipe(
       mergeMap((keyId: string) => this.keyService.get(keyId)),
     );
-    this.cdpParams$ = from(rest.botany.cdp.params(this.cosmosSdk.sdk)).pipe(
+    this.cdpParams$ = this.cosmosSdk.sdk$.pipe(
+      mergeMap(sdk => rest.botany.cdp.params(sdk.rest)),
       map((param) => param.data.params),
     );
   }

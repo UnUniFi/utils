@@ -1,5 +1,5 @@
 {
-  "chain_id": "eurx-1",
+  "chain_id": "eurx-1-test",
   "bech32_prefix": {
     "acc_addr": "eurx",
     "acc_pub": "eurxpub",

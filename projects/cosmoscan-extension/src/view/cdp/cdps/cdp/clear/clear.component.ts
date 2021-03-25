@@ -1,14 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Key } from '@model-ce/keys/key.model';
-import { AccAddress } from 'cosmos-client';
-import { Coin } from 'cosmos-client/api';
+import { cosmosclient, cosmos } from 'cosmos-client';
 
 export type ClearCdpOnSubmitEvent = {
   key: Key;
   privateKey: string;
-  ownerAddr: AccAddress;
+  ownerAddr: cosmosclient.AccAddress;
   denom: string;
-  payment: Coin;
+  payment: cosmos.base.v1beta1.ICoin;
 };
 
 @Component({
@@ -39,7 +38,7 @@ export class ClearComponent implements OnInit {
     this.payment_amount = '';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit(
     privateKey: string,
@@ -51,7 +50,7 @@ export class ClearComponent implements OnInit {
     this.appSubmit.emit({
       key: this.key!,
       privateKey,
-      ownerAddr: AccAddress.fromBech32(ownerAddr),
+      ownerAddr: cosmosclient.AccAddress.fromString(ownerAddr),
       denom: collateralDenom,
       payment: {
         denom: paymentDenom,

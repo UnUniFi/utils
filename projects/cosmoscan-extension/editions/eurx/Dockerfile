@@ -1,4 +1,4 @@
-FROM node:12.14.1 as build-stage-base
+FROM node:14 as build-stage-base
 
 WORKDIR /root/app
 COPY ./cosmoscan/ /root/app/
@@ -6,7 +6,7 @@ COPY ./botany/projects/cosmoscan-extension/editions/eurx/config-eurx.json /root/
 RUN npm install
 RUN npm run build -- --prod
 
-FROM node:12.14.1 as build-stage
+FROM node:14 as build-stage
 
 WORKDIR /root/app
 COPY ./botany /root/app/

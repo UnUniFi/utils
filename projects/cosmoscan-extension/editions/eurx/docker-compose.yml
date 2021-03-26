@@ -2,9 +2,6 @@ version: "3"
 services:
   cosmoscan-eurx:
     image: lcnem/cosmoscan-eurx
-    # build:
-    #   context: ../../../../../
-    #   dockerfile: ./botany/projects/cosmoscan-extension/editions/eurx/Dockerfile
     volumes:
       - ../../nginx.conf:/etc/nginx/nginx.conf
     ports:

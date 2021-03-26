@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CosmosSDKService, KeyService } from '@model-ce/index';
 import { Key } from '@model-ce/keys/key.model';
 import { cosmosclient } from 'cosmos-client';
-import { botany, rest } from 'botany-client';
+import { rest } from 'botany-client';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
-import { InlineResponse2004Cdp1 } from 'projects/botany-client/dist/openapi-eurx';
+import { InlineResponse2004Cdp1 } from 'botany-client/openapi-eurx';
 
 @Component({
   selector: 'app-cdps',

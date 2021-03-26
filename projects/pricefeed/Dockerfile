@@ -1,8 +1,12 @@
-FROM node:14
+FROM node:14 as build-stage
 
 COPY . .
 
-RUN npm install
+RUN npm i
 RUN npm run build
+
+FROM node:14
+
+COPY --from=build-stage ./dist .
 
 CMD ["npm","run", "start:prod"]

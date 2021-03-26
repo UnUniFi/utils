@@ -12,6 +12,7 @@ import { ViewModule } from '@view-ce/view.module';
 import { HomeModule } from '@view-ce/home/home.module';
 import { ToolbarModule } from '@view-ce/toolbar/toolbar.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { KeySelectDialogModule } from '@view-ce/keys/key-select-dialog/key-select-dialog.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -25,8 +26,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ViewModule,
     HomeModule,
     ToolbarModule,
+    KeySelectDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { botany } from 'botany-client';
-import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'projects/botany-client/dist/openapi-eurx';
+import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'botany-client/openapi-eurx';
 
 @Component({
   selector: 'view-cdp',

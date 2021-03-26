@@ -17,7 +17,6 @@
     "target": "es2015",
     "module": "es2020",
     "lib": ["es2018", "dom"],
-    "types": ["node"],
     "paths": {
       "@app-ce/*": ["projects/cosmoscan-extension/src/app/*"],
       "@environments-ce/*": ["projects/cosmoscan-extension/src/environments/*"],

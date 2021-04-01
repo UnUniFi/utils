@@ -136,7 +136,21 @@ export class PriceOracle {
         marketID,
         aggravatedAverageUsdPrice,
       );
-      return { price: convertedPrice, success: true };
+      const denominatedPrice = (() => {
+        if (convertedPrice === null) {
+          return null
+        }
+        switch (marketID) {
+          case "ubtc:jpy":
+          case "ubtc:jpy:30":
+          case "ubtc:eur":
+          case "ubtc:eur:30":
+            return convertedPrice / 1000000;
+          default:
+            return convertedPrice;
+        }
+      })();
+      return { price: denominatedPrice, success: true };
     } catch (e) {
       console.log(`could not get ${marketID} price from Binance`);
       return { price: null, success: false };
@@ -145,11 +159,11 @@ export class PriceOracle {
 
   async fetchTickers(marketID: string) {
     switch (marketID) {
-      case "btc:jpy":
-      case "btc:eur":
+      case "ubtc:jpy":
+      case "ubtc:eur":
         return this.ccxt.fetchTickers(FIAT_CURRENCIES, "BTC");
-      case "btc:jpy:30":
-      case "btc:eur:30": {
+      case "ubtc:jpy:30":
+      case "ubtc:eur:30": {
         const candleSticls = await this.ccxt.fetchCandleSticks(
           FIAT_CURRENCIES,
           "BTC",
@@ -192,11 +206,11 @@ export class PriceOracle {
 
   getBaseCurrency(marketID: string) {
     switch (marketID) {
-      case "bnb:jpy":
-      case "bnb:jpy:30":
+      case "ubtc:jpy":
+      case "ubtc:jpy:30":
         return "JPY";
-      case "bnb:eur":
-      case "bnb:eur:30": {
+      case "ubtc:eur":
+      case "ubtc:eur:30": {
         return "EUR";
       }
     }
@@ -383,11 +397,11 @@ export class PriceOracle {
 
   marketIdToCcxtSymbol(marketId: string) {
     switch (marketId) {
-      case "btc:jpy":
-      case "btc:jpy:30":
+      case "ubtc:jpy":
+      case "ubtc:jpy:30":
         return "BTC/JPY";
-      case "btc:eur":
-      case "btc:eur:30":
+      case "ubtc:eur":
+      case "ubtc:eur:30":
         return "BTC/EUR";
       default:
         throw new Error(`Unsupported martketId: ${marketId}`);

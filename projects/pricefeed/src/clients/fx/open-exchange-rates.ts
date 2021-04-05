@@ -5,7 +5,7 @@ import { IFxClient } from "./interface";
 
 export default class OpenExchangeRatesClient implements IFxClient {
   private priceData: FiatCurrencyPrices | null = null;
-  constructor(private appId: string) {}
+  constructor(private appId: string) { }
 
   async getLatestRates() {
     const now = Math.floor(new Date().getTime() / 1000);

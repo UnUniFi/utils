@@ -1,13 +1,31 @@
 {
   "name": "botany-client",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "REST API Client for JPYX and EURX (Cosmos SDK) Blockchain",
-  "main": "index.js",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "exports": {
+    ".": {
+      "node": "./cjs/index.js",
+      "default": "./esm/index.js"
+    },
+    "./openapi-jpyx": {
+      "node": "./cjs/openapi-jpyx/index.js",
+      "default": "./esm/openapi-jpyx/index.js"
+    },
+    "./openapi-eurx": {
+      "node": "./cjs/openapi-eurx/index.js",
+      "default": "./esm/openapi-eurx/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "lint": "eslint \"src/**/*\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "build": "tsc --build --clean && tsc && node bundle",
+    "build": "rm -r dist ; mkdir dist && npm run build:cjs && npm run build:esm && node bundle",
+    "build:cjs": "tsc --build --clean && tsc --target es5 --module commonjs && mv lib dist/cjs",
+    "build:esm": "tsc --build --clean && tsc --target esnext --module esnext && mv lib dist/esm",
     "gen:openapi": "bash ./gen-openapi.sh",
     "gen:proto": "bash ./gen-proto.sh"
   },
@@ -15,7 +33,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
-    "cosmos-client": "^0.42.2-3",
+    "cosmos-client": "^0.42.3",
     "protobufjs": "^6.10.2"
   },
   "devDependencies": {

@@ -21,9 +21,9 @@
   "homepage": "https://github.com/lcnem/pricefeed#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "botany-client": "^0.3.4",
+    "botany-client": "^0.3.7",
     "ccxt": "^1.33.22",
-    "cosmos-client": "^0.42.2-3",
+    "cosmos-client": "^0.42.3",
     "dotenv": "^8.2.0",
     "log-timestamp": "^0.3.0",
     "node-cron": "^2.0.3",
@@ -31,6 +31,10 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
     "@types/axios": "^0.14.0",
     "@types/node": "^14.6.0",
     "@types/node-cron": "^2.0.3",

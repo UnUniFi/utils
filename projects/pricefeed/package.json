@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -p .",
+    "build": "tsc --build --clean && tsc && node bundle",
     "start:dev": "node --inspect=5859 -r ts-node/register ./src/index.ts",
     "start:prod": "node dist/index.js",
     "watch": "nodemon"

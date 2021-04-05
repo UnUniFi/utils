@@ -50,14 +50,14 @@ export class PriceOracle {
       .generatePrivKeyFromMnemonic(mnemonic)
       .then((buffer) => new cosmosclient.secp256k1.PrivKey({ key: buffer }));
     if (bech32Prefix) {
-      cosmosclient.config.bech32Prefix = {
+      cosmosclient.config.setBech32Prefix({
         accAddr: bech32Prefix,
         accPub: bech32Prefix + cosmosclient.AddressPrefix.Public,
         valAddr: bech32Prefix + cosmosclient.AddressPrefix.Validator + cosmosclient.AddressPrefix.Operator,
         valPub: bech32Prefix + cosmosclient.AddressPrefix.Validator + cosmosclient.AddressPrefix.Operator + cosmosclient.AddressPrefix.Public,
         consAddr: bech32Prefix + cosmosclient.AddressPrefix.Validator + cosmosclient.AddressPrefix.Consensus,
         consPub: bech32Prefix + cosmosclient.AddressPrefix.Validator + cosmosclient.AddressPrefix.Consensus + cosmosclient.AddressPrefix.Public,
-      };
+      });
     }
     this.ccxt = new CcxtClient();
   }

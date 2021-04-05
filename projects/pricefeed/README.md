@@ -6,7 +6,7 @@
 mkdir pricefeed
 cd pricefeed
 curl -O https://raw.githubusercontent.com/lcnem/botany/main/projects/pricefeed/docker-compose.yml
-curl -O .env https://raw.githubusercontent.com/lcnem/botany/main/projects/pricefeed/.env.example
+curl -L https://raw.githubusercontent.com/lcnem/botany/main/projects/pricefeed/.env.example > .env
 vi .env
 docker-compose up -d
 ```

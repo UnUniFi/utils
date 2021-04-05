@@ -9,4 +9,4 @@ FROM node:14
 
 COPY --from=build-stage ./dist .
 
-CMD ["npm","run", "start:prod"]
+CMD ["node", "."]

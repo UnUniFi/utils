@@ -14,3 +14,27 @@
 .table tr td:nth-child(2) {
   text-align: right;
 }
+
+footer {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #f2f2f2;
+}
+footer p {
+  display: block;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 15px 40px;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: right;
+  color: #a1a1a1;
+  box-sizing: border-box;
+}
+footer p span {
+  display: inline-block;
+  padding: 0 0 0 180px;
+  background: url(../images/logo.svg) no-repeat left 0 top 50%;
+  background-size: auto 18px;
+}

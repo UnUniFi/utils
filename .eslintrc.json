@@ -32,5 +32,8 @@
       "rules": {}
     }
   ],
-  "extends": ["eslint:recommended", ".eslint.prettierrc.json"]
+  "extends": [
+    "eslint:recommended",
+    ".eslint.prettierrc.json"
+  ]
 }

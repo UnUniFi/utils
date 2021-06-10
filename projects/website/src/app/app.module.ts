@@ -19,9 +19,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { LoadingDialogModule } from 'ng-loading-dialog';
 import { MaterialModule } from '@view-w/material.module';
+import { MatDrawerComponent } from './mat-drawer/mat-drawer.component';
+
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DocsComponent],
+  declarations: [AppComponent, HomeComponent, DocsComponent, MatDrawerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,4 +43,4 @@ import { MaterialModule } from '@view-w/material.module';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

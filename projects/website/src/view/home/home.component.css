@@ -1,12 +1,13 @@
 @charset "UTF-8";
 
+/* tsunoda
 body {
   margin: 0;
   padding: 0;
   font-family: Roboto, Helvetica Neue, sans-serif;
   color: #212121;
   letter-spacing: 0.5px;
-}
+} */
 
 a,
 a:visited,
@@ -51,6 +52,7 @@ li {
   color: #6c8fb6;
 }
 
+/* tsunoda
 body {
   background-image: url(./../../assets/images/circle-animation.svg);
   background-position: 50%;
@@ -59,6 +61,7 @@ body {
   background-color: rgba(255, 255, 255, 0.75);
   background-blend-mode: lighten;
 }
+*/
 
 header {
   position: fixed;
@@ -69,6 +72,7 @@ header {
   z-index: 10;
   border-bottom: 1px solid #f2f2f2;
 }
+
 #hdr-box {
   position: relative;
   display: block;

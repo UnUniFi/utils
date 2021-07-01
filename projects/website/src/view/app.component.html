@@ -1,21 +1,22 @@
+<!--
 <mat-drawer-container>
-  <!--  <mat-drawer #drawer class="mat-elevation-z16" [mode]="(drawerMode$ | async) || 'over'"
-    [opened]="drawerOpened$ | async"> -->
-  <mat-toolbar class="mat-elevation-z4 toolbar" color="primary">
-    <!--  <img class="icon" src="assets/images/logo.svg" /> -->
-    <img class="icon" src="/projects/website/src/assets/images/logo.svg" />
-    <h1>JPYX, EURX</h1>
-  </mat-toolbar>
-  <mat-nav-list>
-    <mat-list-item routerLink="/">Home</mat-list-item>
-    <mat-list-item routerLink="/docs">Documentation</mat-list-item>
-  </mat-nav-list>
-  <!-- </mat-drawer> -->
+  <mat-drawer #drawer class="mat-elevation-z16" [mode]="(drawerMode$ | async) || 'over'"
+    [opened]="drawerOpened$ | async">
+    <mat-toolbar class="mat-elevation-z4 toolbar" color="primary">
+      <img class="icon" src="assets/images/logo.svg" />
+      <h1>JPYX, EURX</h1>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item routerLink="/">Home</mat-list-item>
+      <mat-list-item routerLink="/docs">Documentation</mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+
   <mat-drawer-content>
     <mat-toolbar class="mat-elevation-z4 toolbar" color="primary">
-      <!-- <button mat-icon-button fxHide fxShow.xs (click)="drawer.toggle()">
+      <button mat-icon-button fxHide fxShow.xs (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
-      </button> -->
+      </button>
       <span fxFlex="auto"></span>
       <button mat-button routerLink="apply-validator">Apply validator</button>
       <a mat-button href="https://github.com/lcnem/jpyx" target="_blank">
@@ -32,3 +33,6 @@
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
+-->
+
+<ng-content></ng-content>

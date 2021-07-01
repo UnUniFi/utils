@@ -30,7 +30,7 @@
             "tsConfig": "projects/cosmoscan-extension/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/cosmoscan-extension/src/favicon.ico",
+              "projects/cosmoscan-extension/src/favicon.png",
               "projects/cosmoscan-extension/src/assets"
             ],
             "styles": [
@@ -94,7 +94,7 @@
             "tsConfig": "projects/cosmoscan-extension/tsconfig.spec.json",
             "karmaConfig": "projects/cosmoscan-extension/karma.conf.js",
             "assets": [
-              "projects/cosmoscan-extension/src/favicon.ico",
+              "projects/cosmoscan-extension/src/favicon.png",
               "projects/cosmoscan-extension/src/assets"
             ],
             "styles": [
@@ -143,7 +143,7 @@
             "polyfills": "projects/website/src/polyfills.ts",
             "tsConfig": "projects/website/tsconfig.app.json",
             "assets": [
-              "projects/website/src/favicon.ico",
+              "projects/website/src/favicon.png",
               "projects/website/src/assets"
             ],
             "styles": [
@@ -213,7 +213,7 @@
             "tsConfig": "projects/website/tsconfig.spec.json",
             "karmaConfig": "projects/website/karma.conf.js",
             "assets": [
-              "projects/website/src/favicon.ico",
+              "projects/website/src/favicon.png",
               "projects/website/src/assets"
             ],
             "styles": [

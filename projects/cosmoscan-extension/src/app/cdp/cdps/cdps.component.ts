@@ -6,7 +6,7 @@ import { cosmosclient } from 'cosmos-client';
 import { rest } from 'botany-client';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
-import { InlineResponse2004Cdp1 } from 'botany-client/openapi-eurx';
+import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi-eurx';
 
 @Component({
   selector: 'app-cdps',

@@ -2,7 +2,7 @@ FROM node:14 as build-stage-base
 
 WORKDIR /root/app
 COPY ./cosmoscan/ /root/app/
-COPY ./botany/projects/cosmoscan-extension/editions/jpyx/config-jpyx.json /root/app/src/config.json
+COPY ./botany/projects/cosmoscan-extension/editions/jpyx/config-jpyx.json /root/app/projects/cosmoscan/src/config.json
 RUN npm ci
 RUN npm run build -- --prod
 

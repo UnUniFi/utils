@@ -1,10 +1,3 @@
-FROM node:14 as build-stage-base
-
-WORKDIR /root/app
-COPY ./cosmoscan/ /root/app/
-RUN npm ci
-RUN npm run build -- --prod
-
 FROM node:14 as build-stage
 
 WORKDIR /root/app
@@ -12,7 +5,6 @@ COPY ./botany /root/app/
 RUN npm ci
 RUN npm run build:cosmoscan -- --prod --base-href=/eurx/
 
-FROM nginx:1.15
+FROM lcnem/cosmoscan
 
-COPY --from=build-stage-base /root/app/dist/cosmoscan/ /usr/share/nginx/html/
 COPY --from=build-stage /root/app/dist/cosmoscan-extension/ /usr/share/nginx/html/eurx/

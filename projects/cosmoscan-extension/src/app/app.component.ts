@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as config from '../config.json';
+import config from '../config.json';
 
 @Component({
   selector: 'app-root',

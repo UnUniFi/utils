@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { cosmosclient } from 'cosmos-client';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
-import * as config from '../config.json';
+import config from '../config.json';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +14,7 @@ export class CosmosSDKService {
   sdk$: Observable<{ rest: cosmosclient.CosmosSDK; websocket: cosmosclient.CosmosSDK }>;
 
   constructor() {
+    console.log(config.bech32_prefix);
     if (
       config.bech32_prefix?.acc_addr &&
       config.bech32_prefix?.acc_pub &&
@@ -22,14 +23,15 @@ export class CosmosSDKService {
       config.bech32_prefix?.cons_addr &&
       config.bech32_prefix?.cons_addr
     ) {
-      cosmosclient.config.bech32Prefix = {
+      cosmosclient.config.setBech32Prefix({
         accAddr: config.bech32_prefix?.acc_addr,
         accPub: config.bech32_prefix?.acc_pub,
         valAddr: config.bech32_prefix?.val_addr,
         valPub: config.bech32_prefix?.val_addr,
         consAddr: config.bech32_prefix?.cons_addr,
         consPub: config.bech32_prefix?.cons_addr,
-      };
+      });
+      console.log(cosmosclient.config.bech32Prefix);
     }
 
     this.restURL$ = new BehaviorSubject(`${location.protocol}//${location.hostname}:1317`);

@@ -3,6 +3,8 @@ services:
   cosmoscan-jpyx:
     image: lcnem/cosmoscan-jpyx
     volumes:
+      - ./config.js:/usr/share/nginx/html/assets/config.js
+      - ./config.js:/usr/share/nginx/html/jpyx/assets/config.js
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80

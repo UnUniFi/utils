@@ -10,8 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "bundle:jpyx": "cp .dockerignore ../.dockerignore ; docker build .. -f ./projects/cosmoscan-extension/editions/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx ; rm ../.dockerignore ;",
-    "bundle:eurx": "cp .dockerignore ../.dockerignore ; docker build .. -f ./projects/cosmoscan-extension/editions/eurx/Dockerfile -t lcnem/cosmoscan-eurx ; rm ../.dockerignore ;",
+    "bundle:jpyx": "docker build . -f ./projects/cosmoscan-extension/editions/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx",
+    "bundle:eurx": "docker build . -f ./projects/cosmoscan-extension/editions/eurx/Dockerfile -t lcnem/cosmoscan-eurx",
     "bundle:pricefeed": "docker build ./projects/pricefeed/ -f ./projects/pricefeed/Dockerfile -t lcnem/botany-pricefeed",
     "prepare": "husky install"
   },

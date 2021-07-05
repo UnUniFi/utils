@@ -3,6 +3,8 @@ services:
   cosmoscan-eurx:
     image: lcnem/cosmoscan-eurx
     volumes:
+      - ./config.js:/usr/share/nginx/html/assets/config.js
+      - ./config.js:/usr/share/nginx/html/eurx/assets/config.js
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80

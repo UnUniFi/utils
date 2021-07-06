@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./projects/editions/jpyx/cosmoscan-jpyx/Dockerfile
+          file: ./projects/editions/jpyx/Dockerfile
           push: true
           tags: |
             lcnem/cosmoscan-jpyx:latest

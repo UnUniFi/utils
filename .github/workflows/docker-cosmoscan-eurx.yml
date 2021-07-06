@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./projects/editions/eurx/Dockerfile
+          file: ./projects/cosmoscan-extension/editions/eurx/Dockerfile
           push: true
           tags: |
             lcnem/cosmoscan-eurx:latest

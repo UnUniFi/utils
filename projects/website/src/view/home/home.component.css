@@ -1,14 +1,5 @@
 @charset "UTF-8";
 
-/* tsunoda
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Roboto, Helvetica Neue, sans-serif;
-  color: #212121;
-  letter-spacing: 0.5px;
-} */
-
 a,
 a:visited,
 a:hover,
@@ -51,17 +42,6 @@ li {
 .fc-eurx {
   color: #6c8fb6;
 }
-
-/* tsunoda
-body {
-  background-image: url(./../../assets/images/circle-animation.svg);
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: rgba(255, 255, 255, 0.75);
-  background-blend-mode: lighten;
-}
-*/
 
 header {
   position: fixed;

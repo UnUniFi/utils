@@ -5,17 +5,10 @@ body {
   height: 100%;
 }
 
-/* 2021/06/30ツノダ body更新
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-*/
 
 body {
   background-image: url(./assets/images/circle-animation.svg);
   background-position: 50%;
-  background-repeat: no-repeat;
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.75);
   background-blend-mode: lighten;

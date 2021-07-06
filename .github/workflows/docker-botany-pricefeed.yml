@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./projects/botany-pricefeed/Dockerfile
+          file: ./projects/pricefeed/Dockerfile
           push: true
           tags: |
             lcnem/botany-pricefeed:latest

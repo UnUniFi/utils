@@ -27,4 +27,4 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run build:website --if-present
-      - run: npx firebase deploy --project=default --token=${{ secrets.FIREBASE_TOKEN }}
+      - run: npx firebase deploy --project=default --only hosting --token=${{ secrets.FIREBASE_TOKEN }}

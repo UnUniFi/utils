@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import config from '../config.json';
+import { Config, ConfigService } from '@model-ce/config.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,9 @@ import config from '../config.json';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  config = config;
+  config: Config;
+
+  constructor(private readonly configS: ConfigService) {
+    this.config = this.configS.config;
+  }
 }

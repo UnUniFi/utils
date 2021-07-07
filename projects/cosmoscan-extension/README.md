@@ -9,6 +9,7 @@ mkdir jpyx-cosmoscan
 cd jpyx-cosmoscan
 curl -O https://raw.githubusercontent.com/lcnem/botany/main/projects/cosmoscan-extension/editions/jpyx/docker-compose.yml
 curl -O https://raw.githubusercontent.com/lcnem/botany/main/projects/cosmoscan-extension/nginx.conf
+curl -O https://raw.githubusercontent.com/lcnem/botany/main/projects/cosmoscan-extension/editions/jpyx/config.js
 docker-compose up -d
 ```
 
@@ -19,5 +20,6 @@ mkdir eurx-cosmoscan
 cd eurx-cosmoscan
 curl -O https://raw.githubusercontent.com/lcnem/botany/main/projects/cosmoscan-extension/editions/eurx/docker-compose.yml
 curl -O https://raw.githubusercontent.com/lcnem/botany/main/projects/cosmoscan-extension/nginx.conf
+curl -O https://raw.githubusercontent.com/lcnem/botany/main/projects/cosmoscan-extension/editions/eurx/config.js
 docker-compose up -d
 ```

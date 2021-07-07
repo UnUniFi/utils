@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onSubmitSearchValue(value: string) {
     this.appSubmitSearchValue.emit(value);

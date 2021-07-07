@@ -1,17 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1440" height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
     <g mask="url(&quot;#SvgjsMask1052&quot;)" fill="none">
-        <path d="M449.57 326.77 a144.65 144.65 0 1 0 289.3 0 a144.65 144.65 0 1 0 -289.3 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
-        <path d="M903.09 416.77 a113.38 113.38 0 1 0 226.76 0 a113.38 113.38 0 1 0 -226.76 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
-        <path d="M243.91 395.57 a144.01 144.01 0 1 0 288.02 0 a144.01 144.01 0 1 0 -288.02 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
-        <path d="M526.73 151.16 a143.64 143.64 0 1 0 287.28 0 a143.64 143.64 0 1 0 -287.28 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
-        <path d="M84.51 380.66 a137.55 137.55 0 1 0 275.1 0 a137.55 137.55 0 1 0 -275.1 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
-        <path d="M1130.4 247.95 a112.68 112.68 0 1 0 225.36 0 a112.68 112.68 0 1 0 -225.36 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
-        <path d="M385.5 87.75 a93.61 93.61 0 1 0 187.22 0 a93.61 93.61 0 1 0 -187.22 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
-        <path d="M1060.62 194.48 a151.96 151.96 0 1 0 303.92 0 a151.96 151.96 0 1 0 -303.92 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
-        <path d="M527.59 455.67 a94.67 94.67 0 1 0 189.34 0 a94.67 94.67 0 1 0 -189.34 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
-        <path d="M1187.65 328.63 a186.47 186.47 0 1 0 372.94 0 a186.47 186.47 0 1 0 -372.94 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
-        <path d="M1044.88 129.06 a137.36 137.36 0 1 0 274.72 0 a137.36 137.36 0 1 0 -274.72 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
-        <path d="M747.64 381.49 a146.78 146.78 0 1 0 293.56 0 a146.78 146.78 0 1 0 -293.56 0z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+        <path d="M449.57 326.77 a144.65 144.65 0 1 0 289.3 0 a144.65 144.65 0 1 0 -289.3 0z" fill="rgba(161, 183, 208, 0.52)" class="triangle-float2"></path>
+        <path d="M903.09 416.77 a113.38 113.38 0 1 0 226.76 0 a113.38 113.38 0 1 0 -226.76 0z" fill="rgba(182, 124, 182, 0.23)" class="triangle-float3"></path>
+        <path d="M243.91 395.57 a144.01 144.01 0 1 0 288.02 0 a144.01 144.01 0 1 0 -288.02 0z" fill="rgba(161, 183, 208, 0.52)" class="triangle-float2"></path>
+        <path d="M526.73 151.16 a143.64 143.64 0 1 0 287.28 0 a143.64 143.64 0 1 0 -287.28 0z" fill="rgba(161, 183, 208, 0.52)" class="triangle-float3"></path>
+        <path d="M84.51 380.66 a137.55 137.55 0 1 0 275.1 0 a137.55 137.55 0 1 0 -275.1 0z" fill="rgba(182, 124, 182, 0.23)" class="triangle-float1"></path>
+        <path d="M1130.4 247.95 a112.68 112.68 0 1 0 225.36 0 a112.68 112.68 0 1 0 -225.36 0z" fill="rgba(182, 124, 182, 0.23)" class="triangle-float3"></path>
+        <path d="M385.5 87.75 a93.61 93.61 0 1 0 187.22 0 a93.61 93.61 0 1 0 -187.22 0z" fill="rgba(182, 124, 182, 0.23)" class="triangle-float3"></path>
+        <path d="M1060.62 194.48 a151.96 151.96 0 1 0 303.92 0 a151.96 151.96 0 1 0 -303.92 0z" fill="rgba(161, 183, 208, 0.52)" class="triangle-float1"></path>
+        <path d="M527.59 455.67 a94.67 94.67 0 1 0 189.34 0 a94.67 94.67 0 1 0 -189.34 0z" fill="rgba(182, 124, 182, 0.23)" class="triangle-float2"></path>
+        <path d="M1187.65 328.63 a186.47 186.47 0 1 0 372.94 0 a186.47 186.47 0 1 0 -372.94 0z" fill="rgba(161, 183, 208, 0.52)" class="triangle-float2"></path>
+        <path d="M1044.88 129.06 a137.36 137.36 0 1 0 274.72 0 a137.36 137.36 0 1 0 -274.72 0z" fill="rgba(182, 124, 182, 0.23)" class="triangle-float1"></path>
+        <path d="M747.64 381.49 a146.78 146.78 0 1 0 293.56 0 a146.78 146.78 0 1 0 -293.56 0z" fill="rgba(161, 183, 208, 0.52)" class="triangle-float1"></path>
+		
     </g>
     <defs>
         <mask id="SvgjsMask1052">

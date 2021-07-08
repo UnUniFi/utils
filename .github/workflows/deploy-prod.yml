@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run build --if-present -- --prod
+      - run: npm i -g firebase-tools typescript eslint
       - run: npm ci
         working-directory: ./functions
-      - run: npm i -g firebase-tools typescript eslint
       - run: firebase deploy --project=default --token=${{ secrets.FIREBASE_TOKEN }}

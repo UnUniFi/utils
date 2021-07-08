@@ -8,7 +8,7 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "prepare": "firebase functions:config:get > .runtimeconfig.json"
+    "prepare": "firebase functions:config:get > .runtimeconfig.json || exit 0"
   },
   "engines": {
     "node": "12"
@@ -25,9 +25,11 @@
     "@typescript-eslint/eslint-plugin": "^3.9.1",
     "@typescript-eslint/parser": "^3.8.0",
     "eslint": "^7.6.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.0",
-    "typescript": "^3.8.0",
-    "firebase-functions-test": "^0.2.0"
+    "eslint-plugin-prettier": "^3.3.1",
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^4.2.3"
   },
   "private": true
 }

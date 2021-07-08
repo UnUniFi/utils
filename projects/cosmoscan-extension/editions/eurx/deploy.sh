@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /root/eurx-cosmoscan
+cd ~/eurx-cosmoscan
 docker-compose down
 docker pull lcnem/cosmoscan
 docker pull lcnem/cosmoscan-eurx

@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /root/jpyx-cosmoscan
+cd ~/jpyx-cosmoscan
 docker-compose down
 docker pull lcnem/cosmoscan
 docker pull lcnem/cosmoscan-jpyx

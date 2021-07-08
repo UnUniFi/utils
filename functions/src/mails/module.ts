@@ -1,6 +1,6 @@
-import * as functions from "firebase-functions";
-import * as qs from "qs";
-import axios from "axios";
+import * as functions from 'firebase-functions';
+import * as qs from 'qs';
+import axios from 'axios';
 
 export const send = functions.https.onCall(
   async (
@@ -12,7 +12,7 @@ export const send = functions.https.onCall(
       address: string;
       comment: string;
     },
-    context
+    context,
   ) => {
     const body = `Dear ${data.name}
 Your application for JPYX, EURX validator has been accepted.
@@ -30,13 +30,13 @@ Comment: ${data.comment}
         functions.config().gas.send_mail,
         qs.stringify({
           email: data.email,
-          subject: "Application for JPYX, EURX validator has been accepted",
+          subject: 'Application for JPYX, EURX validator has been accepted',
           body: body,
-          type: "info",
-        })
+          type: 'info',
+        }),
       );
     } catch {
-      throw new functions.https.HttpsError("internal", "");
+      throw new functions.https.HttpsError('internal', '');
     }
-  }
+  },
 );

@@ -58,7 +58,8 @@
     "no-unused-labels": "error",
     "no-var": "warn",
     "no-void": "error",
-    "prefer-const": "warn"
+    "prefer-const": "warn",
+    "no-unused-vars": "warn"
   },
   "settings": {
     "jsdoc": {

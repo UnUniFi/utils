@@ -1,2 +1,2 @@
-import * as mail from "./module";
+import * as mail from './module';
 export { mail };

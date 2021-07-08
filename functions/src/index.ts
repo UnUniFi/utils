@@ -1,3 +1,3 @@
-import { mail } from "./mails";
+import { mail } from './mails';
 
 export const mail_send = mail.send;

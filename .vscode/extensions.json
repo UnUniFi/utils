@@ -14,9 +14,7 @@
     "toba.vsfire",
     "bradlc.vscode-tailwindcss",
     "zxh404.vscode-proto3"
-  ]
-}
-{
+  ],
   "unwantedRecommendations": [
     "esbenp.prettier-vscode"
   ]

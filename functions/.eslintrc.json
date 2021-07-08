@@ -1,24 +1,20 @@
-module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-    node: true,
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
   },
-  extends: [
+  "extends": [
+    "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
+    "../.eslintrc.jest.json",
+    "../.eslintrc.prettier.json",
+    "../.eslintrc.typescript.json"
   ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: "tsconfig.json",
-    sourceType: "module",
-  },
-  plugins: [
-    "@typescript-eslint",
-    "import",
-  ],
-  rules: {
+  "rules": {
     "@typescript-eslint/adjacent-overload-signatures": "error",
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-empty-interface": "warn",
@@ -30,7 +26,10 @@ module.exports = {
     "@typescript-eslint/unified-signatures": "warn",
     "comma-dangle": "warn",
     "constructor-super": "error",
-    eqeqeq: ["warn", "always"],
+    "eqeqeq": [
+      "warn",
+      "always"
+    ],
     "import/no-deprecated": "warn",
     "import/no-extraneous-dependencies": "error",
     "import/no-unassigned-import": "warn",
@@ -40,8 +39,8 @@ module.exports = {
     "no-empty": [
       "error",
       {
-        allowEmptyCatch: true,
-      },
+        "allowEmptyCatch": true
+      }
     ],
     "no-invalid-this": "error",
     "no-new-wrappers": "error",
@@ -51,21 +50,21 @@ module.exports = {
     "no-shadow": [
       "error",
       {
-        hoist: "all",
-      },
+        "hoist": "all"
+      }
     ],
     "no-throw-literal": "error",
     "no-unsafe-finally": "error",
     "no-unused-labels": "error",
     "no-var": "warn",
     "no-void": "error",
-    "prefer-const": "warn",
+    "prefer-const": "warn"
   },
-  settings: {
-    jsdoc: {
-      tagNamePreference: {
-        returns: "return",
-      },
-    },
-  },
-};
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "returns": "return"
+      }
+    }
+  }
+}

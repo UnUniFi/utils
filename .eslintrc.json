@@ -34,6 +34,6 @@
   ],
   "extends": [
     "eslint:recommended",
-    ".eslint.prettierrc.json"
+    ".eslintrc.prettier.json"
   ]
 }

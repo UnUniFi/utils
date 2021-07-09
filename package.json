@@ -30,7 +30,7 @@
     "@angular/platform-browser-dynamic": "~12.0.2",
     "@angular/router": "~12.0.2",
     "botany-client": "^0.3.7",
-    "cosmos-client": "^0.42.6",
+    "cosmos-client": "^0.42.7",
     "dexie": "^3.0.2",
     "dotenv": "^8.2.0",
     "firebase": "^8.3.1",

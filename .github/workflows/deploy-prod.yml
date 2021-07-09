@@ -29,4 +29,4 @@ jobs:
       - run: npm run build --if-present -- --configuration=production
       - run: npm ci
         working-directory: ./functions
-      - run: firebase deploy --project=default --token=${{ secrets.FIREBASE_TOKEN }}
+      - run: npx firebase deploy --project=default --token=${{ secrets.FIREBASE_TOKEN }}

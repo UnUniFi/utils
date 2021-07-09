@@ -6,6 +6,8 @@ on:
       - "projects/cosmoscan-extension/**"
       - "projects/shared/**"
       - "shared/**"
+      - "package-lock.json"
+      - "package.json"
 
 jobs:
   build:

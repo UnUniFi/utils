@@ -1,6 +1,9 @@
 name: Node.js CI pricefeed
 
-on: pull_request
+on:
+  pull_request:
+    paths:
+      - "projects/pricefeed/**"
 
 jobs:
   build:

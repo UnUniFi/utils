@@ -4,9 +4,6 @@ on:
   release:
     types:
       - created
-  repository_dispatch:
-    types:
-      - repository-cosmoscan-new-release
 jobs:
   build:
     runs-on: ubuntu-latest

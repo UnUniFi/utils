@@ -6,6 +6,8 @@ on:
       - "projects/website/**"
       - "projects/shared/**"
       - "shared/**"
+      - "package-lock.json"
+      - "package.json"
 
 jobs:
   build:

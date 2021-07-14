@@ -1,6 +1,9 @@
 name: Node.js CI client
 
-on: pull_request
+on:
+  pull_request:
+    paths:
+      - "projects/botany-client/**"
 
 jobs:
   build:

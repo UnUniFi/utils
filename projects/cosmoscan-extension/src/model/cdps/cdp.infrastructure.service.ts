@@ -5,29 +5,21 @@ import { Key } from '../keys/key.model';
 import { ICdpInfrastructure } from './cdp.service';
 import { KeyInfrastructureService } from '../keys/key.infrastructure.service';
 import { IKeyInfrastructure } from '../keys/key.service';
-import { botany } from 'botany-client'
+import { botany } from 'botany-client';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CdpInfrastructureService implements ICdpInfrastructure {
   private readonly iKeyInfrastructure: IKeyInfrastructure;
-  constructor(
-    private readonly cosmosSDK: CosmosSDKService,
-    keyInfrastructure: KeyInfrastructureService,
-  ) {
+  constructor(private readonly cosmosSDK: CosmosSDKService, keyInfrastructure: KeyInfrastructureService) {
     this.iKeyInfrastructure = keyInfrastructure;
   }
 
-  async createCDP(
-    key: Key,
-    privateKey: string,
-    collateral: cosmos.base.v1beta1.ICoin,
-    principal: cosmos.base.v1beta1.ICoin,
-  ) {
+  async createCDP(key: Key, privateKey: string, collateral: cosmos.base.v1beta1.ICoin, principal: cosmos.base.v1beta1.ICoin) {
     const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
-    const pubKey = privKey.pubKey()
+    const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
@@ -44,9 +36,9 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     // build tx
     const msgCreateCdp = new botany.cdp.MsgCreateCdp({
       sender: sender.toString(),
-      collateral: collateral,
-      principal: principal,
-      collateral_type: collateral.denom
+      collateral,
+      principal,
+      collateral_type: collateral.denom,
     });
 
     const txBody = new cosmos.tx.v1beta1.TxBody({
@@ -71,8 +63,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
     // sign
     const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
-    const signDoc = txBuilder.signDoc(account.account_number);
-    txBuilder.addSignature(privKey, signDoc);
+    const signDocBytes = txBuilder.signDocBytes(account.account_number);
+    txBuilder.addSignature(privKey.sign(signDocBytes));
 
     return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
@@ -80,15 +72,10 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
   }
 
-  async drawCDP(
-    key: Key,
-    privateKey: string,
-    denom: string,
-    principal: cosmos.base.v1beta1.ICoin,
-  ) {
+  async drawCDP(key: Key, privateKey: string, denom: string, principal: cosmos.base.v1beta1.ICoin) {
     const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
-    const pubKey = privKey.pubKey()
+    const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
@@ -131,8 +118,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
     // sign
     const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
-    const signDoc = txBuilder.signDoc(account.account_number);
-    txBuilder.addSignature(privKey, signDoc);
+    const signDocBytes = txBuilder.signDocBytes(account.account_number);
+    txBuilder.addSignature(privKey.sign(signDocBytes));
 
     return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
@@ -140,15 +127,10 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
   }
 
-  async repayCDP(
-    key: Key,
-    privateKey: string,
-    denom: string,
-    payment: cosmos.base.v1beta1.ICoin,
-  ) {
+  async repayCDP(key: Key, privateKey: string, denom: string, payment: cosmos.base.v1beta1.ICoin) {
     const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
-    const pubKey = privKey.pubKey()
+    const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
@@ -166,7 +148,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     const msgDrawdebtCdp = new botany.cdp.MsgRepayDebt({
       sender: sender.toString(),
       collateral_type: denom,
-      payment
+      payment,
     });
 
     const txBody = new cosmos.tx.v1beta1.TxBody({
@@ -191,8 +173,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
     // sign
     const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
-    const signDoc = txBuilder.signDoc(account.account_number);
-    txBuilder.addSignature(privKey, signDoc);
+    const signDocBytes = txBuilder.signDocBytes(account.account_number);
+    txBuilder.addSignature(privKey.sign(signDocBytes));
 
     return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
@@ -200,15 +182,10 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
   }
 
-  async depositCDP(
-    key: Key,
-    privateKey: string,
-    ownerAddr: cosmosclient.AccAddress,
-    collateral: cosmos.base.v1beta1.ICoin,
-  ) {
+  async depositCDP(key: Key, privateKey: string, ownerAddr: cosmosclient.AccAddress, collateral: cosmos.base.v1beta1.ICoin) {
     const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
-    const pubKey = privKey.pubKey()
+    const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
@@ -226,8 +203,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     const msgDrawdebtCdp = new botany.cdp.MsgDeposit({
       depositor: sender.toString(),
       owner: ownerAddr.toString(),
-      collateral: collateral,
-      collateral_type: collateral.denom
+      collateral,
+      collateral_type: collateral.denom,
     });
 
     const txBody = new cosmos.tx.v1beta1.TxBody({
@@ -252,8 +229,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
     // sign
     const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
-    const signDoc = txBuilder.signDoc(account.account_number);
-    txBuilder.addSignature(privKey, signDoc);
+    const signDocBytes = txBuilder.signDocBytes(account.account_number);
+    txBuilder.addSignature(privKey.sign(signDocBytes));
 
     return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
@@ -261,15 +238,10 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     });
   }
 
-  async withdrawCDP(
-    key: Key,
-    privateKey: string,
-    ownerAddr: cosmosclient.AccAddress,
-    collateral: cosmos.base.v1beta1.ICoin,
-  ) {
+  async withdrawCDP(key: Key, privateKey: string, ownerAddr: cosmosclient.AccAddress, collateral: cosmos.base.v1beta1.ICoin) {
     const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
-    const pubKey = privKey.pubKey()
+    const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
@@ -287,8 +259,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     const msgDrawdebtCdp = new botany.cdp.MsgWithdraw({
       depositor: sender.toString(),
       owner: ownerAddr.toString(),
-      collateral: collateral,
-      collateral_type: collateral.denom
+      collateral,
+      collateral_type: collateral.denom,
     });
 
     const txBody = new cosmos.tx.v1beta1.TxBody({
@@ -313,8 +285,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
     // sign
     const txBuilder = new cosmosclient.TxBuilder(sdk.rest, txBody, authInfo);
-    const signDoc = txBuilder.signDoc(account.account_number);
-    txBuilder.addSignature(privKey, signDoc);
+    const signDocBytes = txBuilder.signDocBytes(account.account_number);
+    txBuilder.addSignature(privKey.sign(signDocBytes));
 
     return await rest.cosmos.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),

@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CdpComponent } from './cdp.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: CdpComponent,
+  },
   {
     path: 'cdps',
     loadChildren: () => import('./cdps/cdps.module').then((mod) => mod.AppCdpsModule),
@@ -12,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CdpRoutingModule {}
+export class CdpRoutingModule { }

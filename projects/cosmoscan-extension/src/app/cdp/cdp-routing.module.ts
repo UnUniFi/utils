@@ -3,9 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'cdp',
-    loadChildren: () =>
-      import('./cdps/cdps.module').then((mod) => mod.AppCdpsModule),
+    path: 'cdps',
+    loadChildren: () => import('./cdps/cdps.module').then((mod) => mod.AppCdpsModule),
   },
 ];
 

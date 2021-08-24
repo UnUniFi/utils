@@ -30,7 +30,7 @@
             "tsConfig": "projects/cosmoscan-extension/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/cosmoscan-extension/src/favicon.png",
+              "projects/cosmoscan-extension/src/favicon.ico",
               "projects/cosmoscan-extension/src/assets"
             ],
             "styles": [

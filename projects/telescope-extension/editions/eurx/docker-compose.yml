@@ -1,7 +1,7 @@
 version: "3"
 services:
-  cosmoscan-eurx:
-    image: lcnem/cosmoscan-eurx
+  telescope-eurx:
+    image: lcnem/telescope-eurx
     volumes:
       - ./config.js:/usr/share/nginx/html/assets/config.js
       - ./config.js:/usr/share/nginx/html/eurx/assets/config.js

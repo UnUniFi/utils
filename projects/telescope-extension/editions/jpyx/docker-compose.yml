@@ -1,7 +1,7 @@
 version: "3"
 services:
-  cosmoscan-jpyx:
-    image: lcnem/cosmoscan-jpyx
+  telescope-jpyx:
+    image: lcnem/telescope-jpyx
     volumes:
       - ./config.js:/usr/share/nginx/html/assets/config.js
       - ./config.js:/usr/share/nginx/html/jpyx/assets/config.js

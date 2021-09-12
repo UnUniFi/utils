@@ -1,8 +1,8 @@
-name: cosmoscan Action Trigger Publish Docker image cosmoscan-jpyx
+name: telescope Action Trigger Publish Docker image telescope-jpyx
 on:
   repository_dispatch:
     types:
-      - repository-cosmoscan-new-release
+      - repository-telescope-new-release
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -19,7 +19,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./projects/cosmoscan-extension/editions/jpyx/Dockerfile
+          file: ./projects/telescope-extension/editions/jpyx/Dockerfile
           push: true
           tags: |
-            lcnem/cosmoscan-jpyx:latest
+            lcnem/telescope-jpyx:latest

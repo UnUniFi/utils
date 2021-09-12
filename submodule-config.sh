@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# git submodule add https://github.com/lcnem/cosmoscan.git cosmoscan
+# git submodule add https://github.com/lcnem/telescope.git telescope
 # git commit -m "feat: submodule add"
 
-cd cosmoscan
+cd telescope
 git config core.sparsecheckout true
-echo projects/cosmoscan/src/model/ > ../.git/modules/cosmoscan/info/sparse-checkout
+echo projects/telescope/src/model/ > ../.git/modules/telescope/info/sparse-checkout
 git read-tree -mu HEAD
 
 cd ..

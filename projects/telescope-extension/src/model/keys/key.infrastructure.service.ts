@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import Dexie from 'dexie';
 import { Key, KeyType } from './key.model';
 import { IKeyInfrastructure } from './key.service';
-import {
-  cosmosclient
-} from 'cosmos-client';
+import { cosmosclient } from 'cosmos-client';
 import { CosmosSDKService } from '../../model/cosmos-sdk.service';
 
 @Injectable({
@@ -14,7 +12,7 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
   private db: Dexie;
 
   constructor(private readonly cosmosSDK: CosmosSDKService) {
-    const dbName = 'cosmoscan';
+    const dbName = 'telescope';
     this.db = new Dexie(dbName);
     this.db.version(1).stores({
       keys: '++index, &id, type, public_key',
@@ -27,9 +25,9 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
       case KeyType.SECP256K1:
         return new cosmosclient.secp256k1.PrivKey({ key: privKeyBuffer });
       case KeyType.ED25519:
-        throw Error('not supported yet')
+        throw Error('not supported yet');
       case KeyType.SR25519:
-        throw Error('not supported yet')
+        throw Error('not supported yet');
     }
   }
 
@@ -39,14 +37,13 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
       case KeyType.SECP256K1:
         return new cosmosclient.secp256k1.PubKey({ key: pubKeyBuffer });
       case KeyType.ED25519:
-        throw Error('not supported yet')
+        throw Error('not supported yet');
       case KeyType.SR25519:
-        throw Error('not supported yet')
+        throw Error('not supported yet');
     }
   }
 
   async getPrivateKeyFromMnemonic(mnemonic: string) {
-
     return Buffer.from(
       await cosmosclient.generatePrivKeyFromMnemonic(mnemonic)
     ).toString('hex');

@@ -1,9 +1,9 @@
-name: Node.js CI cosmoscan
+name: Node.js CI telescope
 
 on:
   pull_request:
     paths:
-      - "projects/cosmoscan-extension/**"
+      - "projects/telescope-extension/**"
       - "projects/shared/**"
       - "shared/**"
       - "package-lock.json"
@@ -30,7 +30,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
-      - run: npm run build --if-present -- --project=cosmoscan-extension
-      - run: npm run test -- --watch=false --browsers=ChromeHeadless --project=cosmoscan-extension
+      - run: npm run build --if-present -- --project=telescope-extension
+      - run: npm run test -- --watch=false --browsers=ChromeHeadless --project=telescope-extension
         env:
           CI: true

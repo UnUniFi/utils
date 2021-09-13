@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  jpyx-faucet:
+    container_name: jpyx-faucet
+    image: ghcr.io/tendermint/faucet
+    volumes:
+      - ~/jpyx-faucet/jpyxd:/usr/local/bin/jpyxd
+    # Reference: https://github.com/tendermint/faucet
+    # Todo: Command is not completed. Need to setup faucet account on the node and add the account in the command option.
+    command: faucet --cli-name jpyxd --denoms jpyx,ujsmn,ubtc
+    network_mode: host
+    restart: always

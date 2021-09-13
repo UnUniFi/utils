@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:telescope": "ng serve --project telescope-extension --base-href=/botany/",
     "build": "ng build",
     "build:website": "ng build --project website",
     "build:telescope": "ng build --project telescope-extension",

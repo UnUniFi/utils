@@ -1,4 +1,4 @@
-name: Publish Docker image cosmoscan-jpyx
+name: Publish Docker image telescope-jpyx
 on:
   release:
     types: [published]
@@ -21,8 +21,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./projects/cosmoscan-extension/editions/jpyx/Dockerfile
+          file: ./projects/telescope-extension/editions/jpyx/Dockerfile
           push: true
           tags: |
-            lcnem/cosmoscan-jpyx:${{ steps.variables.outputs.version }}
-            lcnem/cosmoscan-jpyx:latest
+            lcnem/telescope-jpyx:${{ steps.variables.outputs.version }}
+            lcnem/telescope-jpyx:latest

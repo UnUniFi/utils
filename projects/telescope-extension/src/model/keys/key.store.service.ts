@@ -12,7 +12,7 @@ export class KeyStoreService {
   currentKey$: BehaviorSubject<Key | undefined>;
 
   constructor(private readonly key: KeyService) {
-    const dbName = 'cosmoscan';
+    const dbName = 'telescope';
     this.db = new Dexie(dbName);
     this.db.version(1).stores({
       current_keys: '++index, &id, key_id',

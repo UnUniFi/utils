@@ -10,9 +10,9 @@
       ],
       "parserOptions": {
         "project": [
-          "projects/cosmoscan-extension/tsconfig.app.json",
-          "projects/cosmoscan-extension/tsconfig.spec.json",
-          "projects/cosmoscan-extension/e2e/tsconfig.json"
+          "projects/telescope-extension/tsconfig.app.json",
+          "projects/telescope-extension/tsconfig.spec.json",
+          "projects/telescope-extension/e2e/tsconfig.json"
         ],
         "createDefaultProgram": true
       },

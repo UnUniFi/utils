@@ -22,16 +22,16 @@
     ],
     "paths": {
       "@app-ce/*": [
-        "projects/cosmoscan-extension/src/app/*"
+        "projects/telescope-extension/src/app/*"
       ],
       "@environments-ce/*": [
-        "projects/cosmoscan-extension/src/environments/*"
+        "projects/telescope-extension/src/environments/*"
       ],
       "@model-ce/*": [
-        "projects/cosmoscan-extension/src/model/*"
+        "projects/telescope-extension/src/model/*"
       ],
       "@view-ce/*": [
-        "projects/cosmoscan-extension/src/view/*"
+        "projects/telescope-extension/src/view/*"
       ],
       "@app-w/*": [
         "projects/website/src/app/*"

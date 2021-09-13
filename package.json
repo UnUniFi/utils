@@ -4,14 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:telescope": "ng serve --project telescope-extension --base-href=/botany/",
     "build": "ng build",
     "build:website": "ng build --project website",
-    "build:cosmoscan": "ng build --project cosmoscan-extension",
+    "build:telescope": "ng build --project telescope-extension",
     "test": "npx jest",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "bundle:jpyx": "docker build . -f ./projects/cosmoscan-extension/editions/jpyx/Dockerfile -t lcnem/cosmoscan-jpyx",
-    "bundle:eurx": "docker build . -f ./projects/cosmoscan-extension/editions/eurx/Dockerfile -t lcnem/cosmoscan-eurx",
+    "bundle:jpyx": "docker build . -f ./projects/telescope-extension/editions/jpyx/Dockerfile -t lcnem/telescope-jpyx",
+    "bundle:eurx": "docker build . -f ./projects/telescope-extension/editions/eurx/Dockerfile -t lcnem/telescope-eurx",
     "bundle:pricefeed": "docker build ./projects/pricefeed/ -f ./projects/pricefeed/Dockerfile -t lcnem/botany-pricefeed",
     "prepare": "husky install"
   },

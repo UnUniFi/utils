@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cosmoscan-extension": {
+    "telescope-extension": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -13,8 +13,8 @@
           "skipTests": true
         }
       },
-      "root": "projects/cosmoscan-extension",
-      "sourceRoot": "projects/cosmoscan-extension/src",
+      "root": "projects/telescope-extension",
+      "sourceRoot": "projects/telescope-extension/src",
       "prefix": "app",
       "architect": {
         "build": {
@@ -23,19 +23,19 @@
             "customWebpackConfig": {
               "path": "webpack.config.js"
             },
-            "outputPath": "dist/cosmoscan-extension",
-            "index": "projects/cosmoscan-extension/src/index.html",
-            "main": "projects/cosmoscan-extension/src/main.ts",
-            "polyfills": "projects/cosmoscan-extension/src/polyfills.ts",
-            "tsConfig": "projects/cosmoscan-extension/tsconfig.app.json",
+            "outputPath": "dist/telescope-extension",
+            "index": "projects/telescope-extension/src/index.html",
+            "main": "projects/telescope-extension/src/main.ts",
+            "polyfills": "projects/telescope-extension/src/polyfills.ts",
+            "tsConfig": "projects/telescope-extension/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/cosmoscan-extension/src/favicon.ico",
-              "projects/cosmoscan-extension/src/assets"
+              "projects/telescope-extension/src/favicon.ico",
+              "projects/telescope-extension/src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "projects/cosmoscan-extension/src/styles.css"
+              "projects/telescope-extension/src/styles.css"
             ],
             "scripts": []
           },
@@ -43,8 +43,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/cosmoscan-extension/src/environments/environment.ts",
-                  "with": "projects/cosmoscan-extension/src/environments/environment.prod.ts"
+                  "replace": "projects/telescope-extension/src/environments/environment.ts",
+                  "with": "projects/telescope-extension/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -72,18 +72,18 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "cosmoscan-extension:build"
+            "browserTarget": "telescope-extension:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cosmoscan-extension:build:production"
+              "browserTarget": "telescope-extension:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cosmoscan-extension:build"
+            "browserTarget": "telescope-extension:build"
           }
         },
         "test": {
@@ -96,20 +96,20 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/cosmoscan-extension/**/*.ts",
-              "projects/cosmoscan-extension/**/*.html"
+              "projects/telescope-extension/**/*.ts",
+              "projects/telescope-extension/**/*.html"
             ]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/cosmoscan-extension/e2e/protractor.conf.js",
-            "devServerTarget": "cosmoscan-extension:serve"
+            "protractorConfig": "projects/telescope-extension/e2e/protractor.conf.js",
+            "devServerTarget": "telescope-extension:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cosmoscan-extension:serve:production"
+              "devServerTarget": "telescope-extension:serve:production"
             }
           }
         }

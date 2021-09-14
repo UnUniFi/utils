@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  jpyx-faucet:
+    container_name: jpyx-faucet
+    image: ghcr.io/tendermint/faucet
+    volumes:
+      - ~/jpyx-faucet/jpyxd:/usr/local/bin/jpyxd
+      - ~/.jpyx:/root/.jpyx
+    command: faucet --cli-name jpyxd --denoms jpyx,ujsmn,ubtc --keyring-backend test --account-name faucet
+    network_mode: host
+    restart: always

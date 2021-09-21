@@ -31,4 +31,4 @@ import { KeySelectDialogModule } from '@view-ce/keys/key-select-dialog/key-selec
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

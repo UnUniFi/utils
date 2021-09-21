@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'faucet',
-    loadChildren: () => import('./faucet/faucet.module').then((m) => m.FaucetModule),
+    loadChildren: () => import('./faucet/faucet.module').then((m) => m.AppFaucetModule),
   },
 ];
 

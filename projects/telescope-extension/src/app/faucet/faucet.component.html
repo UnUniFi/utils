@@ -1,2 +1,8 @@
-<p>faucet works!</p>
-<app-view-faucet></app-view-faucet>
+<app-view-faucet
+  [hasFaucet]="hasFaucet"
+  [denoms]="denoms"
+  [creditAmount]="creditAmount"
+  [maxCredit]="maxCredit"
+  [address]="address"
+  (postFaucetRequested)="appPostFaucetRequested($event)"
+></app-view-faucet>

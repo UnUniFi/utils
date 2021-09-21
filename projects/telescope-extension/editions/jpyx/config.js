@@ -17,6 +17,18 @@ const config = {
         link: '/jpyx',
       }
     ],
-    messageActions: ['']
+    messageActions: [''],
+    messageModules: [
+      'bank', // hit
+      'auth',
+      'crisis',
+      'distribution',
+      'evidence',
+      'genaccounts',
+      'gov',
+      'ibc',
+      'slashing',
+      'staking', // hit
+    ],
   }
 };

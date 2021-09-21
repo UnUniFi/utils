@@ -13,6 +13,7 @@ import { HomeModule } from '@view-ce/home/home.module';
 import { ToolbarModule } from '@view-ce/toolbar/toolbar.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { KeySelectDialogModule } from '@view-ce/keys/key-select-dialog/key-select-dialog.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -23,6 +24,7 @@ import { KeySelectDialogModule } from '@view-ce/keys/key-select-dialog/key-selec
     MatSnackBarModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ViewModule,
     HomeModule,
     ToolbarModule,

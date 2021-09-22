@@ -17,7 +17,6 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateComponent,
-    canActivate: [KeySelectGuard],
   },
 
   {

@@ -1,6 +1,6 @@
+import { ApplyApplicationService } from '../../models/apply.application.service';
+import { AppliValidatorOnSubmitEvent } from '../../views/apply-validator/apply-validator.component';
 import { Component, OnInit } from '@angular/core';
-import { AppliValidatorOnSubmitEvent } from '@view-w/apply-validator/apply-validator.component';
-import { ApplyApplicationService } from '@model-w/apply.application.service';
 
 @Component({
   selector: 'app-apply-validator',

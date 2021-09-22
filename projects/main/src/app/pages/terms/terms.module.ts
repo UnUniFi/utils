@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { TermsModule } from '../../views/terms/terms.module';
 import { TermsRoutingModule } from './terms-routing.module';
 import { TermsComponent } from './terms.component';
-import { TermsModule } from '@view-w/terms/terms.module';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [TermsComponent],

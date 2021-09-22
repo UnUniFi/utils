@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { AngularFireFunctions } from '@angular/fire/functions';
+import { Functions, httpsCallable } from '@angular/fire/functions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApplyService {
-  constructor(private functions: AngularFireFunctions) {}
+  constructor(private functions: Functions) {}
 
-  sendMail(
+  async sendMail(
     name: string,
     email: string,
     company: string,
@@ -15,15 +15,16 @@ export class ApplyService {
     address: string,
     comment: string,
   ) {
-    return this.functions
-      .httpsCallable('mail_send')({
-        name,
-        email,
-        company,
-        country,
-        address,
-        comment,
-      })
-      .toPromise();
+    await httpsCallable(
+      this.functions,
+      'mail_send',
+    )({
+      name,
+      email,
+      company,
+      country,
+      address,
+      comment,
+    });
   }
 }

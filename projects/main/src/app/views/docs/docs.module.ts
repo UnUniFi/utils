@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../material.module';
 import { DocsComponent } from './docs.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@view-w/material.module';
 
 @NgModule({
   declarations: [DocsComponent],

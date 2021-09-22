@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../material.module';
 import { TermsComponent } from './terms.component';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@view-w/material.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [TermsComponent],

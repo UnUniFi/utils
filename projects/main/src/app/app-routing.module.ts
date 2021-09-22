@@ -2,16 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'docs', component: DocsComponent },
+  { path: '', loadChildren: () => import('./pages/home/home.module').then((m) => m.AppHomeModule) },
+  {
+    path: 'docs',
+    loadChildren: () => import('./pages/docs/docs.module').then((m) => m.AppDocsModule),
+  },
   {
     path: 'apply-validator',
     loadChildren: () =>
-      import('./apply-validator/apply-validator.module').then((m) => m.AppApplyValidatorModule),
+      import('./pages/apply-validator/apply-validator.module').then(
+        (m) => m.AppApplyValidatorModule,
+      ),
   },
   {
     path: 'terms',
-    loadChildren: () => import('./terms/terms.module').then((m) => m.AppTermsModule),
+    loadChildren: () => import('./pages/terms/terms.module').then((m) => m.AppTermsModule),
   },
 ];
 

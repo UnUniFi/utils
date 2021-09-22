@@ -292,20 +292,9 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "projects/telescope-extension/src/test.ts",
-            "polyfills": "projects/telescope-extension/src/polyfills.ts",
-            "tsConfig": "projects/telescope-extension/tsconfig.spec.json",
-            "karmaConfig": "projects/telescope-extension/karma.conf.js",
-            "assets": [
-              "projects/telescope-extension/src/favicon.ico",
-              "projects/telescope-extension/src/assets"
-            ],
-            "styles": [
-              "projects/telescope-extension/src/styles.css"
-            ],
-            "scripts": []
+            "configPath": "projects/telescope-extension/jest.config.js"
           }
         }
       }

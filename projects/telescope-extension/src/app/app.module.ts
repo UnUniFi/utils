@@ -14,6 +14,7 @@ import { ToolbarModule } from '@view-ce/toolbar/toolbar.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { KeySelectDialogModule } from '@view-ce/keys/key-select-dialog/key-select-dialog.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     ViewModule,
     HomeModule,
     ToolbarModule,

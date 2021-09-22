@@ -27,6 +27,6 @@ export class FaucetComponent implements OnInit {
   ngOnInit(): void {}
 
   appPostFaucetRequested(faucetRequest: FaucetRequest): void {
-    this.faucetService.postFaucetRequest$(faucetRequest);
+    this.faucetService.postFaucetRequest$(faucetRequest).subscribe((faucetResponse) => console.log(faucetResponse));
   }
 }

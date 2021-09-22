@@ -1,55 +1,18 @@
-<p>faucet</p>
+<h2>Faucet</h2>
+<form #formRef="ngForm" (submit)="onPostFaucetRequested(addressRef.value, amounts)">
+  <div fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matNativeControl #addressRef name="address" ngModel [value]="address" required>
+    </mat-form-field>
 
-<!--want ubtc/ujsmn/jpyx input form-->
-<form [formGroup]="form" (submit)="submit(form)">
-  <!--<form [formGroup]="form" (submit)="onPostFaucetRequested($event)">-->
-  <div>
-    <label>
-      address
-      <input mat-input type="text" formControlName="addressForm" />
-    </label>
-    <ng-container *ngIf="addressForm.invalid && (addressForm.touched || addressForm.dirty)">
-      <p *ngIf="addressForm.hasError('required')">required</p>
+    <ng-container *ngFor="let amount of amounts; let i = index">
+      <mat-form-field appearance="fill">
+        <mat-label>Amount({{ amount.denom }})</mat-label>
+        <input matNativeControl [(ngModel)]="amounts[i].amount" name="{{ amount.denom }}" [min]="0" [max]="creditAmount ? creditAmount : 0" required>
+        <span matSuffix>{{ amount.denom }}</span>
+      </mat-form-field>
     </ng-container>
-  </div>
-
-  <div>
-    <label>
-      ubtc
-      <input mat-input type="text" formControlName="ubtcForm" />
-    </label>
-    <ng-container *ngIf="ubtcForm.invalid && (ubtcForm.touched || ubtcForm.dirty)">
-      <p *ngIf="ubtcForm.hasError('required')">required</p>
-      <p *ngIf="ubtcForm.hasError('rangeValidator')">less than 10</p>
-      <p *ngIf="ubtcForm.hasError('numberValidator')">only number</p>
-    </ng-container>
-  </div>
-
-  <div>
-    <label>
-      jsmn
-      <input mat-input type="text" formControlName="ujsmnForm" />
-    </label>
-    <ng-container *ngIf="ujsmnForm.invalid && (ujsmnForm.touched || ujsmnForm.dirty)">
-      <p *ngIf="ujsmnForm.hasError('required')">required</p>
-      <p *ngIf="ujsmnForm.hasError('rangeValidator')">less than 10</p>
-      <p *ngIf="ujsmnForm.hasError('numberValidator')">only number</p>
-    </ng-container>
-  </div>
-
-  <div>
-    <label>
-      jpyx
-      <input mat-input type="text" formControlName="jpyxForm" />
-    </label>
-    <ng-container *ngIf="jpyxForm.invalid && (jpyxForm.touched || jpyxForm.dirty)">
-      <p *ngIf="jpyxForm.hasError('required')">required</p>
-      <p *ngIf="jpyxForm.hasError('rangeValidator')">less than 10</p>
-      <p *ngIf="jpyxForm.hasError('numberValidator')">only number</p>
-    </ng-container>
-  </div>
-
-  <div>
-    <button [disabled]="form.invalid" type="submit">send</button>
+    <button mat-flat-button color="accent" [disabled]="formRef.invalid">Claim</button>
   </div>
 </form>

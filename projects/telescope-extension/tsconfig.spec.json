@@ -5,7 +5,8 @@
     "outDir": "../../out-tsc/spec",
     "types": [
       "jest"
-    ]
+    ],
+    "esModuleInterop": true
   },
   "files": [
     "src/setup-jest.ts",

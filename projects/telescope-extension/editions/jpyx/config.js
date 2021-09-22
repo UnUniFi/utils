@@ -11,6 +11,17 @@ const config = {
     consPub: 'jpyxvalconspub',
   },
   extension: {
+    faucet: {
+      hasFaucet: true,
+      faucetURL: `${location.protocol}//${location.hostname}:8000`,
+      denoms: [
+        'ujsmn',
+        'ubtc',
+        'jpyx',
+      ],
+      creditAmount: 10, // amount to credit in each request
+      maxCredit: 100, // maximum credit per account
+    },
     navigations: [
       {
         name: 'JPYX',

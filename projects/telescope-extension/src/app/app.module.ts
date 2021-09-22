@@ -13,6 +13,8 @@ import { HomeModule } from '@view-ce/home/home.module';
 import { ToolbarModule } from '@view-ce/toolbar/toolbar.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { KeySelectDialogModule } from '@view-ce/keys/key-select-dialog/key-select-dialog.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -23,6 +25,8 @@ import { KeySelectDialogModule } from '@view-ce/keys/key-select-dialog/key-selec
     MatSnackBarModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
     ViewModule,
     HomeModule,
     ToolbarModule,
@@ -31,4 +35,4 @@ import { KeySelectDialogModule } from '@view-ce/keys/key-select-dialog/key-selec
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

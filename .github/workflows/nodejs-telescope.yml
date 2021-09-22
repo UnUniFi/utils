@@ -1,11 +1,11 @@
-name: Node.js CI website
+name: Node.js CI telescope
 
 on:
   pull_request:
     paths:
-      - "projects/website/**"
+      - "projects/telescope-extension/**"
       - "projects/shared/**"
-      - "shared/**"
+      - "common/**"
       - "package-lock.json"
       - "package.json"
 
@@ -29,8 +29,9 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - run: npm i -g npm
       - run: npm ci
-      - run: npm run build --if-present -- --project=website
-      - run: npm run test -- --watch=false --browsers=ChromeHeadless --project=website
+      - run: npm run build --if-present -- --project=telescope-extension
+      - run: npm run test -- --watch=false --browsers=ChromeHeadless --project=telescope-extension
         env:
           CI: true

@@ -11,5 +11,11 @@ export class AppComponent {
 
   constructor(private readonly configS: ConfigService) {
     this.config = this.configS.config;
+    if (this.config.extension?.faucet !== undefined) {
+      this.config.extension.navigations.push({
+        name: 'Faucet',
+        link: '/jpyx/faucet'
+      });
+    }
   }
 }

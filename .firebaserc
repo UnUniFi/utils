@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "botany-website-984e0"
+  },
+  "targets": {
+    "botany-website-984e0": {
+      "hosting": {
+        "main": [
+          "botany-website-984e0"
+        ]
+      }
+    }
   }
 }

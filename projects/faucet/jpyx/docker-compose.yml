@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   jpyx-faucet:
@@ -7,6 +7,12 @@ services:
     volumes:
       - ~/jpyx-faucet/jpyxd:/usr/local/bin/jpyxd
       - ~/.jpyx:/root/.jpyx
-    command: faucet --cli-name jpyxd --denoms jpyx,ujsmn,ubtc --keyring-backend test --account-name faucet
+    command: faucet --cli-name jpyxd --denoms jpyx,ujsmn,ubtc --keyring-backend test --account-name faucet --port 7000 --credit-amount=10 --max-credit=100
+    network_mode: host
+    restart: always
+  nginx:
+    image: nginx
+    volumes:
+      - ~/jpyx-faucet/nginx.conf:/etc/nginx/nginx.conf
     network_mode: host
     restart: always

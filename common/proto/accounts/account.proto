@@ -1,0 +1,17 @@
+syntax = "proto3";
+package main;
+
+import "google/protobuf/timestamp.proto";
+import "firebase_rules_options.proto";
+
+option (google.firebase.rules.firebase_rules).full_package_names = true;
+
+message Account {
+  string id = 1;
+  repeated string user_ids = 2;
+  repeated string admin_user_ids = 3;
+  string name = 4;
+  string image_url = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}

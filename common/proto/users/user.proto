@@ -1,0 +1,16 @@
+syntax = "proto3";
+package main;
+
+import "google/protobuf/timestamp.proto";
+import "firebase_rules_options.proto";
+
+option (google.firebase.rules.firebase_rules).full_package_names = true;
+
+message User {
+  string id = 1;
+  string current_account_id = 2;
+  repeated string account_ids_order = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  bool is_admin = 6;
+}

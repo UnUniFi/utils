@@ -17,6 +17,8 @@ import { Configuration } from './configuration';
 import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
+// @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
@@ -100,6 +102,76 @@ export interface BotanyAuctionQueryParamsResponse {
      * @memberof BotanyAuctionQueryParamsResponse
      */
     params?: InlineResponse2002Params;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyBotanydistParams
+ */
+export interface BotanyBotanydistParams {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BotanyBotanydistParams
+     */
+    active?: boolean;
+    /**
+     * 
+     * @type {Array<InlineResponse20010ParamsPeriods>}
+     * @memberof BotanyBotanydistParams
+     */
+    periods?: Array<InlineResponse20010ParamsPeriods>;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyBotanydistPeriod
+ */
+export interface BotanyBotanydistPeriod {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyBotanydistPeriod
+     */
+    start?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyBotanydistPeriod
+     */
+    end?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyBotanydistPeriod
+     */
+    inflation?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyBotanydistQueryGetBalancesResponse
+ */
+export interface BotanyBotanydistQueryGetBalancesResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse2004CdpCollateral>}
+     * @memberof BotanyBotanydistQueryGetBalancesResponse
+     */
+    balances?: Array<InlineResponse2004CdpCollateral>;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyBotanydistQueryParamsResponse
+ */
+export interface BotanyBotanydistQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse20010Params}
+     * @memberof BotanyBotanydistQueryParamsResponse
+     */
+    params?: InlineResponse20010Params;
 }
 /**
  * 
@@ -447,6 +519,106 @@ export interface BotanyCdpQueryParamsResponse {
      * @memberof BotanyCdpQueryParamsResponse
      */
     params?: InlineResponse2007Params;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyIncentiveMultiplier
+ */
+export interface BotanyIncentiveMultiplier {
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyIncentiveMultiplier
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyIncentiveMultiplier
+     */
+    months_lockup?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyIncentiveMultiplier
+     */
+    factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyIncentiveParams
+ */
+export interface BotanyIncentiveParams {
+    /**
+     * 
+     * @type {Array<InlineResponse2008ParamsCdpMintingRewardPeriods>}
+     * @memberof BotanyIncentiveParams
+     */
+    cdp_minting_reward_periods?: Array<InlineResponse2008ParamsCdpMintingRewardPeriods>;
+    /**
+     * 
+     * @type {Array<InlineResponse2008ParamsClaimMultipliers>}
+     * @memberof BotanyIncentiveParams
+     */
+    claim_multipliers?: Array<InlineResponse2008ParamsClaimMultipliers>;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyIncentiveParams
+     */
+    claim_end?: string;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyIncentiveQueryParamsResponse
+ */
+export interface BotanyIncentiveQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse2008Params}
+     * @memberof BotanyIncentiveQueryParamsResponse
+     */
+    params?: InlineResponse2008Params;
+}
+/**
+ * 
+ * @export
+ * @interface BotanyIncentiveRewardPeriod
+ */
+export interface BotanyIncentiveRewardPeriod {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BotanyIncentiveRewardPeriod
+     */
+    active?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyIncentiveRewardPeriod
+     */
+    collateral_type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyIncentiveRewardPeriod
+     */
+    start?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BotanyIncentiveRewardPeriod
+     */
+    end?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof BotanyIncentiveRewardPeriod
+     */
+    rewards_per_second?: InlineResponse2004CdpCollateral;
 }
 /**
  * 
@@ -1497,10 +1669,10 @@ export interface InlineResponse2008 {
 export interface InlineResponse2008Params {
     /**
      * 
-     * @type {Array<InlineResponse2008ParamsJpyxMintingRewardPeriods>}
+     * @type {Array<InlineResponse2008ParamsCdpMintingRewardPeriods>}
      * @memberof InlineResponse2008Params
      */
-    jpyx_minting_reward_periods?: Array<InlineResponse2008ParamsJpyxMintingRewardPeriods>;
+    cdp_minting_reward_periods?: Array<InlineResponse2008ParamsCdpMintingRewardPeriods>;
     /**
      * 
      * @type {Array<InlineResponse2008ParamsClaimMultipliers>}
@@ -1513,6 +1685,43 @@ export interface InlineResponse2008Params {
      * @memberof InlineResponse2008Params
      */
     claim_end?: string;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2008ParamsCdpMintingRewardPeriods
+ */
+export interface InlineResponse2008ParamsCdpMintingRewardPeriods {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof InlineResponse2008ParamsCdpMintingRewardPeriods
+     */
+    active?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2008ParamsCdpMintingRewardPeriods
+     */
+    collateral_type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2008ParamsCdpMintingRewardPeriods
+     */
+    start?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2008ParamsCdpMintingRewardPeriods
+     */
+    end?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof InlineResponse2008ParamsCdpMintingRewardPeriods
+     */
+    rewards_per_second?: InlineResponse2004CdpCollateral;
 }
 /**
  * 
@@ -1538,43 +1747,6 @@ export interface InlineResponse2008ParamsClaimMultipliers {
      * @memberof InlineResponse2008ParamsClaimMultipliers
      */
     factor?: string;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2008ParamsJpyxMintingRewardPeriods
- */
-export interface InlineResponse2008ParamsJpyxMintingRewardPeriods {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
-     */
-    active?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
-     */
-    collateral_type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
-     */
-    start?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
-     */
-    end?: string;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof InlineResponse2008ParamsJpyxMintingRewardPeriods
-     */
-    rewards_per_second?: InlineResponse2004CdpCollateral;
 }
 /**
  * 
@@ -1708,176 +1880,6 @@ export interface InlineResponseDefault1Details {
      */
     value?: string;
 }
-/**
- * 
- * @export
- * @interface JpyxIncentiveMultiplier
- */
-export interface JpyxIncentiveMultiplier {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxIncentiveMultiplier
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxIncentiveMultiplier
-     */
-    months_lockup?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxIncentiveMultiplier
-     */
-    factor?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxIncentiveParams
- */
-export interface JpyxIncentiveParams {
-    /**
-     * 
-     * @type {Array<InlineResponse2008ParamsJpyxMintingRewardPeriods>}
-     * @memberof JpyxIncentiveParams
-     */
-    jpyx_minting_reward_periods?: Array<InlineResponse2008ParamsJpyxMintingRewardPeriods>;
-    /**
-     * 
-     * @type {Array<InlineResponse2008ParamsClaimMultipliers>}
-     * @memberof JpyxIncentiveParams
-     */
-    claim_multipliers?: Array<InlineResponse2008ParamsClaimMultipliers>;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxIncentiveParams
-     */
-    claim_end?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxIncentiveQueryParamsResponse
- */
-export interface JpyxIncentiveQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse2008Params}
-     * @memberof JpyxIncentiveQueryParamsResponse
-     */
-    params?: InlineResponse2008Params;
-}
-/**
- * 
- * @export
- * @interface JpyxIncentiveRewardPeriod
- */
-export interface JpyxIncentiveRewardPeriod {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof JpyxIncentiveRewardPeriod
-     */
-    active?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxIncentiveRewardPeriod
-     */
-    collateral_type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxIncentiveRewardPeriod
-     */
-    start?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxIncentiveRewardPeriod
-     */
-    end?: string;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof JpyxIncentiveRewardPeriod
-     */
-    rewards_per_second?: InlineResponse2004CdpCollateral;
-}
-/**
- * 
- * @export
- * @interface JpyxJsmndistParams
- */
-export interface JpyxJsmndistParams {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof JpyxJsmndistParams
-     */
-    active?: boolean;
-    /**
-     * 
-     * @type {Array<InlineResponse20010ParamsPeriods>}
-     * @memberof JpyxJsmndistParams
-     */
-    periods?: Array<InlineResponse20010ParamsPeriods>;
-}
-/**
- * 
- * @export
- * @interface JpyxJsmndistPeriod
- */
-export interface JpyxJsmndistPeriod {
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxJsmndistPeriod
-     */
-    start?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxJsmndistPeriod
-     */
-    end?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof JpyxJsmndistPeriod
-     */
-    inflation?: string;
-}
-/**
- * 
- * @export
- * @interface JpyxJsmndistQueryGetBalancesResponse
- */
-export interface JpyxJsmndistQueryGetBalancesResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse2004CdpCollateral>}
-     * @memberof JpyxJsmndistQueryGetBalancesResponse
-     */
-    balances?: Array<InlineResponse2004CdpCollateral>;
-}
-/**
- * 
- * @export
- * @interface JpyxJsmndistQueryParamsResponse
- */
-export interface JpyxJsmndistQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse20010Params}
-     * @memberof JpyxJsmndistQueryParamsResponse
-     */
-    params?: InlineResponse20010Params;
-}
 
 /**
  * QueryApi - axios parameter creator
@@ -1893,7 +1895,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         accountAll: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/cdp/accounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -1905,19 +1907,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -1930,13 +1925,11 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          */
         auction: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling auction.');
-            }
+            assertParamExists('auction', 'id', id)
             const localVarPath = `/botany/auction/auctions/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -1948,19 +1941,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -1976,7 +1962,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         auctionAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/auction/auctions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2004,19 +1990,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2028,7 +2007,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         auctionParams: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/auction/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2040,19 +2019,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2063,9 +2035,9 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         balances: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/jsmndist/balances`;
+            const localVarPath = `/botany/botanydist/balances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2077,19 +2049,41 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        botanydistParams: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/botany/botanydist/params`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2103,18 +2097,14 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          */
         cdp: async (owner: string, collateralType: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'owner' is not null or undefined
-            if (owner === null || owner === undefined) {
-                throw new RequiredError('owner','Required parameter owner was null or undefined when calling cdp.');
-            }
+            assertParamExists('cdp', 'owner', owner)
             // verify required parameter 'collateralType' is not null or undefined
-            if (collateralType === null || collateralType === undefined) {
-                throw new RequiredError('collateralType','Required parameter collateralType was null or undefined when calling cdp.');
-            }
+            assertParamExists('cdp', 'collateralType', collateralType)
             const localVarPath = `/botany/cdp/cdps/owners/{owner}/collateral-types/{collateral_type}/cdp`
                 .replace(`{${"owner"}}`, encodeURIComponent(String(owner)))
                 .replace(`{${"collateral_type"}}`, encodeURIComponent(String(collateralType)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2126,19 +2116,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2154,7 +2137,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         cdpAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/cdp/cdps`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2182,19 +2165,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2206,7 +2182,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         cdpParams: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/cdp/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2218,19 +2194,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2243,18 +2212,14 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          */
         depositAll: async (owner: string, collateralType: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'owner' is not null or undefined
-            if (owner === null || owner === undefined) {
-                throw new RequiredError('owner','Required parameter owner was null or undefined when calling depositAll.');
-            }
+            assertParamExists('depositAll', 'owner', owner)
             // verify required parameter 'collateralType' is not null or undefined
-            if (collateralType === null || collateralType === undefined) {
-                throw new RequiredError('collateralType','Required parameter collateralType was null or undefined when calling depositAll.');
-            }
+            assertParamExists('depositAll', 'collateralType', collateralType)
             const localVarPath = `/botany/cdp/deposits/owners/{owner}/collateral-types/{collateral_type}`
                 .replace(`{${"owner"}}`, encodeURIComponent(String(owner)))
                 .replace(`{${"collateral_type"}}`, encodeURIComponent(String(collateralType)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2266,19 +2231,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2288,9 +2246,9 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         incentiveParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/incentive/params`;
+            const localVarPath = `/botany/incentive/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2302,55 +2260,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        jsmndistParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/jpyx/jsmndist/params`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2367,7 +2282,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         marketAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/pricefeed/markets`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2395,19 +2310,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2423,13 +2331,11 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          */
         oracleAll: async (marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'marketId' is not null or undefined
-            if (marketId === null || marketId === undefined) {
-                throw new RequiredError('marketId','Required parameter marketId was null or undefined when calling oracleAll.');
-            }
+            assertParamExists('oracleAll', 'marketId', marketId)
             const localVarPath = `/botany/pricefeed/markets/{market_id}/oracles`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2457,19 +2363,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2481,13 +2380,11 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          */
         price: async (marketId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'marketId' is not null or undefined
-            if (marketId === null || marketId === undefined) {
-                throw new RequiredError('marketId','Required parameter marketId was null or undefined when calling price.');
-            }
+            assertParamExists('price', 'marketId', marketId)
             const localVarPath = `/botany/pricefeed/markets/{market_id}/price`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2499,19 +2396,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2527,7 +2417,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         priceAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/pricefeed/prices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2555,19 +2445,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2579,7 +2462,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         pricefeedParams: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/botany/pricefeed/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2591,19 +2474,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2619,13 +2495,11 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          */
         rawPriceAll: async (marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'marketId' is not null or undefined
-            if (marketId === null || marketId === undefined) {
-                throw new RequiredError('marketId','Required parameter marketId was null or undefined when calling rawPriceAll.');
-            }
+            assertParamExists('rawPriceAll', 'marketId', marketId)
             const localVarPath = `/botany/pricefeed/markets/{market_id}/raw_prices`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -2653,19 +2527,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            const queryParameters = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                queryParameters.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.query) {
-                queryParameters.set(key, options.query[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(queryParameters)).toString();
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -2677,6 +2544,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
  * @export
  */
 export const QueryApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = QueryApiAxiosParamCreator(configuration)
     return {
         /**
          * 
@@ -2684,11 +2552,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async accountAll(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2003>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).accountAll(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountAll(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2698,11 +2563,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async auction(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2001>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).auction(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.auction(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2714,11 +2576,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async auctionAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).auctionAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.auctionAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2726,11 +2585,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async auctionParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2002>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).auctionParams(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.auctionParams(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2739,11 +2595,17 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async balances(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2009>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).balances(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.balances(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async botanydistParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20010>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.botanydistParams(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2754,11 +2616,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async cdp(owner: string, collateralType: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2005>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).cdp(owner, collateralType, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cdp(owner, collateralType, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2770,11 +2629,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async cdpAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2004>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).cdpAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cdpAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2782,11 +2638,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async cdpParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2007>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).cdpParams(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cdpParams(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2796,11 +2649,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async depositAll(owner: string, collateralType: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2006>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).depositAll(owner, collateralType, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.depositAll(owner, collateralType, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2808,23 +2658,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async incentiveParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2008>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).incentiveParams(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async jsmndistParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20010>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).jsmndistParams(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.incentiveParams(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2837,11 +2672,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async marketAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20011>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).marketAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.marketAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2854,11 +2686,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async oracleAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20012>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).oracleAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.oracleAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2867,11 +2696,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async price(marketId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20013>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).price(marketId, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.price(marketId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2883,11 +2709,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async priceAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20016>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).priceAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.priceAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2895,11 +2718,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async pricefeedParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20015>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).pricefeedParams(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.pricefeedParams(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
@@ -2912,11 +2732,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async rawPriceAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20014>> {
-            const localVarAxiosArgs = await QueryApiAxiosParamCreator(configuration).rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: (configuration?.basePath || basePath) + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
 };
@@ -2926,6 +2743,7 @@ export const QueryApiFp = function(configuration?: Configuration) {
  * @export
  */
 export const QueryApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = QueryApiFp(configuration)
     return {
         /**
          * 
@@ -2933,7 +2751,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         accountAll(options?: any): AxiosPromise<InlineResponse2003> {
-            return QueryApiFp(configuration).accountAll(options).then((request) => request(axios, basePath));
+            return localVarFp.accountAll(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2943,7 +2761,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         auction(id: string, options?: any): AxiosPromise<InlineResponse2001> {
-            return QueryApiFp(configuration).auction(id, options).then((request) => request(axios, basePath));
+            return localVarFp.auction(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2955,7 +2773,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         auctionAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse200> {
-            return QueryApiFp(configuration).auctionAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
+            return localVarFp.auctionAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2963,7 +2781,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         auctionParams(options?: any): AxiosPromise<InlineResponse2002> {
-            return QueryApiFp(configuration).auctionParams(options).then((request) => request(axios, basePath));
+            return localVarFp.auctionParams(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2972,7 +2790,15 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         balances(options?: any): AxiosPromise<InlineResponse2009> {
-            return QueryApiFp(configuration).balances(options).then((request) => request(axios, basePath));
+            return localVarFp.balances(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        botanydistParams(options?: any): AxiosPromise<InlineResponse20010> {
+            return localVarFp.botanydistParams(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2983,7 +2809,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         cdp(owner: string, collateralType: string, options?: any): AxiosPromise<InlineResponse2005> {
-            return QueryApiFp(configuration).cdp(owner, collateralType, options).then((request) => request(axios, basePath));
+            return localVarFp.cdp(owner, collateralType, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2995,7 +2821,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         cdpAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse2004> {
-            return QueryApiFp(configuration).cdpAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
+            return localVarFp.cdpAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3003,7 +2829,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         cdpParams(options?: any): AxiosPromise<InlineResponse2007> {
-            return QueryApiFp(configuration).cdpParams(options).then((request) => request(axios, basePath));
+            return localVarFp.cdpParams(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3013,7 +2839,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         depositAll(owner: string, collateralType: string, options?: any): AxiosPromise<InlineResponse2006> {
-            return QueryApiFp(configuration).depositAll(owner, collateralType, options).then((request) => request(axios, basePath));
+            return localVarFp.depositAll(owner, collateralType, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3021,15 +2847,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         incentiveParams(options?: any): AxiosPromise<InlineResponse2008> {
-            return QueryApiFp(configuration).incentiveParams(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        jsmndistParams(options?: any): AxiosPromise<InlineResponse20010> {
-            return QueryApiFp(configuration).jsmndistParams(options).then((request) => request(axios, basePath));
+            return localVarFp.incentiveParams(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3042,7 +2860,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         marketAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20011> {
-            return QueryApiFp(configuration).marketAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
+            return localVarFp.marketAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3055,7 +2873,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         oracleAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20012> {
-            return QueryApiFp(configuration).oracleAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
+            return localVarFp.oracleAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3064,7 +2882,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         price(marketId: string, options?: any): AxiosPromise<InlineResponse20013> {
-            return QueryApiFp(configuration).price(marketId, options).then((request) => request(axios, basePath));
+            return localVarFp.price(marketId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3076,7 +2894,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         priceAll(paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20016> {
-            return QueryApiFp(configuration).priceAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
+            return localVarFp.priceAll(paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3084,7 +2902,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         pricefeedParams(options?: any): AxiosPromise<InlineResponse20015> {
-            return QueryApiFp(configuration).pricefeedParams(options).then((request) => request(axios, basePath));
+            return localVarFp.pricefeedParams(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3097,7 +2915,7 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @throws {RequiredError}
          */
         rawPriceAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20014> {
-            return QueryApiFp(configuration).rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
+            return localVarFp.rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3168,6 +2986,16 @@ export class QueryApi extends BaseAPI {
 
     /**
      * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QueryApi
+     */
+    public botanydistParams(options?: any) {
+        return QueryApiFp(this.configuration).botanydistParams(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary this line is used by starport scaffolding # 2
      * @param {string} owner 
      * @param {string} collateralType 
@@ -3223,16 +3051,6 @@ export class QueryApi extends BaseAPI {
      */
     public incentiveParams(options?: any) {
         return QueryApiFp(this.configuration).incentiveParams(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QueryApi
-     */
-    public jsmndistParams(options?: any) {
-        return QueryApiFp(this.configuration).jsmndistParams(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -1,5 +1,5 @@
 import { cosmosclient } from 'cosmos-client';
-import { QueryApi } from '../../../openapi-eurx';
+import { QueryApi } from '../../../openapi';
 
 export function auction(sdk: cosmosclient.CosmosSDK, id: string) {
   return new QueryApi(undefined, sdk.url).auction(id);

@@ -1,7 +1,11 @@
 import { cosmosclient } from 'cosmos-client';
-import { QueryApi } from '../../../openapi-eurx';
+import { QueryApi } from '../../../openapi';
 
-export function cdp(sdk: cosmosclient.CosmosSDK, owner: cosmosclient.AccAddress, collateralType: string) {
+export function cdp(
+  sdk: cosmosclient.CosmosSDK,
+  owner: cosmosclient.AccAddress,
+  collateralType: string
+) {
   return new QueryApi(undefined, sdk.url).cdp(owner.toString(), collateralType);
 }
 
@@ -10,13 +14,13 @@ export function allCdps(
   paginationKey?: string,
   paginationOffset?: bigint,
   paginationLimit?: bigint,
-  paginationCountTotal?: boolean,
+  paginationCountTotal?: boolean
 ) {
   return new QueryApi(undefined, sdk.url).cdpAll(
     paginationKey,
     paginationOffset?.toString(),
     paginationLimit?.toString(),
-    paginationCountTotal,
+    paginationCountTotal
   );
 }
 
@@ -28,6 +32,13 @@ export function allAccounts(sdk: cosmosclient.CosmosSDK) {
   return new QueryApi(undefined, sdk.url).accountAll();
 }
 
-export function allDeposits(sdk: cosmosclient.CosmosSDK, owner: cosmosclient.AccAddress, collateralType: string) {
-  return new QueryApi(undefined, sdk.url).depositAll(owner.toString(), collateralType);
+export function allDeposits(
+  sdk: cosmosclient.CosmosSDK,
+  owner: cosmosclient.AccAddress,
+  collateralType: string
+) {
+  return new QueryApi(undefined, sdk.url).depositAll(
+    owner.toString(),
+    collateralType
+  );
 }

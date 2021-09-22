@@ -2,13 +2,8 @@
 
 rm -r proto
 rm -r proto-thirdparty
-mkdir proto
-cp -r ~/github.com/lcnem/jpyx/proto ./
-# cp -r ~/src/github.com/lcnem/eurx/proto ./proto/eurx
-cp -r ~/github.com/lcnem/jpyx/proto-thirdparty ./
-# rm -r ./proto/eurx/auction
-# rm -r ./proto/eurx/cdp
-# rm -r ./proto/eurx/pricefeed
+cp -r ~/src/github.com/lcnem/jpyx/proto ./
+cp -r ~/src/github.com/lcnem/jpyx/proto-thirdparty ./
 
 proto_dirs=$(find ./proto -path -prune -o -name '*.proto' -print0 | xargs -0 -n1 dirname | sort | uniq)
 proto_files=()
@@ -24,7 +19,6 @@ npx pbjs \
   --keep-case \
   --no-create \
   --path=./proto/ \
-  # --path=./proto/eurx/ \
   --path=./proto-thirdparty/ \
   ${proto_files[@]}
 
@@ -37,7 +31,6 @@ npx pbjs \
   --keep-case \
   --no-create \
   --path=./proto/ \
-  # --path=./proto/eurx/ \
   --path=./proto-thirdparty/ \
   ${proto_files[@]}
 
@@ -45,5 +38,5 @@ npx pbts \
   -o ./src/proto.d.ts \
   ./src/proto.js
 
-# rm -r proto
-# rm -r proto-thirdparty
+rm -r proto
+rm -r proto-thirdparty

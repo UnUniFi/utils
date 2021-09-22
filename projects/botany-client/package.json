@@ -1,6 +1,6 @@
 {
   "name": "botany-client",
-  "version": "0.3.7",
+  "version": "0.4.0",
   "description": "REST API Client for JPYX and EURX (Cosmos SDK) Blockchain",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
@@ -9,13 +9,9 @@
       "node": "./cjs/index.js",
       "default": "./esm/index.js"
     },
-    "./openapi-jpyx": {
-      "node": "./cjs/openapi-jpyx/index.js",
-      "default": "./esm/openapi-jpyx/index.js"
-    },
-    "./openapi-eurx": {
-      "node": "./cjs/openapi-eurx/index.js",
-      "default": "./esm/openapi-eurx/index.js"
+    "./openapi": {
+      "node": "./cjs/openapi/index.js",
+      "default": "./esm/openapi/index.js"
     },
     "./package.json": "./package.json"
   },

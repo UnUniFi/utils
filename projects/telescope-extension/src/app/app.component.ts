@@ -11,11 +11,16 @@ export class AppComponent {
 
   constructor(private readonly configS: ConfigService) {
     this.config = this.configS.config;
+    const prefix = this.config.bech32Prefix?.accAddr;
     if (this.config.extension?.faucet !== undefined) {
-      this.config.extension.navigations.push({
-        name: 'Faucet',
-        link: '/jpyx/faucet'
-      });
+      if (prefix !== undefined) {
+        if (this.config.extension.navigations !== undefined && this.config.extension.navigations.length > 0) {
+          this.config.extension.navigations = this.config.extension.navigations.map((navigation) => ({
+              name: navigation.name,
+              link: navigation.link.replace(`/${prefix}`, '')
+            }));
+        }
+      }
     }
   }
 }

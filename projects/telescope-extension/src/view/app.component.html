@@ -20,7 +20,7 @@
 
       <ng-template ngFor let-extension [ngForOf]="extensionNavigations">
         <ng-container *ngIf="extension?.name && extension?.link">
-          <mat-list-item routerLink="/">
+          <mat-list-item routerLink="{{ extension?.link }}">
             {{ extension.name }}
           </mat-list-item>
         </ng-container>

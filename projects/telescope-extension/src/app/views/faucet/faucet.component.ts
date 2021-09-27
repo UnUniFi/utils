@@ -17,6 +17,7 @@ export class FaucetComponent implements OnInit, OnChanges {
   @Input() creditAmount?: number;
   @Input() maxCredit?: number;
   @Input() address?: string;
+  @Input() spinnerStatus?: boolean;
 
   @Output() postFaucetRequested: EventEmitter<FaucetRequest> = new EventEmitter<FaucetRequest>();
 
@@ -66,13 +67,5 @@ export class FaucetComponent implements OnInit, OnChanges {
     } else {
       console.error('No Claims! Amount must be plus number!');
     }
-  }
-
-  testSubmit(address: string, amounts: Amount[]) {
-    console.log('submit', address, amounts);
-  }
-
-  amountChange(event: any): void {
-    console.log(event);
   }
 }

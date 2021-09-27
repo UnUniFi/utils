@@ -25,7 +25,11 @@ const config = {
     navigations: [
       {
         name: 'JPYX',
-        link: '/jpyx',
+        link: '/jpyx/',
+      },
+      {
+        name: 'Faucet',
+        link: '/jpyx/faucet'
       }
     ],
     messageActions: [''],

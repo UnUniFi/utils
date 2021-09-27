@@ -16,3 +16,8 @@
     <button mat-flat-button color="accent" [disabled]="formRef.invalid">Claim</button>
   </div>
 </form>
+<ng-container *ngIf="spinnerStatus === true; then loading; else loaded"></ng-container>
+<ng-template #loaded></ng-template>
+<ng-template #loading>
+  <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
+</ng-template>

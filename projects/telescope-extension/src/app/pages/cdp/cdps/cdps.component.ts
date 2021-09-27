@@ -3,7 +3,7 @@ import { Key } from '../../../models/keys/key.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { rest } from 'botany-client';
-import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi-eurx';
+import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi';
 import { cosmosclient } from 'cosmos-client';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';

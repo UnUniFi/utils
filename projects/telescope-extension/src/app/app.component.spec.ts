@@ -1,5 +1,5 @@
-describe('test', () => {
-  it('dummy', () => {
-    expect(true).toBeTruthy;
+describe('dummy', () => {
+  test('true', () => {
+    expect(true).toBeTruthy();
   });
 });

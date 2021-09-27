@@ -1,0 +1,886 @@
+@charset "UTF-8";
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+h2,
+h3 {
+  color: #212121;
+}
+p {
+  color: #5e5e5e;
+}
+
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fw-n {
+  font-weight: normal;
+}
+
+.fw-b {
+  font-weight: bold;
+}
+
+.fc-jpyx {
+  color: #b67cb6;
+}
+.fc-eurx {
+  color: #6c8fb6;
+}
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 10;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+#hdr-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 1280px;
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 0;
+  box-sizing: border-box;
+}
+
+#hdr-box #logo {
+  position: absolute;
+  left: 40px;
+  top: 30px;
+  width: 180px;
+  height: 20px;
+  margin: 0 0;
+  padding: 0 0;
+  vertical-align: top;
+}
+
+#hdr-box #logo span {
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  font-size: 10px;
+  line-height: 1;
+  z-index: -100;
+}
+
+#hdr-box #logo img {
+  max-height: 100%;
+  background: #fff;
+}
+
+#hdr-box nav {
+  position: absolute;
+  left: 260px;
+  top: 0px;
+  width: 1020px;
+  vertical-align: top;
+}
+#hdr-box nav #nav-01 {
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  margin: 0 0;
+  padding: 0 0;
+  font-size: 0;
+  letter-spacing: 0;
+}
+#hdr-box nav #nav-01 li {
+  display: inline-block;
+  margin: 0 20px 0 0;
+  padding: 0 0;
+}
+#hdr-box nav #nav-01 li a {
+  display: inline-block;
+  margin: 0 0;
+  padding: 0 0 0 10px;
+  color: #5e5e5e;
+  font-size: 15px;
+  line-height: 20px;
+  background: url(~projects/main/src/assets/images/arrow.png) no-repeat left 0 top 5px;
+  background-size: 5px auto;
+}
+
+#hdr-box nav #nav-02 {
+  position: absolute;
+  left: 515px;
+  top: 30px;
+  margin: 0 0;
+  padding: 0 0;
+  font-size: 0;
+  letter-spacing: 0;
+}
+
+#hdr-box nav #nav-02 li {
+  display: inline-block;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+#hdr-box nav #nav-02 li:nth-of-type(1) {
+  margin-right: 40px;
+}
+#hdr-box nav #nav-02 li a {
+  display: inline-block;
+  box-sizing: border-box;
+}
+#hdr-box nav #nav-02 li:nth-of-type(1) a {
+  color: #b67cb6;
+}
+#hdr-box nav #nav-02 li:nth-of-type(2) a {
+  color: #6c8fb6;
+}
+
+#hdr-box nav #nav-02 li:nth-of-type(1) a span {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0 0;
+}
+#hdr-box nav #nav-02 li:nth-of-type(2) a span {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0 0;
+}
+#hdr-box nav #nav-02 li:nth-of-type(1) a span::before {
+  display: inline-block;
+  content: '';
+  margin: 0 5px 0 0;
+  width: 13px;
+  height: 13px;
+  background: url(~projects/main/src/assets/images/github-jpy.svg) no-repeat left 0 top 0;
+  background-size: 13px auto;
+}
+#hdr-box nav #nav-02 li:nth-of-type(2) a span::before {
+  display: inline-block;
+  content: '';
+  margin: 0 5px 0 0;
+  width: 13px;
+  height: 13px;
+  background: url(~projects/main/src/assets/images/github-eur.svg) no-repeat left 0 top 0;
+  background-size: 13px auto;
+}
+
+#hdr-box nav #nav-btn {
+  position: absolute;
+  right: 40px;
+  top: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+#hdr-box nav #nav-btn a {
+  display: inline-block;
+  width: 160px;
+  margin: 0;
+  padding: 15px 10px;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: #6c8fb6;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#contents {
+  margin: 80px auto 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 1280px;
+  box-sizing: border-box;
+}
+
+#mv {
+  margin: 0 auto 100px auto;
+  padding: 80px 760px 0 40px;
+  min-height: 415px;
+  text-align: left;
+  background: url(~projects/main/src/assets/images/mv.png) no-repeat right 0 top 0;
+  background-size: auto 415px;
+  box-sizing: border-box;
+}
+
+#mv h1 {
+  margin: 0 0 40px 0;
+  padding: 0;
+  font-size: 38px;
+  line-height: 1.5;
+}
+
+#mv h1 span {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+#mv p {
+  margin: 0 0 30px 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 200;
+}
+
+#mv p.mv-btn {
+  margin: 0;
+  padding: 0;
+}
+#mv p.mv-btn a {
+  display: inline-block;
+  margin: 0;
+  padding: 15px 0;
+  width: 200px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #fff;
+  background: #6c8fb6;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+#contents section div {
+  margin-bottom: 40px;
+}
+#contents section div h2 {
+  margin: 0 0 15px 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+#contents section div p {
+  margin: 0 0 15px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#contents section div ul li {
+  margin-bottom: 16px;
+  min-height: 75px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#contents section div ul li h3 {
+  letter-spacing: 0.5px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+#contents section div ul li p {
+  color: #a1a1a1;
+  letter-spacing: 0.5px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+#contents section div ul li p span.mini-txt {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: normal;
+}
+#contents section div ul li a {
+  display: block;
+  padding: 16px;
+}
+
+#contents section div p.etc-btn {
+  margin: 0;
+  padding: 0;
+}
+#contents section div p.etc-btn a {
+  display: inline-block;
+  width: 140px;
+  margin: 0;
+  padding: 10px 5px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #6c8fb6;
+  border: 1px solid #6c8fb6;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#s-01 {
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+}
+#s-01 div {
+  width: calc((100% - 16px) / 2);
+  margin-right: 16px;
+}
+#s-01 div:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+#s-01 div ul {
+  display: flex;
+}
+#s-01 div ul li {
+  display: flex;
+  width: calc((100% - 16px) / 2);
+  margin-right: 16px;
+  padding: 16px;
+}
+#s-01 div ul li:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+#s-01 div ul li h3 {
+  margin: 0 0;
+  padding: 0 5px 0 24px;
+  width: 55%;
+  font-size: 14px;
+  border-right: 1px solid #a1a1a1;
+  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+  background-size: 14px auto;
+}
+#s-01 div ul li p {
+  margin: 0;
+  padding: 0 0 0 5px;
+  width: 45%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#s-01 div.jpyx-box h2,
+#s-01 div.jpyx-box p {
+  color: #b67cb6;
+}
+#s-01 div.jpyx-box ul li h3 {
+  background-image: url(~projects/main/src/assets/images/circle-a.png);
+}
+
+#s-01 div.eurx-box h2,
+#s-01 div.eurx-box p {
+  color: #6c8fb6;
+}
+#s-01 div.eurx-box ul li h3 {
+  background-image: url(~projects/main/src/assets/images/circle-b.png);
+}
+
+#s-02 {
+  margin: 0 auto;
+  padding: 0 40px;
+}
+#s-02 div ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+#s-02 div ul li {
+  display: flex;
+  width: calc((100% - 16px) / 2);
+  margin-right: 16px;
+  padding: 16px;
+}
+#s-02 div ul li:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+#s-02 div ul li h3 {
+  margin: 0 0;
+  padding: 0 5px 0 24px;
+  width: 70%;
+  font-size: 14px;
+  border-right: 1px solid #a1a1a1;
+  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+  background-size: 14px auto;
+}
+#s-02 div ul li p {
+  margin: 0;
+  padding: 0 0 0 5px;
+  width: 30%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#s-03 {
+  margin: 0 auto;
+  padding: 0 40px;
+}
+#s-03 div ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+#s-03 div ul li {
+  width: calc((100% - 48px) / 4);
+  margin-right: 16px;
+  padding: 0;
+}
+#s-03 div ul li:nth-of-type(4n) {
+  margin-right: 0;
+}
+
+#s-03 div ul li h3 {
+  margin: 0 0;
+  padding: 0 5px 0 34px;
+  font-size: 14px;
+  line-height: 24px;
+  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+  background-size: 24px auto;
+}
+#s-03 div ul li p {
+  margin: 0 0;
+  padding: 0 0 0 34px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #a1a1a1;
+}
+
+#s-03 div.kava-box ul li h3 {
+  background-image: url(~projects/main/src/assets/images/kava.svg);
+}
+#s-03 div.lcnem-box ul li h3 {
+  background-image: url(~projects/main/src/assets/images/lcnem.svg);
+  background-size: 24px auto;
+}
+
+#s-04 {
+  margin: 0 auto;
+  padding: 0 40px;
+}
+#s-04 div ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+#s-04 div ul li {
+  width: calc((100% - 16px) / 2);
+  margin-right: 16px;
+  padding: 0;
+}
+#s-04 div ul li:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+#s-04 div ul li h3 {
+  margin: 0 0;
+  padding: 0 5px 0 34px;
+  font-size: 14px;
+  line-height: 24px;
+  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+  background-size: 24px auto;
+}
+#s-04 div ul li p {
+  margin: 0 0;
+  padding: 0 0 0 34px;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+footer {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #f2f2f2;
+}
+footer p {
+  display: block;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 15px 40px;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: right;
+  color: #a1a1a1;
+  box-sizing: border-box;
+}
+footer p span {
+  display: inline-block;
+  padding: 0 0 0 180px;
+  background: url(~projects/main/src/assets/images/logo.svg) no-repeat left 0 top 50%;
+  background-size: auto 18px;
+}
+
+@media only screen and (max-width: 1024px) {
+  #hdr-box {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 1280px;
+    height: 120px;
+    margin: 0 auto;
+    padding: 0 0;
+    box-sizing: border-box;
+  }
+
+  #hdr-box #logo {
+    position: absolute;
+    left: 5%;
+    top: 20px;
+    width: 180px;
+    height: 20px;
+    margin: 0 0;
+    padding: 0 0;
+    vertical-align: top;
+  }
+
+  #hdr-box #logo span {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    font-size: 10px;
+    line-height: 1;
+    z-index: -100;
+  }
+
+  #hdr-box #logo img {
+    max-height: 100%;
+    background: #fff;
+  }
+
+  #hdr-box nav {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    vertical-align: top;
+  }
+  #hdr-box nav #nav-01 {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 30px;
+    margin: 0 0;
+    padding: 0 0;
+  }
+  #hdr-box nav #nav-01 li {
+    display: inline-block;
+    margin: 0 15px 0 0;
+    padding: 0 0;
+  }
+  #hdr-box nav #nav-01 li a {
+    display: inline-block;
+    margin: 0 0;
+    padding: 0 0 0 10px;
+    color: #5e5e5e;
+    font-size: 15px;
+    line-height: 20px;
+    background: url(~projects/main/src/assets/images/arrow.png) no-repeat left 0 top 5px;
+    background-size: 5px auto;
+  }
+
+  #hdr-box nav #nav-02 {
+    position: absolute;
+    left: auto;
+    right: 5%;
+    top: 60px;
+    margin: 0 0;
+    padding: 0 0;
+    width: 270px;
+  }
+
+  #hdr-box nav #nav-02 li {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  #hdr-box nav #nav-02 li:nth-of-type(1) {
+    margin-right: 10px;
+  }
+  #hdr-box nav #nav-02 li:nth-of-type(1) a {
+    width: 130px;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    color: #b67cb6;
+    text-align: center;
+    border: 1px solid #b67cb6;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  #hdr-box nav #nav-02 li:nth-of-type(2) a {
+    width: 130px;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    color: #6c8fb6;
+    text-align: center;
+    border: 1px solid #6c8fb6;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  #hdr-box nav #nav-btn {
+    position: absolute;
+    right: calc(5% + 280px);
+    top: 60px;
+    margin: 0;
+    padding: 0;
+    width: 130px;
+  }
+
+  #hdr-box nav #nav-btn a {
+    display: inline-block;
+    width: 130px;
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: #fff;
+    background: #6c8fb6;
+    border: 1px solid #6c8fb6;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  #contents {
+    margin: 120px auto 0 auto;
+  }
+
+  #mv {
+    margin: 0 auto 10px auto;
+    padding: 55% 5% 0 5%;
+    min-height: 415px;
+    text-align: left;
+    background: url(~projects/main/src/assets/images/mv.png) no-repeat right 0 top 0;
+    background-size: 100% auto;
+    box-sizing: border-box;
+  }
+
+  #mv h1 {
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  #mv p {
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 200;
+  }
+
+  #mv p.mv-btn {
+    margin: 0;
+    padding: 0;
+  }
+  #mv p.mv-btn a {
+    display: inline-block;
+    margin: 0;
+    padding: 15px 0;
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #fff;
+    background: #6c8fb6;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  #contents section div {
+    margin-bottom: 20px;
+  }
+
+  #contents section div p.etc-btn a {
+    width: 100%;
+  }
+
+  #s-01 {
+    margin: 0 auto;
+    padding: 0 5%;
+    display: block;
+  }
+  #s-01 div {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  #s-01 div ul {
+    display: block;
+  }
+  #s-01 div ul li {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    padding: 16px;
+  }
+
+  #s-01 div ul li h3 {
+    margin: 0 0 5px 0;
+    padding: 0 5px 5px 24px;
+    width: 100%;
+    font-size: 14px;
+    border-right: none;
+    border-bottom: 1px solid #a1a1a1;
+    background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+    background-size: 14px auto;
+  }
+  #s-01 div ul li p {
+    margin: 0;
+    padding: 0 0 0 0;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  #s-02 {
+    margin: 0 auto;
+    padding: 0 5%;
+    display: block;
+  }
+  #s-02 div ul {
+    display: block;
+  }
+  #s-02 div ul li {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    padding: 16px;
+  }
+
+  #s-02 div ul li h3 {
+    margin: 0 0 5px 0;
+    padding: 0 5px 5px 24px;
+    width: 100%;
+    font-size: 14px;
+    border-right: none;
+    border-bottom: 1px solid #a1a1a1;
+    background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+    background-size: 14px auto;
+  }
+  #s-02 div ul li p {
+    margin: 0;
+    padding: 0 0 0 0;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  #s-03 {
+    margin: 0 auto;
+    padding: 0 5%;
+    display: block;
+  }
+  #s-03 div ul {
+    display: block;
+  }
+  #s-03 div ul li {
+    width: 100%;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  #s-03 div ul li h3 {
+    margin: 0 0;
+    padding: 0 5px 0 34px;
+    font-size: 14px;
+    line-height: 24px;
+    background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+    background-size: 24px auto;
+  }
+  #s-03 div ul li p {
+    margin: 0 0;
+    padding: 0 0 0 34px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #a1a1a1;
+  }
+
+  #s-03 div.kava-box ul li h3 {
+    background-image: url(~projects/main/src/assets/images/kava.svg);
+  }
+  #s-03 div.lcnem-box ul li h3 {
+    background-image: url(~projects/main/src/assets/images/lcnem.svg);
+    background-size: 24px auto;
+  }
+
+  #s-04 {
+    margin: 0 auto;
+    padding: 0 5%;
+    display: block;
+  }
+  #s-04 div ul {
+    display: block;
+  }
+  #s-04 div ul li {
+    width: 100%;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  #s-04 div ul li h3 {
+    margin: 0 0;
+    padding: 0 5px 0 34px;
+    font-size: 14px;
+    line-height: 24px;
+    background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+    background-size: 24px auto;
+  }
+  #s-04 div ul li p {
+    margin: 0 0;
+    padding: 0 0 0 34px;
+    font-size: 13px;
+    font-weight: normal;
+  }
+
+  footer p {
+    text-align: center;
+  }
+  footer p span {
+    padding: 30px 0 0 0;
+    background-position: left 50% top 0;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  #hdr-box nav #nav-02 {
+    width: calc(62% - 10px);
+  }
+  #hdr-box nav #nav-02 li {
+    width: calc((100% - 10px) / 2);
+  }
+  #hdr-box nav #nav-02 li:nth-of-type(1) a,
+  #hdr-box nav #nav-02 li:nth-of-type(2) a {
+    width: auto;
+  }
+  #hdr-box nav #nav-btn {
+    position: absolute;
+    right: auto;
+    left: 5%;
+    top: 60px;
+    margin: 0;
+    padding: 0;
+    width: 28%;
+  }
+  #hdr-box nav #nav-btn a {
+    width: 100%;
+  }
+}

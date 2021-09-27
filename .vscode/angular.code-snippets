@@ -1,0 +1,33 @@
+{
+  "if": {
+    "scope": "html",
+    "prefix": "ng-if",
+    "body": [
+      "<ng-container *ngIf=\"\">",
+      "</ng-container>"
+    ],
+    "description": "ng-if"
+  },
+  "for": {
+    "scope": "html",
+    "prefix": "ng-for",
+    "body": [
+      "<ng-container *ngFor=\"let e of []\">",
+      "</ng-container>"
+    ],
+    "description": "ng-for"
+  },
+  "switch": {
+    "scope": "html",
+    "prefix": "ng-switch",
+    "body": [
+      "<ng-container [ngSwitch]=\"\">",
+      "\t<ng-container *ngSwitchCase=\"\">",
+      "\t</ng-container>",
+      "\t<ng-container *ngSwitchDefault>",
+      "\t</ng-container>",
+      "</ng-container>"
+    ],
+    "description": "ng-switch"
+  }
+}

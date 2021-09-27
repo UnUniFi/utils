@@ -14,41 +14,27 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "paths": {
+      "shared": [
+        "dist/shared/shared",
+        "dist/shared"
+      ],
+      "crypto": [
+        "./node_modules/crypto-browserify"
+      ],
+      "stream": [
+        "./node_modules/stream-browserify"
+      ]
+    },
+    "target": "es2017",
     "module": "es2020",
     "lib": [
       "es2018",
       "dom"
-    ],
-    "paths": {
-      "@app-ce/*": [
-        "projects/telescope-extension/src/app/*"
-      ],
-      "@environments-ce/*": [
-        "projects/telescope-extension/src/environments/*"
-      ],
-      "@model-ce/*": [
-        "projects/telescope-extension/src/model/*"
-      ],
-      "@view-ce/*": [
-        "projects/telescope-extension/src/view/*"
-      ],
-      "@app-w/*": [
-        "projects/website/src/app/*"
-      ],
-      "@environments-w/*": [
-        "projects/website/src/environments/*"
-      ],
-      "@model-w/*": [
-        "projects/website/src/model/*"
-      ],
-      "@view-w/*": [
-        "projects/website/src/view/*"
-      ]
-    },
-    "allowSyntheticDefaultImports": true
+    ]
   },
   "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true

@@ -1,4126 +1,4 @@
 import * as $protobuf from "protobufjs";
-/** Namespace eurx. */
-export namespace eurx {
-
-    /** Namespace estmdist. */
-    namespace estmdist {
-
-        /** Represents a Query */
-        class Query extends $protobuf.rpc.Service {
-
-            /**
-             * Constructs a new Query service.
-             * @param rpcImpl RPC implementation
-             * @param [requestDelimited=false] Whether requests are length-delimited
-             * @param [responseDelimited=false] Whether responses are length-delimited
-             */
-            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
-             */
-            public params(request: eurx.estmdist.IQueryParamsRequest, callback: eurx.estmdist.Query.ParamsCallback): void;
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @returns Promise
-             */
-            public params(request: eurx.estmdist.IQueryParamsRequest): Promise<eurx.estmdist.QueryParamsResponse>;
-
-            /**
-             * Calls Balances.
-             * @param request QueryGetBalancesRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and QueryGetBalancesResponse
-             */
-            public balances(request: eurx.estmdist.IQueryGetBalancesRequest, callback: eurx.estmdist.Query.BalancesCallback): void;
-
-            /**
-             * Calls Balances.
-             * @param request QueryGetBalancesRequest message or plain object
-             * @returns Promise
-             */
-            public balances(request: eurx.estmdist.IQueryGetBalancesRequest): Promise<eurx.estmdist.QueryGetBalancesResponse>;
-        }
-
-        namespace Query {
-
-            /**
-             * Callback as used by {@link eurx.estmdist.Query#params}.
-             * @param error Error, if any
-             * @param [response] QueryParamsResponse
-             */
-            type ParamsCallback = (error: (Error|null), response?: eurx.estmdist.QueryParamsResponse) => void;
-
-            /**
-             * Callback as used by {@link eurx.estmdist.Query#balances}.
-             * @param error Error, if any
-             * @param [response] QueryGetBalancesResponse
-             */
-            type BalancesCallback = (error: (Error|null), response?: eurx.estmdist.QueryGetBalancesResponse) => void;
-        }
-
-        /** Properties of a QueryParamsRequest. */
-        interface IQueryParamsRequest {
-        }
-
-        /** Represents a QueryParamsRequest. */
-        class QueryParamsRequest implements IQueryParamsRequest {
-
-            /**
-             * Constructs a new QueryParamsRequest.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.estmdist.IQueryParamsRequest);
-
-            /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link eurx.estmdist.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.estmdist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link eurx.estmdist.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.estmdist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.estmdist.QueryParamsRequest;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.estmdist.QueryParamsRequest;
-
-            /**
-             * Verifies a QueryParamsRequest message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsRequest message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsRequest
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.estmdist.QueryParamsRequest;
-
-            /**
-             * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
-             * @param message QueryParamsRequest
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.estmdist.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsRequest to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryParamsResponse. */
-        interface IQueryParamsResponse {
-
-            /** QueryParamsResponse params */
-            params?: (eurx.estmdist.IParams|null);
-        }
-
-        /** Represents a QueryParamsResponse. */
-        class QueryParamsResponse implements IQueryParamsResponse {
-
-            /**
-             * Constructs a new QueryParamsResponse.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.estmdist.IQueryParamsResponse);
-
-            /** QueryParamsResponse params. */
-            public params?: (eurx.estmdist.IParams|null);
-
-            /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link eurx.estmdist.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.estmdist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link eurx.estmdist.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.estmdist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.estmdist.QueryParamsResponse;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.estmdist.QueryParamsResponse;
-
-            /**
-             * Verifies a QueryParamsResponse message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsResponse message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsResponse
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.estmdist.QueryParamsResponse;
-
-            /**
-             * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
-             * @param message QueryParamsResponse
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.estmdist.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsResponse to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryGetBalancesRequest. */
-        interface IQueryGetBalancesRequest {
-        }
-
-        /** Represents a QueryGetBalancesRequest. */
-        class QueryGetBalancesRequest implements IQueryGetBalancesRequest {
-
-            /**
-             * Constructs a new QueryGetBalancesRequest.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.estmdist.IQueryGetBalancesRequest);
-
-            /**
-             * Encodes the specified QueryGetBalancesRequest message. Does not implicitly {@link eurx.estmdist.QueryGetBalancesRequest.verify|verify} messages.
-             * @param message QueryGetBalancesRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.estmdist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryGetBalancesRequest message, length delimited. Does not implicitly {@link eurx.estmdist.QueryGetBalancesRequest.verify|verify} messages.
-             * @param message QueryGetBalancesRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.estmdist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryGetBalancesRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.estmdist.QueryGetBalancesRequest;
-
-            /**
-             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryGetBalancesRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.estmdist.QueryGetBalancesRequest;
-
-            /**
-             * Verifies a QueryGetBalancesRequest message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryGetBalancesRequest message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryGetBalancesRequest
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.estmdist.QueryGetBalancesRequest;
-
-            /**
-             * Creates a plain object from a QueryGetBalancesRequest message. Also converts values to other types if specified.
-             * @param message QueryGetBalancesRequest
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.estmdist.QueryGetBalancesRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryGetBalancesRequest to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryGetBalancesResponse. */
-        interface IQueryGetBalancesResponse {
-
-            /** QueryGetBalancesResponse balances */
-            balances?: (cosmos.base.v1beta1.ICoin[]|null);
-        }
-
-        /** Represents a QueryGetBalancesResponse. */
-        class QueryGetBalancesResponse implements IQueryGetBalancesResponse {
-
-            /**
-             * Constructs a new QueryGetBalancesResponse.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.estmdist.IQueryGetBalancesResponse);
-
-            /** QueryGetBalancesResponse balances. */
-            public balances: cosmos.base.v1beta1.ICoin[];
-
-            /**
-             * Encodes the specified QueryGetBalancesResponse message. Does not implicitly {@link eurx.estmdist.QueryGetBalancesResponse.verify|verify} messages.
-             * @param message QueryGetBalancesResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.estmdist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryGetBalancesResponse message, length delimited. Does not implicitly {@link eurx.estmdist.QueryGetBalancesResponse.verify|verify} messages.
-             * @param message QueryGetBalancesResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.estmdist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryGetBalancesResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.estmdist.QueryGetBalancesResponse;
-
-            /**
-             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryGetBalancesResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.estmdist.QueryGetBalancesResponse;
-
-            /**
-             * Verifies a QueryGetBalancesResponse message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryGetBalancesResponse message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryGetBalancesResponse
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.estmdist.QueryGetBalancesResponse;
-
-            /**
-             * Creates a plain object from a QueryGetBalancesResponse message. Also converts values to other types if specified.
-             * @param message QueryGetBalancesResponse
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.estmdist.QueryGetBalancesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryGetBalancesResponse to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Params. */
-        interface IParams {
-
-            /** Params active */
-            active?: (boolean|null);
-
-            /** Params periods */
-            periods?: (eurx.estmdist.IPeriod[]|null);
-        }
-
-        /** Represents a Params. */
-        class Params implements IParams {
-
-            /**
-             * Constructs a new Params.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.estmdist.IParams);
-
-            /** Params active. */
-            public active: boolean;
-
-            /** Params periods. */
-            public periods: eurx.estmdist.IPeriod[];
-
-            /**
-             * Encodes the specified Params message. Does not implicitly {@link eurx.estmdist.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.estmdist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link eurx.estmdist.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.estmdist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.estmdist.Params;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.estmdist.Params;
-
-            /**
-             * Verifies a Params message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Params message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Params
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.estmdist.Params;
-
-            /**
-             * Creates a plain object from a Params message. Also converts values to other types if specified.
-             * @param message Params
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.estmdist.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Params to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Period. */
-        interface IPeriod {
-
-            /** Period start */
-            start?: (google.protobuf.ITimestamp|null);
-
-            /** Period end */
-            end?: (google.protobuf.ITimestamp|null);
-
-            /** Period inflation */
-            inflation?: (string|null);
-        }
-
-        /** Represents a Period. */
-        class Period implements IPeriod {
-
-            /**
-             * Constructs a new Period.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.estmdist.IPeriod);
-
-            /** Period start. */
-            public start?: (google.protobuf.ITimestamp|null);
-
-            /** Period end. */
-            public end?: (google.protobuf.ITimestamp|null);
-
-            /** Period inflation. */
-            public inflation: string;
-
-            /**
-             * Encodes the specified Period message. Does not implicitly {@link eurx.estmdist.Period.verify|verify} messages.
-             * @param message Period message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.estmdist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Period message, length delimited. Does not implicitly {@link eurx.estmdist.Period.verify|verify} messages.
-             * @param message Period message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.estmdist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Period message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Period
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.estmdist.Period;
-
-            /**
-             * Decodes a Period message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Period
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.estmdist.Period;
-
-            /**
-             * Verifies a Period message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Period message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Period
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.estmdist.Period;
-
-            /**
-             * Creates a plain object from a Period message. Also converts values to other types if specified.
-             * @param message Period
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.estmdist.Period, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Period to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a GenesisState. */
-        interface IGenesisState {
-
-            /** GenesisState params */
-            params?: (eurx.estmdist.IParams|null);
-
-            /** GenesisState previous_block_time */
-            previous_block_time?: (google.protobuf.ITimestamp|null);
-        }
-
-        /** Represents a GenesisState. */
-        class GenesisState implements IGenesisState {
-
-            /**
-             * Constructs a new GenesisState.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.estmdist.IGenesisState);
-
-            /** GenesisState params. */
-            public params?: (eurx.estmdist.IParams|null);
-
-            /** GenesisState previous_block_time. */
-            public previous_block_time?: (google.protobuf.ITimestamp|null);
-
-            /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link eurx.estmdist.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.estmdist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link eurx.estmdist.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.estmdist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.estmdist.GenesisState;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.estmdist.GenesisState;
-
-            /**
-             * Verifies a GenesisState message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a GenesisState message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns GenesisState
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.estmdist.GenesisState;
-
-            /**
-             * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
-             * @param message GenesisState
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.estmdist.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this GenesisState to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-    }
-
-    /** Namespace incentive. */
-    namespace incentive {
-
-        /** Represents a Query */
-        class Query extends $protobuf.rpc.Service {
-
-            /**
-             * Constructs a new Query service.
-             * @param rpcImpl RPC implementation
-             * @param [requestDelimited=false] Whether requests are length-delimited
-             * @param [responseDelimited=false] Whether responses are length-delimited
-             */
-            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
-             */
-            public params(request: eurx.incentive.IQueryParamsRequest, callback: eurx.incentive.Query.ParamsCallback): void;
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @returns Promise
-             */
-            public params(request: eurx.incentive.IQueryParamsRequest): Promise<eurx.incentive.QueryParamsResponse>;
-        }
-
-        namespace Query {
-
-            /**
-             * Callback as used by {@link eurx.incentive.Query#params}.
-             * @param error Error, if any
-             * @param [response] QueryParamsResponse
-             */
-            type ParamsCallback = (error: (Error|null), response?: eurx.incentive.QueryParamsResponse) => void;
-        }
-
-        /** Properties of a QueryParamsRequest. */
-        interface IQueryParamsRequest {
-        }
-
-        /** Represents a QueryParamsRequest. */
-        class QueryParamsRequest implements IQueryParamsRequest {
-
-            /**
-             * Constructs a new QueryParamsRequest.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IQueryParamsRequest);
-
-            /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link eurx.incentive.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link eurx.incentive.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.QueryParamsRequest;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.QueryParamsRequest;
-
-            /**
-             * Verifies a QueryParamsRequest message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsRequest message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsRequest
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.QueryParamsRequest;
-
-            /**
-             * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
-             * @param message QueryParamsRequest
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsRequest to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryParamsResponse. */
-        interface IQueryParamsResponse {
-
-            /** QueryParamsResponse params */
-            params?: (eurx.incentive.IParams|null);
-        }
-
-        /** Represents a QueryParamsResponse. */
-        class QueryParamsResponse implements IQueryParamsResponse {
-
-            /**
-             * Constructs a new QueryParamsResponse.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IQueryParamsResponse);
-
-            /** QueryParamsResponse params. */
-            public params?: (eurx.incentive.IParams|null);
-
-            /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link eurx.incentive.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link eurx.incentive.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.QueryParamsResponse;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.QueryParamsResponse;
-
-            /**
-             * Verifies a QueryParamsResponse message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsResponse message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsResponse
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.QueryParamsResponse;
-
-            /**
-             * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
-             * @param message QueryParamsResponse
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsResponse to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a BaseClaim. */
-        interface IBaseClaim {
-
-            /** BaseClaim owner */
-            owner?: (string|null);
-
-            /** BaseClaim reward */
-            reward?: (cosmos.base.v1beta1.ICoin|null);
-        }
-
-        /** Represents a BaseClaim. */
-        class BaseClaim implements IBaseClaim {
-
-            /**
-             * Constructs a new BaseClaim.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IBaseClaim);
-
-            /** BaseClaim owner. */
-            public owner: string;
-
-            /** BaseClaim reward. */
-            public reward?: (cosmos.base.v1beta1.ICoin|null);
-
-            /**
-             * Encodes the specified BaseClaim message. Does not implicitly {@link eurx.incentive.BaseClaim.verify|verify} messages.
-             * @param message BaseClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified BaseClaim message, length delimited. Does not implicitly {@link eurx.incentive.BaseClaim.verify|verify} messages.
-             * @param message BaseClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a BaseClaim message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns BaseClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.BaseClaim;
-
-            /**
-             * Decodes a BaseClaim message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns BaseClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.BaseClaim;
-
-            /**
-             * Verifies a BaseClaim message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a BaseClaim message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns BaseClaim
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.BaseClaim;
-
-            /**
-             * Creates a plain object from a BaseClaim message. Also converts values to other types if specified.
-             * @param message BaseClaim
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.BaseClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this BaseClaim to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a BaseMultiClaim. */
-        interface IBaseMultiClaim {
-
-            /** BaseMultiClaim owner */
-            owner?: (string|null);
-
-            /** BaseMultiClaim reward */
-            reward?: (cosmos.base.v1beta1.ICoin[]|null);
-        }
-
-        /** Represents a BaseMultiClaim. */
-        class BaseMultiClaim implements IBaseMultiClaim {
-
-            /**
-             * Constructs a new BaseMultiClaim.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IBaseMultiClaim);
-
-            /** BaseMultiClaim owner. */
-            public owner: string;
-
-            /** BaseMultiClaim reward. */
-            public reward: cosmos.base.v1beta1.ICoin[];
-
-            /**
-             * Encodes the specified BaseMultiClaim message. Does not implicitly {@link eurx.incentive.BaseMultiClaim.verify|verify} messages.
-             * @param message BaseMultiClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified BaseMultiClaim message, length delimited. Does not implicitly {@link eurx.incentive.BaseMultiClaim.verify|verify} messages.
-             * @param message BaseMultiClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a BaseMultiClaim message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns BaseMultiClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.BaseMultiClaim;
-
-            /**
-             * Decodes a BaseMultiClaim message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns BaseMultiClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.BaseMultiClaim;
-
-            /**
-             * Verifies a BaseMultiClaim message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a BaseMultiClaim message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns BaseMultiClaim
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.BaseMultiClaim;
-
-            /**
-             * Creates a plain object from a BaseMultiClaim message. Also converts values to other types if specified.
-             * @param message BaseMultiClaim
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.BaseMultiClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this BaseMultiClaim to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of an EurxMintingClaim. */
-        interface IEurxMintingClaim {
-
-            /** EurxMintingClaim base_claim */
-            base_claim?: (eurx.incentive.IBaseClaim|null);
-
-            /** EurxMintingClaim reward_indexes */
-            reward_indexes?: (eurx.incentive.IRewardIndex[]|null);
-        }
-
-        /** Represents an EurxMintingClaim. */
-        class EurxMintingClaim implements IEurxMintingClaim {
-
-            /**
-             * Constructs a new EurxMintingClaim.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IEurxMintingClaim);
-
-            /** EurxMintingClaim base_claim. */
-            public base_claim?: (eurx.incentive.IBaseClaim|null);
-
-            /** EurxMintingClaim reward_indexes. */
-            public reward_indexes: eurx.incentive.IRewardIndex[];
-
-            /**
-             * Encodes the specified EurxMintingClaim message. Does not implicitly {@link eurx.incentive.EurxMintingClaim.verify|verify} messages.
-             * @param message EurxMintingClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IEurxMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified EurxMintingClaim message, length delimited. Does not implicitly {@link eurx.incentive.EurxMintingClaim.verify|verify} messages.
-             * @param message EurxMintingClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IEurxMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes an EurxMintingClaim message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns EurxMintingClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.EurxMintingClaim;
-
-            /**
-             * Decodes an EurxMintingClaim message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns EurxMintingClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.EurxMintingClaim;
-
-            /**
-             * Verifies an EurxMintingClaim message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates an EurxMintingClaim message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns EurxMintingClaim
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.EurxMintingClaim;
-
-            /**
-             * Creates a plain object from an EurxMintingClaim message. Also converts values to other types if specified.
-             * @param message EurxMintingClaim
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.EurxMintingClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this EurxMintingClaim to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a RewardIndex. */
-        interface IRewardIndex {
-
-            /** RewardIndex collateral_type */
-            collateral_type?: (string|null);
-
-            /** RewardIndex reward_factor */
-            reward_factor?: (string|null);
-        }
-
-        /** Represents a RewardIndex. */
-        class RewardIndex implements IRewardIndex {
-
-            /**
-             * Constructs a new RewardIndex.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IRewardIndex);
-
-            /** RewardIndex collateral_type. */
-            public collateral_type: string;
-
-            /** RewardIndex reward_factor. */
-            public reward_factor: string;
-
-            /**
-             * Encodes the specified RewardIndex message. Does not implicitly {@link eurx.incentive.RewardIndex.verify|verify} messages.
-             * @param message RewardIndex message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified RewardIndex message, length delimited. Does not implicitly {@link eurx.incentive.RewardIndex.verify|verify} messages.
-             * @param message RewardIndex message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a RewardIndex message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns RewardIndex
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.RewardIndex;
-
-            /**
-             * Decodes a RewardIndex message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns RewardIndex
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.RewardIndex;
-
-            /**
-             * Verifies a RewardIndex message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a RewardIndex message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns RewardIndex
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.RewardIndex;
-
-            /**
-             * Creates a plain object from a RewardIndex message. Also converts values to other types if specified.
-             * @param message RewardIndex
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.RewardIndex, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this RewardIndex to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a MsgClaimEurxMintingReward. */
-        interface IMsgClaimEurxMintingReward {
-
-            /** MsgClaimEurxMintingReward sender */
-            sender?: (string|null);
-
-            /** MsgClaimEurxMintingReward multiplier_name */
-            multiplier_name?: (string|null);
-        }
-
-        /** Represents a MsgClaimEurxMintingReward. */
-        class MsgClaimEurxMintingReward implements IMsgClaimEurxMintingReward {
-
-            /**
-             * Constructs a new MsgClaimEurxMintingReward.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IMsgClaimEurxMintingReward);
-
-            /** MsgClaimEurxMintingReward sender. */
-            public sender: string;
-
-            /** MsgClaimEurxMintingReward multiplier_name. */
-            public multiplier_name: string;
-
-            /**
-             * Encodes the specified MsgClaimEurxMintingReward message. Does not implicitly {@link eurx.incentive.MsgClaimEurxMintingReward.verify|verify} messages.
-             * @param message MsgClaimEurxMintingReward message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IMsgClaimEurxMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgClaimEurxMintingReward message, length delimited. Does not implicitly {@link eurx.incentive.MsgClaimEurxMintingReward.verify|verify} messages.
-             * @param message MsgClaimEurxMintingReward message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IMsgClaimEurxMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgClaimEurxMintingReward message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgClaimEurxMintingReward
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.MsgClaimEurxMintingReward;
-
-            /**
-             * Decodes a MsgClaimEurxMintingReward message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgClaimEurxMintingReward
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.MsgClaimEurxMintingReward;
-
-            /**
-             * Verifies a MsgClaimEurxMintingReward message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgClaimEurxMintingReward message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgClaimEurxMintingReward
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.MsgClaimEurxMintingReward;
-
-            /**
-             * Creates a plain object from a MsgClaimEurxMintingReward message. Also converts values to other types if specified.
-             * @param message MsgClaimEurxMintingReward
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.MsgClaimEurxMintingReward, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgClaimEurxMintingReward to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Params. */
-        interface IParams {
-
-            /** Params eurx_minting_reward_periods */
-            eurx_minting_reward_periods?: (eurx.incentive.IRewardPeriod[]|null);
-
-            /** Params claim_multipliers */
-            claim_multipliers?: (eurx.incentive.IMultiplier[]|null);
-
-            /** Params claim_end */
-            claim_end?: (google.protobuf.ITimestamp|null);
-        }
-
-        /** Represents a Params. */
-        class Params implements IParams {
-
-            /**
-             * Constructs a new Params.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IParams);
-
-            /** Params eurx_minting_reward_periods. */
-            public eurx_minting_reward_periods: eurx.incentive.IRewardPeriod[];
-
-            /** Params claim_multipliers. */
-            public claim_multipliers: eurx.incentive.IMultiplier[];
-
-            /** Params claim_end. */
-            public claim_end?: (google.protobuf.ITimestamp|null);
-
-            /**
-             * Encodes the specified Params message. Does not implicitly {@link eurx.incentive.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link eurx.incentive.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.Params;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.Params;
-
-            /**
-             * Verifies a Params message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Params message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Params
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.Params;
-
-            /**
-             * Creates a plain object from a Params message. Also converts values to other types if specified.
-             * @param message Params
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Params to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a RewardPeriod. */
-        interface IRewardPeriod {
-
-            /** RewardPeriod active */
-            active?: (boolean|null);
-
-            /** RewardPeriod collateral_type */
-            collateral_type?: (string|null);
-
-            /** RewardPeriod start */
-            start?: (google.protobuf.ITimestamp|null);
-
-            /** RewardPeriod end */
-            end?: (google.protobuf.ITimestamp|null);
-
-            /** RewardPeriod rewards_per_second */
-            rewards_per_second?: (cosmos.base.v1beta1.ICoin|null);
-        }
-
-        /** Represents a RewardPeriod. */
-        class RewardPeriod implements IRewardPeriod {
-
-            /**
-             * Constructs a new RewardPeriod.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IRewardPeriod);
-
-            /** RewardPeriod active. */
-            public active: boolean;
-
-            /** RewardPeriod collateral_type. */
-            public collateral_type: string;
-
-            /** RewardPeriod start. */
-            public start?: (google.protobuf.ITimestamp|null);
-
-            /** RewardPeriod end. */
-            public end?: (google.protobuf.ITimestamp|null);
-
-            /** RewardPeriod rewards_per_second. */
-            public rewards_per_second?: (cosmos.base.v1beta1.ICoin|null);
-
-            /**
-             * Encodes the specified RewardPeriod message. Does not implicitly {@link eurx.incentive.RewardPeriod.verify|verify} messages.
-             * @param message RewardPeriod message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified RewardPeriod message, length delimited. Does not implicitly {@link eurx.incentive.RewardPeriod.verify|verify} messages.
-             * @param message RewardPeriod message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a RewardPeriod message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns RewardPeriod
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.RewardPeriod;
-
-            /**
-             * Decodes a RewardPeriod message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns RewardPeriod
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.RewardPeriod;
-
-            /**
-             * Verifies a RewardPeriod message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a RewardPeriod message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns RewardPeriod
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.RewardPeriod;
-
-            /**
-             * Creates a plain object from a RewardPeriod message. Also converts values to other types if specified.
-             * @param message RewardPeriod
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.RewardPeriod, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this RewardPeriod to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Multiplier. */
-        interface IMultiplier {
-
-            /** Multiplier name */
-            name?: (string|null);
-
-            /** Multiplier months_lockup */
-            months_lockup?: (Long|null);
-
-            /** Multiplier factor */
-            factor?: (string|null);
-        }
-
-        /** Represents a Multiplier. */
-        class Multiplier implements IMultiplier {
-
-            /**
-             * Constructs a new Multiplier.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IMultiplier);
-
-            /** Multiplier name. */
-            public name: string;
-
-            /** Multiplier months_lockup. */
-            public months_lockup: Long;
-
-            /** Multiplier factor. */
-            public factor: string;
-
-            /**
-             * Encodes the specified Multiplier message. Does not implicitly {@link eurx.incentive.Multiplier.verify|verify} messages.
-             * @param message Multiplier message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Multiplier message, length delimited. Does not implicitly {@link eurx.incentive.Multiplier.verify|verify} messages.
-             * @param message Multiplier message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Multiplier message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Multiplier
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.Multiplier;
-
-            /**
-             * Decodes a Multiplier message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Multiplier
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.Multiplier;
-
-            /**
-             * Verifies a Multiplier message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Multiplier message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Multiplier
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.Multiplier;
-
-            /**
-             * Creates a plain object from a Multiplier message. Also converts values to other types if specified.
-             * @param message Multiplier
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.Multiplier, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Multiplier to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a GenesisState. */
-        interface IGenesisState {
-
-            /** GenesisState params */
-            params?: (eurx.incentive.IParams|null);
-
-            /** GenesisState eurx_accumulation_times */
-            eurx_accumulation_times?: (eurx.incentive.IGenesisAccumulationTime[]|null);
-
-            /** GenesisState eurx_minting_claims */
-            eurx_minting_claims?: (eurx.incentive.IEurxMintingClaim[]|null);
-        }
-
-        /** Represents a GenesisState. */
-        class GenesisState implements IGenesisState {
-
-            /**
-             * Constructs a new GenesisState.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IGenesisState);
-
-            /** GenesisState params. */
-            public params?: (eurx.incentive.IParams|null);
-
-            /** GenesisState eurx_accumulation_times. */
-            public eurx_accumulation_times: eurx.incentive.IGenesisAccumulationTime[];
-
-            /** GenesisState eurx_minting_claims. */
-            public eurx_minting_claims: eurx.incentive.IEurxMintingClaim[];
-
-            /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link eurx.incentive.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link eurx.incentive.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.GenesisState;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.GenesisState;
-
-            /**
-             * Verifies a GenesisState message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a GenesisState message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns GenesisState
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.GenesisState;
-
-            /**
-             * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
-             * @param message GenesisState
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this GenesisState to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a GenesisAccumulationTime. */
-        interface IGenesisAccumulationTime {
-
-            /** GenesisAccumulationTime collateral_type */
-            collateral_type?: (string|null);
-
-            /** GenesisAccumulationTime previous_accumulation_time */
-            previous_accumulation_time?: (google.protobuf.ITimestamp|null);
-        }
-
-        /** Represents a GenesisAccumulationTime. */
-        class GenesisAccumulationTime implements IGenesisAccumulationTime {
-
-            /**
-             * Constructs a new GenesisAccumulationTime.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: eurx.incentive.IGenesisAccumulationTime);
-
-            /** GenesisAccumulationTime collateral_type. */
-            public collateral_type: string;
-
-            /** GenesisAccumulationTime previous_accumulation_time. */
-            public previous_accumulation_time?: (google.protobuf.ITimestamp|null);
-
-            /**
-             * Encodes the specified GenesisAccumulationTime message. Does not implicitly {@link eurx.incentive.GenesisAccumulationTime.verify|verify} messages.
-             * @param message GenesisAccumulationTime message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: eurx.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified GenesisAccumulationTime message, length delimited. Does not implicitly {@link eurx.incentive.GenesisAccumulationTime.verify|verify} messages.
-             * @param message GenesisAccumulationTime message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: eurx.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a GenesisAccumulationTime message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns GenesisAccumulationTime
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): eurx.incentive.GenesisAccumulationTime;
-
-            /**
-             * Decodes a GenesisAccumulationTime message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns GenesisAccumulationTime
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): eurx.incentive.GenesisAccumulationTime;
-
-            /**
-             * Verifies a GenesisAccumulationTime message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a GenesisAccumulationTime message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns GenesisAccumulationTime
-             */
-            public static fromObject(object: { [k: string]: any }): eurx.incentive.GenesisAccumulationTime;
-
-            /**
-             * Creates a plain object from a GenesisAccumulationTime message. Also converts values to other types if specified.
-             * @param message GenesisAccumulationTime
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: eurx.incentive.GenesisAccumulationTime, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this GenesisAccumulationTime to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-    }
-}
-
-/** Namespace cosmos. */
-export namespace cosmos {
-
-    /** Namespace base. */
-    namespace base {
-
-        /** Namespace query. */
-        namespace query {
-
-            /** Namespace v1beta1. */
-            namespace v1beta1 {
-
-                /** Properties of a PageRequest. */
-                interface IPageRequest {
-
-                    /** PageRequest key */
-                    key?: (Uint8Array|null);
-
-                    /** PageRequest offset */
-                    offset?: (Long|null);
-
-                    /** PageRequest limit */
-                    limit?: (Long|null);
-
-                    /** PageRequest count_total */
-                    count_total?: (boolean|null);
-                }
-
-                /** Represents a PageRequest. */
-                class PageRequest implements IPageRequest {
-
-                    /**
-                     * Constructs a new PageRequest.
-                     * @param [properties] Properties to set
-                     */
-                    constructor(properties?: cosmos.base.query.v1beta1.IPageRequest);
-
-                    /** PageRequest key. */
-                    public key: Uint8Array;
-
-                    /** PageRequest offset. */
-                    public offset: Long;
-
-                    /** PageRequest limit. */
-                    public limit: Long;
-
-                    /** PageRequest count_total. */
-                    public count_total: boolean;
-
-                    /**
-                     * Encodes the specified PageRequest message. Does not implicitly {@link cosmos.base.query.v1beta1.PageRequest.verify|verify} messages.
-                     * @param message PageRequest message or plain object to encode
-                     * @param [writer] Writer to encode to
-                     * @returns Writer
-                     */
-                    public static encode(message: cosmos.base.query.v1beta1.IPageRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                    /**
-                     * Encodes the specified PageRequest message, length delimited. Does not implicitly {@link cosmos.base.query.v1beta1.PageRequest.verify|verify} messages.
-                     * @param message PageRequest message or plain object to encode
-                     * @param [writer] Writer to encode to
-                     * @returns Writer
-                     */
-                    public static encodeDelimited(message: cosmos.base.query.v1beta1.IPageRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                    /**
-                     * Decodes a PageRequest message from the specified reader or buffer.
-                     * @param reader Reader or buffer to decode from
-                     * @param [length] Message length if known beforehand
-                     * @returns PageRequest
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.query.v1beta1.PageRequest;
-
-                    /**
-                     * Decodes a PageRequest message from the specified reader or buffer, length delimited.
-                     * @param reader Reader or buffer to decode from
-                     * @returns PageRequest
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.query.v1beta1.PageRequest;
-
-                    /**
-                     * Verifies a PageRequest message.
-                     * @param message Plain object to verify
-                     * @returns `null` if valid, otherwise the reason why it is not
-                     */
-                    public static verify(message: { [k: string]: any }): (string|null);
-
-                    /**
-                     * Creates a PageRequest message from a plain object. Also converts values to their respective internal types.
-                     * @param object Plain object
-                     * @returns PageRequest
-                     */
-                    public static fromObject(object: { [k: string]: any }): cosmos.base.query.v1beta1.PageRequest;
-
-                    /**
-                     * Creates a plain object from a PageRequest message. Also converts values to other types if specified.
-                     * @param message PageRequest
-                     * @param [options] Conversion options
-                     * @returns Plain object
-                     */
-                    public static toObject(message: cosmos.base.query.v1beta1.PageRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                    /**
-                     * Converts this PageRequest to JSON.
-                     * @returns JSON object
-                     */
-                    public toJSON(): { [k: string]: any };
-                }
-
-                /** Properties of a PageResponse. */
-                interface IPageResponse {
-
-                    /** PageResponse next_key */
-                    next_key?: (Uint8Array|null);
-
-                    /** PageResponse total */
-                    total?: (Long|null);
-                }
-
-                /** Represents a PageResponse. */
-                class PageResponse implements IPageResponse {
-
-                    /**
-                     * Constructs a new PageResponse.
-                     * @param [properties] Properties to set
-                     */
-                    constructor(properties?: cosmos.base.query.v1beta1.IPageResponse);
-
-                    /** PageResponse next_key. */
-                    public next_key: Uint8Array;
-
-                    /** PageResponse total. */
-                    public total: Long;
-
-                    /**
-                     * Encodes the specified PageResponse message. Does not implicitly {@link cosmos.base.query.v1beta1.PageResponse.verify|verify} messages.
-                     * @param message PageResponse message or plain object to encode
-                     * @param [writer] Writer to encode to
-                     * @returns Writer
-                     */
-                    public static encode(message: cosmos.base.query.v1beta1.IPageResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                    /**
-                     * Encodes the specified PageResponse message, length delimited. Does not implicitly {@link cosmos.base.query.v1beta1.PageResponse.verify|verify} messages.
-                     * @param message PageResponse message or plain object to encode
-                     * @param [writer] Writer to encode to
-                     * @returns Writer
-                     */
-                    public static encodeDelimited(message: cosmos.base.query.v1beta1.IPageResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                    /**
-                     * Decodes a PageResponse message from the specified reader or buffer.
-                     * @param reader Reader or buffer to decode from
-                     * @param [length] Message length if known beforehand
-                     * @returns PageResponse
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.query.v1beta1.PageResponse;
-
-                    /**
-                     * Decodes a PageResponse message from the specified reader or buffer, length delimited.
-                     * @param reader Reader or buffer to decode from
-                     * @returns PageResponse
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.query.v1beta1.PageResponse;
-
-                    /**
-                     * Verifies a PageResponse message.
-                     * @param message Plain object to verify
-                     * @returns `null` if valid, otherwise the reason why it is not
-                     */
-                    public static verify(message: { [k: string]: any }): (string|null);
-
-                    /**
-                     * Creates a PageResponse message from a plain object. Also converts values to their respective internal types.
-                     * @param object Plain object
-                     * @returns PageResponse
-                     */
-                    public static fromObject(object: { [k: string]: any }): cosmos.base.query.v1beta1.PageResponse;
-
-                    /**
-                     * Creates a plain object from a PageResponse message. Also converts values to other types if specified.
-                     * @param message PageResponse
-                     * @param [options] Conversion options
-                     * @returns Plain object
-                     */
-                    public static toObject(message: cosmos.base.query.v1beta1.PageResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                    /**
-                     * Converts this PageResponse to JSON.
-                     * @returns JSON object
-                     */
-                    public toJSON(): { [k: string]: any };
-                }
-            }
-        }
-
-        /** Namespace v1beta1. */
-        namespace v1beta1 {
-
-            /** Properties of a Coin. */
-            interface ICoin {
-
-                /** Coin denom */
-                denom?: (string|null);
-
-                /** Coin amount */
-                amount?: (string|null);
-            }
-
-            /** Represents a Coin. */
-            class Coin implements ICoin {
-
-                /**
-                 * Constructs a new Coin.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: cosmos.base.v1beta1.ICoin);
-
-                /** Coin denom. */
-                public denom: string;
-
-                /** Coin amount. */
-                public amount: string;
-
-                /**
-                 * Encodes the specified Coin message. Does not implicitly {@link cosmos.base.v1beta1.Coin.verify|verify} messages.
-                 * @param message Coin message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: cosmos.base.v1beta1.ICoin, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified Coin message, length delimited. Does not implicitly {@link cosmos.base.v1beta1.Coin.verify|verify} messages.
-                 * @param message Coin message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: cosmos.base.v1beta1.ICoin, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a Coin message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns Coin
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.v1beta1.Coin;
-
-                /**
-                 * Decodes a Coin message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns Coin
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.v1beta1.Coin;
-
-                /**
-                 * Verifies a Coin message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a Coin message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns Coin
-                 */
-                public static fromObject(object: { [k: string]: any }): cosmos.base.v1beta1.Coin;
-
-                /**
-                 * Creates a plain object from a Coin message. Also converts values to other types if specified.
-                 * @param message Coin
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: cosmos.base.v1beta1.Coin, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this Coin to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-
-            /** Properties of a DecCoin. */
-            interface IDecCoin {
-
-                /** DecCoin denom */
-                denom?: (string|null);
-
-                /** DecCoin amount */
-                amount?: (string|null);
-            }
-
-            /** Represents a DecCoin. */
-            class DecCoin implements IDecCoin {
-
-                /**
-                 * Constructs a new DecCoin.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: cosmos.base.v1beta1.IDecCoin);
-
-                /** DecCoin denom. */
-                public denom: string;
-
-                /** DecCoin amount. */
-                public amount: string;
-
-                /**
-                 * Encodes the specified DecCoin message. Does not implicitly {@link cosmos.base.v1beta1.DecCoin.verify|verify} messages.
-                 * @param message DecCoin message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: cosmos.base.v1beta1.IDecCoin, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified DecCoin message, length delimited. Does not implicitly {@link cosmos.base.v1beta1.DecCoin.verify|verify} messages.
-                 * @param message DecCoin message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: cosmos.base.v1beta1.IDecCoin, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a DecCoin message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns DecCoin
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.v1beta1.DecCoin;
-
-                /**
-                 * Decodes a DecCoin message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns DecCoin
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.v1beta1.DecCoin;
-
-                /**
-                 * Verifies a DecCoin message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a DecCoin message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns DecCoin
-                 */
-                public static fromObject(object: { [k: string]: any }): cosmos.base.v1beta1.DecCoin;
-
-                /**
-                 * Creates a plain object from a DecCoin message. Also converts values to other types if specified.
-                 * @param message DecCoin
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: cosmos.base.v1beta1.DecCoin, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this DecCoin to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-
-            /** Properties of an IntProto. */
-            interface IIntProto {
-
-                /** IntProto int */
-                int?: (string|null);
-            }
-
-            /** Represents an IntProto. */
-            class IntProto implements IIntProto {
-
-                /**
-                 * Constructs a new IntProto.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: cosmos.base.v1beta1.IIntProto);
-
-                /** IntProto int. */
-                public int: string;
-
-                /**
-                 * Encodes the specified IntProto message. Does not implicitly {@link cosmos.base.v1beta1.IntProto.verify|verify} messages.
-                 * @param message IntProto message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: cosmos.base.v1beta1.IIntProto, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified IntProto message, length delimited. Does not implicitly {@link cosmos.base.v1beta1.IntProto.verify|verify} messages.
-                 * @param message IntProto message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: cosmos.base.v1beta1.IIntProto, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes an IntProto message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns IntProto
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.v1beta1.IntProto;
-
-                /**
-                 * Decodes an IntProto message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns IntProto
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.v1beta1.IntProto;
-
-                /**
-                 * Verifies an IntProto message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates an IntProto message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns IntProto
-                 */
-                public static fromObject(object: { [k: string]: any }): cosmos.base.v1beta1.IntProto;
-
-                /**
-                 * Creates a plain object from an IntProto message. Also converts values to other types if specified.
-                 * @param message IntProto
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: cosmos.base.v1beta1.IntProto, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this IntProto to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-
-            /** Properties of a DecProto. */
-            interface IDecProto {
-
-                /** DecProto dec */
-                dec?: (string|null);
-            }
-
-            /** Represents a DecProto. */
-            class DecProto implements IDecProto {
-
-                /**
-                 * Constructs a new DecProto.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: cosmos.base.v1beta1.IDecProto);
-
-                /** DecProto dec. */
-                public dec: string;
-
-                /**
-                 * Encodes the specified DecProto message. Does not implicitly {@link cosmos.base.v1beta1.DecProto.verify|verify} messages.
-                 * @param message DecProto message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: cosmos.base.v1beta1.IDecProto, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified DecProto message, length delimited. Does not implicitly {@link cosmos.base.v1beta1.DecProto.verify|verify} messages.
-                 * @param message DecProto message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: cosmos.base.v1beta1.IDecProto, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a DecProto message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns DecProto
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.v1beta1.DecProto;
-
-                /**
-                 * Decodes a DecProto message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns DecProto
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.v1beta1.DecProto;
-
-                /**
-                 * Verifies a DecProto message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a DecProto message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns DecProto
-                 */
-                public static fromObject(object: { [k: string]: any }): cosmos.base.v1beta1.DecProto;
-
-                /**
-                 * Creates a plain object from a DecProto message. Also converts values to other types if specified.
-                 * @param message DecProto
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: cosmos.base.v1beta1.DecProto, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this DecProto to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-        }
-    }
-}
-
-/** Namespace jpyx. */
-export namespace jpyx {
-
-    /** Namespace incentive. */
-    namespace incentive {
-
-        /** Properties of a BaseClaim. */
-        interface IBaseClaim {
-
-            /** BaseClaim owner */
-            owner?: (string|null);
-
-            /** BaseClaim reward */
-            reward?: (cosmos.base.v1beta1.ICoin|null);
-        }
-
-        /** Represents a BaseClaim. */
-        class BaseClaim implements IBaseClaim {
-
-            /**
-             * Constructs a new BaseClaim.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IBaseClaim);
-
-            /** BaseClaim owner. */
-            public owner: string;
-
-            /** BaseClaim reward. */
-            public reward?: (cosmos.base.v1beta1.ICoin|null);
-
-            /**
-             * Encodes the specified BaseClaim message. Does not implicitly {@link jpyx.incentive.BaseClaim.verify|verify} messages.
-             * @param message BaseClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified BaseClaim message, length delimited. Does not implicitly {@link jpyx.incentive.BaseClaim.verify|verify} messages.
-             * @param message BaseClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a BaseClaim message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns BaseClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.BaseClaim;
-
-            /**
-             * Decodes a BaseClaim message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns BaseClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.BaseClaim;
-
-            /**
-             * Verifies a BaseClaim message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a BaseClaim message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns BaseClaim
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.BaseClaim;
-
-            /**
-             * Creates a plain object from a BaseClaim message. Also converts values to other types if specified.
-             * @param message BaseClaim
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.BaseClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this BaseClaim to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a BaseMultiClaim. */
-        interface IBaseMultiClaim {
-
-            /** BaseMultiClaim owner */
-            owner?: (string|null);
-
-            /** BaseMultiClaim reward */
-            reward?: (cosmos.base.v1beta1.ICoin[]|null);
-        }
-
-        /** Represents a BaseMultiClaim. */
-        class BaseMultiClaim implements IBaseMultiClaim {
-
-            /**
-             * Constructs a new BaseMultiClaim.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IBaseMultiClaim);
-
-            /** BaseMultiClaim owner. */
-            public owner: string;
-
-            /** BaseMultiClaim reward. */
-            public reward: cosmos.base.v1beta1.ICoin[];
-
-            /**
-             * Encodes the specified BaseMultiClaim message. Does not implicitly {@link jpyx.incentive.BaseMultiClaim.verify|verify} messages.
-             * @param message BaseMultiClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified BaseMultiClaim message, length delimited. Does not implicitly {@link jpyx.incentive.BaseMultiClaim.verify|verify} messages.
-             * @param message BaseMultiClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a BaseMultiClaim message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns BaseMultiClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.BaseMultiClaim;
-
-            /**
-             * Decodes a BaseMultiClaim message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns BaseMultiClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.BaseMultiClaim;
-
-            /**
-             * Verifies a BaseMultiClaim message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a BaseMultiClaim message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns BaseMultiClaim
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.BaseMultiClaim;
-
-            /**
-             * Creates a plain object from a BaseMultiClaim message. Also converts values to other types if specified.
-             * @param message BaseMultiClaim
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.BaseMultiClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this BaseMultiClaim to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a JpyxMintingClaim. */
-        interface IJpyxMintingClaim {
-
-            /** JpyxMintingClaim base_claim */
-            base_claim?: (jpyx.incentive.IBaseClaim|null);
-
-            /** JpyxMintingClaim reward_indexes */
-            reward_indexes?: (jpyx.incentive.IRewardIndex[]|null);
-        }
-
-        /** Represents a JpyxMintingClaim. */
-        class JpyxMintingClaim implements IJpyxMintingClaim {
-
-            /**
-             * Constructs a new JpyxMintingClaim.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IJpyxMintingClaim);
-
-            /** JpyxMintingClaim base_claim. */
-            public base_claim?: (jpyx.incentive.IBaseClaim|null);
-
-            /** JpyxMintingClaim reward_indexes. */
-            public reward_indexes: jpyx.incentive.IRewardIndex[];
-
-            /**
-             * Encodes the specified JpyxMintingClaim message. Does not implicitly {@link jpyx.incentive.JpyxMintingClaim.verify|verify} messages.
-             * @param message JpyxMintingClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IJpyxMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified JpyxMintingClaim message, length delimited. Does not implicitly {@link jpyx.incentive.JpyxMintingClaim.verify|verify} messages.
-             * @param message JpyxMintingClaim message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IJpyxMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a JpyxMintingClaim message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns JpyxMintingClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.JpyxMintingClaim;
-
-            /**
-             * Decodes a JpyxMintingClaim message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns JpyxMintingClaim
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.JpyxMintingClaim;
-
-            /**
-             * Verifies a JpyxMintingClaim message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a JpyxMintingClaim message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns JpyxMintingClaim
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.JpyxMintingClaim;
-
-            /**
-             * Creates a plain object from a JpyxMintingClaim message. Also converts values to other types if specified.
-             * @param message JpyxMintingClaim
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.JpyxMintingClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this JpyxMintingClaim to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a RewardIndex. */
-        interface IRewardIndex {
-
-            /** RewardIndex collateral_type */
-            collateral_type?: (string|null);
-
-            /** RewardIndex reward_factor */
-            reward_factor?: (string|null);
-        }
-
-        /** Represents a RewardIndex. */
-        class RewardIndex implements IRewardIndex {
-
-            /**
-             * Constructs a new RewardIndex.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IRewardIndex);
-
-            /** RewardIndex collateral_type. */
-            public collateral_type: string;
-
-            /** RewardIndex reward_factor. */
-            public reward_factor: string;
-
-            /**
-             * Encodes the specified RewardIndex message. Does not implicitly {@link jpyx.incentive.RewardIndex.verify|verify} messages.
-             * @param message RewardIndex message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified RewardIndex message, length delimited. Does not implicitly {@link jpyx.incentive.RewardIndex.verify|verify} messages.
-             * @param message RewardIndex message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a RewardIndex message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns RewardIndex
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.RewardIndex;
-
-            /**
-             * Decodes a RewardIndex message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns RewardIndex
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.RewardIndex;
-
-            /**
-             * Verifies a RewardIndex message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a RewardIndex message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns RewardIndex
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.RewardIndex;
-
-            /**
-             * Creates a plain object from a RewardIndex message. Also converts values to other types if specified.
-             * @param message RewardIndex
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.RewardIndex, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this RewardIndex to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a MsgClaimJpyxMintingReward. */
-        interface IMsgClaimJpyxMintingReward {
-
-            /** MsgClaimJpyxMintingReward sender */
-            sender?: (string|null);
-
-            /** MsgClaimJpyxMintingReward multiplier_name */
-            multiplier_name?: (string|null);
-        }
-
-        /** Represents a MsgClaimJpyxMintingReward. */
-        class MsgClaimJpyxMintingReward implements IMsgClaimJpyxMintingReward {
-
-            /**
-             * Constructs a new MsgClaimJpyxMintingReward.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IMsgClaimJpyxMintingReward);
-
-            /** MsgClaimJpyxMintingReward sender. */
-            public sender: string;
-
-            /** MsgClaimJpyxMintingReward multiplier_name. */
-            public multiplier_name: string;
-
-            /**
-             * Encodes the specified MsgClaimJpyxMintingReward message. Does not implicitly {@link jpyx.incentive.MsgClaimJpyxMintingReward.verify|verify} messages.
-             * @param message MsgClaimJpyxMintingReward message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IMsgClaimJpyxMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgClaimJpyxMintingReward message, length delimited. Does not implicitly {@link jpyx.incentive.MsgClaimJpyxMintingReward.verify|verify} messages.
-             * @param message MsgClaimJpyxMintingReward message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IMsgClaimJpyxMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgClaimJpyxMintingReward message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgClaimJpyxMintingReward
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.MsgClaimJpyxMintingReward;
-
-            /**
-             * Decodes a MsgClaimJpyxMintingReward message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgClaimJpyxMintingReward
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.MsgClaimJpyxMintingReward;
-
-            /**
-             * Verifies a MsgClaimJpyxMintingReward message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgClaimJpyxMintingReward message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgClaimJpyxMintingReward
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.MsgClaimJpyxMintingReward;
-
-            /**
-             * Creates a plain object from a MsgClaimJpyxMintingReward message. Also converts values to other types if specified.
-             * @param message MsgClaimJpyxMintingReward
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.MsgClaimJpyxMintingReward, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgClaimJpyxMintingReward to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Params. */
-        interface IParams {
-
-            /** Params jpyx_minting_reward_periods */
-            jpyx_minting_reward_periods?: (jpyx.incentive.IRewardPeriod[]|null);
-
-            /** Params claim_multipliers */
-            claim_multipliers?: (jpyx.incentive.IMultiplier[]|null);
-
-            /** Params claim_end */
-            claim_end?: (google.protobuf.ITimestamp|null);
-        }
-
-        /** Represents a Params. */
-        class Params implements IParams {
-
-            /**
-             * Constructs a new Params.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IParams);
-
-            /** Params jpyx_minting_reward_periods. */
-            public jpyx_minting_reward_periods: jpyx.incentive.IRewardPeriod[];
-
-            /** Params claim_multipliers. */
-            public claim_multipliers: jpyx.incentive.IMultiplier[];
-
-            /** Params claim_end. */
-            public claim_end?: (google.protobuf.ITimestamp|null);
-
-            /**
-             * Encodes the specified Params message. Does not implicitly {@link jpyx.incentive.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link jpyx.incentive.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.Params;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.Params;
-
-            /**
-             * Verifies a Params message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Params message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Params
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.Params;
-
-            /**
-             * Creates a plain object from a Params message. Also converts values to other types if specified.
-             * @param message Params
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Params to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a RewardPeriod. */
-        interface IRewardPeriod {
-
-            /** RewardPeriod active */
-            active?: (boolean|null);
-
-            /** RewardPeriod collateral_type */
-            collateral_type?: (string|null);
-
-            /** RewardPeriod start */
-            start?: (google.protobuf.ITimestamp|null);
-
-            /** RewardPeriod end */
-            end?: (google.protobuf.ITimestamp|null);
-
-            /** RewardPeriod rewards_per_second */
-            rewards_per_second?: (cosmos.base.v1beta1.ICoin|null);
-        }
-
-        /** Represents a RewardPeriod. */
-        class RewardPeriod implements IRewardPeriod {
-
-            /**
-             * Constructs a new RewardPeriod.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IRewardPeriod);
-
-            /** RewardPeriod active. */
-            public active: boolean;
-
-            /** RewardPeriod collateral_type. */
-            public collateral_type: string;
-
-            /** RewardPeriod start. */
-            public start?: (google.protobuf.ITimestamp|null);
-
-            /** RewardPeriod end. */
-            public end?: (google.protobuf.ITimestamp|null);
-
-            /** RewardPeriod rewards_per_second. */
-            public rewards_per_second?: (cosmos.base.v1beta1.ICoin|null);
-
-            /**
-             * Encodes the specified RewardPeriod message. Does not implicitly {@link jpyx.incentive.RewardPeriod.verify|verify} messages.
-             * @param message RewardPeriod message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified RewardPeriod message, length delimited. Does not implicitly {@link jpyx.incentive.RewardPeriod.verify|verify} messages.
-             * @param message RewardPeriod message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a RewardPeriod message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns RewardPeriod
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.RewardPeriod;
-
-            /**
-             * Decodes a RewardPeriod message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns RewardPeriod
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.RewardPeriod;
-
-            /**
-             * Verifies a RewardPeriod message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a RewardPeriod message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns RewardPeriod
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.RewardPeriod;
-
-            /**
-             * Creates a plain object from a RewardPeriod message. Also converts values to other types if specified.
-             * @param message RewardPeriod
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.RewardPeriod, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this RewardPeriod to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Multiplier. */
-        interface IMultiplier {
-
-            /** Multiplier name */
-            name?: (string|null);
-
-            /** Multiplier months_lockup */
-            months_lockup?: (Long|null);
-
-            /** Multiplier factor */
-            factor?: (string|null);
-        }
-
-        /** Represents a Multiplier. */
-        class Multiplier implements IMultiplier {
-
-            /**
-             * Constructs a new Multiplier.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IMultiplier);
-
-            /** Multiplier name. */
-            public name: string;
-
-            /** Multiplier months_lockup. */
-            public months_lockup: Long;
-
-            /** Multiplier factor. */
-            public factor: string;
-
-            /**
-             * Encodes the specified Multiplier message. Does not implicitly {@link jpyx.incentive.Multiplier.verify|verify} messages.
-             * @param message Multiplier message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Multiplier message, length delimited. Does not implicitly {@link jpyx.incentive.Multiplier.verify|verify} messages.
-             * @param message Multiplier message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Multiplier message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Multiplier
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.Multiplier;
-
-            /**
-             * Decodes a Multiplier message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Multiplier
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.Multiplier;
-
-            /**
-             * Verifies a Multiplier message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Multiplier message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Multiplier
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.Multiplier;
-
-            /**
-             * Creates a plain object from a Multiplier message. Also converts values to other types if specified.
-             * @param message Multiplier
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.Multiplier, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Multiplier to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Represents a Query */
-        class Query extends $protobuf.rpc.Service {
-
-            /**
-             * Constructs a new Query service.
-             * @param rpcImpl RPC implementation
-             * @param [requestDelimited=false] Whether requests are length-delimited
-             * @param [responseDelimited=false] Whether responses are length-delimited
-             */
-            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
-             */
-            public params(request: jpyx.incentive.IQueryParamsRequest, callback: jpyx.incentive.Query.ParamsCallback): void;
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @returns Promise
-             */
-            public params(request: jpyx.incentive.IQueryParamsRequest): Promise<jpyx.incentive.QueryParamsResponse>;
-        }
-
-        namespace Query {
-
-            /**
-             * Callback as used by {@link jpyx.incentive.Query#params}.
-             * @param error Error, if any
-             * @param [response] QueryParamsResponse
-             */
-            type ParamsCallback = (error: (Error|null), response?: jpyx.incentive.QueryParamsResponse) => void;
-        }
-
-        /** Properties of a QueryParamsRequest. */
-        interface IQueryParamsRequest {
-        }
-
-        /** Represents a QueryParamsRequest. */
-        class QueryParamsRequest implements IQueryParamsRequest {
-
-            /**
-             * Constructs a new QueryParamsRequest.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IQueryParamsRequest);
-
-            /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link jpyx.incentive.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link jpyx.incentive.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.QueryParamsRequest;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.QueryParamsRequest;
-
-            /**
-             * Verifies a QueryParamsRequest message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsRequest message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsRequest
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.QueryParamsRequest;
-
-            /**
-             * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
-             * @param message QueryParamsRequest
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsRequest to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryParamsResponse. */
-        interface IQueryParamsResponse {
-
-            /** QueryParamsResponse params */
-            params?: (jpyx.incentive.IParams|null);
-        }
-
-        /** Represents a QueryParamsResponse. */
-        class QueryParamsResponse implements IQueryParamsResponse {
-
-            /**
-             * Constructs a new QueryParamsResponse.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IQueryParamsResponse);
-
-            /** QueryParamsResponse params. */
-            public params?: (jpyx.incentive.IParams|null);
-
-            /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link jpyx.incentive.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link jpyx.incentive.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.QueryParamsResponse;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.QueryParamsResponse;
-
-            /**
-             * Verifies a QueryParamsResponse message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsResponse message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsResponse
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.QueryParamsResponse;
-
-            /**
-             * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
-             * @param message QueryParamsResponse
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsResponse to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a GenesisState. */
-        interface IGenesisState {
-
-            /** GenesisState params */
-            params?: (jpyx.incentive.IParams|null);
-
-            /** GenesisState jpyx_accumulation_times */
-            jpyx_accumulation_times?: (jpyx.incentive.IGenesisAccumulationTime[]|null);
-
-            /** GenesisState jpyx_minting_claims */
-            jpyx_minting_claims?: (jpyx.incentive.IJpyxMintingClaim[]|null);
-        }
-
-        /** Represents a GenesisState. */
-        class GenesisState implements IGenesisState {
-
-            /**
-             * Constructs a new GenesisState.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IGenesisState);
-
-            /** GenesisState params. */
-            public params?: (jpyx.incentive.IParams|null);
-
-            /** GenesisState jpyx_accumulation_times. */
-            public jpyx_accumulation_times: jpyx.incentive.IGenesisAccumulationTime[];
-
-            /** GenesisState jpyx_minting_claims. */
-            public jpyx_minting_claims: jpyx.incentive.IJpyxMintingClaim[];
-
-            /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link jpyx.incentive.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link jpyx.incentive.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.GenesisState;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.GenesisState;
-
-            /**
-             * Verifies a GenesisState message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a GenesisState message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns GenesisState
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.GenesisState;
-
-            /**
-             * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
-             * @param message GenesisState
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this GenesisState to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a GenesisAccumulationTime. */
-        interface IGenesisAccumulationTime {
-
-            /** GenesisAccumulationTime collateral_type */
-            collateral_type?: (string|null);
-
-            /** GenesisAccumulationTime previous_accumulation_time */
-            previous_accumulation_time?: (google.protobuf.ITimestamp|null);
-        }
-
-        /** Represents a GenesisAccumulationTime. */
-        class GenesisAccumulationTime implements IGenesisAccumulationTime {
-
-            /**
-             * Constructs a new GenesisAccumulationTime.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.incentive.IGenesisAccumulationTime);
-
-            /** GenesisAccumulationTime collateral_type. */
-            public collateral_type: string;
-
-            /** GenesisAccumulationTime previous_accumulation_time. */
-            public previous_accumulation_time?: (google.protobuf.ITimestamp|null);
-
-            /**
-             * Encodes the specified GenesisAccumulationTime message. Does not implicitly {@link jpyx.incentive.GenesisAccumulationTime.verify|verify} messages.
-             * @param message GenesisAccumulationTime message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified GenesisAccumulationTime message, length delimited. Does not implicitly {@link jpyx.incentive.GenesisAccumulationTime.verify|verify} messages.
-             * @param message GenesisAccumulationTime message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a GenesisAccumulationTime message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns GenesisAccumulationTime
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.incentive.GenesisAccumulationTime;
-
-            /**
-             * Decodes a GenesisAccumulationTime message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns GenesisAccumulationTime
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.incentive.GenesisAccumulationTime;
-
-            /**
-             * Verifies a GenesisAccumulationTime message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a GenesisAccumulationTime message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns GenesisAccumulationTime
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.incentive.GenesisAccumulationTime;
-
-            /**
-             * Creates a plain object from a GenesisAccumulationTime message. Also converts values to other types if specified.
-             * @param message GenesisAccumulationTime
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.incentive.GenesisAccumulationTime, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this GenesisAccumulationTime to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-    }
-
-    /** Namespace jsmndist. */
-    namespace jsmndist {
-
-        /** Represents a Query */
-        class Query extends $protobuf.rpc.Service {
-
-            /**
-             * Constructs a new Query service.
-             * @param rpcImpl RPC implementation
-             * @param [requestDelimited=false] Whether requests are length-delimited
-             * @param [responseDelimited=false] Whether responses are length-delimited
-             */
-            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
-             */
-            public params(request: jpyx.jsmndist.IQueryParamsRequest, callback: jpyx.jsmndist.Query.ParamsCallback): void;
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @returns Promise
-             */
-            public params(request: jpyx.jsmndist.IQueryParamsRequest): Promise<jpyx.jsmndist.QueryParamsResponse>;
-
-            /**
-             * Calls Balances.
-             * @param request QueryGetBalancesRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and QueryGetBalancesResponse
-             */
-            public balances(request: jpyx.jsmndist.IQueryGetBalancesRequest, callback: jpyx.jsmndist.Query.BalancesCallback): void;
-
-            /**
-             * Calls Balances.
-             * @param request QueryGetBalancesRequest message or plain object
-             * @returns Promise
-             */
-            public balances(request: jpyx.jsmndist.IQueryGetBalancesRequest): Promise<jpyx.jsmndist.QueryGetBalancesResponse>;
-        }
-
-        namespace Query {
-
-            /**
-             * Callback as used by {@link jpyx.jsmndist.Query#params}.
-             * @param error Error, if any
-             * @param [response] QueryParamsResponse
-             */
-            type ParamsCallback = (error: (Error|null), response?: jpyx.jsmndist.QueryParamsResponse) => void;
-
-            /**
-             * Callback as used by {@link jpyx.jsmndist.Query#balances}.
-             * @param error Error, if any
-             * @param [response] QueryGetBalancesResponse
-             */
-            type BalancesCallback = (error: (Error|null), response?: jpyx.jsmndist.QueryGetBalancesResponse) => void;
-        }
-
-        /** Properties of a QueryParamsRequest. */
-        interface IQueryParamsRequest {
-        }
-
-        /** Represents a QueryParamsRequest. */
-        class QueryParamsRequest implements IQueryParamsRequest {
-
-            /**
-             * Constructs a new QueryParamsRequest.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.jsmndist.IQueryParamsRequest);
-
-            /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link jpyx.jsmndist.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.jsmndist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link jpyx.jsmndist.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.jsmndist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.jsmndist.QueryParamsRequest;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.jsmndist.QueryParamsRequest;
-
-            /**
-             * Verifies a QueryParamsRequest message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsRequest message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsRequest
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.jsmndist.QueryParamsRequest;
-
-            /**
-             * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
-             * @param message QueryParamsRequest
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.jsmndist.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsRequest to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryParamsResponse. */
-        interface IQueryParamsResponse {
-
-            /** QueryParamsResponse params */
-            params?: (jpyx.jsmndist.IParams|null);
-        }
-
-        /** Represents a QueryParamsResponse. */
-        class QueryParamsResponse implements IQueryParamsResponse {
-
-            /**
-             * Constructs a new QueryParamsResponse.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.jsmndist.IQueryParamsResponse);
-
-            /** QueryParamsResponse params. */
-            public params?: (jpyx.jsmndist.IParams|null);
-
-            /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link jpyx.jsmndist.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.jsmndist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link jpyx.jsmndist.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.jsmndist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.jsmndist.QueryParamsResponse;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.jsmndist.QueryParamsResponse;
-
-            /**
-             * Verifies a QueryParamsResponse message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsResponse message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsResponse
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.jsmndist.QueryParamsResponse;
-
-            /**
-             * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
-             * @param message QueryParamsResponse
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.jsmndist.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsResponse to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryGetBalancesRequest. */
-        interface IQueryGetBalancesRequest {
-        }
-
-        /** Represents a QueryGetBalancesRequest. */
-        class QueryGetBalancesRequest implements IQueryGetBalancesRequest {
-
-            /**
-             * Constructs a new QueryGetBalancesRequest.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.jsmndist.IQueryGetBalancesRequest);
-
-            /**
-             * Encodes the specified QueryGetBalancesRequest message. Does not implicitly {@link jpyx.jsmndist.QueryGetBalancesRequest.verify|verify} messages.
-             * @param message QueryGetBalancesRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.jsmndist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryGetBalancesRequest message, length delimited. Does not implicitly {@link jpyx.jsmndist.QueryGetBalancesRequest.verify|verify} messages.
-             * @param message QueryGetBalancesRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.jsmndist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryGetBalancesRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.jsmndist.QueryGetBalancesRequest;
-
-            /**
-             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryGetBalancesRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.jsmndist.QueryGetBalancesRequest;
-
-            /**
-             * Verifies a QueryGetBalancesRequest message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryGetBalancesRequest message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryGetBalancesRequest
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.jsmndist.QueryGetBalancesRequest;
-
-            /**
-             * Creates a plain object from a QueryGetBalancesRequest message. Also converts values to other types if specified.
-             * @param message QueryGetBalancesRequest
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.jsmndist.QueryGetBalancesRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryGetBalancesRequest to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryGetBalancesResponse. */
-        interface IQueryGetBalancesResponse {
-
-            /** QueryGetBalancesResponse balances */
-            balances?: (cosmos.base.v1beta1.ICoin[]|null);
-        }
-
-        /** Represents a QueryGetBalancesResponse. */
-        class QueryGetBalancesResponse implements IQueryGetBalancesResponse {
-
-            /**
-             * Constructs a new QueryGetBalancesResponse.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.jsmndist.IQueryGetBalancesResponse);
-
-            /** QueryGetBalancesResponse balances. */
-            public balances: cosmos.base.v1beta1.ICoin[];
-
-            /**
-             * Encodes the specified QueryGetBalancesResponse message. Does not implicitly {@link jpyx.jsmndist.QueryGetBalancesResponse.verify|verify} messages.
-             * @param message QueryGetBalancesResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.jsmndist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryGetBalancesResponse message, length delimited. Does not implicitly {@link jpyx.jsmndist.QueryGetBalancesResponse.verify|verify} messages.
-             * @param message QueryGetBalancesResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.jsmndist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryGetBalancesResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.jsmndist.QueryGetBalancesResponse;
-
-            /**
-             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryGetBalancesResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.jsmndist.QueryGetBalancesResponse;
-
-            /**
-             * Verifies a QueryGetBalancesResponse message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryGetBalancesResponse message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryGetBalancesResponse
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.jsmndist.QueryGetBalancesResponse;
-
-            /**
-             * Creates a plain object from a QueryGetBalancesResponse message. Also converts values to other types if specified.
-             * @param message QueryGetBalancesResponse
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.jsmndist.QueryGetBalancesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryGetBalancesResponse to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Params. */
-        interface IParams {
-
-            /** Params active */
-            active?: (boolean|null);
-
-            /** Params periods */
-            periods?: (jpyx.jsmndist.IPeriod[]|null);
-        }
-
-        /** Represents a Params. */
-        class Params implements IParams {
-
-            /**
-             * Constructs a new Params.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.jsmndist.IParams);
-
-            /** Params active. */
-            public active: boolean;
-
-            /** Params periods. */
-            public periods: jpyx.jsmndist.IPeriod[];
-
-            /**
-             * Encodes the specified Params message. Does not implicitly {@link jpyx.jsmndist.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.jsmndist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link jpyx.jsmndist.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.jsmndist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.jsmndist.Params;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.jsmndist.Params;
-
-            /**
-             * Verifies a Params message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Params message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Params
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.jsmndist.Params;
-
-            /**
-             * Creates a plain object from a Params message. Also converts values to other types if specified.
-             * @param message Params
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.jsmndist.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Params to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Period. */
-        interface IPeriod {
-
-            /** Period start */
-            start?: (google.protobuf.ITimestamp|null);
-
-            /** Period end */
-            end?: (google.protobuf.ITimestamp|null);
-
-            /** Period inflation */
-            inflation?: (string|null);
-        }
-
-        /** Represents a Period. */
-        class Period implements IPeriod {
-
-            /**
-             * Constructs a new Period.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.jsmndist.IPeriod);
-
-            /** Period start. */
-            public start?: (google.protobuf.ITimestamp|null);
-
-            /** Period end. */
-            public end?: (google.protobuf.ITimestamp|null);
-
-            /** Period inflation. */
-            public inflation: string;
-
-            /**
-             * Encodes the specified Period message. Does not implicitly {@link jpyx.jsmndist.Period.verify|verify} messages.
-             * @param message Period message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.jsmndist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Period message, length delimited. Does not implicitly {@link jpyx.jsmndist.Period.verify|verify} messages.
-             * @param message Period message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.jsmndist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Period message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Period
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.jsmndist.Period;
-
-            /**
-             * Decodes a Period message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Period
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.jsmndist.Period;
-
-            /**
-             * Verifies a Period message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Period message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Period
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.jsmndist.Period;
-
-            /**
-             * Creates a plain object from a Period message. Also converts values to other types if specified.
-             * @param message Period
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.jsmndist.Period, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Period to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a GenesisState. */
-        interface IGenesisState {
-
-            /** GenesisState params */
-            params?: (jpyx.jsmndist.IParams|null);
-
-            /** GenesisState previous_block_time */
-            previous_block_time?: (google.protobuf.ITimestamp|null);
-        }
-
-        /** Represents a GenesisState. */
-        class GenesisState implements IGenesisState {
-
-            /**
-             * Constructs a new GenesisState.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: jpyx.jsmndist.IGenesisState);
-
-            /** GenesisState params. */
-            public params?: (jpyx.jsmndist.IParams|null);
-
-            /** GenesisState previous_block_time. */
-            public previous_block_time?: (google.protobuf.ITimestamp|null);
-
-            /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link jpyx.jsmndist.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: jpyx.jsmndist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link jpyx.jsmndist.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: jpyx.jsmndist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): jpyx.jsmndist.GenesisState;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): jpyx.jsmndist.GenesisState;
-
-            /**
-             * Verifies a GenesisState message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a GenesisState message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns GenesisState
-             */
-            public static fromObject(object: { [k: string]: any }): jpyx.jsmndist.GenesisState;
-
-            /**
-             * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
-             * @param message GenesisState
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: jpyx.jsmndist.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this GenesisState to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-    }
-}
-
 /** Namespace botany. */
 export namespace botany {
 
@@ -5013,7 +891,7 @@ export namespace botany {
             max_bid?: (cosmos.base.v1beta1.ICoin|null);
 
             /** CollateralAuction lot_returns */
-            lot_returns?: (botany.auction.IWeightedAddresses|null);
+            lot_returns?: (botany.auction.IWeightedAddress[]|null);
         }
 
         /** Represents a CollateralAuction. */
@@ -5035,7 +913,7 @@ export namespace botany {
             public max_bid?: (cosmos.base.v1beta1.ICoin|null);
 
             /** CollateralAuction lot_returns. */
-            public lot_returns?: (botany.auction.IWeightedAddresses|null);
+            public lot_returns: botany.auction.IWeightedAddress[];
 
             /**
              * Encodes the specified CollateralAuction message. Does not implicitly {@link botany.auction.CollateralAuction.verify|verify} messages.
@@ -5101,90 +979,90 @@ export namespace botany {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of a WeightedAddresses. */
-        interface IWeightedAddresses {
+        /** Properties of a WeightedAddress. */
+        interface IWeightedAddress {
 
-            /** WeightedAddresses addresses */
-            addresses?: (string[]|null);
+            /** WeightedAddress address */
+            address?: (string|null);
 
-            /** WeightedAddresses weights */
-            weights?: (string[]|null);
+            /** WeightedAddress weight */
+            weight?: (string|null);
         }
 
-        /** Represents a WeightedAddresses. */
-        class WeightedAddresses implements IWeightedAddresses {
+        /** Represents a WeightedAddress. */
+        class WeightedAddress implements IWeightedAddress {
 
             /**
-             * Constructs a new WeightedAddresses.
+             * Constructs a new WeightedAddress.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IWeightedAddresses);
+            constructor(properties?: botany.auction.IWeightedAddress);
 
-            /** WeightedAddresses addresses. */
-            public addresses: string[];
+            /** WeightedAddress address. */
+            public address: string;
 
-            /** WeightedAddresses weights. */
-            public weights: string[];
+            /** WeightedAddress weight. */
+            public weight: string;
 
             /**
-             * Encodes the specified WeightedAddresses message. Does not implicitly {@link botany.auction.WeightedAddresses.verify|verify} messages.
-             * @param message WeightedAddresses message or plain object to encode
+             * Encodes the specified WeightedAddress message. Does not implicitly {@link botany.auction.WeightedAddress.verify|verify} messages.
+             * @param message WeightedAddress message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IWeightedAddresses, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: botany.auction.IWeightedAddress, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified WeightedAddresses message, length delimited. Does not implicitly {@link botany.auction.WeightedAddresses.verify|verify} messages.
-             * @param message WeightedAddresses message or plain object to encode
+             * Encodes the specified WeightedAddress message, length delimited. Does not implicitly {@link botany.auction.WeightedAddress.verify|verify} messages.
+             * @param message WeightedAddress message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IWeightedAddresses, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: botany.auction.IWeightedAddress, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Decodes a WeightedAddresses message from the specified reader or buffer.
+             * Decodes a WeightedAddress message from the specified reader or buffer.
              * @param reader Reader or buffer to decode from
              * @param [length] Message length if known beforehand
-             * @returns WeightedAddresses
+             * @returns WeightedAddress
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.WeightedAddresses;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.WeightedAddress;
 
             /**
-             * Decodes a WeightedAddresses message from the specified reader or buffer, length delimited.
+             * Decodes a WeightedAddress message from the specified reader or buffer, length delimited.
              * @param reader Reader or buffer to decode from
-             * @returns WeightedAddresses
+             * @returns WeightedAddress
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.WeightedAddresses;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.WeightedAddress;
 
             /**
-             * Verifies a WeightedAddresses message.
+             * Verifies a WeightedAddress message.
              * @param message Plain object to verify
              * @returns `null` if valid, otherwise the reason why it is not
              */
             public static verify(message: { [k: string]: any }): (string|null);
 
             /**
-             * Creates a WeightedAddresses message from a plain object. Also converts values to their respective internal types.
+             * Creates a WeightedAddress message from a plain object. Also converts values to their respective internal types.
              * @param object Plain object
-             * @returns WeightedAddresses
+             * @returns WeightedAddress
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.WeightedAddresses;
+            public static fromObject(object: { [k: string]: any }): botany.auction.WeightedAddress;
 
             /**
-             * Creates a plain object from a WeightedAddresses message. Also converts values to other types if specified.
-             * @param message WeightedAddresses
+             * Creates a plain object from a WeightedAddress message. Also converts values to other types if specified.
+             * @param message WeightedAddress
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.WeightedAddresses, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: botany.auction.WeightedAddress, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
-             * Converts this WeightedAddresses to JSON.
+             * Converts this WeightedAddress to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -5479,6 +1357,666 @@ export namespace botany {
              * @returns Plain object
              */
             public static toObject(message: botany.auction.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GenesisState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+    }
+
+    /** Namespace botanydist. */
+    namespace botanydist {
+
+        /** Represents a Query */
+        class Query extends $protobuf.rpc.Service {
+
+            /**
+             * Constructs a new Query service.
+             * @param rpcImpl RPC implementation
+             * @param [requestDelimited=false] Whether requests are length-delimited
+             * @param [responseDelimited=false] Whether responses are length-delimited
+             */
+            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+            /**
+             * Calls Params.
+             * @param request QueryParamsRequest message or plain object
+             * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
+             */
+            public params(request: botany.botanydist.IQueryParamsRequest, callback: botany.botanydist.Query.ParamsCallback): void;
+
+            /**
+             * Calls Params.
+             * @param request QueryParamsRequest message or plain object
+             * @returns Promise
+             */
+            public params(request: botany.botanydist.IQueryParamsRequest): Promise<botany.botanydist.QueryParamsResponse>;
+
+            /**
+             * Calls Balances.
+             * @param request QueryGetBalancesRequest message or plain object
+             * @param callback Node-style callback called with the error, if any, and QueryGetBalancesResponse
+             */
+            public balances(request: botany.botanydist.IQueryGetBalancesRequest, callback: botany.botanydist.Query.BalancesCallback): void;
+
+            /**
+             * Calls Balances.
+             * @param request QueryGetBalancesRequest message or plain object
+             * @returns Promise
+             */
+            public balances(request: botany.botanydist.IQueryGetBalancesRequest): Promise<botany.botanydist.QueryGetBalancesResponse>;
+        }
+
+        namespace Query {
+
+            /**
+             * Callback as used by {@link botany.botanydist.Query#params}.
+             * @param error Error, if any
+             * @param [response] QueryParamsResponse
+             */
+            type ParamsCallback = (error: (Error|null), response?: botany.botanydist.QueryParamsResponse) => void;
+
+            /**
+             * Callback as used by {@link botany.botanydist.Query#balances}.
+             * @param error Error, if any
+             * @param [response] QueryGetBalancesResponse
+             */
+            type BalancesCallback = (error: (Error|null), response?: botany.botanydist.QueryGetBalancesResponse) => void;
+        }
+
+        /** Properties of a QueryParamsRequest. */
+        interface IQueryParamsRequest {
+        }
+
+        /** Represents a QueryParamsRequest. */
+        class QueryParamsRequest implements IQueryParamsRequest {
+
+            /**
+             * Constructs a new QueryParamsRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.botanydist.IQueryParamsRequest);
+
+            /**
+             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link botany.botanydist.QueryParamsRequest.verify|verify} messages.
+             * @param message QueryParamsRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.botanydist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link botany.botanydist.QueryParamsRequest.verify|verify} messages.
+             * @param message QueryParamsRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.botanydist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryParamsRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryParamsRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.QueryParamsRequest;
+
+            /**
+             * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryParamsRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.QueryParamsRequest;
+
+            /**
+             * Verifies a QueryParamsRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryParamsRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryParamsRequest
+             */
+            public static fromObject(object: { [k: string]: any }): botany.botanydist.QueryParamsRequest;
+
+            /**
+             * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
+             * @param message QueryParamsRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.botanydist.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryParamsRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryParamsResponse. */
+        interface IQueryParamsResponse {
+
+            /** QueryParamsResponse params */
+            params?: (botany.botanydist.IParams|null);
+        }
+
+        /** Represents a QueryParamsResponse. */
+        class QueryParamsResponse implements IQueryParamsResponse {
+
+            /**
+             * Constructs a new QueryParamsResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.botanydist.IQueryParamsResponse);
+
+            /** QueryParamsResponse params. */
+            public params?: (botany.botanydist.IParams|null);
+
+            /**
+             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link botany.botanydist.QueryParamsResponse.verify|verify} messages.
+             * @param message QueryParamsResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.botanydist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link botany.botanydist.QueryParamsResponse.verify|verify} messages.
+             * @param message QueryParamsResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.botanydist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryParamsResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryParamsResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.QueryParamsResponse;
+
+            /**
+             * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryParamsResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.QueryParamsResponse;
+
+            /**
+             * Verifies a QueryParamsResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryParamsResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryParamsResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.botanydist.QueryParamsResponse;
+
+            /**
+             * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
+             * @param message QueryParamsResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.botanydist.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryParamsResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryGetBalancesRequest. */
+        interface IQueryGetBalancesRequest {
+        }
+
+        /** Represents a QueryGetBalancesRequest. */
+        class QueryGetBalancesRequest implements IQueryGetBalancesRequest {
+
+            /**
+             * Constructs a new QueryGetBalancesRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.botanydist.IQueryGetBalancesRequest);
+
+            /**
+             * Encodes the specified QueryGetBalancesRequest message. Does not implicitly {@link botany.botanydist.QueryGetBalancesRequest.verify|verify} messages.
+             * @param message QueryGetBalancesRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.botanydist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryGetBalancesRequest message, length delimited. Does not implicitly {@link botany.botanydist.QueryGetBalancesRequest.verify|verify} messages.
+             * @param message QueryGetBalancesRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.botanydist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryGetBalancesRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.QueryGetBalancesRequest;
+
+            /**
+             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryGetBalancesRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.QueryGetBalancesRequest;
+
+            /**
+             * Verifies a QueryGetBalancesRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryGetBalancesRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryGetBalancesRequest
+             */
+            public static fromObject(object: { [k: string]: any }): botany.botanydist.QueryGetBalancesRequest;
+
+            /**
+             * Creates a plain object from a QueryGetBalancesRequest message. Also converts values to other types if specified.
+             * @param message QueryGetBalancesRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.botanydist.QueryGetBalancesRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryGetBalancesRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryGetBalancesResponse. */
+        interface IQueryGetBalancesResponse {
+
+            /** QueryGetBalancesResponse balances */
+            balances?: (cosmos.base.v1beta1.ICoin[]|null);
+        }
+
+        /** Represents a QueryGetBalancesResponse. */
+        class QueryGetBalancesResponse implements IQueryGetBalancesResponse {
+
+            /**
+             * Constructs a new QueryGetBalancesResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.botanydist.IQueryGetBalancesResponse);
+
+            /** QueryGetBalancesResponse balances. */
+            public balances: cosmos.base.v1beta1.ICoin[];
+
+            /**
+             * Encodes the specified QueryGetBalancesResponse message. Does not implicitly {@link botany.botanydist.QueryGetBalancesResponse.verify|verify} messages.
+             * @param message QueryGetBalancesResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.botanydist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryGetBalancesResponse message, length delimited. Does not implicitly {@link botany.botanydist.QueryGetBalancesResponse.verify|verify} messages.
+             * @param message QueryGetBalancesResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.botanydist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryGetBalancesResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.QueryGetBalancesResponse;
+
+            /**
+             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryGetBalancesResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.QueryGetBalancesResponse;
+
+            /**
+             * Verifies a QueryGetBalancesResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryGetBalancesResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryGetBalancesResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.botanydist.QueryGetBalancesResponse;
+
+            /**
+             * Creates a plain object from a QueryGetBalancesResponse message. Also converts values to other types if specified.
+             * @param message QueryGetBalancesResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.botanydist.QueryGetBalancesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryGetBalancesResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a Params. */
+        interface IParams {
+
+            /** Params active */
+            active?: (boolean|null);
+
+            /** Params periods */
+            periods?: (botany.botanydist.IPeriod[]|null);
+        }
+
+        /** Represents a Params. */
+        class Params implements IParams {
+
+            /**
+             * Constructs a new Params.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.botanydist.IParams);
+
+            /** Params active. */
+            public active: boolean;
+
+            /** Params periods. */
+            public periods: botany.botanydist.IPeriod[];
+
+            /**
+             * Encodes the specified Params message. Does not implicitly {@link botany.botanydist.Params.verify|verify} messages.
+             * @param message Params message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.botanydist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.botanydist.Params.verify|verify} messages.
+             * @param message Params message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.botanydist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Params message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.Params;
+
+            /**
+             * Decodes a Params message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.Params;
+
+            /**
+             * Verifies a Params message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Params message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Params
+             */
+            public static fromObject(object: { [k: string]: any }): botany.botanydist.Params;
+
+            /**
+             * Creates a plain object from a Params message. Also converts values to other types if specified.
+             * @param message Params
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.botanydist.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Params to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a Period. */
+        interface IPeriod {
+
+            /** Period start */
+            start?: (google.protobuf.ITimestamp|null);
+
+            /** Period end */
+            end?: (google.protobuf.ITimestamp|null);
+
+            /** Period inflation */
+            inflation?: (string|null);
+        }
+
+        /** Represents a Period. */
+        class Period implements IPeriod {
+
+            /**
+             * Constructs a new Period.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.botanydist.IPeriod);
+
+            /** Period start. */
+            public start?: (google.protobuf.ITimestamp|null);
+
+            /** Period end. */
+            public end?: (google.protobuf.ITimestamp|null);
+
+            /** Period inflation. */
+            public inflation: string;
+
+            /**
+             * Encodes the specified Period message. Does not implicitly {@link botany.botanydist.Period.verify|verify} messages.
+             * @param message Period message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.botanydist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Period message, length delimited. Does not implicitly {@link botany.botanydist.Period.verify|verify} messages.
+             * @param message Period message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.botanydist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Period message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Period
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.Period;
+
+            /**
+             * Decodes a Period message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Period
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.Period;
+
+            /**
+             * Verifies a Period message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Period message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Period
+             */
+            public static fromObject(object: { [k: string]: any }): botany.botanydist.Period;
+
+            /**
+             * Creates a plain object from a Period message. Also converts values to other types if specified.
+             * @param message Period
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.botanydist.Period, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Period to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a GenesisState. */
+        interface IGenesisState {
+
+            /** GenesisState params */
+            params?: (botany.botanydist.IParams|null);
+
+            /** GenesisState previous_block_time */
+            previous_block_time?: (google.protobuf.ITimestamp|null);
+
+            /** GenesisState gov_denom */
+            gov_denom?: (string|null);
+        }
+
+        /** Represents a GenesisState. */
+        class GenesisState implements IGenesisState {
+
+            /**
+             * Constructs a new GenesisState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.botanydist.IGenesisState);
+
+            /** GenesisState params. */
+            public params?: (botany.botanydist.IParams|null);
+
+            /** GenesisState previous_block_time. */
+            public previous_block_time?: (google.protobuf.ITimestamp|null);
+
+            /** GenesisState gov_denom. */
+            public gov_denom: string;
+
+            /**
+             * Encodes the specified GenesisState message. Does not implicitly {@link botany.botanydist.GenesisState.verify|verify} messages.
+             * @param message GenesisState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.botanydist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link botany.botanydist.GenesisState.verify|verify} messages.
+             * @param message GenesisState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.botanydist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GenesisState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GenesisState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.GenesisState;
+
+            /**
+             * Decodes a GenesisState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GenesisState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.GenesisState;
+
+            /**
+             * Verifies a GenesisState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GenesisState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GenesisState
+             */
+            public static fromObject(object: { [k: string]: any }): botany.botanydist.GenesisState;
+
+            /**
+             * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
+             * @param message GenesisState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.botanydist.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisState to JSON.
@@ -8041,6 +4579,1227 @@ export namespace botany {
         }
     }
 
+    /** Namespace incentive. */
+    namespace incentive {
+
+        /** Represents a Query */
+        class Query extends $protobuf.rpc.Service {
+
+            /**
+             * Constructs a new Query service.
+             * @param rpcImpl RPC implementation
+             * @param [requestDelimited=false] Whether requests are length-delimited
+             * @param [responseDelimited=false] Whether responses are length-delimited
+             */
+            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+            /**
+             * Calls Params.
+             * @param request QueryParamsRequest message or plain object
+             * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
+             */
+            public params(request: botany.incentive.IQueryParamsRequest, callback: botany.incentive.Query.ParamsCallback): void;
+
+            /**
+             * Calls Params.
+             * @param request QueryParamsRequest message or plain object
+             * @returns Promise
+             */
+            public params(request: botany.incentive.IQueryParamsRequest): Promise<botany.incentive.QueryParamsResponse>;
+        }
+
+        namespace Query {
+
+            /**
+             * Callback as used by {@link botany.incentive.Query#params}.
+             * @param error Error, if any
+             * @param [response] QueryParamsResponse
+             */
+            type ParamsCallback = (error: (Error|null), response?: botany.incentive.QueryParamsResponse) => void;
+        }
+
+        /** Properties of a QueryParamsRequest. */
+        interface IQueryParamsRequest {
+        }
+
+        /** Represents a QueryParamsRequest. */
+        class QueryParamsRequest implements IQueryParamsRequest {
+
+            /**
+             * Constructs a new QueryParamsRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IQueryParamsRequest);
+
+            /**
+             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link botany.incentive.QueryParamsRequest.verify|verify} messages.
+             * @param message QueryParamsRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link botany.incentive.QueryParamsRequest.verify|verify} messages.
+             * @param message QueryParamsRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryParamsRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryParamsRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.QueryParamsRequest;
+
+            /**
+             * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryParamsRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.QueryParamsRequest;
+
+            /**
+             * Verifies a QueryParamsRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryParamsRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryParamsRequest
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.QueryParamsRequest;
+
+            /**
+             * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
+             * @param message QueryParamsRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryParamsRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryParamsResponse. */
+        interface IQueryParamsResponse {
+
+            /** QueryParamsResponse params */
+            params?: (botany.incentive.IParams|null);
+        }
+
+        /** Represents a QueryParamsResponse. */
+        class QueryParamsResponse implements IQueryParamsResponse {
+
+            /**
+             * Constructs a new QueryParamsResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IQueryParamsResponse);
+
+            /** QueryParamsResponse params. */
+            public params?: (botany.incentive.IParams|null);
+
+            /**
+             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link botany.incentive.QueryParamsResponse.verify|verify} messages.
+             * @param message QueryParamsResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link botany.incentive.QueryParamsResponse.verify|verify} messages.
+             * @param message QueryParamsResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryParamsResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryParamsResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.QueryParamsResponse;
+
+            /**
+             * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryParamsResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.QueryParamsResponse;
+
+            /**
+             * Verifies a QueryParamsResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryParamsResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryParamsResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.QueryParamsResponse;
+
+            /**
+             * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
+             * @param message QueryParamsResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryParamsResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a BaseClaim. */
+        interface IBaseClaim {
+
+            /** BaseClaim owner */
+            owner?: (string|null);
+
+            /** BaseClaim reward */
+            reward?: (cosmos.base.v1beta1.ICoin|null);
+        }
+
+        /** Represents a BaseClaim. */
+        class BaseClaim implements IBaseClaim {
+
+            /**
+             * Constructs a new BaseClaim.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IBaseClaim);
+
+            /** BaseClaim owner. */
+            public owner: string;
+
+            /** BaseClaim reward. */
+            public reward?: (cosmos.base.v1beta1.ICoin|null);
+
+            /**
+             * Encodes the specified BaseClaim message. Does not implicitly {@link botany.incentive.BaseClaim.verify|verify} messages.
+             * @param message BaseClaim message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BaseClaim message, length delimited. Does not implicitly {@link botany.incentive.BaseClaim.verify|verify} messages.
+             * @param message BaseClaim message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BaseClaim message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns BaseClaim
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.BaseClaim;
+
+            /**
+             * Decodes a BaseClaim message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns BaseClaim
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.BaseClaim;
+
+            /**
+             * Verifies a BaseClaim message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BaseClaim message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BaseClaim
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.BaseClaim;
+
+            /**
+             * Creates a plain object from a BaseClaim message. Also converts values to other types if specified.
+             * @param message BaseClaim
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.BaseClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BaseClaim to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a BaseMultiClaim. */
+        interface IBaseMultiClaim {
+
+            /** BaseMultiClaim owner */
+            owner?: (string|null);
+
+            /** BaseMultiClaim reward */
+            reward?: (cosmos.base.v1beta1.ICoin[]|null);
+        }
+
+        /** Represents a BaseMultiClaim. */
+        class BaseMultiClaim implements IBaseMultiClaim {
+
+            /**
+             * Constructs a new BaseMultiClaim.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IBaseMultiClaim);
+
+            /** BaseMultiClaim owner. */
+            public owner: string;
+
+            /** BaseMultiClaim reward. */
+            public reward: cosmos.base.v1beta1.ICoin[];
+
+            /**
+             * Encodes the specified BaseMultiClaim message. Does not implicitly {@link botany.incentive.BaseMultiClaim.verify|verify} messages.
+             * @param message BaseMultiClaim message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BaseMultiClaim message, length delimited. Does not implicitly {@link botany.incentive.BaseMultiClaim.verify|verify} messages.
+             * @param message BaseMultiClaim message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BaseMultiClaim message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns BaseMultiClaim
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.BaseMultiClaim;
+
+            /**
+             * Decodes a BaseMultiClaim message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns BaseMultiClaim
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.BaseMultiClaim;
+
+            /**
+             * Verifies a BaseMultiClaim message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BaseMultiClaim message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BaseMultiClaim
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.BaseMultiClaim;
+
+            /**
+             * Creates a plain object from a BaseMultiClaim message. Also converts values to other types if specified.
+             * @param message BaseMultiClaim
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.BaseMultiClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BaseMultiClaim to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a CdpMintingClaim. */
+        interface ICdpMintingClaim {
+
+            /** CdpMintingClaim base_claim */
+            base_claim?: (botany.incentive.IBaseClaim|null);
+
+            /** CdpMintingClaim reward_indexes */
+            reward_indexes?: (botany.incentive.IRewardIndex[]|null);
+        }
+
+        /** Represents a CdpMintingClaim. */
+        class CdpMintingClaim implements ICdpMintingClaim {
+
+            /**
+             * Constructs a new CdpMintingClaim.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.ICdpMintingClaim);
+
+            /** CdpMintingClaim base_claim. */
+            public base_claim?: (botany.incentive.IBaseClaim|null);
+
+            /** CdpMintingClaim reward_indexes. */
+            public reward_indexes: botany.incentive.IRewardIndex[];
+
+            /**
+             * Encodes the specified CdpMintingClaim message. Does not implicitly {@link botany.incentive.CdpMintingClaim.verify|verify} messages.
+             * @param message CdpMintingClaim message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.ICdpMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CdpMintingClaim message, length delimited. Does not implicitly {@link botany.incentive.CdpMintingClaim.verify|verify} messages.
+             * @param message CdpMintingClaim message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.ICdpMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CdpMintingClaim message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns CdpMintingClaim
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.CdpMintingClaim;
+
+            /**
+             * Decodes a CdpMintingClaim message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns CdpMintingClaim
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.CdpMintingClaim;
+
+            /**
+             * Verifies a CdpMintingClaim message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CdpMintingClaim message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CdpMintingClaim
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.CdpMintingClaim;
+
+            /**
+             * Creates a plain object from a CdpMintingClaim message. Also converts values to other types if specified.
+             * @param message CdpMintingClaim
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.CdpMintingClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CdpMintingClaim to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a RewardIndex. */
+        interface IRewardIndex {
+
+            /** RewardIndex collateral_type */
+            collateral_type?: (string|null);
+
+            /** RewardIndex reward_factor */
+            reward_factor?: (string|null);
+        }
+
+        /** Represents a RewardIndex. */
+        class RewardIndex implements IRewardIndex {
+
+            /**
+             * Constructs a new RewardIndex.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IRewardIndex);
+
+            /** RewardIndex collateral_type. */
+            public collateral_type: string;
+
+            /** RewardIndex reward_factor. */
+            public reward_factor: string;
+
+            /**
+             * Encodes the specified RewardIndex message. Does not implicitly {@link botany.incentive.RewardIndex.verify|verify} messages.
+             * @param message RewardIndex message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RewardIndex message, length delimited. Does not implicitly {@link botany.incentive.RewardIndex.verify|verify} messages.
+             * @param message RewardIndex message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RewardIndex message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns RewardIndex
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.RewardIndex;
+
+            /**
+             * Decodes a RewardIndex message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns RewardIndex
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.RewardIndex;
+
+            /**
+             * Verifies a RewardIndex message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RewardIndex message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RewardIndex
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.RewardIndex;
+
+            /**
+             * Creates a plain object from a RewardIndex message. Also converts values to other types if specified.
+             * @param message RewardIndex
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.RewardIndex, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RewardIndex to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgClaimCdpMintingReward. */
+        interface IMsgClaimCdpMintingReward {
+
+            /** MsgClaimCdpMintingReward sender */
+            sender?: (string|null);
+
+            /** MsgClaimCdpMintingReward multiplier_name */
+            multiplier_name?: (string|null);
+        }
+
+        /** Represents a MsgClaimCdpMintingReward. */
+        class MsgClaimCdpMintingReward implements IMsgClaimCdpMintingReward {
+
+            /**
+             * Constructs a new MsgClaimCdpMintingReward.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IMsgClaimCdpMintingReward);
+
+            /** MsgClaimCdpMintingReward sender. */
+            public sender: string;
+
+            /** MsgClaimCdpMintingReward multiplier_name. */
+            public multiplier_name: string;
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingReward message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
+             * @param message MsgClaimCdpMintingReward message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingReward message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
+             * @param message MsgClaimCdpMintingReward message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgClaimCdpMintingReward
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.MsgClaimCdpMintingReward;
+
+            /**
+             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgClaimCdpMintingReward
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.MsgClaimCdpMintingReward;
+
+            /**
+             * Verifies a MsgClaimCdpMintingReward message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgClaimCdpMintingReward message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgClaimCdpMintingReward
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.MsgClaimCdpMintingReward;
+
+            /**
+             * Creates a plain object from a MsgClaimCdpMintingReward message. Also converts values to other types if specified.
+             * @param message MsgClaimCdpMintingReward
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.MsgClaimCdpMintingReward, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgClaimCdpMintingReward to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a Params. */
+        interface IParams {
+
+            /** Params cdp_minting_reward_periods */
+            cdp_minting_reward_periods?: (botany.incentive.IRewardPeriod[]|null);
+
+            /** Params claim_multipliers */
+            claim_multipliers?: (botany.incentive.IMultiplier[]|null);
+
+            /** Params claim_end */
+            claim_end?: (google.protobuf.ITimestamp|null);
+        }
+
+        /** Represents a Params. */
+        class Params implements IParams {
+
+            /**
+             * Constructs a new Params.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IParams);
+
+            /** Params cdp_minting_reward_periods. */
+            public cdp_minting_reward_periods: botany.incentive.IRewardPeriod[];
+
+            /** Params claim_multipliers. */
+            public claim_multipliers: botany.incentive.IMultiplier[];
+
+            /** Params claim_end. */
+            public claim_end?: (google.protobuf.ITimestamp|null);
+
+            /**
+             * Encodes the specified Params message. Does not implicitly {@link botany.incentive.Params.verify|verify} messages.
+             * @param message Params message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.incentive.Params.verify|verify} messages.
+             * @param message Params message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Params message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.Params;
+
+            /**
+             * Decodes a Params message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.Params;
+
+            /**
+             * Verifies a Params message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Params message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Params
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.Params;
+
+            /**
+             * Creates a plain object from a Params message. Also converts values to other types if specified.
+             * @param message Params
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Params to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a RewardPeriod. */
+        interface IRewardPeriod {
+
+            /** RewardPeriod active */
+            active?: (boolean|null);
+
+            /** RewardPeriod collateral_type */
+            collateral_type?: (string|null);
+
+            /** RewardPeriod start */
+            start?: (google.protobuf.ITimestamp|null);
+
+            /** RewardPeriod end */
+            end?: (google.protobuf.ITimestamp|null);
+
+            /** RewardPeriod rewards_per_second */
+            rewards_per_second?: (cosmos.base.v1beta1.ICoin|null);
+        }
+
+        /** Represents a RewardPeriod. */
+        class RewardPeriod implements IRewardPeriod {
+
+            /**
+             * Constructs a new RewardPeriod.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IRewardPeriod);
+
+            /** RewardPeriod active. */
+            public active: boolean;
+
+            /** RewardPeriod collateral_type. */
+            public collateral_type: string;
+
+            /** RewardPeriod start. */
+            public start?: (google.protobuf.ITimestamp|null);
+
+            /** RewardPeriod end. */
+            public end?: (google.protobuf.ITimestamp|null);
+
+            /** RewardPeriod rewards_per_second. */
+            public rewards_per_second?: (cosmos.base.v1beta1.ICoin|null);
+
+            /**
+             * Encodes the specified RewardPeriod message. Does not implicitly {@link botany.incentive.RewardPeriod.verify|verify} messages.
+             * @param message RewardPeriod message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RewardPeriod message, length delimited. Does not implicitly {@link botany.incentive.RewardPeriod.verify|verify} messages.
+             * @param message RewardPeriod message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RewardPeriod message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns RewardPeriod
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.RewardPeriod;
+
+            /**
+             * Decodes a RewardPeriod message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns RewardPeriod
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.RewardPeriod;
+
+            /**
+             * Verifies a RewardPeriod message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RewardPeriod message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RewardPeriod
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.RewardPeriod;
+
+            /**
+             * Creates a plain object from a RewardPeriod message. Also converts values to other types if specified.
+             * @param message RewardPeriod
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.RewardPeriod, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RewardPeriod to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a Multiplier. */
+        interface IMultiplier {
+
+            /** Multiplier name */
+            name?: (string|null);
+
+            /** Multiplier months_lockup */
+            months_lockup?: (Long|null);
+
+            /** Multiplier factor */
+            factor?: (string|null);
+        }
+
+        /** Represents a Multiplier. */
+        class Multiplier implements IMultiplier {
+
+            /**
+             * Constructs a new Multiplier.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IMultiplier);
+
+            /** Multiplier name. */
+            public name: string;
+
+            /** Multiplier months_lockup. */
+            public months_lockup: Long;
+
+            /** Multiplier factor. */
+            public factor: string;
+
+            /**
+             * Encodes the specified Multiplier message. Does not implicitly {@link botany.incentive.Multiplier.verify|verify} messages.
+             * @param message Multiplier message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Multiplier message, length delimited. Does not implicitly {@link botany.incentive.Multiplier.verify|verify} messages.
+             * @param message Multiplier message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Multiplier message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Multiplier
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.Multiplier;
+
+            /**
+             * Decodes a Multiplier message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Multiplier
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.Multiplier;
+
+            /**
+             * Verifies a Multiplier message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Multiplier message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Multiplier
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.Multiplier;
+
+            /**
+             * Creates a plain object from a Multiplier message. Also converts values to other types if specified.
+             * @param message Multiplier
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.Multiplier, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Multiplier to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a GenesisState. */
+        interface IGenesisState {
+
+            /** GenesisState params */
+            params?: (botany.incentive.IParams|null);
+
+            /** GenesisState cdp_accumulation_times */
+            cdp_accumulation_times?: (botany.incentive.IGenesisAccumulationTime[]|null);
+
+            /** GenesisState cdp_minting_claims */
+            cdp_minting_claims?: (botany.incentive.ICdpMintingClaim[]|null);
+
+            /** GenesisState denoms */
+            denoms?: (botany.incentive.IGenesisDenoms|null);
+        }
+
+        /** Represents a GenesisState. */
+        class GenesisState implements IGenesisState {
+
+            /**
+             * Constructs a new GenesisState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IGenesisState);
+
+            /** GenesisState params. */
+            public params?: (botany.incentive.IParams|null);
+
+            /** GenesisState cdp_accumulation_times. */
+            public cdp_accumulation_times: botany.incentive.IGenesisAccumulationTime[];
+
+            /** GenesisState cdp_minting_claims. */
+            public cdp_minting_claims: botany.incentive.ICdpMintingClaim[];
+
+            /** GenesisState denoms. */
+            public denoms?: (botany.incentive.IGenesisDenoms|null);
+
+            /**
+             * Encodes the specified GenesisState message. Does not implicitly {@link botany.incentive.GenesisState.verify|verify} messages.
+             * @param message GenesisState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link botany.incentive.GenesisState.verify|verify} messages.
+             * @param message GenesisState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GenesisState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GenesisState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.GenesisState;
+
+            /**
+             * Decodes a GenesisState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GenesisState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.GenesisState;
+
+            /**
+             * Verifies a GenesisState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GenesisState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GenesisState
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.GenesisState;
+
+            /**
+             * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
+             * @param message GenesisState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GenesisState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a GenesisAccumulationTime. */
+        interface IGenesisAccumulationTime {
+
+            /** GenesisAccumulationTime collateral_type */
+            collateral_type?: (string|null);
+
+            /** GenesisAccumulationTime previous_accumulation_time */
+            previous_accumulation_time?: (google.protobuf.ITimestamp|null);
+        }
+
+        /** Represents a GenesisAccumulationTime. */
+        class GenesisAccumulationTime implements IGenesisAccumulationTime {
+
+            /**
+             * Constructs a new GenesisAccumulationTime.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IGenesisAccumulationTime);
+
+            /** GenesisAccumulationTime collateral_type. */
+            public collateral_type: string;
+
+            /** GenesisAccumulationTime previous_accumulation_time. */
+            public previous_accumulation_time?: (google.protobuf.ITimestamp|null);
+
+            /**
+             * Encodes the specified GenesisAccumulationTime message. Does not implicitly {@link botany.incentive.GenesisAccumulationTime.verify|verify} messages.
+             * @param message GenesisAccumulationTime message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GenesisAccumulationTime message, length delimited. Does not implicitly {@link botany.incentive.GenesisAccumulationTime.verify|verify} messages.
+             * @param message GenesisAccumulationTime message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GenesisAccumulationTime message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GenesisAccumulationTime
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.GenesisAccumulationTime;
+
+            /**
+             * Decodes a GenesisAccumulationTime message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GenesisAccumulationTime
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.GenesisAccumulationTime;
+
+            /**
+             * Verifies a GenesisAccumulationTime message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GenesisAccumulationTime message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GenesisAccumulationTime
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.GenesisAccumulationTime;
+
+            /**
+             * Creates a plain object from a GenesisAccumulationTime message. Also converts values to other types if specified.
+             * @param message GenesisAccumulationTime
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.GenesisAccumulationTime, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GenesisAccumulationTime to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a GenesisDenoms. */
+        interface IGenesisDenoms {
+
+            /** GenesisDenoms principal_denom */
+            principal_denom?: (string|null);
+
+            /** GenesisDenoms cdp_minting_reward_denom */
+            cdp_minting_reward_denom?: (string|null);
+        }
+
+        /** Represents a GenesisDenoms. */
+        class GenesisDenoms implements IGenesisDenoms {
+
+            /**
+             * Constructs a new GenesisDenoms.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IGenesisDenoms);
+
+            /** GenesisDenoms principal_denom. */
+            public principal_denom: string;
+
+            /** GenesisDenoms cdp_minting_reward_denom. */
+            public cdp_minting_reward_denom: string;
+
+            /**
+             * Encodes the specified GenesisDenoms message. Does not implicitly {@link botany.incentive.GenesisDenoms.verify|verify} messages.
+             * @param message GenesisDenoms message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IGenesisDenoms, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GenesisDenoms message, length delimited. Does not implicitly {@link botany.incentive.GenesisDenoms.verify|verify} messages.
+             * @param message GenesisDenoms message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IGenesisDenoms, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GenesisDenoms message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GenesisDenoms
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.GenesisDenoms;
+
+            /**
+             * Decodes a GenesisDenoms message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GenesisDenoms
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.GenesisDenoms;
+
+            /**
+             * Verifies a GenesisDenoms message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GenesisDenoms message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GenesisDenoms
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.GenesisDenoms;
+
+            /**
+             * Creates a plain object from a GenesisDenoms message. Also converts values to other types if specified.
+             * @param message GenesisDenoms
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.GenesisDenoms, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GenesisDenoms to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+    }
+
     /** Namespace pricefeed. */
     namespace pricefeed {
 
@@ -9783,8 +7542,884 @@ export namespace botany {
     }
 }
 
+/** Namespace cosmos. */
+export namespace cosmos {
+
+    /** Namespace base. */
+    namespace base {
+
+        /** Namespace query. */
+        namespace query {
+
+            /** Namespace v1beta1. */
+            namespace v1beta1 {
+
+                /** Properties of a PageRequest. */
+                interface IPageRequest {
+
+                    /** PageRequest key */
+                    key?: (Uint8Array|null);
+
+                    /** PageRequest offset */
+                    offset?: (Long|null);
+
+                    /** PageRequest limit */
+                    limit?: (Long|null);
+
+                    /** PageRequest count_total */
+                    count_total?: (boolean|null);
+                }
+
+                /** Represents a PageRequest. */
+                class PageRequest implements IPageRequest {
+
+                    /**
+                     * Constructs a new PageRequest.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: cosmos.base.query.v1beta1.IPageRequest);
+
+                    /** PageRequest key. */
+                    public key: Uint8Array;
+
+                    /** PageRequest offset. */
+                    public offset: Long;
+
+                    /** PageRequest limit. */
+                    public limit: Long;
+
+                    /** PageRequest count_total. */
+                    public count_total: boolean;
+
+                    /**
+                     * Encodes the specified PageRequest message. Does not implicitly {@link cosmos.base.query.v1beta1.PageRequest.verify|verify} messages.
+                     * @param message PageRequest message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: cosmos.base.query.v1beta1.IPageRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified PageRequest message, length delimited. Does not implicitly {@link cosmos.base.query.v1beta1.PageRequest.verify|verify} messages.
+                     * @param message PageRequest message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: cosmos.base.query.v1beta1.IPageRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a PageRequest message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns PageRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.query.v1beta1.PageRequest;
+
+                    /**
+                     * Decodes a PageRequest message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns PageRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.query.v1beta1.PageRequest;
+
+                    /**
+                     * Verifies a PageRequest message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a PageRequest message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns PageRequest
+                     */
+                    public static fromObject(object: { [k: string]: any }): cosmos.base.query.v1beta1.PageRequest;
+
+                    /**
+                     * Creates a plain object from a PageRequest message. Also converts values to other types if specified.
+                     * @param message PageRequest
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: cosmos.base.query.v1beta1.PageRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this PageRequest to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+
+                /** Properties of a PageResponse. */
+                interface IPageResponse {
+
+                    /** PageResponse next_key */
+                    next_key?: (Uint8Array|null);
+
+                    /** PageResponse total */
+                    total?: (Long|null);
+                }
+
+                /** Represents a PageResponse. */
+                class PageResponse implements IPageResponse {
+
+                    /**
+                     * Constructs a new PageResponse.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: cosmos.base.query.v1beta1.IPageResponse);
+
+                    /** PageResponse next_key. */
+                    public next_key: Uint8Array;
+
+                    /** PageResponse total. */
+                    public total: Long;
+
+                    /**
+                     * Encodes the specified PageResponse message. Does not implicitly {@link cosmos.base.query.v1beta1.PageResponse.verify|verify} messages.
+                     * @param message PageResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: cosmos.base.query.v1beta1.IPageResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified PageResponse message, length delimited. Does not implicitly {@link cosmos.base.query.v1beta1.PageResponse.verify|verify} messages.
+                     * @param message PageResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: cosmos.base.query.v1beta1.IPageResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a PageResponse message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns PageResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.query.v1beta1.PageResponse;
+
+                    /**
+                     * Decodes a PageResponse message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns PageResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.query.v1beta1.PageResponse;
+
+                    /**
+                     * Verifies a PageResponse message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a PageResponse message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns PageResponse
+                     */
+                    public static fromObject(object: { [k: string]: any }): cosmos.base.query.v1beta1.PageResponse;
+
+                    /**
+                     * Creates a plain object from a PageResponse message. Also converts values to other types if specified.
+                     * @param message PageResponse
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: cosmos.base.query.v1beta1.PageResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this PageResponse to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+            }
+        }
+
+        /** Namespace v1beta1. */
+        namespace v1beta1 {
+
+            /** Properties of a Coin. */
+            interface ICoin {
+
+                /** Coin denom */
+                denom?: (string|null);
+
+                /** Coin amount */
+                amount?: (string|null);
+            }
+
+            /** Represents a Coin. */
+            class Coin implements ICoin {
+
+                /**
+                 * Constructs a new Coin.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: cosmos.base.v1beta1.ICoin);
+
+                /** Coin denom. */
+                public denom: string;
+
+                /** Coin amount. */
+                public amount: string;
+
+                /**
+                 * Encodes the specified Coin message. Does not implicitly {@link cosmos.base.v1beta1.Coin.verify|verify} messages.
+                 * @param message Coin message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: cosmos.base.v1beta1.ICoin, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Coin message, length delimited. Does not implicitly {@link cosmos.base.v1beta1.Coin.verify|verify} messages.
+                 * @param message Coin message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: cosmos.base.v1beta1.ICoin, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Coin message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Coin
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.v1beta1.Coin;
+
+                /**
+                 * Decodes a Coin message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Coin
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.v1beta1.Coin;
+
+                /**
+                 * Verifies a Coin message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Coin message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Coin
+                 */
+                public static fromObject(object: { [k: string]: any }): cosmos.base.v1beta1.Coin;
+
+                /**
+                 * Creates a plain object from a Coin message. Also converts values to other types if specified.
+                 * @param message Coin
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: cosmos.base.v1beta1.Coin, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Coin to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a DecCoin. */
+            interface IDecCoin {
+
+                /** DecCoin denom */
+                denom?: (string|null);
+
+                /** DecCoin amount */
+                amount?: (string|null);
+            }
+
+            /** Represents a DecCoin. */
+            class DecCoin implements IDecCoin {
+
+                /**
+                 * Constructs a new DecCoin.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: cosmos.base.v1beta1.IDecCoin);
+
+                /** DecCoin denom. */
+                public denom: string;
+
+                /** DecCoin amount. */
+                public amount: string;
+
+                /**
+                 * Encodes the specified DecCoin message. Does not implicitly {@link cosmos.base.v1beta1.DecCoin.verify|verify} messages.
+                 * @param message DecCoin message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: cosmos.base.v1beta1.IDecCoin, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified DecCoin message, length delimited. Does not implicitly {@link cosmos.base.v1beta1.DecCoin.verify|verify} messages.
+                 * @param message DecCoin message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: cosmos.base.v1beta1.IDecCoin, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a DecCoin message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns DecCoin
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.v1beta1.DecCoin;
+
+                /**
+                 * Decodes a DecCoin message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns DecCoin
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.v1beta1.DecCoin;
+
+                /**
+                 * Verifies a DecCoin message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a DecCoin message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns DecCoin
+                 */
+                public static fromObject(object: { [k: string]: any }): cosmos.base.v1beta1.DecCoin;
+
+                /**
+                 * Creates a plain object from a DecCoin message. Also converts values to other types if specified.
+                 * @param message DecCoin
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: cosmos.base.v1beta1.DecCoin, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this DecCoin to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of an IntProto. */
+            interface IIntProto {
+
+                /** IntProto int */
+                int?: (string|null);
+            }
+
+            /** Represents an IntProto. */
+            class IntProto implements IIntProto {
+
+                /**
+                 * Constructs a new IntProto.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: cosmos.base.v1beta1.IIntProto);
+
+                /** IntProto int. */
+                public int: string;
+
+                /**
+                 * Encodes the specified IntProto message. Does not implicitly {@link cosmos.base.v1beta1.IntProto.verify|verify} messages.
+                 * @param message IntProto message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: cosmos.base.v1beta1.IIntProto, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified IntProto message, length delimited. Does not implicitly {@link cosmos.base.v1beta1.IntProto.verify|verify} messages.
+                 * @param message IntProto message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: cosmos.base.v1beta1.IIntProto, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an IntProto message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns IntProto
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.v1beta1.IntProto;
+
+                /**
+                 * Decodes an IntProto message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns IntProto
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.v1beta1.IntProto;
+
+                /**
+                 * Verifies an IntProto message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an IntProto message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns IntProto
+                 */
+                public static fromObject(object: { [k: string]: any }): cosmos.base.v1beta1.IntProto;
+
+                /**
+                 * Creates a plain object from an IntProto message. Also converts values to other types if specified.
+                 * @param message IntProto
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: cosmos.base.v1beta1.IntProto, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this IntProto to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a DecProto. */
+            interface IDecProto {
+
+                /** DecProto dec */
+                dec?: (string|null);
+            }
+
+            /** Represents a DecProto. */
+            class DecProto implements IDecProto {
+
+                /**
+                 * Constructs a new DecProto.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: cosmos.base.v1beta1.IDecProto);
+
+                /** DecProto dec. */
+                public dec: string;
+
+                /**
+                 * Encodes the specified DecProto message. Does not implicitly {@link cosmos.base.v1beta1.DecProto.verify|verify} messages.
+                 * @param message DecProto message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: cosmos.base.v1beta1.IDecProto, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified DecProto message, length delimited. Does not implicitly {@link cosmos.base.v1beta1.DecProto.verify|verify} messages.
+                 * @param message DecProto message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: cosmos.base.v1beta1.IDecProto, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a DecProto message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns DecProto
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): cosmos.base.v1beta1.DecProto;
+
+                /**
+                 * Decodes a DecProto message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns DecProto
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): cosmos.base.v1beta1.DecProto;
+
+                /**
+                 * Verifies a DecProto message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a DecProto message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns DecProto
+                 */
+                public static fromObject(object: { [k: string]: any }): cosmos.base.v1beta1.DecProto;
+
+                /**
+                 * Creates a plain object from a DecProto message. Also converts values to other types if specified.
+                 * @param message DecProto
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: cosmos.base.v1beta1.DecProto, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this DecProto to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+        }
+    }
+}
+
 /** Namespace google. */
 export namespace google {
+
+    /** Namespace api. */
+    namespace api {
+
+        /** Properties of a Http. */
+        interface IHttp {
+
+            /** Http rules */
+            rules?: (google.api.IHttpRule[]|null);
+
+            /** Http fully_decode_reserved_expansion */
+            fully_decode_reserved_expansion?: (boolean|null);
+        }
+
+        /** Represents a Http. */
+        class Http implements IHttp {
+
+            /**
+             * Constructs a new Http.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.api.IHttp);
+
+            /** Http rules. */
+            public rules: google.api.IHttpRule[];
+
+            /** Http fully_decode_reserved_expansion. */
+            public fully_decode_reserved_expansion: boolean;
+
+            /**
+             * Encodes the specified Http message. Does not implicitly {@link google.api.Http.verify|verify} messages.
+             * @param message Http message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.api.IHttp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Http message, length delimited. Does not implicitly {@link google.api.Http.verify|verify} messages.
+             * @param message Http message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.api.IHttp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Http message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Http
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.api.Http;
+
+            /**
+             * Decodes a Http message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Http
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.api.Http;
+
+            /**
+             * Verifies a Http message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Http message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Http
+             */
+            public static fromObject(object: { [k: string]: any }): google.api.Http;
+
+            /**
+             * Creates a plain object from a Http message. Also converts values to other types if specified.
+             * @param message Http
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.api.Http, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Http to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a HttpRule. */
+        interface IHttpRule {
+
+            /** HttpRule selector */
+            selector?: (string|null);
+
+            /** HttpRule get */
+            get?: (string|null);
+
+            /** HttpRule put */
+            put?: (string|null);
+
+            /** HttpRule post */
+            post?: (string|null);
+
+            /** HttpRule delete */
+            "delete"?: (string|null);
+
+            /** HttpRule patch */
+            patch?: (string|null);
+
+            /** HttpRule custom */
+            custom?: (google.api.ICustomHttpPattern|null);
+
+            /** HttpRule body */
+            body?: (string|null);
+
+            /** HttpRule response_body */
+            response_body?: (string|null);
+
+            /** HttpRule additional_bindings */
+            additional_bindings?: (google.api.IHttpRule[]|null);
+        }
+
+        /** Represents a HttpRule. */
+        class HttpRule implements IHttpRule {
+
+            /**
+             * Constructs a new HttpRule.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.api.IHttpRule);
+
+            /** HttpRule selector. */
+            public selector: string;
+
+            /** HttpRule get. */
+            public get: string;
+
+            /** HttpRule put. */
+            public put: string;
+
+            /** HttpRule post. */
+            public post: string;
+
+            /** HttpRule delete. */
+            public delete: string;
+
+            /** HttpRule patch. */
+            public patch: string;
+
+            /** HttpRule custom. */
+            public custom?: (google.api.ICustomHttpPattern|null);
+
+            /** HttpRule body. */
+            public body: string;
+
+            /** HttpRule response_body. */
+            public response_body: string;
+
+            /** HttpRule additional_bindings. */
+            public additional_bindings: google.api.IHttpRule[];
+
+            /** HttpRule pattern. */
+            public pattern?: ("get"|"put"|"post"|"delete"|"patch"|"custom");
+
+            /**
+             * Encodes the specified HttpRule message. Does not implicitly {@link google.api.HttpRule.verify|verify} messages.
+             * @param message HttpRule message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.api.IHttpRule, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified HttpRule message, length delimited. Does not implicitly {@link google.api.HttpRule.verify|verify} messages.
+             * @param message HttpRule message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.api.IHttpRule, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a HttpRule message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns HttpRule
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.api.HttpRule;
+
+            /**
+             * Decodes a HttpRule message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns HttpRule
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.api.HttpRule;
+
+            /**
+             * Verifies a HttpRule message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a HttpRule message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns HttpRule
+             */
+            public static fromObject(object: { [k: string]: any }): google.api.HttpRule;
+
+            /**
+             * Creates a plain object from a HttpRule message. Also converts values to other types if specified.
+             * @param message HttpRule
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.api.HttpRule, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this HttpRule to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a CustomHttpPattern. */
+        interface ICustomHttpPattern {
+
+            /** CustomHttpPattern kind */
+            kind?: (string|null);
+
+            /** CustomHttpPattern path */
+            path?: (string|null);
+        }
+
+        /** Represents a CustomHttpPattern. */
+        class CustomHttpPattern implements ICustomHttpPattern {
+
+            /**
+             * Constructs a new CustomHttpPattern.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.api.ICustomHttpPattern);
+
+            /** CustomHttpPattern kind. */
+            public kind: string;
+
+            /** CustomHttpPattern path. */
+            public path: string;
+
+            /**
+             * Encodes the specified CustomHttpPattern message. Does not implicitly {@link google.api.CustomHttpPattern.verify|verify} messages.
+             * @param message CustomHttpPattern message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.api.ICustomHttpPattern, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CustomHttpPattern message, length delimited. Does not implicitly {@link google.api.CustomHttpPattern.verify|verify} messages.
+             * @param message CustomHttpPattern message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.api.ICustomHttpPattern, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CustomHttpPattern message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns CustomHttpPattern
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.api.CustomHttpPattern;
+
+            /**
+             * Decodes a CustomHttpPattern message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns CustomHttpPattern
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.api.CustomHttpPattern;
+
+            /**
+             * Verifies a CustomHttpPattern message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CustomHttpPattern message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CustomHttpPattern
+             */
+            public static fromObject(object: { [k: string]: any }): google.api.CustomHttpPattern;
+
+            /**
+             * Creates a plain object from a CustomHttpPattern message. Also converts values to other types if specified.
+             * @param message CustomHttpPattern
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.api.CustomHttpPattern, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CustomHttpPattern to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+    }
 
     /** Namespace protobuf. */
     namespace protobuf {
@@ -11286,6 +9921,12 @@ export namespace google {
             /** MessageOptions uninterpreted_option */
             uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
 
+            /** MessageOptions .cosmos_proto.interface_type */
+            ".cosmos_proto.interface_type"?: (string|null);
+
+            /** MessageOptions .cosmos_proto.implements_interface */
+            ".cosmos_proto.implements_interface"?: (string|null);
+
             /** MessageOptions .gogoproto.goproto_getters */
             ".gogoproto.goproto_getters"?: (boolean|null);
 
@@ -11363,12 +10004,6 @@ export namespace google {
 
             /** MessageOptions .gogoproto.goproto_unkeyed */
             ".gogoproto.goproto_unkeyed"?: (boolean|null);
-
-            /** MessageOptions .cosmos_proto.interface_type */
-            ".cosmos_proto.interface_type"?: (string|null);
-
-            /** MessageOptions .cosmos_proto.implements_interface */
-            ".cosmos_proto.implements_interface"?: (string|null);
         }
 
         /** Represents a MessageOptions. */
@@ -11483,6 +10118,9 @@ export namespace google {
             /** FieldOptions uninterpreted_option */
             uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
 
+            /** FieldOptions .cosmos_proto.accepts_interface */
+            ".cosmos_proto.accepts_interface"?: (string|null);
+
             /** FieldOptions .gogoproto.nullable */
             ".gogoproto.nullable"?: (boolean|null);
 
@@ -11521,9 +10159,6 @@ export namespace google {
 
             /** FieldOptions .gogoproto.castrepeated */
             ".gogoproto.castrepeated"?: (string|null);
-
-            /** FieldOptions .cosmos_proto.accepts_interface */
-            ".cosmos_proto.accepts_interface"?: (string|null);
         }
 
         /** Represents a FieldOptions. */
@@ -12694,95 +11329,6 @@ export namespace google {
             }
         }
 
-        /** Properties of a Timestamp. */
-        interface ITimestamp {
-
-            /** Timestamp seconds */
-            seconds?: (Long|null);
-
-            /** Timestamp nanos */
-            nanos?: (number|null);
-        }
-
-        /** Represents a Timestamp. */
-        class Timestamp implements ITimestamp {
-
-            /**
-             * Constructs a new Timestamp.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.protobuf.ITimestamp);
-
-            /** Timestamp seconds. */
-            public seconds: Long;
-
-            /** Timestamp nanos. */
-            public nanos: number;
-
-            /**
-             * Encodes the specified Timestamp message. Does not implicitly {@link google.protobuf.Timestamp.verify|verify} messages.
-             * @param message Timestamp message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.protobuf.ITimestamp, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Timestamp message, length delimited. Does not implicitly {@link google.protobuf.Timestamp.verify|verify} messages.
-             * @param message Timestamp message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.protobuf.ITimestamp, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Timestamp message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Timestamp
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Timestamp;
-
-            /**
-             * Decodes a Timestamp message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Timestamp
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Timestamp;
-
-            /**
-             * Verifies a Timestamp message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Timestamp message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Timestamp
-             */
-            public static fromObject(object: { [k: string]: any }): google.protobuf.Timestamp;
-
-            /**
-             * Creates a plain object from a Timestamp message. Also converts values to other types if specified.
-             * @param message Timestamp
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.protobuf.Timestamp, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Timestamp to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
         /** Properties of an Any. */
         interface IAny {
 
@@ -12872,6 +11418,95 @@ export namespace google {
             public toJSON(): { [k: string]: any };
         }
 
+        /** Properties of a Timestamp. */
+        interface ITimestamp {
+
+            /** Timestamp seconds */
+            seconds?: (Long|null);
+
+            /** Timestamp nanos */
+            nanos?: (number|null);
+        }
+
+        /** Represents a Timestamp. */
+        class Timestamp implements ITimestamp {
+
+            /**
+             * Constructs a new Timestamp.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.ITimestamp);
+
+            /** Timestamp seconds. */
+            public seconds: Long;
+
+            /** Timestamp nanos. */
+            public nanos: number;
+
+            /**
+             * Encodes the specified Timestamp message. Does not implicitly {@link google.protobuf.Timestamp.verify|verify} messages.
+             * @param message Timestamp message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.ITimestamp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Timestamp message, length delimited. Does not implicitly {@link google.protobuf.Timestamp.verify|verify} messages.
+             * @param message Timestamp message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.ITimestamp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Timestamp message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Timestamp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Timestamp;
+
+            /**
+             * Decodes a Timestamp message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Timestamp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Timestamp;
+
+            /**
+             * Verifies a Timestamp message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Timestamp message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Timestamp
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Timestamp;
+
+            /**
+             * Creates a plain object from a Timestamp message. Also converts values to other types if specified.
+             * @param message Timestamp
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Timestamp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Timestamp to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
         /** Properties of a Duration. */
         interface IDuration {
 
@@ -12956,328 +11591,6 @@ export namespace google {
 
             /**
              * Converts this Duration to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-    }
-
-    /** Namespace api. */
-    namespace api {
-
-        /** Properties of a Http. */
-        interface IHttp {
-
-            /** Http rules */
-            rules?: (google.api.IHttpRule[]|null);
-
-            /** Http fully_decode_reserved_expansion */
-            fully_decode_reserved_expansion?: (boolean|null);
-        }
-
-        /** Represents a Http. */
-        class Http implements IHttp {
-
-            /**
-             * Constructs a new Http.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.api.IHttp);
-
-            /** Http rules. */
-            public rules: google.api.IHttpRule[];
-
-            /** Http fully_decode_reserved_expansion. */
-            public fully_decode_reserved_expansion: boolean;
-
-            /**
-             * Encodes the specified Http message. Does not implicitly {@link google.api.Http.verify|verify} messages.
-             * @param message Http message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.api.IHttp, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Http message, length delimited. Does not implicitly {@link google.api.Http.verify|verify} messages.
-             * @param message Http message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.api.IHttp, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Http message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Http
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.api.Http;
-
-            /**
-             * Decodes a Http message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Http
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.api.Http;
-
-            /**
-             * Verifies a Http message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Http message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Http
-             */
-            public static fromObject(object: { [k: string]: any }): google.api.Http;
-
-            /**
-             * Creates a plain object from a Http message. Also converts values to other types if specified.
-             * @param message Http
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.api.Http, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Http to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a HttpRule. */
-        interface IHttpRule {
-
-            /** HttpRule selector */
-            selector?: (string|null);
-
-            /** HttpRule get */
-            get?: (string|null);
-
-            /** HttpRule put */
-            put?: (string|null);
-
-            /** HttpRule post */
-            post?: (string|null);
-
-            /** HttpRule delete */
-            "delete"?: (string|null);
-
-            /** HttpRule patch */
-            patch?: (string|null);
-
-            /** HttpRule custom */
-            custom?: (google.api.ICustomHttpPattern|null);
-
-            /** HttpRule body */
-            body?: (string|null);
-
-            /** HttpRule response_body */
-            response_body?: (string|null);
-
-            /** HttpRule additional_bindings */
-            additional_bindings?: (google.api.IHttpRule[]|null);
-        }
-
-        /** Represents a HttpRule. */
-        class HttpRule implements IHttpRule {
-
-            /**
-             * Constructs a new HttpRule.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.api.IHttpRule);
-
-            /** HttpRule selector. */
-            public selector: string;
-
-            /** HttpRule get. */
-            public get: string;
-
-            /** HttpRule put. */
-            public put: string;
-
-            /** HttpRule post. */
-            public post: string;
-
-            /** HttpRule delete. */
-            public delete: string;
-
-            /** HttpRule patch. */
-            public patch: string;
-
-            /** HttpRule custom. */
-            public custom?: (google.api.ICustomHttpPattern|null);
-
-            /** HttpRule body. */
-            public body: string;
-
-            /** HttpRule response_body. */
-            public response_body: string;
-
-            /** HttpRule additional_bindings. */
-            public additional_bindings: google.api.IHttpRule[];
-
-            /** HttpRule pattern. */
-            public pattern?: ("get"|"put"|"post"|"delete"|"patch"|"custom");
-
-            /**
-             * Encodes the specified HttpRule message. Does not implicitly {@link google.api.HttpRule.verify|verify} messages.
-             * @param message HttpRule message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.api.IHttpRule, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified HttpRule message, length delimited. Does not implicitly {@link google.api.HttpRule.verify|verify} messages.
-             * @param message HttpRule message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.api.IHttpRule, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a HttpRule message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns HttpRule
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.api.HttpRule;
-
-            /**
-             * Decodes a HttpRule message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns HttpRule
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.api.HttpRule;
-
-            /**
-             * Verifies a HttpRule message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a HttpRule message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns HttpRule
-             */
-            public static fromObject(object: { [k: string]: any }): google.api.HttpRule;
-
-            /**
-             * Creates a plain object from a HttpRule message. Also converts values to other types if specified.
-             * @param message HttpRule
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.api.HttpRule, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this HttpRule to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a CustomHttpPattern. */
-        interface ICustomHttpPattern {
-
-            /** CustomHttpPattern kind */
-            kind?: (string|null);
-
-            /** CustomHttpPattern path */
-            path?: (string|null);
-        }
-
-        /** Represents a CustomHttpPattern. */
-        class CustomHttpPattern implements ICustomHttpPattern {
-
-            /**
-             * Constructs a new CustomHttpPattern.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.api.ICustomHttpPattern);
-
-            /** CustomHttpPattern kind. */
-            public kind: string;
-
-            /** CustomHttpPattern path. */
-            public path: string;
-
-            /**
-             * Encodes the specified CustomHttpPattern message. Does not implicitly {@link google.api.CustomHttpPattern.verify|verify} messages.
-             * @param message CustomHttpPattern message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.api.ICustomHttpPattern, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified CustomHttpPattern message, length delimited. Does not implicitly {@link google.api.CustomHttpPattern.verify|verify} messages.
-             * @param message CustomHttpPattern message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.api.ICustomHttpPattern, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a CustomHttpPattern message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns CustomHttpPattern
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.api.CustomHttpPattern;
-
-            /**
-             * Decodes a CustomHttpPattern message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns CustomHttpPattern
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.api.CustomHttpPattern;
-
-            /**
-             * Verifies a CustomHttpPattern message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a CustomHttpPattern message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns CustomHttpPattern
-             */
-            public static fromObject(object: { [k: string]: any }): google.api.CustomHttpPattern;
-
-            /**
-             * Creates a plain object from a CustomHttpPattern message. Also converts values to other types if specified.
-             * @param message CustomHttpPattern
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.api.CustomHttpPattern, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this CustomHttpPattern to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };

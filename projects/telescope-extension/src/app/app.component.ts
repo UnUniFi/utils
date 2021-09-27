@@ -13,13 +13,13 @@ export class AppComponent {
   constructor(private readonly configS: ConfigService) {
     this.config = this.configS.config;
     const prefix = this.config.bech32Prefix?.accAddr;
-    if (this.config.extension?.faucet !== undefined) {
+    if (this.config.extension?.faucet !== undefined && prefix !== undefined) {
       this.config.extension.navigations.push({
         name: 'Faucet',
-        link: '/jpyx/faucet',
+        link: `/${prefix}/faucet`,
       });
     }
-    if (this.config.extension?.faucet !== undefined) {
+    if (this.config.extension !== undefined) {
       if (prefix !== undefined) {
         if (
           this.config.extension.navigations !== undefined &&

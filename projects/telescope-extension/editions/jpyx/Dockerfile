@@ -2,7 +2,7 @@ FROM node:14 as build-stage
 
 WORKDIR /root/app
 COPY ./ /root/app/
-RUN sudo npm i -g npm
+RUN npm i -g npm
 RUN npm ci
 RUN npm run build:telescope:jpyx
 

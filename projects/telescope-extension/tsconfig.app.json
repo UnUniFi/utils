@@ -4,8 +4,10 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
     "types": [
-      "node"
-    ]
+      "node",
+      "long"
+    ],
+    "allowSyntheticDefaultImports": true
   },
   "files": [
     "src/main.ts",

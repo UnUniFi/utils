@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:telescope:jpyx": "ng serve --project telescope-extension --configuration=production-jpyx",
-    "start:telescope:eurx": "ng serve --project telescope-extension --configuration=production-eurx",
+    "start:telescope:jpyx": "ng serve --project telescope-extension --configuration=development-jpyx",
+    "start:telescope:eurx": "ng serve --project telescope-extension --configuration=development-eurx",
     "build": "ng build",
     "build:website": "ng build --project main",
     "build:telescope:jpyx": "ng build --project telescope-extension --configuration=production-jpyx",

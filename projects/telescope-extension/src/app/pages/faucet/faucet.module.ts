@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { FaucetRoutingModule } from './faucet-routing.module';
 import { FaucetComponent } from './faucet.component';
-import { FaucetModule } from 'projects/telescope-extension/src/view/faucet/faucet.module';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '@view-ce/material.module';
+import { NgModule } from '@angular/core';
+import { FaucetModule } from 'projects/telescope-extension/src/app/views/faucet/faucet.module';
+import { MaterialModule } from 'projects/telescope-extension/src/app/views/material.module';
 
 @NgModule({
   declarations: [FaucetComponent],

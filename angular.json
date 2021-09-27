@@ -236,6 +236,7 @@
               "projects/telescope-extension/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/telescope-extension/src/styles.css"
             ],
             "scripts": []

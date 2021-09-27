@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { cosmosclient, rest } from 'cosmos-client';
-import { InlineResponse20027 } from 'cosmos-client/cjs/openapi/api';
+import { InlineResponse20027 } from 'cosmos-client/esm/openapi';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/cosmos-sdk.service';
 import { FaucetRequest } from 'projects/telescope-extension/src/app/models/faucets/faucet.model';

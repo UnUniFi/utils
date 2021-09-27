@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { botany } from 'botany-client';
-import { cosmos } from 'cosmos-client';
+import { proto } from 'cosmos-client';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
 export type CreateCdpOnSubmitEvent = {
   key: Key;
   privateKey: string;
-  collateral: cosmos.base.v1beta1.ICoin;
-  principal: cosmos.base.v1beta1.ICoin;
+  collateral: proto.cosmos.base.v1beta1.ICoin;
+  principal: proto.cosmos.base.v1beta1.ICoin;
 };
 
 @Component({
@@ -25,8 +25,8 @@ export class CreateComponent implements OnInit {
   @Output()
   appSubmit: EventEmitter<CreateCdpOnSubmitEvent>;
 
-  public collateral: cosmos.base.v1beta1.ICoin;
-  public principal: cosmos.base.v1beta1.ICoin;
+  public collateral: proto.cosmos.base.v1beta1.ICoin;
+  public principal: proto.cosmos.base.v1beta1.ICoin;
 
   constructor() {
     this.appSubmit = new EventEmitter();

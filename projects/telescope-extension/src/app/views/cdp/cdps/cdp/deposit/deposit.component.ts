@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { cosmosclient, cosmos } from 'cosmos-client';
+import { cosmosclient, proto } from 'cosmos-client';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
 export type DepositCdpOnSubmitEvent = {
   key: Key;
   privateKey: string;
   ownerAddr: cosmosclient.AccAddress;
-  collateral: cosmos.base.v1beta1.ICoin;
+  collateral: proto.cosmos.base.v1beta1.ICoin;
 };
 
 @Component({

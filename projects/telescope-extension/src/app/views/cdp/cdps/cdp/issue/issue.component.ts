@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { cosmosclient, cosmos } from 'cosmos-client';
+import { cosmosclient, proto } from 'cosmos-client';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
 export type IssueCdpOnSubmitEvent = {
@@ -7,7 +7,7 @@ export type IssueCdpOnSubmitEvent = {
   privateKey: string;
   ownerAddr: cosmosclient.AccAddress;
   denom: string;
-  principal: cosmos.base.v1beta1.ICoin;
+  principal: proto.cosmos.base.v1beta1.ICoin;
 };
 
 @Component({

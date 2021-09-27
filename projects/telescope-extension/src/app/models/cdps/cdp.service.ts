@@ -1,42 +1,42 @@
-import { Injectable } from '@angular/core';
-import { CdpInfrastructureService } from './cdp.infrastructure.service';
 import { Key } from '../keys/key.model';
-import { cosmosclient, cosmos, rest } from 'cosmos-client';
+import { CdpInfrastructureService } from './cdp.infrastructure.service';
+import { Injectable } from '@angular/core';
+import { cosmosclient, proto, rest } from 'cosmos-client';
 
 export interface ICdpInfrastructure {
   createCDP(
     key: Key,
     privateKey: string,
-    collateral: cosmos.base.v1beta1.ICoin,
-    principal: cosmos.base.v1beta1.ICoin,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
+    principal: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<any>;
 
   drawCDP(
     key: Key,
     privateKey: string,
     denom: string,
-    principal: cosmos.base.v1beta1.ICoin,
+    principal: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<any>;
 
   repayCDP(
     key: Key,
     privateKey: string,
     denom: string,
-    payment: cosmos.base.v1beta1.ICoin,
+    payment: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<any>;
 
   depositCDP(
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
-    collateral: cosmos.base.v1beta1.ICoin,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<any>;
 
   withdrawCDP(
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
-    collateral: cosmos.base.v1beta1.ICoin,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<any>;
 }
 
@@ -52,70 +52,35 @@ export class CdpService {
   createCDP(
     key: Key,
     privateKey: string,
-    collateral: cosmos.base.v1beta1.ICoin,
-    principal: cosmos.base.v1beta1.ICoin,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
+    principal: proto.cosmos.base.v1beta1.ICoin,
   ) {
-    return this.iCdpInfrastructure.createCDP(
-      key,
-      privateKey,
-      collateral,
-      principal,
-    );
+    return this.iCdpInfrastructure.createCDP(key, privateKey, collateral, principal);
   }
 
-  drawCDP(
-    key: Key,
-    privateKey: string,
-    denom: string,
-    principal: cosmos.base.v1beta1.ICoin,
-  ) {
-    return this.iCdpInfrastructure.drawCDP(
-      key,
-      privateKey,
-      denom,
-      principal,
-    );
+  drawCDP(key: Key, privateKey: string, denom: string, principal: proto.cosmos.base.v1beta1.ICoin) {
+    return this.iCdpInfrastructure.drawCDP(key, privateKey, denom, principal);
   }
 
-  repayCDP(
-    key: Key,
-    privateKey: string,
-    denom: string,
-    payment: cosmos.base.v1beta1.ICoin,
-  ) {
-    return this.iCdpInfrastructure.repayCDP(
-      key,
-      privateKey,
-      denom,
-      payment,
-    );
+  repayCDP(key: Key, privateKey: string, denom: string, payment: proto.cosmos.base.v1beta1.ICoin) {
+    return this.iCdpInfrastructure.repayCDP(key, privateKey, denom, payment);
   }
 
   depositCDP(
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
-    collateral: cosmos.base.v1beta1.ICoin,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
   ) {
-    return this.iCdpInfrastructure.depositCDP(
-      key,
-      privateKey,
-      ownerAddr,
-      collateral,
-    );
+    return this.iCdpInfrastructure.depositCDP(key, privateKey, ownerAddr, collateral);
   }
 
   withdrawCDP(
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
-    collateral: cosmos.base.v1beta1.ICoin,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
   ) {
-    return this.iCdpInfrastructure.withdrawCDP(
-      key,
-      privateKey,
-      ownerAddr,
-      collateral,
-    );
+    return this.iCdpInfrastructure.withdrawCDP(key, privateKey, ownerAddr, collateral);
   }
 }

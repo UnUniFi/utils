@@ -14,6 +14,12 @@ export class AppComponent {
     this.config = this.configS.config;
     const prefix = this.config.bech32Prefix?.accAddr;
     if (this.config.extension?.faucet !== undefined) {
+      this.config.extension.navigations.push({
+        name: 'Faucet',
+        link: '/jpyx/faucet',
+      });
+    }
+    if (this.config.extension?.faucet !== undefined) {
       if (prefix !== undefined) {
         if (
           this.config.extension.navigations !== undefined &&

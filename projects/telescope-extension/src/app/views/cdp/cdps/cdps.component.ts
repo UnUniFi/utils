@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as crypto from 'crypto';
-import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi-eurx';
+import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi';
 
 @Component({
   selector: 'view-cdps',

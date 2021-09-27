@@ -3,7 +3,7 @@ import { getSpotPriceStream, getLiquidationPriceStream } from '../../../../utils
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { rest, botany } from 'botany-client';
-import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'botany-client/esm/openapi-eurx';
+import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'botany-client/esm/openapi';
 import { cosmosclient } from 'cosmos-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
 import { combineLatest, from, Observable, pipe, zip } from 'rxjs';

@@ -3,7 +3,7 @@ FROM node:14 as build-stage
 WORKDIR /root/app
 COPY ./ /root/app/
 RUN npm ci
-RUN npm run build:telescope -- --prod --base-href=/eurx/
+RUN npm run build:telescope:eurx
 
 FROM lcnem/telescope
 

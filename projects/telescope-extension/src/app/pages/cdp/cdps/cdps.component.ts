@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { rest } from 'botany-client';
 import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi';
 import { cosmosclient } from 'cosmos-client';
-import { combineLatest, Observable } from 'rxjs';
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { catchError, filter, map, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cdps',
@@ -39,6 +39,10 @@ export class CdpsComponent implements OnInit {
       ),
       map((result) => result.map((res) => res.data)),
       map((data) => data.map((e) => e.cdp!)),
+      catchError((error) => {
+        console.error(error);
+        return of([])
+      })
     );
   }
 

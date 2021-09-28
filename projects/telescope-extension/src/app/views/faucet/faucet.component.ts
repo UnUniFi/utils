@@ -17,7 +17,6 @@ export class FaucetComponent implements OnInit, OnChanges {
   @Input() creditAmount?: number;
   @Input() maxCredit?: number;
   @Input() address?: string;
-  @Input() spinnerStatus?: boolean;
 
   @Output() postFaucetRequested: EventEmitter<FaucetRequest> = new EventEmitter<FaucetRequest>();
 

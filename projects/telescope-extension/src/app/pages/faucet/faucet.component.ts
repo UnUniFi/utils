@@ -7,6 +7,7 @@ import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/co
 import { FaucetRequest } from 'projects/telescope-extension/src/app/models/faucets/faucet.model';
 import { FaucetService } from 'projects/telescope-extension/src/app/models/faucets/faucet.service';
 import { BehaviorSubject, combineLatest, timer } from 'rxjs';
+import { LoadingDialogService } from 'ng-loading-dialog';
 
 @Component({
   selector: 'app-faucet',
@@ -23,13 +24,13 @@ export class FaucetComponent implements OnInit {
   balancesBeforeFaucetRequest$?: BehaviorSubject<InlineResponse20027>;
   balancesAfterFaucetRequest$?: BehaviorSubject<InlineResponse20027>;
   faucetRequestSuccess$?: BehaviorSubject<boolean>;
-  spinnerStatus = false;
 
   constructor(
     private configS: ConfigService,
     private cosmosSDK: CosmosSDKService,
     private faucetService: FaucetService,
     private readonly snackBar: MatSnackBar,
+    private readonly loadingDialog: LoadingDialogService,
   ) {
     this.hasFaucet = this.configS.config.extension?.faucet?.hasFaucet;
     this.faucetURL = this.configS.config.extension?.faucet?.faucetURL;
@@ -41,11 +42,10 @@ export class FaucetComponent implements OnInit {
   ngOnInit(): void {}
 
   appPostFaucetRequested(faucetRequest: FaucetRequest): void {
+    const dialogRef = this.loadingDialog.open('Claiming...');
     this.faucetService
       .postFaucetRequest$(faucetRequest)
       .subscribe((faucetResponse) => console.log(faucetResponse));
-    this.snackBar.open('Claiming...', undefined, { duration: 3000 });
-    this.spinnerStatus = true;
     const address = cosmosclient.AccAddress.fromString(faucetRequest.address);
     this.cosmosSDK.sdk$.subscribe((sdk) =>
       rest.cosmos.bank
@@ -123,8 +123,8 @@ export class FaucetComponent implements OnInit {
             this.faucetRequestSuccess$.subscribe((finalResult) => {
               if (finalResult) {
                 console.log('faucetRequest Success!');
+                dialogRef.close();
                 this.snackBar.open('Success', undefined, { duration: 3000 });
-                this.spinnerStatus = false;
                 subscription.unsubscribe();
               } else {
                 console.log('faucetRequest is not yet completed...');

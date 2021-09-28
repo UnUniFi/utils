@@ -1,12 +1,12 @@
 import { CosmosSDKService, KeyService } from '../../../models/index';
 import { Key } from '../../../models/keys/key.model';
+import { KeyStoreService } from '../../../models/keys/key.store.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { rest } from 'botany-client';
 import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi';
 import { cosmosclient } from 'cosmos-client';
-import { combineLatest, Observable } from 'rxjs';
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { catchError, filter, map, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cdps',
@@ -14,20 +14,18 @@ import { filter, map, mergeMap } from 'rxjs/operators';
   styleUrls: ['./cdps.component.css'],
 })
 export class CdpsComponent implements OnInit {
-  keyID$: Observable<string>;
   cdps$: Observable<InlineResponse2004Cdp1[]>;
 
   constructor(
-    private readonly route: ActivatedRoute,
-    private readonly keyService: KeyService,
+    private readonly key: KeyService,
+    private readonly keyStore: KeyStoreService,
     private readonly cosmosSdk: CosmosSDKService,
   ) {
-    this.keyID$ = this.route.queryParams.pipe(map((params) => params['key_id']));
-    const address$ = this.keyID$.pipe(
-      mergeMap((keyId: string) => this.keyService.get(keyId)),
+    const key$ = this.keyStore.currentKey$.asObservable();
+    const address$ = key$.pipe(
       filter((key: Key | undefined): key is Key => key !== undefined),
       map((key: Key) =>
-        cosmosclient.AccAddress.fromPublicKey(this.keyService.getPubKey(key.type, key.public_key)),
+        cosmosclient.AccAddress.fromPublicKey(this.key.getPubKey(key.type, key.public_key)),
       ),
     );
 
@@ -41,6 +39,10 @@ export class CdpsComponent implements OnInit {
       ),
       map((result) => result.map((res) => res.data)),
       map((data) => data.map((e) => e.cdp!)),
+      catchError((error) => {
+        console.error(error);
+        return of([])
+      })
     );
   }
 

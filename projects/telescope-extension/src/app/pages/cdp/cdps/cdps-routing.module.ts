@@ -7,7 +7,6 @@ import { CdpsComponent } from './cdps.component';
 import { CreateComponent } from './create/create.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { KeySelectGuard } from 'projects/telescope-extension/src/app/models/keys/key-select.guard';
 
 const routes: Routes = [
   {
@@ -18,31 +17,25 @@ const routes: Routes = [
     path: 'create',
     component: CreateComponent,
   },
-
   {
     path: ':owner/:denom',
     component: CdpComponent,
-    canActivate: [KeySelectGuard],
   },
   {
     path: ':owner/:denom/deposit',
     component: DepositComponent,
-    canActivate: [KeySelectGuard],
   },
   {
     path: ':owner/:denom/withdraw',
     component: WithdrawComponent,
-    canActivate: [KeySelectGuard],
   },
   {
     path: ':owner/:denom/issue',
     component: IssueComponent,
-    canActivate: [KeySelectGuard],
   },
   {
     path: ':owner/:denom/clear',
     component: ClearComponent,
-    canActivate: [KeySelectGuard],
   },
 ];
 

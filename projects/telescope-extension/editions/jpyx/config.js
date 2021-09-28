@@ -27,10 +27,6 @@ const config = {
         name: 'JPYX',
         link: '/jpyx/',
       },
-      {
-        name: 'Faucet',
-        link: '/jpyx/faucet'
-      }
     ],
     messageActions: [''],
     messageModules: [

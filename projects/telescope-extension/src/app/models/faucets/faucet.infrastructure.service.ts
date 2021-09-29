@@ -23,8 +23,8 @@ export class FaucetInfrastructureService implements InterfaceFaucetInfrastructur
     };
     if (this.faucetURL !== undefined) {
       return this.http
-        .post(this.faucetURL, requestBody)
-        .pipe(map((response) => response as FaucetResponse));
+        .post<FaucetResponse>(this.faucetURL, requestBody)
+        .pipe(map((response) => response));
     } else {
       return of({
         address: faucetRequest.address,

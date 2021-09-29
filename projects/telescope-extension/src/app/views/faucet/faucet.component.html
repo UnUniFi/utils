@@ -9,14 +9,10 @@
     <ng-container *ngFor="let amount of amounts; let i = index">
       <mat-form-field appearance="fill">
         <mat-label>Amount({{ amount.denom }})</mat-label>
-        <input
-          matNativeControl
-          [(ngModel)]="amounts[i].amount"
-          name="{{ amount.denom }}"
-          [min]="0"
-          [max]="creditAmount ? creditAmount : 0"
-          required
-        />
+        <input matNativeControl [(ngModel)]="amounts[i].amount" name="{{ amount.denom }}" [min]="0"
+          [max]="creditAmount ? creditAmount : 0" required (focus)="focusState = true"
+          (focusout)="focusState = false" />
+        <mat-hint *ngIf="focusState">Max 50 characters</mat-hint>
         <span matSuffix>{{ amount.denom }}</span>
       </mat-form-field>
     </ng-container>

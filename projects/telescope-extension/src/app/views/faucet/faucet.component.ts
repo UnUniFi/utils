@@ -22,6 +22,7 @@ export class FaucetComponent implements OnInit, OnChanges {
   @Output() postFaucetRequested: EventEmitter<FaucetRequest> = new EventEmitter<FaucetRequest>();
 
   amounts: Amount[];
+  focusState = false
 
   constructor(private matSnackBar: MatSnackBar) {
     if (this.denoms === undefined || this.denoms.length === 0) {
@@ -39,7 +40,7 @@ export class FaucetComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges(): void {
     if (this.denoms === undefined || this.denoms.length === 0) {

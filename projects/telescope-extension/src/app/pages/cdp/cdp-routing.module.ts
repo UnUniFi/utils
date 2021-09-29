@@ -1,6 +1,7 @@
+import { KeySelectGuard } from '../../models/keys/key-select.guard';
+import { CdpComponent } from './cdp.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CdpComponent } from './cdp.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   {
     path: 'cdps',
     loadChildren: () => import('./cdps/cdps.module').then((mod) => mod.AppCdpsModule),
+    canActivate: [KeySelectGuard],
   },
 ];
 
@@ -17,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CdpRoutingModule { }
+export class CdpRoutingModule {}

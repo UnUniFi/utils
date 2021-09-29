@@ -7,8 +7,9 @@ import {
   KeyService,
 } from 'projects/telescope-extension/src/app/models/index';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
+import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { ClearCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/clear/clear.component';
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
@@ -17,7 +18,6 @@ import { map, mergeMap } from 'rxjs/operators';
   styleUrls: ['./clear.component.css'],
 })
 export class ClearComponent implements OnInit {
-  keyID$: Observable<string>;
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
   denom$: Observable<string>;
@@ -25,12 +25,11 @@ export class ClearComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly keyService: KeyService,
+    private readonly keyStore: KeyStoreService,
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly cosmosSdk: CosmosSDKService,
   ) {
-    this.keyID$ = this.route.queryParams.pipe(map((params) => params['key_id']));
-    this.key$ = this.keyID$.pipe(mergeMap((keyId: string) => this.keyService.get(keyId)));
+    this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.denom$ = this.route.params.pipe(map((params) => params['denom']));
     this.paymentDenom$ = this.cosmosSdk.sdk$.pipe(

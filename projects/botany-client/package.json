@@ -29,7 +29,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
-    "cosmos-client": "^0.42.3",
+    "cosmos-client": "^0.42.14",
     "protobufjs": "^6.10.2"
   },
   "devDependencies": {

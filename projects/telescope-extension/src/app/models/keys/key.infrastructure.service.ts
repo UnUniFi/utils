@@ -71,11 +71,15 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
    * Get all from Indexed DB
    */
   async list(): Promise<Key[]> {
-    return (await this.db.table('keys').toArray()).map((data) => ({
-      id: data.id,
-      type: data.type,
-      public_key: data.public_key,
-    }));
+    try {
+      return (await this.db.table('keys').toArray()).map((data) => ({
+        id: data.id,
+        type: data.type,
+        public_key: data.public_key,
+      }));
+    } catch (error) {
+      return []
+    }
   }
 
   /**
@@ -87,7 +91,8 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
   async set(id: string, type: KeyType, privateKey: string) {
     const key = await this.get(id);
     if (key !== undefined) {
-      throw new Error('Already exists');
+      console.log('Already exists');
+      return;
     }
 
     const privKey = this.getPrivKey(type, privateKey);
@@ -98,7 +103,12 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
       type,
       public_key: publicKey,
     };
-    await this.db.table('keys').put(data);
+    try {
+      await this.db.table('keys').put(data);
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to put key data!');
+    }
   }
 
   /**
@@ -106,6 +116,11 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
    * @param id
    */
   async delete(id: string) {
-    await this.db.table('keys').where('id').equals(id).delete();
+    try {
+      await this.db.table('keys').where('id').equals(id).delete();
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to delete key with id!');
+    }
   }
 }

@@ -1,5 +1,6 @@
 const config = {
   restURL: `${location.protocol}//${location.hostname}:1317`,
+  monitorURL: `${location.protocol}//${location.hostname}:9000`,
   websocketURL: `${location.protocol.replace('http', 'ws')}//${location.hostname}:26657`,
   chainID: 'jpyx-3-test',
   bech32Prefix: {

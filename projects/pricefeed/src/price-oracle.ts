@@ -1,5 +1,5 @@
 import {
-  cosmosclient, rest, cosmos, google
+  cosmosclient, rest, proto
 } from "cosmos-client";
 import { rest as botanyrest, botany } from 'botany-client';
 import * as utils from "./utils";
@@ -18,7 +18,7 @@ require("log-timestamp");
  */
 export class PriceOracle {
   private sdk: cosmosclient.CosmosSDK;
-  private privKey: Promise<cosmosclient.secp256k1.PrivKey>;
+  private privKey: Promise<proto.cosmos.crypto.secp256k1.PrivKey>;
   private ccxt: CcxtClient;
 
   constructor(
@@ -48,7 +48,7 @@ export class PriceOracle {
     this.sdk = new cosmosclient.CosmosSDK(url, chainID);
     this.privKey = cosmosclient
       .generatePrivKeyFromMnemonic(mnemonic)
-      .then((buffer) => new cosmosclient.secp256k1.PrivKey({ key: buffer }));
+      .then((buffer) => new proto.cosmos.crypto.secp256k1.PrivKey({ key: buffer }));
     if (bech32Prefix) {
       cosmosclient.config.setBech32Prefix({
         accAddr: bech32Prefix,
@@ -69,9 +69,9 @@ export class PriceOracle {
     const privKey = await this.privKey;
     const address = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
     const account = await rest.cosmos.auth.account(this.sdk, address)
-      .then((res) => res.data.account && cosmosclient.codec.unpackAny(res.data.account));
+      .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account));
 
-    if (!(account instanceof cosmos.auth.v1beta1.BaseAccount)) {
+    if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
       throw Error('not a BaseAccount')
     }
 
@@ -291,7 +291,7 @@ export class PriceOracle {
   async postNewPrice(
     fetchedPrice: number,
     marketID: string,
-    account: cosmos.auth.v1beta1.BaseAccount,
+    account: proto.cosmos.auth.v1beta1.BaseAccount,
     index: number,
   ) {
     if (!fetchedPrice) {
@@ -336,21 +336,21 @@ export class PriceOracle {
       from: account.address,
       market_id: marketID,
       price: newPrice,
-      expiry: new google.protobuf.Timestamp({
+      expiry: new proto.google.protobuf.Timestamp({
         seconds: Long.fromNumber(expiryDate.getUTCSeconds()),
       })
     });
 
-    const txBody = new cosmos.tx.v1beta1.TxBody({
+    const txBody = new proto.cosmos.tx.v1beta1.TxBody({
       messages: [cosmosclient.codec.packAny(msgPostPrice)],
     });
-    const authInfo = new cosmos.tx.v1beta1.AuthInfo({
+    const authInfo = new proto.cosmos.tx.v1beta1.AuthInfo({
       signer_infos: [
         {
           public_key: cosmosclient.codec.packAny(privKey.pubKey()),
           mode_info: {
             single: {
-              mode: cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+              mode: proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
             },
           },
           sequence: account.sequence,
@@ -363,8 +363,8 @@ export class PriceOracle {
 
     // sign
     const txBuilder = new cosmosclient.TxBuilder(this.sdk, txBody, authInfo);
-    const signDoc = txBuilder.signDoc(account.account_number);
-    txBuilder.addSignature(privKey, signDoc);
+    const signDocBytes = txBuilder.signDocBytes(account.account_number);
+    txBuilder.addSignature(signDocBytes);
 
     // broadcast
     try {

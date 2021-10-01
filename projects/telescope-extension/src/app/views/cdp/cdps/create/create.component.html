@@ -15,7 +15,7 @@
       <mat-label>Collateral Denom</mat-label>
       <mat-select
         #collateralDenomRef
-        [(ngModel)]="collateral.denom"
+        ngModel
         name="collateral-denom"
         matInput
         required
@@ -33,7 +33,7 @@
       <mat-label>Collateral Amount</mat-label>
       <input
         #collateralAmountRef
-        [(ngModel)]="collateral.amount"
+        ngModel
         name="collateral-amount"
         matInput
         type="number"
@@ -48,7 +48,7 @@
       <mat-label>Principal Denom</mat-label>
       <input
         #principalDenomRef
-        [(ngModel)]="(cdpParams?.debt_param)!.denom"
+        [ngModel]="cdpParams?.debt_param?.denom"
         name="principal-denom"
         matInput
         readonly
@@ -58,7 +58,7 @@
       <mat-label>Principal Amount</mat-label>
       <input
         #principalAmountRef
-        [(ngModel)]="principal!.amount"
+        ngModel
         name="principal-amount"
         matInput
         type="number"

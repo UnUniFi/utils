@@ -1068,101 +1068,6 @@ export namespace botany {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of a MsgPlaceBid. */
-        interface IMsgPlaceBid {
-
-            /** MsgPlaceBid auction_id */
-            auction_id?: (Long|null);
-
-            /** MsgPlaceBid bidder */
-            bidder?: (string|null);
-
-            /** MsgPlaceBid amount */
-            amount?: (cosmos.base.v1beta1.ICoin|null);
-        }
-
-        /** Represents a MsgPlaceBid. */
-        class MsgPlaceBid implements IMsgPlaceBid {
-
-            /**
-             * Constructs a new MsgPlaceBid.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.auction.IMsgPlaceBid);
-
-            /** MsgPlaceBid auction_id. */
-            public auction_id: Long;
-
-            /** MsgPlaceBid bidder. */
-            public bidder: string;
-
-            /** MsgPlaceBid amount. */
-            public amount?: (cosmos.base.v1beta1.ICoin|null);
-
-            /**
-             * Encodes the specified MsgPlaceBid message. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
-             * @param message MsgPlaceBid message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.auction.IMsgPlaceBid, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgPlaceBid message, length delimited. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
-             * @param message MsgPlaceBid message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.auction.IMsgPlaceBid, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgPlaceBid message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgPlaceBid
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.MsgPlaceBid;
-
-            /**
-             * Decodes a MsgPlaceBid message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgPlaceBid
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.MsgPlaceBid;
-
-            /**
-             * Verifies a MsgPlaceBid message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgPlaceBid message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgPlaceBid
-             */
-            public static fromObject(object: { [k: string]: any }): botany.auction.MsgPlaceBid;
-
-            /**
-             * Creates a plain object from a MsgPlaceBid message. Also converts values to other types if specified.
-             * @param message MsgPlaceBid
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.auction.MsgPlaceBid, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgPlaceBid to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
         /** Properties of a Params. */
         interface IParams {
 
@@ -1265,6 +1170,214 @@ export namespace botany {
 
             /**
              * Converts this Params to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Represents a Msg */
+        class Msg extends $protobuf.rpc.Service {
+
+            /**
+             * Constructs a new Msg service.
+             * @param rpcImpl RPC implementation
+             * @param [requestDelimited=false] Whether requests are length-delimited
+             * @param [responseDelimited=false] Whether responses are length-delimited
+             */
+            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+            /**
+             * Calls PlaceBid.
+             * @param request MsgPlaceBid message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgPlaceBidResponse
+             */
+            public placeBid(request: botany.auction.IMsgPlaceBid, callback: botany.auction.Msg.PlaceBidCallback): void;
+
+            /**
+             * Calls PlaceBid.
+             * @param request MsgPlaceBid message or plain object
+             * @returns Promise
+             */
+            public placeBid(request: botany.auction.IMsgPlaceBid): Promise<botany.auction.MsgPlaceBidResponse>;
+        }
+
+        namespace Msg {
+
+            /**
+             * Callback as used by {@link botany.auction.Msg#placeBid}.
+             * @param error Error, if any
+             * @param [response] MsgPlaceBidResponse
+             */
+            type PlaceBidCallback = (error: (Error|null), response?: botany.auction.MsgPlaceBidResponse) => void;
+        }
+
+        /** Properties of a MsgPlaceBid. */
+        interface IMsgPlaceBid {
+
+            /** MsgPlaceBid auction_id */
+            auction_id?: (Long|null);
+
+            /** MsgPlaceBid bidder */
+            bidder?: (string|null);
+
+            /** MsgPlaceBid amount */
+            amount?: (cosmos.base.v1beta1.ICoin|null);
+        }
+
+        /** Represents a MsgPlaceBid. */
+        class MsgPlaceBid implements IMsgPlaceBid {
+
+            /**
+             * Constructs a new MsgPlaceBid.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.auction.IMsgPlaceBid);
+
+            /** MsgPlaceBid auction_id. */
+            public auction_id: Long;
+
+            /** MsgPlaceBid bidder. */
+            public bidder: string;
+
+            /** MsgPlaceBid amount. */
+            public amount?: (cosmos.base.v1beta1.ICoin|null);
+
+            /**
+             * Encodes the specified MsgPlaceBid message. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
+             * @param message MsgPlaceBid message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.auction.IMsgPlaceBid, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgPlaceBid message, length delimited. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
+             * @param message MsgPlaceBid message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.auction.IMsgPlaceBid, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgPlaceBid message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgPlaceBid
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.MsgPlaceBid;
+
+            /**
+             * Decodes a MsgPlaceBid message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgPlaceBid
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.MsgPlaceBid;
+
+            /**
+             * Verifies a MsgPlaceBid message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgPlaceBid message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgPlaceBid
+             */
+            public static fromObject(object: { [k: string]: any }): botany.auction.MsgPlaceBid;
+
+            /**
+             * Creates a plain object from a MsgPlaceBid message. Also converts values to other types if specified.
+             * @param message MsgPlaceBid
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.auction.MsgPlaceBid, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgPlaceBid to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgPlaceBidResponse. */
+        interface IMsgPlaceBidResponse {
+        }
+
+        /** Represents a MsgPlaceBidResponse. */
+        class MsgPlaceBidResponse implements IMsgPlaceBidResponse {
+
+            /**
+             * Constructs a new MsgPlaceBidResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.auction.IMsgPlaceBidResponse);
+
+            /**
+             * Encodes the specified MsgPlaceBidResponse message. Does not implicitly {@link botany.auction.MsgPlaceBidResponse.verify|verify} messages.
+             * @param message MsgPlaceBidResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.auction.IMsgPlaceBidResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgPlaceBidResponse message, length delimited. Does not implicitly {@link botany.auction.MsgPlaceBidResponse.verify|verify} messages.
+             * @param message MsgPlaceBidResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.auction.IMsgPlaceBidResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgPlaceBidResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgPlaceBidResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.MsgPlaceBidResponse;
+
+            /**
+             * Decodes a MsgPlaceBidResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgPlaceBidResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.MsgPlaceBidResponse;
+
+            /**
+             * Verifies a MsgPlaceBidResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgPlaceBidResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgPlaceBidResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.auction.MsgPlaceBidResponse;
+
+            /**
+             * Creates a plain object from a MsgPlaceBidResponse message. Also converts values to other types if specified.
+             * @param message MsgPlaceBidResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.auction.MsgPlaceBidResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgPlaceBidResponse to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -3300,594 +3413,6 @@ export namespace botany {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of a MsgCreateCdp. */
-        interface IMsgCreateCdp {
-
-            /** MsgCreateCdp sender */
-            sender?: (string|null);
-
-            /** MsgCreateCdp collateral */
-            collateral?: (cosmos.base.v1beta1.ICoin|null);
-
-            /** MsgCreateCdp principal */
-            principal?: (cosmos.base.v1beta1.ICoin|null);
-
-            /** MsgCreateCdp collateral_type */
-            collateral_type?: (string|null);
-        }
-
-        /** Represents a MsgCreateCdp. */
-        class MsgCreateCdp implements IMsgCreateCdp {
-
-            /**
-             * Constructs a new MsgCreateCdp.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.cdp.IMsgCreateCdp);
-
-            /** MsgCreateCdp sender. */
-            public sender: string;
-
-            /** MsgCreateCdp collateral. */
-            public collateral?: (cosmos.base.v1beta1.ICoin|null);
-
-            /** MsgCreateCdp principal. */
-            public principal?: (cosmos.base.v1beta1.ICoin|null);
-
-            /** MsgCreateCdp collateral_type. */
-            public collateral_type: string;
-
-            /**
-             * Encodes the specified MsgCreateCdp message. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
-             * @param message MsgCreateCdp message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.cdp.IMsgCreateCdp, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgCreateCdp message, length delimited. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
-             * @param message MsgCreateCdp message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.cdp.IMsgCreateCdp, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgCreateCdp message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgCreateCdp
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgCreateCdp;
-
-            /**
-             * Decodes a MsgCreateCdp message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgCreateCdp
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgCreateCdp;
-
-            /**
-             * Verifies a MsgCreateCdp message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgCreateCdp message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgCreateCdp
-             */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgCreateCdp;
-
-            /**
-             * Creates a plain object from a MsgCreateCdp message. Also converts values to other types if specified.
-             * @param message MsgCreateCdp
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.cdp.MsgCreateCdp, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgCreateCdp to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a MsgDeposit. */
-        interface IMsgDeposit {
-
-            /** MsgDeposit depositor */
-            depositor?: (string|null);
-
-            /** MsgDeposit owner */
-            owner?: (string|null);
-
-            /** MsgDeposit collateral */
-            collateral?: (cosmos.base.v1beta1.ICoin|null);
-
-            /** MsgDeposit collateral_type */
-            collateral_type?: (string|null);
-        }
-
-        /** Represents a MsgDeposit. */
-        class MsgDeposit implements IMsgDeposit {
-
-            /**
-             * Constructs a new MsgDeposit.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.cdp.IMsgDeposit);
-
-            /** MsgDeposit depositor. */
-            public depositor: string;
-
-            /** MsgDeposit owner. */
-            public owner: string;
-
-            /** MsgDeposit collateral. */
-            public collateral?: (cosmos.base.v1beta1.ICoin|null);
-
-            /** MsgDeposit collateral_type. */
-            public collateral_type: string;
-
-            /**
-             * Encodes the specified MsgDeposit message. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
-             * @param message MsgDeposit message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.cdp.IMsgDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgDeposit message, length delimited. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
-             * @param message MsgDeposit message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.cdp.IMsgDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgDeposit message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgDeposit
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDeposit;
-
-            /**
-             * Decodes a MsgDeposit message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgDeposit
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDeposit;
-
-            /**
-             * Verifies a MsgDeposit message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgDeposit message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgDeposit
-             */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDeposit;
-
-            /**
-             * Creates a plain object from a MsgDeposit message. Also converts values to other types if specified.
-             * @param message MsgDeposit
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.cdp.MsgDeposit, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgDeposit to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a MsgWithdraw. */
-        interface IMsgWithdraw {
-
-            /** MsgWithdraw depositor */
-            depositor?: (string|null);
-
-            /** MsgWithdraw owner */
-            owner?: (string|null);
-
-            /** MsgWithdraw collateral */
-            collateral?: (cosmos.base.v1beta1.ICoin|null);
-
-            /** MsgWithdraw collateral_type */
-            collateral_type?: (string|null);
-        }
-
-        /** Represents a MsgWithdraw. */
-        class MsgWithdraw implements IMsgWithdraw {
-
-            /**
-             * Constructs a new MsgWithdraw.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.cdp.IMsgWithdraw);
-
-            /** MsgWithdraw depositor. */
-            public depositor: string;
-
-            /** MsgWithdraw owner. */
-            public owner: string;
-
-            /** MsgWithdraw collateral. */
-            public collateral?: (cosmos.base.v1beta1.ICoin|null);
-
-            /** MsgWithdraw collateral_type. */
-            public collateral_type: string;
-
-            /**
-             * Encodes the specified MsgWithdraw message. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
-             * @param message MsgWithdraw message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.cdp.IMsgWithdraw, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgWithdraw message, length delimited. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
-             * @param message MsgWithdraw message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.cdp.IMsgWithdraw, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgWithdraw message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgWithdraw
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgWithdraw;
-
-            /**
-             * Decodes a MsgWithdraw message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgWithdraw
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgWithdraw;
-
-            /**
-             * Verifies a MsgWithdraw message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgWithdraw message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgWithdraw
-             */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgWithdraw;
-
-            /**
-             * Creates a plain object from a MsgWithdraw message. Also converts values to other types if specified.
-             * @param message MsgWithdraw
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.cdp.MsgWithdraw, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgWithdraw to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a MsgDrawDebt. */
-        interface IMsgDrawDebt {
-
-            /** MsgDrawDebt sender */
-            sender?: (string|null);
-
-            /** MsgDrawDebt collateral_type */
-            collateral_type?: (string|null);
-
-            /** MsgDrawDebt principal */
-            principal?: (cosmos.base.v1beta1.ICoin|null);
-        }
-
-        /** Represents a MsgDrawDebt. */
-        class MsgDrawDebt implements IMsgDrawDebt {
-
-            /**
-             * Constructs a new MsgDrawDebt.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.cdp.IMsgDrawDebt);
-
-            /** MsgDrawDebt sender. */
-            public sender: string;
-
-            /** MsgDrawDebt collateral_type. */
-            public collateral_type: string;
-
-            /** MsgDrawDebt principal. */
-            public principal?: (cosmos.base.v1beta1.ICoin|null);
-
-            /**
-             * Encodes the specified MsgDrawDebt message. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
-             * @param message MsgDrawDebt message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.cdp.IMsgDrawDebt, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgDrawDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
-             * @param message MsgDrawDebt message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.cdp.IMsgDrawDebt, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgDrawDebt message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgDrawDebt
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDrawDebt;
-
-            /**
-             * Decodes a MsgDrawDebt message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgDrawDebt
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDrawDebt;
-
-            /**
-             * Verifies a MsgDrawDebt message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgDrawDebt message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgDrawDebt
-             */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDrawDebt;
-
-            /**
-             * Creates a plain object from a MsgDrawDebt message. Also converts values to other types if specified.
-             * @param message MsgDrawDebt
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.cdp.MsgDrawDebt, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgDrawDebt to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a MsgRepayDebt. */
-        interface IMsgRepayDebt {
-
-            /** MsgRepayDebt sender */
-            sender?: (string|null);
-
-            /** MsgRepayDebt collateral_type */
-            collateral_type?: (string|null);
-
-            /** MsgRepayDebt payment */
-            payment?: (cosmos.base.v1beta1.ICoin|null);
-        }
-
-        /** Represents a MsgRepayDebt. */
-        class MsgRepayDebt implements IMsgRepayDebt {
-
-            /**
-             * Constructs a new MsgRepayDebt.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.cdp.IMsgRepayDebt);
-
-            /** MsgRepayDebt sender. */
-            public sender: string;
-
-            /** MsgRepayDebt collateral_type. */
-            public collateral_type: string;
-
-            /** MsgRepayDebt payment. */
-            public payment?: (cosmos.base.v1beta1.ICoin|null);
-
-            /**
-             * Encodes the specified MsgRepayDebt message. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
-             * @param message MsgRepayDebt message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.cdp.IMsgRepayDebt, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgRepayDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
-             * @param message MsgRepayDebt message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.cdp.IMsgRepayDebt, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgRepayDebt message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgRepayDebt
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgRepayDebt;
-
-            /**
-             * Decodes a MsgRepayDebt message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgRepayDebt
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgRepayDebt;
-
-            /**
-             * Verifies a MsgRepayDebt message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgRepayDebt message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgRepayDebt
-             */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgRepayDebt;
-
-            /**
-             * Creates a plain object from a MsgRepayDebt message. Also converts values to other types if specified.
-             * @param message MsgRepayDebt
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.cdp.MsgRepayDebt, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgRepayDebt to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a MsgLiquidate. */
-        interface IMsgLiquidate {
-
-            /** MsgLiquidate keeper */
-            keeper?: (string|null);
-
-            /** MsgLiquidate borrower */
-            borrower?: (string|null);
-
-            /** MsgLiquidate collateral_type */
-            collateral_type?: (string|null);
-        }
-
-        /** Represents a MsgLiquidate. */
-        class MsgLiquidate implements IMsgLiquidate {
-
-            /**
-             * Constructs a new MsgLiquidate.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.cdp.IMsgLiquidate);
-
-            /** MsgLiquidate keeper. */
-            public keeper: string;
-
-            /** MsgLiquidate borrower. */
-            public borrower: string;
-
-            /** MsgLiquidate collateral_type. */
-            public collateral_type: string;
-
-            /**
-             * Encodes the specified MsgLiquidate message. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
-             * @param message MsgLiquidate message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.cdp.IMsgLiquidate, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgLiquidate message, length delimited. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
-             * @param message MsgLiquidate message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.cdp.IMsgLiquidate, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgLiquidate message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgLiquidate
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgLiquidate;
-
-            /**
-             * Decodes a MsgLiquidate message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgLiquidate
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgLiquidate;
-
-            /**
-             * Verifies a MsgLiquidate message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgLiquidate message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgLiquidate
-             */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgLiquidate;
-
-            /**
-             * Creates a plain object from a MsgLiquidate message. Also converts values to other types if specified.
-             * @param message MsgLiquidate
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.cdp.MsgLiquidate, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgLiquidate to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
         /** Properties of a Params. */
         interface IParams {
 
@@ -4264,6 +3789,1197 @@ export namespace botany {
 
             /**
              * Converts this DebtParam to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Represents a Msg */
+        class Msg extends $protobuf.rpc.Service {
+
+            /**
+             * Constructs a new Msg service.
+             * @param rpcImpl RPC implementation
+             * @param [requestDelimited=false] Whether requests are length-delimited
+             * @param [responseDelimited=false] Whether responses are length-delimited
+             */
+            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+            /**
+             * Calls CreateCdp.
+             * @param request MsgCreateCdp message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgCreateCdpResponse
+             */
+            public createCdp(request: botany.cdp.IMsgCreateCdp, callback: botany.cdp.Msg.CreateCdpCallback): void;
+
+            /**
+             * Calls CreateCdp.
+             * @param request MsgCreateCdp message or plain object
+             * @returns Promise
+             */
+            public createCdp(request: botany.cdp.IMsgCreateCdp): Promise<botany.cdp.MsgCreateCdpResponse>;
+
+            /**
+             * Calls Deposit.
+             * @param request MsgDeposit message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgDepositResponse
+             */
+            public deposit(request: botany.cdp.IMsgDeposit, callback: botany.cdp.Msg.DepositCallback): void;
+
+            /**
+             * Calls Deposit.
+             * @param request MsgDeposit message or plain object
+             * @returns Promise
+             */
+            public deposit(request: botany.cdp.IMsgDeposit): Promise<botany.cdp.MsgDepositResponse>;
+
+            /**
+             * Calls Withdraw.
+             * @param request MsgWithdraw message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgWithdrawResponse
+             */
+            public withdraw(request: botany.cdp.IMsgWithdraw, callback: botany.cdp.Msg.WithdrawCallback): void;
+
+            /**
+             * Calls Withdraw.
+             * @param request MsgWithdraw message or plain object
+             * @returns Promise
+             */
+            public withdraw(request: botany.cdp.IMsgWithdraw): Promise<botany.cdp.MsgWithdrawResponse>;
+
+            /**
+             * Calls DrawDebt.
+             * @param request MsgDrawDebt message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgDrawDebtResponse
+             */
+            public drawDebt(request: botany.cdp.IMsgDrawDebt, callback: botany.cdp.Msg.DrawDebtCallback): void;
+
+            /**
+             * Calls DrawDebt.
+             * @param request MsgDrawDebt message or plain object
+             * @returns Promise
+             */
+            public drawDebt(request: botany.cdp.IMsgDrawDebt): Promise<botany.cdp.MsgDrawDebtResponse>;
+
+            /**
+             * Calls RepayDebt.
+             * @param request MsgRepayDebt message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgRepayDebtResponse
+             */
+            public repayDebt(request: botany.cdp.IMsgRepayDebt, callback: botany.cdp.Msg.RepayDebtCallback): void;
+
+            /**
+             * Calls RepayDebt.
+             * @param request MsgRepayDebt message or plain object
+             * @returns Promise
+             */
+            public repayDebt(request: botany.cdp.IMsgRepayDebt): Promise<botany.cdp.MsgRepayDebtResponse>;
+
+            /**
+             * Calls Liquidate.
+             * @param request MsgLiquidate message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgLiquidateResponse
+             */
+            public liquidate(request: botany.cdp.IMsgLiquidate, callback: botany.cdp.Msg.LiquidateCallback): void;
+
+            /**
+             * Calls Liquidate.
+             * @param request MsgLiquidate message or plain object
+             * @returns Promise
+             */
+            public liquidate(request: botany.cdp.IMsgLiquidate): Promise<botany.cdp.MsgLiquidateResponse>;
+        }
+
+        namespace Msg {
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#createCdp}.
+             * @param error Error, if any
+             * @param [response] MsgCreateCdpResponse
+             */
+            type CreateCdpCallback = (error: (Error|null), response?: botany.cdp.MsgCreateCdpResponse) => void;
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#deposit}.
+             * @param error Error, if any
+             * @param [response] MsgDepositResponse
+             */
+            type DepositCallback = (error: (Error|null), response?: botany.cdp.MsgDepositResponse) => void;
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#withdraw}.
+             * @param error Error, if any
+             * @param [response] MsgWithdrawResponse
+             */
+            type WithdrawCallback = (error: (Error|null), response?: botany.cdp.MsgWithdrawResponse) => void;
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#drawDebt}.
+             * @param error Error, if any
+             * @param [response] MsgDrawDebtResponse
+             */
+            type DrawDebtCallback = (error: (Error|null), response?: botany.cdp.MsgDrawDebtResponse) => void;
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#repayDebt}.
+             * @param error Error, if any
+             * @param [response] MsgRepayDebtResponse
+             */
+            type RepayDebtCallback = (error: (Error|null), response?: botany.cdp.MsgRepayDebtResponse) => void;
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#liquidate}.
+             * @param error Error, if any
+             * @param [response] MsgLiquidateResponse
+             */
+            type LiquidateCallback = (error: (Error|null), response?: botany.cdp.MsgLiquidateResponse) => void;
+        }
+
+        /** Properties of a MsgCreateCdp. */
+        interface IMsgCreateCdp {
+
+            /** MsgCreateCdp sender */
+            sender?: (string|null);
+
+            /** MsgCreateCdp collateral */
+            collateral?: (cosmos.base.v1beta1.ICoin|null);
+
+            /** MsgCreateCdp principal */
+            principal?: (cosmos.base.v1beta1.ICoin|null);
+
+            /** MsgCreateCdp collateral_type */
+            collateral_type?: (string|null);
+        }
+
+        /** Represents a MsgCreateCdp. */
+        class MsgCreateCdp implements IMsgCreateCdp {
+
+            /**
+             * Constructs a new MsgCreateCdp.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgCreateCdp);
+
+            /** MsgCreateCdp sender. */
+            public sender: string;
+
+            /** MsgCreateCdp collateral. */
+            public collateral?: (cosmos.base.v1beta1.ICoin|null);
+
+            /** MsgCreateCdp principal. */
+            public principal?: (cosmos.base.v1beta1.ICoin|null);
+
+            /** MsgCreateCdp collateral_type. */
+            public collateral_type: string;
+
+            /**
+             * Encodes the specified MsgCreateCdp message. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
+             * @param message MsgCreateCdp message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgCreateCdp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgCreateCdp message, length delimited. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
+             * @param message MsgCreateCdp message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgCreateCdp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgCreateCdp message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgCreateCdp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgCreateCdp;
+
+            /**
+             * Decodes a MsgCreateCdp message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgCreateCdp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgCreateCdp;
+
+            /**
+             * Verifies a MsgCreateCdp message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgCreateCdp message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgCreateCdp
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgCreateCdp;
+
+            /**
+             * Creates a plain object from a MsgCreateCdp message. Also converts values to other types if specified.
+             * @param message MsgCreateCdp
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgCreateCdp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgCreateCdp to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgCreateCdpResponse. */
+        interface IMsgCreateCdpResponse {
+        }
+
+        /** Represents a MsgCreateCdpResponse. */
+        class MsgCreateCdpResponse implements IMsgCreateCdpResponse {
+
+            /**
+             * Constructs a new MsgCreateCdpResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgCreateCdpResponse);
+
+            /**
+             * Encodes the specified MsgCreateCdpResponse message. Does not implicitly {@link botany.cdp.MsgCreateCdpResponse.verify|verify} messages.
+             * @param message MsgCreateCdpResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgCreateCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgCreateCdpResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgCreateCdpResponse.verify|verify} messages.
+             * @param message MsgCreateCdpResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgCreateCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgCreateCdpResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgCreateCdpResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgCreateCdpResponse;
+
+            /**
+             * Decodes a MsgCreateCdpResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgCreateCdpResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgCreateCdpResponse;
+
+            /**
+             * Verifies a MsgCreateCdpResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgCreateCdpResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgCreateCdpResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgCreateCdpResponse;
+
+            /**
+             * Creates a plain object from a MsgCreateCdpResponse message. Also converts values to other types if specified.
+             * @param message MsgCreateCdpResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgCreateCdpResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgCreateCdpResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgDeposit. */
+        interface IMsgDeposit {
+
+            /** MsgDeposit depositor */
+            depositor?: (string|null);
+
+            /** MsgDeposit owner */
+            owner?: (string|null);
+
+            /** MsgDeposit collateral */
+            collateral?: (cosmos.base.v1beta1.ICoin|null);
+
+            /** MsgDeposit collateral_type */
+            collateral_type?: (string|null);
+        }
+
+        /** Represents a MsgDeposit. */
+        class MsgDeposit implements IMsgDeposit {
+
+            /**
+             * Constructs a new MsgDeposit.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgDeposit);
+
+            /** MsgDeposit depositor. */
+            public depositor: string;
+
+            /** MsgDeposit owner. */
+            public owner: string;
+
+            /** MsgDeposit collateral. */
+            public collateral?: (cosmos.base.v1beta1.ICoin|null);
+
+            /** MsgDeposit collateral_type. */
+            public collateral_type: string;
+
+            /**
+             * Encodes the specified MsgDeposit message. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
+             * @param message MsgDeposit message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgDeposit message, length delimited. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
+             * @param message MsgDeposit message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgDeposit message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgDeposit
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDeposit;
+
+            /**
+             * Decodes a MsgDeposit message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgDeposit
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDeposit;
+
+            /**
+             * Verifies a MsgDeposit message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgDeposit message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgDeposit
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDeposit;
+
+            /**
+             * Creates a plain object from a MsgDeposit message. Also converts values to other types if specified.
+             * @param message MsgDeposit
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgDeposit, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgDeposit to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgDepositResponse. */
+        interface IMsgDepositResponse {
+        }
+
+        /** Represents a MsgDepositResponse. */
+        class MsgDepositResponse implements IMsgDepositResponse {
+
+            /**
+             * Constructs a new MsgDepositResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgDepositResponse);
+
+            /**
+             * Encodes the specified MsgDepositResponse message. Does not implicitly {@link botany.cdp.MsgDepositResponse.verify|verify} messages.
+             * @param message MsgDepositResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgDepositResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgDepositResponse.verify|verify} messages.
+             * @param message MsgDepositResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgDepositResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgDepositResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDepositResponse;
+
+            /**
+             * Decodes a MsgDepositResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgDepositResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDepositResponse;
+
+            /**
+             * Verifies a MsgDepositResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgDepositResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgDepositResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDepositResponse;
+
+            /**
+             * Creates a plain object from a MsgDepositResponse message. Also converts values to other types if specified.
+             * @param message MsgDepositResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgDepositResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgDepositResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgWithdraw. */
+        interface IMsgWithdraw {
+
+            /** MsgWithdraw depositor */
+            depositor?: (string|null);
+
+            /** MsgWithdraw owner */
+            owner?: (string|null);
+
+            /** MsgWithdraw collateral */
+            collateral?: (cosmos.base.v1beta1.ICoin|null);
+
+            /** MsgWithdraw collateral_type */
+            collateral_type?: (string|null);
+        }
+
+        /** Represents a MsgWithdraw. */
+        class MsgWithdraw implements IMsgWithdraw {
+
+            /**
+             * Constructs a new MsgWithdraw.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgWithdraw);
+
+            /** MsgWithdraw depositor. */
+            public depositor: string;
+
+            /** MsgWithdraw owner. */
+            public owner: string;
+
+            /** MsgWithdraw collateral. */
+            public collateral?: (cosmos.base.v1beta1.ICoin|null);
+
+            /** MsgWithdraw collateral_type. */
+            public collateral_type: string;
+
+            /**
+             * Encodes the specified MsgWithdraw message. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
+             * @param message MsgWithdraw message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgWithdraw, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgWithdraw message, length delimited. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
+             * @param message MsgWithdraw message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgWithdraw, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgWithdraw message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgWithdraw
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgWithdraw;
+
+            /**
+             * Decodes a MsgWithdraw message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgWithdraw
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgWithdraw;
+
+            /**
+             * Verifies a MsgWithdraw message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgWithdraw message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgWithdraw
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgWithdraw;
+
+            /**
+             * Creates a plain object from a MsgWithdraw message. Also converts values to other types if specified.
+             * @param message MsgWithdraw
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgWithdraw, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgWithdraw to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgWithdrawResponse. */
+        interface IMsgWithdrawResponse {
+        }
+
+        /** Represents a MsgWithdrawResponse. */
+        class MsgWithdrawResponse implements IMsgWithdrawResponse {
+
+            /**
+             * Constructs a new MsgWithdrawResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgWithdrawResponse);
+
+            /**
+             * Encodes the specified MsgWithdrawResponse message. Does not implicitly {@link botany.cdp.MsgWithdrawResponse.verify|verify} messages.
+             * @param message MsgWithdrawResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgWithdrawResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgWithdrawResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgWithdrawResponse.verify|verify} messages.
+             * @param message MsgWithdrawResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgWithdrawResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgWithdrawResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgWithdrawResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgWithdrawResponse;
+
+            /**
+             * Decodes a MsgWithdrawResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgWithdrawResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgWithdrawResponse;
+
+            /**
+             * Verifies a MsgWithdrawResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgWithdrawResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgWithdrawResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgWithdrawResponse;
+
+            /**
+             * Creates a plain object from a MsgWithdrawResponse message. Also converts values to other types if specified.
+             * @param message MsgWithdrawResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgWithdrawResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgWithdrawResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgDrawDebt. */
+        interface IMsgDrawDebt {
+
+            /** MsgDrawDebt sender */
+            sender?: (string|null);
+
+            /** MsgDrawDebt collateral_type */
+            collateral_type?: (string|null);
+
+            /** MsgDrawDebt principal */
+            principal?: (cosmos.base.v1beta1.ICoin|null);
+        }
+
+        /** Represents a MsgDrawDebt. */
+        class MsgDrawDebt implements IMsgDrawDebt {
+
+            /**
+             * Constructs a new MsgDrawDebt.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgDrawDebt);
+
+            /** MsgDrawDebt sender. */
+            public sender: string;
+
+            /** MsgDrawDebt collateral_type. */
+            public collateral_type: string;
+
+            /** MsgDrawDebt principal. */
+            public principal?: (cosmos.base.v1beta1.ICoin|null);
+
+            /**
+             * Encodes the specified MsgDrawDebt message. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
+             * @param message MsgDrawDebt message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgDrawDebt, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgDrawDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
+             * @param message MsgDrawDebt message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgDrawDebt, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgDrawDebt message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgDrawDebt
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDrawDebt;
+
+            /**
+             * Decodes a MsgDrawDebt message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgDrawDebt
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDrawDebt;
+
+            /**
+             * Verifies a MsgDrawDebt message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgDrawDebt message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgDrawDebt
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDrawDebt;
+
+            /**
+             * Creates a plain object from a MsgDrawDebt message. Also converts values to other types if specified.
+             * @param message MsgDrawDebt
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgDrawDebt, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgDrawDebt to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgDrawDebtResponse. */
+        interface IMsgDrawDebtResponse {
+        }
+
+        /** Represents a MsgDrawDebtResponse. */
+        class MsgDrawDebtResponse implements IMsgDrawDebtResponse {
+
+            /**
+             * Constructs a new MsgDrawDebtResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgDrawDebtResponse);
+
+            /**
+             * Encodes the specified MsgDrawDebtResponse message. Does not implicitly {@link botany.cdp.MsgDrawDebtResponse.verify|verify} messages.
+             * @param message MsgDrawDebtResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgDrawDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgDrawDebtResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgDrawDebtResponse.verify|verify} messages.
+             * @param message MsgDrawDebtResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgDrawDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgDrawDebtResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgDrawDebtResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDrawDebtResponse;
+
+            /**
+             * Decodes a MsgDrawDebtResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgDrawDebtResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDrawDebtResponse;
+
+            /**
+             * Verifies a MsgDrawDebtResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgDrawDebtResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgDrawDebtResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDrawDebtResponse;
+
+            /**
+             * Creates a plain object from a MsgDrawDebtResponse message. Also converts values to other types if specified.
+             * @param message MsgDrawDebtResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgDrawDebtResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgDrawDebtResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgRepayDebt. */
+        interface IMsgRepayDebt {
+
+            /** MsgRepayDebt sender */
+            sender?: (string|null);
+
+            /** MsgRepayDebt collateral_type */
+            collateral_type?: (string|null);
+
+            /** MsgRepayDebt payment */
+            payment?: (cosmos.base.v1beta1.ICoin|null);
+        }
+
+        /** Represents a MsgRepayDebt. */
+        class MsgRepayDebt implements IMsgRepayDebt {
+
+            /**
+             * Constructs a new MsgRepayDebt.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgRepayDebt);
+
+            /** MsgRepayDebt sender. */
+            public sender: string;
+
+            /** MsgRepayDebt collateral_type. */
+            public collateral_type: string;
+
+            /** MsgRepayDebt payment. */
+            public payment?: (cosmos.base.v1beta1.ICoin|null);
+
+            /**
+             * Encodes the specified MsgRepayDebt message. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
+             * @param message MsgRepayDebt message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgRepayDebt, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgRepayDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
+             * @param message MsgRepayDebt message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgRepayDebt, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgRepayDebt message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgRepayDebt
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgRepayDebt;
+
+            /**
+             * Decodes a MsgRepayDebt message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgRepayDebt
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgRepayDebt;
+
+            /**
+             * Verifies a MsgRepayDebt message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgRepayDebt message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgRepayDebt
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgRepayDebt;
+
+            /**
+             * Creates a plain object from a MsgRepayDebt message. Also converts values to other types if specified.
+             * @param message MsgRepayDebt
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgRepayDebt, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgRepayDebt to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgRepayDebtResponse. */
+        interface IMsgRepayDebtResponse {
+        }
+
+        /** Represents a MsgRepayDebtResponse. */
+        class MsgRepayDebtResponse implements IMsgRepayDebtResponse {
+
+            /**
+             * Constructs a new MsgRepayDebtResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgRepayDebtResponse);
+
+            /**
+             * Encodes the specified MsgRepayDebtResponse message. Does not implicitly {@link botany.cdp.MsgRepayDebtResponse.verify|verify} messages.
+             * @param message MsgRepayDebtResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgRepayDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgRepayDebtResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgRepayDebtResponse.verify|verify} messages.
+             * @param message MsgRepayDebtResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgRepayDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgRepayDebtResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgRepayDebtResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgRepayDebtResponse;
+
+            /**
+             * Decodes a MsgRepayDebtResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgRepayDebtResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgRepayDebtResponse;
+
+            /**
+             * Verifies a MsgRepayDebtResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgRepayDebtResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgRepayDebtResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgRepayDebtResponse;
+
+            /**
+             * Creates a plain object from a MsgRepayDebtResponse message. Also converts values to other types if specified.
+             * @param message MsgRepayDebtResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgRepayDebtResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgRepayDebtResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgLiquidate. */
+        interface IMsgLiquidate {
+
+            /** MsgLiquidate keeper */
+            keeper?: (string|null);
+
+            /** MsgLiquidate borrower */
+            borrower?: (string|null);
+
+            /** MsgLiquidate collateral_type */
+            collateral_type?: (string|null);
+        }
+
+        /** Represents a MsgLiquidate. */
+        class MsgLiquidate implements IMsgLiquidate {
+
+            /**
+             * Constructs a new MsgLiquidate.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgLiquidate);
+
+            /** MsgLiquidate keeper. */
+            public keeper: string;
+
+            /** MsgLiquidate borrower. */
+            public borrower: string;
+
+            /** MsgLiquidate collateral_type. */
+            public collateral_type: string;
+
+            /**
+             * Encodes the specified MsgLiquidate message. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
+             * @param message MsgLiquidate message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgLiquidate, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgLiquidate message, length delimited. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
+             * @param message MsgLiquidate message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgLiquidate, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgLiquidate message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgLiquidate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgLiquidate;
+
+            /**
+             * Decodes a MsgLiquidate message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgLiquidate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgLiquidate;
+
+            /**
+             * Verifies a MsgLiquidate message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgLiquidate message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgLiquidate
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgLiquidate;
+
+            /**
+             * Creates a plain object from a MsgLiquidate message. Also converts values to other types if specified.
+             * @param message MsgLiquidate
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgLiquidate, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgLiquidate to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgLiquidateResponse. */
+        interface IMsgLiquidateResponse {
+        }
+
+        /** Represents a MsgLiquidateResponse. */
+        class MsgLiquidateResponse implements IMsgLiquidateResponse {
+
+            /**
+             * Constructs a new MsgLiquidateResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.cdp.IMsgLiquidateResponse);
+
+            /**
+             * Encodes the specified MsgLiquidateResponse message. Does not implicitly {@link botany.cdp.MsgLiquidateResponse.verify|verify} messages.
+             * @param message MsgLiquidateResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.cdp.IMsgLiquidateResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgLiquidateResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgLiquidateResponse.verify|verify} messages.
+             * @param message MsgLiquidateResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.cdp.IMsgLiquidateResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgLiquidateResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgLiquidateResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgLiquidateResponse;
+
+            /**
+             * Decodes a MsgLiquidateResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgLiquidateResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgLiquidateResponse;
+
+            /**
+             * Verifies a MsgLiquidateResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgLiquidateResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgLiquidateResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgLiquidateResponse;
+
+            /**
+             * Creates a plain object from a MsgLiquidateResponse message. Also converts values to other types if specified.
+             * @param message MsgLiquidateResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.cdp.MsgLiquidateResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgLiquidateResponse to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -5134,95 +5850,6 @@ export namespace botany {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of a MsgClaimCdpMintingReward. */
-        interface IMsgClaimCdpMintingReward {
-
-            /** MsgClaimCdpMintingReward sender */
-            sender?: (string|null);
-
-            /** MsgClaimCdpMintingReward multiplier_name */
-            multiplier_name?: (string|null);
-        }
-
-        /** Represents a MsgClaimCdpMintingReward. */
-        class MsgClaimCdpMintingReward implements IMsgClaimCdpMintingReward {
-
-            /**
-             * Constructs a new MsgClaimCdpMintingReward.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.incentive.IMsgClaimCdpMintingReward);
-
-            /** MsgClaimCdpMintingReward sender. */
-            public sender: string;
-
-            /** MsgClaimCdpMintingReward multiplier_name. */
-            public multiplier_name: string;
-
-            /**
-             * Encodes the specified MsgClaimCdpMintingReward message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
-             * @param message MsgClaimCdpMintingReward message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified MsgClaimCdpMintingReward message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
-             * @param message MsgClaimCdpMintingReward message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns MsgClaimCdpMintingReward
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.MsgClaimCdpMintingReward;
-
-            /**
-             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns MsgClaimCdpMintingReward
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.MsgClaimCdpMintingReward;
-
-            /**
-             * Verifies a MsgClaimCdpMintingReward message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a MsgClaimCdpMintingReward message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns MsgClaimCdpMintingReward
-             */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.MsgClaimCdpMintingReward;
-
-            /**
-             * Creates a plain object from a MsgClaimCdpMintingReward message. Also converts values to other types if specified.
-             * @param message MsgClaimCdpMintingReward
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.incentive.MsgClaimCdpMintingReward, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this MsgClaimCdpMintingReward to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
         /** Properties of a Params. */
         interface IParams {
 
@@ -5515,6 +6142,208 @@ export namespace botany {
 
             /**
              * Converts this Multiplier to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Represents a Msg */
+        class Msg extends $protobuf.rpc.Service {
+
+            /**
+             * Constructs a new Msg service.
+             * @param rpcImpl RPC implementation
+             * @param [requestDelimited=false] Whether requests are length-delimited
+             * @param [responseDelimited=false] Whether responses are length-delimited
+             */
+            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+            /**
+             * Calls ClaimCdpMintingReward.
+             * @param request MsgClaimCdpMintingReward message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgClaimCdpMintingRewardResponse
+             */
+            public claimCdpMintingReward(request: botany.incentive.IMsgClaimCdpMintingReward, callback: botany.incentive.Msg.ClaimCdpMintingRewardCallback): void;
+
+            /**
+             * Calls ClaimCdpMintingReward.
+             * @param request MsgClaimCdpMintingReward message or plain object
+             * @returns Promise
+             */
+            public claimCdpMintingReward(request: botany.incentive.IMsgClaimCdpMintingReward): Promise<botany.incentive.MsgClaimCdpMintingRewardResponse>;
+        }
+
+        namespace Msg {
+
+            /**
+             * Callback as used by {@link botany.incentive.Msg#claimCdpMintingReward}.
+             * @param error Error, if any
+             * @param [response] MsgClaimCdpMintingRewardResponse
+             */
+            type ClaimCdpMintingRewardCallback = (error: (Error|null), response?: botany.incentive.MsgClaimCdpMintingRewardResponse) => void;
+        }
+
+        /** Properties of a MsgClaimCdpMintingReward. */
+        interface IMsgClaimCdpMintingReward {
+
+            /** MsgClaimCdpMintingReward sender */
+            sender?: (string|null);
+
+            /** MsgClaimCdpMintingReward multiplier_name */
+            multiplier_name?: (string|null);
+        }
+
+        /** Represents a MsgClaimCdpMintingReward. */
+        class MsgClaimCdpMintingReward implements IMsgClaimCdpMintingReward {
+
+            /**
+             * Constructs a new MsgClaimCdpMintingReward.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IMsgClaimCdpMintingReward);
+
+            /** MsgClaimCdpMintingReward sender. */
+            public sender: string;
+
+            /** MsgClaimCdpMintingReward multiplier_name. */
+            public multiplier_name: string;
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingReward message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
+             * @param message MsgClaimCdpMintingReward message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingReward message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
+             * @param message MsgClaimCdpMintingReward message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgClaimCdpMintingReward
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.MsgClaimCdpMintingReward;
+
+            /**
+             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgClaimCdpMintingReward
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.MsgClaimCdpMintingReward;
+
+            /**
+             * Verifies a MsgClaimCdpMintingReward message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgClaimCdpMintingReward message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgClaimCdpMintingReward
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.MsgClaimCdpMintingReward;
+
+            /**
+             * Creates a plain object from a MsgClaimCdpMintingReward message. Also converts values to other types if specified.
+             * @param message MsgClaimCdpMintingReward
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.MsgClaimCdpMintingReward, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgClaimCdpMintingReward to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a MsgClaimCdpMintingRewardResponse. */
+        interface IMsgClaimCdpMintingRewardResponse {
+        }
+
+        /** Represents a MsgClaimCdpMintingRewardResponse. */
+        class MsgClaimCdpMintingRewardResponse implements IMsgClaimCdpMintingRewardResponse {
+
+            /**
+             * Constructs a new MsgClaimCdpMintingRewardResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.incentive.IMsgClaimCdpMintingRewardResponse);
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingRewardResponse message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingRewardResponse.verify|verify} messages.
+             * @param message MsgClaimCdpMintingRewardResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.incentive.IMsgClaimCdpMintingRewardResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingRewardResponse message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingRewardResponse.verify|verify} messages.
+             * @param message MsgClaimCdpMintingRewardResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.incentive.IMsgClaimCdpMintingRewardResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MsgClaimCdpMintingRewardResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MsgClaimCdpMintingRewardResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.MsgClaimCdpMintingRewardResponse;
+
+            /**
+             * Decodes a MsgClaimCdpMintingRewardResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MsgClaimCdpMintingRewardResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.MsgClaimCdpMintingRewardResponse;
+
+            /**
+             * Verifies a MsgClaimCdpMintingRewardResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MsgClaimCdpMintingRewardResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MsgClaimCdpMintingRewardResponse
+             */
+            public static fromObject(object: { [k: string]: any }): botany.incentive.MsgClaimCdpMintingRewardResponse;
+
+            /**
+             * Creates a plain object from a MsgClaimCdpMintingRewardResponse message. Also converts values to other types if specified.
+             * @param message MsgClaimCdpMintingRewardResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.incentive.MsgClaimCdpMintingRewardResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MsgClaimCdpMintingRewardResponse to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -7267,6 +8096,125 @@ export namespace botany {
             public toJSON(): { [k: string]: any };
         }
 
+        /** Properties of a Params. */
+        interface IParams {
+
+            /** Params markets */
+            markets?: (botany.pricefeed.IMarket[]|null);
+        }
+
+        /** Represents a Params. */
+        class Params implements IParams {
+
+            /**
+             * Constructs a new Params.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: botany.pricefeed.IParams);
+
+            /** Params markets. */
+            public markets: botany.pricefeed.IMarket[];
+
+            /**
+             * Encodes the specified Params message. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
+             * @param message Params message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: botany.pricefeed.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
+             * @param message Params message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: botany.pricefeed.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Params message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.Params;
+
+            /**
+             * Decodes a Params message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.Params;
+
+            /**
+             * Verifies a Params message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Params message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Params
+             */
+            public static fromObject(object: { [k: string]: any }): botany.pricefeed.Params;
+
+            /**
+             * Creates a plain object from a Params message. Also converts values to other types if specified.
+             * @param message Params
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: botany.pricefeed.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Params to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Represents a Msg */
+        class Msg extends $protobuf.rpc.Service {
+
+            /**
+             * Constructs a new Msg service.
+             * @param rpcImpl RPC implementation
+             * @param [requestDelimited=false] Whether requests are length-delimited
+             * @param [responseDelimited=false] Whether responses are length-delimited
+             */
+            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+            /**
+             * Calls PostPrice.
+             * @param request MsgPostPrice message or plain object
+             * @param callback Node-style callback called with the error, if any, and MsgPostPriceResponse
+             */
+            public postPrice(request: botany.pricefeed.IMsgPostPrice, callback: botany.pricefeed.Msg.PostPriceCallback): void;
+
+            /**
+             * Calls PostPrice.
+             * @param request MsgPostPrice message or plain object
+             * @returns Promise
+             */
+            public postPrice(request: botany.pricefeed.IMsgPostPrice): Promise<botany.pricefeed.MsgPostPriceResponse>;
+        }
+
+        namespace Msg {
+
+            /**
+             * Callback as used by {@link botany.pricefeed.Msg#postPrice}.
+             * @param error Error, if any
+             * @param [response] MsgPostPriceResponse
+             */
+            type PostPriceCallback = (error: (Error|null), response?: botany.pricefeed.MsgPostPriceResponse) => void;
+        }
+
         /** Properties of a MsgPostPrice. */
         interface IMsgPostPrice {
 
@@ -7368,84 +8316,78 @@ export namespace botany {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of a Params. */
-        interface IParams {
-
-            /** Params markets */
-            markets?: (botany.pricefeed.IMarket[]|null);
+        /** Properties of a MsgPostPriceResponse. */
+        interface IMsgPostPriceResponse {
         }
 
-        /** Represents a Params. */
-        class Params implements IParams {
+        /** Represents a MsgPostPriceResponse. */
+        class MsgPostPriceResponse implements IMsgPostPriceResponse {
 
             /**
-             * Constructs a new Params.
+             * Constructs a new MsgPostPriceResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IParams);
-
-            /** Params markets. */
-            public markets: botany.pricefeed.IMarket[];
+            constructor(properties?: botany.pricefeed.IMsgPostPriceResponse);
 
             /**
-             * Encodes the specified Params message. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
+             * Encodes the specified MsgPostPriceResponse message. Does not implicitly {@link botany.pricefeed.MsgPostPriceResponse.verify|verify} messages.
+             * @param message MsgPostPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: botany.pricefeed.IMsgPostPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
+             * Encodes the specified MsgPostPriceResponse message, length delimited. Does not implicitly {@link botany.pricefeed.MsgPostPriceResponse.verify|verify} messages.
+             * @param message MsgPostPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: botany.pricefeed.IMsgPostPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Decodes a Params message from the specified reader or buffer.
+             * Decodes a MsgPostPriceResponse message from the specified reader or buffer.
              * @param reader Reader or buffer to decode from
              * @param [length] Message length if known beforehand
-             * @returns Params
+             * @returns MsgPostPriceResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.Params;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.MsgPostPriceResponse;
 
             /**
-             * Decodes a Params message from the specified reader or buffer, length delimited.
+             * Decodes a MsgPostPriceResponse message from the specified reader or buffer, length delimited.
              * @param reader Reader or buffer to decode from
-             * @returns Params
+             * @returns MsgPostPriceResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.Params;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.MsgPostPriceResponse;
 
             /**
-             * Verifies a Params message.
+             * Verifies a MsgPostPriceResponse message.
              * @param message Plain object to verify
              * @returns `null` if valid, otherwise the reason why it is not
              */
             public static verify(message: { [k: string]: any }): (string|null);
 
             /**
-             * Creates a Params message from a plain object. Also converts values to their respective internal types.
+             * Creates a MsgPostPriceResponse message from a plain object. Also converts values to their respective internal types.
              * @param object Plain object
-             * @returns Params
+             * @returns MsgPostPriceResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.Params;
+            public static fromObject(object: { [k: string]: any }): botany.pricefeed.MsgPostPriceResponse;
 
             /**
-             * Creates a plain object from a Params message. Also converts values to other types if specified.
-             * @param message Params
+             * Creates a plain object from a MsgPostPriceResponse message. Also converts values to other types if specified.
+             * @param message MsgPostPriceResponse
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: botany.pricefeed.MsgPostPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
-             * Converts this Params to JSON.
+             * Converts this MsgPostPriceResponse to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -8238,19 +9180,19 @@ export namespace google {
             public selector: string;
 
             /** HttpRule get. */
-            public get: string;
+            public get?: (string|null);
 
             /** HttpRule put. */
-            public put: string;
+            public put?: (string|null);
 
             /** HttpRule post. */
-            public post: string;
+            public post?: (string|null);
 
             /** HttpRule delete. */
-            public delete: string;
+            public delete?: (string|null);
 
             /** HttpRule patch. */
-            public patch: string;
+            public patch?: (string|null);
 
             /** HttpRule custom. */
             public custom?: (google.api.ICustomHttpPattern|null);

@@ -20,6 +20,7 @@ npx pbjs \
   --no-create \
   --path=./proto/ \
   --path=./proto-thirdparty/ \
+  --root=botany-client \
   ${proto_files[@]}
 
 npx pbjs \
@@ -32,6 +33,7 @@ npx pbjs \
   --no-create \
   --path=./proto/ \
   --path=./proto-thirdparty/ \
+  --root=botany-client \
   ${proto_files[@]}
 
 npx pbts \

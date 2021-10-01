@@ -2475,245 +2475,6 @@ export const botany = $root.botany = (() => {
             return WeightedAddress;
         })();
 
-        auction.MsgPlaceBid = (function() {
-
-            /**
-             * Properties of a MsgPlaceBid.
-             * @memberof botany.auction
-             * @interface IMsgPlaceBid
-             * @property {Long|null} [auction_id] MsgPlaceBid auction_id
-             * @property {string|null} [bidder] MsgPlaceBid bidder
-             * @property {cosmos.base.v1beta1.ICoin|null} [amount] MsgPlaceBid amount
-             */
-
-            /**
-             * Constructs a new MsgPlaceBid.
-             * @memberof botany.auction
-             * @classdesc Represents a MsgPlaceBid.
-             * @implements IMsgPlaceBid
-             * @constructor
-             * @param {botany.auction.IMsgPlaceBid=} [properties] Properties to set
-             */
-            function MsgPlaceBid(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * MsgPlaceBid auction_id.
-             * @member {Long} auction_id
-             * @memberof botany.auction.MsgPlaceBid
-             * @instance
-             */
-            MsgPlaceBid.prototype.auction_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-
-            /**
-             * MsgPlaceBid bidder.
-             * @member {string} bidder
-             * @memberof botany.auction.MsgPlaceBid
-             * @instance
-             */
-            MsgPlaceBid.prototype.bidder = "";
-
-            /**
-             * MsgPlaceBid amount.
-             * @member {cosmos.base.v1beta1.ICoin|null|undefined} amount
-             * @memberof botany.auction.MsgPlaceBid
-             * @instance
-             */
-            MsgPlaceBid.prototype.amount = null;
-
-            /**
-             * Encodes the specified MsgPlaceBid message. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
-             * @function encode
-             * @memberof botany.auction.MsgPlaceBid
-             * @static
-             * @param {botany.auction.IMsgPlaceBid} message MsgPlaceBid message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgPlaceBid.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.auction_id != null && Object.hasOwnProperty.call(message, "auction_id"))
-                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.auction_id);
-                if (message.bidder != null && Object.hasOwnProperty.call(message, "bidder"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.bidder);
-                if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
-                    $root.cosmos.base.v1beta1.Coin.encode(message.amount, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                return writer;
-            };
-
-            /**
-             * Encodes the specified MsgPlaceBid message, length delimited. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof botany.auction.MsgPlaceBid
-             * @static
-             * @param {botany.auction.IMsgPlaceBid} message MsgPlaceBid message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgPlaceBid.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a MsgPlaceBid message from the specified reader or buffer.
-             * @function decode
-             * @memberof botany.auction.MsgPlaceBid
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {botany.auction.MsgPlaceBid} MsgPlaceBid
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgPlaceBid.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.auction.MsgPlaceBid();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.auction_id = reader.uint64();
-                        break;
-                    case 2:
-                        message.bidder = reader.string();
-                        break;
-                    case 3:
-                        message.amount = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a MsgPlaceBid message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof botany.auction.MsgPlaceBid
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.auction.MsgPlaceBid} MsgPlaceBid
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgPlaceBid.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a MsgPlaceBid message.
-             * @function verify
-             * @memberof botany.auction.MsgPlaceBid
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            MsgPlaceBid.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.auction_id != null && message.hasOwnProperty("auction_id"))
-                    if (!$util.isInteger(message.auction_id) && !(message.auction_id && $util.isInteger(message.auction_id.low) && $util.isInteger(message.auction_id.high)))
-                        return "auction_id: integer|Long expected";
-                if (message.bidder != null && message.hasOwnProperty("bidder"))
-                    if (!$util.isString(message.bidder))
-                        return "bidder: string expected";
-                if (message.amount != null && message.hasOwnProperty("amount")) {
-                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.amount);
-                    if (error)
-                        return "amount." + error;
-                }
-                return null;
-            };
-
-            /**
-             * Creates a MsgPlaceBid message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof botany.auction.MsgPlaceBid
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {botany.auction.MsgPlaceBid} MsgPlaceBid
-             */
-            MsgPlaceBid.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.auction.MsgPlaceBid)
-                    return object;
-                let message = new $root.botany.auction.MsgPlaceBid();
-                if (object.auction_id != null)
-                    if ($util.Long)
-                        (message.auction_id = $util.Long.fromValue(object.auction_id)).unsigned = true;
-                    else if (typeof object.auction_id === "string")
-                        message.auction_id = parseInt(object.auction_id, 10);
-                    else if (typeof object.auction_id === "number")
-                        message.auction_id = object.auction_id;
-                    else if (typeof object.auction_id === "object")
-                        message.auction_id = new $util.LongBits(object.auction_id.low >>> 0, object.auction_id.high >>> 0).toNumber(true);
-                if (object.bidder != null)
-                    message.bidder = String(object.bidder);
-                if (object.amount != null) {
-                    if (typeof object.amount !== "object")
-                        throw TypeError(".botany.auction.MsgPlaceBid.amount: object expected");
-                    message.amount = $root.cosmos.base.v1beta1.Coin.fromObject(object.amount);
-                }
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a MsgPlaceBid message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof botany.auction.MsgPlaceBid
-             * @static
-             * @param {botany.auction.MsgPlaceBid} message MsgPlaceBid
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            MsgPlaceBid.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.defaults) {
-                    if ($util.Long) {
-                        let long = new $util.Long(0, 0, true);
-                        object.auction_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                    } else
-                        object.auction_id = options.longs === String ? "0" : 0;
-                    object.bidder = "";
-                    object.amount = null;
-                }
-                if (message.auction_id != null && message.hasOwnProperty("auction_id"))
-                    if (typeof message.auction_id === "number")
-                        object.auction_id = options.longs === String ? String(message.auction_id) : message.auction_id;
-                    else
-                        object.auction_id = options.longs === String ? $util.Long.prototype.toString.call(message.auction_id) : options.longs === Number ? new $util.LongBits(message.auction_id.low >>> 0, message.auction_id.high >>> 0).toNumber(true) : message.auction_id;
-                if (message.bidder != null && message.hasOwnProperty("bidder"))
-                    object.bidder = message.bidder;
-                if (message.amount != null && message.hasOwnProperty("amount"))
-                    object.amount = $root.cosmos.base.v1beta1.Coin.toObject(message.amount, options);
-                return object;
-            };
-
-            /**
-             * Converts this MsgPlaceBid to JSON.
-             * @function toJSON
-             * @memberof botany.auction.MsgPlaceBid
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            MsgPlaceBid.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            return MsgPlaceBid;
-        })();
-
         auction.Params = (function() {
 
             /**
@@ -2986,6 +2747,447 @@ export const botany = $root.botany = (() => {
             };
 
             return Params;
+        })();
+
+        auction.Msg = (function() {
+
+            /**
+             * Constructs a new Msg service.
+             * @memberof botany.auction
+             * @classdesc Represents a Msg
+             * @extends $protobuf.rpc.Service
+             * @constructor
+             * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+             * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+             * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+             */
+            function Msg(rpcImpl, requestDelimited, responseDelimited) {
+                $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+            }
+
+            (Msg.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Msg;
+
+            /**
+             * Callback as used by {@link botany.auction.Msg#placeBid}.
+             * @memberof botany.auction.Msg
+             * @typedef PlaceBidCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.auction.MsgPlaceBidResponse} [response] MsgPlaceBidResponse
+             */
+
+            /**
+             * Calls PlaceBid.
+             * @function placeBid
+             * @memberof botany.auction.Msg
+             * @instance
+             * @param {botany.auction.IMsgPlaceBid} request MsgPlaceBid message or plain object
+             * @param {botany.auction.Msg.PlaceBidCallback} callback Node-style callback called with the error, if any, and MsgPlaceBidResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.placeBid = function placeBid(request, callback) {
+                return this.rpcCall(placeBid, $root.botany.auction.MsgPlaceBid, $root.botany.auction.MsgPlaceBidResponse, request, callback);
+            }, "name", { value: "PlaceBid" });
+
+            /**
+             * Calls PlaceBid.
+             * @function placeBid
+             * @memberof botany.auction.Msg
+             * @instance
+             * @param {botany.auction.IMsgPlaceBid} request MsgPlaceBid message or plain object
+             * @returns {Promise<botany.auction.MsgPlaceBidResponse>} Promise
+             * @variation 2
+             */
+
+            return Msg;
+        })();
+
+        auction.MsgPlaceBid = (function() {
+
+            /**
+             * Properties of a MsgPlaceBid.
+             * @memberof botany.auction
+             * @interface IMsgPlaceBid
+             * @property {Long|null} [auction_id] MsgPlaceBid auction_id
+             * @property {string|null} [bidder] MsgPlaceBid bidder
+             * @property {cosmos.base.v1beta1.ICoin|null} [amount] MsgPlaceBid amount
+             */
+
+            /**
+             * Constructs a new MsgPlaceBid.
+             * @memberof botany.auction
+             * @classdesc Represents a MsgPlaceBid.
+             * @implements IMsgPlaceBid
+             * @constructor
+             * @param {botany.auction.IMsgPlaceBid=} [properties] Properties to set
+             */
+            function MsgPlaceBid(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MsgPlaceBid auction_id.
+             * @member {Long} auction_id
+             * @memberof botany.auction.MsgPlaceBid
+             * @instance
+             */
+            MsgPlaceBid.prototype.auction_id = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+            /**
+             * MsgPlaceBid bidder.
+             * @member {string} bidder
+             * @memberof botany.auction.MsgPlaceBid
+             * @instance
+             */
+            MsgPlaceBid.prototype.bidder = "";
+
+            /**
+             * MsgPlaceBid amount.
+             * @member {cosmos.base.v1beta1.ICoin|null|undefined} amount
+             * @memberof botany.auction.MsgPlaceBid
+             * @instance
+             */
+            MsgPlaceBid.prototype.amount = null;
+
+            /**
+             * Encodes the specified MsgPlaceBid message. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
+             * @function encode
+             * @memberof botany.auction.MsgPlaceBid
+             * @static
+             * @param {botany.auction.IMsgPlaceBid} message MsgPlaceBid message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgPlaceBid.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.auction_id != null && Object.hasOwnProperty.call(message, "auction_id"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.auction_id);
+                if (message.bidder != null && Object.hasOwnProperty.call(message, "bidder"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.bidder);
+                if (message.amount != null && Object.hasOwnProperty.call(message, "amount"))
+                    $root.cosmos.base.v1beta1.Coin.encode(message.amount, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgPlaceBid message, length delimited. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.auction.MsgPlaceBid
+             * @static
+             * @param {botany.auction.IMsgPlaceBid} message MsgPlaceBid message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgPlaceBid.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgPlaceBid message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.auction.MsgPlaceBid
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.auction.MsgPlaceBid} MsgPlaceBid
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgPlaceBid.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.auction.MsgPlaceBid();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.auction_id = reader.uint64();
+                        break;
+                    case 2:
+                        message.bidder = reader.string();
+                        break;
+                    case 3:
+                        message.amount = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgPlaceBid message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.auction.MsgPlaceBid
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.auction.MsgPlaceBid} MsgPlaceBid
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgPlaceBid.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgPlaceBid message.
+             * @function verify
+             * @memberof botany.auction.MsgPlaceBid
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgPlaceBid.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.auction_id != null && message.hasOwnProperty("auction_id"))
+                    if (!$util.isInteger(message.auction_id) && !(message.auction_id && $util.isInteger(message.auction_id.low) && $util.isInteger(message.auction_id.high)))
+                        return "auction_id: integer|Long expected";
+                if (message.bidder != null && message.hasOwnProperty("bidder"))
+                    if (!$util.isString(message.bidder))
+                        return "bidder: string expected";
+                if (message.amount != null && message.hasOwnProperty("amount")) {
+                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.amount);
+                    if (error)
+                        return "amount." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates a MsgPlaceBid message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.auction.MsgPlaceBid
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.auction.MsgPlaceBid} MsgPlaceBid
+             */
+            MsgPlaceBid.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.auction.MsgPlaceBid)
+                    return object;
+                let message = new $root.botany.auction.MsgPlaceBid();
+                if (object.auction_id != null)
+                    if ($util.Long)
+                        (message.auction_id = $util.Long.fromValue(object.auction_id)).unsigned = true;
+                    else if (typeof object.auction_id === "string")
+                        message.auction_id = parseInt(object.auction_id, 10);
+                    else if (typeof object.auction_id === "number")
+                        message.auction_id = object.auction_id;
+                    else if (typeof object.auction_id === "object")
+                        message.auction_id = new $util.LongBits(object.auction_id.low >>> 0, object.auction_id.high >>> 0).toNumber(true);
+                if (object.bidder != null)
+                    message.bidder = String(object.bidder);
+                if (object.amount != null) {
+                    if (typeof object.amount !== "object")
+                        throw TypeError(".botany.auction.MsgPlaceBid.amount: object expected");
+                    message.amount = $root.cosmos.base.v1beta1.Coin.fromObject(object.amount);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MsgPlaceBid message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.auction.MsgPlaceBid
+             * @static
+             * @param {botany.auction.MsgPlaceBid} message MsgPlaceBid
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgPlaceBid.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    if ($util.Long) {
+                        let long = new $util.Long(0, 0, true);
+                        object.auction_id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                    } else
+                        object.auction_id = options.longs === String ? "0" : 0;
+                    object.bidder = "";
+                    object.amount = null;
+                }
+                if (message.auction_id != null && message.hasOwnProperty("auction_id"))
+                    if (typeof message.auction_id === "number")
+                        object.auction_id = options.longs === String ? String(message.auction_id) : message.auction_id;
+                    else
+                        object.auction_id = options.longs === String ? $util.Long.prototype.toString.call(message.auction_id) : options.longs === Number ? new $util.LongBits(message.auction_id.low >>> 0, message.auction_id.high >>> 0).toNumber(true) : message.auction_id;
+                if (message.bidder != null && message.hasOwnProperty("bidder"))
+                    object.bidder = message.bidder;
+                if (message.amount != null && message.hasOwnProperty("amount"))
+                    object.amount = $root.cosmos.base.v1beta1.Coin.toObject(message.amount, options);
+                return object;
+            };
+
+            /**
+             * Converts this MsgPlaceBid to JSON.
+             * @function toJSON
+             * @memberof botany.auction.MsgPlaceBid
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgPlaceBid.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgPlaceBid;
+        })();
+
+        auction.MsgPlaceBidResponse = (function() {
+
+            /**
+             * Properties of a MsgPlaceBidResponse.
+             * @memberof botany.auction
+             * @interface IMsgPlaceBidResponse
+             */
+
+            /**
+             * Constructs a new MsgPlaceBidResponse.
+             * @memberof botany.auction
+             * @classdesc Represents a MsgPlaceBidResponse.
+             * @implements IMsgPlaceBidResponse
+             * @constructor
+             * @param {botany.auction.IMsgPlaceBidResponse=} [properties] Properties to set
+             */
+            function MsgPlaceBidResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified MsgPlaceBidResponse message. Does not implicitly {@link botany.auction.MsgPlaceBidResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.auction.MsgPlaceBidResponse
+             * @static
+             * @param {botany.auction.IMsgPlaceBidResponse} message MsgPlaceBidResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgPlaceBidResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgPlaceBidResponse message, length delimited. Does not implicitly {@link botany.auction.MsgPlaceBidResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.auction.MsgPlaceBidResponse
+             * @static
+             * @param {botany.auction.IMsgPlaceBidResponse} message MsgPlaceBidResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgPlaceBidResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgPlaceBidResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.auction.MsgPlaceBidResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.auction.MsgPlaceBidResponse} MsgPlaceBidResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgPlaceBidResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.auction.MsgPlaceBidResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgPlaceBidResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.auction.MsgPlaceBidResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.auction.MsgPlaceBidResponse} MsgPlaceBidResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgPlaceBidResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgPlaceBidResponse message.
+             * @function verify
+             * @memberof botany.auction.MsgPlaceBidResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgPlaceBidResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgPlaceBidResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.auction.MsgPlaceBidResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.auction.MsgPlaceBidResponse} MsgPlaceBidResponse
+             */
+            MsgPlaceBidResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.auction.MsgPlaceBidResponse)
+                    return object;
+                return new $root.botany.auction.MsgPlaceBidResponse();
+            };
+
+            /**
+             * Creates a plain object from a MsgPlaceBidResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.auction.MsgPlaceBidResponse
+             * @static
+             * @param {botany.auction.MsgPlaceBidResponse} message MsgPlaceBidResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgPlaceBidResponse.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MsgPlaceBidResponse to JSON.
+             * @function toJSON
+             * @memberof botany.auction.MsgPlaceBidResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgPlaceBidResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgPlaceBidResponse;
         })();
 
         auction.GenesisState = (function() {
@@ -7578,1422 +7780,6 @@ export const botany = $root.botany = (() => {
             return AugmentedCdp;
         })();
 
-        cdp.MsgCreateCdp = (function() {
-
-            /**
-             * Properties of a MsgCreateCdp.
-             * @memberof botany.cdp
-             * @interface IMsgCreateCdp
-             * @property {string|null} [sender] MsgCreateCdp sender
-             * @property {cosmos.base.v1beta1.ICoin|null} [collateral] MsgCreateCdp collateral
-             * @property {cosmos.base.v1beta1.ICoin|null} [principal] MsgCreateCdp principal
-             * @property {string|null} [collateral_type] MsgCreateCdp collateral_type
-             */
-
-            /**
-             * Constructs a new MsgCreateCdp.
-             * @memberof botany.cdp
-             * @classdesc Represents a MsgCreateCdp.
-             * @implements IMsgCreateCdp
-             * @constructor
-             * @param {botany.cdp.IMsgCreateCdp=} [properties] Properties to set
-             */
-            function MsgCreateCdp(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * MsgCreateCdp sender.
-             * @member {string} sender
-             * @memberof botany.cdp.MsgCreateCdp
-             * @instance
-             */
-            MsgCreateCdp.prototype.sender = "";
-
-            /**
-             * MsgCreateCdp collateral.
-             * @member {cosmos.base.v1beta1.ICoin|null|undefined} collateral
-             * @memberof botany.cdp.MsgCreateCdp
-             * @instance
-             */
-            MsgCreateCdp.prototype.collateral = null;
-
-            /**
-             * MsgCreateCdp principal.
-             * @member {cosmos.base.v1beta1.ICoin|null|undefined} principal
-             * @memberof botany.cdp.MsgCreateCdp
-             * @instance
-             */
-            MsgCreateCdp.prototype.principal = null;
-
-            /**
-             * MsgCreateCdp collateral_type.
-             * @member {string} collateral_type
-             * @memberof botany.cdp.MsgCreateCdp
-             * @instance
-             */
-            MsgCreateCdp.prototype.collateral_type = "";
-
-            /**
-             * Encodes the specified MsgCreateCdp message. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
-             * @function encode
-             * @memberof botany.cdp.MsgCreateCdp
-             * @static
-             * @param {botany.cdp.IMsgCreateCdp} message MsgCreateCdp message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgCreateCdp.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.sender != null && Object.hasOwnProperty.call(message, "sender"))
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sender);
-                if (message.collateral != null && Object.hasOwnProperty.call(message, "collateral"))
-                    $root.cosmos.base.v1beta1.Coin.encode(message.collateral, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                if (message.principal != null && Object.hasOwnProperty.call(message, "principal"))
-                    $root.cosmos.base.v1beta1.Coin.encode(message.principal, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
-                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.collateral_type);
-                return writer;
-            };
-
-            /**
-             * Encodes the specified MsgCreateCdp message, length delimited. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof botany.cdp.MsgCreateCdp
-             * @static
-             * @param {botany.cdp.IMsgCreateCdp} message MsgCreateCdp message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgCreateCdp.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a MsgCreateCdp message from the specified reader or buffer.
-             * @function decode
-             * @memberof botany.cdp.MsgCreateCdp
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {botany.cdp.MsgCreateCdp} MsgCreateCdp
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgCreateCdp.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgCreateCdp();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.sender = reader.string();
-                        break;
-                    case 2:
-                        message.collateral = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
-                        break;
-                    case 3:
-                        message.principal = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
-                        break;
-                    case 4:
-                        message.collateral_type = reader.string();
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a MsgCreateCdp message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof botany.cdp.MsgCreateCdp
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.cdp.MsgCreateCdp} MsgCreateCdp
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgCreateCdp.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a MsgCreateCdp message.
-             * @function verify
-             * @memberof botany.cdp.MsgCreateCdp
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            MsgCreateCdp.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.sender != null && message.hasOwnProperty("sender"))
-                    if (!$util.isString(message.sender))
-                        return "sender: string expected";
-                if (message.collateral != null && message.hasOwnProperty("collateral")) {
-                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.collateral);
-                    if (error)
-                        return "collateral." + error;
-                }
-                if (message.principal != null && message.hasOwnProperty("principal")) {
-                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.principal);
-                    if (error)
-                        return "principal." + error;
-                }
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    if (!$util.isString(message.collateral_type))
-                        return "collateral_type: string expected";
-                return null;
-            };
-
-            /**
-             * Creates a MsgCreateCdp message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof botany.cdp.MsgCreateCdp
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {botany.cdp.MsgCreateCdp} MsgCreateCdp
-             */
-            MsgCreateCdp.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.cdp.MsgCreateCdp)
-                    return object;
-                let message = new $root.botany.cdp.MsgCreateCdp();
-                if (object.sender != null)
-                    message.sender = String(object.sender);
-                if (object.collateral != null) {
-                    if (typeof object.collateral !== "object")
-                        throw TypeError(".botany.cdp.MsgCreateCdp.collateral: object expected");
-                    message.collateral = $root.cosmos.base.v1beta1.Coin.fromObject(object.collateral);
-                }
-                if (object.principal != null) {
-                    if (typeof object.principal !== "object")
-                        throw TypeError(".botany.cdp.MsgCreateCdp.principal: object expected");
-                    message.principal = $root.cosmos.base.v1beta1.Coin.fromObject(object.principal);
-                }
-                if (object.collateral_type != null)
-                    message.collateral_type = String(object.collateral_type);
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a MsgCreateCdp message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof botany.cdp.MsgCreateCdp
-             * @static
-             * @param {botany.cdp.MsgCreateCdp} message MsgCreateCdp
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            MsgCreateCdp.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.defaults) {
-                    object.sender = "";
-                    object.collateral = null;
-                    object.principal = null;
-                    object.collateral_type = "";
-                }
-                if (message.sender != null && message.hasOwnProperty("sender"))
-                    object.sender = message.sender;
-                if (message.collateral != null && message.hasOwnProperty("collateral"))
-                    object.collateral = $root.cosmos.base.v1beta1.Coin.toObject(message.collateral, options);
-                if (message.principal != null && message.hasOwnProperty("principal"))
-                    object.principal = $root.cosmos.base.v1beta1.Coin.toObject(message.principal, options);
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    object.collateral_type = message.collateral_type;
-                return object;
-            };
-
-            /**
-             * Converts this MsgCreateCdp to JSON.
-             * @function toJSON
-             * @memberof botany.cdp.MsgCreateCdp
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            MsgCreateCdp.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            return MsgCreateCdp;
-        })();
-
-        cdp.MsgDeposit = (function() {
-
-            /**
-             * Properties of a MsgDeposit.
-             * @memberof botany.cdp
-             * @interface IMsgDeposit
-             * @property {string|null} [depositor] MsgDeposit depositor
-             * @property {string|null} [owner] MsgDeposit owner
-             * @property {cosmos.base.v1beta1.ICoin|null} [collateral] MsgDeposit collateral
-             * @property {string|null} [collateral_type] MsgDeposit collateral_type
-             */
-
-            /**
-             * Constructs a new MsgDeposit.
-             * @memberof botany.cdp
-             * @classdesc Represents a MsgDeposit.
-             * @implements IMsgDeposit
-             * @constructor
-             * @param {botany.cdp.IMsgDeposit=} [properties] Properties to set
-             */
-            function MsgDeposit(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * MsgDeposit depositor.
-             * @member {string} depositor
-             * @memberof botany.cdp.MsgDeposit
-             * @instance
-             */
-            MsgDeposit.prototype.depositor = "";
-
-            /**
-             * MsgDeposit owner.
-             * @member {string} owner
-             * @memberof botany.cdp.MsgDeposit
-             * @instance
-             */
-            MsgDeposit.prototype.owner = "";
-
-            /**
-             * MsgDeposit collateral.
-             * @member {cosmos.base.v1beta1.ICoin|null|undefined} collateral
-             * @memberof botany.cdp.MsgDeposit
-             * @instance
-             */
-            MsgDeposit.prototype.collateral = null;
-
-            /**
-             * MsgDeposit collateral_type.
-             * @member {string} collateral_type
-             * @memberof botany.cdp.MsgDeposit
-             * @instance
-             */
-            MsgDeposit.prototype.collateral_type = "";
-
-            /**
-             * Encodes the specified MsgDeposit message. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
-             * @function encode
-             * @memberof botany.cdp.MsgDeposit
-             * @static
-             * @param {botany.cdp.IMsgDeposit} message MsgDeposit message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgDeposit.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.depositor != null && Object.hasOwnProperty.call(message, "depositor"))
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.depositor);
-                if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.owner);
-                if (message.collateral != null && Object.hasOwnProperty.call(message, "collateral"))
-                    $root.cosmos.base.v1beta1.Coin.encode(message.collateral, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
-                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.collateral_type);
-                return writer;
-            };
-
-            /**
-             * Encodes the specified MsgDeposit message, length delimited. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof botany.cdp.MsgDeposit
-             * @static
-             * @param {botany.cdp.IMsgDeposit} message MsgDeposit message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgDeposit.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a MsgDeposit message from the specified reader or buffer.
-             * @function decode
-             * @memberof botany.cdp.MsgDeposit
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {botany.cdp.MsgDeposit} MsgDeposit
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgDeposit.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgDeposit();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.depositor = reader.string();
-                        break;
-                    case 2:
-                        message.owner = reader.string();
-                        break;
-                    case 3:
-                        message.collateral = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
-                        break;
-                    case 4:
-                        message.collateral_type = reader.string();
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a MsgDeposit message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof botany.cdp.MsgDeposit
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.cdp.MsgDeposit} MsgDeposit
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgDeposit.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a MsgDeposit message.
-             * @function verify
-             * @memberof botany.cdp.MsgDeposit
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            MsgDeposit.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.depositor != null && message.hasOwnProperty("depositor"))
-                    if (!$util.isString(message.depositor))
-                        return "depositor: string expected";
-                if (message.owner != null && message.hasOwnProperty("owner"))
-                    if (!$util.isString(message.owner))
-                        return "owner: string expected";
-                if (message.collateral != null && message.hasOwnProperty("collateral")) {
-                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.collateral);
-                    if (error)
-                        return "collateral." + error;
-                }
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    if (!$util.isString(message.collateral_type))
-                        return "collateral_type: string expected";
-                return null;
-            };
-
-            /**
-             * Creates a MsgDeposit message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof botany.cdp.MsgDeposit
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {botany.cdp.MsgDeposit} MsgDeposit
-             */
-            MsgDeposit.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.cdp.MsgDeposit)
-                    return object;
-                let message = new $root.botany.cdp.MsgDeposit();
-                if (object.depositor != null)
-                    message.depositor = String(object.depositor);
-                if (object.owner != null)
-                    message.owner = String(object.owner);
-                if (object.collateral != null) {
-                    if (typeof object.collateral !== "object")
-                        throw TypeError(".botany.cdp.MsgDeposit.collateral: object expected");
-                    message.collateral = $root.cosmos.base.v1beta1.Coin.fromObject(object.collateral);
-                }
-                if (object.collateral_type != null)
-                    message.collateral_type = String(object.collateral_type);
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a MsgDeposit message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof botany.cdp.MsgDeposit
-             * @static
-             * @param {botany.cdp.MsgDeposit} message MsgDeposit
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            MsgDeposit.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.defaults) {
-                    object.depositor = "";
-                    object.owner = "";
-                    object.collateral = null;
-                    object.collateral_type = "";
-                }
-                if (message.depositor != null && message.hasOwnProperty("depositor"))
-                    object.depositor = message.depositor;
-                if (message.owner != null && message.hasOwnProperty("owner"))
-                    object.owner = message.owner;
-                if (message.collateral != null && message.hasOwnProperty("collateral"))
-                    object.collateral = $root.cosmos.base.v1beta1.Coin.toObject(message.collateral, options);
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    object.collateral_type = message.collateral_type;
-                return object;
-            };
-
-            /**
-             * Converts this MsgDeposit to JSON.
-             * @function toJSON
-             * @memberof botany.cdp.MsgDeposit
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            MsgDeposit.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            return MsgDeposit;
-        })();
-
-        cdp.MsgWithdraw = (function() {
-
-            /**
-             * Properties of a MsgWithdraw.
-             * @memberof botany.cdp
-             * @interface IMsgWithdraw
-             * @property {string|null} [depositor] MsgWithdraw depositor
-             * @property {string|null} [owner] MsgWithdraw owner
-             * @property {cosmos.base.v1beta1.ICoin|null} [collateral] MsgWithdraw collateral
-             * @property {string|null} [collateral_type] MsgWithdraw collateral_type
-             */
-
-            /**
-             * Constructs a new MsgWithdraw.
-             * @memberof botany.cdp
-             * @classdesc Represents a MsgWithdraw.
-             * @implements IMsgWithdraw
-             * @constructor
-             * @param {botany.cdp.IMsgWithdraw=} [properties] Properties to set
-             */
-            function MsgWithdraw(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * MsgWithdraw depositor.
-             * @member {string} depositor
-             * @memberof botany.cdp.MsgWithdraw
-             * @instance
-             */
-            MsgWithdraw.prototype.depositor = "";
-
-            /**
-             * MsgWithdraw owner.
-             * @member {string} owner
-             * @memberof botany.cdp.MsgWithdraw
-             * @instance
-             */
-            MsgWithdraw.prototype.owner = "";
-
-            /**
-             * MsgWithdraw collateral.
-             * @member {cosmos.base.v1beta1.ICoin|null|undefined} collateral
-             * @memberof botany.cdp.MsgWithdraw
-             * @instance
-             */
-            MsgWithdraw.prototype.collateral = null;
-
-            /**
-             * MsgWithdraw collateral_type.
-             * @member {string} collateral_type
-             * @memberof botany.cdp.MsgWithdraw
-             * @instance
-             */
-            MsgWithdraw.prototype.collateral_type = "";
-
-            /**
-             * Encodes the specified MsgWithdraw message. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
-             * @function encode
-             * @memberof botany.cdp.MsgWithdraw
-             * @static
-             * @param {botany.cdp.IMsgWithdraw} message MsgWithdraw message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgWithdraw.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.depositor != null && Object.hasOwnProperty.call(message, "depositor"))
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.depositor);
-                if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.owner);
-                if (message.collateral != null && Object.hasOwnProperty.call(message, "collateral"))
-                    $root.cosmos.base.v1beta1.Coin.encode(message.collateral, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
-                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.collateral_type);
-                return writer;
-            };
-
-            /**
-             * Encodes the specified MsgWithdraw message, length delimited. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof botany.cdp.MsgWithdraw
-             * @static
-             * @param {botany.cdp.IMsgWithdraw} message MsgWithdraw message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgWithdraw.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a MsgWithdraw message from the specified reader or buffer.
-             * @function decode
-             * @memberof botany.cdp.MsgWithdraw
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {botany.cdp.MsgWithdraw} MsgWithdraw
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgWithdraw.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgWithdraw();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.depositor = reader.string();
-                        break;
-                    case 2:
-                        message.owner = reader.string();
-                        break;
-                    case 3:
-                        message.collateral = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
-                        break;
-                    case 4:
-                        message.collateral_type = reader.string();
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a MsgWithdraw message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof botany.cdp.MsgWithdraw
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.cdp.MsgWithdraw} MsgWithdraw
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgWithdraw.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a MsgWithdraw message.
-             * @function verify
-             * @memberof botany.cdp.MsgWithdraw
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            MsgWithdraw.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.depositor != null && message.hasOwnProperty("depositor"))
-                    if (!$util.isString(message.depositor))
-                        return "depositor: string expected";
-                if (message.owner != null && message.hasOwnProperty("owner"))
-                    if (!$util.isString(message.owner))
-                        return "owner: string expected";
-                if (message.collateral != null && message.hasOwnProperty("collateral")) {
-                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.collateral);
-                    if (error)
-                        return "collateral." + error;
-                }
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    if (!$util.isString(message.collateral_type))
-                        return "collateral_type: string expected";
-                return null;
-            };
-
-            /**
-             * Creates a MsgWithdraw message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof botany.cdp.MsgWithdraw
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {botany.cdp.MsgWithdraw} MsgWithdraw
-             */
-            MsgWithdraw.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.cdp.MsgWithdraw)
-                    return object;
-                let message = new $root.botany.cdp.MsgWithdraw();
-                if (object.depositor != null)
-                    message.depositor = String(object.depositor);
-                if (object.owner != null)
-                    message.owner = String(object.owner);
-                if (object.collateral != null) {
-                    if (typeof object.collateral !== "object")
-                        throw TypeError(".botany.cdp.MsgWithdraw.collateral: object expected");
-                    message.collateral = $root.cosmos.base.v1beta1.Coin.fromObject(object.collateral);
-                }
-                if (object.collateral_type != null)
-                    message.collateral_type = String(object.collateral_type);
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a MsgWithdraw message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof botany.cdp.MsgWithdraw
-             * @static
-             * @param {botany.cdp.MsgWithdraw} message MsgWithdraw
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            MsgWithdraw.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.defaults) {
-                    object.depositor = "";
-                    object.owner = "";
-                    object.collateral = null;
-                    object.collateral_type = "";
-                }
-                if (message.depositor != null && message.hasOwnProperty("depositor"))
-                    object.depositor = message.depositor;
-                if (message.owner != null && message.hasOwnProperty("owner"))
-                    object.owner = message.owner;
-                if (message.collateral != null && message.hasOwnProperty("collateral"))
-                    object.collateral = $root.cosmos.base.v1beta1.Coin.toObject(message.collateral, options);
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    object.collateral_type = message.collateral_type;
-                return object;
-            };
-
-            /**
-             * Converts this MsgWithdraw to JSON.
-             * @function toJSON
-             * @memberof botany.cdp.MsgWithdraw
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            MsgWithdraw.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            return MsgWithdraw;
-        })();
-
-        cdp.MsgDrawDebt = (function() {
-
-            /**
-             * Properties of a MsgDrawDebt.
-             * @memberof botany.cdp
-             * @interface IMsgDrawDebt
-             * @property {string|null} [sender] MsgDrawDebt sender
-             * @property {string|null} [collateral_type] MsgDrawDebt collateral_type
-             * @property {cosmos.base.v1beta1.ICoin|null} [principal] MsgDrawDebt principal
-             */
-
-            /**
-             * Constructs a new MsgDrawDebt.
-             * @memberof botany.cdp
-             * @classdesc Represents a MsgDrawDebt.
-             * @implements IMsgDrawDebt
-             * @constructor
-             * @param {botany.cdp.IMsgDrawDebt=} [properties] Properties to set
-             */
-            function MsgDrawDebt(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * MsgDrawDebt sender.
-             * @member {string} sender
-             * @memberof botany.cdp.MsgDrawDebt
-             * @instance
-             */
-            MsgDrawDebt.prototype.sender = "";
-
-            /**
-             * MsgDrawDebt collateral_type.
-             * @member {string} collateral_type
-             * @memberof botany.cdp.MsgDrawDebt
-             * @instance
-             */
-            MsgDrawDebt.prototype.collateral_type = "";
-
-            /**
-             * MsgDrawDebt principal.
-             * @member {cosmos.base.v1beta1.ICoin|null|undefined} principal
-             * @memberof botany.cdp.MsgDrawDebt
-             * @instance
-             */
-            MsgDrawDebt.prototype.principal = null;
-
-            /**
-             * Encodes the specified MsgDrawDebt message. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
-             * @function encode
-             * @memberof botany.cdp.MsgDrawDebt
-             * @static
-             * @param {botany.cdp.IMsgDrawDebt} message MsgDrawDebt message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgDrawDebt.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.sender != null && Object.hasOwnProperty.call(message, "sender"))
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sender);
-                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.collateral_type);
-                if (message.principal != null && Object.hasOwnProperty.call(message, "principal"))
-                    $root.cosmos.base.v1beta1.Coin.encode(message.principal, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                return writer;
-            };
-
-            /**
-             * Encodes the specified MsgDrawDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof botany.cdp.MsgDrawDebt
-             * @static
-             * @param {botany.cdp.IMsgDrawDebt} message MsgDrawDebt message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgDrawDebt.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a MsgDrawDebt message from the specified reader or buffer.
-             * @function decode
-             * @memberof botany.cdp.MsgDrawDebt
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {botany.cdp.MsgDrawDebt} MsgDrawDebt
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgDrawDebt.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgDrawDebt();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.sender = reader.string();
-                        break;
-                    case 2:
-                        message.collateral_type = reader.string();
-                        break;
-                    case 3:
-                        message.principal = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a MsgDrawDebt message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof botany.cdp.MsgDrawDebt
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.cdp.MsgDrawDebt} MsgDrawDebt
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgDrawDebt.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a MsgDrawDebt message.
-             * @function verify
-             * @memberof botany.cdp.MsgDrawDebt
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            MsgDrawDebt.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.sender != null && message.hasOwnProperty("sender"))
-                    if (!$util.isString(message.sender))
-                        return "sender: string expected";
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    if (!$util.isString(message.collateral_type))
-                        return "collateral_type: string expected";
-                if (message.principal != null && message.hasOwnProperty("principal")) {
-                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.principal);
-                    if (error)
-                        return "principal." + error;
-                }
-                return null;
-            };
-
-            /**
-             * Creates a MsgDrawDebt message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof botany.cdp.MsgDrawDebt
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {botany.cdp.MsgDrawDebt} MsgDrawDebt
-             */
-            MsgDrawDebt.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.cdp.MsgDrawDebt)
-                    return object;
-                let message = new $root.botany.cdp.MsgDrawDebt();
-                if (object.sender != null)
-                    message.sender = String(object.sender);
-                if (object.collateral_type != null)
-                    message.collateral_type = String(object.collateral_type);
-                if (object.principal != null) {
-                    if (typeof object.principal !== "object")
-                        throw TypeError(".botany.cdp.MsgDrawDebt.principal: object expected");
-                    message.principal = $root.cosmos.base.v1beta1.Coin.fromObject(object.principal);
-                }
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a MsgDrawDebt message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof botany.cdp.MsgDrawDebt
-             * @static
-             * @param {botany.cdp.MsgDrawDebt} message MsgDrawDebt
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            MsgDrawDebt.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.defaults) {
-                    object.sender = "";
-                    object.collateral_type = "";
-                    object.principal = null;
-                }
-                if (message.sender != null && message.hasOwnProperty("sender"))
-                    object.sender = message.sender;
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    object.collateral_type = message.collateral_type;
-                if (message.principal != null && message.hasOwnProperty("principal"))
-                    object.principal = $root.cosmos.base.v1beta1.Coin.toObject(message.principal, options);
-                return object;
-            };
-
-            /**
-             * Converts this MsgDrawDebt to JSON.
-             * @function toJSON
-             * @memberof botany.cdp.MsgDrawDebt
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            MsgDrawDebt.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            return MsgDrawDebt;
-        })();
-
-        cdp.MsgRepayDebt = (function() {
-
-            /**
-             * Properties of a MsgRepayDebt.
-             * @memberof botany.cdp
-             * @interface IMsgRepayDebt
-             * @property {string|null} [sender] MsgRepayDebt sender
-             * @property {string|null} [collateral_type] MsgRepayDebt collateral_type
-             * @property {cosmos.base.v1beta1.ICoin|null} [payment] MsgRepayDebt payment
-             */
-
-            /**
-             * Constructs a new MsgRepayDebt.
-             * @memberof botany.cdp
-             * @classdesc Represents a MsgRepayDebt.
-             * @implements IMsgRepayDebt
-             * @constructor
-             * @param {botany.cdp.IMsgRepayDebt=} [properties] Properties to set
-             */
-            function MsgRepayDebt(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * MsgRepayDebt sender.
-             * @member {string} sender
-             * @memberof botany.cdp.MsgRepayDebt
-             * @instance
-             */
-            MsgRepayDebt.prototype.sender = "";
-
-            /**
-             * MsgRepayDebt collateral_type.
-             * @member {string} collateral_type
-             * @memberof botany.cdp.MsgRepayDebt
-             * @instance
-             */
-            MsgRepayDebt.prototype.collateral_type = "";
-
-            /**
-             * MsgRepayDebt payment.
-             * @member {cosmos.base.v1beta1.ICoin|null|undefined} payment
-             * @memberof botany.cdp.MsgRepayDebt
-             * @instance
-             */
-            MsgRepayDebt.prototype.payment = null;
-
-            /**
-             * Encodes the specified MsgRepayDebt message. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
-             * @function encode
-             * @memberof botany.cdp.MsgRepayDebt
-             * @static
-             * @param {botany.cdp.IMsgRepayDebt} message MsgRepayDebt message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgRepayDebt.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.sender != null && Object.hasOwnProperty.call(message, "sender"))
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sender);
-                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.collateral_type);
-                if (message.payment != null && Object.hasOwnProperty.call(message, "payment"))
-                    $root.cosmos.base.v1beta1.Coin.encode(message.payment, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                return writer;
-            };
-
-            /**
-             * Encodes the specified MsgRepayDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof botany.cdp.MsgRepayDebt
-             * @static
-             * @param {botany.cdp.IMsgRepayDebt} message MsgRepayDebt message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgRepayDebt.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a MsgRepayDebt message from the specified reader or buffer.
-             * @function decode
-             * @memberof botany.cdp.MsgRepayDebt
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {botany.cdp.MsgRepayDebt} MsgRepayDebt
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgRepayDebt.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgRepayDebt();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.sender = reader.string();
-                        break;
-                    case 2:
-                        message.collateral_type = reader.string();
-                        break;
-                    case 3:
-                        message.payment = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a MsgRepayDebt message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof botany.cdp.MsgRepayDebt
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.cdp.MsgRepayDebt} MsgRepayDebt
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgRepayDebt.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a MsgRepayDebt message.
-             * @function verify
-             * @memberof botany.cdp.MsgRepayDebt
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            MsgRepayDebt.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.sender != null && message.hasOwnProperty("sender"))
-                    if (!$util.isString(message.sender))
-                        return "sender: string expected";
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    if (!$util.isString(message.collateral_type))
-                        return "collateral_type: string expected";
-                if (message.payment != null && message.hasOwnProperty("payment")) {
-                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.payment);
-                    if (error)
-                        return "payment." + error;
-                }
-                return null;
-            };
-
-            /**
-             * Creates a MsgRepayDebt message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof botany.cdp.MsgRepayDebt
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {botany.cdp.MsgRepayDebt} MsgRepayDebt
-             */
-            MsgRepayDebt.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.cdp.MsgRepayDebt)
-                    return object;
-                let message = new $root.botany.cdp.MsgRepayDebt();
-                if (object.sender != null)
-                    message.sender = String(object.sender);
-                if (object.collateral_type != null)
-                    message.collateral_type = String(object.collateral_type);
-                if (object.payment != null) {
-                    if (typeof object.payment !== "object")
-                        throw TypeError(".botany.cdp.MsgRepayDebt.payment: object expected");
-                    message.payment = $root.cosmos.base.v1beta1.Coin.fromObject(object.payment);
-                }
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a MsgRepayDebt message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof botany.cdp.MsgRepayDebt
-             * @static
-             * @param {botany.cdp.MsgRepayDebt} message MsgRepayDebt
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            MsgRepayDebt.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.defaults) {
-                    object.sender = "";
-                    object.collateral_type = "";
-                    object.payment = null;
-                }
-                if (message.sender != null && message.hasOwnProperty("sender"))
-                    object.sender = message.sender;
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    object.collateral_type = message.collateral_type;
-                if (message.payment != null && message.hasOwnProperty("payment"))
-                    object.payment = $root.cosmos.base.v1beta1.Coin.toObject(message.payment, options);
-                return object;
-            };
-
-            /**
-             * Converts this MsgRepayDebt to JSON.
-             * @function toJSON
-             * @memberof botany.cdp.MsgRepayDebt
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            MsgRepayDebt.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            return MsgRepayDebt;
-        })();
-
-        cdp.MsgLiquidate = (function() {
-
-            /**
-             * Properties of a MsgLiquidate.
-             * @memberof botany.cdp
-             * @interface IMsgLiquidate
-             * @property {string|null} [keeper] MsgLiquidate keeper
-             * @property {string|null} [borrower] MsgLiquidate borrower
-             * @property {string|null} [collateral_type] MsgLiquidate collateral_type
-             */
-
-            /**
-             * Constructs a new MsgLiquidate.
-             * @memberof botany.cdp
-             * @classdesc Represents a MsgLiquidate.
-             * @implements IMsgLiquidate
-             * @constructor
-             * @param {botany.cdp.IMsgLiquidate=} [properties] Properties to set
-             */
-            function MsgLiquidate(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * MsgLiquidate keeper.
-             * @member {string} keeper
-             * @memberof botany.cdp.MsgLiquidate
-             * @instance
-             */
-            MsgLiquidate.prototype.keeper = "";
-
-            /**
-             * MsgLiquidate borrower.
-             * @member {string} borrower
-             * @memberof botany.cdp.MsgLiquidate
-             * @instance
-             */
-            MsgLiquidate.prototype.borrower = "";
-
-            /**
-             * MsgLiquidate collateral_type.
-             * @member {string} collateral_type
-             * @memberof botany.cdp.MsgLiquidate
-             * @instance
-             */
-            MsgLiquidate.prototype.collateral_type = "";
-
-            /**
-             * Encodes the specified MsgLiquidate message. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
-             * @function encode
-             * @memberof botany.cdp.MsgLiquidate
-             * @static
-             * @param {botany.cdp.IMsgLiquidate} message MsgLiquidate message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgLiquidate.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.keeper != null && Object.hasOwnProperty.call(message, "keeper"))
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.keeper);
-                if (message.borrower != null && Object.hasOwnProperty.call(message, "borrower"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.borrower);
-                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
-                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.collateral_type);
-                return writer;
-            };
-
-            /**
-             * Encodes the specified MsgLiquidate message, length delimited. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof botany.cdp.MsgLiquidate
-             * @static
-             * @param {botany.cdp.IMsgLiquidate} message MsgLiquidate message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgLiquidate.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a MsgLiquidate message from the specified reader or buffer.
-             * @function decode
-             * @memberof botany.cdp.MsgLiquidate
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {botany.cdp.MsgLiquidate} MsgLiquidate
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgLiquidate.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgLiquidate();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.keeper = reader.string();
-                        break;
-                    case 2:
-                        message.borrower = reader.string();
-                        break;
-                    case 3:
-                        message.collateral_type = reader.string();
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a MsgLiquidate message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof botany.cdp.MsgLiquidate
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.cdp.MsgLiquidate} MsgLiquidate
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgLiquidate.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a MsgLiquidate message.
-             * @function verify
-             * @memberof botany.cdp.MsgLiquidate
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            MsgLiquidate.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.keeper != null && message.hasOwnProperty("keeper"))
-                    if (!$util.isString(message.keeper))
-                        return "keeper: string expected";
-                if (message.borrower != null && message.hasOwnProperty("borrower"))
-                    if (!$util.isString(message.borrower))
-                        return "borrower: string expected";
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    if (!$util.isString(message.collateral_type))
-                        return "collateral_type: string expected";
-                return null;
-            };
-
-            /**
-             * Creates a MsgLiquidate message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof botany.cdp.MsgLiquidate
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {botany.cdp.MsgLiquidate} MsgLiquidate
-             */
-            MsgLiquidate.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.cdp.MsgLiquidate)
-                    return object;
-                let message = new $root.botany.cdp.MsgLiquidate();
-                if (object.keeper != null)
-                    message.keeper = String(object.keeper);
-                if (object.borrower != null)
-                    message.borrower = String(object.borrower);
-                if (object.collateral_type != null)
-                    message.collateral_type = String(object.collateral_type);
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a MsgLiquidate message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof botany.cdp.MsgLiquidate
-             * @static
-             * @param {botany.cdp.MsgLiquidate} message MsgLiquidate
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            MsgLiquidate.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.defaults) {
-                    object.keeper = "";
-                    object.borrower = "";
-                    object.collateral_type = "";
-                }
-                if (message.keeper != null && message.hasOwnProperty("keeper"))
-                    object.keeper = message.keeper;
-                if (message.borrower != null && message.hasOwnProperty("borrower"))
-                    object.borrower = message.borrower;
-                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
-                    object.collateral_type = message.collateral_type;
-                return object;
-            };
-
-            /**
-             * Converts this MsgLiquidate to JSON.
-             * @function toJSON
-             * @memberof botany.cdp.MsgLiquidate
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            MsgLiquidate.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            return MsgLiquidate;
-        })();
-
         cdp.Params = (function() {
 
             /**
@@ -10041,6 +8827,2529 @@ export const botany = $root.botany = (() => {
             };
 
             return DebtParam;
+        })();
+
+        cdp.Msg = (function() {
+
+            /**
+             * Constructs a new Msg service.
+             * @memberof botany.cdp
+             * @classdesc Represents a Msg
+             * @extends $protobuf.rpc.Service
+             * @constructor
+             * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+             * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+             * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+             */
+            function Msg(rpcImpl, requestDelimited, responseDelimited) {
+                $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+            }
+
+            (Msg.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Msg;
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#createCdp}.
+             * @memberof botany.cdp.Msg
+             * @typedef CreateCdpCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.cdp.MsgCreateCdpResponse} [response] MsgCreateCdpResponse
+             */
+
+            /**
+             * Calls CreateCdp.
+             * @function createCdp
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgCreateCdp} request MsgCreateCdp message or plain object
+             * @param {botany.cdp.Msg.CreateCdpCallback} callback Node-style callback called with the error, if any, and MsgCreateCdpResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.createCdp = function createCdp(request, callback) {
+                return this.rpcCall(createCdp, $root.botany.cdp.MsgCreateCdp, $root.botany.cdp.MsgCreateCdpResponse, request, callback);
+            }, "name", { value: "CreateCdp" });
+
+            /**
+             * Calls CreateCdp.
+             * @function createCdp
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgCreateCdp} request MsgCreateCdp message or plain object
+             * @returns {Promise<botany.cdp.MsgCreateCdpResponse>} Promise
+             * @variation 2
+             */
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#deposit}.
+             * @memberof botany.cdp.Msg
+             * @typedef DepositCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.cdp.MsgDepositResponse} [response] MsgDepositResponse
+             */
+
+            /**
+             * Calls Deposit.
+             * @function deposit
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgDeposit} request MsgDeposit message or plain object
+             * @param {botany.cdp.Msg.DepositCallback} callback Node-style callback called with the error, if any, and MsgDepositResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.deposit = function deposit(request, callback) {
+                return this.rpcCall(deposit, $root.botany.cdp.MsgDeposit, $root.botany.cdp.MsgDepositResponse, request, callback);
+            }, "name", { value: "Deposit" });
+
+            /**
+             * Calls Deposit.
+             * @function deposit
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgDeposit} request MsgDeposit message or plain object
+             * @returns {Promise<botany.cdp.MsgDepositResponse>} Promise
+             * @variation 2
+             */
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#withdraw}.
+             * @memberof botany.cdp.Msg
+             * @typedef WithdrawCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.cdp.MsgWithdrawResponse} [response] MsgWithdrawResponse
+             */
+
+            /**
+             * Calls Withdraw.
+             * @function withdraw
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgWithdraw} request MsgWithdraw message or plain object
+             * @param {botany.cdp.Msg.WithdrawCallback} callback Node-style callback called with the error, if any, and MsgWithdrawResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.withdraw = function withdraw(request, callback) {
+                return this.rpcCall(withdraw, $root.botany.cdp.MsgWithdraw, $root.botany.cdp.MsgWithdrawResponse, request, callback);
+            }, "name", { value: "Withdraw" });
+
+            /**
+             * Calls Withdraw.
+             * @function withdraw
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgWithdraw} request MsgWithdraw message or plain object
+             * @returns {Promise<botany.cdp.MsgWithdrawResponse>} Promise
+             * @variation 2
+             */
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#drawDebt}.
+             * @memberof botany.cdp.Msg
+             * @typedef DrawDebtCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.cdp.MsgDrawDebtResponse} [response] MsgDrawDebtResponse
+             */
+
+            /**
+             * Calls DrawDebt.
+             * @function drawDebt
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgDrawDebt} request MsgDrawDebt message or plain object
+             * @param {botany.cdp.Msg.DrawDebtCallback} callback Node-style callback called with the error, if any, and MsgDrawDebtResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.drawDebt = function drawDebt(request, callback) {
+                return this.rpcCall(drawDebt, $root.botany.cdp.MsgDrawDebt, $root.botany.cdp.MsgDrawDebtResponse, request, callback);
+            }, "name", { value: "DrawDebt" });
+
+            /**
+             * Calls DrawDebt.
+             * @function drawDebt
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgDrawDebt} request MsgDrawDebt message or plain object
+             * @returns {Promise<botany.cdp.MsgDrawDebtResponse>} Promise
+             * @variation 2
+             */
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#repayDebt}.
+             * @memberof botany.cdp.Msg
+             * @typedef RepayDebtCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.cdp.MsgRepayDebtResponse} [response] MsgRepayDebtResponse
+             */
+
+            /**
+             * Calls RepayDebt.
+             * @function repayDebt
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgRepayDebt} request MsgRepayDebt message or plain object
+             * @param {botany.cdp.Msg.RepayDebtCallback} callback Node-style callback called with the error, if any, and MsgRepayDebtResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.repayDebt = function repayDebt(request, callback) {
+                return this.rpcCall(repayDebt, $root.botany.cdp.MsgRepayDebt, $root.botany.cdp.MsgRepayDebtResponse, request, callback);
+            }, "name", { value: "RepayDebt" });
+
+            /**
+             * Calls RepayDebt.
+             * @function repayDebt
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgRepayDebt} request MsgRepayDebt message or plain object
+             * @returns {Promise<botany.cdp.MsgRepayDebtResponse>} Promise
+             * @variation 2
+             */
+
+            /**
+             * Callback as used by {@link botany.cdp.Msg#liquidate}.
+             * @memberof botany.cdp.Msg
+             * @typedef LiquidateCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.cdp.MsgLiquidateResponse} [response] MsgLiquidateResponse
+             */
+
+            /**
+             * Calls Liquidate.
+             * @function liquidate
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgLiquidate} request MsgLiquidate message or plain object
+             * @param {botany.cdp.Msg.LiquidateCallback} callback Node-style callback called with the error, if any, and MsgLiquidateResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.liquidate = function liquidate(request, callback) {
+                return this.rpcCall(liquidate, $root.botany.cdp.MsgLiquidate, $root.botany.cdp.MsgLiquidateResponse, request, callback);
+            }, "name", { value: "Liquidate" });
+
+            /**
+             * Calls Liquidate.
+             * @function liquidate
+             * @memberof botany.cdp.Msg
+             * @instance
+             * @param {botany.cdp.IMsgLiquidate} request MsgLiquidate message or plain object
+             * @returns {Promise<botany.cdp.MsgLiquidateResponse>} Promise
+             * @variation 2
+             */
+
+            return Msg;
+        })();
+
+        cdp.MsgCreateCdp = (function() {
+
+            /**
+             * Properties of a MsgCreateCdp.
+             * @memberof botany.cdp
+             * @interface IMsgCreateCdp
+             * @property {string|null} [sender] MsgCreateCdp sender
+             * @property {cosmos.base.v1beta1.ICoin|null} [collateral] MsgCreateCdp collateral
+             * @property {cosmos.base.v1beta1.ICoin|null} [principal] MsgCreateCdp principal
+             * @property {string|null} [collateral_type] MsgCreateCdp collateral_type
+             */
+
+            /**
+             * Constructs a new MsgCreateCdp.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgCreateCdp.
+             * @implements IMsgCreateCdp
+             * @constructor
+             * @param {botany.cdp.IMsgCreateCdp=} [properties] Properties to set
+             */
+            function MsgCreateCdp(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MsgCreateCdp sender.
+             * @member {string} sender
+             * @memberof botany.cdp.MsgCreateCdp
+             * @instance
+             */
+            MsgCreateCdp.prototype.sender = "";
+
+            /**
+             * MsgCreateCdp collateral.
+             * @member {cosmos.base.v1beta1.ICoin|null|undefined} collateral
+             * @memberof botany.cdp.MsgCreateCdp
+             * @instance
+             */
+            MsgCreateCdp.prototype.collateral = null;
+
+            /**
+             * MsgCreateCdp principal.
+             * @member {cosmos.base.v1beta1.ICoin|null|undefined} principal
+             * @memberof botany.cdp.MsgCreateCdp
+             * @instance
+             */
+            MsgCreateCdp.prototype.principal = null;
+
+            /**
+             * MsgCreateCdp collateral_type.
+             * @member {string} collateral_type
+             * @memberof botany.cdp.MsgCreateCdp
+             * @instance
+             */
+            MsgCreateCdp.prototype.collateral_type = "";
+
+            /**
+             * Encodes the specified MsgCreateCdp message. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgCreateCdp
+             * @static
+             * @param {botany.cdp.IMsgCreateCdp} message MsgCreateCdp message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgCreateCdp.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.sender != null && Object.hasOwnProperty.call(message, "sender"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sender);
+                if (message.collateral != null && Object.hasOwnProperty.call(message, "collateral"))
+                    $root.cosmos.base.v1beta1.Coin.encode(message.collateral, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                if (message.principal != null && Object.hasOwnProperty.call(message, "principal"))
+                    $root.cosmos.base.v1beta1.Coin.encode(message.principal, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.collateral_type);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgCreateCdp message, length delimited. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgCreateCdp
+             * @static
+             * @param {botany.cdp.IMsgCreateCdp} message MsgCreateCdp message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgCreateCdp.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgCreateCdp message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgCreateCdp
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgCreateCdp} MsgCreateCdp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgCreateCdp.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgCreateCdp();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.sender = reader.string();
+                        break;
+                    case 2:
+                        message.collateral = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
+                        break;
+                    case 3:
+                        message.principal = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
+                        break;
+                    case 4:
+                        message.collateral_type = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgCreateCdp message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgCreateCdp
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgCreateCdp} MsgCreateCdp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgCreateCdp.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgCreateCdp message.
+             * @function verify
+             * @memberof botany.cdp.MsgCreateCdp
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgCreateCdp.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.sender != null && message.hasOwnProperty("sender"))
+                    if (!$util.isString(message.sender))
+                        return "sender: string expected";
+                if (message.collateral != null && message.hasOwnProperty("collateral")) {
+                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.collateral);
+                    if (error)
+                        return "collateral." + error;
+                }
+                if (message.principal != null && message.hasOwnProperty("principal")) {
+                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.principal);
+                    if (error)
+                        return "principal." + error;
+                }
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    if (!$util.isString(message.collateral_type))
+                        return "collateral_type: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgCreateCdp message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgCreateCdp
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgCreateCdp} MsgCreateCdp
+             */
+            MsgCreateCdp.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgCreateCdp)
+                    return object;
+                let message = new $root.botany.cdp.MsgCreateCdp();
+                if (object.sender != null)
+                    message.sender = String(object.sender);
+                if (object.collateral != null) {
+                    if (typeof object.collateral !== "object")
+                        throw TypeError(".botany.cdp.MsgCreateCdp.collateral: object expected");
+                    message.collateral = $root.cosmos.base.v1beta1.Coin.fromObject(object.collateral);
+                }
+                if (object.principal != null) {
+                    if (typeof object.principal !== "object")
+                        throw TypeError(".botany.cdp.MsgCreateCdp.principal: object expected");
+                    message.principal = $root.cosmos.base.v1beta1.Coin.fromObject(object.principal);
+                }
+                if (object.collateral_type != null)
+                    message.collateral_type = String(object.collateral_type);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MsgCreateCdp message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgCreateCdp
+             * @static
+             * @param {botany.cdp.MsgCreateCdp} message MsgCreateCdp
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgCreateCdp.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.sender = "";
+                    object.collateral = null;
+                    object.principal = null;
+                    object.collateral_type = "";
+                }
+                if (message.sender != null && message.hasOwnProperty("sender"))
+                    object.sender = message.sender;
+                if (message.collateral != null && message.hasOwnProperty("collateral"))
+                    object.collateral = $root.cosmos.base.v1beta1.Coin.toObject(message.collateral, options);
+                if (message.principal != null && message.hasOwnProperty("principal"))
+                    object.principal = $root.cosmos.base.v1beta1.Coin.toObject(message.principal, options);
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    object.collateral_type = message.collateral_type;
+                return object;
+            };
+
+            /**
+             * Converts this MsgCreateCdp to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgCreateCdp
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgCreateCdp.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgCreateCdp;
+        })();
+
+        cdp.MsgCreateCdpResponse = (function() {
+
+            /**
+             * Properties of a MsgCreateCdpResponse.
+             * @memberof botany.cdp
+             * @interface IMsgCreateCdpResponse
+             */
+
+            /**
+             * Constructs a new MsgCreateCdpResponse.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgCreateCdpResponse.
+             * @implements IMsgCreateCdpResponse
+             * @constructor
+             * @param {botany.cdp.IMsgCreateCdpResponse=} [properties] Properties to set
+             */
+            function MsgCreateCdpResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified MsgCreateCdpResponse message. Does not implicitly {@link botany.cdp.MsgCreateCdpResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgCreateCdpResponse
+             * @static
+             * @param {botany.cdp.IMsgCreateCdpResponse} message MsgCreateCdpResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgCreateCdpResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgCreateCdpResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgCreateCdpResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgCreateCdpResponse
+             * @static
+             * @param {botany.cdp.IMsgCreateCdpResponse} message MsgCreateCdpResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgCreateCdpResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgCreateCdpResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgCreateCdpResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgCreateCdpResponse} MsgCreateCdpResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgCreateCdpResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgCreateCdpResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgCreateCdpResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgCreateCdpResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgCreateCdpResponse} MsgCreateCdpResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgCreateCdpResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgCreateCdpResponse message.
+             * @function verify
+             * @memberof botany.cdp.MsgCreateCdpResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgCreateCdpResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgCreateCdpResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgCreateCdpResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgCreateCdpResponse} MsgCreateCdpResponse
+             */
+            MsgCreateCdpResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgCreateCdpResponse)
+                    return object;
+                return new $root.botany.cdp.MsgCreateCdpResponse();
+            };
+
+            /**
+             * Creates a plain object from a MsgCreateCdpResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgCreateCdpResponse
+             * @static
+             * @param {botany.cdp.MsgCreateCdpResponse} message MsgCreateCdpResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgCreateCdpResponse.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MsgCreateCdpResponse to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgCreateCdpResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgCreateCdpResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgCreateCdpResponse;
+        })();
+
+        cdp.MsgDeposit = (function() {
+
+            /**
+             * Properties of a MsgDeposit.
+             * @memberof botany.cdp
+             * @interface IMsgDeposit
+             * @property {string|null} [depositor] MsgDeposit depositor
+             * @property {string|null} [owner] MsgDeposit owner
+             * @property {cosmos.base.v1beta1.ICoin|null} [collateral] MsgDeposit collateral
+             * @property {string|null} [collateral_type] MsgDeposit collateral_type
+             */
+
+            /**
+             * Constructs a new MsgDeposit.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgDeposit.
+             * @implements IMsgDeposit
+             * @constructor
+             * @param {botany.cdp.IMsgDeposit=} [properties] Properties to set
+             */
+            function MsgDeposit(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MsgDeposit depositor.
+             * @member {string} depositor
+             * @memberof botany.cdp.MsgDeposit
+             * @instance
+             */
+            MsgDeposit.prototype.depositor = "";
+
+            /**
+             * MsgDeposit owner.
+             * @member {string} owner
+             * @memberof botany.cdp.MsgDeposit
+             * @instance
+             */
+            MsgDeposit.prototype.owner = "";
+
+            /**
+             * MsgDeposit collateral.
+             * @member {cosmos.base.v1beta1.ICoin|null|undefined} collateral
+             * @memberof botany.cdp.MsgDeposit
+             * @instance
+             */
+            MsgDeposit.prototype.collateral = null;
+
+            /**
+             * MsgDeposit collateral_type.
+             * @member {string} collateral_type
+             * @memberof botany.cdp.MsgDeposit
+             * @instance
+             */
+            MsgDeposit.prototype.collateral_type = "";
+
+            /**
+             * Encodes the specified MsgDeposit message. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgDeposit
+             * @static
+             * @param {botany.cdp.IMsgDeposit} message MsgDeposit message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgDeposit.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.depositor != null && Object.hasOwnProperty.call(message, "depositor"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.depositor);
+                if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.owner);
+                if (message.collateral != null && Object.hasOwnProperty.call(message, "collateral"))
+                    $root.cosmos.base.v1beta1.Coin.encode(message.collateral, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.collateral_type);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgDeposit message, length delimited. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgDeposit
+             * @static
+             * @param {botany.cdp.IMsgDeposit} message MsgDeposit message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgDeposit.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgDeposit message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgDeposit
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgDeposit} MsgDeposit
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgDeposit.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgDeposit();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.depositor = reader.string();
+                        break;
+                    case 2:
+                        message.owner = reader.string();
+                        break;
+                    case 3:
+                        message.collateral = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
+                        break;
+                    case 4:
+                        message.collateral_type = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgDeposit message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgDeposit
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgDeposit} MsgDeposit
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgDeposit.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgDeposit message.
+             * @function verify
+             * @memberof botany.cdp.MsgDeposit
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgDeposit.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.depositor != null && message.hasOwnProperty("depositor"))
+                    if (!$util.isString(message.depositor))
+                        return "depositor: string expected";
+                if (message.owner != null && message.hasOwnProperty("owner"))
+                    if (!$util.isString(message.owner))
+                        return "owner: string expected";
+                if (message.collateral != null && message.hasOwnProperty("collateral")) {
+                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.collateral);
+                    if (error)
+                        return "collateral." + error;
+                }
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    if (!$util.isString(message.collateral_type))
+                        return "collateral_type: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgDeposit message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgDeposit
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgDeposit} MsgDeposit
+             */
+            MsgDeposit.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgDeposit)
+                    return object;
+                let message = new $root.botany.cdp.MsgDeposit();
+                if (object.depositor != null)
+                    message.depositor = String(object.depositor);
+                if (object.owner != null)
+                    message.owner = String(object.owner);
+                if (object.collateral != null) {
+                    if (typeof object.collateral !== "object")
+                        throw TypeError(".botany.cdp.MsgDeposit.collateral: object expected");
+                    message.collateral = $root.cosmos.base.v1beta1.Coin.fromObject(object.collateral);
+                }
+                if (object.collateral_type != null)
+                    message.collateral_type = String(object.collateral_type);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MsgDeposit message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgDeposit
+             * @static
+             * @param {botany.cdp.MsgDeposit} message MsgDeposit
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgDeposit.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.depositor = "";
+                    object.owner = "";
+                    object.collateral = null;
+                    object.collateral_type = "";
+                }
+                if (message.depositor != null && message.hasOwnProperty("depositor"))
+                    object.depositor = message.depositor;
+                if (message.owner != null && message.hasOwnProperty("owner"))
+                    object.owner = message.owner;
+                if (message.collateral != null && message.hasOwnProperty("collateral"))
+                    object.collateral = $root.cosmos.base.v1beta1.Coin.toObject(message.collateral, options);
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    object.collateral_type = message.collateral_type;
+                return object;
+            };
+
+            /**
+             * Converts this MsgDeposit to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgDeposit
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgDeposit.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgDeposit;
+        })();
+
+        cdp.MsgDepositResponse = (function() {
+
+            /**
+             * Properties of a MsgDepositResponse.
+             * @memberof botany.cdp
+             * @interface IMsgDepositResponse
+             */
+
+            /**
+             * Constructs a new MsgDepositResponse.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgDepositResponse.
+             * @implements IMsgDepositResponse
+             * @constructor
+             * @param {botany.cdp.IMsgDepositResponse=} [properties] Properties to set
+             */
+            function MsgDepositResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified MsgDepositResponse message. Does not implicitly {@link botany.cdp.MsgDepositResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgDepositResponse
+             * @static
+             * @param {botany.cdp.IMsgDepositResponse} message MsgDepositResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgDepositResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgDepositResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgDepositResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgDepositResponse
+             * @static
+             * @param {botany.cdp.IMsgDepositResponse} message MsgDepositResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgDepositResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgDepositResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgDepositResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgDepositResponse} MsgDepositResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgDepositResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgDepositResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgDepositResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgDepositResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgDepositResponse} MsgDepositResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgDepositResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgDepositResponse message.
+             * @function verify
+             * @memberof botany.cdp.MsgDepositResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgDepositResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgDepositResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgDepositResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgDepositResponse} MsgDepositResponse
+             */
+            MsgDepositResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgDepositResponse)
+                    return object;
+                return new $root.botany.cdp.MsgDepositResponse();
+            };
+
+            /**
+             * Creates a plain object from a MsgDepositResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgDepositResponse
+             * @static
+             * @param {botany.cdp.MsgDepositResponse} message MsgDepositResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgDepositResponse.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MsgDepositResponse to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgDepositResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgDepositResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgDepositResponse;
+        })();
+
+        cdp.MsgWithdraw = (function() {
+
+            /**
+             * Properties of a MsgWithdraw.
+             * @memberof botany.cdp
+             * @interface IMsgWithdraw
+             * @property {string|null} [depositor] MsgWithdraw depositor
+             * @property {string|null} [owner] MsgWithdraw owner
+             * @property {cosmos.base.v1beta1.ICoin|null} [collateral] MsgWithdraw collateral
+             * @property {string|null} [collateral_type] MsgWithdraw collateral_type
+             */
+
+            /**
+             * Constructs a new MsgWithdraw.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgWithdraw.
+             * @implements IMsgWithdraw
+             * @constructor
+             * @param {botany.cdp.IMsgWithdraw=} [properties] Properties to set
+             */
+            function MsgWithdraw(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MsgWithdraw depositor.
+             * @member {string} depositor
+             * @memberof botany.cdp.MsgWithdraw
+             * @instance
+             */
+            MsgWithdraw.prototype.depositor = "";
+
+            /**
+             * MsgWithdraw owner.
+             * @member {string} owner
+             * @memberof botany.cdp.MsgWithdraw
+             * @instance
+             */
+            MsgWithdraw.prototype.owner = "";
+
+            /**
+             * MsgWithdraw collateral.
+             * @member {cosmos.base.v1beta1.ICoin|null|undefined} collateral
+             * @memberof botany.cdp.MsgWithdraw
+             * @instance
+             */
+            MsgWithdraw.prototype.collateral = null;
+
+            /**
+             * MsgWithdraw collateral_type.
+             * @member {string} collateral_type
+             * @memberof botany.cdp.MsgWithdraw
+             * @instance
+             */
+            MsgWithdraw.prototype.collateral_type = "";
+
+            /**
+             * Encodes the specified MsgWithdraw message. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgWithdraw
+             * @static
+             * @param {botany.cdp.IMsgWithdraw} message MsgWithdraw message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgWithdraw.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.depositor != null && Object.hasOwnProperty.call(message, "depositor"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.depositor);
+                if (message.owner != null && Object.hasOwnProperty.call(message, "owner"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.owner);
+                if (message.collateral != null && Object.hasOwnProperty.call(message, "collateral"))
+                    $root.cosmos.base.v1beta1.Coin.encode(message.collateral, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.collateral_type);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgWithdraw message, length delimited. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgWithdraw
+             * @static
+             * @param {botany.cdp.IMsgWithdraw} message MsgWithdraw message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgWithdraw.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgWithdraw message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgWithdraw
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgWithdraw} MsgWithdraw
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgWithdraw.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgWithdraw();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.depositor = reader.string();
+                        break;
+                    case 2:
+                        message.owner = reader.string();
+                        break;
+                    case 3:
+                        message.collateral = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
+                        break;
+                    case 4:
+                        message.collateral_type = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgWithdraw message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgWithdraw
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgWithdraw} MsgWithdraw
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgWithdraw.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgWithdraw message.
+             * @function verify
+             * @memberof botany.cdp.MsgWithdraw
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgWithdraw.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.depositor != null && message.hasOwnProperty("depositor"))
+                    if (!$util.isString(message.depositor))
+                        return "depositor: string expected";
+                if (message.owner != null && message.hasOwnProperty("owner"))
+                    if (!$util.isString(message.owner))
+                        return "owner: string expected";
+                if (message.collateral != null && message.hasOwnProperty("collateral")) {
+                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.collateral);
+                    if (error)
+                        return "collateral." + error;
+                }
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    if (!$util.isString(message.collateral_type))
+                        return "collateral_type: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgWithdraw message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgWithdraw
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgWithdraw} MsgWithdraw
+             */
+            MsgWithdraw.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgWithdraw)
+                    return object;
+                let message = new $root.botany.cdp.MsgWithdraw();
+                if (object.depositor != null)
+                    message.depositor = String(object.depositor);
+                if (object.owner != null)
+                    message.owner = String(object.owner);
+                if (object.collateral != null) {
+                    if (typeof object.collateral !== "object")
+                        throw TypeError(".botany.cdp.MsgWithdraw.collateral: object expected");
+                    message.collateral = $root.cosmos.base.v1beta1.Coin.fromObject(object.collateral);
+                }
+                if (object.collateral_type != null)
+                    message.collateral_type = String(object.collateral_type);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MsgWithdraw message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgWithdraw
+             * @static
+             * @param {botany.cdp.MsgWithdraw} message MsgWithdraw
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgWithdraw.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.depositor = "";
+                    object.owner = "";
+                    object.collateral = null;
+                    object.collateral_type = "";
+                }
+                if (message.depositor != null && message.hasOwnProperty("depositor"))
+                    object.depositor = message.depositor;
+                if (message.owner != null && message.hasOwnProperty("owner"))
+                    object.owner = message.owner;
+                if (message.collateral != null && message.hasOwnProperty("collateral"))
+                    object.collateral = $root.cosmos.base.v1beta1.Coin.toObject(message.collateral, options);
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    object.collateral_type = message.collateral_type;
+                return object;
+            };
+
+            /**
+             * Converts this MsgWithdraw to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgWithdraw
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgWithdraw.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgWithdraw;
+        })();
+
+        cdp.MsgWithdrawResponse = (function() {
+
+            /**
+             * Properties of a MsgWithdrawResponse.
+             * @memberof botany.cdp
+             * @interface IMsgWithdrawResponse
+             */
+
+            /**
+             * Constructs a new MsgWithdrawResponse.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgWithdrawResponse.
+             * @implements IMsgWithdrawResponse
+             * @constructor
+             * @param {botany.cdp.IMsgWithdrawResponse=} [properties] Properties to set
+             */
+            function MsgWithdrawResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified MsgWithdrawResponse message. Does not implicitly {@link botany.cdp.MsgWithdrawResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgWithdrawResponse
+             * @static
+             * @param {botany.cdp.IMsgWithdrawResponse} message MsgWithdrawResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgWithdrawResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgWithdrawResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgWithdrawResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgWithdrawResponse
+             * @static
+             * @param {botany.cdp.IMsgWithdrawResponse} message MsgWithdrawResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgWithdrawResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgWithdrawResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgWithdrawResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgWithdrawResponse} MsgWithdrawResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgWithdrawResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgWithdrawResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgWithdrawResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgWithdrawResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgWithdrawResponse} MsgWithdrawResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgWithdrawResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgWithdrawResponse message.
+             * @function verify
+             * @memberof botany.cdp.MsgWithdrawResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgWithdrawResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgWithdrawResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgWithdrawResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgWithdrawResponse} MsgWithdrawResponse
+             */
+            MsgWithdrawResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgWithdrawResponse)
+                    return object;
+                return new $root.botany.cdp.MsgWithdrawResponse();
+            };
+
+            /**
+             * Creates a plain object from a MsgWithdrawResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgWithdrawResponse
+             * @static
+             * @param {botany.cdp.MsgWithdrawResponse} message MsgWithdrawResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgWithdrawResponse.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MsgWithdrawResponse to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgWithdrawResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgWithdrawResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgWithdrawResponse;
+        })();
+
+        cdp.MsgDrawDebt = (function() {
+
+            /**
+             * Properties of a MsgDrawDebt.
+             * @memberof botany.cdp
+             * @interface IMsgDrawDebt
+             * @property {string|null} [sender] MsgDrawDebt sender
+             * @property {string|null} [collateral_type] MsgDrawDebt collateral_type
+             * @property {cosmos.base.v1beta1.ICoin|null} [principal] MsgDrawDebt principal
+             */
+
+            /**
+             * Constructs a new MsgDrawDebt.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgDrawDebt.
+             * @implements IMsgDrawDebt
+             * @constructor
+             * @param {botany.cdp.IMsgDrawDebt=} [properties] Properties to set
+             */
+            function MsgDrawDebt(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MsgDrawDebt sender.
+             * @member {string} sender
+             * @memberof botany.cdp.MsgDrawDebt
+             * @instance
+             */
+            MsgDrawDebt.prototype.sender = "";
+
+            /**
+             * MsgDrawDebt collateral_type.
+             * @member {string} collateral_type
+             * @memberof botany.cdp.MsgDrawDebt
+             * @instance
+             */
+            MsgDrawDebt.prototype.collateral_type = "";
+
+            /**
+             * MsgDrawDebt principal.
+             * @member {cosmos.base.v1beta1.ICoin|null|undefined} principal
+             * @memberof botany.cdp.MsgDrawDebt
+             * @instance
+             */
+            MsgDrawDebt.prototype.principal = null;
+
+            /**
+             * Encodes the specified MsgDrawDebt message. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgDrawDebt
+             * @static
+             * @param {botany.cdp.IMsgDrawDebt} message MsgDrawDebt message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgDrawDebt.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.sender != null && Object.hasOwnProperty.call(message, "sender"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sender);
+                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.collateral_type);
+                if (message.principal != null && Object.hasOwnProperty.call(message, "principal"))
+                    $root.cosmos.base.v1beta1.Coin.encode(message.principal, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgDrawDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgDrawDebt
+             * @static
+             * @param {botany.cdp.IMsgDrawDebt} message MsgDrawDebt message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgDrawDebt.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgDrawDebt message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgDrawDebt
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgDrawDebt} MsgDrawDebt
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgDrawDebt.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgDrawDebt();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.sender = reader.string();
+                        break;
+                    case 2:
+                        message.collateral_type = reader.string();
+                        break;
+                    case 3:
+                        message.principal = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgDrawDebt message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgDrawDebt
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgDrawDebt} MsgDrawDebt
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgDrawDebt.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgDrawDebt message.
+             * @function verify
+             * @memberof botany.cdp.MsgDrawDebt
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgDrawDebt.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.sender != null && message.hasOwnProperty("sender"))
+                    if (!$util.isString(message.sender))
+                        return "sender: string expected";
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    if (!$util.isString(message.collateral_type))
+                        return "collateral_type: string expected";
+                if (message.principal != null && message.hasOwnProperty("principal")) {
+                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.principal);
+                    if (error)
+                        return "principal." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates a MsgDrawDebt message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgDrawDebt
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgDrawDebt} MsgDrawDebt
+             */
+            MsgDrawDebt.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgDrawDebt)
+                    return object;
+                let message = new $root.botany.cdp.MsgDrawDebt();
+                if (object.sender != null)
+                    message.sender = String(object.sender);
+                if (object.collateral_type != null)
+                    message.collateral_type = String(object.collateral_type);
+                if (object.principal != null) {
+                    if (typeof object.principal !== "object")
+                        throw TypeError(".botany.cdp.MsgDrawDebt.principal: object expected");
+                    message.principal = $root.cosmos.base.v1beta1.Coin.fromObject(object.principal);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MsgDrawDebt message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgDrawDebt
+             * @static
+             * @param {botany.cdp.MsgDrawDebt} message MsgDrawDebt
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgDrawDebt.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.sender = "";
+                    object.collateral_type = "";
+                    object.principal = null;
+                }
+                if (message.sender != null && message.hasOwnProperty("sender"))
+                    object.sender = message.sender;
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    object.collateral_type = message.collateral_type;
+                if (message.principal != null && message.hasOwnProperty("principal"))
+                    object.principal = $root.cosmos.base.v1beta1.Coin.toObject(message.principal, options);
+                return object;
+            };
+
+            /**
+             * Converts this MsgDrawDebt to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgDrawDebt
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgDrawDebt.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgDrawDebt;
+        })();
+
+        cdp.MsgDrawDebtResponse = (function() {
+
+            /**
+             * Properties of a MsgDrawDebtResponse.
+             * @memberof botany.cdp
+             * @interface IMsgDrawDebtResponse
+             */
+
+            /**
+             * Constructs a new MsgDrawDebtResponse.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgDrawDebtResponse.
+             * @implements IMsgDrawDebtResponse
+             * @constructor
+             * @param {botany.cdp.IMsgDrawDebtResponse=} [properties] Properties to set
+             */
+            function MsgDrawDebtResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified MsgDrawDebtResponse message. Does not implicitly {@link botany.cdp.MsgDrawDebtResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgDrawDebtResponse
+             * @static
+             * @param {botany.cdp.IMsgDrawDebtResponse} message MsgDrawDebtResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgDrawDebtResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgDrawDebtResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgDrawDebtResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgDrawDebtResponse
+             * @static
+             * @param {botany.cdp.IMsgDrawDebtResponse} message MsgDrawDebtResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgDrawDebtResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgDrawDebtResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgDrawDebtResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgDrawDebtResponse} MsgDrawDebtResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgDrawDebtResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgDrawDebtResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgDrawDebtResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgDrawDebtResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgDrawDebtResponse} MsgDrawDebtResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgDrawDebtResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgDrawDebtResponse message.
+             * @function verify
+             * @memberof botany.cdp.MsgDrawDebtResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgDrawDebtResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgDrawDebtResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgDrawDebtResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgDrawDebtResponse} MsgDrawDebtResponse
+             */
+            MsgDrawDebtResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgDrawDebtResponse)
+                    return object;
+                return new $root.botany.cdp.MsgDrawDebtResponse();
+            };
+
+            /**
+             * Creates a plain object from a MsgDrawDebtResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgDrawDebtResponse
+             * @static
+             * @param {botany.cdp.MsgDrawDebtResponse} message MsgDrawDebtResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgDrawDebtResponse.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MsgDrawDebtResponse to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgDrawDebtResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgDrawDebtResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgDrawDebtResponse;
+        })();
+
+        cdp.MsgRepayDebt = (function() {
+
+            /**
+             * Properties of a MsgRepayDebt.
+             * @memberof botany.cdp
+             * @interface IMsgRepayDebt
+             * @property {string|null} [sender] MsgRepayDebt sender
+             * @property {string|null} [collateral_type] MsgRepayDebt collateral_type
+             * @property {cosmos.base.v1beta1.ICoin|null} [payment] MsgRepayDebt payment
+             */
+
+            /**
+             * Constructs a new MsgRepayDebt.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgRepayDebt.
+             * @implements IMsgRepayDebt
+             * @constructor
+             * @param {botany.cdp.IMsgRepayDebt=} [properties] Properties to set
+             */
+            function MsgRepayDebt(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MsgRepayDebt sender.
+             * @member {string} sender
+             * @memberof botany.cdp.MsgRepayDebt
+             * @instance
+             */
+            MsgRepayDebt.prototype.sender = "";
+
+            /**
+             * MsgRepayDebt collateral_type.
+             * @member {string} collateral_type
+             * @memberof botany.cdp.MsgRepayDebt
+             * @instance
+             */
+            MsgRepayDebt.prototype.collateral_type = "";
+
+            /**
+             * MsgRepayDebt payment.
+             * @member {cosmos.base.v1beta1.ICoin|null|undefined} payment
+             * @memberof botany.cdp.MsgRepayDebt
+             * @instance
+             */
+            MsgRepayDebt.prototype.payment = null;
+
+            /**
+             * Encodes the specified MsgRepayDebt message. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgRepayDebt
+             * @static
+             * @param {botany.cdp.IMsgRepayDebt} message MsgRepayDebt message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgRepayDebt.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.sender != null && Object.hasOwnProperty.call(message, "sender"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sender);
+                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.collateral_type);
+                if (message.payment != null && Object.hasOwnProperty.call(message, "payment"))
+                    $root.cosmos.base.v1beta1.Coin.encode(message.payment, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgRepayDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgRepayDebt
+             * @static
+             * @param {botany.cdp.IMsgRepayDebt} message MsgRepayDebt message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgRepayDebt.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgRepayDebt message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgRepayDebt
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgRepayDebt} MsgRepayDebt
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgRepayDebt.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgRepayDebt();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.sender = reader.string();
+                        break;
+                    case 2:
+                        message.collateral_type = reader.string();
+                        break;
+                    case 3:
+                        message.payment = $root.cosmos.base.v1beta1.Coin.decode(reader, reader.uint32());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgRepayDebt message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgRepayDebt
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgRepayDebt} MsgRepayDebt
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgRepayDebt.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgRepayDebt message.
+             * @function verify
+             * @memberof botany.cdp.MsgRepayDebt
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgRepayDebt.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.sender != null && message.hasOwnProperty("sender"))
+                    if (!$util.isString(message.sender))
+                        return "sender: string expected";
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    if (!$util.isString(message.collateral_type))
+                        return "collateral_type: string expected";
+                if (message.payment != null && message.hasOwnProperty("payment")) {
+                    let error = $root.cosmos.base.v1beta1.Coin.verify(message.payment);
+                    if (error)
+                        return "payment." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates a MsgRepayDebt message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgRepayDebt
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgRepayDebt} MsgRepayDebt
+             */
+            MsgRepayDebt.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgRepayDebt)
+                    return object;
+                let message = new $root.botany.cdp.MsgRepayDebt();
+                if (object.sender != null)
+                    message.sender = String(object.sender);
+                if (object.collateral_type != null)
+                    message.collateral_type = String(object.collateral_type);
+                if (object.payment != null) {
+                    if (typeof object.payment !== "object")
+                        throw TypeError(".botany.cdp.MsgRepayDebt.payment: object expected");
+                    message.payment = $root.cosmos.base.v1beta1.Coin.fromObject(object.payment);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MsgRepayDebt message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgRepayDebt
+             * @static
+             * @param {botany.cdp.MsgRepayDebt} message MsgRepayDebt
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgRepayDebt.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.sender = "";
+                    object.collateral_type = "";
+                    object.payment = null;
+                }
+                if (message.sender != null && message.hasOwnProperty("sender"))
+                    object.sender = message.sender;
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    object.collateral_type = message.collateral_type;
+                if (message.payment != null && message.hasOwnProperty("payment"))
+                    object.payment = $root.cosmos.base.v1beta1.Coin.toObject(message.payment, options);
+                return object;
+            };
+
+            /**
+             * Converts this MsgRepayDebt to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgRepayDebt
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgRepayDebt.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgRepayDebt;
+        })();
+
+        cdp.MsgRepayDebtResponse = (function() {
+
+            /**
+             * Properties of a MsgRepayDebtResponse.
+             * @memberof botany.cdp
+             * @interface IMsgRepayDebtResponse
+             */
+
+            /**
+             * Constructs a new MsgRepayDebtResponse.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgRepayDebtResponse.
+             * @implements IMsgRepayDebtResponse
+             * @constructor
+             * @param {botany.cdp.IMsgRepayDebtResponse=} [properties] Properties to set
+             */
+            function MsgRepayDebtResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified MsgRepayDebtResponse message. Does not implicitly {@link botany.cdp.MsgRepayDebtResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgRepayDebtResponse
+             * @static
+             * @param {botany.cdp.IMsgRepayDebtResponse} message MsgRepayDebtResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgRepayDebtResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgRepayDebtResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgRepayDebtResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgRepayDebtResponse
+             * @static
+             * @param {botany.cdp.IMsgRepayDebtResponse} message MsgRepayDebtResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgRepayDebtResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgRepayDebtResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgRepayDebtResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgRepayDebtResponse} MsgRepayDebtResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgRepayDebtResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgRepayDebtResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgRepayDebtResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgRepayDebtResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgRepayDebtResponse} MsgRepayDebtResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgRepayDebtResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgRepayDebtResponse message.
+             * @function verify
+             * @memberof botany.cdp.MsgRepayDebtResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgRepayDebtResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgRepayDebtResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgRepayDebtResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgRepayDebtResponse} MsgRepayDebtResponse
+             */
+            MsgRepayDebtResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgRepayDebtResponse)
+                    return object;
+                return new $root.botany.cdp.MsgRepayDebtResponse();
+            };
+
+            /**
+             * Creates a plain object from a MsgRepayDebtResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgRepayDebtResponse
+             * @static
+             * @param {botany.cdp.MsgRepayDebtResponse} message MsgRepayDebtResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgRepayDebtResponse.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MsgRepayDebtResponse to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgRepayDebtResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgRepayDebtResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgRepayDebtResponse;
+        })();
+
+        cdp.MsgLiquidate = (function() {
+
+            /**
+             * Properties of a MsgLiquidate.
+             * @memberof botany.cdp
+             * @interface IMsgLiquidate
+             * @property {string|null} [keeper] MsgLiquidate keeper
+             * @property {string|null} [borrower] MsgLiquidate borrower
+             * @property {string|null} [collateral_type] MsgLiquidate collateral_type
+             */
+
+            /**
+             * Constructs a new MsgLiquidate.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgLiquidate.
+             * @implements IMsgLiquidate
+             * @constructor
+             * @param {botany.cdp.IMsgLiquidate=} [properties] Properties to set
+             */
+            function MsgLiquidate(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MsgLiquidate keeper.
+             * @member {string} keeper
+             * @memberof botany.cdp.MsgLiquidate
+             * @instance
+             */
+            MsgLiquidate.prototype.keeper = "";
+
+            /**
+             * MsgLiquidate borrower.
+             * @member {string} borrower
+             * @memberof botany.cdp.MsgLiquidate
+             * @instance
+             */
+            MsgLiquidate.prototype.borrower = "";
+
+            /**
+             * MsgLiquidate collateral_type.
+             * @member {string} collateral_type
+             * @memberof botany.cdp.MsgLiquidate
+             * @instance
+             */
+            MsgLiquidate.prototype.collateral_type = "";
+
+            /**
+             * Encodes the specified MsgLiquidate message. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgLiquidate
+             * @static
+             * @param {botany.cdp.IMsgLiquidate} message MsgLiquidate message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgLiquidate.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.keeper != null && Object.hasOwnProperty.call(message, "keeper"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.keeper);
+                if (message.borrower != null && Object.hasOwnProperty.call(message, "borrower"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.borrower);
+                if (message.collateral_type != null && Object.hasOwnProperty.call(message, "collateral_type"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.collateral_type);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgLiquidate message, length delimited. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgLiquidate
+             * @static
+             * @param {botany.cdp.IMsgLiquidate} message MsgLiquidate message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgLiquidate.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgLiquidate message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgLiquidate
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgLiquidate} MsgLiquidate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgLiquidate.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgLiquidate();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.keeper = reader.string();
+                        break;
+                    case 2:
+                        message.borrower = reader.string();
+                        break;
+                    case 3:
+                        message.collateral_type = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgLiquidate message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgLiquidate
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgLiquidate} MsgLiquidate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgLiquidate.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgLiquidate message.
+             * @function verify
+             * @memberof botany.cdp.MsgLiquidate
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgLiquidate.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.keeper != null && message.hasOwnProperty("keeper"))
+                    if (!$util.isString(message.keeper))
+                        return "keeper: string expected";
+                if (message.borrower != null && message.hasOwnProperty("borrower"))
+                    if (!$util.isString(message.borrower))
+                        return "borrower: string expected";
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    if (!$util.isString(message.collateral_type))
+                        return "collateral_type: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgLiquidate message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgLiquidate
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgLiquidate} MsgLiquidate
+             */
+            MsgLiquidate.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgLiquidate)
+                    return object;
+                let message = new $root.botany.cdp.MsgLiquidate();
+                if (object.keeper != null)
+                    message.keeper = String(object.keeper);
+                if (object.borrower != null)
+                    message.borrower = String(object.borrower);
+                if (object.collateral_type != null)
+                    message.collateral_type = String(object.collateral_type);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MsgLiquidate message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgLiquidate
+             * @static
+             * @param {botany.cdp.MsgLiquidate} message MsgLiquidate
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgLiquidate.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.keeper = "";
+                    object.borrower = "";
+                    object.collateral_type = "";
+                }
+                if (message.keeper != null && message.hasOwnProperty("keeper"))
+                    object.keeper = message.keeper;
+                if (message.borrower != null && message.hasOwnProperty("borrower"))
+                    object.borrower = message.borrower;
+                if (message.collateral_type != null && message.hasOwnProperty("collateral_type"))
+                    object.collateral_type = message.collateral_type;
+                return object;
+            };
+
+            /**
+             * Converts this MsgLiquidate to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgLiquidate
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgLiquidate.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgLiquidate;
+        })();
+
+        cdp.MsgLiquidateResponse = (function() {
+
+            /**
+             * Properties of a MsgLiquidateResponse.
+             * @memberof botany.cdp
+             * @interface IMsgLiquidateResponse
+             */
+
+            /**
+             * Constructs a new MsgLiquidateResponse.
+             * @memberof botany.cdp
+             * @classdesc Represents a MsgLiquidateResponse.
+             * @implements IMsgLiquidateResponse
+             * @constructor
+             * @param {botany.cdp.IMsgLiquidateResponse=} [properties] Properties to set
+             */
+            function MsgLiquidateResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified MsgLiquidateResponse message. Does not implicitly {@link botany.cdp.MsgLiquidateResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.cdp.MsgLiquidateResponse
+             * @static
+             * @param {botany.cdp.IMsgLiquidateResponse} message MsgLiquidateResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgLiquidateResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgLiquidateResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgLiquidateResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.cdp.MsgLiquidateResponse
+             * @static
+             * @param {botany.cdp.IMsgLiquidateResponse} message MsgLiquidateResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgLiquidateResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgLiquidateResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.cdp.MsgLiquidateResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.cdp.MsgLiquidateResponse} MsgLiquidateResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgLiquidateResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.cdp.MsgLiquidateResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgLiquidateResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.cdp.MsgLiquidateResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.cdp.MsgLiquidateResponse} MsgLiquidateResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgLiquidateResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgLiquidateResponse message.
+             * @function verify
+             * @memberof botany.cdp.MsgLiquidateResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgLiquidateResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgLiquidateResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.cdp.MsgLiquidateResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.cdp.MsgLiquidateResponse} MsgLiquidateResponse
+             */
+            MsgLiquidateResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.cdp.MsgLiquidateResponse)
+                    return object;
+                return new $root.botany.cdp.MsgLiquidateResponse();
+            };
+
+            /**
+             * Creates a plain object from a MsgLiquidateResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.cdp.MsgLiquidateResponse
+             * @static
+             * @param {botany.cdp.MsgLiquidateResponse} message MsgLiquidateResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgLiquidateResponse.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MsgLiquidateResponse to JSON.
+             * @function toJSON
+             * @memberof botany.cdp.MsgLiquidateResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgLiquidateResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgLiquidateResponse;
         })();
 
         cdp.GenesisState = (function() {
@@ -12139,204 +13448,6 @@ export const botany = $root.botany = (() => {
             return RewardIndex;
         })();
 
-        incentive.MsgClaimCdpMintingReward = (function() {
-
-            /**
-             * Properties of a MsgClaimCdpMintingReward.
-             * @memberof botany.incentive
-             * @interface IMsgClaimCdpMintingReward
-             * @property {string|null} [sender] MsgClaimCdpMintingReward sender
-             * @property {string|null} [multiplier_name] MsgClaimCdpMintingReward multiplier_name
-             */
-
-            /**
-             * Constructs a new MsgClaimCdpMintingReward.
-             * @memberof botany.incentive
-             * @classdesc Represents a MsgClaimCdpMintingReward.
-             * @implements IMsgClaimCdpMintingReward
-             * @constructor
-             * @param {botany.incentive.IMsgClaimCdpMintingReward=} [properties] Properties to set
-             */
-            function MsgClaimCdpMintingReward(properties) {
-                if (properties)
-                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * MsgClaimCdpMintingReward sender.
-             * @member {string} sender
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @instance
-             */
-            MsgClaimCdpMintingReward.prototype.sender = "";
-
-            /**
-             * MsgClaimCdpMintingReward multiplier_name.
-             * @member {string} multiplier_name
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @instance
-             */
-            MsgClaimCdpMintingReward.prototype.multiplier_name = "";
-
-            /**
-             * Encodes the specified MsgClaimCdpMintingReward message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
-             * @function encode
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @static
-             * @param {botany.incentive.IMsgClaimCdpMintingReward} message MsgClaimCdpMintingReward message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgClaimCdpMintingReward.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.sender != null && Object.hasOwnProperty.call(message, "sender"))
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sender);
-                if (message.multiplier_name != null && Object.hasOwnProperty.call(message, "multiplier_name"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.multiplier_name);
-                return writer;
-            };
-
-            /**
-             * Encodes the specified MsgClaimCdpMintingReward message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @static
-             * @param {botany.incentive.IMsgClaimCdpMintingReward} message MsgClaimCdpMintingReward message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            MsgClaimCdpMintingReward.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer.
-             * @function decode
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {botany.incentive.MsgClaimCdpMintingReward} MsgClaimCdpMintingReward
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgClaimCdpMintingReward.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.incentive.MsgClaimCdpMintingReward();
-                while (reader.pos < end) {
-                    let tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.sender = reader.string();
-                        break;
-                    case 2:
-                        message.multiplier_name = reader.string();
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.incentive.MsgClaimCdpMintingReward} MsgClaimCdpMintingReward
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            MsgClaimCdpMintingReward.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a MsgClaimCdpMintingReward message.
-             * @function verify
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            MsgClaimCdpMintingReward.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.sender != null && message.hasOwnProperty("sender"))
-                    if (!$util.isString(message.sender))
-                        return "sender: string expected";
-                if (message.multiplier_name != null && message.hasOwnProperty("multiplier_name"))
-                    if (!$util.isString(message.multiplier_name))
-                        return "multiplier_name: string expected";
-                return null;
-            };
-
-            /**
-             * Creates a MsgClaimCdpMintingReward message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {botany.incentive.MsgClaimCdpMintingReward} MsgClaimCdpMintingReward
-             */
-            MsgClaimCdpMintingReward.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.incentive.MsgClaimCdpMintingReward)
-                    return object;
-                let message = new $root.botany.incentive.MsgClaimCdpMintingReward();
-                if (object.sender != null)
-                    message.sender = String(object.sender);
-                if (object.multiplier_name != null)
-                    message.multiplier_name = String(object.multiplier_name);
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a MsgClaimCdpMintingReward message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @static
-             * @param {botany.incentive.MsgClaimCdpMintingReward} message MsgClaimCdpMintingReward
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            MsgClaimCdpMintingReward.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.defaults) {
-                    object.sender = "";
-                    object.multiplier_name = "";
-                }
-                if (message.sender != null && message.hasOwnProperty("sender"))
-                    object.sender = message.sender;
-                if (message.multiplier_name != null && message.hasOwnProperty("multiplier_name"))
-                    object.multiplier_name = message.multiplier_name;
-                return object;
-            };
-
-            /**
-             * Converts this MsgClaimCdpMintingReward to JSON.
-             * @function toJSON
-             * @memberof botany.incentive.MsgClaimCdpMintingReward
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            MsgClaimCdpMintingReward.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            return MsgClaimCdpMintingReward;
-        })();
-
         incentive.Params = (function() {
 
             /**
@@ -13116,6 +14227,406 @@ export const botany = $root.botany = (() => {
             };
 
             return Multiplier;
+        })();
+
+        incentive.Msg = (function() {
+
+            /**
+             * Constructs a new Msg service.
+             * @memberof botany.incentive
+             * @classdesc Represents a Msg
+             * @extends $protobuf.rpc.Service
+             * @constructor
+             * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+             * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+             * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+             */
+            function Msg(rpcImpl, requestDelimited, responseDelimited) {
+                $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+            }
+
+            (Msg.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Msg;
+
+            /**
+             * Callback as used by {@link botany.incentive.Msg#claimCdpMintingReward}.
+             * @memberof botany.incentive.Msg
+             * @typedef ClaimCdpMintingRewardCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.incentive.MsgClaimCdpMintingRewardResponse} [response] MsgClaimCdpMintingRewardResponse
+             */
+
+            /**
+             * Calls ClaimCdpMintingReward.
+             * @function claimCdpMintingReward
+             * @memberof botany.incentive.Msg
+             * @instance
+             * @param {botany.incentive.IMsgClaimCdpMintingReward} request MsgClaimCdpMintingReward message or plain object
+             * @param {botany.incentive.Msg.ClaimCdpMintingRewardCallback} callback Node-style callback called with the error, if any, and MsgClaimCdpMintingRewardResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.claimCdpMintingReward = function claimCdpMintingReward(request, callback) {
+                return this.rpcCall(claimCdpMintingReward, $root.botany.incentive.MsgClaimCdpMintingReward, $root.botany.incentive.MsgClaimCdpMintingRewardResponse, request, callback);
+            }, "name", { value: "ClaimCdpMintingReward" });
+
+            /**
+             * Calls ClaimCdpMintingReward.
+             * @function claimCdpMintingReward
+             * @memberof botany.incentive.Msg
+             * @instance
+             * @param {botany.incentive.IMsgClaimCdpMintingReward} request MsgClaimCdpMintingReward message or plain object
+             * @returns {Promise<botany.incentive.MsgClaimCdpMintingRewardResponse>} Promise
+             * @variation 2
+             */
+
+            return Msg;
+        })();
+
+        incentive.MsgClaimCdpMintingReward = (function() {
+
+            /**
+             * Properties of a MsgClaimCdpMintingReward.
+             * @memberof botany.incentive
+             * @interface IMsgClaimCdpMintingReward
+             * @property {string|null} [sender] MsgClaimCdpMintingReward sender
+             * @property {string|null} [multiplier_name] MsgClaimCdpMintingReward multiplier_name
+             */
+
+            /**
+             * Constructs a new MsgClaimCdpMintingReward.
+             * @memberof botany.incentive
+             * @classdesc Represents a MsgClaimCdpMintingReward.
+             * @implements IMsgClaimCdpMintingReward
+             * @constructor
+             * @param {botany.incentive.IMsgClaimCdpMintingReward=} [properties] Properties to set
+             */
+            function MsgClaimCdpMintingReward(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MsgClaimCdpMintingReward sender.
+             * @member {string} sender
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @instance
+             */
+            MsgClaimCdpMintingReward.prototype.sender = "";
+
+            /**
+             * MsgClaimCdpMintingReward multiplier_name.
+             * @member {string} multiplier_name
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @instance
+             */
+            MsgClaimCdpMintingReward.prototype.multiplier_name = "";
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingReward message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
+             * @function encode
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @static
+             * @param {botany.incentive.IMsgClaimCdpMintingReward} message MsgClaimCdpMintingReward message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgClaimCdpMintingReward.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.sender != null && Object.hasOwnProperty.call(message, "sender"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.sender);
+                if (message.multiplier_name != null && Object.hasOwnProperty.call(message, "multiplier_name"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.multiplier_name);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingReward message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @static
+             * @param {botany.incentive.IMsgClaimCdpMintingReward} message MsgClaimCdpMintingReward message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgClaimCdpMintingReward.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.incentive.MsgClaimCdpMintingReward} MsgClaimCdpMintingReward
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgClaimCdpMintingReward.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.incentive.MsgClaimCdpMintingReward();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.sender = reader.string();
+                        break;
+                    case 2:
+                        message.multiplier_name = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.incentive.MsgClaimCdpMintingReward} MsgClaimCdpMintingReward
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgClaimCdpMintingReward.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgClaimCdpMintingReward message.
+             * @function verify
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgClaimCdpMintingReward.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.sender != null && message.hasOwnProperty("sender"))
+                    if (!$util.isString(message.sender))
+                        return "sender: string expected";
+                if (message.multiplier_name != null && message.hasOwnProperty("multiplier_name"))
+                    if (!$util.isString(message.multiplier_name))
+                        return "multiplier_name: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgClaimCdpMintingReward message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.incentive.MsgClaimCdpMintingReward} MsgClaimCdpMintingReward
+             */
+            MsgClaimCdpMintingReward.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.incentive.MsgClaimCdpMintingReward)
+                    return object;
+                let message = new $root.botany.incentive.MsgClaimCdpMintingReward();
+                if (object.sender != null)
+                    message.sender = String(object.sender);
+                if (object.multiplier_name != null)
+                    message.multiplier_name = String(object.multiplier_name);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MsgClaimCdpMintingReward message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @static
+             * @param {botany.incentive.MsgClaimCdpMintingReward} message MsgClaimCdpMintingReward
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgClaimCdpMintingReward.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.sender = "";
+                    object.multiplier_name = "";
+                }
+                if (message.sender != null && message.hasOwnProperty("sender"))
+                    object.sender = message.sender;
+                if (message.multiplier_name != null && message.hasOwnProperty("multiplier_name"))
+                    object.multiplier_name = message.multiplier_name;
+                return object;
+            };
+
+            /**
+             * Converts this MsgClaimCdpMintingReward to JSON.
+             * @function toJSON
+             * @memberof botany.incentive.MsgClaimCdpMintingReward
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgClaimCdpMintingReward.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgClaimCdpMintingReward;
+        })();
+
+        incentive.MsgClaimCdpMintingRewardResponse = (function() {
+
+            /**
+             * Properties of a MsgClaimCdpMintingRewardResponse.
+             * @memberof botany.incentive
+             * @interface IMsgClaimCdpMintingRewardResponse
+             */
+
+            /**
+             * Constructs a new MsgClaimCdpMintingRewardResponse.
+             * @memberof botany.incentive
+             * @classdesc Represents a MsgClaimCdpMintingRewardResponse.
+             * @implements IMsgClaimCdpMintingRewardResponse
+             * @constructor
+             * @param {botany.incentive.IMsgClaimCdpMintingRewardResponse=} [properties] Properties to set
+             */
+            function MsgClaimCdpMintingRewardResponse(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingRewardResponse message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingRewardResponse.verify|verify} messages.
+             * @function encode
+             * @memberof botany.incentive.MsgClaimCdpMintingRewardResponse
+             * @static
+             * @param {botany.incentive.IMsgClaimCdpMintingRewardResponse} message MsgClaimCdpMintingRewardResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgClaimCdpMintingRewardResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MsgClaimCdpMintingRewardResponse message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingRewardResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.incentive.MsgClaimCdpMintingRewardResponse
+             * @static
+             * @param {botany.incentive.IMsgClaimCdpMintingRewardResponse} message MsgClaimCdpMintingRewardResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MsgClaimCdpMintingRewardResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MsgClaimCdpMintingRewardResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.incentive.MsgClaimCdpMintingRewardResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.incentive.MsgClaimCdpMintingRewardResponse} MsgClaimCdpMintingRewardResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgClaimCdpMintingRewardResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.incentive.MsgClaimCdpMintingRewardResponse();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MsgClaimCdpMintingRewardResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.incentive.MsgClaimCdpMintingRewardResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.incentive.MsgClaimCdpMintingRewardResponse} MsgClaimCdpMintingRewardResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MsgClaimCdpMintingRewardResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MsgClaimCdpMintingRewardResponse message.
+             * @function verify
+             * @memberof botany.incentive.MsgClaimCdpMintingRewardResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MsgClaimCdpMintingRewardResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                return null;
+            };
+
+            /**
+             * Creates a MsgClaimCdpMintingRewardResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.incentive.MsgClaimCdpMintingRewardResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.incentive.MsgClaimCdpMintingRewardResponse} MsgClaimCdpMintingRewardResponse
+             */
+            MsgClaimCdpMintingRewardResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.incentive.MsgClaimCdpMintingRewardResponse)
+                    return object;
+                return new $root.botany.incentive.MsgClaimCdpMintingRewardResponse();
+            };
+
+            /**
+             * Creates a plain object from a MsgClaimCdpMintingRewardResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.incentive.MsgClaimCdpMintingRewardResponse
+             * @static
+             * @param {botany.incentive.MsgClaimCdpMintingRewardResponse} message MsgClaimCdpMintingRewardResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MsgClaimCdpMintingRewardResponse.toObject = function toObject() {
+                return {};
+            };
+
+            /**
+             * Converts this MsgClaimCdpMintingRewardResponse to JSON.
+             * @function toJSON
+             * @memberof botany.incentive.MsgClaimCdpMintingRewardResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MsgClaimCdpMintingRewardResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return MsgClaimCdpMintingRewardResponse;
         })();
 
         incentive.GenesisState = (function() {
@@ -17112,6 +18623,256 @@ export const botany = $root.botany = (() => {
             return PostedPrice;
         })();
 
+        pricefeed.Params = (function() {
+
+            /**
+             * Properties of a Params.
+             * @memberof botany.pricefeed
+             * @interface IParams
+             * @property {Array.<botany.pricefeed.IMarket>|null} [markets] Params markets
+             */
+
+            /**
+             * Constructs a new Params.
+             * @memberof botany.pricefeed
+             * @classdesc Represents a Params.
+             * @implements IParams
+             * @constructor
+             * @param {botany.pricefeed.IParams=} [properties] Properties to set
+             */
+            function Params(properties) {
+                this.markets = [];
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Params markets.
+             * @member {Array.<botany.pricefeed.IMarket>} markets
+             * @memberof botany.pricefeed.Params
+             * @instance
+             */
+            Params.prototype.markets = $util.emptyArray;
+
+            /**
+             * Encodes the specified Params message. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
+             * @function encode
+             * @memberof botany.pricefeed.Params
+             * @static
+             * @param {botany.pricefeed.IParams} message Params message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Params.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.markets != null && message.markets.length)
+                    for (let i = 0; i < message.markets.length; ++i)
+                        $root.botany.pricefeed.Market.encode(message.markets[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof botany.pricefeed.Params
+             * @static
+             * @param {botany.pricefeed.IParams} message Params message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Params.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a Params message from the specified reader or buffer.
+             * @function decode
+             * @memberof botany.pricefeed.Params
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {botany.pricefeed.Params} Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Params.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.pricefeed.Params();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        if (!(message.markets && message.markets.length))
+                            message.markets = [];
+                        message.markets.push($root.botany.pricefeed.Market.decode(reader, reader.uint32()));
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a Params message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof botany.pricefeed.Params
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {botany.pricefeed.Params} Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Params.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a Params message.
+             * @function verify
+             * @memberof botany.pricefeed.Params
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Params.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.markets != null && message.hasOwnProperty("markets")) {
+                    if (!Array.isArray(message.markets))
+                        return "markets: array expected";
+                    for (let i = 0; i < message.markets.length; ++i) {
+                        let error = $root.botany.pricefeed.Market.verify(message.markets[i]);
+                        if (error)
+                            return "markets." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a Params message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof botany.pricefeed.Params
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {botany.pricefeed.Params} Params
+             */
+            Params.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.pricefeed.Params)
+                    return object;
+                let message = new $root.botany.pricefeed.Params();
+                if (object.markets) {
+                    if (!Array.isArray(object.markets))
+                        throw TypeError(".botany.pricefeed.Params.markets: array expected");
+                    message.markets = [];
+                    for (let i = 0; i < object.markets.length; ++i) {
+                        if (typeof object.markets[i] !== "object")
+                            throw TypeError(".botany.pricefeed.Params.markets: object expected");
+                        message.markets[i] = $root.botany.pricefeed.Market.fromObject(object.markets[i]);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a Params message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof botany.pricefeed.Params
+             * @static
+             * @param {botany.pricefeed.Params} message Params
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Params.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.arrays || options.defaults)
+                    object.markets = [];
+                if (message.markets && message.markets.length) {
+                    object.markets = [];
+                    for (let j = 0; j < message.markets.length; ++j)
+                        object.markets[j] = $root.botany.pricefeed.Market.toObject(message.markets[j], options);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this Params to JSON.
+             * @function toJSON
+             * @memberof botany.pricefeed.Params
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Params.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return Params;
+        })();
+
+        pricefeed.Msg = (function() {
+
+            /**
+             * Constructs a new Msg service.
+             * @memberof botany.pricefeed
+             * @classdesc Represents a Msg
+             * @extends $protobuf.rpc.Service
+             * @constructor
+             * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+             * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+             * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+             */
+            function Msg(rpcImpl, requestDelimited, responseDelimited) {
+                $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+            }
+
+            (Msg.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Msg;
+
+            /**
+             * Callback as used by {@link botany.pricefeed.Msg#postPrice}.
+             * @memberof botany.pricefeed.Msg
+             * @typedef PostPriceCallback
+             * @type {function}
+             * @param {Error|null} error Error, if any
+             * @param {botany.pricefeed.MsgPostPriceResponse} [response] MsgPostPriceResponse
+             */
+
+            /**
+             * Calls PostPrice.
+             * @function postPrice
+             * @memberof botany.pricefeed.Msg
+             * @instance
+             * @param {botany.pricefeed.IMsgPostPrice} request MsgPostPrice message or plain object
+             * @param {botany.pricefeed.Msg.PostPriceCallback} callback Node-style callback called with the error, if any, and MsgPostPriceResponse
+             * @returns {undefined}
+             * @variation 1
+             */
+            Object.defineProperty(Msg.prototype.postPrice = function postPrice(request, callback) {
+                return this.rpcCall(postPrice, $root.botany.pricefeed.MsgPostPrice, $root.botany.pricefeed.MsgPostPriceResponse, request, callback);
+            }, "name", { value: "PostPrice" });
+
+            /**
+             * Calls PostPrice.
+             * @function postPrice
+             * @memberof botany.pricefeed.Msg
+             * @instance
+             * @param {botany.pricefeed.IMsgPostPrice} request MsgPostPrice message or plain object
+             * @returns {Promise<botany.pricefeed.MsgPostPriceResponse>} Promise
+             * @variation 2
+             */
+
+            return Msg;
+        })();
+
         pricefeed.MsgPostPrice = (function() {
 
             /**
@@ -17359,25 +19120,23 @@ export const botany = $root.botany = (() => {
             return MsgPostPrice;
         })();
 
-        pricefeed.Params = (function() {
+        pricefeed.MsgPostPriceResponse = (function() {
 
             /**
-             * Properties of a Params.
+             * Properties of a MsgPostPriceResponse.
              * @memberof botany.pricefeed
-             * @interface IParams
-             * @property {Array.<botany.pricefeed.IMarket>|null} [markets] Params markets
+             * @interface IMsgPostPriceResponse
              */
 
             /**
-             * Constructs a new Params.
+             * Constructs a new MsgPostPriceResponse.
              * @memberof botany.pricefeed
-             * @classdesc Represents a Params.
-             * @implements IParams
+             * @classdesc Represents a MsgPostPriceResponse.
+             * @implements IMsgPostPriceResponse
              * @constructor
-             * @param {botany.pricefeed.IParams=} [properties] Properties to set
+             * @param {botany.pricefeed.IMsgPostPriceResponse=} [properties] Properties to set
              */
-            function Params(properties) {
-                this.markets = [];
+            function MsgPostPriceResponse(properties) {
                 if (properties)
                     for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -17385,67 +19144,51 @@ export const botany = $root.botany = (() => {
             }
 
             /**
-             * Params markets.
-             * @member {Array.<botany.pricefeed.IMarket>} markets
-             * @memberof botany.pricefeed.Params
-             * @instance
-             */
-            Params.prototype.markets = $util.emptyArray;
-
-            /**
-             * Encodes the specified Params message. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
+             * Encodes the specified MsgPostPriceResponse message. Does not implicitly {@link botany.pricefeed.MsgPostPriceResponse.verify|verify} messages.
              * @function encode
-             * @memberof botany.pricefeed.Params
+             * @memberof botany.pricefeed.MsgPostPriceResponse
              * @static
-             * @param {botany.pricefeed.IParams} message Params message or plain object to encode
+             * @param {botany.pricefeed.IMsgPostPriceResponse} message MsgPostPriceResponse message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
-            Params.encode = function encode(message, writer) {
+            MsgPostPriceResponse.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.markets != null && message.markets.length)
-                    for (let i = 0; i < message.markets.length; ++i)
-                        $root.botany.pricefeed.Market.encode(message.markets[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 return writer;
             };
 
             /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
+             * Encodes the specified MsgPostPriceResponse message, length delimited. Does not implicitly {@link botany.pricefeed.MsgPostPriceResponse.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof botany.pricefeed.Params
+             * @memberof botany.pricefeed.MsgPostPriceResponse
              * @static
-             * @param {botany.pricefeed.IParams} message Params message or plain object to encode
+             * @param {botany.pricefeed.IMsgPostPriceResponse} message MsgPostPriceResponse message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
-            Params.encodeDelimited = function encodeDelimited(message, writer) {
+            MsgPostPriceResponse.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
 
             /**
-             * Decodes a Params message from the specified reader or buffer.
+             * Decodes a MsgPostPriceResponse message from the specified reader or buffer.
              * @function decode
-             * @memberof botany.pricefeed.Params
+             * @memberof botany.pricefeed.MsgPostPriceResponse
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {botany.pricefeed.Params} Params
+             * @returns {botany.pricefeed.MsgPostPriceResponse} MsgPostPriceResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Params.decode = function decode(reader, length) {
+            MsgPostPriceResponse.decode = function decode(reader, length) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.pricefeed.Params();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.botany.pricefeed.MsgPostPriceResponse();
                 while (reader.pos < end) {
                     let tag = reader.uint32();
                     switch (tag >>> 3) {
-                    case 1:
-                        if (!(message.markets && message.markets.length))
-                            message.markets = [];
-                        message.markets.push($root.botany.pricefeed.Market.decode(reader, reader.uint32()));
-                        break;
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -17455,104 +19198,74 @@ export const botany = $root.botany = (() => {
             };
 
             /**
-             * Decodes a Params message from the specified reader or buffer, length delimited.
+             * Decodes a MsgPostPriceResponse message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof botany.pricefeed.Params
+             * @memberof botany.pricefeed.MsgPostPriceResponse
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {botany.pricefeed.Params} Params
+             * @returns {botany.pricefeed.MsgPostPriceResponse} MsgPostPriceResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            Params.decodeDelimited = function decodeDelimited(reader) {
+            MsgPostPriceResponse.decodeDelimited = function decodeDelimited(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
 
             /**
-             * Verifies a Params message.
+             * Verifies a MsgPostPriceResponse message.
              * @function verify
-             * @memberof botany.pricefeed.Params
+             * @memberof botany.pricefeed.MsgPostPriceResponse
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
              */
-            Params.verify = function verify(message) {
+            MsgPostPriceResponse.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.markets != null && message.hasOwnProperty("markets")) {
-                    if (!Array.isArray(message.markets))
-                        return "markets: array expected";
-                    for (let i = 0; i < message.markets.length; ++i) {
-                        let error = $root.botany.pricefeed.Market.verify(message.markets[i]);
-                        if (error)
-                            return "markets." + error;
-                    }
-                }
                 return null;
             };
 
             /**
-             * Creates a Params message from a plain object. Also converts values to their respective internal types.
+             * Creates a MsgPostPriceResponse message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof botany.pricefeed.Params
+             * @memberof botany.pricefeed.MsgPostPriceResponse
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {botany.pricefeed.Params} Params
+             * @returns {botany.pricefeed.MsgPostPriceResponse} MsgPostPriceResponse
              */
-            Params.fromObject = function fromObject(object) {
-                if (object instanceof $root.botany.pricefeed.Params)
+            MsgPostPriceResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.botany.pricefeed.MsgPostPriceResponse)
                     return object;
-                let message = new $root.botany.pricefeed.Params();
-                if (object.markets) {
-                    if (!Array.isArray(object.markets))
-                        throw TypeError(".botany.pricefeed.Params.markets: array expected");
-                    message.markets = [];
-                    for (let i = 0; i < object.markets.length; ++i) {
-                        if (typeof object.markets[i] !== "object")
-                            throw TypeError(".botany.pricefeed.Params.markets: object expected");
-                        message.markets[i] = $root.botany.pricefeed.Market.fromObject(object.markets[i]);
-                    }
-                }
-                return message;
+                return new $root.botany.pricefeed.MsgPostPriceResponse();
             };
 
             /**
-             * Creates a plain object from a Params message. Also converts values to other types if specified.
+             * Creates a plain object from a MsgPostPriceResponse message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof botany.pricefeed.Params
+             * @memberof botany.pricefeed.MsgPostPriceResponse
              * @static
-             * @param {botany.pricefeed.Params} message Params
+             * @param {botany.pricefeed.MsgPostPriceResponse} message MsgPostPriceResponse
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
-            Params.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                let object = {};
-                if (options.arrays || options.defaults)
-                    object.markets = [];
-                if (message.markets && message.markets.length) {
-                    object.markets = [];
-                    for (let j = 0; j < message.markets.length; ++j)
-                        object.markets[j] = $root.botany.pricefeed.Market.toObject(message.markets[j], options);
-                }
-                return object;
+            MsgPostPriceResponse.toObject = function toObject() {
+                return {};
             };
 
             /**
-             * Converts this Params to JSON.
+             * Converts this MsgPostPriceResponse to JSON.
              * @function toJSON
-             * @memberof botany.pricefeed.Params
+             * @memberof botany.pricefeed.MsgPostPriceResponse
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
-            Params.prototype.toJSON = function toJSON() {
+            MsgPostPriceResponse.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
 
-            return Params;
+            return MsgPostPriceResponse;
         })();
 
         pricefeed.GenesisState = (function() {
@@ -19396,43 +21109,43 @@ export const google = $root.google = (() => {
 
             /**
              * HttpRule get.
-             * @member {string} get
+             * @member {string|null|undefined} get
              * @memberof google.api.HttpRule
              * @instance
              */
-            HttpRule.prototype.get = "";
+            HttpRule.prototype.get = null;
 
             /**
              * HttpRule put.
-             * @member {string} put
+             * @member {string|null|undefined} put
              * @memberof google.api.HttpRule
              * @instance
              */
-            HttpRule.prototype.put = "";
+            HttpRule.prototype.put = null;
 
             /**
              * HttpRule post.
-             * @member {string} post
+             * @member {string|null|undefined} post
              * @memberof google.api.HttpRule
              * @instance
              */
-            HttpRule.prototype.post = "";
+            HttpRule.prototype.post = null;
 
             /**
              * HttpRule delete.
-             * @member {string} delete
+             * @member {string|null|undefined} delete
              * @memberof google.api.HttpRule
              * @instance
              */
-            HttpRule.prototype["delete"] = "";
+            HttpRule.prototype["delete"] = null;
 
             /**
              * HttpRule patch.
-             * @member {string} patch
+             * @member {string|null|undefined} patch
              * @memberof google.api.HttpRule
              * @instance
              */
-            HttpRule.prototype.patch = "";
+            HttpRule.prototype.patch = null;
 
             /**
              * HttpRule custom.

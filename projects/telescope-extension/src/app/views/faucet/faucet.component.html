@@ -1,6 +1,6 @@
 <h2>Faucet</h2>
 <form #formRef="ngForm" (submit)="onPostFaucetRequested(addressRef.value, amounts)">
-  <div fxLayout="column">
+  <div class="flex flex-col">
     <mat-form-field appearance="fill">
       <mat-label>Address</mat-label>
       <input matNativeControl #addressRef name="address" ngModel [value]="address" required />

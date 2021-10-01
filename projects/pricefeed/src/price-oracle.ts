@@ -126,9 +126,13 @@ export class PriceOracle {
   async fetchPrice(marketID: string): Promise<{ price: number | null; success: boolean }> {
     try {
       const tickers = await this.fetchTickers(marketID);
+      console.log('tickers', tickers);
       const usdTickers = await this.convertToUsdTickers(tickers);
+      console.log('usdTickers', usdTickers);
       const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(usdTickers);
+      console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
       const convertedPrice = await this.convertUsdPrice(marketID, aggravatedAverageUsdPrice);
+      console.log('convertedPrice', convertedPrice);
       const denominatedPrice = (() => {
         if (convertedPrice === null) {
           return null;
@@ -143,8 +147,10 @@ export class PriceOracle {
             return convertedPrice;
         }
       })();
+      console.log('denominatedPrice', denominatedPrice);
       return { price: denominatedPrice, success: true };
     } catch (e) {
+      console.log(e);
       console.log(`could not get ${marketID} price from Binance`);
       return { price: null, success: false };
     }
@@ -153,9 +159,13 @@ export class PriceOracle {
   async fetchTickers(marketID: string) {
     switch (marketID) {
       case 'ubtc:jpy':
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:eur':
         return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
-      case 'ubtc:jpy:30':
+      case 'ubtc:jpy:30': {
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
+        return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
+      }
       case 'ubtc:eur:30': {
         const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));

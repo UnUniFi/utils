@@ -1,6 +1,4 @@
-<form
-  #formRef="ngForm"
-  (submit)="
+<form #formRef="ngForm" (submit)="
     onSubmit(
       collateralDenomRef.value,
       collateralAmountRef.value,
@@ -8,89 +6,42 @@
       principalAmountRef.value,
       privateKeyRef.value
     )
-  "
->
+  ">
   <div>
     <mat-form-field fxFlex="auto">
       <mat-label>Collateral Denom</mat-label>
-      <mat-select
-        #collateralDenomRef
-        [(ngModel)]="collateral.denom"
-        name="collateral-denom"
-        matInput
-        required
-      >
-        <ng-template
-          ngFor
-          let-param
-          [ngForOf]="cdpParams?.collateral_params || []"
-        >
+      <mat-select #collateralDenomRef [(ngModel)]="collateral.denom" name="collateral-denom" matInput required>
+        <ng-template ngFor let-param [ngForOf]="cdpParams?.collateral_params || []">
           <mat-option [value]="param.denom">{{ param.denom }}</mat-option>
         </ng-template>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="auto">
       <mat-label>Collateral Amount</mat-label>
-      <input
-        #collateralAmountRef
-        [(ngModel)]="collateral.amount"
-        name="collateral-amount"
-        matInput
-        type="number"
-        pattern="^\d+$"
-        [min]="0"
-      />
+      <input #collateralAmountRef [(ngModel)]="collateral.amount" name="collateral-amount" matInput type="number"
+        pattern="^\d+$" [min]="0" />
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field fxFlex="auto">
       <mat-label>Principal Denom</mat-label>
-      <input
-        #principalDenomRef
-        [(ngModel)]="(cdpParams?.debt_param)!.denom"
-        name="principal-denom"
-        matInput
-        readonly
-      />
+      <input #principalDenomRef [(ngModel)]="(cdpParams?.debt_param)!.denom" name="principal-denom" matInput readonly />
     </mat-form-field>
     <mat-form-field fxFlex="auto">
       <mat-label>Principal Amount</mat-label>
-      <input
-        #principalAmountRef
-        [(ngModel)]="principal!.amount"
-        name="principal-amount"
-        matInput
-        type="number"
-        pattern="^\d+$"
-        [min]="0"
-      />
+      <input #principalAmountRef [(ngModel)]="principal!.amount" name="principal-amount" matInput type="number"
+        pattern="^\d+$" [min]="0" />
     </mat-form-field>
   </div>
 
   <mat-form-field fxFill>
     <mat-label>ID</mat-label>
-    <input
-      #idRef
-      type="text"
-      name="id"
-      [ngModel]="key?.id"
-      autocomplete="username"
-      matInput
-      readonly
-    />
+    <input #idRef type="text" name="id" [ngModel]="key?.id" autocomplete="username" matInput readonly />
   </mat-form-field>
   <mat-form-field fxFill>
     <mat-label>Private key</mat-label>
-    <input
-      #privateKeyRef
-      ngModel
-      type="password"
-      name="privateKey"
-      autocomplete="current-password"
-      matInput
-      required
-    />
+    <input #privateKeyRef ngModel type="password" name="privateKey" autocomplete="current-password" matInput required />
   </mat-form-field>
   <button mat-flat-button [disabled]="formRef.invalid">Submit</button>
 </form>

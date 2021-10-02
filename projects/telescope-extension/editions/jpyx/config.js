@@ -14,13 +14,12 @@ const config = {
     faucet: {
       hasFaucet: true,
       faucetURL: `${location.protocol}//${location.hostname}:8000`,
-      denoms: [
-        'ujsmn',
-        'ubtc',
-        'jpyx',
-      ],
+      denoms: ['ujsmn', 'ubtc', 'jpyx'],
       creditAmount: 10, // amount to credit in each request
       maxCredit: 100, // maximum credit per account
+    },
+    monitor: {
+      monitorURL: `${location.protocol}//localhost:9000`,
     },
     navigations: [
       {
@@ -41,5 +40,5 @@ const config = {
       'slashing',
       'staking', // hit
     ],
-  }
+  },
 };

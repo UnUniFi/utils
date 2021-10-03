@@ -294,9 +294,9 @@ export class PriceOracle {
     const newPrice = fetchedPrice.toFixed(18).toString();
     let expiryDate = new Date();
     expiryDate = new Date(expiryDate.getTime() + Number.parseInt(this.expiry) * 1000);
-    const sequence = String(Number(account.sequence ?? 0) + index);
+    const sequence = account.sequence.add(index);
 
-    console.log(`posting price ${newPrice} for ${marketID} with sequence ${sequence}`);
+    console.log(`posting price ${newPrice} for ${marketID} with sequence ${sequence.toString()}`);
 
     // const stdTx = new StdTx(
     //   [new MsgPostPrice(account.address!, marketID, newPrice, newExpiry)],
@@ -339,7 +339,7 @@ export class PriceOracle {
               mode: proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
             },
           },
-          sequence: account.sequence,
+          sequence: sequence,
         },
       ],
       fee: {

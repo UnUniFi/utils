@@ -1,5 +1,5 @@
-import ccxt from "ccxt";
-import { Market, Price, Ticker, CandleSticks } from "../domain/market-price";
+import { Market, Price, Ticker, CandleSticks } from '../domain/market-price';
+import ccxt from 'ccxt';
 
 export default class CcxtClient {
   async fetchTickers(fiatCurrencies: string[], cryptoCurrency: string) {
@@ -13,10 +13,7 @@ export default class CcxtClient {
         );
         if (markets.length > 0) {
           const symbols = markets.map((m) => `${m.base}/${m.quote}`);
-          const fetchedTickers = await this.fetchTickersBySymbols(
-            exchangeName,
-            symbols,
-          );
+          const fetchedTickers = await this.fetchTickersBySymbols(exchangeName, symbols);
 
           for (const ticker of fetchedTickers) {
             if (this.validateTicker(ticker)) {
@@ -79,11 +76,9 @@ export default class CcxtClient {
     const symbols = Object.keys(markets);
 
     symbols
-      .filter((symbol) =>
-        fiatCurrencies.some((fiat) => symbol === `${cryptoCurrency}/${fiat}`),
-      )
+      .filter((symbol) => fiatCurrencies.some((fiat) => symbol === `${cryptoCurrency}/${fiat}`))
       .forEach((symbol) => {
-        const [base, quote] = symbol.split("/");
+        const [base, quote] = symbol.split('/');
         supportedMarkets.push({
           exchange: exchangeName,
           base,
@@ -94,35 +89,30 @@ export default class CcxtClient {
     return supportedMarkets;
   }
 
-  private async fetchTickersBySymbols(
-    exchangeName: string,
-    symbols: string[],
-  ): Promise<Ticker[]> {
+  private async fetchTickersBySymbols(exchangeName: string, symbols: string[]): Promise<Ticker[]> {
     const CCXT = ccxt as any;
     const exchange = new CCXT[exchangeName]({
       enableRateLimit: true,
     }) as ccxt.Exchange;
     const prices = await exchange.fetchTickers(symbols);
     return Object.values(prices)
-      .filter((price) => symbols.some((sym) => sym === price.symbol))
-      .map(
-        (price): Ticker => {
-          const [base, quote] = price.symbol.split("/");
+      .filter((price: any) => symbols.some((sym) => sym === price.symbol))
+      .map((price: any): Ticker => {
+        const [base, quote] = price.symbol.split('/');
 
-          return {
-            market: {
-              exchange: exchangeName,
-              base,
-              quote,
-            },
-            data: {
-              timestamp: price.timestamp,
-              lastPrice: price.last ?? -1,
-              volume: price.baseVolume ?? -1,
-            },
-          };
-        },
-      );
+        return {
+          market: {
+            exchange: exchangeName,
+            base,
+            quote,
+          },
+          data: {
+            timestamp: price.timestamp,
+            lastPrice: price.last ?? -1,
+            volume: price.baseVolume ?? -1,
+          },
+        };
+      });
   }
 
   private async fetchCandleSticksBySymbol(
@@ -135,13 +125,8 @@ export default class CcxtClient {
     const exchange = new CCXT[exchangeName]({
       enableRateLimit: true,
     }) as ccxt.Exchange;
-    const candlesticks = await exchange.fetchOHLCV(
-      symbol,
-      interval,
-      undefined,
-      num,
-    );
-    const [base, quote] = symbol.split("/");
+    const candlesticks = await exchange.fetchOHLCV(symbol, interval, undefined, num);
+    const [base, quote] = symbol.split('/');
     const data = candlesticks.map(
       (cs): Price => ({
         timestamp: cs[0],

@@ -78,7 +78,7 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
         public_key: data.public_key,
       }));
     } catch (error) {
-      return []
+      return [];
     }
   }
 

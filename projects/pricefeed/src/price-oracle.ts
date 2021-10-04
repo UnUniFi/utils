@@ -126,13 +126,13 @@ export class PriceOracle {
   async fetchPrice(marketID: string): Promise<{ price: number | null; success: boolean }> {
     try {
       const tickers = await this.fetchTickers(marketID);
-      console.log('tickers', tickers);
+      // console.log('tickers', tickers);
       const usdTickers = await this.convertToUsdTickers(tickers);
-      console.log('usdTickers', usdTickers);
+      // console.log('usdTickers', usdTickers);
       const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(usdTickers);
-      console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
+      // console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
       const convertedPrice = await this.convertUsdPrice(marketID, aggravatedAverageUsdPrice);
-      console.log('convertedPrice', convertedPrice);
+      // console.log('convertedPrice', convertedPrice);
       const denominatedPrice = (() => {
         if (convertedPrice === null) {
           return null;
@@ -150,7 +150,7 @@ export class PriceOracle {
       console.log('denominatedPrice', denominatedPrice);
       return { price: denominatedPrice, success: true };
     } catch (e) {
-      console.log(e);
+      console.error(e);
       console.log(`could not get ${marketID} price from Binance`);
       return { price: null, success: false };
     }
@@ -294,27 +294,10 @@ export class PriceOracle {
     const newPrice = fetchedPrice.toFixed(18).toString();
     let expiryDate = new Date();
     expiryDate = new Date(expiryDate.getTime() + Number.parseInt(this.expiry) * 1000);
-    const sequence = String(Number(account.sequence ?? 0) + index);
+    const sequence = account.sequence.add(index);
 
-    console.log(`posting price ${newPrice} for ${marketID} with sequence ${sequence}`);
+    console.log(`posting price ${newPrice} for ${marketID} with sequence ${sequence.toString()}`);
 
-    // const stdTx = new StdTx(
-    //   [new MsgPostPrice(account.address!, marketID, newPrice, newExpiry)],
-    //   //{ amount: [], gas: "250000" },
-    //   {},
-    //   null,
-    //   "",
-    // );
-    // const signedStdTx = auth.signStdTx(
-    //   this.sdk,
-    //   await this.privKey,
-    //   stdTx,
-    //   account.account_number.toString(),
-    //   sequence,
-    // );
-    // return await auth.txsPost(this.sdk, signedStdTx, "block");
-
-    // return this.client.postPrice(marketID, newPrice, newExpiry, sequence);
     const privKey = await this.privKey;
 
     // build tx
@@ -323,7 +306,7 @@ export class PriceOracle {
       market_id: marketID,
       price: newPrice,
       expiry: new proto.google.protobuf.Timestamp({
-        seconds: Long.fromNumber(expiryDate.getUTCSeconds()),
+        seconds: Long.fromNumber(expiryDate.getTime() / 1000),
       }),
     });
 
@@ -339,7 +322,7 @@ export class PriceOracle {
               mode: proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
             },
           },
-          sequence: account.sequence,
+          sequence: sequence,
         },
       ],
       fee: {
@@ -350,7 +333,7 @@ export class PriceOracle {
     // sign
     const txBuilder = new cosmosclient.TxBuilder(this.sdk, txBody, authInfo);
     const signDocBytes = txBuilder.signDocBytes(account.account_number);
-    txBuilder.addSignature(signDocBytes);
+    txBuilder.addSignature(privKey.sign(signDocBytes));
 
     // broadcast
     try {

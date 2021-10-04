@@ -39,6 +39,11 @@ const config = {
       'ibc',
       'slashing',
       'staking', // hit
+      'auction',
+      'botanydist',
+      'cdp',
+      'incentive',
+      'pricefeed',
     ],
   },
 };

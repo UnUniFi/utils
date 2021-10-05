@@ -25,19 +25,8 @@ export class CreateComponent implements OnInit {
   @Output()
   appSubmit: EventEmitter<CreateCdpOnSubmitEvent>;
 
-  public collateral: proto.cosmos.base.v1beta1.ICoin;
-  public principal: proto.cosmos.base.v1beta1.ICoin;
-
   constructor() {
     this.appSubmit = new EventEmitter();
-    this.collateral = {
-      denom: '',
-      amount: '',
-    };
-    this.principal = {
-      denom: '',
-      amount: '',
-    };
   }
 
   ngOnInit(): void {}

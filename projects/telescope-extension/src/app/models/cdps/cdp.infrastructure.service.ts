@@ -41,12 +41,13 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       return;
     }
 
+    // Todo: collateral_type should be set more appropriately.
     // build tx
     const msgCreateCdp = new botany.cdp.MsgCreateCdp({
       sender: sender.toString(),
       collateral,
       principal,
-      collateral_type: collateral.denom,
+      collateral_type: collateral.denom + '-a',
     });
 
     const txBody = new proto.cosmos.tx.v1beta1.TxBody({
@@ -65,7 +66,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
         },
       ],
       fee: {
-        gas_limit: cosmosclient.Long.fromString('200000'),
+        gas_limit: cosmosclient.Long.fromString('300000'),
       },
     });
 
@@ -102,10 +103,11 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       return;
     }
 
+    // Todo: collateral_type should be set more appropriately.
     // build tx
     const msgDrawdebtCdp = new botany.cdp.MsgDrawDebt({
       sender: sender.toString(),
-      collateral_type: denom,
+      collateral_type: denom + '-a',
       principal,
     });
 
@@ -125,7 +127,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
         },
       ],
       fee: {
-        gas_limit: cosmosclient.Long.fromString('200000'),
+        gas_limit: cosmosclient.Long.fromString('300000'),
       },
     });
 
@@ -162,10 +164,11 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       return;
     }
 
+    // Todo: collateral_type should be set more appropriately.
     // build tx
     const msgDrawdebtCdp = new botany.cdp.MsgRepayDebt({
       sender: sender.toString(),
-      collateral_type: denom,
+      collateral_type: denom + '-a',
       payment,
     });
 
@@ -185,7 +188,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
         },
       ],
       fee: {
-        gas_limit: cosmosclient.Long.fromString('200000'),
+        gas_limit: cosmosclient.Long.fromString('300000'),
       },
     });
 
@@ -222,12 +225,13 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       return;
     }
 
+    // Todo: collateral_type should be set more appropriately.
     // build tx
     const msgDrawdebtCdp = new botany.cdp.MsgDeposit({
       depositor: sender.toString(),
       owner: ownerAddr.toString(),
       collateral,
-      collateral_type: collateral.denom,
+      collateral_type: collateral.denom + '-a',
     });
 
     const txBody = new proto.cosmos.tx.v1beta1.TxBody({
@@ -246,7 +250,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
         },
       ],
       fee: {
-        gas_limit: cosmosclient.Long.fromString('200000'),
+        gas_limit: cosmosclient.Long.fromString('300000'),
       },
     });
 
@@ -283,12 +287,13 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       return;
     }
 
+    // Todo: collateral_type should be set more appropriately.
     // build tx
     const msgDrawdebtCdp = new botany.cdp.MsgWithdraw({
       depositor: sender.toString(),
       owner: ownerAddr.toString(),
       collateral,
-      collateral_type: collateral.denom,
+      collateral_type: collateral.denom + '-a',
     });
 
     const txBody = new proto.cosmos.tx.v1beta1.TxBody({
@@ -307,7 +312,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
         },
       ],
       fee: {
-        gas_limit: cosmosclient.Long.fromString('200000'),
+        gas_limit: cosmosclient.Long.fromString('300000'),
       },
     });
 

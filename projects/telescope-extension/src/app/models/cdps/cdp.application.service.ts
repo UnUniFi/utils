@@ -46,7 +46,8 @@ export class CdpApplicationService {
       duration: 6000,
     });
 
-    await this.router.navigate(['txs', txhash]);
+    const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
+    window.location.href = redirectUrl;
   }
 
   async drawCDP(
@@ -78,7 +79,8 @@ export class CdpApplicationService {
       duration: 6000,
     });
 
-    await this.router.navigate(['txs', txhash]);
+    const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
+    window.location.href = redirectUrl;
   }
 
   async repayCDP(
@@ -110,7 +112,8 @@ export class CdpApplicationService {
       duration: 6000,
     });
 
-    await this.router.navigate(['txs', txhash]);
+    const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
+    window.location.href = redirectUrl;
   }
 
   async depositCDP(
@@ -143,7 +146,8 @@ export class CdpApplicationService {
       duration: 6000,
     });
 
-    await this.router.navigate(['txs', txhash]);
+    const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
+    window.location.href = redirectUrl;
   }
 
   async withdrawCDP(
@@ -176,6 +180,7 @@ export class CdpApplicationService {
       duration: 6000,
     });
 
-    await this.router.navigate(['txs', txhash]);
+    const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
+    window.location.href = redirectUrl;
   }
 }

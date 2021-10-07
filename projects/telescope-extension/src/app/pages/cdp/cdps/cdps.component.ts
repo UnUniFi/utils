@@ -29,20 +29,24 @@ export class CdpsComponent implements OnInit {
       ),
     );
 
-    const collateralDenoms$ = this.cosmosSdk.sdk$.pipe(
+    const collateralTypes$ = this.cosmosSdk.sdk$.pipe(
       mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
-      map((res) => res.data?.params?.collateral_params?.map((p) => p.denom!) || []),
+      map((res) => res.data?.params?.collateral_params?.map((p) => p.type!) || []),
     );
-    this.cdps$ = combineLatest([address$, collateralDenoms$, this.cosmosSdk.sdk$]).pipe(
-      mergeMap(([address, denoms, sdk]) =>
-        Promise.all(denoms.map((denom) => rest.botany.cdp.cdp(sdk.rest, address, denom))),
+    this.cdps$ = combineLatest([address$, collateralTypes$, this.cosmosSdk.sdk$]).pipe(
+      mergeMap(([address, collateralTypes, sdk]) =>
+        Promise.all(
+          collateralTypes.map((collateralType) =>
+            rest.botany.cdp.cdp(sdk.rest, address, collateralType),
+          ),
+        ),
       ),
       map((result) => result.map((res) => res.data)),
       map((data) => data.map((e) => e.cdp!)),
       catchError((error) => {
         console.error(error);
-        return of([])
-      })
+        return of([]);
+      }),
     );
   }
 

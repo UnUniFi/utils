@@ -37,6 +37,7 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@local/common": "file:common/dist",
+    "@ngneat/tailwind": "^7.0.3",
     "@ngrx/effects": "^12.4.0",
     "@ngrx/store": "^12.4.0",
     "@ngrx/store-devtools": "^12.4.0",
@@ -89,6 +90,7 @@
     "ng-packagr": "^12.1.1",
     "open": "^7.0.3",
     "prettier": "^2.3.2",
+    "tailwindcss": "2.2.16",
     "typescript": "~4.3.5"
   }
 }

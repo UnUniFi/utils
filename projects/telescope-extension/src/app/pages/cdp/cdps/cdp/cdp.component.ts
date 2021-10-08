@@ -16,6 +16,7 @@ import { map, mergeMap } from 'rxjs/operators';
 })
 export class CdpComponent implements OnInit {
   owner$: Observable<string>;
+  collateralType$: Observable<string>;
   denom$: Observable<string>;
   params$: Observable<botany.cdp.IParams>;
   cdp$: Observable<InlineResponse2004Cdp1>;
@@ -31,34 +32,53 @@ export class CdpComponent implements OnInit {
     private readonly cosmosSdk: CosmosSDKService,
   ) {
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
-    this.denom$ = this.route.params.pipe(map((params) => params['denom']));
-    const ownerAndDenom$ = combineLatest([this.owner$, this.denom$, this.cosmosSdk.sdk$]);
-
+    this.collateralType$ = this.route.params.pipe(map((params) => params['collateralType']));
     this.params$ = this.cosmosSdk.sdk$.pipe(
       mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
       map((data) => data.data.params!),
     );
+    this.denom$ = combineLatest([this.collateralType$, this.params$]).pipe(
+      map(([collateralType, params]) => {
+        const matchedDenoms = params.collateral_params?.filter(
+          (param) => param.type === collateralType,
+        );
+        return matchedDenoms ? (matchedDenoms[0].denom ? matchedDenoms[0].denom : '') : '';
+      }),
+    );
+    const ownerAndCollateralType$ = combineLatest([
+      this.owner$,
+      this.collateralType$,
+      this.cosmosSdk.sdk$,
+    ]);
 
-    this.cdp$ = ownerAndDenom$.pipe(
-      mergeMap(([ownerAddr, denom, sdk]) =>
-        rest.botany.cdp.cdp(sdk.rest, cosmosclient.AccAddress.fromString(ownerAddr), denom),
+    this.cdp$ = ownerAndCollateralType$.pipe(
+      mergeMap(([ownerAddr, collateralType, sdk]) =>
+        rest.botany.cdp.cdp(
+          sdk.rest,
+          cosmosclient.AccAddress.fromString(ownerAddr),
+          collateralType,
+        ),
       ),
       map((res) => res.data.cdp!),
     );
 
-    this.deposits$ = ownerAndDenom$.pipe(
-      mergeMap(([ownerAddr, denom, sdk]) =>
-        rest.botany.cdp.allDeposits(sdk.rest, cosmosclient.AccAddress.fromString(ownerAddr), denom),
+    this.deposits$ = ownerAndCollateralType$.pipe(
+      mergeMap(([ownerAddr, collateralType, sdk]) =>
+        rest.botany.cdp.allDeposits(
+          sdk.rest,
+          cosmosclient.AccAddress.fromString(ownerAddr),
+          collateralType,
+        ),
       ),
       map((res) => res.data.deposits || []),
     );
 
     this.spotPrice$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => getSpotPriceStream(sdk.rest, this.denom$, this.params$)),
+      mergeMap((sdk) => getSpotPriceStream(sdk.rest, this.collateralType$, this.params$)),
     );
 
     this.liquidationPrice$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => getLiquidationPriceStream(sdk.rest, this.denom$, this.params$)),
+      mergeMap((sdk) => getLiquidationPriceStream(sdk.rest, this.collateralType$, this.params$)),
     );
 
     this.withdrawLimit$ = zip(this.cdp$, this.params$, this.spotPrice$).pipe(

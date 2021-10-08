@@ -124,6 +124,17 @@ export class CdpApplicationService {
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
+    console.log(
+      'key',
+      key,
+      'privateKey',
+      privateKey,
+      'ownerAddr',
+      ownerAddr,
+      'collateral',
+      collateral,
+    );
+
     let txhash: string | undefined;
     try {
       const res: any = await this.cdp.depositCDP(key, privateKey, ownerAddr, collateral);
@@ -146,8 +157,9 @@ export class CdpApplicationService {
       duration: 6000,
     });
 
-    const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
-    window.location.href = redirectUrl;
+    /* Disable for Debug */
+    // const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
+    // window.location.href = redirectUrl;
   }
 
   async withdrawCDP(

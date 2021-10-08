@@ -1,24 +1,21 @@
 <h2>CDP</h2>
 <ng-container *ngIf="cdp === null; then empty; else exist"> </ng-container>
 <ng-template #loading>
-  <mat-progress-spinner
-    [diameter]="60"
-    [mode]="'indeterminate'"
-  ></mat-progress-spinner>
+  <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
 </ng-template>
 <ng-template #exist>
   <mat-card>
     <mat-list>
       <mat-list-item>
         <span class="column-name">Owner: </span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">{{ owner }}</span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
 
       <mat-list-item>
         <span class="column-name">Collateral: </span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">
           {{ cdp?.cdp?.collateral?.amount }}
           {{ cdp?.cdp?.collateral?.denom }}
@@ -31,7 +28,7 @@
 
       <mat-list-item>
         <span class="column-name"></span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">
           <a
             mat-stroked-button
@@ -52,9 +49,8 @@
 
       <mat-list-item>
         <span class="column-name">Principal: </span>
-        <span fxFlex="auto"></span>
-        <span class="column-value"
-          >{{ cdp?.cdp?.principal?.amount }}
+        <span class="flex-auto"></span>
+        <span class="column-value">{{ cdp?.cdp?.principal?.amount }}
           {{ cdp?.cdp?.principal?.denom }}
           <ng-template [ngIf]="!!issueLimit">
             (Available: {{ issueLimit }} {{ cdp?.cdp?.principal?.denom }})
@@ -65,7 +61,7 @@
 
       <mat-list-item>
         <span class="column-name"></span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">
           <a
             mat-stroked-button
@@ -88,7 +84,7 @@
 
       <mat-list-item>
         <span class="column-name">Fees: </span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">
           {{ cdp?.cdp?.accumulated_fees?.amount }}
           {{ cdp?.cdp?.accumulated_fees?.denom }}
@@ -98,7 +94,7 @@
 
       <mat-list-item>
         <span class="column-name"> Fees Updated </span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">
           {{ cdp?.cdp?.fees_updated }}
         </span>
@@ -107,7 +103,7 @@
 
       <mat-list-item>
         <span class="column-name">Spot Price: </span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">
           {{ spotPrice?.price }} [{{ spotPrice?.market_id }}]
         </span>
@@ -116,7 +112,7 @@
 
       <mat-list-item>
         <span class="column-name">Liquadation Price: </span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">
           {{ liquidationPrice?.price }} [{{ liquidationPrice?.market_id }}]
         </span>
@@ -125,7 +121,7 @@
 
       <mat-list-item>
         <span class="column-name">Collateralization Ratio: </span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">{{ cdp?.collateralization_ratio }}</span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
@@ -137,7 +133,7 @@
     <ng-template ngFor let-deposit [ngForOf]="deposits">
       <mat-list>
         <span class="column-name">{{ deposit.depositor }}</span>
-        <span fxFlex="auto"></span>
+        <span class="flex-auto"></span>
         <span class="column-value">
           {{ deposit.amount?.amount }} {{ deposit.amount?.denom }}
         </span>

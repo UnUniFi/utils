@@ -10,8 +10,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Amount({{ amount.denom }})</mat-label>
         <input matNativeControl [(ngModel)]="amounts[i].amount" name="{{ amount.denom }}" [min]="0"
-          [max]="creditAmount ? creditAmount : 0" required (focus)="focusState = true"
-          (focusout)="focusState = false" />
+          [max]="creditAmount ? creditAmount : 0" required />
         <mat-hint *ngIf="focusState">Max 50 characters</mat-hint>
         <span matSuffix>{{ amount.denom }}</span>
       </mat-form-field>

@@ -1,3 +1,4 @@
+import { ArrayType } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FaucetRequest } from 'projects/telescope-extension/src/app/models/faucets/faucet.model';
@@ -23,6 +24,7 @@ export class FaucetComponent implements OnInit, OnChanges {
 
   amounts: Amount[];
   focusState = false
+  focusAmounts: boolean[];
 
   constructor(private matSnackBar: MatSnackBar) {
     if (this.denoms === undefined || this.denoms.length === 0) {
@@ -32,11 +34,13 @@ export class FaucetComponent implements OnInit, OnChanges {
           denom: '',
         },
       ];
+      this.focusAmounts = [];
     } else {
       this.amounts = this.denoms.map((denom) => ({
         amount: 0,
         denom,
       }));
+      this.focusAmounts = new Array(this.amounts.length)
     }
   }
 
@@ -50,11 +54,13 @@ export class FaucetComponent implements OnInit, OnChanges {
           denom: '',
         },
       ];
+      this.focusAmounts = [];
     } else {
       this.amounts = this.denoms.map((denom) => ({
         amount: 0,
         denom,
       }));
+      this.focusAmounts = new Array(this.amounts.length)
     }
   }
 

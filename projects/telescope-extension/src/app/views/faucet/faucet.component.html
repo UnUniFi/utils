@@ -4,14 +4,17 @@
     <mat-form-field appearance="fill">
       <mat-label>Address</mat-label>
       <input matNativeControl #addressRef name="address" ngModel [value]="address" required />
+      <mat-error>Enter your address!</mat-error>
     </mat-form-field>
 
-    <ng-container *ngFor="let amount of amounts; let i = index">
+    <ng-container *ngFor="let amount of amounts; let i = index;">
       <mat-form-field appearance="fill">
         <mat-label>Amount({{ amount.denom }})</mat-label>
         <input matNativeControl [(ngModel)]="amounts[i].amount" name="{{ amount.denom }}" [min]="0"
-          [max]="creditAmount ? creditAmount : 0" required />
-        <mat-hint *ngIf="focusState">Max 50 characters</mat-hint>
+          [max]="creditAmount ? creditAmount : 0" (focus)="focusAmounts[i] = true" (focusout)="focusAmounts[i] = false"
+          required />
+        <mat-hint *ngIf="focusAmounts[i]">Limit 10 (per request) / 100 (per account)</mat-hint>
+        <mat-error>Limit 10 per request! / Enter "0" if unneeded</mat-error>
         <span matSuffix>{{ amount.denom }}</span>
       </mat-form-field>
     </ng-container>

@@ -22,6 +22,9 @@ export class DepositComponent implements OnInit {
   owner?: string | null;
 
   @Input()
+  collateralType?: string | null;
+
+  @Input()
   denom?: string | null;
 
   @Output()

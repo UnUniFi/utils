@@ -11,6 +11,10 @@
   ">
   <div>
     <mat-form-field class="w-full">
+      <mat-label>Collateral Type</mat-label>
+      <input #collateralTypeRef [(ngModel)]="collateralType" name="collateral-type" matInput readonly />
+    </mat-form-field>
+    <mat-form-field class="w-full">
       <mat-label>Collateral Denom</mat-label>
       <input #collateralDenomRef [(ngModel)]="denom" name="collateral-denom" matInput readonly />
     </mat-form-field>

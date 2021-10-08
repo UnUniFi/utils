@@ -6,7 +6,7 @@ import { rest, botany } from 'botany-client';
 import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'botany-client/esm/openapi';
 import { cosmosclient } from 'cosmos-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
-import { combineLatest, from, Observable, pipe, zip } from 'rxjs';
+import { combineLatest, Observable, zip } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
@@ -64,13 +64,14 @@ export class CdpComponent implements OnInit {
 
     this.deposits$ = ownerAndCollateralType$.pipe(
       mergeMap(([ownerAddr, collateralType, sdk]) =>
-        rest.botany.cdp.allDeposits(
-          sdk.rest,
-          cosmosclient.AccAddress.fromString(ownerAddr),
-          collateralType,
-        ),
+        rest.botany.cdp
+          .allDeposits(sdk.rest, cosmosclient.AccAddress.fromString(ownerAddr), collateralType)
+          .catch((error) => {
+            console.error(error);
+            return undefined;
+          }),
       ),
-      map((res) => res.data.deposits || []),
+      map((res) => res?.data.deposits || []),
     );
 
     this.spotPrice$ = this.cosmosSdk.sdk$.pipe(

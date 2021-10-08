@@ -1,6 +1,7 @@
 <view-withdraw
   [key]="key$ | async"
   [owner]="owner$ | async"
+  [collateralType]="collateralType$ | async"
   [denom]="denom$ | async"
   (appSubmit)="onSubmit($event)"
 ></view-withdraw>

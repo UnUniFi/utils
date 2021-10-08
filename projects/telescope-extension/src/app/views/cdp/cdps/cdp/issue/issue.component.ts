@@ -6,7 +6,7 @@ export type IssueCdpOnSubmitEvent = {
   key: Key;
   privateKey: string;
   ownerAddr: cosmosclient.AccAddress;
-  denom: string;
+  collateralType: string;
   principal: proto.cosmos.base.v1beta1.ICoin;
 };
 
@@ -21,6 +21,9 @@ export class IssueComponent implements OnInit {
 
   @Input()
   owner?: string | null;
+
+  @Input()
+  collateralType?: string | null;
 
   @Input()
   denom?: string | null;
@@ -43,7 +46,7 @@ export class IssueComponent implements OnInit {
   onSubmit(
     privateKey: string,
     ownerAddr: string,
-    collateralDenom: string,
+    collateralType: string,
     principalDenom: string,
     principalAmount: string,
   ) {
@@ -51,7 +54,7 @@ export class IssueComponent implements OnInit {
       key: this.key!,
       privateKey,
       ownerAddr: cosmosclient.AccAddress.fromString(ownerAddr),
-      denom: collateralDenom,
+      collateralType: collateralType,
       principal: {
         denom: principalDenom,
         amount: principalAmount,

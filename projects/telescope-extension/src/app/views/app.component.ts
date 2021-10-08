@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { MediaObserver } from '@angular/flex-layout';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, NgZone } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Router, NavigationEnd } from '@angular/router';
-import { Observable, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { combineLatest, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'view-app',
@@ -23,23 +21,20 @@ export class AppComponent implements OnInit {
   @ViewChild('sidenav')
   sidenav!: MatSidenav;
 
-  drawerMode$: Observable<MatDrawerMode>;
-  drawerOpened$: Observable<boolean>;
+  drawerMode$: BehaviorSubject<MatDrawerMode> = new BehaviorSubject('side' as MatDrawerMode);
+  drawerOpened$ = new BehaviorSubject(true);
 
-  constructor(private router: Router, private mediaObserver: MediaObserver) {
+  constructor(private router: Router, private ngZone: NgZone) {
     this.searchValue = '';
     this.appSubmitSearchValue = new EventEmitter();
 
-    this.drawerMode$ = this.mediaObserver
-      .asObservable()
-      .pipe(
-        map((changes) => (changes.find((change) => change.mqAlias === 'xs') ? 'over' : 'side')),
-      );
+    window.onresize = (_) => {
+      this.ngZone.run(() => {
+        this.handleResizeWindow(window.innerWidth);
+      });
+    };
 
-    this.drawerOpened$ = this.mediaObserver
-      .asObservable()
-      .pipe(map((changes) => (changes.find((change) => change.mqAlias === 'xs') ? false : true)));
-
+    // Todo: This is not working.
     combineLatest([this.drawerMode$, this.router.events]).subscribe(([drawerMode, event]) => {
       if (drawerMode === 'over' && event instanceof NavigationEnd) {
         this.sidenav?.close();
@@ -47,7 +42,19 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleResizeWindow(window.innerWidth);
+  }
+
+  handleResizeWindow(width: number): void {
+    if (width < 600) {
+      this.drawerMode$.next('over');
+      this.drawerOpened$.next(false);
+    } else {
+      this.drawerMode$.next('side');
+      this.drawerOpened$.next(true);
+    }
+  }
 
   onSubmitSearchValue(value: string) {
     this.appSubmitSearchValue.emit(value);

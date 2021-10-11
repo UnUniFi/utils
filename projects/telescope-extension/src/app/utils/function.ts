@@ -4,74 +4,55 @@ import { InlineResponse2004Cdp } from 'botany-client/esm/openapi';
 export const getWithdrawLimit = (
   cdp: InlineResponse2004Cdp,
   cdpParams: botany.cdp.IParams,
-  spotPrice: botany.pricefeed.ICurrentPrice
+  spotPrice: botany.pricefeed.ICurrentPrice,
 ) => {
-  const collateralDenom = cdp.collateral?.denom;
+  const collateralType = cdp.type;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
   const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
   const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
-  const principalConversionFactor = Number.parseInt(
-    cdpParams.debt_param?.conversion_factor || '0'
-  );
+  const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
 
   const collateralParams = cdpParams.collateral_params?.find(
-    (param) => param.denom === collateralDenom
+    (param) => param.type === collateralType,
   );
   if (collateralParams === undefined) {
-    throw new Error(`Parameters for ${collateralDenom} not found`);
+    throw new Error(`Parameters for ${collateralType} not found`);
   }
-  const liquidationRatio = Number.parseFloat(
-    collateralParams?.liquidation_ratio || '0'
-  );
-  const collateralConversionFactor = Number.parseInt(
-    collateralParams?.conversion_factor || '0'
-  );
+  const liquidationRatio = Number.parseFloat(collateralParams?.liquidation_ratio || '0');
+  const collateralConversionFactor = Number.parseInt(collateralParams?.conversion_factor || '0');
   const price = Number.parseFloat(spotPrice?.price || '0');
 
-  const conversionFactor = Math.pow(
-    10,
-    collateralConversionFactor - principalConversionFactor
-  );
+  const conversionFactor = Math.pow(10, collateralConversionFactor - principalConversionFactor);
 
   return Math.floor(
-    currentCollateralAmount -
-      (liquidationRatio * principalTotal * conversionFactor) / price
+    currentCollateralAmount - (liquidationRatio * principalTotal * conversionFactor) / price,
   );
 };
 
 export const getIssueLimit = (
   cdp: InlineResponse2004Cdp,
   cdpParams: botany.cdp.IParams,
-  liquidationPrice: botany.pricefeed.ICurrentPrice
+  liquidationPrice: botany.pricefeed.ICurrentPrice,
 ) => {
-  const collateralDenom = cdp.collateral?.denom;
+  const collateralType = cdp.type;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
   const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
   const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
-  const principalConversionFactor = Number.parseInt(
-    cdpParams.debt_param?.conversion_factor || '0'
-  );
+  const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
 
   const collateralParams = cdpParams.collateral_params?.find(
-    (param) => param.denom === collateralDenom
+    (param) => param.type === collateralType,
   );
   if (collateralParams === undefined) {
-    throw new Error(`Parameters for ${collateralDenom} not found`);
+    throw new Error(`Parameters for ${collateralType} not found`);
   }
-  const liquidationRatio = Number.parseFloat(
-    collateralParams.liquidation_ratio || '0'
-  );
-  const collateralConversionFactor = Number.parseInt(
-    collateralParams.conversion_factor || '0'
-  );
+  const liquidationRatio = Number.parseFloat(collateralParams.liquidation_ratio || '0');
+  const collateralConversionFactor = Number.parseInt(collateralParams.conversion_factor || '0');
   const price = Number.parseFloat(liquidationPrice.price!);
 
-  const conversionFactor = Math.pow(
-    10,
-    principalConversionFactor - collateralConversionFactor
-  );
+  const conversionFactor = Math.pow(10, principalConversionFactor - collateralConversionFactor);
 
   console.log({
     currentCollateralAmount,
@@ -82,7 +63,6 @@ export const getIssueLimit = (
   });
 
   return Math.floor(
-    (currentCollateralAmount * price * conversionFactor) / liquidationRatio -
-      principalTotal
+    (currentCollateralAmount * price * conversionFactor) / liquidationRatio - principalTotal,
   );
 };

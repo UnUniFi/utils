@@ -1,6 +1,7 @@
 <view-clear
   [key]="key$ | async"
   [owner]="owner$ | async"
+  [collateralType]="collateralType$ | async"
   [denom]="denom$ | async"
   [paymentDenom]="paymentDenom$ | async"
   (appSubmit)="onSubmit($event)"

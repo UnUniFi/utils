@@ -18,23 +18,23 @@ const routes: Routes = [
     component: CreateComponent,
   },
   {
-    path: ':owner/:denom',
+    path: ':owner/:collateralType',
     component: CdpComponent,
   },
   {
-    path: ':owner/:denom/deposit',
+    path: ':owner/:collateralType/deposit',
     component: DepositComponent,
   },
   {
-    path: ':owner/:denom/withdraw',
+    path: ':owner/:collateralType/withdraw',
     component: WithdrawComponent,
   },
   {
-    path: ':owner/:denom/issue',
+    path: ':owner/:collateralType/issue',
     component: IssueComponent,
   },
   {
-    path: ':owner/:denom/clear',
+    path: ':owner/:collateralType/clear',
     component: ClearComponent,
   },
 ];

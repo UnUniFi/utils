@@ -31,7 +31,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -64,7 +64,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -97,7 +97,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -131,7 +131,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -165,7 +165,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {

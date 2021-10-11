@@ -6,7 +6,7 @@ export const getWithdrawLimit = (
   cdpParams: botany.cdp.IParams,
   spotPrice: botany.pricefeed.ICurrentPrice,
 ) => {
-  const collateralDenom = cdp.collateral?.denom;
+  const collateralType = cdp.type;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
   const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
@@ -14,10 +14,10 @@ export const getWithdrawLimit = (
   const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
 
   const collateralParams = cdpParams.collateral_params?.find(
-    (param) => param.denom === collateralDenom,
+    (param) => param.type === collateralType,
   );
   if (collateralParams === undefined) {
-    throw new Error(`Parameters for ${collateralDenom} not found`);
+    throw new Error(`Parameters for ${collateralType} not found`);
   }
   const liquidationRatio = Number.parseFloat(collateralParams?.liquidation_ratio || '0');
   const collateralConversionFactor = Number.parseInt(collateralParams?.conversion_factor || '0');
@@ -35,7 +35,7 @@ export const getIssueLimit = (
   cdpParams: botany.cdp.IParams,
   liquidationPrice: botany.pricefeed.ICurrentPrice,
 ) => {
-  const collateralDenom = cdp.collateral?.denom;
+  const collateralType = cdp.type;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
   const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
@@ -43,10 +43,10 @@ export const getIssueLimit = (
   const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
 
   const collateralParams = cdpParams.collateral_params?.find(
-    (param) => param.denom === collateralDenom,
+    (param) => param.type === collateralType,
   );
   if (collateralParams === undefined) {
-    throw new Error(`Parameters for ${collateralDenom} not found`);
+    throw new Error(`Parameters for ${collateralType} not found`);
   }
   const liquidationRatio = Number.parseFloat(collateralParams.liquidation_ratio || '0');
   const collateralConversionFactor = Number.parseInt(collateralParams.conversion_factor || '0');

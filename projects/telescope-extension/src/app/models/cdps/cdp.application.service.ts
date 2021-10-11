@@ -31,7 +31,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -64,7 +64,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -97,7 +97,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -124,17 +124,6 @@ export class CdpApplicationService {
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
-    console.log(
-      'key',
-      key,
-      'privateKey',
-      privateKey,
-      'ownerAddr',
-      ownerAddr,
-      'collateral',
-      collateral,
-    );
-
     let txhash: string | undefined;
     try {
       const res: any = await this.cdp.depositCDP(key, privateKey, ownerAddr, collateral);
@@ -142,7 +131,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
@@ -157,9 +146,8 @@ export class CdpApplicationService {
       duration: 6000,
     });
 
-    /* Disable for Debug */
-    // const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
-    // window.location.href = redirectUrl;
+    const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
+    window.location.href = redirectUrl;
   }
 
   async withdrawCDP(
@@ -177,7 +165,7 @@ export class CdpApplicationService {
       if (res.code !== undefined && res.raw_log !== undefined) {
         throw new Error(res.raw_log);
       }
-      txhash = res.txhash;
+      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {

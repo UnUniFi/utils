@@ -14,14 +14,14 @@ export interface ICdpInfrastructure {
   drawCDP(
     key: Key,
     privateKey: string,
-    denom: string,
+    collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<any>;
 
   repayCDP(
     key: Key,
     privateKey: string,
-    denom: string,
+    collateralType: string,
     payment: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<any>;
 
@@ -58,12 +58,22 @@ export class CdpService {
     return this.iCdpInfrastructure.createCDP(key, privateKey, collateral, principal);
   }
 
-  drawCDP(key: Key, privateKey: string, denom: string, principal: proto.cosmos.base.v1beta1.ICoin) {
-    return this.iCdpInfrastructure.drawCDP(key, privateKey, denom, principal);
+  drawCDP(
+    key: Key,
+    privateKey: string,
+    collateralType: string,
+    principal: proto.cosmos.base.v1beta1.ICoin,
+  ) {
+    return this.iCdpInfrastructure.drawCDP(key, privateKey, collateralType, principal);
   }
 
-  repayCDP(key: Key, privateKey: string, denom: string, payment: proto.cosmos.base.v1beta1.ICoin) {
-    return this.iCdpInfrastructure.repayCDP(key, privateKey, denom, payment);
+  repayCDP(
+    key: Key,
+    privateKey: string,
+    collateralType: string,
+    payment: proto.cosmos.base.v1beta1.ICoin,
+  ) {
+    return this.iCdpInfrastructure.repayCDP(key, privateKey, collateralType, payment);
   }
 
   depositCDP(

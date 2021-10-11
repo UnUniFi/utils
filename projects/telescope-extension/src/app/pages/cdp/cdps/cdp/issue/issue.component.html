@@ -1,6 +1,7 @@
 <view-issue
   [key]="key$ | async"
   [owner]="owner$ | async"
+  [collateralType]="collateralType$ | async"
   [denom]="denom$ | async"
   [principalDenom]="principalDenom$ | async"
   (appSubmit)="onSubmit($event)"

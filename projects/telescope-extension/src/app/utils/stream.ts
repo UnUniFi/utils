@@ -1,16 +1,16 @@
+import { botany, rest } from 'botany-client';
 import { cosmosclient } from 'cosmos-client';
-import { botany, rest } from 'botany-client'
 import { Observable, zip } from 'rxjs';
 import { map, mergeMap, filter } from 'rxjs/operators';
 
 const getCollateralParamsStream = (
-  denom: Observable<string>,
+  collateralType: Observable<string>,
   cdpParams: Observable<botany.cdp.IParams>,
 ) =>
-  zip(denom, cdpParams).pipe(
-    map(([denom, params]) =>
-      params.collateral_params?.find((param) => param.denom === denom),
-    ),
+  zip(collateralType, cdpParams).pipe(
+    map(([collateralType, params]) => {
+      return params.collateral_params?.find((param) => param.type === collateralType);
+    }),
     filter(
       (collateralParams): collateralParams is botany.cdp.CollateralParam =>
         collateralParams !== undefined,
@@ -19,10 +19,10 @@ const getCollateralParamsStream = (
 
 export const getSpotPriceStream = (
   sdk: cosmosclient.CosmosSDK,
-  denom: Observable<string>,
+  collateralType: Observable<string>,
   cdpParams: Observable<botany.cdp.IParams>,
 ) => {
-  return getCollateralParamsStream(denom, cdpParams).pipe(
+  return getCollateralParamsStream(collateralType, cdpParams).pipe(
     mergeMap((collateralParams) =>
       rest.botany.pricefeed.price(sdk, collateralParams.spot_market_id),
     ),
@@ -32,10 +32,10 @@ export const getSpotPriceStream = (
 
 export const getLiquidationPriceStream = (
   sdk: cosmosclient.CosmosSDK,
-  denom: Observable<string>,
+  collateralType: Observable<string>,
   cdpParams: Observable<botany.cdp.IParams>,
 ) => {
-  return getCollateralParamsStream(denom, cdpParams).pipe(
+  return getCollateralParamsStream(collateralType, cdpParams).pipe(
     mergeMap((collateralParams) =>
       rest.botany.pricefeed.price(sdk, collateralParams.liquidation_market_id),
     ),

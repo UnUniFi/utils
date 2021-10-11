@@ -4,22 +4,14 @@
     onSubmit(
       privateKeyRef.value,
       ownerRef.value,
-      collateralDenomRef.value,
+      collateralTypeRef.value,
       principalDenomRef.value,
       principalAmountRef.value
     )
-  "
->
-  <mat-form-field fxFill>
-    <mat-label>Collateral Denom</mat-label>
-    <input
-      #collateralDenomRef
-      [(ngModel)]="denom"
-      name="collateral-denom"
-      matInput
-      readonly
-      required
-    />
+  ">
+  <mat-form-field class="w-full">
+    <mat-label>Collateral Type</mat-label>
+    <input #collateralTypeRef [(ngModel)]="collateralType" name="collateral-type" matInput readonly required />
   </mat-form-field>
   <div>
     <mat-form-field fxFlex="auto">

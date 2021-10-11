@@ -12,6 +12,9 @@ export class CdpComponent implements OnInit {
   owner?: string | null;
 
   @Input()
+  collateralType?: string | null;
+
+  @Input()
   denom?: string | null;
 
   @Input()
@@ -35,13 +38,20 @@ export class CdpComponent implements OnInit {
   @Input()
   issueLimit?: number | null;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     setTimeout(() => {
-      console.log('params', this.params);
-      console.log('cdp', this.cdp);
-      console.log('deposits', this.deposits);
+      console.log(this.owner);
+      console.log(this.collateralType);
+      console.log(this.denom);
+      console.log(this.params);
+      console.log(this.cdp);
+      console.log(this.deposits);
+      console.log(this.spotPrice);
+      console.log(this.liquidationPrice);
+      console.log(this.withdrawLimit);
+      console.log(this.issueLimit);
     }, 10000);
   }
 }

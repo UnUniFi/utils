@@ -83,7 +83,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
   async drawCDP(
     key: Key,
     privateKey: string,
-    denom: string,
+    collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
   ) {
     const sdk = await this.cosmosSDK.sdk();
@@ -102,10 +102,9 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       return;
     }
 
-    // build tx
     const msgDrawdebtCdp = new botany.cdp.MsgDrawDebt({
       sender: sender.toString(),
-      collateral_type: denom,
+      collateral_type: collateralType,
       principal,
     });
 
@@ -143,7 +142,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
   async repayCDP(
     key: Key,
     privateKey: string,
-    denom: string,
+    collateralType: string,
     payment: proto.cosmos.base.v1beta1.ICoin,
   ) {
     const sdk = await this.cosmosSDK.sdk();
@@ -162,10 +161,9 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       return;
     }
 
-    // build tx
     const msgDrawdebtCdp = new botany.cdp.MsgRepayDebt({
       sender: sender.toString(),
-      collateral_type: denom,
+      collateral_type: collateralType,
       payment,
     });
 

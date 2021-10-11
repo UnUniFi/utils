@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { rest } from 'botany-client';
-import { botany } from 'projects/botany-client/dist/cjs';
+import { rest, botany } from 'botany-client';
 import {
   CdpApplicationService,
   CosmosSDKService,

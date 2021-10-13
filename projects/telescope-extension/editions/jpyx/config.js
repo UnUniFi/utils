@@ -11,15 +11,31 @@ const config = {
     consPub: 'jpyxvalconspub',
   },
   extension: {
-    faucet: {
-      hasFaucet: true,
-      faucetURL: `${location.protocol}//${location.hostname}:8000`,
-      denoms: ['ujsmn', 'ubtc', 'jpyx'],
-      creditAmount: 10, // amount to credit in each request
-      maxCredit: 100, // maximum credit per account
-    },
+    faucet: [
+      {
+        hasFaucet: true,
+        faucetURL: `${location.protocol}//${location.hostname}:8000`,
+        denom: 'ubtc',
+        creditAmount: 100, // amount to credit in max request
+        maxCredit: 99, // account has already maxCredit balance cannot claim anymore
+      },
+      {
+        hasFaucet: true,
+        faucetURL: `${location.protocol}//${location.hostname}:8002`,
+        denom: 'ujsmn',
+        creditAmount: 2000000,
+        maxCredit: 199999,
+      },
+      {
+        hasFaucet: true,
+        faucetURL: `${location.protocol}//${location.hostname}:8004`,
+        denom: 'jpyx',
+        creditAmount: 10,
+        maxCredit: 9,
+      }
+    ],
     monitor: {
-      monitorURL: `${location.protocol}//localhost:9000`,
+      monitorURL: `${location.protocol}//${location.hostname}:9000`,
     },
     navigations: [
       {
@@ -29,7 +45,7 @@ const config = {
     ],
     messageActions: [''],
     messageModules: [
-      'bank', // hit
+      'bank',
       'auth',
       'crisis',
       'distribution',
@@ -38,7 +54,7 @@ const config = {
       'gov',
       'ibc',
       'slashing',
-      'staking', // hit
+      'staking',
       'auction',
       'botanydist',
       'cdp',

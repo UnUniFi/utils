@@ -10,10 +10,6 @@ const routes: Routes = [
     path: 'cdp',
     loadChildren: () => import('./pages/cdp/cdp.module').then((m) => m.AppCdpModule),
   },
-  {
-    path: 'faucet',
-    loadChildren: () => import('./pages/faucet/faucet.module').then((m) => m.AppFaucetModule),
-  },
 ];
 
 @NgModule({

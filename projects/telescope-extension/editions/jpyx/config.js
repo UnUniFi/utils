@@ -22,9 +22,9 @@ const config = {
       {
         hasFaucet: true,
         faucetURL: `${location.protocol}//${location.hostname}:8002`,
-        denom: 'ujsmn',
+        denom: 'ujcbn',
         creditAmount: 2000000,
-        maxCredit: 199999,
+        maxCredit: 1999999,
       },
       {
         hasFaucet: true,

@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   @Output()
   appSubmitSearchValue: EventEmitter<string>;
 
-  @ViewChild('sidenav')
+  @ViewChild('drawer')
   sidenav!: MatSidenav;
 
   drawerMode$: BehaviorSubject<MatDrawerMode> = new BehaviorSubject('side' as MatDrawerMode);
@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
       });
     };
 
-    // Todo: This is not working.
     combineLatest([this.drawerMode$, this.router.events]).subscribe(([drawerMode, event]) => {
       if (drawerMode === 'over' && event instanceof NavigationEnd) {
         this.sidenav?.close();

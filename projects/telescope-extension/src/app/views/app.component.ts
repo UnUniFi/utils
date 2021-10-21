@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
   }
 
   handleResizeWindow(width: number): void {
-    if (width < 600) {
+    if (width < 640) {
       this.drawerMode$.next('over');
       this.drawerOpened$.next(false);
     } else {

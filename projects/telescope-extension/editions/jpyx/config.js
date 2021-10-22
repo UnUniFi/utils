@@ -39,6 +39,10 @@ const config = {
     },
     navigations: [
       {
+        name: 'Monitor',
+        link: '/monitor',
+      },
+      {
         name: 'JPYX',
         link: '/jpyx/',
       },

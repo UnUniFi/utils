@@ -16,7 +16,6 @@
       <a mat-list-item href="/cosmos/bank">Bank</a>
       <a mat-list-item href="/cosmos/staking">Staking</a>
       <a mat-list-item href="/cosmos/gov">Gov</a>
-      <a mat-list-item href="/monitor">Monitor</a>
       <ng-template ngFor let-extension [ngForOf]="extensionNavigations">
         <ng-container *ngIf="extension?.name && extension?.link">
           <a mat-list-item [href]="extension?.link">

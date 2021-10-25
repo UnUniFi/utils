@@ -24,7 +24,6 @@ export type Config = {
       name: string;
       link: string;
     }[];
-    messageActions: string[];
     messageModules: string[];
   };
 };

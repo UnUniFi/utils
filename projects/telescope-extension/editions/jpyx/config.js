@@ -47,7 +47,6 @@ const config = {
         link: '/jpyx/',
       },
     ],
-    messageActions: [''],
     messageModules: [
       'bank',
       'auth',

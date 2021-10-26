@@ -49,7 +49,6 @@ const config = {
         icon: 'toll',
       },
     ],
-    messageActions: [''],
     messageModules: [
       'bank',
       'auth',

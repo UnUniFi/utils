@@ -9,34 +9,34 @@
     </mat-toolbar>
 
     <mat-nav-list>
-      <mat-list-item href="/">
+      <a mat-list-item href="/">
         <mat-icon class="mr-2" color="primary">other_houses</mat-icon>
         Home
-      </mat-list-item>
-      <mat-list-item href="/blocks">
+      </a>
+      <a mat-list-item href="/blocks">
         <mat-icon class="mr-2" color="primary">account_tree</mat-icon>
         Blocks
-      </mat-list-item>
-      <mat-list-item href="/txs">
+      </a>
+      <a mat-list-item href="/txs">
         <mat-icon class="mr-2" color="primary">mail</mat-icon>
         Txs
-      </mat-list-item>
-      <mat-list-item href="/keys">
+      </a>
+      <a mat-list-item href="/keys">
         <mat-icon class="mr-2" color="primary">manage_accounts</mat-icon>
         Keys
-      </mat-list-item>
-      <mat-list-item href="/cosmos/bank">
+      </a>
+      <a mat-list-item href="/cosmos/bank">
         <mat-icon class="mr-2" color="primary">sync_alt</mat-icon>
         Bank
-      </mat-list-item>
-      <mat-list-item href="/cosmos/staking">
+      </a>
+      <a mat-list-item href="/cosmos/staking">
         <mat-icon class="mr-2" color="primary">savings</mat-icon>
         Staking
-      </mat-list-item>
-      <mat-list-item href="/cosmos/gov">
+      </a>
+      <a mat-list-item href="/cosmos/gov">
         <mat-icon class="mr-2" color="primary">message</mat-icon>
         Gov
-      </mat-list-item>
+      </a>
       <ng-template ngFor let-extension [ngForOf]="extensionNavigations">
         <ng-container *ngIf="extension?.name && extension?.link">
           <a mat-list-item [href]="extension?.link">

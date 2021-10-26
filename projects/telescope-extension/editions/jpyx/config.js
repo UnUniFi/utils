@@ -41,10 +41,12 @@ const config = {
       {
         name: 'Monitor',
         link: '/monitor',
+        icon: 'monitor',
       },
       {
         name: 'JPYX',
         link: '/jpyx/',
+        icon: 'toll',
       },
     ],
     messageActions: [''],

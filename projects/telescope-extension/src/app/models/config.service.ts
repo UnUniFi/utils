@@ -23,6 +23,7 @@ export type Config = {
     navigations: {
       name: string;
       link: string;
+      icon: string;
     }[];
     messageActions: string[];
     messageModules: string[];

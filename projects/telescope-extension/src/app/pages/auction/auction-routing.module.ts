@@ -9,7 +9,7 @@ const routes: Routes = [
     component: AuctionComponent,
   },
   {
-    path: 'auction',
+    path: 'auctions',
     loadChildren: () => import('./auctions/auctions.module').then((mod) => mod.AppAuctionsModule),
     canActivate: [KeySelectGuard],
   },

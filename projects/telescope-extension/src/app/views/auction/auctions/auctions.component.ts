@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { InlineResponse2004Cdp1, InlineResponse200Auctions } from 'botany-client/esm/openapi';
 import * as crypto from 'crypto';
-import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi';
 
 @Component({
   selector: 'view-auctions',
@@ -9,19 +10,27 @@ import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi';
 })
 export class AuctionsComponent implements OnInit {
   @Input()
-  cdps?: InlineResponse2004Cdp1[] | null;
+  auctions?: InlineResponse200Auctions[] | null;
 
-  constructor() {}
+  @Input()
+  pageSizeOptions?: number[] | null;
+  @Input()
+  pageSize?: number | null;
+  @Input()
+  pageNumber?: number | null;
+  @Input()
+  pageLength?: number | null;
+
+  @Output()
+  paginationChange: EventEmitter<PageEvent>;
+
+  constructor() {
+    this.paginationChange = new EventEmitter();
+  }
 
   ngOnInit(): void {}
 
-  getColorCode(cdp: InlineResponse2004Cdp1) {
-    const hash = crypto
-      .createHash('sha256')
-      .update(Buffer.from(`${cdp.cdp!.owner}/${cdp.cdp!.collateral!.denom}`))
-      .digest()
-      .toString('hex');
-
-    return `#${hash.substr(0, 6)}`;
+  onPaginationChange(pageEvent: PageEvent): void {
+    this.paginationChange.emit(pageEvent);
   }
 }

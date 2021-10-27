@@ -1,0 +1,30 @@
+<mat-nav-list>
+  <div class="flex flex-row">
+    <h3 matSubheader>CDPs</h3>
+    <span class="flex-auto"></span>
+    <button mat-flat-button routerLink="/cdp/cdps/create" color="accent">
+      <mat-icon>add</mat-icon>
+      <span>Create</span>
+    </button>
+  </div>
+  <mat-divider></mat-divider>
+  <ng-container *ngIf="cdps === null; then loading; else loaded"> </ng-container>
+  <ng-template #loading>
+    <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
+  </ng-template>
+  <ng-template #loaded>
+    <ng-container *ngIf="(cdps?.length || 0) > 0; then exist; else empty"> </ng-container>
+  </ng-template>
+  <ng-template #exist>
+    <ng-container *ngFor="let cdp of cdps">
+      <mat-list-item [routerLink]="[cdp.cdp?.owner, cdp.cdp?.type]">
+        <mat-icon matListIcon [ngStyle]="{ color: getColorCode(cdp) }"> circle </mat-icon>
+        <span>{{ cdp.cdp?.type }}</span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </ng-template>
+  <ng-template #empty>
+    <p class="empty">There is no cdp.</p>
+  </ng-template>
+</mat-nav-list>

@@ -1,0 +1,160 @@
+<h2>View CDPs</h2>
+<mat-card>
+  <mat-nav-list>
+    <mat-list-item routerLink="/cdp/cdps">You owned CDPs</mat-list-item>
+  </mat-nav-list>
+</mat-card>
+
+<h2>CDP parameters</h2>
+<h3>Collateral Params</h3>
+<mat-card>
+  <mat-list *ngFor="let collateral of params?.collateral_params">
+    <mat-list-item>
+      <span>Denom:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.denom }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Type:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.type }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Liquidation Ratio:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.liquidation_ratio | number:'1.6-6' }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Debt Limit:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.debt_limit?.amount | number:'1.0-0' }}</span>
+      <span class="ml-1">{{ collateral.debt_limit?.denom }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Stability Fee:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.stability_fee}}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Auction Size:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.auction_size | number:'1.0-0' }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Liquidation Penalty:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.liquidation_penalty | number:'1.6-6' }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Spot Market ID:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.spot_market_id }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Liquidation Market ID:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.liquidation_market_id }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Keeper Reward Percentage:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.keeper_reward_percentage | number:'1.9-9' }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Check Collateralization Index Count:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.check_collateralization_index_count | number:'1.0-0' }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Conversion Factor:</span>
+      <span class="flex-auto"></span>
+      <span>{{ collateral.conversion_factor }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+  </mat-list>
+</mat-card>
+
+<h3>Debt Params</h3>
+<mat-card>
+  <mat-list>
+    <mat-list-item>
+      <span>Denom:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.debt_param?.denom }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Reference Asset:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.debt_param?.reference_asset }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Conversion Factor:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.debt_param?.conversion_factor }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-list-item>
+      <span>Debt Floor:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.debt_param?.debt_floor }}</span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+  </mat-list>
+</mat-card>
+
+<h3>Other Status</h3>
+<mat-card>
+  <mat-list>
+    <mat-list-item>
+      <span>Global Debt Limit:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.global_debt_limit?.amount | number:'1.0-0' }}</span>
+      <span class="ml-1">{{ params?.global_debt_limit?.denom }}</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <span>Surplus Auction Threshold:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.surplus_auction_threshold | number:'1.0-0' }}</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <span>Surplus Auction Lot:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.surplus_auction_lot | number:'1.0-0' }}</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <span>Debt Auction Threshold:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.debt_auction_threshold | number:'1.0-0' }}</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <span>Debt Auction Lot:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.debt_auction_lot | number:'1.0-0' }}</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <span>Circuit Breaker:</span>
+      <span class="flex-auto"></span>
+      <span>{{ params?.circuit_breaker }}</span>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+</mat-card>
+<!--<pre>{{ params | json }}</pre>-->

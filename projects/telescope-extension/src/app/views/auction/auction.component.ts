@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { botany } from 'botany-client';
+import { InlineResponse2002Params } from 'projects/botany-client/src/openapi';
 
 @Component({
   selector: 'view-auction',
@@ -8,7 +8,7 @@ import { botany } from 'botany-client';
 })
 export class AuctionComponent implements OnInit {
   @Input()
-  params?: botany.cdp.IParams | null;
+  params?: InlineResponse2002Params | null;
 
   constructor() {}
 

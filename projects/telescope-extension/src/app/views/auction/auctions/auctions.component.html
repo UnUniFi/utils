@@ -14,7 +14,7 @@
         </mat-list-item>
         <mat-divider></mat-divider>
         <ng-container *ngFor="let auc of auctions">
-          <mat-list-item>
+          <mat-list-item routerLink="/auction/auctions/{{ auc.base_auction.id }}">
             <span class="pr-4">{{ auc.base_auction.id }}</span>
             <span class="flex-auto"></span>
             <span class="break-all truncate">{{ auc.base_auction.end_time }}</span>

@@ -96,6 +96,7 @@ export class AuctionsComponent implements OnInit {
       }),
       map((latestauctions) => latestauctions?.reverse()),
     );
+    this.auctions$.subscribe((data) => console.log(data));
   }
 
   ngOnInit(): void {}

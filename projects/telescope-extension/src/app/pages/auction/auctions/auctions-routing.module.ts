@@ -1,4 +1,4 @@
-import { CdpsComponent as AuctionsComponent } from './auctions.component';
+import { AuctionsComponent } from './auctions.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

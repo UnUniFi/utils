@@ -8,4 +8,4 @@ import { AuctionComponent } from './auction.component';
   declarations: [AuctionComponent],
   imports: [CommonModule, AuctionRoutingModule, AuctionModule],
 })
-export class AppCdpModule {}
+export class AppAuctionModule {}

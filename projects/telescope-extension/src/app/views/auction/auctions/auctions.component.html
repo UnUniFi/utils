@@ -1,0 +1,35 @@
+<div class="flex flex-row justify-between content-start items-start">
+  <h2>Auctions</h2>
+</div>
+<div>
+  <mat-card>
+    <mat-nav-list>
+      <ng-container *ngIf="auctions === undefined || null; then empty; else exist"></ng-container>
+      <ng-template #empty></ng-template>
+      <ng-template #exist>
+        <mat-list-item>
+          <span class="break-all truncate pr-4">ID</span>
+          <span class="flex-auto"></span>
+          <span class="break-all truncate">Max End Time</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <ng-container *ngFor="let auc of auctions">
+          <mat-list-item>
+            <span class="pr-4">{{ auc.base_auction.id }}</span>
+            <span class="flex-auto"></span>
+            <span class="break-all truncate">{{ auc.base_auction.end_time }}</span>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </ng-container>
+        <mat-paginator
+          [length]="pageLength"
+          [pageSize]="pageSize"
+          [pageIndex]="pageNumber ? pageNumber - 1 : 0"
+          [pageSizeOptions]="pageSizeOptions ? pageSizeOptions : []"
+          (page)="onPaginationChange($event)"
+        >
+        </mat-paginator>
+      </ng-template>
+    </mat-nav-list>
+  </mat-card>
+</div>

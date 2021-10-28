@@ -11,7 +11,6 @@ const routes: Routes = [
   {
     path: 'auctions',
     loadChildren: () => import('./auctions/auctions.module').then((mod) => mod.AppAuctionsModule),
-    canActivate: [KeySelectGuard],
   },
 ];
 

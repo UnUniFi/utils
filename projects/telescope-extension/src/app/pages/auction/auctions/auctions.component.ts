@@ -1,8 +1,8 @@
 import { CosmosSDKService } from '../../../models/index';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { rest } from 'botany-client';
-import { InlineResponse200Auctions } from 'botany-client/esm/openapi';
+import { rest, botany } from 'botany-client';
+import { cosmosclient } from 'cosmos-client';
 import { BehaviorSubject, combineLatest, Observable, of, timer } from 'rxjs';
 import { filter, map, mergeMap, switchMap } from 'rxjs/operators';
 
@@ -21,7 +21,7 @@ export class AuctionsComponent implements OnInit {
   auctionsPageOffset$: Observable<bigint>;
 
   pollingInterval = 30;
-  auctions$?: Observable<InlineResponse200Auctions[] | undefined>;
+  auctions$?: Observable<(botany.auction.CollateralAuction | undefined)[] | undefined>;
 
   constructor(private cosmosSDK: CosmosSDKService) {
     const timer$ = timer(0, this.pollingInterval * 1000);
@@ -83,9 +83,19 @@ export class AuctionsComponent implements OnInit {
             return [];
           });
       }),
-      map((latestauctions) => latestauctions?.reverse()),
+      map((latestauctions) => {
+        const unpackAuction = latestauctions?.map((value) => {
+          const unpackvalue = cosmosclient.codec.unpackCosmosAny(value);
+          if (!(unpackvalue instanceof botany.auction.CollateralAuction)) {
+            console.log(unpackvalue);
+            return;
+          }
+          return unpackvalue;
+        });
+        return unpackAuction?.reverse();
+      }),
     );
-    this.auctions$.subscribe((data) => console.log(data));
+    this.auctions$?.subscribe((data) => console.log(data));
   }
 
   ngOnInit(): void {}

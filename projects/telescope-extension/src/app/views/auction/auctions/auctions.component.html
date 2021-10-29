@@ -14,10 +14,10 @@
         </mat-list-item>
         <mat-divider></mat-divider>
         <ng-container *ngFor="let auction of auctions">
-          <mat-list-item routerLink="/auction/auctions/{{ auction.base_auction.id }}">
-            <span class="pr-4">{{ auction.base_auction.id }}</span>
+          <mat-list-item routerLink="/auction/auctions/{{ auction?.base_auction?.id }}">
+            <span class="pr-4">{{ auction?.base_auction?.id }}</span>
             <span class="flex-auto"></span>
-            <span class="break-all truncate">{{ auction.base_auction.end_time }}</span>
+            <span class="break-all truncate">{{ auction?.base_auction?.end_time }}</span>
           </mat-list-item>
           <mat-divider></mat-divider>
         </ng-container>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { botany } from 'botany-client';
 import { InlineResponse200Auctions } from 'botany-client/esm/openapi';
 
 @Component({
@@ -9,7 +10,7 @@ import { InlineResponse200Auctions } from 'botany-client/esm/openapi';
 })
 export class AuctionsComponent implements OnInit {
   @Input()
-  auctions?: any[] | null;
+  auctions?: (botany.auction.CollateralAuction | undefined)[] | null;
 
   @Input()
   pageSizeOptions?: number[] | null;

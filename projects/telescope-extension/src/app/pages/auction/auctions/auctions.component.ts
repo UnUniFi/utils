@@ -1,15 +1,10 @@
-import { ConfigService } from '../../../models/config.service';
-import { CosmosSDKService, KeyService } from '../../../models/index';
-import { Key } from '../../../models/keys/key.model';
-import { KeyStoreService } from '../../../models/keys/key.store.service';
+import { CosmosSDKService } from '../../../models/index';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
 import { rest } from 'botany-client';
-import { cosmosclient } from 'cosmos-client';
-import { InlineResponse200Auctions } from 'projects/botany-client/src/openapi';
+import { InlineResponse200Auctions } from 'botany-client/esm/openapi';
 import { BehaviorSubject, combineLatest, Observable, of, timer } from 'rxjs';
-import { catchError, filter, map, mergeMap, switchMap } from 'rxjs/operators';
+import { filter, map, mergeMap, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auctions',
@@ -28,13 +23,7 @@ export class AuctionsComponent implements OnInit {
   pollingInterval = 30;
   auctions$?: Observable<InlineResponse200Auctions[] | undefined>;
 
-  constructor(
-    private route: ActivatedRoute,
-    private cosmosSDK: CosmosSDKService,
-    private configService: ConfigService,
-    private readonly key: KeyService,
-    private readonly keyStore: KeyStoreService,
-  ) {
+  constructor(private cosmosSDK: CosmosSDKService) {
     const timer$ = timer(0, this.pollingInterval * 1000);
     const sdk$ = timer$.pipe(mergeMap((_) => this.cosmosSDK.sdk$));
 

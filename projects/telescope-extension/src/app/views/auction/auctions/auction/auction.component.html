@@ -1,1 +1,24 @@
 <h2>Auction</h2>
+<ng-container *ngIf="auction === null; then empty; else exist"> </ng-container>
+<ng-template #loading>
+  <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
+</ng-template>
+
+<ng-template #exist>
+  <mat-card>
+    <mat-list>
+      <mat-list-item>
+        <span class="column-name"> Fees Updated </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ auction?.auction }}
+        </span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+    </mat-list>
+  </mat-card>
+</ng-template>
+
+<ng-template #empty>
+  <p class="empty">There is no cdp</p>
+</ng-template>

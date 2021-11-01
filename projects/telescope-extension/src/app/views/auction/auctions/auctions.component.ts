@@ -10,7 +10,7 @@ import { InlineResponse200Auctions } from 'botany-client/esm/openapi';
 })
 export class AuctionsComponent implements OnInit {
   @Input()
-  auctions?: (botany.auction.CollateralAuction | undefined)[] | null;
+  auctions?: botany.auction.CollateralAuction[] | null;
 
   @Input()
   pageSizeOptions?: number[] | null;

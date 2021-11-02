@@ -21,7 +21,7 @@ export class AuctionsComponent implements OnInit {
   auctionsPageOffset$: Observable<bigint>;
 
   pollingInterval = 30;
-  auctions$?: Observable<any>;
+  auctions$?: Observable<(botany.auction.CollateralAuction | undefined)[] | undefined>;
 
   constructor(private cosmosSDK: CosmosSDKService) {
     const timer$ = timer(0, this.pollingInterval * 1000);
@@ -84,16 +84,16 @@ export class AuctionsComponent implements OnInit {
           });
       }),
       map((latestauctions) => {
-        return latestauctions?.reverse();
-        //   const unpackAuction = latestauctions?.map((value) => {
-        //     const unpackvalue = cosmosclient.codec.unpackCosmosAny(value);
-        //     if (!(unpackvalue instanceof botany.auction.CollateralAuction)) {
-        //       console.log(unpackvalue);
-        //       return;
-        //     }
-        //     return unpackvalue;
-        //   });
-        //   return unpackAuction?.reverse();
+        const unpackAuction = latestauctions?.map((value) => {
+          console.log(value);
+          const unpackValue = cosmosclient.codec.unpackCosmosAny(value);
+          if (!(unpackValue instanceof botany.auction.CollateralAuction)) {
+            console.log(unpackValue);
+            return;
+          }
+          return unpackValue;
+        });
+        return unpackAuction?.reverse();
       }),
     );
     this.auctions$?.subscribe((data) => console.log(data));

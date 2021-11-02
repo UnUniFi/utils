@@ -66,10 +66,10 @@ export class AuctionsComponent implements OnInit {
         ([_sdk, _pageSize, _pageOffset, auctionTotalCount]) => auctionTotalCount !== BigInt(0),
       ),
       switchMap(([sdk, pageSize, pageOffset, _auctionTotalCount]) => {
-        const modifiedPageOffset = pageOffset < 1 ? BigInt(1) : pageOffset;
-        const modifiedPageSize = pageOffset < 1 ? pageOffset + BigInt(pageSize) : BigInt(pageSize);
+        const modifiedPageOffset = pageOffset < 0 ? BigInt(0) : pageOffset;
+        const modifiedPageSize = pageOffset < 0 ? pageOffset + BigInt(pageSize) : BigInt(pageSize);
 
-        if (modifiedPageOffset <= 0 || modifiedPageSize <= 0) {
+        if (modifiedPageOffset < 0 || modifiedPageSize < 0) {
           return [];
         }
 

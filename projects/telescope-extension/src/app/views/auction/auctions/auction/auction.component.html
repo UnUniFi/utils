@@ -21,7 +21,8 @@
         <span class="column-name"> Lot: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ auction?.base_auction?.lot }}
+          {{ auction?.base_auction?.lot?.amount }}
+          {{ auction?.base_auction?.lot?.denom }}
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>

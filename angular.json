@@ -232,7 +232,7 @@
             "polyfills": "projects/telescope-extension/src/polyfills.ts",
             "tsConfig": "projects/telescope-extension/tsconfig.app.json",
             "assets": [
-              "projects/telescope-extension/src/favicon.ico",
+              "projects/telescope-extension/src/favicon.png",
               "projects/telescope-extension/src/assets"
             ],
             "styles": [

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { botany } from 'botany-client';
-import { InlineResponse200Auctions } from 'botany-client/esm/openapi';
 
 @Component({
   selector: 'view-auctions',

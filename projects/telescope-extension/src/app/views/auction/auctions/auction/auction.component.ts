@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { InlineResponse2001 } from 'botany-client/esm/openapi';
+import { botany } from 'botany-client';
 
 @Component({
   selector: 'view-auction',
@@ -8,7 +8,7 @@ import { InlineResponse2001 } from 'botany-client/esm/openapi';
 })
 export class AuctionComponent implements OnInit {
   @Input()
-  auction?: InlineResponse2001 | null;
+  auction?: botany.auction.CollateralAuction | null;
 
   constructor() {}
 

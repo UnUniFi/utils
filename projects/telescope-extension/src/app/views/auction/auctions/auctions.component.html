@@ -11,6 +11,10 @@
           <span class="break-all truncate pr-4">ID</span>
           <span class="flex-auto"></span>
           <span class="break-all truncate">Lot</span>
+          <span class="flex-auto"></span>
+          <span class="break-all truncate">Bid</span>
+          <span class="flex-auto"></span>
+          <span class="break-all truncate">Max Bid</span>
         </mat-list-item>
         <mat-divider></mat-divider>
         <ng-container *ngFor="let auction of auctions">
@@ -21,9 +25,29 @@
               {{ auction?.base_auction?.lot?.amount }}
               {{ auction?.base_auction?.lot?.denom }}
             </span>
+            <span class="flex-auto"></span>
+            <ng-container
+              *ngIf="!auction?.base_auction?.has_received_bids; then empty; else exist"
+            ></ng-container>
+            <ng-template #exist>
+              <mat-chip-list>
+                <mat-chip color="primary" selected>{{ auction?.base_auction?.bidder }}</mat-chip>
+              </mat-chip-list>
+            </ng-template>
+            <ng-template #empty>
+              <mat-chip-list>
+                <mat-chip color="warn" selected>No Bidder</mat-chip>
+              </mat-chip-list>
+            </ng-template>
+
+            <span class="flex-auto"></span>
+            <span class="pr-4"
+              >{{ auction?.base_auction?.bid?.amount }}{{ auction?.base_auction?.bid?.denom }}</span
+            >
           </mat-list-item>
           <mat-divider></mat-divider>
         </ng-container>
+
         <mat-paginator
           [length]="pageLength"
           [pageSize]="pageSize"

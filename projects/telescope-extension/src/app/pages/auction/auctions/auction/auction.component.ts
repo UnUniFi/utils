@@ -14,6 +14,8 @@ import { map, mergeMap } from 'rxjs/operators';
 export class AuctionComponent implements OnInit {
   auctionID$: Observable<string>;
   auction$: Observable<botany.auction.CollateralAuction | undefined>;
+  endTime$: Observable<Date | undefined>;
+  maxEndTime$: Observable<Date | undefined>;
 
   constructor(private route: ActivatedRoute, private cosmosSDK: CosmosSDKService) {
     this.auctionID$ = this.route.params.pipe(map((params) => params.auction_id));
@@ -25,21 +27,42 @@ export class AuctionComponent implements OnInit {
         const data = auction as { base_auction: { end_time: string; max_end_time: string } };
         const parseAuction = (value: any): unknown => {
           value.base_auction.end_time = google.protobuf.Timestamp.fromObject({
-            seconds: Date.parse(value.base_auction.end_time) / 1000,
-            nanos: (Date.parse(value.base_auction.end_time) % 1000) * 1e6,
+            seconds: Date.parse(value.base_auction.end_time),
+            nanos: 0,
           });
           value.base_auction.max_end_time = google.protobuf.Timestamp.fromObject({
-            seconds: Date.parse(value.base_auction.max_end_time) / 1000,
-            nanos: (Date.parse(value.base_auction.max_end_time) % 1000) * 1e6,
+            seconds: Date.parse(value.base_auction.max_end_time),
+            nanos: 0,
           });
           return value;
         };
         const unpackAuction = cosmosclient.codec.unpackCosmosAny(parseAuction(data));
         if (!(unpackAuction instanceof botany.auction.CollateralAuction)) {
-          console.log(unpackAuction);
           return;
         }
         return unpackAuction;
+      }),
+    );
+    this.endTime$ = this.auction$.pipe(
+      map((value) => {
+        if (!Number(value?.base_auction?.end_time?.seconds)) {
+          console.log(value?.base_auction?.end_time?.seconds);
+          return;
+        }
+        const endTime = new Date();
+        endTime.setTime(Number(value?.base_auction?.end_time?.seconds));
+        return endTime;
+      }),
+    );
+    this.maxEndTime$ = this.auction$.pipe(
+      map((value) => {
+        if (!Number(value?.base_auction?.end_time?.seconds)) {
+          console.log(value?.base_auction?.max_end_time?.seconds);
+          return;
+        }
+        const maxEndTime = new Date();
+        maxEndTime.setTime(Number(value?.base_auction?.max_end_time?.seconds));
+        return maxEndTime;
       }),
     );
   }

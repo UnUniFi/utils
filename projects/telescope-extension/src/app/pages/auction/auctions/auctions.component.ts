@@ -83,8 +83,8 @@ export class AuctionsComponent implements OnInit {
             return [];
           });
       }),
-      map((latestauctions) => {
-        const unpackAuction = latestauctions?.map((value) => {
+      map((latestAuctions) => {
+        const unpackAuction = latestAuctions?.map((value) => {
           const data = value as { base_auction: { end_time: string; max_end_time: string } };
           const parseAuction = (value: any): unknown => {
             value.base_auction.end_time = google.protobuf.Timestamp.fromObject({

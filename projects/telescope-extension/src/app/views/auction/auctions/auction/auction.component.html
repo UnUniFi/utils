@@ -46,23 +46,27 @@
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
 
-      <mat-list-item>
-        <span class="column-name"> End Time: </span>
-        <span class="flex-auto"></span>
-        <span class="column-value">
-          {{ endTime }}
-        </span>
-      </mat-list-item>
-      <mat-divider [inset]="true"></mat-divider>
+      <ng-container *ngIf="endTime != undefined">
+        <mat-list-item>
+          <span class="column-name"> End Time: </span>
+          <span class="flex-auto"></span>
+          <span class="column-value">
+            {{ endTime }}
+          </span>
+        </mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+      </ng-container>
 
-      <mat-list-item>
-        <span class="column-name"> Max End Time: </span>
-        <span class="flex-auto"></span>
-        <span class="column-value">
-          {{ maxEndTime }}
-        </span>
-      </mat-list-item>
-      <mat-divider [inset]="true"></mat-divider>
+      <ng-container *ngIf="maxEndTime != undefined">
+        <mat-list-item>
+          <span class="column-name"> Max End Time: </span>
+          <span class="flex-auto"></span>
+          <span class="column-value">
+            {{ maxEndTime }}
+          </span>
+        </mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+      </ng-container>
 
       <mat-list-item>
         <span class="column-name"> Initiator: </span>

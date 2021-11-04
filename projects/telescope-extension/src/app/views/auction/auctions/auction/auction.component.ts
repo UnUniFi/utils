@@ -14,14 +14,16 @@ export class AuctionComponent implements OnInit {
   maxEndTime?: Date | undefined;
 
   constructor() {
+    if (!this.auction?.base_auction?.end_time?.seconds?.toNumber()) {
+      return;
+    }
     this.endTime = new Date();
-    if (this.auction?.base_auction?.end_time?.seconds?.toNumber() != undefined) {
-      this.endTime.setDate(this.auction?.base_auction?.end_time?.seconds?.toNumber());
+    this.endTime.setDate(this.auction?.base_auction?.end_time?.seconds?.toNumber());
+    if (!this.auction?.base_auction?.max_end_time?.seconds?.toNumber()) {
+      return;
     }
     this.maxEndTime = new Date();
-    if (this.auction?.base_auction?.max_end_time?.seconds?.toNumber() != undefined) {
-      this.endTime.setDate(this.auction?.base_auction?.max_end_time?.seconds?.toNumber());
-    }
+    this.maxEndTime.setDate(this.auction?.base_auction?.max_end_time?.seconds?.toNumber());
   }
 
   ngOnInit(): void {}

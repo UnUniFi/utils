@@ -10,14 +10,17 @@
         <mat-list-item>
           <span class="break-all truncate pr-4">ID</span>
           <span class="flex-auto"></span>
-          <span class="break-all truncate">Max End Time</span>
+          <span class="break-all truncate">Lot</span>
         </mat-list-item>
         <mat-divider></mat-divider>
         <ng-container *ngFor="let auction of auctions">
           <mat-list-item routerLink="/auction/auctions/{{ auction?.base_auction?.id }}">
             <span class="pr-4">{{ auction?.base_auction?.id }}</span>
             <span class="flex-auto"></span>
-            <span class="break-all truncate">{{ auction?.base_auction?.end_time }}</span>
+            <span class="break-all truncate">
+              {{ auction?.base_auction?.lot?.amount }}
+              {{ auction?.base_auction?.lot?.denom }}
+            </span>
           </mat-list-item>
           <mat-divider></mat-divider>
         </ng-container>

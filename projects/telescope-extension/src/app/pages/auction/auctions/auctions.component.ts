@@ -1,7 +1,7 @@
 import { CosmosSDKService } from '../../../models/index';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { rest, botany } from 'botany-client';
+import { rest, botany, google } from 'botany-client';
 import { cosmosclient } from 'cosmos-client';
 import { BehaviorSubject, combineLatest, Observable, of, timer } from 'rxjs';
 import { filter, map, mergeMap, switchMap } from 'rxjs/operators';
@@ -85,8 +85,19 @@ export class AuctionsComponent implements OnInit {
       }),
       map((latestauctions) => {
         const unpackAuction = latestauctions?.map((value) => {
-          console.log(value);
-          const unpackValue = cosmosclient.codec.unpackCosmosAny(value);
+          const data = value as { base_auction: { end_time: string; max_end_time: string } };
+          const parseAuction = (value: any): unknown => {
+            value.base_auction.end_time = google.protobuf.Timestamp.fromObject({
+              seconds: Date.parse(value.base_auction.end_time) / 1000,
+              nanos: (Date.parse(value.base_auction.end_time) % 1000) * 1e6,
+            });
+            value.base_auction.max_end_time = google.protobuf.Timestamp.fromObject({
+              seconds: Date.parse(value.base_auction.max_end_time) / 1000,
+              nanos: (Date.parse(value.base_auction.max_end_time) % 1000) * 1e6,
+            });
+            return value;
+          };
+          const unpackValue = cosmosclient.codec.unpackCosmosAny(parseAuction(value));
           if (!(unpackValue instanceof botany.auction.CollateralAuction)) {
             console.log(unpackValue);
             return;
@@ -96,7 +107,6 @@ export class AuctionsComponent implements OnInit {
         return unpackAuction?.reverse();
       }),
     );
-    this.auctions$?.subscribe((data) => console.log(data));
   }
 
   ngOnInit(): void {}

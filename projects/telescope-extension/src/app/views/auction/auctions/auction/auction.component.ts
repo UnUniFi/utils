@@ -10,7 +10,19 @@ export class AuctionComponent implements OnInit {
   @Input()
   auction?: botany.auction.CollateralAuction | null;
 
-  constructor() {}
+  endTime?: Date | undefined;
+  maxEndTime?: Date | undefined;
+
+  constructor() {
+    this.endTime = new Date();
+    if (this.auction?.base_auction?.end_time?.seconds?.toNumber() != undefined) {
+      this.endTime.setDate(this.auction?.base_auction?.end_time?.seconds?.toNumber());
+    }
+    this.maxEndTime = new Date();
+    if (this.auction?.base_auction?.max_end_time?.seconds?.toNumber() != undefined) {
+      this.endTime.setDate(this.auction?.base_auction?.max_end_time?.seconds?.toNumber());
+    }
+  }
 
   ngOnInit(): void {}
 }

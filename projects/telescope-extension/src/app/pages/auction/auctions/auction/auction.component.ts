@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { botany, rest } from 'botany-client';
+import { botany, google, rest } from 'botany-client';
 import { cosmosclient } from 'cosmos-client';
-import { auction } from 'projects/botany-client/src/rest/botany/auction';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
 import { combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
@@ -23,8 +22,19 @@ export class AuctionComponent implements OnInit {
         rest.botany.auction.auction(sdk.rest, id).then((res) => res.data.auction),
       ),
       map((auction) => {
-        console.log(auction);
-        const unpackAuction = cosmosclient.codec.unpackCosmosAny(auction);
+        const data = auction as { base_auction: { end_time: string; max_end_time: string } };
+        const parseAuction = (value: any): unknown => {
+          value.base_auction.end_time = google.protobuf.Timestamp.fromObject({
+            seconds: Date.parse(value.base_auction.end_time) / 1000,
+            nanos: (Date.parse(value.base_auction.end_time) % 1000) * 1e6,
+          });
+          value.base_auction.max_end_time = google.protobuf.Timestamp.fromObject({
+            seconds: Date.parse(value.base_auction.max_end_time) / 1000,
+            nanos: (Date.parse(value.base_auction.max_end_time) % 1000) * 1e6,
+          });
+          return value;
+        };
+        const unpackAuction = cosmosclient.codec.unpackCosmosAny(parseAuction(data));
         if (!(unpackAuction instanceof botany.auction.CollateralAuction)) {
           console.log(unpackAuction);
           return;
@@ -32,7 +42,6 @@ export class AuctionComponent implements OnInit {
         return unpackAuction;
       }),
     );
-    this.auction$?.subscribe((auction) => console.log(auction));
   }
 
   ngOnInit(): void {}

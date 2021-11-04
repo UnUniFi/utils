@@ -9,7 +9,7 @@ import { botany } from 'botany-client';
 })
 export class AuctionsComponent implements OnInit {
   @Input()
-  auctions?: botany.auction.CollateralAuction[] | null;
+  auctions?: (botany.auction.CollateralAuction | undefined)[] | null;
 
   @Input()
   pageSizeOptions?: number[] | null;

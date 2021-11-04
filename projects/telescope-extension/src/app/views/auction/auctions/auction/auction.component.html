@@ -37,13 +37,24 @@
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
 
-      <mat-list-item>
-        <span class="column-name"> Bidder: </span>
-        <span class="flex-auto"></span>
-        <span class="column-value">
-          {{ auction?.base_auction?.bidder }}
-        </span>
-      </mat-list-item>
+      <ng-container *ngIf="!auction?.base_auction?.bidder; then empty; else exist"></ng-container>
+      <ng-template #exist>
+        <mat-list-item>
+          <span class="column-name"> Bidder: </span>
+          <span class="flex-auto"></span>
+          <span class="column-value">
+            {{ auction?.base_auction?.bidder }}
+          </span>
+        </mat-list-item>
+      </ng-template>
+
+      <ng-template #empty>
+        <mat-list-item>
+          <span class="column-name"> Bidder: </span>
+          <span class="flex-auto"></span>
+          <span class="column-value"> No Bidder </span>
+        </mat-list-item>
+      </ng-template>
       <mat-divider [inset]="true"></mat-divider>
 
       <mat-list-item>

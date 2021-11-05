@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then((m) => m.AppHomeModule),
   },
   {
+    path: 'auction',
+    loadChildren: () => import('./pages/auction/auction.module').then((m) => m.AppAuctionModule),
+  },
+  {
     path: 'cdp',
     loadChildren: () => import('./pages/cdp/cdp.module').then((m) => m.AppCdpModule),
   },

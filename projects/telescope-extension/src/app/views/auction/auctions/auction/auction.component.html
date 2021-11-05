@@ -1,0 +1,142 @@
+<h2>Auction</h2>
+<ng-container *ngIf="auction === null; then empty; else exist"> </ng-container>
+<ng-template #loading>
+  <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
+</ng-template>
+
+<ng-template #exist>
+  <h3>Base Auction</h3>
+  <mat-card>
+    <mat-list>
+      <mat-list-item>
+        <span class="column-name"> ID: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ auction?.base_auction?.id }}
+        </span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+
+      <mat-list-item>
+        <span class="column-name"> Lot: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ auction?.base_auction?.lot?.amount }}
+          {{ auction?.base_auction?.lot?.denom }}
+        </span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+
+      <mat-list-item>
+        <span class="column-name"> Bid: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ auction?.base_auction?.bid?.amount }}
+          {{ auction?.base_auction?.bid?.denom }}
+        </span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+
+      <ng-container *ngIf="!auction?.base_auction?.bidder; then empty; else exist"></ng-container>
+      <ng-template #exist>
+        <mat-list-item>
+          <span class="column-name"> Bidder: </span>
+          <span class="flex-auto"></span>
+          <span class="column-value">
+            {{ auction?.base_auction?.bidder }}
+          </span>
+        </mat-list-item>
+      </ng-template>
+
+      <ng-template #empty>
+        <mat-list-item>
+          <span class="column-name"> Bidder: </span>
+          <span class="flex-auto"></span>
+          <span class="column-value"> No Bidder </span>
+        </mat-list-item>
+      </ng-template>
+      <mat-divider [inset]="true"></mat-divider>
+
+      <mat-list-item>
+        <span class="column-name"> End Time: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ endTime }}
+        </span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+
+      <mat-list-item>
+        <span class="column-name"> Max End Time: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ maxEndTime }}
+        </span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+
+      <mat-list-item>
+        <span class="column-name"> Initiator: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ auction?.base_auction?.initiator }}
+        </span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+  <br />
+  <mat-card>
+    <mat-list>
+      <mat-list-item>
+        <span class="column-name"> Corresponding Debt: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ auction?.corresponding_debt?.amount }}
+          {{ auction?.corresponding_debt?.denom }}
+        </span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+  <br />
+  <mat-card>
+    <mat-list>
+      <mat-list-item>
+        <span class="column-name"> Max Bid: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ auction?.max_bid?.amount }}
+          {{ auction?.max_bid?.denom }}
+        </span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+  <br />
+  <h3>Lot Returns</h3>
+
+  <ng-container *ngFor="let return of auction?.lot_returns">
+    <mat-card>
+      <mat-list>
+        <mat-list-item>
+          <span class="column-name"> Address: </span>
+          <span class="flex-auto"></span>
+          <span class="column-value">
+            {{ return.address }}
+          </span>
+        </mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+        <mat-list-item>
+          <span class="column-name"> Weight: </span>
+          <span class="flex-auto"></span>
+          <span class="column-value">
+            {{ return.weight }}
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+    <br />
+  </ng-container>
+</ng-template>
+
+<ng-template #empty>
+  <p class="empty">There is no cdp</p>
+</ng-template>

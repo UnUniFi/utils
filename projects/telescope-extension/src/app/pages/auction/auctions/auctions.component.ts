@@ -90,12 +90,12 @@ export class AuctionsComponent implements OnInit {
           };
           const parseAuction = (anyAuction: any): unknown => {
             anyAuction.base_auction.end_time = google.protobuf.Timestamp.fromObject({
-              seconds: Date.parse(anyAuction.base_auction.end_time) / 1000,
-              nanos: (Date.parse(anyAuction.base_auction.end_time) % 1000) * 1e6,
+              seconds: Date.parse(anyAuction.base_auction.end_time),
+              nanos: 0,
             });
             anyAuction.base_auction.max_end_time = google.protobuf.Timestamp.fromObject({
-              seconds: Date.parse(anyAuction.base_auction.max_end_time) / 1000,
-              nanos: (Date.parse(anyAuction.base_auction.max_end_time) % 1000) * 1e6,
+              seconds: Date.parse(anyAuction.base_auction.max_end_time),
+              nanos: 0,
             });
             return anyAuction;
           };

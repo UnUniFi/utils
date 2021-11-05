@@ -24,19 +24,21 @@ export class AuctionComponent implements OnInit {
         rest.botany.auction.auction(sdk.rest, id).then((res) => res.data.auction),
       ),
       map((auction) => {
-        const data = auction as { base_auction: { end_time: string; max_end_time: string } };
-        const parseAuction = (value: any): unknown => {
-          value.base_auction.end_time = google.protobuf.Timestamp.fromObject({
-            seconds: Date.parse(value.base_auction.end_time),
-            nanos: 0,
-          });
-          value.base_auction.max_end_time = google.protobuf.Timestamp.fromObject({
-            seconds: Date.parse(value.base_auction.max_end_time),
-            nanos: 0,
-          });
-          return value;
+        const anyAuction = auction as {
+          base_auction: { end_time: string; max_end_time: string };
         };
-        const unpackAuction = cosmosclient.codec.unpackCosmosAny(parseAuction(data));
+        const parseAuction = (anyAuction: any): unknown => {
+          anyAuction.base_auction.end_time = google.protobuf.Timestamp.fromObject({
+            seconds: Date.parse(anyAuction.base_auction.end_time),
+            nanos: 0,
+          });
+          anyAuction.base_auction.max_end_time = google.protobuf.Timestamp.fromObject({
+            seconds: Date.parse(anyAuction.base_auction.max_end_time),
+            nanos: 0,
+          });
+          return anyAuction;
+        };
+        const unpackAuction = cosmosclient.codec.unpackCosmosAny(parseAuction(anyAuction));
         if (!(unpackAuction instanceof botany.auction.CollateralAuction)) {
           return;
         }
@@ -44,24 +46,24 @@ export class AuctionComponent implements OnInit {
       }),
     );
     this.endTime$ = this.auction$.pipe(
-      map((value) => {
-        if (!Number(value?.base_auction?.end_time?.seconds)) {
-          console.log(value?.base_auction?.end_time?.seconds);
+      map((auction) => {
+        if (!Number(auction?.base_auction?.end_time?.seconds)) {
+          console.log(auction?.base_auction?.end_time?.seconds);
           return;
         }
         const endTime = new Date();
-        endTime.setTime(Number(value?.base_auction?.end_time?.seconds));
+        endTime.setTime(Number(auction?.base_auction?.end_time?.seconds));
         return endTime;
       }),
     );
     this.maxEndTime$ = this.auction$.pipe(
-      map((value) => {
-        if (!Number(value?.base_auction?.end_time?.seconds)) {
-          console.log(value?.base_auction?.max_end_time?.seconds);
+      map((auction) => {
+        if (!Number(auction?.base_auction?.end_time?.seconds)) {
+          console.log(auction?.base_auction?.max_end_time?.seconds);
           return;
         }
         const maxEndTime = new Date();
-        maxEndTime.setTime(Number(value?.base_auction?.max_end_time?.seconds));
+        maxEndTime.setTime(Number(auction?.base_auction?.max_end_time?.seconds));
         return maxEndTime;
       }),
     );

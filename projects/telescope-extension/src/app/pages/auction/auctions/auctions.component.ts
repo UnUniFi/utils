@@ -84,20 +84,22 @@ export class AuctionsComponent implements OnInit {
           });
       }),
       map((latestAuctions) => {
-        const unpackAuction = latestAuctions?.map((value) => {
-          const data = value as { base_auction: { end_time: string; max_end_time: string } };
-          const parseAuction = (value: any): unknown => {
-            value.base_auction.end_time = google.protobuf.Timestamp.fromObject({
-              seconds: Date.parse(value.base_auction.end_time) / 1000,
-              nanos: (Date.parse(value.base_auction.end_time) % 1000) * 1e6,
-            });
-            value.base_auction.max_end_time = google.protobuf.Timestamp.fromObject({
-              seconds: Date.parse(value.base_auction.max_end_time) / 1000,
-              nanos: (Date.parse(value.base_auction.max_end_time) % 1000) * 1e6,
-            });
-            return value;
+        const unpackAuction = latestAuctions?.map((auction) => {
+          const anyAuction = auction as {
+            base_auction: { end_time: string; max_end_time: string };
           };
-          const unpackValue = cosmosclient.codec.unpackCosmosAny(parseAuction(value));
+          const parseAuction = (anyAuction: any): unknown => {
+            anyAuction.base_auction.end_time = google.protobuf.Timestamp.fromObject({
+              seconds: Date.parse(anyAuction.base_auction.end_time) / 1000,
+              nanos: (Date.parse(anyAuction.base_auction.end_time) % 1000) * 1e6,
+            });
+            anyAuction.base_auction.max_end_time = google.protobuf.Timestamp.fromObject({
+              seconds: Date.parse(anyAuction.base_auction.max_end_time) / 1000,
+              nanos: (Date.parse(anyAuction.base_auction.max_end_time) % 1000) * 1e6,
+            });
+            return anyAuction;
+          };
+          const unpackValue = cosmosclient.codec.unpackCosmosAny(parseAuction(anyAuction));
           if (!(unpackValue instanceof botany.auction.CollateralAuction)) {
             console.log(unpackValue);
             return;

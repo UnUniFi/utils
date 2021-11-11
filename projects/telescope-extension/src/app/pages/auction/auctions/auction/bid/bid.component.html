@@ -1,5 +1,5 @@
 <view-bid
-  [auction]="auction$ | async"
-  [endTime]="endTime$ | async"
-  [maxEndTime]="maxEndTime$ | async"
+  [key]="key$ | async"
+  [auctionID]="auctionID$ | async"
+  (appSubmit)="onSubmit($event)"
 ></view-bid>

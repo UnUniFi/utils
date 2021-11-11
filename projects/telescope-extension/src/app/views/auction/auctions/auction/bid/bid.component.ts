@@ -1,5 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { botany } from 'botany-client';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { proto } from 'cosmos-client';
+import { InlineResponse2002Params } from 'projects/botany-client/src/openapi';
+import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
+
+export type PlaceBidOnSubmitEvent = {
+  key: Key;
+  privateKey: string;
+  auctionID: string;
+  amount: proto.cosmos.base.v1beta1.ICoin;
+};
 
 @Component({
   selector: 'view-bid',
@@ -8,14 +17,33 @@ import { botany } from 'botany-client';
 })
 export class BidComponent implements OnInit {
   @Input()
-  auction?: botany.auction.CollateralAuction | null;
+  key?: Key | null;
 
   @Input()
-  endTime?: Date | null;
-  @Input()
-  maxEndTime?: Date | null;
+  auctionID?: string | null;
 
-  constructor() {}
+  @Output()
+  appSubmit: EventEmitter<PlaceBidOnSubmitEvent>;
+
+  constructor() {
+    this.appSubmit = new EventEmitter();
+  }
 
   ngOnInit(): void {}
+
+  onSubmit(privateKey: string, Denom: string, Amount: string) {
+    if (!this.auctionID) {
+      console.error(this.auctionID);
+      return;
+    }
+    this.appSubmit.emit({
+      key: this.key!,
+      privateKey: privateKey,
+      auctionID: this.auctionID,
+      amount: {
+        denom: Denom,
+        amount: Amount,
+      },
+    });
+  }
 }

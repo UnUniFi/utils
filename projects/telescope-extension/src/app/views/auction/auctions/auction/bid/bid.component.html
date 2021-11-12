@@ -1,18 +1,38 @@
 <h2>Auction Place Bid</h2>
-<form #formRef="ngForm" (submit)="onSubmit(privateKeyRef.value, amountRef.value, denomRef.value)">
-  <mat-form-field class="w-full">
-    <mat-label>Auction ID</mat-label>
-    <input
-      #auctionIdRef
-      type="text"
-      name="auctionId"
-      [ngModel]="auctionID"
-      autocomplete="username"
-      matInput
-      readonly
-    />
-  </mat-form-field>
+<mat-card>
+  <mat-list>
+    <mat-list-item>
+      <span class="column-name"> Auction ID: </span>
+      <span class="flex-auto"></span>
+      <span class="column-value">
+        {{ auctionID }}
+      </span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
 
+    <mat-list-item>
+      <span class="column-name"> Auction Lot: </span>
+      <span class="flex-auto"></span>
+      <span class="column-value">
+        {{ auction?.base_auction?.lot?.amount }}
+        {{ auction?.base_auction?.lot?.denom }}
+      </span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-list-item>
+      <span class="column-name"> Current Max Bid: </span>
+      <span class="flex-auto"></span>
+      <span class="column-value">
+        {{ auction?.base_auction?.bid?.amount }}
+        {{ auction?.base_auction?.bid?.denom }}
+      </span>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+<br />
+
+<form #formRef="ngForm" (submit)="onSubmit(privateKeyRef.value, amountRef.value, denomRef.value)">
   <div>
     <mat-form-field class="w-full">
       <mat-label>Amount</mat-label>
@@ -20,7 +40,14 @@
     </mat-form-field>
     <mat-form-field class="w-full">
       <mat-label>Denom</mat-label>
-      <input #denomRef ngModel name="privateKey" matInput required />
+      <input
+        #denomRef
+        type="text"
+        name="denom"
+        [ngModel]="auction?.base_auction?.bid?.denom"
+        matInput
+        readonly
+      />
     </mat-form-field>
   </div>
 

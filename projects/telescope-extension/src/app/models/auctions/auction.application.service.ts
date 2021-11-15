@@ -28,8 +28,10 @@ export class AuctionApplicationService {
     let txhash: string | undefined;
     try {
       const res: any = await this.auction.placeBid(key, privateKey, auction_id, amount);
-      if (res.code !== undefined && res.raw_log !== undefined) {
-        throw new Error(res.raw_log);
+      console.log(res.data.tx_response);
+      console.log(res.data.tx_response.raw_log);
+      if (res.data.tx_response.code !== undefined && res.data.tx_response.raw_log !== undefined) {
+        throw new Error(res.data.tx_response.raw_log);
       }
       txhash = res.data.tx_response.txhash;
     } catch (error) {
@@ -46,7 +48,7 @@ export class AuctionApplicationService {
       duration: 6000,
     });
 
-    const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
-    window.location.href = redirectUrl;
+    // const redirectUrl = `${location.protocol}//${location.hostname}/txs/${txhash}`;
+    // window.location.href = redirectUrl;
   }
 }

@@ -1,17 +1,18 @@
 <h2>Auction Place Bid</h2>
+<h3>Base Auction</h3>
 <mat-card>
   <mat-list>
     <mat-list-item>
-      <span class="column-name"> Auction ID: </span>
+      <span class="column-name"> ID: </span>
       <span class="flex-auto"></span>
       <span class="column-value">
-        {{ auctionID }}
+        {{ auction?.base_auction?.id }}
       </span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
 
     <mat-list-item>
-      <span class="column-name"> Auction Lot: </span>
+      <span class="column-name"> Lot: </span>
       <span class="flex-auto"></span>
       <span class="column-value">
         {{ auction?.base_auction?.lot?.amount }}
@@ -21,17 +22,91 @@
     <mat-divider [inset]="true"></mat-divider>
 
     <mat-list-item>
-      <span class="column-name"> Current Max Bid: </span>
+      <span class="column-name"> Bid: </span>
       <span class="flex-auto"></span>
       <span class="column-value">
         {{ auction?.base_auction?.bid?.amount }}
         {{ auction?.base_auction?.bid?.denom }}
       </span>
     </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+
+    <ng-container *ngIf="!auction?.base_auction?.bidder; then empty; else exist"></ng-container>
+    <ng-template #exist>
+      <mat-list-item>
+        <span class="column-name"> Bidder: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value">
+          {{ auction?.base_auction?.bidder }}
+        </span>
+      </mat-list-item>
+    </ng-template>
+
+    <ng-template #empty>
+      <mat-list-item>
+        <span class="column-name"> Bidder: </span>
+        <span class="flex-auto"></span>
+        <span class="column-value"> No Bidder </span>
+      </mat-list-item>
+    </ng-template>
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-list-item>
+      <span class="column-name"> End Time: </span>
+      <span class="flex-auto"></span>
+      <span class="column-value">
+        {{ endTime }}
+      </span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-list-item>
+      <span class="column-name"> Max End Time: </span>
+      <span class="flex-auto"></span>
+      <span class="column-value">
+        {{ maxEndTime }}
+      </span>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-list-item>
+      <span class="column-name"> Initiator: </span>
+      <span class="flex-auto"></span>
+      <span class="column-value">
+        {{ auction?.base_auction?.initiator }}
+      </span>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+<br />
+<mat-card>
+  <mat-list>
+    <mat-list-item>
+      <span class="column-name"> Corresponding Debt: </span>
+      <span class="flex-auto"></span>
+      <span class="column-value">
+        {{ auction?.corresponding_debt?.amount }}
+        {{ auction?.corresponding_debt?.denom }}
+      </span>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+<br />
+<mat-card>
+  <mat-list>
+    <mat-list-item>
+      <span class="column-name"> Max Bid: </span>
+      <span class="flex-auto"></span>
+      <span class="column-value">
+        {{ auction?.max_bid?.amount }}
+        {{ auction?.max_bid?.denom }}
+      </span>
+    </mat-list-item>
   </mat-list>
 </mat-card>
 <br />
 
+<h3>Enter Your Bid</h3>
 <form #formRef="ngForm" (submit)="onSubmit(privateKeyRef.value, denomRef.value, amountRef.value)">
   <div>
     <mat-form-field class="w-full">

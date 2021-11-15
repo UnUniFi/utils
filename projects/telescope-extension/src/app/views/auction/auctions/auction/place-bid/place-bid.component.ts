@@ -26,6 +26,11 @@ export class BidComponent implements OnInit {
   @Input()
   auction?: botany.auction.CollateralAuction | null;
 
+  @Input()
+  endTime?: Date | null;
+  @Input()
+  maxEndTime?: Date | null;
+
   @Output()
   appSubmit: EventEmitter<PlaceBidOnSubmitEvent>;
 

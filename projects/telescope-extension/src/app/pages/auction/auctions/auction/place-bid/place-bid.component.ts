@@ -19,6 +19,8 @@ export class PlaceBidComponent implements OnInit {
   key$: Observable<Key | undefined>;
   auctionID$: Observable<string>;
   auction$: Observable<botany.auction.CollateralAuction | undefined>;
+  endTime$: Observable<Date | undefined>;
+  maxEndTime$: Observable<Date | undefined>;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,6 +54,28 @@ export class PlaceBidComponent implements OnInit {
           return;
         }
         return unpackAuction;
+      }),
+    );
+    this.endTime$ = this.auction$.pipe(
+      map((auction) => {
+        if (!Number(auction?.base_auction?.end_time?.seconds)) {
+          console.log(auction?.base_auction?.end_time?.seconds);
+          return;
+        }
+        const endTime = new Date();
+        endTime.setTime(Number(auction?.base_auction?.end_time?.seconds));
+        return endTime;
+      }),
+    );
+    this.maxEndTime$ = this.auction$.pipe(
+      map((auction) => {
+        if (!Number(auction?.base_auction?.end_time?.seconds)) {
+          console.log(auction?.base_auction?.max_end_time?.seconds);
+          return;
+        }
+        const maxEndTime = new Date();
+        maxEndTime.setTime(Number(auction?.base_auction?.max_end_time?.seconds));
+        return maxEndTime;
       }),
     );
   }

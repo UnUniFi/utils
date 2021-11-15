@@ -6,16 +6,16 @@ import { CosmosSDKService } from 'projects/telescope-extension/src/app/models';
 import { AuctionApplicationService } from 'projects/telescope-extension/src/app/models/auctions/auction.application.service';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
-import { PlaceBidOnSubmitEvent } from 'projects/telescope-extension/src/app/views/auction/auctions/auction/bid/bid.component';
+import { PlaceBidOnSubmitEvent } from 'projects/telescope-extension/src/app/views/auction/auctions/auction/place-bid/place-bid.component';
 import { combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-bid',
-  templateUrl: './bid.component.html',
-  styleUrls: ['./bid.component.css'],
+  selector: 'app-place-bid',
+  templateUrl: './place-bid.component.html',
+  styleUrls: ['./place-bid.component.css'],
 })
-export class BidComponent implements OnInit {
+export class PlaceBidComponent implements OnInit {
   key$: Observable<Key | undefined>;
   auctionID$: Observable<string>;
   auction$: Observable<botany.auction.CollateralAuction | undefined>;

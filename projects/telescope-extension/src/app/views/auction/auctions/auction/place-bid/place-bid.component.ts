@@ -12,9 +12,9 @@ export type PlaceBidOnSubmitEvent = {
 };
 
 @Component({
-  selector: 'view-bid',
-  templateUrl: './bid.component.html',
-  styleUrls: ['./bid.component.css'],
+  selector: 'view-place-bid',
+  templateUrl: './place-bid.component.html',
+  styleUrls: ['./place-bid.component.css'],
 })
 export class BidComponent implements OnInit {
   @Input()

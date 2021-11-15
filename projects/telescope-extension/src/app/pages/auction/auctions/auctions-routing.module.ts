@@ -1,6 +1,6 @@
 import { KeySelectGuard } from '../../../models/keys/key-select.guard';
 import { AuctionComponent } from './auction/auction.component';
-import { BidComponent } from './auction/bid/bid.component';
+import { PlaceBidComponent } from './auction/place-bid/place-bid.component';
 import { AuctionsComponent } from './auctions.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: ':auction_id/bid',
-    component: BidComponent,
+    component: PlaceBidComponent,
     canActivate: [KeySelectGuard],
   },
 ];

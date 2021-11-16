@@ -28,8 +28,8 @@ export class CdpApplicationService {
     let txhash: string | undefined;
     try {
       const res: any = await this.cdp.createCDP(key, privateKey, collateral, principal);
-      if (res.code !== undefined && res.raw_log !== undefined) {
-        throw new Error(res.raw_log);
+      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
+        throw new Error(res.data.tx_response.raw_log);
       }
       txhash = res.data.tx_response.txhash;
     } catch (error) {
@@ -61,8 +61,8 @@ export class CdpApplicationService {
     let txhash: string | undefined;
     try {
       const res: any = await this.cdp.drawCDP(key, privateKey, denom, principal);
-      if (res.code !== undefined && res.raw_log !== undefined) {
-        throw new Error(res.raw_log);
+      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
+        throw new Error(res.data.tx_response.raw_log);
       }
       txhash = res.data.tx_response.txhash;
     } catch (error) {
@@ -94,8 +94,8 @@ export class CdpApplicationService {
     let txhash: string | undefined;
     try {
       const res: any = await this.cdp.repayCDP(key, privateKey, denom, payment);
-      if (res.code !== undefined && res.raw_log !== undefined) {
-        throw new Error(res.raw_log);
+      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
+        throw new Error(res.data.tx_response.raw_log);
       }
       txhash = res.data.tx_response.txhash;
     } catch (error) {
@@ -128,8 +128,8 @@ export class CdpApplicationService {
     try {
       const res: any = await this.cdp.depositCDP(key, privateKey, ownerAddr, collateral);
       console.log('res', res);
-      if (res.code !== undefined && res.raw_log !== undefined) {
-        throw new Error(res.raw_log);
+      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
+        throw new Error(res.data.tx_response.raw_log);
       }
       txhash = res.data.tx_response.txhash;
     } catch (error) {
@@ -162,8 +162,8 @@ export class CdpApplicationService {
     try {
       const res: any = await this.cdp.withdrawCDP(key, privateKey, ownerAddr, collateral);
       console.log('res', res);
-      if (res.code !== undefined && res.raw_log !== undefined) {
-        throw new Error(res.raw_log);
+      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
+        throw new Error(res.data.tx_response.raw_log);
       }
       txhash = res.data.tx_response.txhash;
     } catch (error) {

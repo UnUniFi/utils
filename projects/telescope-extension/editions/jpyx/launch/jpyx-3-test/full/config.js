@@ -27,7 +27,7 @@ const config = {
         maxCredit: 1999999,
       },
       {
-        hasFaucet: true,
+        hasFaucet: false,
         faucetURL: `${location.protocol}//${location.hostname}:8004`,
         denom: 'jpyx',
         creditAmount: 10,

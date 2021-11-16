@@ -15,7 +15,7 @@ const routes: Routes = [
     component: AuctionComponent,
   },
   {
-    path: ':auction_id/bid',
+    path: ':auction_id/place-bid',
     component: PlaceBidComponent,
     canActivate: [KeySelectGuard],
   },

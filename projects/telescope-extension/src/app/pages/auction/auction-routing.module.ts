@@ -1,4 +1,3 @@
-import { KeySelectGuard } from '../../models/keys/key-select.guard';
 import { AuctionComponent } from './auction.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

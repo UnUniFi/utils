@@ -1,4 +1,16 @@
-<h2>Auction</h2>
+<div class="flex flex-row">
+  <h2>Auction</h2>
+  <span class="flex-auto"></span>
+  <button
+    mat-flat-button
+    routerLink="/auction/auctions/{{ auction?.base_auction?.id }}/place-bid"
+    color="accent"
+  >
+    <mat-icon>add</mat-icon>
+    <span>Place Bid</span>
+  </button>
+</div>
+
 <ng-container *ngIf="auction === null; then empty; else exist"> </ng-container>
 <ng-template #loading>
   <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
@@ -138,5 +150,5 @@
 </ng-template>
 
 <ng-template #empty>
-  <p class="empty">There is no cdp</p>
+  <p class="empty">There is no auction</p>
 </ng-template>

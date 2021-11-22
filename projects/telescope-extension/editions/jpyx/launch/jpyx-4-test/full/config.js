@@ -1,7 +1,7 @@
 const config = {
   restURL: `${location.protocol}//${location.hostname}:1317`,
   websocketURL: `${location.protocol.replace('http', 'ws')}//${location.hostname}:26657`,
-  chainID: 'jpyx-3-test',
+  chainID: 'jpyx-4-test',
   bech32Prefix: {
     accAddr: 'jpyx',
     accPub: 'jpyxpub',

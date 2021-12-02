@@ -10,25 +10,31 @@ const config = {
     consAddr: 'jpyxvalcons',
     consPub: 'jpyxvalconspub',
   },
+  minimumGasPrices: [
+    {
+      denom: 'ujcbn',
+      amount: 0.015,
+    }
+  ],
   extension: {
     faucet: [
       {
         hasFaucet: true,
-        faucetURL: `${location.protocol}//a.test.jpyx.lcnem.net:8000`,
+        faucetURL: `${location.protocol}//b.test.jpyx.lcnem.net:8000`,
         denom: 'ubtc',
         creditAmount: 100, // amount to credit in max request
         maxCredit: 99, // account has already maxCredit balance cannot claim anymore
       },
       {
         hasFaucet: true,
-        faucetURL: `${location.protocol}//a.test.jpyx.lcnem.net:8002`,
+        faucetURL: `${location.protocol}//b.test.jpyx.lcnem.net:8002`,
         denom: 'ujcbn',
         creditAmount: 2000000,
         maxCredit: 1999999,
       },
       {
         hasFaucet: false,
-        faucetURL: `${location.protocol}//a.test.jpyx.lcnem.net:8004`,
+        faucetURL: `${location.protocol}//b.test.jpyx.lcnem.net:8004`,
         denom: 'jpyx',
         creditAmount: 10,
         maxCredit: 9,

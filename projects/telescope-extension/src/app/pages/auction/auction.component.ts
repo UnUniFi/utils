@@ -1,7 +1,7 @@
 import { CosmosSDKService } from '../../models/cosmos-sdk.service';
 import { Component, OnInit } from '@angular/core';
-import { botany, rest } from 'botany-client';
-import { InlineResponse2002Params } from 'projects/botany-client/src/openapi';
+import { rest } from 'botany-client';
+import { InlineResponse2002Params } from 'botany-client/esm/openapi';
 import { combineLatest, Observable, timer } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { InlineResponse2002Params } from 'projects/botany-client/src/openapi';
+import { InlineResponse2002Params } from 'botany-client/esm/openapi';
 
 @Component({
   selector: 'view-auction',

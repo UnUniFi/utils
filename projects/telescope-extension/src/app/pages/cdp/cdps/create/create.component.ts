@@ -4,7 +4,7 @@ import { CreateCdpOnSubmitEvent } from '../../../../views/cdp/cdps/create/create
 import { Component, OnInit } from '@angular/core';
 import { botany, rest } from 'botany-client';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({

@@ -1,5 +1,5 @@
-import { cosmosclient } from 'cosmos-client';
 import { botany } from '../../../proto';
+import { cosmosclient } from '@cosmos-client/core';
 
 export * as cdp from './module';
 

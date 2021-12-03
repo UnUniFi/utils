@@ -1,18 +1,18 @@
-import { cosmosclient } from 'cosmos-client';
 import { QueryApi } from '../../../openapi';
+import { cosmosclient } from '@cosmos-client/core';
 
 export function allMarkets(
   sdk: cosmosclient.CosmosSDK,
   paginationKey?: string,
   paginationOffset?: bigint,
   paginationLimit?: bigint,
-  paginationCountTotal?: boolean
+  paginationCountTotal?: boolean,
 ) {
   return new QueryApi(undefined, sdk.url).marketAll(
     paginationKey,
     paginationOffset?.toString(),
     paginationLimit?.toString(),
-    paginationCountTotal
+    paginationCountTotal,
   );
 }
 
@@ -22,14 +22,14 @@ export function allOracles(
   paginationKey?: string,
   paginationOffset?: bigint,
   paginationLimit?: bigint,
-  paginationCountTotal?: boolean
+  paginationCountTotal?: boolean,
 ) {
   return new QueryApi(undefined, sdk.url).oracleAll(
     marketID,
     paginationKey,
     paginationOffset?.toString(),
     paginationLimit?.toString(),
-    paginationCountTotal
+    paginationCountTotal,
   );
 }
 
@@ -42,13 +42,13 @@ export function allPrices(
   paginationKey?: string,
   paginationOffset?: bigint,
   paginationLimit?: bigint,
-  paginationCountTotal?: boolean
+  paginationCountTotal?: boolean,
 ) {
   return new QueryApi(undefined, sdk.url).priceAll(
     paginationKey,
     paginationOffset?.toString(),
     paginationLimit?.toString(),
-    paginationCountTotal
+    paginationCountTotal,
   );
 }
 
@@ -58,14 +58,14 @@ export function allRawPrices(
   paginationKey?: string,
   paginationOffset?: bigint,
   paginationLimit?: bigint,
-  paginationCountTotal?: boolean
+  paginationCountTotal?: boolean,
 ) {
   return new QueryApi(undefined, sdk.url).rawPriceAll(
     marketID,
     paginationKey,
     paginationOffset?.toString(),
     paginationLimit?.toString(),
-    paginationCountTotal
+    paginationCountTotal,
   );
 }
 

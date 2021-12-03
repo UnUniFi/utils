@@ -1,6 +1,6 @@
 {
   "name": "botany-client",
-  "version": "0.6.0",
+  "version": "0.44.0",
   "description": "REST API Client for JPYX and EURX (Cosmos SDK) Blockchain",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
@@ -40,6 +40,6 @@
     "typescript": "^4.2.3"
   },
   "peerDependencies": {
-    "cosmos-client": "^0.42.14"
+    "@cosmos-client/core": "^0.44.3"
   }
 }

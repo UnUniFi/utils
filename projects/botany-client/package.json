@@ -28,11 +28,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.23.0",
     "protobufjs": "^6.11.2"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/jest": "^26.0.20",
     "@types/long": "^4.0.1",
     "jest": "^26.6.3",
@@ -40,6 +39,6 @@
     "typescript": "^4.2.3"
   },
   "peerDependencies": {
-    "cosmos-client": "^0.42.14"
+    "@cosmos-client/core": "^0.44.3"
   }
 }

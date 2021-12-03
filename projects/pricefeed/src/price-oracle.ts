@@ -4,8 +4,8 @@ import { FIAT_CURRENCIES } from './constants/currency';
 import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
 import * as utils from './utils';
+import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import { rest as botanyrest, botany } from 'botany-client';
-import { cosmosclient, rest, proto } from 'cosmos-client';
 import Long from 'long';
 
 require('dotenv').config();
@@ -78,7 +78,7 @@ export class PriceOracle {
   async postPrices() {
     const privKey = await this.privKey;
     const address = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
-    const account = await rest.cosmos.auth
+    const account = await rest.auth
       .account(this.sdk, address)
       .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account));
 
@@ -337,9 +337,9 @@ export class PriceOracle {
 
     // broadcast
     try {
-      const res = await rest.cosmos.tx.broadcastTx(this.sdk, {
+      const res = await rest.tx.broadcastTx(this.sdk, {
         tx_bytes: txBuilder.txBytes(),
-        mode: rest.cosmos.tx.BroadcastTxMode.Block,
+        mode: rest.tx.BroadcastTxMode.Block,
       });
       console.log(res);
     } catch (e) {

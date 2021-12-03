@@ -3,7 +3,7 @@ import { CdpService } from './cdp.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { cosmosclient, proto } from 'cosmos-client';
+import { cosmosclient, proto } from '@cosmos-client/core';
 import { LoadingDialogService } from 'ng-loading-dialog';
 
 @Injectable({

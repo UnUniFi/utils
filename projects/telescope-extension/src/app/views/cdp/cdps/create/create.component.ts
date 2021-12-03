@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { proto } from '@cosmos-client/core';
 import { botany } from 'botany-client';
-import { proto } from 'cosmos-client';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
 export type CreateCdpOnSubmitEvent = {

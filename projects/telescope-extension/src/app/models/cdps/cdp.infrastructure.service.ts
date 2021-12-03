@@ -3,8 +3,8 @@ import { Key } from '../keys/key.model';
 import { IKeyInfrastructure } from '../keys/key.service';
 import { ICdpInfrastructure } from './cdp.service';
 import { Injectable } from '@angular/core';
+import { cosmosclient, proto, rest } from '@cosmos-client/core';
 import { botany } from 'botany-client';
-import { cosmosclient, proto, rest } from 'cosmos-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/cosmos-sdk.service';
 
 @Injectable({

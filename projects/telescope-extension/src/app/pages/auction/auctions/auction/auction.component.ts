@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { cosmosclient } from '@cosmos-client/core';
 import { botany, google, rest } from 'botany-client';
-import { cosmosclient } from 'cosmos-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
 import { combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';

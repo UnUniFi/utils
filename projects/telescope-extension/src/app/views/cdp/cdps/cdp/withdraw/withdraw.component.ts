@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { cosmosclient, proto } from 'cosmos-client';
+import { cosmosclient, proto } from '@cosmos-client/core';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
 export type WithdrawCdpOnSubmitEvent = {

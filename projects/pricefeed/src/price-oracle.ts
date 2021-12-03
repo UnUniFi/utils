@@ -313,6 +313,80 @@ export class PriceOracle {
     const txBody = new proto.cosmos.tx.v1beta1.TxBody({
       messages: [cosmosclient.codec.packAny(msgPostPrice)],
     });
+
+    // auth info for simulation
+    const simulatedAuthInfo = new proto.cosmos.tx.v1beta1.AuthInfo({
+      signer_infos: [
+        {
+          public_key: cosmosclient.codec.packAny(privKey.pubKey()),
+          mode_info: {
+            single: {
+              mode: proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+            },
+          },
+          sequence: sequence,
+        },
+      ],
+      fee: {
+        amount: [
+          {
+            denom: process.env.MINIMUM_GAS_PRICE_DENOM,
+            amount: '1',
+          },
+        ],
+        gas_limit: cosmosclient.Long.fromString('1'),
+      },
+    });
+
+    const simulatedTxBuilder = new cosmosclient.TxBuilder(this.sdk, txBody, simulatedAuthInfo);
+    const simulatedSignDocBytes = simulatedTxBuilder.signDocBytes(account.account_number);
+    simulatedTxBuilder.addSignature(privKey.sign(simulatedSignDocBytes));
+    const txForSimulation = JSON.parse(simulatedTxBuilder.cosmosJSONStringify());
+    delete txForSimulation.auth_info.signer_infos[0].mode_info.multi;
+
+    let simulatedResult;
+    let gas: proto.cosmos.base.v1beta1.ICoin;
+    let fee: proto.cosmos.base.v1beta1.ICoin;
+
+    // simulate
+    try {
+      simulatedResult = await rest.tx.simulate(this.sdk, {
+        tx: txForSimulation,
+        tx_bytes: simulatedTxBuilder.txBytes(),
+      });
+      console.log('simulate');
+      console.log(simulatedResult);
+      const simulatedGasUsed = simulatedResult.data.gas_info?.gas_used;
+      const simulatedGasUsedWithMarginNumber = simulatedGasUsed
+        ? parseInt(simulatedGasUsed) * 1.1
+        : 200000;
+      const simulatedGasUsedWithMargin = simulatedGasUsedWithMarginNumber.toFixed(0);
+      const simulatedFeeWithMarginNumber =
+        parseInt(simulatedGasUsedWithMargin) *
+        parseFloat(
+          process.env.MINIMUM_GAS_PRICE_AMOUNT ? process.env.MINIMUM_GAS_PRICE_AMOUNT : '200000',
+        );
+      const simulatedFeeWithMargin = simulatedFeeWithMarginNumber.toFixed(0);
+      console.log({
+        simulatedGasUsed,
+        simulatedGasUsedWithMargin,
+        simulatedFeeWithMarginNumber,
+        simulatedFeeWithMargin,
+      });
+      gas = {
+        denom: process.env.MINIMUM_GAS_PRICE_DENOM,
+        amount: simulatedGasUsedWithMargin,
+      };
+      fee = {
+        denom: process.env.MINIMUM_GAS_PRICE_DENOM,
+        amount: simulatedFeeWithMargin,
+      };
+    } catch (e) {
+      console.error(e);
+      return;
+    }
+
+    // auth info for announce
     const authInfo = new proto.cosmos.tx.v1beta1.AuthInfo({
       signer_infos: [
         {
@@ -326,7 +400,8 @@ export class PriceOracle {
         },
       ],
       fee: {
-        gas_limit: cosmosclient.Long.fromString('200000'),
+        amount: [fee],
+        gas_limit: cosmosclient.Long.fromString(gas.amount ? gas.amount : '200000'),
       },
     });
 
@@ -341,6 +416,7 @@ export class PriceOracle {
         tx_bytes: txBuilder.txBytes(),
         mode: rest.tx.BroadcastTxMode.Block,
       });
+      console.log('broadcast');
       console.log(res);
     } catch (e) {
       console.error(e);

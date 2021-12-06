@@ -25,7 +25,7 @@ export interface ICdpInfrastructure {
     privateKey: string,
     collateralType: string,
     payment: proto.cosmos.base.v1beta1.ICoin,
-  ): Promise<any>;
+  ): Promise<InlineResponse20075>;
 
   depositCDP(
     key: Key,
@@ -83,7 +83,7 @@ export class CdpService {
     privateKey: string,
     collateralType: string,
     payment: proto.cosmos.base.v1beta1.ICoin,
-  ) {
+  ): Promise<InlineResponse20075> {
     return this.iCdpInfrastructure.repayCDP(key, privateKey, collateralType, payment);
   }
 
@@ -109,7 +109,7 @@ export class CdpService {
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
-  ) {
+  ): Promise<InlineResponse20075> {
     return this.iCdpInfrastructure.withdrawCDP(
       key,
       privateKey,

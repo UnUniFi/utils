@@ -6,6 +6,7 @@ export type DepositCdpOnSubmitEvent = {
   key: Key;
   privateKey: string;
   ownerAddr: cosmosclient.AccAddress;
+  collateralType: string;
   collateral: proto.cosmos.base.v1beta1.ICoin;
 };
 
@@ -42,6 +43,7 @@ export class DepositComponent implements OnInit {
   onSubmit(
     privateKey: string,
     ownerAddr: string,
+    collateralType: string,
     collateralDenom: string,
     collateralAmount: string,
   ) {
@@ -49,6 +51,7 @@ export class DepositComponent implements OnInit {
       key: this.key!,
       privateKey: privateKey,
       ownerAddr: cosmosclient.AccAddress.fromString(ownerAddr),
+      collateralType,
       collateral: {
         denom: collateralDenom,
         amount: collateralAmount,

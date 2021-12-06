@@ -51,6 +51,7 @@ export class DepositComponent implements OnInit {
       $event.key,
       $event.privateKey,
       $event.ownerAddr,
+      $event.collateralType,
       $event.collateral,
     );
   }

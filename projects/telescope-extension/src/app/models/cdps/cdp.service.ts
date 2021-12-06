@@ -39,8 +39,9 @@ export interface ICdpInfrastructure {
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
+    collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
-  ): Promise<any>;
+  ): Promise<InlineResponse20075>;
 }
 
 @Injectable({
@@ -106,8 +107,15 @@ export class CdpService {
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
+    collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
   ) {
-    return this.iCdpInfrastructure.withdrawCDP(key, privateKey, ownerAddr, collateral);
+    return this.iCdpInfrastructure.withdrawCDP(
+      key,
+      privateKey,
+      ownerAddr,
+      collateralType,
+      collateral,
+    );
   }
 }

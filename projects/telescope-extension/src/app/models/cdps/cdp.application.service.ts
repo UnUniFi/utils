@@ -170,18 +170,24 @@ export class CdpApplicationService {
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
+    collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
   ) {
     const dialogRef = this.loadingDialog.open('Sending');
 
     let txhash: string | undefined;
     try {
-      const res: any = await this.cdp.withdrawCDP(key, privateKey, ownerAddr, collateral);
-      console.log('res', res);
-      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
-        throw new Error(res.data.tx_response.raw_log);
+      const res: InlineResponse20075 = await this.cdp.withdrawCDP(
+        key,
+        privateKey,
+        ownerAddr,
+        collateralType,
+        collateral,
+      );
+      txhash = res.tx_response?.txhash;
+      if (txhash === undefined) {
+        throw Error('invalid txhash!');
       }
-      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {

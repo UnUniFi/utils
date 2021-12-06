@@ -1,7 +1,7 @@
 import { Key } from '../keys/key.model';
 import { AuctionInfrastructureService } from './auction.infrastructure.service';
 import { Injectable } from '@angular/core';
-import { proto } from 'cosmos-client';
+import { proto } from '@cosmos-client/core';
 
 export interface IAuctionInfrastructure {
   placeBid(

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { cosmosclient } from '@cosmos-client/core';
 import { botany, google, rest } from 'botany-client';
-import { cosmosclient } from 'cosmos-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models';
 import { AuctionApplicationService } from 'projects/telescope-extension/src/app/models/auctions/auction.application.service';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';

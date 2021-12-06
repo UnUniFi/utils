@@ -1,5 +1,5 @@
+import { cosmosclient } from '@cosmos-client/core';
 import { botany, rest } from 'botany-client';
-import { cosmosclient } from 'cosmos-client';
 import { Observable, zip } from 'rxjs';
 import { map, mergeMap, filter } from 'rxjs/operators';
 

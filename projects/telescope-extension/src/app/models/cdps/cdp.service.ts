@@ -1,7 +1,7 @@
 import { Key } from '../keys/key.model';
 import { CdpInfrastructureService } from './cdp.infrastructure.service';
 import { Injectable } from '@angular/core';
-import { cosmosclient, proto, rest } from 'cosmos-client';
+import { cosmosclient, proto, rest } from '@cosmos-client/core';
 
 export interface ICdpInfrastructure {
   createCDP(

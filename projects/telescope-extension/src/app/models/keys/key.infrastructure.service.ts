@@ -2,7 +2,7 @@ import { CosmosSDKService } from '../../models/cosmos-sdk.service';
 import { Key, KeyType } from './key.model';
 import { IKeyInfrastructure } from './key.service';
 import { Injectable } from '@angular/core';
-import { cosmosclient, proto } from 'cosmos-client';
+import { cosmosclient, proto } from '@cosmos-client/core';
 import Dexie from 'dexie';
 
 @Injectable({

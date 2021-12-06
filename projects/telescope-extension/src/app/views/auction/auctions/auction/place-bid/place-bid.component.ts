@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { proto } from '@cosmos-client/core';
 import { botany } from 'botany-client';
-import { proto } from 'cosmos-client';
-import { InlineResponse2002Params } from 'projects/botany-client/src/openapi';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
 export type PlaceBidOnSubmitEvent = {

@@ -3,8 +3,8 @@ import { Key } from '../keys/key.model';
 import { IKeyInfrastructure } from '../keys/key.service';
 import { IAuctionInfrastructure } from './auction.service';
 import { Injectable } from '@angular/core';
+import { cosmosclient, proto, rest } from '@cosmos-client/core';
 import { botany } from 'botany-client';
-import { cosmosclient, proto, rest } from 'cosmos-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/cosmos-sdk.service';
 
 @Injectable({
@@ -31,7 +31,7 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
     const bidder = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
     // get account info
-    const account = await rest.cosmos.auth
+    const account = await rest.auth
       .account(sdk.rest, bidder)
       .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account))
       .catch((_) => undefined);
@@ -74,9 +74,9 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
     const signDocBytes = txBuilder.signDocBytes(account.account_number);
     txBuilder.addSignature(privKey.sign(signDocBytes));
 
-    return await rest.cosmos.tx.broadcastTx(sdk.rest, {
+    return await rest.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
-      mode: rest.cosmos.tx.BroadcastTxMode.Block,
+      mode: rest.tx.BroadcastTxMode.Block,
     });
   }
 }

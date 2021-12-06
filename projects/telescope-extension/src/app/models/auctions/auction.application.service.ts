@@ -3,7 +3,7 @@ import { AuctionService } from './auction.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { proto } from 'cosmos-client';
+import { proto } from '@cosmos-client/core';
 import { LoadingDialogService } from 'ng-loading-dialog';
 
 @Injectable({

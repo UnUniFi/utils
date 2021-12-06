@@ -45,6 +45,7 @@ export class CdpApplicationService {
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
         duration: 6000,
       });
+      console.error(error);
       return;
     } finally {
       dialogRef.close();

@@ -6,6 +6,7 @@ import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model'
 export type CreateCdpOnSubmitEvent = {
   key: Key;
   privateKey: string;
+  collateralType: string;
   collateral: proto.cosmos.base.v1beta1.ICoin;
   principal: proto.cosmos.base.v1beta1.ICoin;
 };
@@ -22,16 +23,30 @@ export class CreateComponent implements OnInit {
   @Input()
   cdpParams?: botany.cdp.IParams | null;
 
+  @Input()
+  collateralParams?: botany.cdp.ICollateralParam[] | null;
+
+  @Input()
+  selectedCollateralType?: string | null;
+
+  @Input()
+  selectedCollateralParam?: botany.cdp.ICollateralParam | null;
+
   @Output()
   appSubmit: EventEmitter<CreateCdpOnSubmitEvent>;
 
+  @Output()
+  appSelectedCollateralTypeChanged: EventEmitter<string>;
+
   constructor() {
     this.appSubmit = new EventEmitter();
+    this.appSelectedCollateralTypeChanged = new EventEmitter();
   }
 
   ngOnInit(): void {}
 
   onSubmit(
+    collateralType: string,
     collateralDenom: string,
     collateralAmount: string,
     principalDenom: string,
@@ -41,6 +56,7 @@ export class CreateComponent implements OnInit {
     this.appSubmit.emit({
       key: this.key!,
       privateKey,
+      collateralType,
       collateral: {
         denom: collateralDenom,
         amount: collateralAmount,
@@ -50,5 +66,9 @@ export class CreateComponent implements OnInit {
         amount: principalAmount,
       },
     });
+  }
+
+  onSelectedCollateralTypeChanged(collateralType: string): void {
+    this.appSelectedCollateralTypeChanged.emit(collateralType);
   }
 }

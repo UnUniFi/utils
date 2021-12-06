@@ -4,8 +4,8 @@ import { CreateCdpOnSubmitEvent } from '../../../../views/cdp/cdps/create/create
 import { Component, OnInit } from '@angular/core';
 import { botany, rest } from 'botany-client';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
-import { Observable } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { combineLatest, Observable, Subject } from 'rxjs';
+import { filter, map, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create',
@@ -15,6 +15,10 @@ import { map, mergeMap } from 'rxjs/operators';
 export class CreateComponent implements OnInit {
   key$: Observable<Key | undefined>;
   cdpParams$: Observable<botany.cdp.IParams | undefined>;
+  collateralParams$: Observable<botany.cdp.ICollateralParam[] | null | undefined>;
+  selectedCollateralTypeSubject: Subject<string | null | undefined>;
+  selectedCollateralType$: Observable<string | null | undefined>;
+  selectedCollateralParam$: Observable<botany.cdp.ICollateralParam | null | undefined>;
 
   constructor(
     private readonly keyStore: KeyStoreService,
@@ -26,6 +30,34 @@ export class CreateComponent implements OnInit {
       mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
       map((param) => param.data.params),
     );
+    this.collateralParams$ = this.cdpParams$.pipe(map((cdpParams) => cdpParams?.collateral_params));
+    this.selectedCollateralTypeSubject = new Subject();
+    this.collateralParams$.subscribe((collateralParams) => {
+      if (collateralParams === undefined || collateralParams === null) {
+        this.selectedCollateralTypeSubject.next(undefined);
+        return;
+      }
+      this.selectedCollateralTypeSubject.next(collateralParams[0].type);
+    });
+    this.selectedCollateralType$ = this.selectedCollateralTypeSubject.asObservable();
+    this.selectedCollateralParam$ = combineLatest(
+      this.collateralParams$,
+      this.selectedCollateralType$,
+    ).pipe(
+      map(([collateralParams, selectedCollateralType]) => {
+        if (
+          collateralParams === undefined ||
+          collateralParams === null ||
+          selectedCollateralType === undefined ||
+          selectedCollateralType === null
+        ) {
+          return undefined;
+        }
+        return collateralParams.filter(
+          (collateralParam) => collateralParam.type === selectedCollateralType,
+        )[0];
+      }),
+    );
   }
 
   ngOnInit(): void {}
@@ -34,8 +66,13 @@ export class CreateComponent implements OnInit {
     this.cdpApplicationService.createCDP(
       $event.key,
       $event.privateKey,
+      $event.collateralType,
       $event.collateral,
       $event.principal,
     );
+  }
+
+  onSelectedCollateralTypeChanged(collateralType: string): void {
+    this.selectedCollateralTypeSubject.next(collateralType);
   }
 }

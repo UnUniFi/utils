@@ -1,5 +1,9 @@
 <view-create
   [key]="key$ | async"
   [cdpParams]="cdpParams$ | async"
+  [collateralParams]="collateralParams$ | async"
+  [selectedCollateralType]="selectedCollateralType$ | async"
+  [selectedCollateralParam]="selectedCollateralParam$ | async"
   (appSubmit)="onSubmit($event)"
+  (appSelectedCollateralTypeChanged)="onSelectedCollateralTypeChanged($event)"
 ></view-create>

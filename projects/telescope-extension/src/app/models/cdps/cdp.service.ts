@@ -2,14 +2,16 @@ import { Key } from '../keys/key.model';
 import { CdpInfrastructureService } from './cdp.infrastructure.service';
 import { Injectable } from '@angular/core';
 import { cosmosclient, proto, rest } from '@cosmos-client/core';
+import { InlineResponse20075 } from '@cosmos-client/core/esm/openapi';
 
 export interface ICdpInfrastructure {
   createCDP(
     key: Key,
     privateKey: string,
+    collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
-  ): Promise<any>;
+  ): Promise<InlineResponse20075>;
 
   drawCDP(
     key: Key,
@@ -52,10 +54,17 @@ export class CdpService {
   createCDP(
     key: Key,
     privateKey: string,
+    collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
-  ) {
-    return this.iCdpInfrastructure.createCDP(key, privateKey, collateral, principal);
+  ): Promise<InlineResponse20075> {
+    return this.iCdpInfrastructure.createCDP(
+      key,
+      privateKey,
+      collateralType,
+      collateral,
+      principal,
+    );
   }
 
   drawCDP(

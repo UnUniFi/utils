@@ -1,5 +1,6 @@
 <form #formRef="ngForm" (submit)="
     onSubmit(
+      collateralTypeRef.value,
       collateralDenomRef.value,
       collateralAmountRef.value,
       principalDenomRef.value,
@@ -9,27 +10,43 @@
   ">
   <div>
     <mat-form-field class="w-full">
-      <mat-label>Collateral Denom</mat-label>
-      <mat-select #collateralDenomRef ngModel name="collateral-denom" matInput required>
-        <ng-template ngFor let-param [ngForOf]="cdpParams?.collateral_params || []">
-          <mat-option [value]="param.denom">{{ param.denom }}</mat-option>
+      <mat-label>Collateral Type</mat-label>
+      <mat-select #collateralTypeRef [(ngModel)]="selectedCollateralType" name="collateral-type" matInput required (valueChange)="onSelectedCollateralTypeChanged($event)">
+        <ng-template ngFor let-param [ngForOf]="collateralParams || []">
+          <mat-option [value]="param.type">{{ param.type }}</mat-option>
         </ng-template>
       </mat-select>
     </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="w-full">
+      <mat-label>Collateral Denom</mat-label>
+      <input #collateralDenomRef [(ngModel)]="selectedCollateralParam && selectedCollateralParam.denom" name="collateral-denom" matInput readonly />
+    </mat-form-field>
     <mat-form-field class="w-full">
       <mat-label>Collateral Amount</mat-label>
-      <input #collateralAmountRef ngModel name="collateral-amount" matInput type="number" pattern="^\d+$" [min]="0" />
+      <input #collateralAmountRef ngModel name="collateral-amount" matInput type="number" pattern="^\d+$" [min]="1" required />
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="w-full">
       <mat-label>Principal Denom</mat-label>
-      <input #principalDenomRef [ngModel]="cdpParams?.debt_param?.denom" name="principal-denom" matInput readonly />
+      <input
+        #principalDenomRef
+        [(ngModel)]="
+          selectedCollateralParam &&
+          selectedCollateralParam.debt_limit &&
+          selectedCollateralParam.debt_limit.denom
+        "
+        name="principal-denom"
+        matInput readonly
+      />
     </mat-form-field>
     <mat-form-field class="w-full">
       <mat-label>Principal Amount</mat-label>
-      <input #principalAmountRef ngModel name="principal-amount" matInput type="number" pattern="^\d+$" [min]="0" />
+      <input #principalAmountRef ngModel name="principal-amount" matInput type="number" pattern="^\d+$" [min]="1" required />
     </mat-form-field>
   </div>
 

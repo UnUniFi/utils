@@ -93,7 +93,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     privateKey: string,
     collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
-  ) {
+  ): Promise<InlineResponse20075> {
     const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
@@ -106,8 +106,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       .catch((_) => undefined);
 
     if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
-      console.log(account);
-      return;
+      throw Error('invalid account!');
     }
 
     const msgDrawdebtCdp = new botany.cdp.MsgDrawDebt({
@@ -141,10 +140,17 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     const signDocBytes = txBuilder.signDocBytes(account.account_number);
     txBuilder.addSignature(privKey.sign(signDocBytes));
 
-    return await rest.tx.broadcastTx(sdk.rest, {
+    const result = await rest.tx.broadcastTx(sdk.rest, {
       tx_bytes: txBuilder.txBytes(),
       mode: rest.tx.BroadcastTxMode.Block,
     });
+
+    // check error
+    if (result.data.tx_response?.code !== 0) {
+      throw Error(result.data.tx_response?.raw_log);
+    }
+
+    return result.data;
   }
 
   async repayCDP(

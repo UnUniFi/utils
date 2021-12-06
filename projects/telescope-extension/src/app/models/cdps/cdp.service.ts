@@ -18,7 +18,7 @@ export interface ICdpInfrastructure {
     privateKey: string,
     collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
-  ): Promise<any>;
+  ): Promise<InlineResponse20075>;
 
   repayCDP(
     key: Key,

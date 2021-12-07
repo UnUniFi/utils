@@ -32,7 +32,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     gas: proto.cosmos.base.v1beta1.ICoin,
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075> {
-    const txBuilder = await this.buildCreateCDP(
+    const txBuilder = await this.buildCreateCDPTx(
       key,
       privateKey,
       collateralType,
@@ -60,7 +60,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       denom: minimumGasPrice.denom,
       amount: '1',
     };
-    const simulatedTxBuilder = await this.buildCreateCDP(
+    const simulatedTxBuilder = await this.buildCreateCDPTx(
       key,
       privateKey,
       collateralType,
@@ -72,7 +72,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     return await this.txCommonInfrastructureService.simulateTx(simulatedTxBuilder, minimumGasPrice);
   }
 
-  async buildCreateCDP(
+  async buildCreateCDPTx(
     key: Key,
     privateKey: string,
     collateralType: string,
@@ -138,7 +138,54 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     privateKey: string,
     collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075> {
+    const txBuilder = await this.buildDrawCDPTx(
+      key,
+      privateKey,
+      collateralType,
+      principal,
+      gas,
+      fee,
+    );
+    return await this.txCommonInfrastructureService.announceTx(txBuilder);
+  }
+
+  async simulateToDrawCDP(
+    key: Key,
+    privateKey: string,
+    collateralType: string,
+    principal: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<SimulatedTxResultResponse> {
+    const dummyFee: proto.cosmos.base.v1beta1.ICoin = {
+      denom: minimumGasPrice.denom,
+      amount: '1',
+    };
+    const dummyGas: proto.cosmos.base.v1beta1.ICoin = {
+      denom: minimumGasPrice.denom,
+      amount: '1',
+    };
+    const simulatedTxBuilder = await this.buildDrawCDPTx(
+      key,
+      privateKey,
+      collateralType,
+      principal,
+      dummyGas,
+      dummyFee,
+    );
+    return await this.txCommonInfrastructureService.simulateTx(simulatedTxBuilder, minimumGasPrice);
+  }
+
+  async buildDrawCDPTx(
+    key: Key,
+    privateKey: string,
+    collateralType: string,
+    principal: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
@@ -154,14 +201,14 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       throw Error('invalid account!');
     }
 
-    const msgDrawdebtCdp = new botany.cdp.MsgDrawDebt({
+    const msgDrawDebt = new botany.cdp.MsgDrawDebt({
       sender: sender.toString(),
       collateral_type: collateralType,
       principal,
     });
 
     const txBody = new proto.cosmos.tx.v1beta1.TxBody({
-      messages: [cosmosclient.codec.packAny(msgDrawdebtCdp)],
+      messages: [cosmosclient.codec.packAny(msgDrawDebt)],
     });
     const authInfo = new proto.cosmos.tx.v1beta1.AuthInfo({
       signer_infos: [
@@ -176,7 +223,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
         },
       ],
       fee: {
-        gas_limit: cosmosclient.Long.fromString('300000'),
+        amount: [fee],
+        gas_limit: cosmosclient.Long.fromString(gas.amount ? gas.amount : '300000'),
       },
     });
 
@@ -185,17 +233,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     const signDocBytes = txBuilder.signDocBytes(account.account_number);
     txBuilder.addSignature(privKey.sign(signDocBytes));
 
-    const result = await rest.tx.broadcastTx(sdk.rest, {
-      tx_bytes: txBuilder.txBytes(),
-      mode: rest.tx.BroadcastTxMode.Block,
-    });
-
-    // check error
-    if (result.data.tx_response?.code !== 0) {
-      throw Error(result.data.tx_response?.raw_log);
-    }
-
-    return result.data;
+    return txBuilder;
   }
 
   async repayCDP(

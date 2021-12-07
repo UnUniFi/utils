@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { proto } from '@cosmos-client/core';
 import { rest, botany } from 'botany-client';
+import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
 import { CdpApplicationService } from 'projects/telescope-extension/src/app/models/index';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
@@ -20,12 +22,14 @@ export class WithdrawComponent implements OnInit {
   collateralType$: Observable<string>;
   params$: Observable<botany.cdp.IParams>;
   denom$: Observable<string>;
+  minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly cosmosSdk: CosmosSDKService,
     private readonly keyStore: KeyStoreService,
     private readonly cdpApplicationService: CdpApplicationService,
+    private readonly configS: ConfigService,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -42,6 +46,7 @@ export class WithdrawComponent implements OnInit {
         return matchedDenoms ? (matchedDenoms[0].denom ? matchedDenoms[0].denom : '') : '';
       }),
     );
+    this.minimumGasPrices = this.configS.config.minimumGasPrices;
   }
 
   ngOnInit(): void {}
@@ -53,6 +58,7 @@ export class WithdrawComponent implements OnInit {
       $event.ownerAddr,
       $event.collateralType,
       $event.collateral,
+      $event.minimumGasPrice,
     );
   }
 }

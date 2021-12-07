@@ -64,7 +64,18 @@ export interface ICdpInfrastructure {
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075>;
+
+  simulateToWithdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: cosmosclient.AccAddress,
+    collateralType: string,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<SimulatedTxResultResponse>;
 }
 
 @Injectable({
@@ -176,6 +187,8 @@ export class CdpService {
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075> {
     return this.iCdpInfrastructure.withdrawCDP(
       key,
@@ -183,6 +196,26 @@ export class CdpService {
       ownerAddr,
       collateralType,
       collateral,
+      gas,
+      fee,
+    );
+  }
+
+  simulateToWithdrawCDP(
+    key: Key,
+    privateKey: string,
+    ownerAddr: cosmosclient.AccAddress,
+    collateralType: string,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<SimulatedTxResultResponse> {
+    return this.iCdpInfrastructure.simulateToWithdrawCDP(
+      key,
+      privateKey,
+      ownerAddr,
+      collateralType,
+      collateral,
+      minimumGasPrice,
     );
   }
 }

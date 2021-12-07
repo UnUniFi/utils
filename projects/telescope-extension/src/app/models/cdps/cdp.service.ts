@@ -1,4 +1,5 @@
 import { Key } from '../keys/key.model';
+import { SimulatedTxResultResponse } from '../tx-common/tx-common.model';
 import { CdpInfrastructureService } from './cdp.infrastructure.service';
 import { Injectable } from '@angular/core';
 import { cosmosclient, proto, rest } from '@cosmos-client/core';
@@ -11,7 +12,18 @@ export interface ICdpInfrastructure {
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075>;
+
+  simulateToCreateCDP(
+    key: Key,
+    privateKey: string,
+    collateralType: string,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
+    principal: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<SimulatedTxResultResponse>;
 
   drawCDP(
     key: Key,
@@ -59,6 +71,8 @@ export class CdpService {
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075> {
     return this.iCdpInfrastructure.createCDP(
       key,
@@ -66,6 +80,26 @@ export class CdpService {
       collateralType,
       collateral,
       principal,
+      gas,
+      fee,
+    );
+  }
+
+  simulateToCreateCDP(
+    key: Key,
+    privateKey: string,
+    collateralType: string,
+    collateral: proto.cosmos.base.v1beta1.ICoin,
+    principal: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<SimulatedTxResultResponse> {
+    return this.iCdpInfrastructure.simulateToCreateCDP(
+      key,
+      privateKey,
+      collateralType,
+      collateral,
+      principal,
+      minimumGasPrice,
     );
   }
 

@@ -2,7 +2,9 @@ import { CdpApplicationService, CosmosSDKService } from '../../../../models/inde
 import { Key } from '../../../../models/keys/key.model';
 import { CreateCdpOnSubmitEvent } from '../../../../views/cdp/cdps/create/create.component';
 import { Component, OnInit } from '@angular/core';
+import { proto } from '@cosmos-client/core';
 import { botany, rest } from 'botany-client';
+import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
@@ -19,11 +21,13 @@ export class CreateComponent implements OnInit {
   selectedCollateralTypeSubject: Subject<string | null | undefined>;
   selectedCollateralType$: Observable<string | null | undefined>;
   selectedCollateralParam$: Observable<botany.cdp.ICollateralParam | null | undefined>;
+  minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
 
   constructor(
     private readonly keyStore: KeyStoreService,
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly cosmosSdk: CosmosSDKService,
+    private readonly configS: ConfigService,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.cdpParams$ = this.cosmosSdk.sdk$.pipe(
@@ -40,10 +44,10 @@ export class CreateComponent implements OnInit {
       this.selectedCollateralTypeSubject.next(collateralParams[0].type);
     });
     this.selectedCollateralType$ = this.selectedCollateralTypeSubject.asObservable();
-    this.selectedCollateralParam$ = combineLatest(
+    this.selectedCollateralParam$ = combineLatest([
       this.collateralParams$,
       this.selectedCollateralType$,
-    ).pipe(
+    ]).pipe(
       map(([collateralParams, selectedCollateralType]) => {
         if (
           collateralParams === undefined ||
@@ -58,6 +62,7 @@ export class CreateComponent implements OnInit {
         )[0];
       }),
     );
+    this.minimumGasPrices = this.configS.config.minimumGasPrices;
   }
 
   ngOnInit(): void {}
@@ -69,6 +74,7 @@ export class CreateComponent implements OnInit {
       $event.collateralType,
       $event.collateral,
       $event.principal,
+      $event.minimumGasPrice,
     );
   }
 

@@ -4,6 +4,7 @@
   [collateralParams]="collateralParams$ | async"
   [selectedCollateralType]="selectedCollateralType$ | async"
   [selectedCollateralParam]="selectedCollateralParam$ | async"
+  [minimumGasPrices]="minimumGasPrices"
   (appSubmit)="onSubmit($event)"
   (appSelectedCollateralTypeChanged)="onSelectedCollateralTypeChanged($event)"
 ></view-create>

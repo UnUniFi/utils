@@ -9,6 +9,7 @@ export type CreateCdpOnSubmitEvent = {
   collateralType: string;
   collateral: proto.cosmos.base.v1beta1.ICoin;
   principal: proto.cosmos.base.v1beta1.ICoin;
+  minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
 };
 
 @Component({
@@ -32,15 +33,26 @@ export class CreateComponent implements OnInit {
   @Input()
   selectedCollateralParam?: botany.cdp.ICollateralParam | null;
 
+  @Input()
+  minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
+
   @Output()
   appSubmit: EventEmitter<CreateCdpOnSubmitEvent>;
 
   @Output()
   appSelectedCollateralTypeChanged: EventEmitter<string>;
 
+  selectedGasPrice?: proto.cosmos.base.v1beta1.ICoin;
+
   constructor() {
     this.appSubmit = new EventEmitter();
     this.appSelectedCollateralTypeChanged = new EventEmitter();
+  }
+
+  ngOnChanges(): void {
+    if (this.minimumGasPrices && this.minimumGasPrices.length > 0) {
+      this.selectedGasPrice = this.minimumGasPrices[0];
+    }
   }
 
   ngOnInit(): void {}
@@ -52,7 +64,14 @@ export class CreateComponent implements OnInit {
     principalDenom: string,
     principalAmount: string,
     privateKey: string,
+    minimumGasPrice: string,
   ) {
+    if (!collateralAmount || !principalAmount) {
+      return;
+    }
+    if (this.selectedGasPrice === undefined) {
+      return;
+    }
     this.appSubmit.emit({
       key: this.key!,
       privateKey,
@@ -65,10 +84,23 @@ export class CreateComponent implements OnInit {
         denom: principalDenom,
         amount: principalAmount,
       },
+      minimumGasPrice: this.selectedGasPrice,
     });
   }
 
   onSelectedCollateralTypeChanged(collateralType: string): void {
     this.appSelectedCollateralTypeChanged.emit(collateralType);
+  }
+
+  onMinimumGasDenomChanged(denom: string): void {
+    this.selectedGasPrice = this.minimumGasPrices?.find(
+      (minimumGasPrice) => minimumGasPrice.denom === denom,
+    );
+  }
+
+  onMinimumGasAmountSliderChanged(amount: string): void {
+    if (this.selectedGasPrice) {
+      this.selectedGasPrice.amount = amount;
+    }
   }
 }

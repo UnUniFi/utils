@@ -8,6 +8,7 @@ export type ClearCdpOnSubmitEvent = {
   ownerAddr: cosmosclient.AccAddress;
   collateralType: string;
   payment: proto.cosmos.base.v1beta1.ICoin;
+  minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
 };
 
 @Component({
@@ -31,14 +32,24 @@ export class ClearComponent implements OnInit {
   @Input()
   paymentDenom?: string | null;
 
+  @Input()
+  minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
+
   @Output()
   appSubmit: EventEmitter<ClearCdpOnSubmitEvent>;
 
   public payment_amount: string;
+  public selectedGasPrice?: proto.cosmos.base.v1beta1.ICoin;
 
   constructor() {
     this.appSubmit = new EventEmitter();
     this.payment_amount = '';
+  }
+
+  ngOnChanges(): void {
+    if (this.minimumGasPrices && this.minimumGasPrices.length > 0) {
+      this.selectedGasPrice = this.minimumGasPrices[0];
+    }
   }
 
   ngOnInit(): void {}
@@ -49,7 +60,12 @@ export class ClearComponent implements OnInit {
     collateralType: string,
     paymentDenom: string,
     paymentAmount: string,
+    minimumGasPrice: string,
   ) {
+    if (this.selectedGasPrice === undefined) {
+      return;
+    }
+    this.selectedGasPrice.amount = minimumGasPrice.toString();
     this.appSubmit.emit({
       key: this.key!,
       privateKey,
@@ -59,6 +75,19 @@ export class ClearComponent implements OnInit {
         denom: paymentDenom,
         amount: paymentAmount,
       },
+      minimumGasPrice: this.selectedGasPrice,
     });
+  }
+
+  onMinimumGasDenomChanged(denom: string): void {
+    this.selectedGasPrice = this.minimumGasPrices?.find(
+      (minimumGasPrice) => minimumGasPrice.denom === denom,
+    );
+  }
+
+  onMinimumGasAmountSliderChanged(amount: string): void {
+    if (this.selectedGasPrice) {
+      this.selectedGasPrice.amount = amount;
+    }
   }
 }

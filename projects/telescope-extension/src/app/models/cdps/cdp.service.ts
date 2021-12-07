@@ -47,7 +47,17 @@ export interface ICdpInfrastructure {
     privateKey: string,
     collateralType: string,
     payment: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075>;
+
+  simulateToRepayCDP(
+    key: Key,
+    privateKey: string,
+    collateralType: string,
+    payment: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<SimulatedTxResultResponse>;
 
   depositCDP(
     key: Key,
@@ -167,8 +177,26 @@ export class CdpService {
     privateKey: string,
     collateralType: string,
     payment: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075> {
-    return this.iCdpInfrastructure.repayCDP(key, privateKey, collateralType, payment);
+    return this.iCdpInfrastructure.repayCDP(key, privateKey, collateralType, payment, gas, fee);
+  }
+
+  simulateToRepayCDP(
+    key: Key,
+    privateKey: string,
+    collateralType: string,
+    payment: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<SimulatedTxResultResponse> {
+    return this.iCdpInfrastructure.simulateToRepayCDP(
+      key,
+      privateKey,
+      collateralType,
+      payment,
+      minimumGasPrice,
+    );
   }
 
   depositCDP(

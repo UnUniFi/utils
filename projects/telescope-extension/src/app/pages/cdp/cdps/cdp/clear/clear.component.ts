@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { proto } from '@cosmos-client/core';
 import { rest, botany } from 'botany-client';
+import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import {
   CdpApplicationService,
   CosmosSDKService,
@@ -23,12 +25,14 @@ export class ClearComponent implements OnInit {
   params$: Observable<botany.cdp.IParams>;
   denom$: Observable<string>;
   paymentDenom$: Observable<string>;
+  minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly keyStore: KeyStoreService,
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly cosmosSdk: CosmosSDKService,
+    private readonly configS: ConfigService,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -49,6 +53,7 @@ export class ClearComponent implements OnInit {
       mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
       map((param) => param.data.params?.debt_param?.denom || ''),
     );
+    this.minimumGasPrices = this.configS.config.minimumGasPrices;
   }
 
   ngOnInit(): void {
@@ -61,6 +66,7 @@ export class ClearComponent implements OnInit {
       $event.privateKey,
       $event.collateralType,
       $event.payment,
+      $event.minimumGasPrice,
     );
   }
 }

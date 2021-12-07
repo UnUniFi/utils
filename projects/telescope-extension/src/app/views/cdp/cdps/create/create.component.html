@@ -1,38 +1,96 @@
 <form #formRef="ngForm" (submit)="
     onSubmit(
+      collateralTypeRef.value,
       collateralDenomRef.value,
       collateralAmountRef.value,
       principalDenomRef.value,
       principalAmountRef.value,
-      privateKeyRef.value
+      privateKeyRef.value,
+      minimumGasPriceRef.value
     )
   ">
+  <h2>CDP Create</h2>
+
   <div>
     <mat-form-field class="w-full">
-      <mat-label>Collateral Denom</mat-label>
-      <mat-select #collateralDenomRef ngModel name="collateral-denom" matInput required>
-        <ng-template ngFor let-param [ngForOf]="cdpParams?.collateral_params || []">
-          <mat-option [value]="param.denom">{{ param.denom }}</mat-option>
+      <mat-label>Collateral Type</mat-label>
+      <mat-select #collateralTypeRef [(ngModel)]="selectedCollateralType" name="collateral-type" matInput required (valueChange)="onSelectedCollateralTypeChanged($event)">
+        <ng-template ngFor let-param [ngForOf]="collateralParams || []">
+          <mat-option [value]="param.type">{{ param.type }}</mat-option>
         </ng-template>
       </mat-select>
     </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="w-full">
+      <mat-label>Collateral Denom</mat-label>
+      <input #collateralDenomRef [(ngModel)]="selectedCollateralParam && selectedCollateralParam.denom" name="collateral-denom" matInput readonly />
+    </mat-form-field>
     <mat-form-field class="w-full">
       <mat-label>Collateral Amount</mat-label>
-      <input #collateralAmountRef ngModel name="collateral-amount" matInput type="number" pattern="^\d+$" [min]="0" />
+      <input #collateralAmountRef ngModel name="collateral-amount" matInput type="number" pattern="^\d+$" [min]="1" required />
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="w-full">
       <mat-label>Principal Denom</mat-label>
-      <input #principalDenomRef [ngModel]="cdpParams?.debt_param?.denom" name="principal-denom" matInput readonly />
+      <input
+        #principalDenomRef
+        [(ngModel)]="
+          selectedCollateralParam &&
+          selectedCollateralParam.debt_limit &&
+          selectedCollateralParam.debt_limit.denom
+        "
+        name="principal-denom"
+        matInput readonly
+      />
     </mat-form-field>
     <mat-form-field class="w-full">
       <mat-label>Principal Amount</mat-label>
-      <input #principalAmountRef ngModel name="principal-amount" matInput type="number" pattern="^\d+$" [min]="0" />
+      <input #principalAmountRef ngModel name="principal-amount" matInput type="number" pattern="^\d+$" [min]="1" required />
     </mat-form-field>
   </div>
 
+  <h3 class="pt-3">Gas Settings</h3>
+  <div class="flex flex-row content-content items-end">
+    <mat-form-field class="flex-auto">
+      <mat-label>Minimum Gas Denom</mat-label>
+      <mat-select
+        [(ngModel)]="selectedGasPrice && selectedGasPrice.denom"
+        name="minimum-gas-denom"
+        required
+        (valueChange)="onMinimumGasDenomChanged($event)"
+      >
+        <mat-option *ngFor="let minimumGasPrice of minimumGasPrices" [value]="minimumGasPrice.denom">
+          {{ minimumGasPrice.denom }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="flex-auto">
+      <mat-label>Minimum Gas Price</mat-label>
+      <input
+        [(ngModel)]="selectedGasPrice && selectedGasPrice.amount"
+        #minimumGasPriceRef
+        name="minimum-gas-price"
+        matInput
+        type="number"
+        [min]="0"
+        required
+      />
+    </mat-form-field>
+  </div>
+  <mat-slider class="w-full"
+    [max]="1"
+    [min]="0"
+    [step]="0.015"
+    [(ngModel)]="selectedGasPrice && selectedGasPrice.amount"
+    name="minimum-gas-price-slider"
+  >
+  </mat-slider>
+
+  <h3 class="pt-3">Signer</h3>
   <mat-form-field class="w-full">
     <mat-label>ID</mat-label>
     <input #idRef type="text" name="id" [ngModel]="key?.id" autocomplete="username" matInput readonly />

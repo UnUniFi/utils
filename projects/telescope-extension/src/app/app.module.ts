@@ -1,6 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KeySelectDialogModule } from './views/keys/key-select-dialog/key-select-dialog.module';
+import { TxFeeConfirmDialogModule } from './views/tx-fee-confirm-dialog/tx-fee-confirm-dialog.module';
 import { ViewModule } from './views/view.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -25,6 +26,7 @@ import { LoadingDialogModule } from 'ng-loading-dialog';
     LoadingDialogModule,
     KeySelectDialogModule,
     ViewModule,
+    TxFeeConfirmDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

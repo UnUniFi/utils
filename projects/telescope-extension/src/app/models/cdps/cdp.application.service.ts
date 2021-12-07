@@ -1,9 +1,13 @@
+import { TxFeeConfirmDialogComponent } from '../../views/tx-fee-confirm-dialog/tx-fee-confirm-dialog.component';
 import { Key } from '../keys/key.model';
+import { SimulatedTxResultResponse } from '../tx-common/tx-common.model';
 import { CdpService } from './cdp.service';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { cosmosclient, proto } from '@cosmos-client/core';
+import { InlineResponse20075 } from '@cosmos-client/core/esm/openapi';
 import { LoadingDialogService } from 'ng-loading-dialog';
 
 @Injectable({
@@ -13,6 +17,7 @@ export class CdpApplicationService {
   constructor(
     private readonly router: Router,
     private readonly snackBar: MatSnackBar,
+    private readonly dialog: MatDialog,
     private readonly loadingDialog: LoadingDialogService,
     private readonly cdp: CdpService,
   ) {}
@@ -20,23 +25,73 @@ export class CdpApplicationService {
   async createCDP(
     key: Key,
     privateKey: string,
+    collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    // simulate
+    let simulatedResultData: SimulatedTxResultResponse;
+    let gas: proto.cosmos.base.v1beta1.ICoin;
+    let fee: proto.cosmos.base.v1beta1.ICoin;
+
+    try {
+      simulatedResultData = await this.cdp.simulateToCreateCDP(
+        key,
+        privateKey,
+        collateralType,
+        collateral,
+        principal,
+        minimumGasPrice,
+      );
+      gas = simulatedResultData.estimatedGasUsedWithMargin;
+      fee = simulatedResultData.estimatedFeeWithMargin;
+    } catch (error) {
+      console.error(error);
+      const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
+      this.snackBar.open(`An error has occur: ${errorMessage}`);
+      return;
+    }
+
+    // ask the user to confirm the fee with a dialog
+    const txFeeConfirmedResult = await this.dialog
+      .open(TxFeeConfirmDialogComponent, {
+        data: {
+          fee,
+          isConfirmed: false,
+        },
+      })
+      .afterClosed()
+      .toPromise();
+
+    if (txFeeConfirmedResult === undefined || txFeeConfirmedResult.isConfirmed === false) {
+      this.snackBar.open('Tx was canceled', undefined, { duration: 6000 });
+      return;
+    }
+
     const dialogRef = this.loadingDialog.open('Sending');
 
     let txhash: string | undefined;
     try {
-      const res: any = await this.cdp.createCDP(key, privateKey, collateral, principal);
-      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
-        throw new Error(res.data.tx_response.raw_log);
+      const res: InlineResponse20075 = await this.cdp.createCDP(
+        key,
+        privateKey,
+        collateralType,
+        collateral,
+        principal,
+        gas,
+        fee,
+      );
+      txhash = res.tx_response?.txhash;
+      if (txhash === undefined) {
+        throw Error('invalid txhash!');
       }
-      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
         duration: 6000,
       });
+      console.error(error);
       return;
     } finally {
       dialogRef.close();
@@ -53,23 +108,70 @@ export class CdpApplicationService {
   async drawCDP(
     key: Key,
     privateKey: string,
-    denom: string,
+    collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    // simulate
+    let simulatedResultData: SimulatedTxResultResponse;
+    let gas: proto.cosmos.base.v1beta1.ICoin;
+    let fee: proto.cosmos.base.v1beta1.ICoin;
+
+    try {
+      simulatedResultData = await this.cdp.simulateToDrawCDP(
+        key,
+        privateKey,
+        collateralType,
+        principal,
+        minimumGasPrice,
+      );
+      gas = simulatedResultData.estimatedGasUsedWithMargin;
+      fee = simulatedResultData.estimatedFeeWithMargin;
+    } catch (error) {
+      console.error(error);
+      const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
+      this.snackBar.open(`An error has occur: ${errorMessage}`);
+      return;
+    }
+
+    // ask the user to confirm the fee with a dialog
+    const txFeeConfirmedResult = await this.dialog
+      .open(TxFeeConfirmDialogComponent, {
+        data: {
+          fee,
+          isConfirmed: false,
+        },
+      })
+      .afterClosed()
+      .toPromise();
+
+    if (txFeeConfirmedResult === undefined || txFeeConfirmedResult.isConfirmed === false) {
+      this.snackBar.open('Tx was canceled', undefined, { duration: 6000 });
+      return;
+    }
+
     const dialogRef = this.loadingDialog.open('Sending');
 
     let txhash: string | undefined;
     try {
-      const res: any = await this.cdp.drawCDP(key, privateKey, denom, principal);
-      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
-        throw new Error(res.data.tx_response.raw_log);
+      const res: InlineResponse20075 = await this.cdp.drawCDP(
+        key,
+        privateKey,
+        collateralType,
+        principal,
+        gas,
+        fee,
+      );
+      txhash = res.tx_response?.txhash;
+      if (txhash === undefined) {
+        throw Error('invalid txhash!');
       }
-      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
         duration: 6000,
       });
+      console.error(error);
       return;
     } finally {
       dialogRef.close();
@@ -86,23 +188,69 @@ export class CdpApplicationService {
   async repayCDP(
     key: Key,
     privateKey: string,
-    denom: string,
+    collateralType: string,
     payment: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    // simulate
+    let simulatedResultData: SimulatedTxResultResponse;
+    let gas: proto.cosmos.base.v1beta1.ICoin;
+    let fee: proto.cosmos.base.v1beta1.ICoin;
+
+    try {
+      simulatedResultData = await this.cdp.simulateToRepayCDP(
+        key,
+        privateKey,
+        collateralType,
+        payment,
+        minimumGasPrice,
+      );
+      gas = simulatedResultData.estimatedGasUsedWithMargin;
+      fee = simulatedResultData.estimatedFeeWithMargin;
+    } catch (error) {
+      console.error(error);
+      const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
+      this.snackBar.open(`An error has occur: ${errorMessage}`);
+      return;
+    }
+
+    // ask the user to confirm the fee with a dialog
+    const txFeeConfirmedResult = await this.dialog
+      .open(TxFeeConfirmDialogComponent, {
+        data: {
+          fee,
+          isConfirmed: false,
+        },
+      })
+      .afterClosed()
+      .toPromise();
+
+    if (txFeeConfirmedResult === undefined || txFeeConfirmedResult.isConfirmed === false) {
+      this.snackBar.open('Tx was canceled', undefined, { duration: 6000 });
+      return;
+    }
     const dialogRef = this.loadingDialog.open('Sending');
 
     let txhash: string | undefined;
     try {
-      const res: any = await this.cdp.repayCDP(key, privateKey, denom, payment);
-      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
-        throw new Error(res.data.tx_response.raw_log);
+      const res: InlineResponse20075 = await this.cdp.repayCDP(
+        key,
+        privateKey,
+        collateralType,
+        payment,
+        gas,
+        fee,
+      );
+      txhash = res.tx_response?.txhash;
+      if (txhash === undefined) {
+        throw Error('invalid txhash!');
       }
-      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
         duration: 6000,
       });
+      console.error(error);
       return;
     } finally {
       dialogRef.close();
@@ -120,23 +268,72 @@ export class CdpApplicationService {
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
+    collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    // simulate
+    let simulatedResultData: SimulatedTxResultResponse;
+    let gas: proto.cosmos.base.v1beta1.ICoin;
+    let fee: proto.cosmos.base.v1beta1.ICoin;
+
+    try {
+      simulatedResultData = await this.cdp.simulateToDepositCDP(
+        key,
+        privateKey,
+        ownerAddr,
+        collateralType,
+        collateral,
+        minimumGasPrice,
+      );
+      gas = simulatedResultData.estimatedGasUsedWithMargin;
+      fee = simulatedResultData.estimatedFeeWithMargin;
+    } catch (error) {
+      console.error(error);
+      const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
+      this.snackBar.open(`An error has occur: ${errorMessage}`);
+      return;
+    }
+
+    // ask the user to confirm the fee with a dialog
+    const txFeeConfirmedResult = await this.dialog
+      .open(TxFeeConfirmDialogComponent, {
+        data: {
+          fee,
+          isConfirmed: false,
+        },
+      })
+      .afterClosed()
+      .toPromise();
+
+    if (txFeeConfirmedResult === undefined || txFeeConfirmedResult.isConfirmed === false) {
+      this.snackBar.open('Tx was canceled', undefined, { duration: 6000 });
+      return;
+    }
+
     const dialogRef = this.loadingDialog.open('Sending');
 
     let txhash: string | undefined;
     try {
-      const res: any = await this.cdp.depositCDP(key, privateKey, ownerAddr, collateral);
-      console.log('res', res);
-      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
-        throw new Error(res.data.tx_response.raw_log);
+      const res: InlineResponse20075 = await this.cdp.depositCDP(
+        key,
+        privateKey,
+        ownerAddr,
+        collateralType,
+        collateral,
+        gas,
+        fee,
+      );
+      txhash = res.tx_response?.txhash;
+      if (txhash === undefined) {
+        throw Error('invalid txhash!');
       }
-      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
         duration: 6000,
       });
+      console.error(error);
       return;
     } finally {
       dialogRef.close();
@@ -154,23 +351,72 @@ export class CdpApplicationService {
     key: Key,
     privateKey: string,
     ownerAddr: cosmosclient.AccAddress,
+    collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    // simulate
+    let simulatedResultData: SimulatedTxResultResponse;
+    let gas: proto.cosmos.base.v1beta1.ICoin;
+    let fee: proto.cosmos.base.v1beta1.ICoin;
+
+    try {
+      simulatedResultData = await this.cdp.simulateToWithdrawCDP(
+        key,
+        privateKey,
+        ownerAddr,
+        collateralType,
+        collateral,
+        minimumGasPrice,
+      );
+      gas = simulatedResultData.estimatedGasUsedWithMargin;
+      fee = simulatedResultData.estimatedFeeWithMargin;
+    } catch (error) {
+      console.error(error);
+      const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
+      this.snackBar.open(`An error has occur: ${errorMessage}`);
+      return;
+    }
+
+    // ask the user to confirm the fee with a dialog
+    const txFeeConfirmedResult = await this.dialog
+      .open(TxFeeConfirmDialogComponent, {
+        data: {
+          fee,
+          isConfirmed: false,
+        },
+      })
+      .afterClosed()
+      .toPromise();
+
+    if (txFeeConfirmedResult === undefined || txFeeConfirmedResult.isConfirmed === false) {
+      this.snackBar.open('Tx was canceled', undefined, { duration: 6000 });
+      return;
+    }
+
     const dialogRef = this.loadingDialog.open('Sending');
 
     let txhash: string | undefined;
     try {
-      const res: any = await this.cdp.withdrawCDP(key, privateKey, ownerAddr, collateral);
-      console.log('res', res);
-      if (res.data.tx_response.code !== 0 && res.data.tx_response.raw_log !== undefined) {
-        throw new Error(res.data.tx_response.raw_log);
+      const res: InlineResponse20075 = await this.cdp.withdrawCDP(
+        key,
+        privateKey,
+        ownerAddr,
+        collateralType,
+        collateral,
+        gas,
+        fee,
+      );
+      txhash = res.tx_response?.txhash;
+      if (txhash === undefined) {
+        throw Error('invalid txhash!');
       }
-      txhash = res.data.tx_response.txhash;
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
         duration: 6000,
       });
+      console.error(error);
       return;
     } finally {
       dialogRef.close();

@@ -1,9 +1,12 @@
 import { KeyInfrastructureService } from '../keys/key.infrastructure.service';
 import { Key } from '../keys/key.model';
 import { IKeyInfrastructure } from '../keys/key.service';
+import { TxCommonInfrastructureService } from '../tx-common/tx-common.infrastructure.service';
+import { SimulatedTxResultResponse } from '../tx-common/tx-common.model';
 import { IAuctionInfrastructure } from './auction.service';
 import { Injectable } from '@angular/core';
 import { cosmosclient, proto, rest } from '@cosmos-client/core';
+import { InlineResponse20075 } from '@cosmos-client/core/esm/openapi';
 import { botany } from 'botany-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/cosmos-sdk.service';
 
@@ -15,6 +18,7 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
   constructor(
     private readonly cosmosSDK: CosmosSDKService,
     keyInfrastructure: KeyInfrastructureService,
+    private readonly txCommonInfrastructureService: TxCommonInfrastructureService,
   ) {
     this.iKeyInfrastructure = keyInfrastructure;
   }
@@ -24,7 +28,47 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
     privateKey: string,
     auction_id: string,
     amount: proto.cosmos.base.v1beta1.ICoin,
-  ) {
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<InlineResponse20075> {
+    const txBuilder = await this.buildPlaceBidTx(key, privateKey, auction_id, amount, gas, fee);
+    return await this.txCommonInfrastructureService.announceTx(txBuilder);
+  }
+
+  async simulateToPlaceBid(
+    key: Key,
+    privateKey: string,
+    auction_id: string,
+    amount: proto.cosmos.base.v1beta1.ICoin,
+    minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<SimulatedTxResultResponse> {
+    const dummyFee: proto.cosmos.base.v1beta1.ICoin = {
+      denom: minimumGasPrice.denom,
+      amount: '1',
+    };
+    const dummyGas: proto.cosmos.base.v1beta1.ICoin = {
+      denom: minimumGasPrice.denom,
+      amount: '1',
+    };
+    const SimulatedTxBuilder = await this.buildPlaceBidTx(
+      key,
+      privateKey,
+      auction_id,
+      amount,
+      dummyGas,
+      dummyFee,
+    );
+    return await this.txCommonInfrastructureService.simulateTx(SimulatedTxBuilder, minimumGasPrice);
+  }
+
+  async buildPlaceBidTx(
+    key: Key,
+    privateKey: string,
+    auction_id: string,
+    amount: proto.cosmos.base.v1beta1.ICoin,
+    gas: proto.cosmos.base.v1beta1.ICoin,
+    fee: proto.cosmos.base.v1beta1.ICoin,
+  ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
     const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
@@ -37,11 +81,9 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
       .catch((_) => undefined);
 
     if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
-      console.log(account);
-      return;
+      throw Error('invalid account!');
     }
 
-    // Todo: collateral_type should be set more appropriately.
     // build tx
     const msgPlaceBid = new botany.auction.MsgPlaceBid({
       auction_id: cosmosclient.Long.fromString(auction_id),
@@ -65,7 +107,8 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
         },
       ],
       fee: {
-        gas_limit: cosmosclient.Long.fromString('300000'),
+        amount: [fee],
+        gas_limit: cosmosclient.Long.fromString(gas.amount ? gas.amount : '300000'),
       },
     });
 
@@ -74,9 +117,6 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
     const signDocBytes = txBuilder.signDocBytes(account.account_number);
     txBuilder.addSignature(privKey.sign(signDocBytes));
 
-    return await rest.tx.broadcastTx(sdk.rest, {
-      tx_bytes: txBuilder.txBytes(),
-      mode: rest.tx.BroadcastTxMode.Block,
-    });
+    return txBuilder;
   }
 }

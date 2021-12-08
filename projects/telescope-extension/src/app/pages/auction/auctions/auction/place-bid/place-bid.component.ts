@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { cosmosclient } from '@cosmos-client/core';
+import { cosmosclient, proto } from '@cosmos-client/core';
 import { botany, google, rest } from 'botany-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models';
 import { AuctionApplicationService } from 'projects/telescope-extension/src/app/models/auctions/auction.application.service';
+import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { PlaceBidOnSubmitEvent } from 'projects/telescope-extension/src/app/views/auction/auctions/auction/place-bid/place-bid.component';
@@ -21,12 +22,14 @@ export class PlaceBidComponent implements OnInit {
   auction$: Observable<botany.auction.CollateralAuction | undefined>;
   endTime$: Observable<Date | undefined>;
   maxEndTime$: Observable<Date | undefined>;
+  minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
 
   constructor(
     private route: ActivatedRoute,
     private readonly keyStore: KeyStoreService,
     private cosmosSDK: CosmosSDKService,
     private readonly auctionApplicationService: AuctionApplicationService,
+    private readonly configS: ConfigService,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.auctionID$ = this.route.params.pipe(map((params) => params.auction_id));
@@ -78,6 +81,7 @@ export class PlaceBidComponent implements OnInit {
         return maxEndTime;
       }),
     );
+    this.minimumGasPrices = this.configS.config.minimumGasPrices;
   }
 
   ngOnInit(): void {}
@@ -88,6 +92,7 @@ export class PlaceBidComponent implements OnInit {
       $event.privateKey,
       $event.auctionID,
       $event.amount,
+      $event.minimumGasPrice,
     );
   }
 }

@@ -5,7 +5,7 @@ import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
 import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
-import { rest as botanyrest, botany } from 'botany-client';
+import { rest as botanyrest, botany, google } from 'botany-client';
 import Long from 'long';
 
 require('dotenv').config();
@@ -344,6 +344,13 @@ export class PriceOracle {
     const txForSimulation = JSON.parse(simulatedTxBuilder.cosmosJSONStringify());
     delete txForSimulation.auth_info.signer_infos[0].mode_info.multi;
 
+    // Note: google.protobuf.Timestamp type must be converted to rfc3339 string, because it is unmarshaled in backend go process.
+    const googleProtobufTimestamp = google.protobuf.Timestamp.fromObject(
+      txForSimulation.body.messages[0].expiry,
+    );
+    const goTimeString = cosmosclient.codec.protobufTimestampToJsDate(googleProtobufTimestamp);
+    txForSimulation.body.messages[0].expiry = goTimeString;
+
     let simulatedResult;
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
@@ -366,7 +373,7 @@ export class PriceOracle {
         parseFloat(
           process.env.MINIMUM_GAS_PRICE_AMOUNT ? process.env.MINIMUM_GAS_PRICE_AMOUNT : '200000',
         );
-      const simulatedFeeWithMargin = simulatedFeeWithMarginNumber.toFixed(0);
+      const simulatedFeeWithMargin = simulatedFeeWithMarginNumber.toFixed(0) + 1;
       console.log({
         simulatedGasUsed,
         simulatedGasUsedWithMargin,

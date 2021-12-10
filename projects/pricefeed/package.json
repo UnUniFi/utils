@@ -23,7 +23,7 @@
     "axios": "^0.21.1",
     "botany-client": "^0.44.0",
     "ccxt": "^1.57.37",
-    "@cosmos-client/core": "^0.44.3",
+    "@cosmos-client/core": "^0.44.4",
     "dotenv": "^8.2.0",
     "log-timestamp": "^0.3.0",
     "node-cron": "^2.0.3",

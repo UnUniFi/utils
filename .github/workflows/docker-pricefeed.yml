@@ -1,8 +1,8 @@
-name: telescope Action Trigger Publish Docker image botany-pricefeed
+name: Publish Docker image pricefeed
 on:
-  repository_dispatch:
-    types:
-      - repository-telescope-new-release
+  release:
+    types: [published]
+
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -13,8 +13,12 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup variables
+        id: variables
+        run: echo "::set-output name=version::${GITHUB_REF##*/}"
       - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
@@ -22,4 +26,5 @@ jobs:
           file: ./projects/pricefeed/Dockerfile
           push: true
           tags: |
-            lcnem/botany-pricefeed:latest
+            ghcr.io/ununifi/pricefeed:${{ steps.variables.outputs.version }}
+            ghcr.io/ununifi/pricefeed:latest

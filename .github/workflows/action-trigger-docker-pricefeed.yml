@@ -1,4 +1,4 @@
-name: telescope Action Trigger Publish Docker image telescope-eurx
+name: telescope Action Trigger Publish Docker image pricefeed
 on:
   repository_dispatch:
     types:
@@ -13,13 +13,14 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./projects/telescope-extension/editions/eurx/Dockerfile
+          context: ./projects/pricefeed/
+          file: ./projects/pricefeed/Dockerfile
           push: true
           tags: |
-            lcnem/telescope-eurx:latest
+            ghcr.io/ununifi/pricefeed:latest

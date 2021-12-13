@@ -6,6 +6,6 @@ RUN npm i -g npm
 RUN npm ci
 RUN npm run build:telescope:jpyx
 
-FROM lcnem/telescope
+FROM ghcr.io/cauchye/telescope
 
 COPY --from=build-stage /root/app/dist/telescope-extension/ /usr/share/nginx/html/jpyx/

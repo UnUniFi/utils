@@ -1,4 +1,4 @@
-name: Build Docker image telescope-jpyx
+name: Build Docker image telescope-ununifi
 
 on:
   pull_request:

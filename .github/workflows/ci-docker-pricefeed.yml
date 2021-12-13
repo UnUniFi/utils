@@ -1,4 +1,4 @@
-name: Build Docker image botany-pricefeed
+name: Build Docker image pricefeed
 
 on:
   pull_request:

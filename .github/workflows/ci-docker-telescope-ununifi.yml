@@ -32,4 +32,4 @@ jobs:
           file: ./projects/telescope-extension/editions/jpyx/Dockerfile
           push: false
           tags: |
-            ghcr.io/UnUniFi/telescope-ununifi:test
+            ghcr.io/ununifi/telescope-ununifi:test

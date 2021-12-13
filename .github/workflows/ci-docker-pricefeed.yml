@@ -28,4 +28,4 @@ jobs:
           file: ./projects/pricefeed/Dockerfile
           push: false
           tags: |
-            ghcr.io/UnUniFi/pricefeed:test
+            ghcr.io/ununifi/pricefeed:test

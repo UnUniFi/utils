@@ -23,4 +23,4 @@ jobs:
           file: ./projects/telescope-extension/editions/jpyx/Dockerfile
           push: true
           tags: |
-            ghcr.io/UnUniFi/telescope-ununifi:latest
+            ghcr.io/ununifi/telescope-ununifi:latest

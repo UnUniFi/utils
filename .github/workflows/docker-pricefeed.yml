@@ -26,5 +26,5 @@ jobs:
           file: ./projects/pricefeed/Dockerfile
           push: true
           tags: |
-            ghcr.io/UnUniFi/pricefeed:${{ steps.variables.outputs.version }}
-            ghcr.io/UnUniFi/pricefeed:latest
+            ghcr.io/ununifi/pricefeed:${{ steps.variables.outputs.version }}
+            ghcr.io/ununifi/pricefeed:latest

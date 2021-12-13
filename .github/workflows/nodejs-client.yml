@@ -1,9 +1,9 @@
-name: Node.js CI client
+name: Node.js CI ununifi-client
 
 on:
   pull_request:
     paths:
-      - "projects/botany-client/**"
+      - "projects/ununifi-client/**"
 
 jobs:
   build:
@@ -27,8 +27,8 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm i -g npm
       - run: npm ci
-        working-directory: ./projects/botany-client
+        working-directory: ./projects/ununifi-client
       - run: npm run build --if-present
-        working-directory: ./projects/botany-client
+        working-directory: ./projects/ununifi-client
       # - run: npm run test
-      #   working-directory: ./projects/botany-client
+      #   working-directory: ./projects/ununifi-client

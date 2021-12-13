@@ -15,7 +15,7 @@
     "../../.eslintrc.typescript.json"
   ],
   "parserOptions": {
-    "project": "projects/botany-client/tsconfig.json",
+    "project": "projects/ununifi-client/tsconfig.json",
     "sourceType": "module"
   }
 }

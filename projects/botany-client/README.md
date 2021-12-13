@@ -11,7 +11,7 @@ npm install --save botany-client
 ## Build
 
 ```shell
-cd projects/botany-client
+cd projects/ununifi-client
 npm run gen:openapi
 npm run gen:proto
 npm run build

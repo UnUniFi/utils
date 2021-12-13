@@ -1,4 +1,4 @@
-name: CD botany-client npm publish
+name: CD ununifi-client npm publish
 
 on: [ workflow_dispatch ]
 
@@ -25,10 +25,10 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm i -g npm
       - run: npm ci
-        working-directory: ./projects/botany-client
+        working-directory: ./projects/ununifi-client
       - run: npm run build --if-present
-        working-directory: ./projects/botany-client
+        working-directory: ./projects/ununifi-client
       - run: npm publish --access=public
-        working-directory: ./projects/botany-client/dist
+        working-directory: ./projects/ununifi-client/dist
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

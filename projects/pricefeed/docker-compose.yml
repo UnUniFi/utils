@@ -2,6 +2,7 @@ version: '3'
 
 services:
   pricefeed:
+    container_name: pricefeed
     image: ghcr.io/ununifi/pricefeed
     env_file:
       - .env

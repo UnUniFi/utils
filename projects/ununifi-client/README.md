@@ -1,6 +1,6 @@
 # ununifi-client
 
-JavaScript / TypeScript client for Botany (JPYX and EURX) blockchain.
+JavaScript / TypeScript client for UnUniFi blockchain.
 
 ## Install
 

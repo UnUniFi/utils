@@ -1,6 +1,6 @@
 # botany
 
-Utility tools for project Botany (JPYX and EURX).
+Utility tools for project UnUniFi.
 
 - main: Website of botany
 - [ununifi-client](./projects/ununifi-client/README.md)

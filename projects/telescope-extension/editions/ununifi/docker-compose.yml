@@ -1,6 +1,7 @@
 version: '3'
 services:
   telescope-ununifi:
+    container_name: telescope-ununifi
     image: ghcr.io/ununifi/telescope-ununifi
     volumes:
       - ./config.js:/usr/share/nginx/html/assets/config.js

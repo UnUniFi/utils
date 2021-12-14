@@ -271,7 +271,7 @@
               "sourceMap": true,
               "namedChunks": true
             },
-            "production-jpyx": {
+            "production-ununifi": {
               "budgets": [
                 {
                   "type": "initial",
@@ -291,47 +291,16 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/jpyx/"
+              "baseHref": "/ununifi/"
             },
-            "development-jpyx": {
+            "development-ununifi": {
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "baseHref": "/jpyx/"
-            },
-            "production-eurx": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "10mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/telescope-extension/src/environments/environment.ts",
-                  "with": "projects/telescope-extension/src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all",
-              "baseHref": "/eurx/"
-            },
-            "development-eurx": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true,
-              "baseHref": "/eurx/"
+              "baseHref": "/ununifi/"
             }
           },
           "defaultConfiguration": "production"
@@ -345,21 +314,13 @@
             "development": {
               "browserTarget": "telescope-extension:build:development"
             },
-            "production-jpyx": {
+            "production-ununifi": {
               "browserTarget": "telescope-extension:build:production",
-              "baseHref": "/jpyx/"
+              "baseHref": "/ununifi/"
             },
-            "development-jpyx": {
+            "development-ununifi": {
               "browserTarget": "telescope-extension:build:development",
-              "baseHref": "/jpyx/"
-            },
-            "production-eurx": {
-              "browserTarget": "telescope-extension:build:production",
-              "baseHref": "/eurx/"
-            },
-            "development-eurx": {
-              "browserTarget": "telescope-extension:build:development",
-              "baseHref": "/eurx/"
+              "baseHref": "/ununifi/"
             }
           },
           "defaultConfiguration": "development"

@@ -22,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./projects/telescope-extension/editions/jpyx/Dockerfile
+          file: ./projects/telescope-extension/editions/ununifi/Dockerfile
           push: true
           tags: |
             ghcr.io/ununifi/telescope-ununifi:${{ steps.variables.outputs.version }}

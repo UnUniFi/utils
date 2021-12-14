@@ -4,8 +4,8 @@ WORKDIR /root/app
 COPY ./ /root/app/
 RUN npm i -g npm
 RUN npm ci
-RUN npm run build:telescope:jpyx
+RUN npm run build:telescope:ununifi
 
 FROM ghcr.io/cauchye/telescope
 
-COPY --from=build-stage /root/app/dist/telescope-extension/ /usr/share/nginx/html/jpyx/
+COPY --from=build-stage /root/app/dist/telescope-extension/ /usr/share/nginx/html/ununifi/

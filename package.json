@@ -14,7 +14,7 @@
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "bundle:ununifi": "docker build . -f ./projects/telescope-extension/editions/jpyx/Dockerfile -t ghcr.io/ununifi/telescope-ununifi",
+    "bundle:ununifi": "docker build . -f ./projects/telescope-extension/editions/ununifi/Dockerfile -t ghcr.io/ununifi/telescope-ununifi",
     "bundle:pricefeed": "docker build ./projects/pricefeed/ -f ./projects/pricefeed/Dockerfile -t ghcr.io/ununifi/pricefeed",
     "prepare": "husky install",
     "preinstall": "cd common && npm i && npm run build"

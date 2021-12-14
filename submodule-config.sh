@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# git submodule add https://github.com/lcnem/telescope.git telescope
+# git submodule add https://github.com/ununifi/telescope.git telescope
 # git commit -m "feat: submodule add"
 
 cd telescope

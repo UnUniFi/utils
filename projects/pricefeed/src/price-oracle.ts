@@ -5,8 +5,8 @@ import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
 import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
-import { rest as botanyrest, botany, google } from 'botany-client';
 import Long from 'long';
+import { rest as botanyrest, botany, google } from 'ununifi-client';
 
 require('dotenv').config();
 require('log-timestamp');

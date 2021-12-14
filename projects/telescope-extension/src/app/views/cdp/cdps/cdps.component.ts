@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as crypto from 'crypto';
-import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi';
+import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
 
 @Component({
   selector: 'view-cdps',
@@ -11,9 +11,9 @@ export class CdpsComponent implements OnInit {
   @Input()
   cdps?: InlineResponse2004Cdp1[] | null;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   getColorCode(cdp: InlineResponse2004Cdp1) {
     const hash = crypto

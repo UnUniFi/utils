@@ -3,11 +3,11 @@ import { Key } from '../../../../models/keys/key.model';
 import { CreateCdpOnSubmitEvent } from '../../../../views/cdp/cdps/create/create.component';
 import { Component, OnInit } from '@angular/core';
 import { proto } from '@cosmos-client/core';
-import { botany, rest } from 'botany-client';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
+import { botany, rest } from 'ununifi-client';
 
 @Component({
   selector: 'app-create',

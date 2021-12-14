@@ -3,10 +3,10 @@ import { Key } from '../../../models/keys/key.model';
 import { KeyStoreService } from '../../../models/keys/key.store.service';
 import { Component, OnInit } from '@angular/core';
 import { cosmosclient } from '@cosmos-client/core';
-import { rest } from 'botany-client';
-import { InlineResponse2004Cdp1 } from 'botany-client/esm/openapi';
 import { combineLatest, Observable, of } from 'rxjs';
 import { catchError, filter, map, mergeMap } from 'rxjs/operators';
+import { rest } from 'ununifi-client';
+import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
 
 @Component({
   selector: 'app-cdps',

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { botany } from 'botany-client';
+import { botany } from 'ununifi-client';
 
 @Component({
   selector: 'view-auction',

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { proto } from '@cosmos-client/core';
-import { botany } from 'botany-client';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
+import { botany } from 'ununifi-client';
 
 export type PlaceBidOnSubmitEvent = {
   key: Key;

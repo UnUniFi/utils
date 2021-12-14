@@ -1,8 +1,8 @@
 import { CosmosSDKService } from '../../models/cosmos-sdk.service';
 import { Component, OnInit } from '@angular/core';
-import { botany, rest } from 'botany-client';
 import { combineLatest, Observable, timer } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { botany, rest } from 'ununifi-client';
 
 @Component({
   selector: 'app-cdp',

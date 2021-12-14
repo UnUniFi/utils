@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { botany } from 'botany-client';
+import { botany } from 'ununifi-client';
 
 @Component({
   selector: 'view-cdp',
@@ -10,7 +10,7 @@ export class CdpComponent implements OnInit {
   @Input()
   params?: botany.cdp.IParams | null;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }

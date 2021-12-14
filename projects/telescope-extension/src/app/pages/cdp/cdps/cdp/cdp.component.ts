@@ -3,11 +3,11 @@ import { getSpotPriceStream, getLiquidationPriceStream } from '../../../../utils
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient } from '@cosmos-client/core';
-import { rest, botany } from 'botany-client';
-import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'botany-client/esm/openapi';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
 import { combineLatest, Observable, zip } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { rest, botany } from 'ununifi-client';
+import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'ununifi-client/esm/openapi';
 
 @Component({
   selector: 'app-cdp',

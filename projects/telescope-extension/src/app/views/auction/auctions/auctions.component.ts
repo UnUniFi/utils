@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { botany } from 'botany-client';
+import { botany } from 'ununifi-client';
 
 @Component({
   selector: 'view-auctions',

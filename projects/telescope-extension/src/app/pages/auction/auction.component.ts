@@ -1,9 +1,9 @@
 import { CosmosSDKService } from '../../models/cosmos-sdk.service';
 import { Component, OnInit } from '@angular/core';
-import { rest } from 'botany-client';
-import { InlineResponse2002Params } from 'botany-client/esm/openapi';
 import { combineLatest, Observable, timer } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { rest } from 'ununifi-client';
+import { InlineResponse2002Params } from 'ununifi-client/esm/openapi';
 
 @Component({
   selector: 'app-auction',

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { proto } from '@cosmos-client/core';
-import { rest, botany } from 'botany-client';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import {
   CdpApplicationService,
@@ -12,6 +11,7 @@ import { KeyStoreService } from 'projects/telescope-extension/src/app/models/key
 import { ClearCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/clear/clear.component';
 import { combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { rest, botany } from 'ununifi-client';
 
 @Component({
   selector: 'app-clear',

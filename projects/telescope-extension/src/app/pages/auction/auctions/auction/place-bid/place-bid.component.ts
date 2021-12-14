@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient, proto } from '@cosmos-client/core';
-import { botany, google, rest } from 'botany-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models';
 import { AuctionApplicationService } from 'projects/telescope-extension/src/app/models/auctions/auction.application.service';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
@@ -10,6 +9,7 @@ import { KeyStoreService } from 'projects/telescope-extension/src/app/models/key
 import { PlaceBidOnSubmitEvent } from 'projects/telescope-extension/src/app/views/auction/auctions/auction/place-bid/place-bid.component';
 import { combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { botany, google, rest } from 'ununifi-client';
 
 @Component({
   selector: 'app-place-bid',

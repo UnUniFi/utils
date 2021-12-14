@@ -50,8 +50,8 @@ const config = {
         icon: 'monitor',
       },
       {
-        name: 'JPYX',
-        link: '/jpyx/',
+        name: 'UnUniFi',
+        link: '/ununifi/',
         icon: 'toll',
       },
     ],

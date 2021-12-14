@@ -7,8 +7,8 @@ import { IAuctionInfrastructure } from './auction.service';
 import { Injectable } from '@angular/core';
 import { cosmosclient, proto, rest } from '@cosmos-client/core';
 import { InlineResponse20075 } from '@cosmos-client/core/esm/openapi';
-import { botany } from 'botany-client';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/cosmos-sdk.service';
+import { botany } from 'ununifi-client';
 
 @Injectable({
   providedIn: 'root',

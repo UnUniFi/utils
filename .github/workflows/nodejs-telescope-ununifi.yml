@@ -1,4 +1,4 @@
-name: Node.js CI telescope
+name: Node.js CI telescope-ununifi
 
 on:
   pull_request:

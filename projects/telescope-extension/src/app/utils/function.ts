@@ -1,5 +1,5 @@
-import { botany } from 'botany-client';
-import { InlineResponse2004Cdp } from 'botany-client/esm/openapi';
+import { botany } from 'ununifi-client';
+import { InlineResponse2004Cdp } from 'ununifi-client/esm/openapi';
 
 export const getWithdrawLimit = (
   cdp: InlineResponse2004Cdp,

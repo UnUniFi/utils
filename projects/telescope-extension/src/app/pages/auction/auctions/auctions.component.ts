@@ -2,9 +2,9 @@ import { CosmosSDKService } from '../../../models/index';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { cosmosclient } from '@cosmos-client/core';
-import { rest, botany, google } from 'botany-client';
 import { BehaviorSubject, combineLatest, Observable, of, timer } from 'rxjs';
 import { filter, map, mergeMap, switchMap } from 'rxjs/operators';
+import { rest, botany, google } from 'ununifi-client';
 
 @Component({
   selector: 'app-auctions',

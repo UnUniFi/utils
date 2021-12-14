@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 rm swagger.yaml
-cp ~/src/github.com/lcnem/jpyx/docs/client/swagger.yaml ./swagger.yaml
+cp ~/src/github.com/UnUniFi/chain/docs/client/swagger.yaml ./swagger.yaml
 
 docker run --rm \
   -v ${PWD}:/local openapitools/openapi-generator-cli generate \

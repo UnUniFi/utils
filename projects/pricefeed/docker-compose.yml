@@ -2,7 +2,7 @@ version: '3'
 
 services:
   pricefeed:
-    image: lcnem/botany-pricefeed
+    image: ghcr.io/ununifi/pricefeed
     env_file:
       - .env
     network_mode: host

@@ -1,7 +1,7 @@
 {
-  "name": "botany-client",
-  "version": "0.44.1",
-  "description": "REST API Client for JPYX and EURX (Cosmos SDK) Blockchain",
+  "name": "ununifi-client",
+  "version": "0.44.2",
+  "description": "REST API Client for UnUniFi Blockchain",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
   "exports": {

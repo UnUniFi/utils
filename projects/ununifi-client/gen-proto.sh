@@ -2,8 +2,8 @@
 
 rm -r proto
 rm -r proto-thirdparty
-cp -r ~/src/github.com/lcnem/jpyx/proto ./
-cp -r ~/src/github.com/lcnem/jpyx/proto-thirdparty ./
+cp -r ~/src/github.com/UnUniFi/chain/proto ./
+cp -r ~/src/github.com/UnUniFi/chain/proto-thirdparty ./
 
 proto_dirs=$(find ./proto -path -prune -o -name '*.proto' -print0 | xargs -0 -n1 dirname | sort | uniq)
 proto_files=()

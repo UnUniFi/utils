@@ -41,7 +41,7 @@
     "@ngrx/effects": "^12.4.0",
     "@ngrx/store": "^12.4.0",
     "@ngrx/store-devtools": "^12.4.0",
-    "botany-client": "^0.44.0",
+    "ununifi-client": "^0.44.2",
     "@cosmos-client/core": "^0.44.3",
     "crypto-browserify": "^3.12.0",
     "dexie": "^3.0.3",

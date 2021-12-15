@@ -36,12 +36,10 @@ li {
   font-weight: bold;
 }
 
-.fc-jpyx {
-  color: #b67cb6;
+.fc-guu {
+  color: #a1a1a1;
 }
-.fc-eurx {
-  color: #6c8fb6;
-}
+
 
 header {
   position: fixed;
@@ -123,7 +121,7 @@ header {
 
 #hdr-box nav #nav-02 {
   position: absolute;
-  left: 515px;
+  left: 415px;
   top: 30px;
   margin: 0 0;
   padding: 0 0;
@@ -226,7 +224,7 @@ header {
 #mv h1 {
   margin: 0 0 40px 0;
   padding: 0;
-  font-size: 38px;
+  font-size: 28px;
   line-height: 1.5;
 }
 
@@ -344,7 +342,7 @@ header {
 }
 #s-01 div ul li {
   display: flex;
-  width: calc((100% - 16px) / 2);
+  width: calc((100% - 16px) /2);
   margin-right: 16px;
   padding: 16px;
 }
@@ -354,36 +352,33 @@ header {
 
 #s-01 div ul li h3 {
   margin: 0 0;
-  padding: 0 5px 0 24px;
+  padding: 0 0 0 5px;
   width: 55%;
-  font-size: 14px;
-  border-right: 1px solid #a1a1a1;
-  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
-  background-size: 14px auto;
+  font-size: 12px;
+  border-left: 1px solid #a1a1a1;
 }
 #s-01 div ul li p {
   margin: 0;
-  padding: 0 0 0 5px;
+  padding: 0 5px 0 24px;
   width: 45%;
   font-size: 20px;
   font-weight: bold;
+  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+  background-size: 14px auto;
 }
 
 #s-01 div.jpyx-box h2,
 #s-01 div.jpyx-box p {
-  color: #b67cb6;
-}
-#s-01 div.jpyx-box ul li h3 {
+
   background-image: url(~projects/main/src/assets/images/circle-a.png);
 }
 
 #s-01 div.eurx-box h2,
 #s-01 div.eurx-box p {
-  color: #6c8fb6;
-}
-#s-01 div.eurx-box ul li h3 {
+
   background-image: url(~projects/main/src/assets/images/circle-b.png);
 }
+
 
 #s-02 {
   margin: 0 auto;

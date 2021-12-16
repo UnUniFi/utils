@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { cosmosclient, proto, rest } from '@cosmos-client/core';
 import { InlineResponse20075 } from '@cosmos-client/core/esm/openapi';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/cosmos-sdk.service';
-import { botany } from 'ununifi-client';
+import { ununifi } from 'ununifi-client';
 
 @Injectable({
   providedIn: 'root',
@@ -97,7 +97,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     }
 
     // build tx
-    const msgCreateCdp = new botany.cdp.MsgCreateCdp({
+    const msgCreateCdp = new ununifi.cdp.MsgCreateCdp({
       sender: sender.toString(),
       collateral,
       principal,
@@ -201,7 +201,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       throw Error('invalid account!');
     }
 
-    const msgDrawDebt = new botany.cdp.MsgDrawDebt({
+    const msgDrawDebt = new ununifi.cdp.MsgDrawDebt({
       sender: sender.toString(),
       collateral_type: collateralType,
       principal,
@@ -304,7 +304,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       throw Error('invalid account!');
     }
 
-    const msgRepayDebt = new botany.cdp.MsgRepayDebt({
+    const msgRepayDebt = new ununifi.cdp.MsgRepayDebt({
       sender: sender.toString(),
       collateral_type: collateralType,
       payment,
@@ -413,7 +413,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     }
 
     // build tx
-    const msgDepositCDP = new botany.cdp.MsgDeposit({
+    const msgDepositCDP = new ununifi.cdp.MsgDeposit({
       depositor: sender.toString(),
       owner: ownerAddr.toString(),
       collateral,
@@ -523,7 +523,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     }
 
     // build tx
-    const msgWithdraw = new botany.cdp.MsgWithdraw({
+    const msgWithdraw = new ununifi.cdp.MsgWithdraw({
       depositor: sender.toString(),
       owner: ownerAddr.toString(),
       collateral,

@@ -9,7 +9,7 @@ import { KeyStoreService } from 'projects/telescope-extension/src/app/models/key
 import { WithdrawCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/withdraw/withdraw.component';
 import { combineLatest, Observable } from 'rxjs';
 import { mergeMap, map } from 'rxjs/operators';
-import { rest, botany } from 'ununifi-client';
+import { rest, ununifi } from 'ununifi-client';
 
 @Component({
   selector: 'app-withdraw',
@@ -20,7 +20,7 @@ export class WithdrawComponent implements OnInit {
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
   collateralType$: Observable<string>;
-  params$: Observable<botany.cdp.IParams>;
+  params$: Observable<ununifi.cdp.IParams>;
   denom$: Observable<string>;
   minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
 
@@ -35,7 +35,7 @@ export class WithdrawComponent implements OnInit {
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.collateralType$ = this.route.params.pipe(map((params) => params['collateralType']));
     this.params$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
+      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((data) => data.data.params!),
     );
     this.denom$ = combineLatest([this.collateralType$, this.params$]).pipe(

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { proto } from '@cosmos-client/core';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
-import { botany } from 'ununifi-client';
+import { ununifi } from 'ununifi-client';
 
 export type CreateCdpOnSubmitEvent = {
   key: Key;
@@ -22,16 +22,16 @@ export class CreateComponent implements OnInit {
   key?: Key | null;
 
   @Input()
-  cdpParams?: botany.cdp.IParams | null;
+  cdpParams?: ununifi.cdp.IParams | null;
 
   @Input()
-  collateralParams?: botany.cdp.ICollateralParam[] | null;
+  collateralParams?: ununifi.cdp.ICollateralParam[] | null;
 
   @Input()
   selectedCollateralType?: string | null;
 
   @Input()
-  selectedCollateralParam?: botany.cdp.ICollateralParam | null;
+  selectedCollateralParam?: ununifi.cdp.ICollateralParam | null;
 
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];

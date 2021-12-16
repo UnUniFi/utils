@@ -7,7 +7,7 @@ import { ConfigService } from 'projects/telescope-extension/src/app/models/confi
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
-import { botany, rest } from 'ununifi-client';
+import { ununifi, rest } from 'ununifi-client';
 
 @Component({
   selector: 'app-create',
@@ -16,11 +16,11 @@ import { botany, rest } from 'ununifi-client';
 })
 export class CreateComponent implements OnInit {
   key$: Observable<Key | undefined>;
-  cdpParams$: Observable<botany.cdp.IParams | undefined>;
-  collateralParams$: Observable<botany.cdp.ICollateralParam[] | null | undefined>;
+  cdpParams$: Observable<ununifi.cdp.IParams | undefined>;
+  collateralParams$: Observable<ununifi.cdp.ICollateralParam[] | null | undefined>;
   selectedCollateralTypeSubject: Subject<string | null | undefined>;
   selectedCollateralType$: Observable<string | null | undefined>;
-  selectedCollateralParam$: Observable<botany.cdp.ICollateralParam | null | undefined>;
+  selectedCollateralParam$: Observable<ununifi.cdp.ICollateralParam | null | undefined>;
   minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
 
   constructor(
@@ -31,7 +31,7 @@ export class CreateComponent implements OnInit {
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.cdpParams$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
+      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((param) => param.data.params),
     );
     this.collateralParams$ = this.cdpParams$.pipe(map((cdpParams) => cdpParams?.collateral_params));

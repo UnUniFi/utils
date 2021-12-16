@@ -4,7 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { cosmosclient } from '@cosmos-client/core';
 import { BehaviorSubject, combineLatest, Observable, of, timer } from 'rxjs';
 import { filter, map, mergeMap, switchMap } from 'rxjs/operators';
-import { rest, botany, google } from 'ununifi-client';
+import { rest, ununifi, google } from 'ununifi-client';
 
 @Component({
   selector: 'app-auctions',
@@ -21,7 +21,7 @@ export class AuctionsComponent implements OnInit {
   auctionsPageOffset$: Observable<bigint>;
 
   pollingInterval = 30;
-  auctions$?: Observable<(botany.auction.CollateralAuction | undefined)[] | undefined>;
+  auctions$?: Observable<(ununifi.auction.CollateralAuction | undefined)[] | undefined>;
 
   constructor(private cosmosSDK: CosmosSDKService) {
     const timer$ = timer(0, this.pollingInterval * 1000);
@@ -29,7 +29,7 @@ export class AuctionsComponent implements OnInit {
 
     this.auctionsTotalCount$ = combineLatest([sdk$, this.pageNumber$, this.pageSize$]).pipe(
       switchMap(([sdk, _pageNumber, _pageSize]) => {
-        return rest.botany.auction
+        return rest.ununifi.auction
           .allAuctions(sdk.rest, undefined, undefined, undefined, true)
           .then((res) =>
             res.data.pagination?.total ? BigInt(res.data.pagination?.total) : BigInt(0),
@@ -73,7 +73,7 @@ export class AuctionsComponent implements OnInit {
           return [];
         }
 
-        return rest.botany.auction
+        return rest.ununifi.auction
           .allAuctions(sdk.rest, undefined, modifiedPageOffset, modifiedPageSize, true)
           .then((res) => {
             return res.data.auctions;
@@ -100,7 +100,7 @@ export class AuctionsComponent implements OnInit {
             return anyAuction;
           };
           const unpackValue = cosmosclient.codec.unpackCosmosAny(parseAuction(anyAuction));
-          if (!(unpackValue instanceof botany.auction.CollateralAuction)) {
+          if (!(unpackValue instanceof ununifi.auction.CollateralAuction)) {
             console.log(unpackValue);
             return;
           }

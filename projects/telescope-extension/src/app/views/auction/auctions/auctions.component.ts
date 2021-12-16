@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { botany } from 'ununifi-client';
+import { ununifi } from 'ununifi-client';
 
 @Component({
   selector: 'view-auctions',
@@ -9,7 +9,7 @@ import { botany } from 'ununifi-client';
 })
 export class AuctionsComponent implements OnInit {
   @Input()
-  auctions?: (botany.auction.CollateralAuction | undefined)[] | null;
+  auctions?: (ununifi.auction.CollateralAuction | undefined)[] | null;
 
   @Input()
   pageSizeOptions?: number[] | null;

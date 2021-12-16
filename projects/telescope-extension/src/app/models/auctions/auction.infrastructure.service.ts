@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { cosmosclient, proto, rest } from '@cosmos-client/core';
 import { InlineResponse20075 } from '@cosmos-client/core/esm/openapi';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/cosmos-sdk.service';
-import { botany } from 'ununifi-client';
+import { ununifi } from 'ununifi-client';
 
 @Injectable({
   providedIn: 'root',
@@ -85,7 +85,7 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
     }
 
     // build tx
-    const msgPlaceBid = new botany.auction.MsgPlaceBid({
+    const msgPlaceBid = new ununifi.auction.MsgPlaceBid({
       auction_id: cosmosclient.Long.fromString(auction_id),
       bidder: bidder.toString(),
       amount,

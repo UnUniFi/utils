@@ -121,7 +121,7 @@ header {
 
 #hdr-box nav #nav-02 {
   position: absolute;
-  left: 415px;
+  left: 515px;
   top: 30px;
   margin: 0 0;
   padding: 0 0;
@@ -342,7 +342,7 @@ header {
 }
 #s-01 div ul li {
   display: flex;
-  width: calc((100% - 16px) /2);
+  width: calc((100% - 16px) / 2);
   margin-right: 16px;
   padding: 16px;
 }
@@ -350,12 +350,12 @@ header {
   margin-right: 0;
 }
 
-#s-01 div ul li h3 {
+#s-01 div ul li span {
   margin: 0 0;
   padding: 0 0 0 5px;
   width: 55%;
   font-size: 12px;
-  border-left: 1px solid #a1a1a1;
+  color: #5e5e5e;
 }
 #s-01 div ul li p {
   margin: 0;
@@ -363,22 +363,20 @@ header {
   width: 45%;
   font-size: 20px;
   font-weight: bold;
+  border-right: 1px solid #a1a1a1;
   background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
-  background-size: 14px auto;
+  background-size: 20px auto;
 }
 
-#s-01 div.jpyx-box h2,
-#s-01 div.jpyx-box p {
-
-  background-image: url(~projects/main/src/assets/images/circle-a.png);
+#s-01 div ul li.guu-box p {
+  background-image: url(~projects/main/src/assets/images/GUU.png);
 }
-
-#s-01 div.eurx-box h2,
-#s-01 div.eurx-box p {
-
-  background-image: url(~projects/main/src/assets/images/circle-b.png);
+#s-01 div ul li.jpu-box p {
+  background-image: url(~projects/main/src/assets/images/JPU.png);
 }
-
+#s-01 div ul li.euu-box p {
+  background-image: url(~projects/main/src/assets/images/EUU.png);
+}
 
 #s-02 {
   margin: 0 auto;
@@ -728,22 +726,21 @@ footer p span {
     padding: 16px;
   }
 
-  #s-01 div ul li h3 {
+  #s-01 div ul li span {
     margin: 0 0 5px 0;
-    padding: 0 5px 5px 24px;
+    padding: 0 0 0 0;
     width: 100%;
     font-size: 14px;
-    border-right: none;
-    border-bottom: 1px solid #a1a1a1;
-    background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
-    background-size: 14px auto;
+    color: #5e5e5e;
   }
   #s-01 div ul li p {
     margin: 0;
-    padding: 0 0 0 0;
+    padding: 0 5px 5px 24px;
     width: 100%;
     font-size: 20px;
     font-weight: bold;
+    border-right: none;
+    border-bottom: 1px solid #a1a1a1;
   }
 
   #s-02 {

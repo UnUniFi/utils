@@ -1,6 +1,6 @@
 {
   "name": "ununifi-client",
-  "version": "0.44.2",
+  "version": "0.44.3",
   "description": "REST API Client for UnUniFi Blockchain",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",

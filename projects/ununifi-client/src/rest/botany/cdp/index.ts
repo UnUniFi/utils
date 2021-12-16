@@ -1,11 +1,11 @@
-import { botany } from '../../../proto';
+import { ununifi } from '../../../proto';
 import { cosmosclient } from '@cosmos-client/core';
 
 export * as cdp from './module';
 
-cosmosclient.codec.register('/botany.cdp.MsgCreateCdp', botany.cdp.MsgCreateCdp);
-cosmosclient.codec.register('/botany.cdp.MsgDeposit', botany.cdp.MsgDeposit);
-cosmosclient.codec.register('/botany.cdp.MsgDrawDebt', botany.cdp.MsgDrawDebt);
-cosmosclient.codec.register('/botany.cdp.MsgLiquidate', botany.cdp.MsgLiquidate);
-cosmosclient.codec.register('/botany.cdp.MsgRepayDebt', botany.cdp.MsgRepayDebt);
-cosmosclient.codec.register('/botany.cdp.MsgWithdraw', botany.cdp.MsgWithdraw);
+cosmosclient.codec.register('/ununifi.cdp.MsgCreateCdp', ununifi.cdp.MsgCreateCdp);
+cosmosclient.codec.register('/ununifi.cdp.MsgDeposit', ununifi.cdp.MsgDeposit);
+cosmosclient.codec.register('/ununifi.cdp.MsgDrawDebt', ununifi.cdp.MsgDrawDebt);
+cosmosclient.codec.register('/ununifi.cdp.MsgLiquidate', ununifi.cdp.MsgLiquidate);
+cosmosclient.codec.register('/ununifi.cdp.MsgRepayDebt', ununifi.cdp.MsgRepayDebt);
+cosmosclient.codec.register('/ununifi.cdp.MsgWithdraw', ununifi.cdp.MsgWithdraw);

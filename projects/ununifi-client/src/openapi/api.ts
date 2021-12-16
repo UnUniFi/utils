@@ -22,807 +22,6 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
- * 
- * @export
- * @interface BotanyAuctionParams
- */
-export interface BotanyAuctionParams {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyAuctionParams
-     */
-    max_auction_duration?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyAuctionParams
-     */
-    bid_duration?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyAuctionParams
-     */
-    increment_surplus?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyAuctionParams
-     */
-    increment_debt?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyAuctionParams
-     */
-    increment_collateral?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyAuctionQueryAllAuctionResponse
- */
-export interface BotanyAuctionQueryAllAuctionResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse200Auctions>}
-     * @memberof BotanyAuctionQueryAllAuctionResponse
-     */
-    auctions?: Array<InlineResponse200Auctions>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof BotanyAuctionQueryAllAuctionResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface BotanyAuctionQueryGetAuctionResponse
- */
-export interface BotanyAuctionQueryGetAuctionResponse {
-    /**
-     * 
-     * @type {InlineResponse200Auctions}
-     * @memberof BotanyAuctionQueryGetAuctionResponse
-     */
-    auction?: InlineResponse200Auctions;
-}
-/**
- * 
- * @export
- * @interface BotanyAuctionQueryParamsResponse
- */
-export interface BotanyAuctionQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse2002Params}
-     * @memberof BotanyAuctionQueryParamsResponse
-     */
-    params?: InlineResponse2002Params;
-}
-/**
- * 
- * @export
- * @interface BotanyBotanydistParams
- */
-export interface BotanyBotanydistParams {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BotanyBotanydistParams
-     */
-    active?: boolean;
-    /**
-     * 
-     * @type {Array<InlineResponse20010ParamsPeriods>}
-     * @memberof BotanyBotanydistParams
-     */
-    periods?: Array<InlineResponse20010ParamsPeriods>;
-}
-/**
- * 
- * @export
- * @interface BotanyBotanydistPeriod
- */
-export interface BotanyBotanydistPeriod {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyBotanydistPeriod
-     */
-    start?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyBotanydistPeriod
-     */
-    end?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyBotanydistPeriod
-     */
-    inflation?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyBotanydistQueryGetBalancesResponse
- */
-export interface BotanyBotanydistQueryGetBalancesResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse2004CdpCollateral>}
-     * @memberof BotanyBotanydistQueryGetBalancesResponse
-     */
-    balances?: Array<InlineResponse2004CdpCollateral>;
-}
-/**
- * 
- * @export
- * @interface BotanyBotanydistQueryParamsResponse
- */
-export interface BotanyBotanydistQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse20010Params}
-     * @memberof BotanyBotanydistQueryParamsResponse
-     */
-    params?: InlineResponse20010Params;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpAugmentedCdp
- */
-export interface BotanyCdpAugmentedCdp {
-    /**
-     * 
-     * @type {InlineResponse2004Cdp}
-     * @memberof BotanyCdpAugmentedCdp
-     */
-    cdp?: InlineResponse2004Cdp;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof BotanyCdpAugmentedCdp
-     */
-    collateral_value?: InlineResponse2004CdpCollateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpAugmentedCdp
-     */
-    collateralization_ratio?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpCdp
- */
-export interface BotanyCdpCdp {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCdp
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCdp
-     */
-    owner?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCdp
-     */
-    type?: string;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof BotanyCdpCdp
-     */
-    collateral?: InlineResponse2004CdpCollateral;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof BotanyCdpCdp
-     */
-    principal?: InlineResponse2004CdpCollateral;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof BotanyCdpCdp
-     */
-    accumulated_fees?: InlineResponse2004CdpCollateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCdp
-     */
-    fees_updated?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCdp
-     */
-    interest_factor?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpCollateralParam
- */
-export interface BotanyCdpCollateralParam {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    denom?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    liquidation_ratio?: string;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof BotanyCdpCollateralParam
-     */
-    debt_limit?: InlineResponse2004CdpCollateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    stability_fee?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    auction_size?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    liquidation_penalty?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof BotanyCdpCollateralParam
-     */
-    prefix?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    spot_market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    liquidation_market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    keeper_reward_percentage?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    check_collateralization_index_count?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpCollateralParam
-     */
-    conversion_factor?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpDebtParam
- */
-export interface BotanyCdpDebtParam {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpDebtParam
-     */
-    denom?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpDebtParam
-     */
-    reference_asset?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpDebtParam
-     */
-    conversion_factor?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpDebtParam
-     */
-    debt_floor?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpDeposit
- */
-export interface BotanyCdpDeposit {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpDeposit
-     */
-    cdp_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpDeposit
-     */
-    depositor?: string;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof BotanyCdpDeposit
-     */
-    amount?: InlineResponse2004CdpCollateral;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpParams
- */
-export interface BotanyCdpParams {
-    /**
-     * 
-     * @type {Array<InlineResponse2007ParamsCollateralParams>}
-     * @memberof BotanyCdpParams
-     */
-    collateral_params?: Array<InlineResponse2007ParamsCollateralParams>;
-    /**
-     * 
-     * @type {InlineResponse2007ParamsDebtParam}
-     * @memberof BotanyCdpParams
-     */
-    debt_param?: InlineResponse2007ParamsDebtParam;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof BotanyCdpParams
-     */
-    global_debt_limit?: InlineResponse2004CdpCollateral;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpParams
-     */
-    surplus_auction_threshold?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpParams
-     */
-    surplus_auction_lot?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpParams
-     */
-    debt_auction_threshold?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyCdpParams
-     */
-    debt_auction_lot?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BotanyCdpParams
-     */
-    circuit_breaker?: boolean;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpQueryAllAccountResponse
- */
-export interface BotanyCdpQueryAllAccountResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse200Auctions>}
-     * @memberof BotanyCdpQueryAllAccountResponse
-     */
-    accounts?: Array<InlineResponse200Auctions>;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpQueryAllCdpResponse
- */
-export interface BotanyCdpQueryAllCdpResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse2004Cdp1>}
-     * @memberof BotanyCdpQueryAllCdpResponse
-     */
-    cdp?: Array<InlineResponse2004Cdp1>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof BotanyCdpQueryAllCdpResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpQueryAllDepositResponse
- */
-export interface BotanyCdpQueryAllDepositResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse2006Deposits>}
-     * @memberof BotanyCdpQueryAllDepositResponse
-     */
-    deposits?: Array<InlineResponse2006Deposits>;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpQueryGetCdpResponse
- */
-export interface BotanyCdpQueryGetCdpResponse {
-    /**
-     * 
-     * @type {InlineResponse2004Cdp1}
-     * @memberof BotanyCdpQueryGetCdpResponse
-     */
-    cdp?: InlineResponse2004Cdp1;
-}
-/**
- * 
- * @export
- * @interface BotanyCdpQueryParamsResponse
- */
-export interface BotanyCdpQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse2007Params}
-     * @memberof BotanyCdpQueryParamsResponse
-     */
-    params?: InlineResponse2007Params;
-}
-/**
- * 
- * @export
- * @interface BotanyIncentiveMultiplier
- */
-export interface BotanyIncentiveMultiplier {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyIncentiveMultiplier
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyIncentiveMultiplier
-     */
-    months_lockup?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyIncentiveMultiplier
-     */
-    factor?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyIncentiveParams
- */
-export interface BotanyIncentiveParams {
-    /**
-     * 
-     * @type {Array<InlineResponse2008ParamsCdpMintingRewardPeriods>}
-     * @memberof BotanyIncentiveParams
-     */
-    cdp_minting_reward_periods?: Array<InlineResponse2008ParamsCdpMintingRewardPeriods>;
-    /**
-     * 
-     * @type {Array<InlineResponse2008ParamsClaimMultipliers>}
-     * @memberof BotanyIncentiveParams
-     */
-    claim_multipliers?: Array<InlineResponse2008ParamsClaimMultipliers>;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyIncentiveParams
-     */
-    claim_end?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyIncentiveQueryParamsResponse
- */
-export interface BotanyIncentiveQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse2008Params}
-     * @memberof BotanyIncentiveQueryParamsResponse
-     */
-    params?: InlineResponse2008Params;
-}
-/**
- * 
- * @export
- * @interface BotanyIncentiveRewardPeriod
- */
-export interface BotanyIncentiveRewardPeriod {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BotanyIncentiveRewardPeriod
-     */
-    active?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyIncentiveRewardPeriod
-     */
-    collateral_type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyIncentiveRewardPeriod
-     */
-    start?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyIncentiveRewardPeriod
-     */
-    end?: string;
-    /**
-     * 
-     * @type {InlineResponse2004CdpCollateral}
-     * @memberof BotanyIncentiveRewardPeriod
-     */
-    rewards_per_second?: InlineResponse2004CdpCollateral;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedCurrentPrice
- */
-export interface BotanyPricefeedCurrentPrice {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedCurrentPrice
-     */
-    market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedCurrentPrice
-     */
-    price?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedMarket
- */
-export interface BotanyPricefeedMarket {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedMarket
-     */
-    market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedMarket
-     */
-    base_asset?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedMarket
-     */
-    quote_asset?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof BotanyPricefeedMarket
-     */
-    oracles?: Array<string>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BotanyPricefeedMarket
-     */
-    active?: boolean;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedParams
- */
-export interface BotanyPricefeedParams {
-    /**
-     * 
-     * @type {Array<InlineResponse20011Markets>}
-     * @memberof BotanyPricefeedParams
-     */
-    markets?: Array<InlineResponse20011Markets>;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedPostedPrice
- */
-export interface BotanyPricefeedPostedPrice {
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedPostedPrice
-     */
-    market_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedPostedPrice
-     */
-    oracle_address?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedPostedPrice
-     */
-    price?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BotanyPricefeedPostedPrice
-     */
-    expiry?: string;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedQueryAllMarketResponse
- */
-export interface BotanyPricefeedQueryAllMarketResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse20011Markets>}
-     * @memberof BotanyPricefeedQueryAllMarketResponse
-     */
-    markets?: Array<InlineResponse20011Markets>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof BotanyPricefeedQueryAllMarketResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedQueryAllOracleResponse
- */
-export interface BotanyPricefeedQueryAllOracleResponse {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof BotanyPricefeedQueryAllOracleResponse
-     */
-    oracles?: Array<string>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof BotanyPricefeedQueryAllOracleResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedQueryAllPriceResponse
- */
-export interface BotanyPricefeedQueryAllPriceResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse20013Price>}
-     * @memberof BotanyPricefeedQueryAllPriceResponse
-     */
-    prices?: Array<InlineResponse20013Price>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof BotanyPricefeedQueryAllPriceResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedQueryAllRawPriceResponse
- */
-export interface BotanyPricefeedQueryAllRawPriceResponse {
-    /**
-     * 
-     * @type {Array<InlineResponse20014Prices>}
-     * @memberof BotanyPricefeedQueryAllRawPriceResponse
-     */
-    prices?: Array<InlineResponse20014Prices>;
-    /**
-     * 
-     * @type {InlineResponse200Pagination}
-     * @memberof BotanyPricefeedQueryAllRawPriceResponse
-     */
-    pagination?: InlineResponse200Pagination;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedQueryGetPriceResponse
- */
-export interface BotanyPricefeedQueryGetPriceResponse {
-    /**
-     * 
-     * @type {InlineResponse20013Price}
-     * @memberof BotanyPricefeedQueryGetPriceResponse
-     */
-    price?: InlineResponse20013Price;
-}
-/**
- * 
- * @export
- * @interface BotanyPricefeedQueryParamsResponse
- */
-export interface BotanyPricefeedQueryParamsResponse {
-    /**
-     * 
-     * @type {InlineResponse20015Params}
-     * @memberof BotanyPricefeedQueryParamsResponse
-     */
-    params?: InlineResponse20015Params;
-}
-/**
  * message SomeRequest {          Foo some_parameter = 1;          PageRequest pagination = 2;  }
  * @export
  * @interface CosmosBaseQueryV1beta1PageRequest
@@ -1880,6 +1079,807 @@ export interface InlineResponseDefault1Details {
      */
     value?: string;
 }
+/**
+ * 
+ * @export
+ * @interface UnunifiAuctionParams
+ */
+export interface UnunifiAuctionParams {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiAuctionParams
+     */
+    max_auction_duration?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiAuctionParams
+     */
+    bid_duration?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiAuctionParams
+     */
+    increment_surplus?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiAuctionParams
+     */
+    increment_debt?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiAuctionParams
+     */
+    increment_collateral?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiAuctionQueryAllAuctionResponse
+ */
+export interface UnunifiAuctionQueryAllAuctionResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse200Auctions>}
+     * @memberof UnunifiAuctionQueryAllAuctionResponse
+     */
+    auctions?: Array<InlineResponse200Auctions>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof UnunifiAuctionQueryAllAuctionResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiAuctionQueryGetAuctionResponse
+ */
+export interface UnunifiAuctionQueryGetAuctionResponse {
+    /**
+     * 
+     * @type {InlineResponse200Auctions}
+     * @memberof UnunifiAuctionQueryGetAuctionResponse
+     */
+    auction?: InlineResponse200Auctions;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiAuctionQueryParamsResponse
+ */
+export interface UnunifiAuctionQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse2002Params}
+     * @memberof UnunifiAuctionQueryParamsResponse
+     */
+    params?: InlineResponse2002Params;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpAugmentedCdp
+ */
+export interface UnunifiCdpAugmentedCdp {
+    /**
+     * 
+     * @type {InlineResponse2004Cdp}
+     * @memberof UnunifiCdpAugmentedCdp
+     */
+    cdp?: InlineResponse2004Cdp;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof UnunifiCdpAugmentedCdp
+     */
+    collateral_value?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpAugmentedCdp
+     */
+    collateralization_ratio?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpCdp
+ */
+export interface UnunifiCdpCdp {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCdp
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCdp
+     */
+    owner?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCdp
+     */
+    type?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof UnunifiCdpCdp
+     */
+    collateral?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof UnunifiCdpCdp
+     */
+    principal?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof UnunifiCdpCdp
+     */
+    accumulated_fees?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCdp
+     */
+    fees_updated?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCdp
+     */
+    interest_factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpCollateralParam
+ */
+export interface UnunifiCdpCollateralParam {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    denom?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    liquidation_ratio?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    debt_limit?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    stability_fee?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    auction_size?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    liquidation_penalty?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    prefix?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    spot_market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    liquidation_market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    keeper_reward_percentage?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    check_collateralization_index_count?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpCollateralParam
+     */
+    conversion_factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpDebtParam
+ */
+export interface UnunifiCdpDebtParam {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpDebtParam
+     */
+    denom?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpDebtParam
+     */
+    reference_asset?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpDebtParam
+     */
+    conversion_factor?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpDebtParam
+     */
+    debt_floor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpDeposit
+ */
+export interface UnunifiCdpDeposit {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpDeposit
+     */
+    cdp_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpDeposit
+     */
+    depositor?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof UnunifiCdpDeposit
+     */
+    amount?: InlineResponse2004CdpCollateral;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpParams
+ */
+export interface UnunifiCdpParams {
+    /**
+     * 
+     * @type {Array<InlineResponse2007ParamsCollateralParams>}
+     * @memberof UnunifiCdpParams
+     */
+    collateral_params?: Array<InlineResponse2007ParamsCollateralParams>;
+    /**
+     * 
+     * @type {InlineResponse2007ParamsDebtParam}
+     * @memberof UnunifiCdpParams
+     */
+    debt_param?: InlineResponse2007ParamsDebtParam;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof UnunifiCdpParams
+     */
+    global_debt_limit?: InlineResponse2004CdpCollateral;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpParams
+     */
+    surplus_auction_threshold?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpParams
+     */
+    surplus_auction_lot?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpParams
+     */
+    debt_auction_threshold?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiCdpParams
+     */
+    debt_auction_lot?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UnunifiCdpParams
+     */
+    circuit_breaker?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpQueryAllAccountResponse
+ */
+export interface UnunifiCdpQueryAllAccountResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse200Auctions>}
+     * @memberof UnunifiCdpQueryAllAccountResponse
+     */
+    accounts?: Array<InlineResponse200Auctions>;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpQueryAllCdpResponse
+ */
+export interface UnunifiCdpQueryAllCdpResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse2004Cdp1>}
+     * @memberof UnunifiCdpQueryAllCdpResponse
+     */
+    cdp?: Array<InlineResponse2004Cdp1>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof UnunifiCdpQueryAllCdpResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpQueryAllDepositResponse
+ */
+export interface UnunifiCdpQueryAllDepositResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse2006Deposits>}
+     * @memberof UnunifiCdpQueryAllDepositResponse
+     */
+    deposits?: Array<InlineResponse2006Deposits>;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpQueryGetCdpResponse
+ */
+export interface UnunifiCdpQueryGetCdpResponse {
+    /**
+     * 
+     * @type {InlineResponse2004Cdp1}
+     * @memberof UnunifiCdpQueryGetCdpResponse
+     */
+    cdp?: InlineResponse2004Cdp1;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiCdpQueryParamsResponse
+ */
+export interface UnunifiCdpQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse2007Params}
+     * @memberof UnunifiCdpQueryParamsResponse
+     */
+    params?: InlineResponse2007Params;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiIncentiveMultiplier
+ */
+export interface UnunifiIncentiveMultiplier {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiIncentiveMultiplier
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiIncentiveMultiplier
+     */
+    months_lockup?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiIncentiveMultiplier
+     */
+    factor?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiIncentiveParams
+ */
+export interface UnunifiIncentiveParams {
+    /**
+     * 
+     * @type {Array<InlineResponse2008ParamsCdpMintingRewardPeriods>}
+     * @memberof UnunifiIncentiveParams
+     */
+    cdp_minting_reward_periods?: Array<InlineResponse2008ParamsCdpMintingRewardPeriods>;
+    /**
+     * 
+     * @type {Array<InlineResponse2008ParamsClaimMultipliers>}
+     * @memberof UnunifiIncentiveParams
+     */
+    claim_multipliers?: Array<InlineResponse2008ParamsClaimMultipliers>;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiIncentiveParams
+     */
+    claim_end?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiIncentiveQueryParamsResponse
+ */
+export interface UnunifiIncentiveQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse2008Params}
+     * @memberof UnunifiIncentiveQueryParamsResponse
+     */
+    params?: InlineResponse2008Params;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiIncentiveRewardPeriod
+ */
+export interface UnunifiIncentiveRewardPeriod {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UnunifiIncentiveRewardPeriod
+     */
+    active?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiIncentiveRewardPeriod
+     */
+    collateral_type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiIncentiveRewardPeriod
+     */
+    start?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiIncentiveRewardPeriod
+     */
+    end?: string;
+    /**
+     * 
+     * @type {InlineResponse2004CdpCollateral}
+     * @memberof UnunifiIncentiveRewardPeriod
+     */
+    rewards_per_second?: InlineResponse2004CdpCollateral;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedCurrentPrice
+ */
+export interface UnunifiPricefeedCurrentPrice {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedCurrentPrice
+     */
+    market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedCurrentPrice
+     */
+    price?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedMarket
+ */
+export interface UnunifiPricefeedMarket {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedMarket
+     */
+    market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedMarket
+     */
+    base_asset?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedMarket
+     */
+    quote_asset?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof UnunifiPricefeedMarket
+     */
+    oracles?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UnunifiPricefeedMarket
+     */
+    active?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedParams
+ */
+export interface UnunifiPricefeedParams {
+    /**
+     * 
+     * @type {Array<InlineResponse20011Markets>}
+     * @memberof UnunifiPricefeedParams
+     */
+    markets?: Array<InlineResponse20011Markets>;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedPostedPrice
+ */
+export interface UnunifiPricefeedPostedPrice {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedPostedPrice
+     */
+    market_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedPostedPrice
+     */
+    oracle_address?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedPostedPrice
+     */
+    price?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiPricefeedPostedPrice
+     */
+    expiry?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedQueryAllMarketResponse
+ */
+export interface UnunifiPricefeedQueryAllMarketResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse20011Markets>}
+     * @memberof UnunifiPricefeedQueryAllMarketResponse
+     */
+    markets?: Array<InlineResponse20011Markets>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof UnunifiPricefeedQueryAllMarketResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedQueryAllOracleResponse
+ */
+export interface UnunifiPricefeedQueryAllOracleResponse {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof UnunifiPricefeedQueryAllOracleResponse
+     */
+    oracles?: Array<string>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof UnunifiPricefeedQueryAllOracleResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedQueryAllPriceResponse
+ */
+export interface UnunifiPricefeedQueryAllPriceResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse20013Price>}
+     * @memberof UnunifiPricefeedQueryAllPriceResponse
+     */
+    prices?: Array<InlineResponse20013Price>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof UnunifiPricefeedQueryAllPriceResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedQueryAllRawPriceResponse
+ */
+export interface UnunifiPricefeedQueryAllRawPriceResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse20014Prices>}
+     * @memberof UnunifiPricefeedQueryAllRawPriceResponse
+     */
+    prices?: Array<InlineResponse20014Prices>;
+    /**
+     * 
+     * @type {InlineResponse200Pagination}
+     * @memberof UnunifiPricefeedQueryAllRawPriceResponse
+     */
+    pagination?: InlineResponse200Pagination;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedQueryGetPriceResponse
+ */
+export interface UnunifiPricefeedQueryGetPriceResponse {
+    /**
+     * 
+     * @type {InlineResponse20013Price}
+     * @memberof UnunifiPricefeedQueryGetPriceResponse
+     */
+    price?: InlineResponse20013Price;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiPricefeedQueryParamsResponse
+ */
+export interface UnunifiPricefeedQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse20015Params}
+     * @memberof UnunifiPricefeedQueryParamsResponse
+     */
+    params?: InlineResponse20015Params;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiUnunifidistParams
+ */
+export interface UnunifiUnunifidistParams {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UnunifiUnunifidistParams
+     */
+    active?: boolean;
+    /**
+     * 
+     * @type {Array<InlineResponse20010ParamsPeriods>}
+     * @memberof UnunifiUnunifidistParams
+     */
+    periods?: Array<InlineResponse20010ParamsPeriods>;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiUnunifidistPeriod
+ */
+export interface UnunifiUnunifidistPeriod {
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiUnunifidistPeriod
+     */
+    start?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiUnunifidistPeriod
+     */
+    end?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnunifiUnunifidistPeriod
+     */
+    inflation?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiUnunifidistQueryGetBalancesResponse
+ */
+export interface UnunifiUnunifidistQueryGetBalancesResponse {
+    /**
+     * 
+     * @type {Array<InlineResponse2004CdpCollateral>}
+     * @memberof UnunifiUnunifidistQueryGetBalancesResponse
+     */
+    balances?: Array<InlineResponse2004CdpCollateral>;
+}
+/**
+ * 
+ * @export
+ * @interface UnunifiUnunifidistQueryParamsResponse
+ */
+export interface UnunifiUnunifidistQueryParamsResponse {
+    /**
+     * 
+     * @type {InlineResponse20010Params}
+     * @memberof UnunifiUnunifidistQueryParamsResponse
+     */
+    params?: InlineResponse20010Params;
+}
 
 /**
  * QueryApi - axios parameter creator
@@ -1893,7 +1893,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         accountAll: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/cdp/accounts`;
+            const localVarPath = `/ununifi/cdp/accounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1926,7 +1926,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         auction: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('auction', 'id', id)
-            const localVarPath = `/botany/auction/auctions/{id}`
+            const localVarPath = `/ununifi/auction/auctions/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1960,7 +1960,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         auctionAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/auction/auctions`;
+            const localVarPath = `/ununifi/auction/auctions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2005,7 +2005,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         auctionParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/auction/params`;
+            const localVarPath = `/ununifi/auction/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2035,36 +2035,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         balances: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/botanydist/balances`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        botanydistParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/botanydist/params`;
+            const localVarPath = `/ununifi/ununifidist/balances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2100,7 +2071,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             assertParamExists('cdp', 'owner', owner)
             // verify required parameter 'collateralType' is not null or undefined
             assertParamExists('cdp', 'collateralType', collateralType)
-            const localVarPath = `/botany/cdp/cdps/owners/{owner}/collateral-types/{collateral_type}/cdp`
+            const localVarPath = `/ununifi/cdp/cdps/owners/{owner}/collateral-types/{collateral_type}/cdp`
                 .replace(`{${"owner"}}`, encodeURIComponent(String(owner)))
                 .replace(`{${"collateral_type"}}`, encodeURIComponent(String(collateralType)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2135,7 +2106,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         cdpAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/cdp/cdps`;
+            const localVarPath = `/ununifi/cdp/cdps`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2180,7 +2151,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         cdpParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/cdp/params`;
+            const localVarPath = `/ununifi/cdp/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2215,7 +2186,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             assertParamExists('depositAll', 'owner', owner)
             // verify required parameter 'collateralType' is not null or undefined
             assertParamExists('depositAll', 'collateralType', collateralType)
-            const localVarPath = `/botany/cdp/deposits/owners/{owner}/collateral-types/{collateral_type}`
+            const localVarPath = `/ununifi/cdp/deposits/owners/{owner}/collateral-types/{collateral_type}`
                 .replace(`{${"owner"}}`, encodeURIComponent(String(owner)))
                 .replace(`{${"collateral_type"}}`, encodeURIComponent(String(collateralType)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2246,7 +2217,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         incentiveParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/incentive/params`;
+            const localVarPath = `/ununifi/incentive/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2280,7 +2251,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         marketAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/pricefeed/markets`;
+            const localVarPath = `/ununifi/pricefeed/markets`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2332,7 +2303,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         oracleAll: async (marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'marketId' is not null or undefined
             assertParamExists('oracleAll', 'marketId', marketId)
-            const localVarPath = `/botany/pricefeed/markets/{market_id}/oracles`
+            const localVarPath = `/ununifi/pricefeed/markets/{market_id}/oracles`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2381,7 +2352,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         price: async (marketId: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'marketId' is not null or undefined
             assertParamExists('price', 'marketId', marketId)
-            const localVarPath = `/botany/pricefeed/markets/{market_id}/price`
+            const localVarPath = `/ununifi/pricefeed/markets/{market_id}/price`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2415,7 +2386,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         priceAll: async (paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/pricefeed/prices`;
+            const localVarPath = `/ununifi/pricefeed/prices`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2460,7 +2431,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         pricefeedParams: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/botany/pricefeed/params`;
+            const localVarPath = `/ununifi/pricefeed/params`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2496,7 +2467,7 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         rawPriceAll: async (marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'marketId' is not null or undefined
             assertParamExists('rawPriceAll', 'marketId', marketId)
-            const localVarPath = `/botany/pricefeed/markets/{market_id}/raw_prices`
+            const localVarPath = `/ununifi/pricefeed/markets/{market_id}/raw_prices`
                 .replace(`{${"market_id"}}`, encodeURIComponent(String(marketId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2524,6 +2495,35 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             if (paginationCountTotal !== undefined) {
                 localVarQueryParameter['pagination.count_total'] = paginationCountTotal;
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ununifidistParams: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/ununifi/ununifidist/params`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
 
     
@@ -2596,15 +2596,6 @@ export const QueryApiFp = function(configuration?: Configuration) {
          */
         async balances(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2009>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.balances(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async botanydistParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20010>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.botanydistParams(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2735,6 +2726,15 @@ export const QueryApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async ununifidistParams(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse20010>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ununifidistParams(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -2791,14 +2791,6 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          */
         balances(options?: any): AxiosPromise<InlineResponse2009> {
             return localVarFp.balances(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        botanydistParams(options?: any): AxiosPromise<InlineResponse20010> {
-            return localVarFp.botanydistParams(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2917,6 +2909,14 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
         rawPriceAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any): AxiosPromise<InlineResponse20014> {
             return localVarFp.rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ununifidistParams(options?: any): AxiosPromise<InlineResponse20010> {
+            return localVarFp.ununifidistParams(options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -2982,16 +2982,6 @@ export class QueryApi extends BaseAPI {
      */
     public balances(options?: any) {
         return QueryApiFp(this.configuration).balances(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QueryApi
-     */
-    public botanydistParams(options?: any) {
-        return QueryApiFp(this.configuration).botanydistParams(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3131,6 +3121,16 @@ export class QueryApi extends BaseAPI {
      */
     public rawPriceAll(marketId: string, paginationKey?: string, paginationOffset?: string, paginationLimit?: string, paginationCountTotal?: boolean, options?: any) {
         return QueryApiFp(this.configuration).rawPriceAll(marketId, paginationKey, paginationOffset, paginationLimit, paginationCountTotal, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof QueryApi
+     */
+    public ununifidistParams(options?: any) {
+        return QueryApiFp(this.configuration).ununifidistParams(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

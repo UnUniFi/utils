@@ -1,6 +1,6 @@
 import * as $protobuf from "protobufjs";
-/** Namespace botany. */
-export namespace botany {
+/** Namespace ununifi. */
+export namespace ununifi {
 
     /** Namespace auction. */
     namespace auction {
@@ -21,66 +21,66 @@ export namespace botany {
              * @param request QueryParamsRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
              */
-            public params(request: botany.auction.IQueryParamsRequest, callback: botany.auction.Query.ParamsCallback): void;
+            public params(request: ununifi.auction.IQueryParamsRequest, callback: ununifi.auction.Query.ParamsCallback): void;
 
             /**
              * Calls Params.
              * @param request QueryParamsRequest message or plain object
              * @returns Promise
              */
-            public params(request: botany.auction.IQueryParamsRequest): Promise<botany.auction.QueryParamsResponse>;
+            public params(request: ununifi.auction.IQueryParamsRequest): Promise<ununifi.auction.QueryParamsResponse>;
 
             /**
              * Calls Auction.
              * @param request QueryGetAuctionRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryGetAuctionResponse
              */
-            public auction(request: botany.auction.IQueryGetAuctionRequest, callback: botany.auction.Query.AuctionCallback): void;
+            public auction(request: ununifi.auction.IQueryGetAuctionRequest, callback: ununifi.auction.Query.AuctionCallback): void;
 
             /**
              * Calls Auction.
              * @param request QueryGetAuctionRequest message or plain object
              * @returns Promise
              */
-            public auction(request: botany.auction.IQueryGetAuctionRequest): Promise<botany.auction.QueryGetAuctionResponse>;
+            public auction(request: ununifi.auction.IQueryGetAuctionRequest): Promise<ununifi.auction.QueryGetAuctionResponse>;
 
             /**
              * Calls AuctionAll.
              * @param request QueryAllAuctionRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryAllAuctionResponse
              */
-            public auctionAll(request: botany.auction.IQueryAllAuctionRequest, callback: botany.auction.Query.AuctionAllCallback): void;
+            public auctionAll(request: ununifi.auction.IQueryAllAuctionRequest, callback: ununifi.auction.Query.AuctionAllCallback): void;
 
             /**
              * Calls AuctionAll.
              * @param request QueryAllAuctionRequest message or plain object
              * @returns Promise
              */
-            public auctionAll(request: botany.auction.IQueryAllAuctionRequest): Promise<botany.auction.QueryAllAuctionResponse>;
+            public auctionAll(request: ununifi.auction.IQueryAllAuctionRequest): Promise<ununifi.auction.QueryAllAuctionResponse>;
         }
 
         namespace Query {
 
             /**
-             * Callback as used by {@link botany.auction.Query#params}.
+             * Callback as used by {@link ununifi.auction.Query#params}.
              * @param error Error, if any
              * @param [response] QueryParamsResponse
              */
-            type ParamsCallback = (error: (Error|null), response?: botany.auction.QueryParamsResponse) => void;
+            type ParamsCallback = (error: (Error|null), response?: ununifi.auction.QueryParamsResponse) => void;
 
             /**
-             * Callback as used by {@link botany.auction.Query#auction}.
+             * Callback as used by {@link ununifi.auction.Query#auction}.
              * @param error Error, if any
              * @param [response] QueryGetAuctionResponse
              */
-            type AuctionCallback = (error: (Error|null), response?: botany.auction.QueryGetAuctionResponse) => void;
+            type AuctionCallback = (error: (Error|null), response?: ununifi.auction.QueryGetAuctionResponse) => void;
 
             /**
-             * Callback as used by {@link botany.auction.Query#auctionAll}.
+             * Callback as used by {@link ununifi.auction.Query#auctionAll}.
              * @param error Error, if any
              * @param [response] QueryAllAuctionResponse
              */
-            type AuctionAllCallback = (error: (Error|null), response?: botany.auction.QueryAllAuctionResponse) => void;
+            type AuctionAllCallback = (error: (Error|null), response?: ununifi.auction.QueryAllAuctionResponse) => void;
         }
 
         /** Properties of a QueryParamsRequest. */
@@ -94,23 +94,23 @@ export namespace botany {
              * Constructs a new QueryParamsRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IQueryParamsRequest);
+            constructor(properties?: ununifi.auction.IQueryParamsRequest);
 
             /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link botany.auction.QueryParamsRequest.verify|verify} messages.
+             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link ununifi.auction.QueryParamsRequest.verify|verify} messages.
              * @param message QueryParamsRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link botany.auction.QueryParamsRequest.verify|verify} messages.
+             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link ununifi.auction.QueryParamsRequest.verify|verify} messages.
              * @param message QueryParamsRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryParamsRequest message from the specified reader or buffer.
@@ -120,7 +120,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.QueryParamsRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.QueryParamsRequest;
 
             /**
              * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
@@ -129,7 +129,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.QueryParamsRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.QueryParamsRequest;
 
             /**
              * Verifies a QueryParamsRequest message.
@@ -143,7 +143,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryParamsRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.QueryParamsRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.QueryParamsRequest;
 
             /**
              * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
@@ -151,7 +151,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryParamsRequest to JSON.
@@ -164,7 +164,7 @@ export namespace botany {
         interface IQueryParamsResponse {
 
             /** QueryParamsResponse params */
-            params?: (botany.auction.IParams|null);
+            params?: (ununifi.auction.IParams|null);
         }
 
         /** Represents a QueryParamsResponse. */
@@ -174,26 +174,26 @@ export namespace botany {
              * Constructs a new QueryParamsResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IQueryParamsResponse);
+            constructor(properties?: ununifi.auction.IQueryParamsResponse);
 
             /** QueryParamsResponse params. */
-            public params?: (botany.auction.IParams|null);
+            public params?: (ununifi.auction.IParams|null);
 
             /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link botany.auction.QueryParamsResponse.verify|verify} messages.
+             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link ununifi.auction.QueryParamsResponse.verify|verify} messages.
              * @param message QueryParamsResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link botany.auction.QueryParamsResponse.verify|verify} messages.
+             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link ununifi.auction.QueryParamsResponse.verify|verify} messages.
              * @param message QueryParamsResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryParamsResponse message from the specified reader or buffer.
@@ -203,7 +203,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.QueryParamsResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.QueryParamsResponse;
 
             /**
              * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
@@ -212,7 +212,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.QueryParamsResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.QueryParamsResponse;
 
             /**
              * Verifies a QueryParamsResponse message.
@@ -226,7 +226,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryParamsResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.QueryParamsResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.QueryParamsResponse;
 
             /**
              * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
@@ -234,7 +234,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryParamsResponse to JSON.
@@ -257,26 +257,26 @@ export namespace botany {
              * Constructs a new QueryGetAuctionRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IQueryGetAuctionRequest);
+            constructor(properties?: ununifi.auction.IQueryGetAuctionRequest);
 
             /** QueryGetAuctionRequest id. */
             public id: Long;
 
             /**
-             * Encodes the specified QueryGetAuctionRequest message. Does not implicitly {@link botany.auction.QueryGetAuctionRequest.verify|verify} messages.
+             * Encodes the specified QueryGetAuctionRequest message. Does not implicitly {@link ununifi.auction.QueryGetAuctionRequest.verify|verify} messages.
              * @param message QueryGetAuctionRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IQueryGetAuctionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IQueryGetAuctionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryGetAuctionRequest message, length delimited. Does not implicitly {@link botany.auction.QueryGetAuctionRequest.verify|verify} messages.
+             * Encodes the specified QueryGetAuctionRequest message, length delimited. Does not implicitly {@link ununifi.auction.QueryGetAuctionRequest.verify|verify} messages.
              * @param message QueryGetAuctionRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IQueryGetAuctionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IQueryGetAuctionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryGetAuctionRequest message from the specified reader or buffer.
@@ -286,7 +286,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.QueryGetAuctionRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.QueryGetAuctionRequest;
 
             /**
              * Decodes a QueryGetAuctionRequest message from the specified reader or buffer, length delimited.
@@ -295,7 +295,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.QueryGetAuctionRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.QueryGetAuctionRequest;
 
             /**
              * Verifies a QueryGetAuctionRequest message.
@@ -309,7 +309,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryGetAuctionRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.QueryGetAuctionRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.QueryGetAuctionRequest;
 
             /**
              * Creates a plain object from a QueryGetAuctionRequest message. Also converts values to other types if specified.
@@ -317,7 +317,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.QueryGetAuctionRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.QueryGetAuctionRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryGetAuctionRequest to JSON.
@@ -340,26 +340,26 @@ export namespace botany {
              * Constructs a new QueryGetAuctionResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IQueryGetAuctionResponse);
+            constructor(properties?: ununifi.auction.IQueryGetAuctionResponse);
 
             /** QueryGetAuctionResponse auction. */
             public auction?: (google.protobuf.IAny|null);
 
             /**
-             * Encodes the specified QueryGetAuctionResponse message. Does not implicitly {@link botany.auction.QueryGetAuctionResponse.verify|verify} messages.
+             * Encodes the specified QueryGetAuctionResponse message. Does not implicitly {@link ununifi.auction.QueryGetAuctionResponse.verify|verify} messages.
              * @param message QueryGetAuctionResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IQueryGetAuctionResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IQueryGetAuctionResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryGetAuctionResponse message, length delimited. Does not implicitly {@link botany.auction.QueryGetAuctionResponse.verify|verify} messages.
+             * Encodes the specified QueryGetAuctionResponse message, length delimited. Does not implicitly {@link ununifi.auction.QueryGetAuctionResponse.verify|verify} messages.
              * @param message QueryGetAuctionResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IQueryGetAuctionResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IQueryGetAuctionResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryGetAuctionResponse message from the specified reader or buffer.
@@ -369,7 +369,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.QueryGetAuctionResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.QueryGetAuctionResponse;
 
             /**
              * Decodes a QueryGetAuctionResponse message from the specified reader or buffer, length delimited.
@@ -378,7 +378,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.QueryGetAuctionResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.QueryGetAuctionResponse;
 
             /**
              * Verifies a QueryGetAuctionResponse message.
@@ -392,7 +392,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryGetAuctionResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.QueryGetAuctionResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.QueryGetAuctionResponse;
 
             /**
              * Creates a plain object from a QueryGetAuctionResponse message. Also converts values to other types if specified.
@@ -400,7 +400,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.QueryGetAuctionResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.QueryGetAuctionResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryGetAuctionResponse to JSON.
@@ -423,26 +423,26 @@ export namespace botany {
              * Constructs a new QueryAllAuctionRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IQueryAllAuctionRequest);
+            constructor(properties?: ununifi.auction.IQueryAllAuctionRequest);
 
             /** QueryAllAuctionRequest pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageRequest|null);
 
             /**
-             * Encodes the specified QueryAllAuctionRequest message. Does not implicitly {@link botany.auction.QueryAllAuctionRequest.verify|verify} messages.
+             * Encodes the specified QueryAllAuctionRequest message. Does not implicitly {@link ununifi.auction.QueryAllAuctionRequest.verify|verify} messages.
              * @param message QueryAllAuctionRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IQueryAllAuctionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IQueryAllAuctionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllAuctionRequest message, length delimited. Does not implicitly {@link botany.auction.QueryAllAuctionRequest.verify|verify} messages.
+             * Encodes the specified QueryAllAuctionRequest message, length delimited. Does not implicitly {@link ununifi.auction.QueryAllAuctionRequest.verify|verify} messages.
              * @param message QueryAllAuctionRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IQueryAllAuctionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IQueryAllAuctionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllAuctionRequest message from the specified reader or buffer.
@@ -452,7 +452,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.QueryAllAuctionRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.QueryAllAuctionRequest;
 
             /**
              * Decodes a QueryAllAuctionRequest message from the specified reader or buffer, length delimited.
@@ -461,7 +461,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.QueryAllAuctionRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.QueryAllAuctionRequest;
 
             /**
              * Verifies a QueryAllAuctionRequest message.
@@ -475,7 +475,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllAuctionRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.QueryAllAuctionRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.QueryAllAuctionRequest;
 
             /**
              * Creates a plain object from a QueryAllAuctionRequest message. Also converts values to other types if specified.
@@ -483,7 +483,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.QueryAllAuctionRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.QueryAllAuctionRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllAuctionRequest to JSON.
@@ -509,7 +509,7 @@ export namespace botany {
              * Constructs a new QueryAllAuctionResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IQueryAllAuctionResponse);
+            constructor(properties?: ununifi.auction.IQueryAllAuctionResponse);
 
             /** QueryAllAuctionResponse auctions. */
             public auctions: google.protobuf.IAny[];
@@ -518,20 +518,20 @@ export namespace botany {
             public pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
 
             /**
-             * Encodes the specified QueryAllAuctionResponse message. Does not implicitly {@link botany.auction.QueryAllAuctionResponse.verify|verify} messages.
+             * Encodes the specified QueryAllAuctionResponse message. Does not implicitly {@link ununifi.auction.QueryAllAuctionResponse.verify|verify} messages.
              * @param message QueryAllAuctionResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IQueryAllAuctionResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IQueryAllAuctionResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllAuctionResponse message, length delimited. Does not implicitly {@link botany.auction.QueryAllAuctionResponse.verify|verify} messages.
+             * Encodes the specified QueryAllAuctionResponse message, length delimited. Does not implicitly {@link ununifi.auction.QueryAllAuctionResponse.verify|verify} messages.
              * @param message QueryAllAuctionResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IQueryAllAuctionResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IQueryAllAuctionResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllAuctionResponse message from the specified reader or buffer.
@@ -541,7 +541,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.QueryAllAuctionResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.QueryAllAuctionResponse;
 
             /**
              * Decodes a QueryAllAuctionResponse message from the specified reader or buffer, length delimited.
@@ -550,7 +550,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.QueryAllAuctionResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.QueryAllAuctionResponse;
 
             /**
              * Verifies a QueryAllAuctionResponse message.
@@ -564,7 +564,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllAuctionResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.QueryAllAuctionResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.QueryAllAuctionResponse;
 
             /**
              * Creates a plain object from a QueryAllAuctionResponse message. Also converts values to other types if specified.
@@ -572,7 +572,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.QueryAllAuctionResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.QueryAllAuctionResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllAuctionResponse to JSON.
@@ -616,7 +616,7 @@ export namespace botany {
              * Constructs a new BaseAuction.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IBaseAuction);
+            constructor(properties?: ununifi.auction.IBaseAuction);
 
             /** BaseAuction id. */
             public id: Long;
@@ -643,20 +643,20 @@ export namespace botany {
             public max_end_time?: (google.protobuf.ITimestamp|null);
 
             /**
-             * Encodes the specified BaseAuction message. Does not implicitly {@link botany.auction.BaseAuction.verify|verify} messages.
+             * Encodes the specified BaseAuction message. Does not implicitly {@link ununifi.auction.BaseAuction.verify|verify} messages.
              * @param message BaseAuction message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IBaseAuction, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IBaseAuction, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified BaseAuction message, length delimited. Does not implicitly {@link botany.auction.BaseAuction.verify|verify} messages.
+             * Encodes the specified BaseAuction message, length delimited. Does not implicitly {@link ununifi.auction.BaseAuction.verify|verify} messages.
              * @param message BaseAuction message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IBaseAuction, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IBaseAuction, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a BaseAuction message from the specified reader or buffer.
@@ -666,7 +666,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.BaseAuction;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.BaseAuction;
 
             /**
              * Decodes a BaseAuction message from the specified reader or buffer, length delimited.
@@ -675,7 +675,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.BaseAuction;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.BaseAuction;
 
             /**
              * Verifies a BaseAuction message.
@@ -689,7 +689,7 @@ export namespace botany {
              * @param object Plain object
              * @returns BaseAuction
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.BaseAuction;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.BaseAuction;
 
             /**
              * Creates a plain object from a BaseAuction message. Also converts values to other types if specified.
@@ -697,7 +697,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.BaseAuction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.BaseAuction, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this BaseAuction to JSON.
@@ -710,7 +710,7 @@ export namespace botany {
         interface ISurplusAuction {
 
             /** SurplusAuction base_auction */
-            base_auction?: (botany.auction.IBaseAuction|null);
+            base_auction?: (ununifi.auction.IBaseAuction|null);
         }
 
         /** Represents a SurplusAuction. */
@@ -720,26 +720,26 @@ export namespace botany {
              * Constructs a new SurplusAuction.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.ISurplusAuction);
+            constructor(properties?: ununifi.auction.ISurplusAuction);
 
             /** SurplusAuction base_auction. */
-            public base_auction?: (botany.auction.IBaseAuction|null);
+            public base_auction?: (ununifi.auction.IBaseAuction|null);
 
             /**
-             * Encodes the specified SurplusAuction message. Does not implicitly {@link botany.auction.SurplusAuction.verify|verify} messages.
+             * Encodes the specified SurplusAuction message. Does not implicitly {@link ununifi.auction.SurplusAuction.verify|verify} messages.
              * @param message SurplusAuction message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.ISurplusAuction, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.ISurplusAuction, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified SurplusAuction message, length delimited. Does not implicitly {@link botany.auction.SurplusAuction.verify|verify} messages.
+             * Encodes the specified SurplusAuction message, length delimited. Does not implicitly {@link ununifi.auction.SurplusAuction.verify|verify} messages.
              * @param message SurplusAuction message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.ISurplusAuction, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.ISurplusAuction, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a SurplusAuction message from the specified reader or buffer.
@@ -749,7 +749,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.SurplusAuction;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.SurplusAuction;
 
             /**
              * Decodes a SurplusAuction message from the specified reader or buffer, length delimited.
@@ -758,7 +758,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.SurplusAuction;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.SurplusAuction;
 
             /**
              * Verifies a SurplusAuction message.
@@ -772,7 +772,7 @@ export namespace botany {
              * @param object Plain object
              * @returns SurplusAuction
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.SurplusAuction;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.SurplusAuction;
 
             /**
              * Creates a plain object from a SurplusAuction message. Also converts values to other types if specified.
@@ -780,7 +780,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.SurplusAuction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.SurplusAuction, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this SurplusAuction to JSON.
@@ -793,7 +793,7 @@ export namespace botany {
         interface IDebtAuction {
 
             /** DebtAuction base_auction */
-            base_auction?: (botany.auction.IBaseAuction|null);
+            base_auction?: (ununifi.auction.IBaseAuction|null);
 
             /** DebtAuction corresponding_debt */
             corresponding_debt?: (cosmos.base.v1beta1.ICoin|null);
@@ -806,29 +806,29 @@ export namespace botany {
              * Constructs a new DebtAuction.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IDebtAuction);
+            constructor(properties?: ununifi.auction.IDebtAuction);
 
             /** DebtAuction base_auction. */
-            public base_auction?: (botany.auction.IBaseAuction|null);
+            public base_auction?: (ununifi.auction.IBaseAuction|null);
 
             /** DebtAuction corresponding_debt. */
             public corresponding_debt?: (cosmos.base.v1beta1.ICoin|null);
 
             /**
-             * Encodes the specified DebtAuction message. Does not implicitly {@link botany.auction.DebtAuction.verify|verify} messages.
+             * Encodes the specified DebtAuction message. Does not implicitly {@link ununifi.auction.DebtAuction.verify|verify} messages.
              * @param message DebtAuction message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IDebtAuction, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IDebtAuction, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified DebtAuction message, length delimited. Does not implicitly {@link botany.auction.DebtAuction.verify|verify} messages.
+             * Encodes the specified DebtAuction message, length delimited. Does not implicitly {@link ununifi.auction.DebtAuction.verify|verify} messages.
              * @param message DebtAuction message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IDebtAuction, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IDebtAuction, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a DebtAuction message from the specified reader or buffer.
@@ -838,7 +838,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.DebtAuction;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.DebtAuction;
 
             /**
              * Decodes a DebtAuction message from the specified reader or buffer, length delimited.
@@ -847,7 +847,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.DebtAuction;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.DebtAuction;
 
             /**
              * Verifies a DebtAuction message.
@@ -861,7 +861,7 @@ export namespace botany {
              * @param object Plain object
              * @returns DebtAuction
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.DebtAuction;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.DebtAuction;
 
             /**
              * Creates a plain object from a DebtAuction message. Also converts values to other types if specified.
@@ -869,7 +869,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.DebtAuction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.DebtAuction, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this DebtAuction to JSON.
@@ -882,7 +882,7 @@ export namespace botany {
         interface ICollateralAuction {
 
             /** CollateralAuction base_auction */
-            base_auction?: (botany.auction.IBaseAuction|null);
+            base_auction?: (ununifi.auction.IBaseAuction|null);
 
             /** CollateralAuction corresponding_debt */
             corresponding_debt?: (cosmos.base.v1beta1.ICoin|null);
@@ -891,7 +891,7 @@ export namespace botany {
             max_bid?: (cosmos.base.v1beta1.ICoin|null);
 
             /** CollateralAuction lot_returns */
-            lot_returns?: (botany.auction.IWeightedAddress[]|null);
+            lot_returns?: (ununifi.auction.IWeightedAddress[]|null);
         }
 
         /** Represents a CollateralAuction. */
@@ -901,10 +901,10 @@ export namespace botany {
              * Constructs a new CollateralAuction.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.ICollateralAuction);
+            constructor(properties?: ununifi.auction.ICollateralAuction);
 
             /** CollateralAuction base_auction. */
-            public base_auction?: (botany.auction.IBaseAuction|null);
+            public base_auction?: (ununifi.auction.IBaseAuction|null);
 
             /** CollateralAuction corresponding_debt. */
             public corresponding_debt?: (cosmos.base.v1beta1.ICoin|null);
@@ -913,23 +913,23 @@ export namespace botany {
             public max_bid?: (cosmos.base.v1beta1.ICoin|null);
 
             /** CollateralAuction lot_returns. */
-            public lot_returns: botany.auction.IWeightedAddress[];
+            public lot_returns: ununifi.auction.IWeightedAddress[];
 
             /**
-             * Encodes the specified CollateralAuction message. Does not implicitly {@link botany.auction.CollateralAuction.verify|verify} messages.
+             * Encodes the specified CollateralAuction message. Does not implicitly {@link ununifi.auction.CollateralAuction.verify|verify} messages.
              * @param message CollateralAuction message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.ICollateralAuction, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.ICollateralAuction, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified CollateralAuction message, length delimited. Does not implicitly {@link botany.auction.CollateralAuction.verify|verify} messages.
+             * Encodes the specified CollateralAuction message, length delimited. Does not implicitly {@link ununifi.auction.CollateralAuction.verify|verify} messages.
              * @param message CollateralAuction message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.ICollateralAuction, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.ICollateralAuction, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a CollateralAuction message from the specified reader or buffer.
@@ -939,7 +939,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.CollateralAuction;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.CollateralAuction;
 
             /**
              * Decodes a CollateralAuction message from the specified reader or buffer, length delimited.
@@ -948,7 +948,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.CollateralAuction;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.CollateralAuction;
 
             /**
              * Verifies a CollateralAuction message.
@@ -962,7 +962,7 @@ export namespace botany {
              * @param object Plain object
              * @returns CollateralAuction
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.CollateralAuction;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.CollateralAuction;
 
             /**
              * Creates a plain object from a CollateralAuction message. Also converts values to other types if specified.
@@ -970,7 +970,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.CollateralAuction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.CollateralAuction, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this CollateralAuction to JSON.
@@ -996,7 +996,7 @@ export namespace botany {
              * Constructs a new WeightedAddress.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IWeightedAddress);
+            constructor(properties?: ununifi.auction.IWeightedAddress);
 
             /** WeightedAddress address. */
             public address: string;
@@ -1005,20 +1005,20 @@ export namespace botany {
             public weight: string;
 
             /**
-             * Encodes the specified WeightedAddress message. Does not implicitly {@link botany.auction.WeightedAddress.verify|verify} messages.
+             * Encodes the specified WeightedAddress message. Does not implicitly {@link ununifi.auction.WeightedAddress.verify|verify} messages.
              * @param message WeightedAddress message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IWeightedAddress, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IWeightedAddress, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified WeightedAddress message, length delimited. Does not implicitly {@link botany.auction.WeightedAddress.verify|verify} messages.
+             * Encodes the specified WeightedAddress message, length delimited. Does not implicitly {@link ununifi.auction.WeightedAddress.verify|verify} messages.
              * @param message WeightedAddress message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IWeightedAddress, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IWeightedAddress, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a WeightedAddress message from the specified reader or buffer.
@@ -1028,7 +1028,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.WeightedAddress;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.WeightedAddress;
 
             /**
              * Decodes a WeightedAddress message from the specified reader or buffer, length delimited.
@@ -1037,7 +1037,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.WeightedAddress;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.WeightedAddress;
 
             /**
              * Verifies a WeightedAddress message.
@@ -1051,7 +1051,7 @@ export namespace botany {
              * @param object Plain object
              * @returns WeightedAddress
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.WeightedAddress;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.WeightedAddress;
 
             /**
              * Creates a plain object from a WeightedAddress message. Also converts values to other types if specified.
@@ -1059,7 +1059,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.WeightedAddress, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.WeightedAddress, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this WeightedAddress to JSON.
@@ -1094,7 +1094,7 @@ export namespace botany {
              * Constructs a new Params.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IParams);
+            constructor(properties?: ununifi.auction.IParams);
 
             /** Params max_auction_duration. */
             public max_auction_duration?: (google.protobuf.IDuration|null);
@@ -1112,20 +1112,20 @@ export namespace botany {
             public increment_collateral: string;
 
             /**
-             * Encodes the specified Params message. Does not implicitly {@link botany.auction.Params.verify|verify} messages.
+             * Encodes the specified Params message. Does not implicitly {@link ununifi.auction.Params.verify|verify} messages.
              * @param message Params message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.auction.Params.verify|verify} messages.
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link ununifi.auction.Params.verify|verify} messages.
              * @param message Params message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a Params message from the specified reader or buffer.
@@ -1135,7 +1135,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.Params;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.Params;
 
             /**
              * Decodes a Params message from the specified reader or buffer, length delimited.
@@ -1144,7 +1144,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.Params;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.Params;
 
             /**
              * Verifies a Params message.
@@ -1158,7 +1158,7 @@ export namespace botany {
              * @param object Plain object
              * @returns Params
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.Params;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.Params;
 
             /**
              * Creates a plain object from a Params message. Also converts values to other types if specified.
@@ -1166,7 +1166,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this Params to JSON.
@@ -1191,24 +1191,24 @@ export namespace botany {
              * @param request MsgPlaceBid message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgPlaceBidResponse
              */
-            public placeBid(request: botany.auction.IMsgPlaceBid, callback: botany.auction.Msg.PlaceBidCallback): void;
+            public placeBid(request: ununifi.auction.IMsgPlaceBid, callback: ununifi.auction.Msg.PlaceBidCallback): void;
 
             /**
              * Calls PlaceBid.
              * @param request MsgPlaceBid message or plain object
              * @returns Promise
              */
-            public placeBid(request: botany.auction.IMsgPlaceBid): Promise<botany.auction.MsgPlaceBidResponse>;
+            public placeBid(request: ununifi.auction.IMsgPlaceBid): Promise<ununifi.auction.MsgPlaceBidResponse>;
         }
 
         namespace Msg {
 
             /**
-             * Callback as used by {@link botany.auction.Msg#placeBid}.
+             * Callback as used by {@link ununifi.auction.Msg#placeBid}.
              * @param error Error, if any
              * @param [response] MsgPlaceBidResponse
              */
-            type PlaceBidCallback = (error: (Error|null), response?: botany.auction.MsgPlaceBidResponse) => void;
+            type PlaceBidCallback = (error: (Error|null), response?: ununifi.auction.MsgPlaceBidResponse) => void;
         }
 
         /** Properties of a MsgPlaceBid. */
@@ -1231,7 +1231,7 @@ export namespace botany {
              * Constructs a new MsgPlaceBid.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IMsgPlaceBid);
+            constructor(properties?: ununifi.auction.IMsgPlaceBid);
 
             /** MsgPlaceBid auction_id. */
             public auction_id: Long;
@@ -1243,20 +1243,20 @@ export namespace botany {
             public amount?: (cosmos.base.v1beta1.ICoin|null);
 
             /**
-             * Encodes the specified MsgPlaceBid message. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
+             * Encodes the specified MsgPlaceBid message. Does not implicitly {@link ununifi.auction.MsgPlaceBid.verify|verify} messages.
              * @param message MsgPlaceBid message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IMsgPlaceBid, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IMsgPlaceBid, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgPlaceBid message, length delimited. Does not implicitly {@link botany.auction.MsgPlaceBid.verify|verify} messages.
+             * Encodes the specified MsgPlaceBid message, length delimited. Does not implicitly {@link ununifi.auction.MsgPlaceBid.verify|verify} messages.
              * @param message MsgPlaceBid message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IMsgPlaceBid, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IMsgPlaceBid, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgPlaceBid message from the specified reader or buffer.
@@ -1266,7 +1266,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.MsgPlaceBid;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.MsgPlaceBid;
 
             /**
              * Decodes a MsgPlaceBid message from the specified reader or buffer, length delimited.
@@ -1275,7 +1275,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.MsgPlaceBid;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.MsgPlaceBid;
 
             /**
              * Verifies a MsgPlaceBid message.
@@ -1289,7 +1289,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgPlaceBid
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.MsgPlaceBid;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.MsgPlaceBid;
 
             /**
              * Creates a plain object from a MsgPlaceBid message. Also converts values to other types if specified.
@@ -1297,7 +1297,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.MsgPlaceBid, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.MsgPlaceBid, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgPlaceBid to JSON.
@@ -1317,23 +1317,23 @@ export namespace botany {
              * Constructs a new MsgPlaceBidResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IMsgPlaceBidResponse);
+            constructor(properties?: ununifi.auction.IMsgPlaceBidResponse);
 
             /**
-             * Encodes the specified MsgPlaceBidResponse message. Does not implicitly {@link botany.auction.MsgPlaceBidResponse.verify|verify} messages.
+             * Encodes the specified MsgPlaceBidResponse message. Does not implicitly {@link ununifi.auction.MsgPlaceBidResponse.verify|verify} messages.
              * @param message MsgPlaceBidResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IMsgPlaceBidResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IMsgPlaceBidResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgPlaceBidResponse message, length delimited. Does not implicitly {@link botany.auction.MsgPlaceBidResponse.verify|verify} messages.
+             * Encodes the specified MsgPlaceBidResponse message, length delimited. Does not implicitly {@link ununifi.auction.MsgPlaceBidResponse.verify|verify} messages.
              * @param message MsgPlaceBidResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IMsgPlaceBidResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IMsgPlaceBidResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgPlaceBidResponse message from the specified reader or buffer.
@@ -1343,7 +1343,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.MsgPlaceBidResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.MsgPlaceBidResponse;
 
             /**
              * Decodes a MsgPlaceBidResponse message from the specified reader or buffer, length delimited.
@@ -1352,7 +1352,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.MsgPlaceBidResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.MsgPlaceBidResponse;
 
             /**
              * Verifies a MsgPlaceBidResponse message.
@@ -1366,7 +1366,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgPlaceBidResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.MsgPlaceBidResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.MsgPlaceBidResponse;
 
             /**
              * Creates a plain object from a MsgPlaceBidResponse message. Also converts values to other types if specified.
@@ -1374,7 +1374,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.MsgPlaceBidResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.MsgPlaceBidResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgPlaceBidResponse to JSON.
@@ -1390,7 +1390,7 @@ export namespace botany {
             next_auction_id?: (Long|null);
 
             /** GenesisState params */
-            params?: (botany.auction.IParams|null);
+            params?: (ununifi.auction.IParams|null);
 
             /** GenesisState auctions */
             auctions?: (google.protobuf.IAny[]|null);
@@ -1403,32 +1403,32 @@ export namespace botany {
              * Constructs a new GenesisState.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.auction.IGenesisState);
+            constructor(properties?: ununifi.auction.IGenesisState);
 
             /** GenesisState next_auction_id. */
             public next_auction_id: Long;
 
             /** GenesisState params. */
-            public params?: (botany.auction.IParams|null);
+            public params?: (ununifi.auction.IParams|null);
 
             /** GenesisState auctions. */
             public auctions: google.protobuf.IAny[];
 
             /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link botany.auction.GenesisState.verify|verify} messages.
+             * Encodes the specified GenesisState message. Does not implicitly {@link ununifi.auction.GenesisState.verify|verify} messages.
              * @param message GenesisState message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.auction.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.auction.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link botany.auction.GenesisState.verify|verify} messages.
+             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link ununifi.auction.GenesisState.verify|verify} messages.
              * @param message GenesisState message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.auction.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.auction.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a GenesisState message from the specified reader or buffer.
@@ -1438,7 +1438,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.auction.GenesisState;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.auction.GenesisState;
 
             /**
              * Decodes a GenesisState message from the specified reader or buffer, length delimited.
@@ -1447,7 +1447,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.auction.GenesisState;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.auction.GenesisState;
 
             /**
              * Verifies a GenesisState message.
@@ -1461,7 +1461,7 @@ export namespace botany {
              * @param object Plain object
              * @returns GenesisState
              */
-            public static fromObject(object: { [k: string]: any }): botany.auction.GenesisState;
+            public static fromObject(object: { [k: string]: any }): ununifi.auction.GenesisState;
 
             /**
              * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
@@ -1469,667 +1469,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.auction.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this GenesisState to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-    }
-
-    /** Namespace botanydist. */
-    namespace botanydist {
-
-        /** Represents a Query */
-        class Query extends $protobuf.rpc.Service {
-
-            /**
-             * Constructs a new Query service.
-             * @param rpcImpl RPC implementation
-             * @param [requestDelimited=false] Whether requests are length-delimited
-             * @param [responseDelimited=false] Whether responses are length-delimited
-             */
-            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
-             */
-            public params(request: botany.botanydist.IQueryParamsRequest, callback: botany.botanydist.Query.ParamsCallback): void;
-
-            /**
-             * Calls Params.
-             * @param request QueryParamsRequest message or plain object
-             * @returns Promise
-             */
-            public params(request: botany.botanydist.IQueryParamsRequest): Promise<botany.botanydist.QueryParamsResponse>;
-
-            /**
-             * Calls Balances.
-             * @param request QueryGetBalancesRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and QueryGetBalancesResponse
-             */
-            public balances(request: botany.botanydist.IQueryGetBalancesRequest, callback: botany.botanydist.Query.BalancesCallback): void;
-
-            /**
-             * Calls Balances.
-             * @param request QueryGetBalancesRequest message or plain object
-             * @returns Promise
-             */
-            public balances(request: botany.botanydist.IQueryGetBalancesRequest): Promise<botany.botanydist.QueryGetBalancesResponse>;
-        }
-
-        namespace Query {
-
-            /**
-             * Callback as used by {@link botany.botanydist.Query#params}.
-             * @param error Error, if any
-             * @param [response] QueryParamsResponse
-             */
-            type ParamsCallback = (error: (Error|null), response?: botany.botanydist.QueryParamsResponse) => void;
-
-            /**
-             * Callback as used by {@link botany.botanydist.Query#balances}.
-             * @param error Error, if any
-             * @param [response] QueryGetBalancesResponse
-             */
-            type BalancesCallback = (error: (Error|null), response?: botany.botanydist.QueryGetBalancesResponse) => void;
-        }
-
-        /** Properties of a QueryParamsRequest. */
-        interface IQueryParamsRequest {
-        }
-
-        /** Represents a QueryParamsRequest. */
-        class QueryParamsRequest implements IQueryParamsRequest {
-
-            /**
-             * Constructs a new QueryParamsRequest.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.botanydist.IQueryParamsRequest);
-
-            /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link botany.botanydist.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.botanydist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link botany.botanydist.QueryParamsRequest.verify|verify} messages.
-             * @param message QueryParamsRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.botanydist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.QueryParamsRequest;
-
-            /**
-             * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.QueryParamsRequest;
-
-            /**
-             * Verifies a QueryParamsRequest message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsRequest message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsRequest
-             */
-            public static fromObject(object: { [k: string]: any }): botany.botanydist.QueryParamsRequest;
-
-            /**
-             * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
-             * @param message QueryParamsRequest
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.botanydist.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsRequest to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryParamsResponse. */
-        interface IQueryParamsResponse {
-
-            /** QueryParamsResponse params */
-            params?: (botany.botanydist.IParams|null);
-        }
-
-        /** Represents a QueryParamsResponse. */
-        class QueryParamsResponse implements IQueryParamsResponse {
-
-            /**
-             * Constructs a new QueryParamsResponse.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.botanydist.IQueryParamsResponse);
-
-            /** QueryParamsResponse params. */
-            public params?: (botany.botanydist.IParams|null);
-
-            /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link botany.botanydist.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.botanydist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link botany.botanydist.QueryParamsResponse.verify|verify} messages.
-             * @param message QueryParamsResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.botanydist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.QueryParamsResponse;
-
-            /**
-             * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryParamsResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.QueryParamsResponse;
-
-            /**
-             * Verifies a QueryParamsResponse message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryParamsResponse message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryParamsResponse
-             */
-            public static fromObject(object: { [k: string]: any }): botany.botanydist.QueryParamsResponse;
-
-            /**
-             * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
-             * @param message QueryParamsResponse
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.botanydist.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryParamsResponse to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryGetBalancesRequest. */
-        interface IQueryGetBalancesRequest {
-        }
-
-        /** Represents a QueryGetBalancesRequest. */
-        class QueryGetBalancesRequest implements IQueryGetBalancesRequest {
-
-            /**
-             * Constructs a new QueryGetBalancesRequest.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.botanydist.IQueryGetBalancesRequest);
-
-            /**
-             * Encodes the specified QueryGetBalancesRequest message. Does not implicitly {@link botany.botanydist.QueryGetBalancesRequest.verify|verify} messages.
-             * @param message QueryGetBalancesRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.botanydist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryGetBalancesRequest message, length delimited. Does not implicitly {@link botany.botanydist.QueryGetBalancesRequest.verify|verify} messages.
-             * @param message QueryGetBalancesRequest message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.botanydist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryGetBalancesRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.QueryGetBalancesRequest;
-
-            /**
-             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryGetBalancesRequest
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.QueryGetBalancesRequest;
-
-            /**
-             * Verifies a QueryGetBalancesRequest message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryGetBalancesRequest message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryGetBalancesRequest
-             */
-            public static fromObject(object: { [k: string]: any }): botany.botanydist.QueryGetBalancesRequest;
-
-            /**
-             * Creates a plain object from a QueryGetBalancesRequest message. Also converts values to other types if specified.
-             * @param message QueryGetBalancesRequest
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.botanydist.QueryGetBalancesRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryGetBalancesRequest to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a QueryGetBalancesResponse. */
-        interface IQueryGetBalancesResponse {
-
-            /** QueryGetBalancesResponse balances */
-            balances?: (cosmos.base.v1beta1.ICoin[]|null);
-        }
-
-        /** Represents a QueryGetBalancesResponse. */
-        class QueryGetBalancesResponse implements IQueryGetBalancesResponse {
-
-            /**
-             * Constructs a new QueryGetBalancesResponse.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.botanydist.IQueryGetBalancesResponse);
-
-            /** QueryGetBalancesResponse balances. */
-            public balances: cosmos.base.v1beta1.ICoin[];
-
-            /**
-             * Encodes the specified QueryGetBalancesResponse message. Does not implicitly {@link botany.botanydist.QueryGetBalancesResponse.verify|verify} messages.
-             * @param message QueryGetBalancesResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.botanydist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified QueryGetBalancesResponse message, length delimited. Does not implicitly {@link botany.botanydist.QueryGetBalancesResponse.verify|verify} messages.
-             * @param message QueryGetBalancesResponse message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.botanydist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns QueryGetBalancesResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.QueryGetBalancesResponse;
-
-            /**
-             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns QueryGetBalancesResponse
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.QueryGetBalancesResponse;
-
-            /**
-             * Verifies a QueryGetBalancesResponse message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a QueryGetBalancesResponse message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns QueryGetBalancesResponse
-             */
-            public static fromObject(object: { [k: string]: any }): botany.botanydist.QueryGetBalancesResponse;
-
-            /**
-             * Creates a plain object from a QueryGetBalancesResponse message. Also converts values to other types if specified.
-             * @param message QueryGetBalancesResponse
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.botanydist.QueryGetBalancesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this QueryGetBalancesResponse to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Params. */
-        interface IParams {
-
-            /** Params active */
-            active?: (boolean|null);
-
-            /** Params periods */
-            periods?: (botany.botanydist.IPeriod[]|null);
-        }
-
-        /** Represents a Params. */
-        class Params implements IParams {
-
-            /**
-             * Constructs a new Params.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.botanydist.IParams);
-
-            /** Params active. */
-            public active: boolean;
-
-            /** Params periods. */
-            public periods: botany.botanydist.IPeriod[];
-
-            /**
-             * Encodes the specified Params message. Does not implicitly {@link botany.botanydist.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.botanydist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.botanydist.Params.verify|verify} messages.
-             * @param message Params message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.botanydist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.Params;
-
-            /**
-             * Decodes a Params message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Params
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.Params;
-
-            /**
-             * Verifies a Params message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Params message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Params
-             */
-            public static fromObject(object: { [k: string]: any }): botany.botanydist.Params;
-
-            /**
-             * Creates a plain object from a Params message. Also converts values to other types if specified.
-             * @param message Params
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.botanydist.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Params to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a Period. */
-        interface IPeriod {
-
-            /** Period start */
-            start?: (google.protobuf.ITimestamp|null);
-
-            /** Period end */
-            end?: (google.protobuf.ITimestamp|null);
-
-            /** Period inflation */
-            inflation?: (string|null);
-        }
-
-        /** Represents a Period. */
-        class Period implements IPeriod {
-
-            /**
-             * Constructs a new Period.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.botanydist.IPeriod);
-
-            /** Period start. */
-            public start?: (google.protobuf.ITimestamp|null);
-
-            /** Period end. */
-            public end?: (google.protobuf.ITimestamp|null);
-
-            /** Period inflation. */
-            public inflation: string;
-
-            /**
-             * Encodes the specified Period message. Does not implicitly {@link botany.botanydist.Period.verify|verify} messages.
-             * @param message Period message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.botanydist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Period message, length delimited. Does not implicitly {@link botany.botanydist.Period.verify|verify} messages.
-             * @param message Period message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.botanydist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Period message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Period
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.Period;
-
-            /**
-             * Decodes a Period message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Period
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.Period;
-
-            /**
-             * Verifies a Period message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Period message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Period
-             */
-            public static fromObject(object: { [k: string]: any }): botany.botanydist.Period;
-
-            /**
-             * Creates a plain object from a Period message. Also converts values to other types if specified.
-             * @param message Period
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.botanydist.Period, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Period to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of a GenesisState. */
-        interface IGenesisState {
-
-            /** GenesisState params */
-            params?: (botany.botanydist.IParams|null);
-
-            /** GenesisState previous_block_time */
-            previous_block_time?: (google.protobuf.ITimestamp|null);
-
-            /** GenesisState gov_denom */
-            gov_denom?: (string|null);
-        }
-
-        /** Represents a GenesisState. */
-        class GenesisState implements IGenesisState {
-
-            /**
-             * Constructs a new GenesisState.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: botany.botanydist.IGenesisState);
-
-            /** GenesisState params. */
-            public params?: (botany.botanydist.IParams|null);
-
-            /** GenesisState previous_block_time. */
-            public previous_block_time?: (google.protobuf.ITimestamp|null);
-
-            /** GenesisState gov_denom. */
-            public gov_denom: string;
-
-            /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link botany.botanydist.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: botany.botanydist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link botany.botanydist.GenesisState.verify|verify} messages.
-             * @param message GenesisState message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: botany.botanydist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.botanydist.GenesisState;
-
-            /**
-             * Decodes a GenesisState message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns GenesisState
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.botanydist.GenesisState;
-
-            /**
-             * Verifies a GenesisState message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a GenesisState message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns GenesisState
-             */
-            public static fromObject(object: { [k: string]: any }): botany.botanydist.GenesisState;
-
-            /**
-             * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
-             * @param message GenesisState
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: botany.botanydist.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.auction.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisState to JSON.
@@ -2158,108 +1498,108 @@ export namespace botany {
              * @param request QueryParamsRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
              */
-            public params(request: botany.cdp.IQueryParamsRequest, callback: botany.cdp.Query.ParamsCallback): void;
+            public params(request: ununifi.cdp.IQueryParamsRequest, callback: ununifi.cdp.Query.ParamsCallback): void;
 
             /**
              * Calls Params.
              * @param request QueryParamsRequest message or plain object
              * @returns Promise
              */
-            public params(request: botany.cdp.IQueryParamsRequest): Promise<botany.cdp.QueryParamsResponse>;
+            public params(request: ununifi.cdp.IQueryParamsRequest): Promise<ununifi.cdp.QueryParamsResponse>;
 
             /**
              * Calls Cdp.
              * @param request QueryGetCdpRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryGetCdpResponse
              */
-            public cdp(request: botany.cdp.IQueryGetCdpRequest, callback: botany.cdp.Query.CdpCallback): void;
+            public cdp(request: ununifi.cdp.IQueryGetCdpRequest, callback: ununifi.cdp.Query.CdpCallback): void;
 
             /**
              * Calls Cdp.
              * @param request QueryGetCdpRequest message or plain object
              * @returns Promise
              */
-            public cdp(request: botany.cdp.IQueryGetCdpRequest): Promise<botany.cdp.QueryGetCdpResponse>;
+            public cdp(request: ununifi.cdp.IQueryGetCdpRequest): Promise<ununifi.cdp.QueryGetCdpResponse>;
 
             /**
              * Calls CdpAll.
              * @param request QueryAllCdpRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryAllCdpResponse
              */
-            public cdpAll(request: botany.cdp.IQueryAllCdpRequest, callback: botany.cdp.Query.CdpAllCallback): void;
+            public cdpAll(request: ununifi.cdp.IQueryAllCdpRequest, callback: ununifi.cdp.Query.CdpAllCallback): void;
 
             /**
              * Calls CdpAll.
              * @param request QueryAllCdpRequest message or plain object
              * @returns Promise
              */
-            public cdpAll(request: botany.cdp.IQueryAllCdpRequest): Promise<botany.cdp.QueryAllCdpResponse>;
+            public cdpAll(request: ununifi.cdp.IQueryAllCdpRequest): Promise<ununifi.cdp.QueryAllCdpResponse>;
 
             /**
              * Calls AccountAll.
              * @param request QueryAllAccountRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryAllAccountResponse
              */
-            public accountAll(request: botany.cdp.IQueryAllAccountRequest, callback: botany.cdp.Query.AccountAllCallback): void;
+            public accountAll(request: ununifi.cdp.IQueryAllAccountRequest, callback: ununifi.cdp.Query.AccountAllCallback): void;
 
             /**
              * Calls AccountAll.
              * @param request QueryAllAccountRequest message or plain object
              * @returns Promise
              */
-            public accountAll(request: botany.cdp.IQueryAllAccountRequest): Promise<botany.cdp.QueryAllAccountResponse>;
+            public accountAll(request: ununifi.cdp.IQueryAllAccountRequest): Promise<ununifi.cdp.QueryAllAccountResponse>;
 
             /**
              * Calls DepositAll.
              * @param request QueryAllDepositRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryAllDepositResponse
              */
-            public depositAll(request: botany.cdp.IQueryAllDepositRequest, callback: botany.cdp.Query.DepositAllCallback): void;
+            public depositAll(request: ununifi.cdp.IQueryAllDepositRequest, callback: ununifi.cdp.Query.DepositAllCallback): void;
 
             /**
              * Calls DepositAll.
              * @param request QueryAllDepositRequest message or plain object
              * @returns Promise
              */
-            public depositAll(request: botany.cdp.IQueryAllDepositRequest): Promise<botany.cdp.QueryAllDepositResponse>;
+            public depositAll(request: ununifi.cdp.IQueryAllDepositRequest): Promise<ununifi.cdp.QueryAllDepositResponse>;
         }
 
         namespace Query {
 
             /**
-             * Callback as used by {@link botany.cdp.Query#params}.
+             * Callback as used by {@link ununifi.cdp.Query#params}.
              * @param error Error, if any
              * @param [response] QueryParamsResponse
              */
-            type ParamsCallback = (error: (Error|null), response?: botany.cdp.QueryParamsResponse) => void;
+            type ParamsCallback = (error: (Error|null), response?: ununifi.cdp.QueryParamsResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Query#cdp}.
+             * Callback as used by {@link ununifi.cdp.Query#cdp}.
              * @param error Error, if any
              * @param [response] QueryGetCdpResponse
              */
-            type CdpCallback = (error: (Error|null), response?: botany.cdp.QueryGetCdpResponse) => void;
+            type CdpCallback = (error: (Error|null), response?: ununifi.cdp.QueryGetCdpResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Query#cdpAll}.
+             * Callback as used by {@link ununifi.cdp.Query#cdpAll}.
              * @param error Error, if any
              * @param [response] QueryAllCdpResponse
              */
-            type CdpAllCallback = (error: (Error|null), response?: botany.cdp.QueryAllCdpResponse) => void;
+            type CdpAllCallback = (error: (Error|null), response?: ununifi.cdp.QueryAllCdpResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Query#accountAll}.
+             * Callback as used by {@link ununifi.cdp.Query#accountAll}.
              * @param error Error, if any
              * @param [response] QueryAllAccountResponse
              */
-            type AccountAllCallback = (error: (Error|null), response?: botany.cdp.QueryAllAccountResponse) => void;
+            type AccountAllCallback = (error: (Error|null), response?: ununifi.cdp.QueryAllAccountResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Query#depositAll}.
+             * Callback as used by {@link ununifi.cdp.Query#depositAll}.
              * @param error Error, if any
              * @param [response] QueryAllDepositResponse
              */
-            type DepositAllCallback = (error: (Error|null), response?: botany.cdp.QueryAllDepositResponse) => void;
+            type DepositAllCallback = (error: (Error|null), response?: ununifi.cdp.QueryAllDepositResponse) => void;
         }
 
         /** Properties of a QueryParamsRequest. */
@@ -2273,23 +1613,23 @@ export namespace botany {
              * Constructs a new QueryParamsRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryParamsRequest);
+            constructor(properties?: ununifi.cdp.IQueryParamsRequest);
 
             /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link botany.cdp.QueryParamsRequest.verify|verify} messages.
+             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link ununifi.cdp.QueryParamsRequest.verify|verify} messages.
              * @param message QueryParamsRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryParamsRequest.verify|verify} messages.
+             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link ununifi.cdp.QueryParamsRequest.verify|verify} messages.
              * @param message QueryParamsRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryParamsRequest message from the specified reader or buffer.
@@ -2299,7 +1639,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryParamsRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryParamsRequest;
 
             /**
              * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
@@ -2308,7 +1648,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryParamsRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryParamsRequest;
 
             /**
              * Verifies a QueryParamsRequest message.
@@ -2322,7 +1662,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryParamsRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryParamsRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryParamsRequest;
 
             /**
              * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
@@ -2330,7 +1670,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryParamsRequest to JSON.
@@ -2343,7 +1683,7 @@ export namespace botany {
         interface IQueryParamsResponse {
 
             /** QueryParamsResponse params */
-            params?: (botany.cdp.IParams|null);
+            params?: (ununifi.cdp.IParams|null);
         }
 
         /** Represents a QueryParamsResponse. */
@@ -2353,26 +1693,26 @@ export namespace botany {
              * Constructs a new QueryParamsResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryParamsResponse);
+            constructor(properties?: ununifi.cdp.IQueryParamsResponse);
 
             /** QueryParamsResponse params. */
-            public params?: (botany.cdp.IParams|null);
+            public params?: (ununifi.cdp.IParams|null);
 
             /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link botany.cdp.QueryParamsResponse.verify|verify} messages.
+             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link ununifi.cdp.QueryParamsResponse.verify|verify} messages.
              * @param message QueryParamsResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryParamsResponse.verify|verify} messages.
+             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link ununifi.cdp.QueryParamsResponse.verify|verify} messages.
              * @param message QueryParamsResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryParamsResponse message from the specified reader or buffer.
@@ -2382,7 +1722,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryParamsResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryParamsResponse;
 
             /**
              * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
@@ -2391,7 +1731,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryParamsResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryParamsResponse;
 
             /**
              * Verifies a QueryParamsResponse message.
@@ -2405,7 +1745,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryParamsResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryParamsResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryParamsResponse;
 
             /**
              * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
@@ -2413,7 +1753,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryParamsResponse to JSON.
@@ -2439,7 +1779,7 @@ export namespace botany {
              * Constructs a new QueryGetCdpRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryGetCdpRequest);
+            constructor(properties?: ununifi.cdp.IQueryGetCdpRequest);
 
             /** QueryGetCdpRequest owner. */
             public owner: string;
@@ -2448,20 +1788,20 @@ export namespace botany {
             public collateral_type: string;
 
             /**
-             * Encodes the specified QueryGetCdpRequest message. Does not implicitly {@link botany.cdp.QueryGetCdpRequest.verify|verify} messages.
+             * Encodes the specified QueryGetCdpRequest message. Does not implicitly {@link ununifi.cdp.QueryGetCdpRequest.verify|verify} messages.
              * @param message QueryGetCdpRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryGetCdpRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryGetCdpRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryGetCdpRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryGetCdpRequest.verify|verify} messages.
+             * Encodes the specified QueryGetCdpRequest message, length delimited. Does not implicitly {@link ununifi.cdp.QueryGetCdpRequest.verify|verify} messages.
              * @param message QueryGetCdpRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryGetCdpRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryGetCdpRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryGetCdpRequest message from the specified reader or buffer.
@@ -2471,7 +1811,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryGetCdpRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryGetCdpRequest;
 
             /**
              * Decodes a QueryGetCdpRequest message from the specified reader or buffer, length delimited.
@@ -2480,7 +1820,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryGetCdpRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryGetCdpRequest;
 
             /**
              * Verifies a QueryGetCdpRequest message.
@@ -2494,7 +1834,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryGetCdpRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryGetCdpRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryGetCdpRequest;
 
             /**
              * Creates a plain object from a QueryGetCdpRequest message. Also converts values to other types if specified.
@@ -2502,7 +1842,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryGetCdpRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryGetCdpRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryGetCdpRequest to JSON.
@@ -2515,7 +1855,7 @@ export namespace botany {
         interface IQueryGetCdpResponse {
 
             /** QueryGetCdpResponse cdp */
-            cdp?: (botany.cdp.IAugmentedCdp|null);
+            cdp?: (ununifi.cdp.IAugmentedCdp|null);
         }
 
         /** Represents a QueryGetCdpResponse. */
@@ -2525,26 +1865,26 @@ export namespace botany {
              * Constructs a new QueryGetCdpResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryGetCdpResponse);
+            constructor(properties?: ununifi.cdp.IQueryGetCdpResponse);
 
             /** QueryGetCdpResponse cdp. */
-            public cdp?: (botany.cdp.IAugmentedCdp|null);
+            public cdp?: (ununifi.cdp.IAugmentedCdp|null);
 
             /**
-             * Encodes the specified QueryGetCdpResponse message. Does not implicitly {@link botany.cdp.QueryGetCdpResponse.verify|verify} messages.
+             * Encodes the specified QueryGetCdpResponse message. Does not implicitly {@link ununifi.cdp.QueryGetCdpResponse.verify|verify} messages.
              * @param message QueryGetCdpResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryGetCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryGetCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryGetCdpResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryGetCdpResponse.verify|verify} messages.
+             * Encodes the specified QueryGetCdpResponse message, length delimited. Does not implicitly {@link ununifi.cdp.QueryGetCdpResponse.verify|verify} messages.
              * @param message QueryGetCdpResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryGetCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryGetCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryGetCdpResponse message from the specified reader or buffer.
@@ -2554,7 +1894,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryGetCdpResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryGetCdpResponse;
 
             /**
              * Decodes a QueryGetCdpResponse message from the specified reader or buffer, length delimited.
@@ -2563,7 +1903,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryGetCdpResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryGetCdpResponse;
 
             /**
              * Verifies a QueryGetCdpResponse message.
@@ -2577,7 +1917,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryGetCdpResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryGetCdpResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryGetCdpResponse;
 
             /**
              * Creates a plain object from a QueryGetCdpResponse message. Also converts values to other types if specified.
@@ -2585,7 +1925,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryGetCdpResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryGetCdpResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryGetCdpResponse to JSON.
@@ -2608,26 +1948,26 @@ export namespace botany {
              * Constructs a new QueryAllCdpRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryAllCdpRequest);
+            constructor(properties?: ununifi.cdp.IQueryAllCdpRequest);
 
             /** QueryAllCdpRequest pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageRequest|null);
 
             /**
-             * Encodes the specified QueryAllCdpRequest message. Does not implicitly {@link botany.cdp.QueryAllCdpRequest.verify|verify} messages.
+             * Encodes the specified QueryAllCdpRequest message. Does not implicitly {@link ununifi.cdp.QueryAllCdpRequest.verify|verify} messages.
              * @param message QueryAllCdpRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryAllCdpRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryAllCdpRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllCdpRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryAllCdpRequest.verify|verify} messages.
+             * Encodes the specified QueryAllCdpRequest message, length delimited. Does not implicitly {@link ununifi.cdp.QueryAllCdpRequest.verify|verify} messages.
              * @param message QueryAllCdpRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryAllCdpRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryAllCdpRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllCdpRequest message from the specified reader or buffer.
@@ -2637,7 +1977,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllCdpRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryAllCdpRequest;
 
             /**
              * Decodes a QueryAllCdpRequest message from the specified reader or buffer, length delimited.
@@ -2646,7 +1986,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllCdpRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryAllCdpRequest;
 
             /**
              * Verifies a QueryAllCdpRequest message.
@@ -2660,7 +2000,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllCdpRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllCdpRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryAllCdpRequest;
 
             /**
              * Creates a plain object from a QueryAllCdpRequest message. Also converts values to other types if specified.
@@ -2668,7 +2008,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryAllCdpRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryAllCdpRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllCdpRequest to JSON.
@@ -2681,7 +2021,7 @@ export namespace botany {
         interface IQueryAllCdpResponse {
 
             /** QueryAllCdpResponse cdp */
-            cdp?: (botany.cdp.IAugmentedCdp[]|null);
+            cdp?: (ununifi.cdp.IAugmentedCdp[]|null);
 
             /** QueryAllCdpResponse pagination */
             pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
@@ -2694,29 +2034,29 @@ export namespace botany {
              * Constructs a new QueryAllCdpResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryAllCdpResponse);
+            constructor(properties?: ununifi.cdp.IQueryAllCdpResponse);
 
             /** QueryAllCdpResponse cdp. */
-            public cdp: botany.cdp.IAugmentedCdp[];
+            public cdp: ununifi.cdp.IAugmentedCdp[];
 
             /** QueryAllCdpResponse pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
 
             /**
-             * Encodes the specified QueryAllCdpResponse message. Does not implicitly {@link botany.cdp.QueryAllCdpResponse.verify|verify} messages.
+             * Encodes the specified QueryAllCdpResponse message. Does not implicitly {@link ununifi.cdp.QueryAllCdpResponse.verify|verify} messages.
              * @param message QueryAllCdpResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryAllCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryAllCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllCdpResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryAllCdpResponse.verify|verify} messages.
+             * Encodes the specified QueryAllCdpResponse message, length delimited. Does not implicitly {@link ununifi.cdp.QueryAllCdpResponse.verify|verify} messages.
              * @param message QueryAllCdpResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryAllCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryAllCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllCdpResponse message from the specified reader or buffer.
@@ -2726,7 +2066,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllCdpResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryAllCdpResponse;
 
             /**
              * Decodes a QueryAllCdpResponse message from the specified reader or buffer, length delimited.
@@ -2735,7 +2075,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllCdpResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryAllCdpResponse;
 
             /**
              * Verifies a QueryAllCdpResponse message.
@@ -2749,7 +2089,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllCdpResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllCdpResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryAllCdpResponse;
 
             /**
              * Creates a plain object from a QueryAllCdpResponse message. Also converts values to other types if specified.
@@ -2757,7 +2097,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryAllCdpResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryAllCdpResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllCdpResponse to JSON.
@@ -2777,23 +2117,23 @@ export namespace botany {
              * Constructs a new QueryAllAccountRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryAllAccountRequest);
+            constructor(properties?: ununifi.cdp.IQueryAllAccountRequest);
 
             /**
-             * Encodes the specified QueryAllAccountRequest message. Does not implicitly {@link botany.cdp.QueryAllAccountRequest.verify|verify} messages.
+             * Encodes the specified QueryAllAccountRequest message. Does not implicitly {@link ununifi.cdp.QueryAllAccountRequest.verify|verify} messages.
              * @param message QueryAllAccountRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryAllAccountRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryAllAccountRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllAccountRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryAllAccountRequest.verify|verify} messages.
+             * Encodes the specified QueryAllAccountRequest message, length delimited. Does not implicitly {@link ununifi.cdp.QueryAllAccountRequest.verify|verify} messages.
              * @param message QueryAllAccountRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryAllAccountRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryAllAccountRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllAccountRequest message from the specified reader or buffer.
@@ -2803,7 +2143,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllAccountRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryAllAccountRequest;
 
             /**
              * Decodes a QueryAllAccountRequest message from the specified reader or buffer, length delimited.
@@ -2812,7 +2152,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllAccountRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryAllAccountRequest;
 
             /**
              * Verifies a QueryAllAccountRequest message.
@@ -2826,7 +2166,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllAccountRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllAccountRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryAllAccountRequest;
 
             /**
              * Creates a plain object from a QueryAllAccountRequest message. Also converts values to other types if specified.
@@ -2834,7 +2174,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryAllAccountRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryAllAccountRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllAccountRequest to JSON.
@@ -2857,26 +2197,26 @@ export namespace botany {
              * Constructs a new QueryAllAccountResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryAllAccountResponse);
+            constructor(properties?: ununifi.cdp.IQueryAllAccountResponse);
 
             /** QueryAllAccountResponse accounts. */
             public accounts: google.protobuf.IAny[];
 
             /**
-             * Encodes the specified QueryAllAccountResponse message. Does not implicitly {@link botany.cdp.QueryAllAccountResponse.verify|verify} messages.
+             * Encodes the specified QueryAllAccountResponse message. Does not implicitly {@link ununifi.cdp.QueryAllAccountResponse.verify|verify} messages.
              * @param message QueryAllAccountResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryAllAccountResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryAllAccountResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllAccountResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryAllAccountResponse.verify|verify} messages.
+             * Encodes the specified QueryAllAccountResponse message, length delimited. Does not implicitly {@link ununifi.cdp.QueryAllAccountResponse.verify|verify} messages.
              * @param message QueryAllAccountResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryAllAccountResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryAllAccountResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllAccountResponse message from the specified reader or buffer.
@@ -2886,7 +2226,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllAccountResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryAllAccountResponse;
 
             /**
              * Decodes a QueryAllAccountResponse message from the specified reader or buffer, length delimited.
@@ -2895,7 +2235,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllAccountResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryAllAccountResponse;
 
             /**
              * Verifies a QueryAllAccountResponse message.
@@ -2909,7 +2249,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllAccountResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllAccountResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryAllAccountResponse;
 
             /**
              * Creates a plain object from a QueryAllAccountResponse message. Also converts values to other types if specified.
@@ -2917,7 +2257,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryAllAccountResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryAllAccountResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllAccountResponse to JSON.
@@ -2943,7 +2283,7 @@ export namespace botany {
              * Constructs a new QueryAllDepositRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryAllDepositRequest);
+            constructor(properties?: ununifi.cdp.IQueryAllDepositRequest);
 
             /** QueryAllDepositRequest owner. */
             public owner: string;
@@ -2952,20 +2292,20 @@ export namespace botany {
             public collateral_type: string;
 
             /**
-             * Encodes the specified QueryAllDepositRequest message. Does not implicitly {@link botany.cdp.QueryAllDepositRequest.verify|verify} messages.
+             * Encodes the specified QueryAllDepositRequest message. Does not implicitly {@link ununifi.cdp.QueryAllDepositRequest.verify|verify} messages.
              * @param message QueryAllDepositRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryAllDepositRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryAllDepositRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllDepositRequest message, length delimited. Does not implicitly {@link botany.cdp.QueryAllDepositRequest.verify|verify} messages.
+             * Encodes the specified QueryAllDepositRequest message, length delimited. Does not implicitly {@link ununifi.cdp.QueryAllDepositRequest.verify|verify} messages.
              * @param message QueryAllDepositRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryAllDepositRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryAllDepositRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllDepositRequest message from the specified reader or buffer.
@@ -2975,7 +2315,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllDepositRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryAllDepositRequest;
 
             /**
              * Decodes a QueryAllDepositRequest message from the specified reader or buffer, length delimited.
@@ -2984,7 +2324,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllDepositRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryAllDepositRequest;
 
             /**
              * Verifies a QueryAllDepositRequest message.
@@ -2998,7 +2338,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllDepositRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllDepositRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryAllDepositRequest;
 
             /**
              * Creates a plain object from a QueryAllDepositRequest message. Also converts values to other types if specified.
@@ -3006,7 +2346,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryAllDepositRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryAllDepositRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllDepositRequest to JSON.
@@ -3019,7 +2359,7 @@ export namespace botany {
         interface IQueryAllDepositResponse {
 
             /** QueryAllDepositResponse deposits */
-            deposits?: (botany.cdp.IDeposit[]|null);
+            deposits?: (ununifi.cdp.IDeposit[]|null);
         }
 
         /** Represents a QueryAllDepositResponse. */
@@ -3029,26 +2369,26 @@ export namespace botany {
              * Constructs a new QueryAllDepositResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IQueryAllDepositResponse);
+            constructor(properties?: ununifi.cdp.IQueryAllDepositResponse);
 
             /** QueryAllDepositResponse deposits. */
-            public deposits: botany.cdp.IDeposit[];
+            public deposits: ununifi.cdp.IDeposit[];
 
             /**
-             * Encodes the specified QueryAllDepositResponse message. Does not implicitly {@link botany.cdp.QueryAllDepositResponse.verify|verify} messages.
+             * Encodes the specified QueryAllDepositResponse message. Does not implicitly {@link ununifi.cdp.QueryAllDepositResponse.verify|verify} messages.
              * @param message QueryAllDepositResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IQueryAllDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IQueryAllDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllDepositResponse message, length delimited. Does not implicitly {@link botany.cdp.QueryAllDepositResponse.verify|verify} messages.
+             * Encodes the specified QueryAllDepositResponse message, length delimited. Does not implicitly {@link ununifi.cdp.QueryAllDepositResponse.verify|verify} messages.
              * @param message QueryAllDepositResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IQueryAllDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IQueryAllDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllDepositResponse message from the specified reader or buffer.
@@ -3058,7 +2398,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.QueryAllDepositResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.QueryAllDepositResponse;
 
             /**
              * Decodes a QueryAllDepositResponse message from the specified reader or buffer, length delimited.
@@ -3067,7 +2407,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.QueryAllDepositResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.QueryAllDepositResponse;
 
             /**
              * Verifies a QueryAllDepositResponse message.
@@ -3081,7 +2421,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllDepositResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.QueryAllDepositResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.QueryAllDepositResponse;
 
             /**
              * Creates a plain object from a QueryAllDepositResponse message. Also converts values to other types if specified.
@@ -3089,7 +2429,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.QueryAllDepositResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.QueryAllDepositResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllDepositResponse to JSON.
@@ -3133,7 +2473,7 @@ export namespace botany {
              * Constructs a new Cdp.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.ICdp);
+            constructor(properties?: ununifi.cdp.ICdp);
 
             /** Cdp id. */
             public id: Long;
@@ -3160,20 +2500,20 @@ export namespace botany {
             public interest_factor: string;
 
             /**
-             * Encodes the specified Cdp message. Does not implicitly {@link botany.cdp.Cdp.verify|verify} messages.
+             * Encodes the specified Cdp message. Does not implicitly {@link ununifi.cdp.Cdp.verify|verify} messages.
              * @param message Cdp message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.ICdp, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.ICdp, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Cdp message, length delimited. Does not implicitly {@link botany.cdp.Cdp.verify|verify} messages.
+             * Encodes the specified Cdp message, length delimited. Does not implicitly {@link ununifi.cdp.Cdp.verify|verify} messages.
              * @param message Cdp message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.ICdp, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.ICdp, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a Cdp message from the specified reader or buffer.
@@ -3183,7 +2523,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.Cdp;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.Cdp;
 
             /**
              * Decodes a Cdp message from the specified reader or buffer, length delimited.
@@ -3192,7 +2532,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.Cdp;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.Cdp;
 
             /**
              * Verifies a Cdp message.
@@ -3206,7 +2546,7 @@ export namespace botany {
              * @param object Plain object
              * @returns Cdp
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.Cdp;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.Cdp;
 
             /**
              * Creates a plain object from a Cdp message. Also converts values to other types if specified.
@@ -3214,7 +2554,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.Cdp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.Cdp, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this Cdp to JSON.
@@ -3243,7 +2583,7 @@ export namespace botany {
              * Constructs a new Deposit.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IDeposit);
+            constructor(properties?: ununifi.cdp.IDeposit);
 
             /** Deposit cdp_id. */
             public cdp_id: Long;
@@ -3255,20 +2595,20 @@ export namespace botany {
             public amount?: (cosmos.base.v1beta1.ICoin|null);
 
             /**
-             * Encodes the specified Deposit message. Does not implicitly {@link botany.cdp.Deposit.verify|verify} messages.
+             * Encodes the specified Deposit message. Does not implicitly {@link ununifi.cdp.Deposit.verify|verify} messages.
              * @param message Deposit message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Deposit message, length delimited. Does not implicitly {@link botany.cdp.Deposit.verify|verify} messages.
+             * Encodes the specified Deposit message, length delimited. Does not implicitly {@link ununifi.cdp.Deposit.verify|verify} messages.
              * @param message Deposit message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a Deposit message from the specified reader or buffer.
@@ -3278,7 +2618,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.Deposit;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.Deposit;
 
             /**
              * Decodes a Deposit message from the specified reader or buffer, length delimited.
@@ -3287,7 +2627,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.Deposit;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.Deposit;
 
             /**
              * Verifies a Deposit message.
@@ -3301,7 +2641,7 @@ export namespace botany {
              * @param object Plain object
              * @returns Deposit
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.Deposit;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.Deposit;
 
             /**
              * Creates a plain object from a Deposit message. Also converts values to other types if specified.
@@ -3309,7 +2649,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.Deposit, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.Deposit, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this Deposit to JSON.
@@ -3322,7 +2662,7 @@ export namespace botany {
         interface IAugmentedCdp {
 
             /** AugmentedCdp cdp */
-            cdp?: (botany.cdp.ICdp|null);
+            cdp?: (ununifi.cdp.ICdp|null);
 
             /** AugmentedCdp collateral_value */
             collateral_value?: (cosmos.base.v1beta1.ICoin|null);
@@ -3338,10 +2678,10 @@ export namespace botany {
              * Constructs a new AugmentedCdp.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IAugmentedCdp);
+            constructor(properties?: ununifi.cdp.IAugmentedCdp);
 
             /** AugmentedCdp cdp. */
-            public cdp?: (botany.cdp.ICdp|null);
+            public cdp?: (ununifi.cdp.ICdp|null);
 
             /** AugmentedCdp collateral_value. */
             public collateral_value?: (cosmos.base.v1beta1.ICoin|null);
@@ -3350,20 +2690,20 @@ export namespace botany {
             public collateralization_ratio: string;
 
             /**
-             * Encodes the specified AugmentedCdp message. Does not implicitly {@link botany.cdp.AugmentedCdp.verify|verify} messages.
+             * Encodes the specified AugmentedCdp message. Does not implicitly {@link ununifi.cdp.AugmentedCdp.verify|verify} messages.
              * @param message AugmentedCdp message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IAugmentedCdp, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IAugmentedCdp, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified AugmentedCdp message, length delimited. Does not implicitly {@link botany.cdp.AugmentedCdp.verify|verify} messages.
+             * Encodes the specified AugmentedCdp message, length delimited. Does not implicitly {@link ununifi.cdp.AugmentedCdp.verify|verify} messages.
              * @param message AugmentedCdp message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IAugmentedCdp, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IAugmentedCdp, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes an AugmentedCdp message from the specified reader or buffer.
@@ -3373,7 +2713,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.AugmentedCdp;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.AugmentedCdp;
 
             /**
              * Decodes an AugmentedCdp message from the specified reader or buffer, length delimited.
@@ -3382,7 +2722,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.AugmentedCdp;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.AugmentedCdp;
 
             /**
              * Verifies an AugmentedCdp message.
@@ -3396,7 +2736,7 @@ export namespace botany {
              * @param object Plain object
              * @returns AugmentedCdp
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.AugmentedCdp;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.AugmentedCdp;
 
             /**
              * Creates a plain object from an AugmentedCdp message. Also converts values to other types if specified.
@@ -3404,7 +2744,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.AugmentedCdp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.AugmentedCdp, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this AugmentedCdp to JSON.
@@ -3417,10 +2757,10 @@ export namespace botany {
         interface IParams {
 
             /** Params collateral_params */
-            collateral_params?: (botany.cdp.ICollateralParam[]|null);
+            collateral_params?: (ununifi.cdp.ICollateralParam[]|null);
 
             /** Params debt_param */
-            debt_param?: (botany.cdp.IDebtParam|null);
+            debt_param?: (ununifi.cdp.IDebtParam|null);
 
             /** Params global_debt_limit */
             global_debt_limit?: (cosmos.base.v1beta1.ICoin|null);
@@ -3448,13 +2788,13 @@ export namespace botany {
              * Constructs a new Params.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IParams);
+            constructor(properties?: ununifi.cdp.IParams);
 
             /** Params collateral_params. */
-            public collateral_params: botany.cdp.ICollateralParam[];
+            public collateral_params: ununifi.cdp.ICollateralParam[];
 
             /** Params debt_param. */
-            public debt_param?: (botany.cdp.IDebtParam|null);
+            public debt_param?: (ununifi.cdp.IDebtParam|null);
 
             /** Params global_debt_limit. */
             public global_debt_limit?: (cosmos.base.v1beta1.ICoin|null);
@@ -3475,20 +2815,20 @@ export namespace botany {
             public circuit_breaker: boolean;
 
             /**
-             * Encodes the specified Params message. Does not implicitly {@link botany.cdp.Params.verify|verify} messages.
+             * Encodes the specified Params message. Does not implicitly {@link ununifi.cdp.Params.verify|verify} messages.
              * @param message Params message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.cdp.Params.verify|verify} messages.
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link ununifi.cdp.Params.verify|verify} messages.
              * @param message Params message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a Params message from the specified reader or buffer.
@@ -3498,7 +2838,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.Params;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.Params;
 
             /**
              * Decodes a Params message from the specified reader or buffer, length delimited.
@@ -3507,7 +2847,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.Params;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.Params;
 
             /**
              * Verifies a Params message.
@@ -3521,7 +2861,7 @@ export namespace botany {
              * @param object Plain object
              * @returns Params
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.Params;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.Params;
 
             /**
              * Creates a plain object from a Params message. Also converts values to other types if specified.
@@ -3529,7 +2869,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this Params to JSON.
@@ -3588,7 +2928,7 @@ export namespace botany {
              * Constructs a new CollateralParam.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.ICollateralParam);
+            constructor(properties?: ununifi.cdp.ICollateralParam);
 
             /** CollateralParam denom. */
             public denom: string;
@@ -3630,20 +2970,20 @@ export namespace botany {
             public conversion_factor: string;
 
             /**
-             * Encodes the specified CollateralParam message. Does not implicitly {@link botany.cdp.CollateralParam.verify|verify} messages.
+             * Encodes the specified CollateralParam message. Does not implicitly {@link ununifi.cdp.CollateralParam.verify|verify} messages.
              * @param message CollateralParam message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.ICollateralParam, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.ICollateralParam, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified CollateralParam message, length delimited. Does not implicitly {@link botany.cdp.CollateralParam.verify|verify} messages.
+             * Encodes the specified CollateralParam message, length delimited. Does not implicitly {@link ununifi.cdp.CollateralParam.verify|verify} messages.
              * @param message CollateralParam message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.ICollateralParam, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.ICollateralParam, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a CollateralParam message from the specified reader or buffer.
@@ -3653,7 +2993,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.CollateralParam;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.CollateralParam;
 
             /**
              * Decodes a CollateralParam message from the specified reader or buffer, length delimited.
@@ -3662,7 +3002,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.CollateralParam;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.CollateralParam;
 
             /**
              * Verifies a CollateralParam message.
@@ -3676,7 +3016,7 @@ export namespace botany {
              * @param object Plain object
              * @returns CollateralParam
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.CollateralParam;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.CollateralParam;
 
             /**
              * Creates a plain object from a CollateralParam message. Also converts values to other types if specified.
@@ -3684,7 +3024,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.CollateralParam, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.CollateralParam, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this CollateralParam to JSON.
@@ -3716,7 +3056,7 @@ export namespace botany {
              * Constructs a new DebtParam.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IDebtParam);
+            constructor(properties?: ununifi.cdp.IDebtParam);
 
             /** DebtParam denom. */
             public denom: string;
@@ -3731,20 +3071,20 @@ export namespace botany {
             public debt_floor: string;
 
             /**
-             * Encodes the specified DebtParam message. Does not implicitly {@link botany.cdp.DebtParam.verify|verify} messages.
+             * Encodes the specified DebtParam message. Does not implicitly {@link ununifi.cdp.DebtParam.verify|verify} messages.
              * @param message DebtParam message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IDebtParam, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IDebtParam, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified DebtParam message, length delimited. Does not implicitly {@link botany.cdp.DebtParam.verify|verify} messages.
+             * Encodes the specified DebtParam message, length delimited. Does not implicitly {@link ununifi.cdp.DebtParam.verify|verify} messages.
              * @param message DebtParam message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IDebtParam, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IDebtParam, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a DebtParam message from the specified reader or buffer.
@@ -3754,7 +3094,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.DebtParam;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.DebtParam;
 
             /**
              * Decodes a DebtParam message from the specified reader or buffer, length delimited.
@@ -3763,7 +3103,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.DebtParam;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.DebtParam;
 
             /**
              * Verifies a DebtParam message.
@@ -3777,7 +3117,7 @@ export namespace botany {
              * @param object Plain object
              * @returns DebtParam
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.DebtParam;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.DebtParam;
 
             /**
              * Creates a plain object from a DebtParam message. Also converts values to other types if specified.
@@ -3785,7 +3125,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.DebtParam, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.DebtParam, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this DebtParam to JSON.
@@ -3810,129 +3150,129 @@ export namespace botany {
              * @param request MsgCreateCdp message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgCreateCdpResponse
              */
-            public createCdp(request: botany.cdp.IMsgCreateCdp, callback: botany.cdp.Msg.CreateCdpCallback): void;
+            public createCdp(request: ununifi.cdp.IMsgCreateCdp, callback: ununifi.cdp.Msg.CreateCdpCallback): void;
 
             /**
              * Calls CreateCdp.
              * @param request MsgCreateCdp message or plain object
              * @returns Promise
              */
-            public createCdp(request: botany.cdp.IMsgCreateCdp): Promise<botany.cdp.MsgCreateCdpResponse>;
+            public createCdp(request: ununifi.cdp.IMsgCreateCdp): Promise<ununifi.cdp.MsgCreateCdpResponse>;
 
             /**
              * Calls Deposit.
              * @param request MsgDeposit message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgDepositResponse
              */
-            public deposit(request: botany.cdp.IMsgDeposit, callback: botany.cdp.Msg.DepositCallback): void;
+            public deposit(request: ununifi.cdp.IMsgDeposit, callback: ununifi.cdp.Msg.DepositCallback): void;
 
             /**
              * Calls Deposit.
              * @param request MsgDeposit message or plain object
              * @returns Promise
              */
-            public deposit(request: botany.cdp.IMsgDeposit): Promise<botany.cdp.MsgDepositResponse>;
+            public deposit(request: ununifi.cdp.IMsgDeposit): Promise<ununifi.cdp.MsgDepositResponse>;
 
             /**
              * Calls Withdraw.
              * @param request MsgWithdraw message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgWithdrawResponse
              */
-            public withdraw(request: botany.cdp.IMsgWithdraw, callback: botany.cdp.Msg.WithdrawCallback): void;
+            public withdraw(request: ununifi.cdp.IMsgWithdraw, callback: ununifi.cdp.Msg.WithdrawCallback): void;
 
             /**
              * Calls Withdraw.
              * @param request MsgWithdraw message or plain object
              * @returns Promise
              */
-            public withdraw(request: botany.cdp.IMsgWithdraw): Promise<botany.cdp.MsgWithdrawResponse>;
+            public withdraw(request: ununifi.cdp.IMsgWithdraw): Promise<ununifi.cdp.MsgWithdrawResponse>;
 
             /**
              * Calls DrawDebt.
              * @param request MsgDrawDebt message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgDrawDebtResponse
              */
-            public drawDebt(request: botany.cdp.IMsgDrawDebt, callback: botany.cdp.Msg.DrawDebtCallback): void;
+            public drawDebt(request: ununifi.cdp.IMsgDrawDebt, callback: ununifi.cdp.Msg.DrawDebtCallback): void;
 
             /**
              * Calls DrawDebt.
              * @param request MsgDrawDebt message or plain object
              * @returns Promise
              */
-            public drawDebt(request: botany.cdp.IMsgDrawDebt): Promise<botany.cdp.MsgDrawDebtResponse>;
+            public drawDebt(request: ununifi.cdp.IMsgDrawDebt): Promise<ununifi.cdp.MsgDrawDebtResponse>;
 
             /**
              * Calls RepayDebt.
              * @param request MsgRepayDebt message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgRepayDebtResponse
              */
-            public repayDebt(request: botany.cdp.IMsgRepayDebt, callback: botany.cdp.Msg.RepayDebtCallback): void;
+            public repayDebt(request: ununifi.cdp.IMsgRepayDebt, callback: ununifi.cdp.Msg.RepayDebtCallback): void;
 
             /**
              * Calls RepayDebt.
              * @param request MsgRepayDebt message or plain object
              * @returns Promise
              */
-            public repayDebt(request: botany.cdp.IMsgRepayDebt): Promise<botany.cdp.MsgRepayDebtResponse>;
+            public repayDebt(request: ununifi.cdp.IMsgRepayDebt): Promise<ununifi.cdp.MsgRepayDebtResponse>;
 
             /**
              * Calls Liquidate.
              * @param request MsgLiquidate message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgLiquidateResponse
              */
-            public liquidate(request: botany.cdp.IMsgLiquidate, callback: botany.cdp.Msg.LiquidateCallback): void;
+            public liquidate(request: ununifi.cdp.IMsgLiquidate, callback: ununifi.cdp.Msg.LiquidateCallback): void;
 
             /**
              * Calls Liquidate.
              * @param request MsgLiquidate message or plain object
              * @returns Promise
              */
-            public liquidate(request: botany.cdp.IMsgLiquidate): Promise<botany.cdp.MsgLiquidateResponse>;
+            public liquidate(request: ununifi.cdp.IMsgLiquidate): Promise<ununifi.cdp.MsgLiquidateResponse>;
         }
 
         namespace Msg {
 
             /**
-             * Callback as used by {@link botany.cdp.Msg#createCdp}.
+             * Callback as used by {@link ununifi.cdp.Msg#createCdp}.
              * @param error Error, if any
              * @param [response] MsgCreateCdpResponse
              */
-            type CreateCdpCallback = (error: (Error|null), response?: botany.cdp.MsgCreateCdpResponse) => void;
+            type CreateCdpCallback = (error: (Error|null), response?: ununifi.cdp.MsgCreateCdpResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Msg#deposit}.
+             * Callback as used by {@link ununifi.cdp.Msg#deposit}.
              * @param error Error, if any
              * @param [response] MsgDepositResponse
              */
-            type DepositCallback = (error: (Error|null), response?: botany.cdp.MsgDepositResponse) => void;
+            type DepositCallback = (error: (Error|null), response?: ununifi.cdp.MsgDepositResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Msg#withdraw}.
+             * Callback as used by {@link ununifi.cdp.Msg#withdraw}.
              * @param error Error, if any
              * @param [response] MsgWithdrawResponse
              */
-            type WithdrawCallback = (error: (Error|null), response?: botany.cdp.MsgWithdrawResponse) => void;
+            type WithdrawCallback = (error: (Error|null), response?: ununifi.cdp.MsgWithdrawResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Msg#drawDebt}.
+             * Callback as used by {@link ununifi.cdp.Msg#drawDebt}.
              * @param error Error, if any
              * @param [response] MsgDrawDebtResponse
              */
-            type DrawDebtCallback = (error: (Error|null), response?: botany.cdp.MsgDrawDebtResponse) => void;
+            type DrawDebtCallback = (error: (Error|null), response?: ununifi.cdp.MsgDrawDebtResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Msg#repayDebt}.
+             * Callback as used by {@link ununifi.cdp.Msg#repayDebt}.
              * @param error Error, if any
              * @param [response] MsgRepayDebtResponse
              */
-            type RepayDebtCallback = (error: (Error|null), response?: botany.cdp.MsgRepayDebtResponse) => void;
+            type RepayDebtCallback = (error: (Error|null), response?: ununifi.cdp.MsgRepayDebtResponse) => void;
 
             /**
-             * Callback as used by {@link botany.cdp.Msg#liquidate}.
+             * Callback as used by {@link ununifi.cdp.Msg#liquidate}.
              * @param error Error, if any
              * @param [response] MsgLiquidateResponse
              */
-            type LiquidateCallback = (error: (Error|null), response?: botany.cdp.MsgLiquidateResponse) => void;
+            type LiquidateCallback = (error: (Error|null), response?: ununifi.cdp.MsgLiquidateResponse) => void;
         }
 
         /** Properties of a MsgCreateCdp. */
@@ -3958,7 +3298,7 @@ export namespace botany {
              * Constructs a new MsgCreateCdp.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgCreateCdp);
+            constructor(properties?: ununifi.cdp.IMsgCreateCdp);
 
             /** MsgCreateCdp sender. */
             public sender: string;
@@ -3973,20 +3313,20 @@ export namespace botany {
             public collateral_type: string;
 
             /**
-             * Encodes the specified MsgCreateCdp message. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
+             * Encodes the specified MsgCreateCdp message. Does not implicitly {@link ununifi.cdp.MsgCreateCdp.verify|verify} messages.
              * @param message MsgCreateCdp message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgCreateCdp, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgCreateCdp, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgCreateCdp message, length delimited. Does not implicitly {@link botany.cdp.MsgCreateCdp.verify|verify} messages.
+             * Encodes the specified MsgCreateCdp message, length delimited. Does not implicitly {@link ununifi.cdp.MsgCreateCdp.verify|verify} messages.
              * @param message MsgCreateCdp message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgCreateCdp, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgCreateCdp, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgCreateCdp message from the specified reader or buffer.
@@ -3996,7 +3336,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgCreateCdp;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgCreateCdp;
 
             /**
              * Decodes a MsgCreateCdp message from the specified reader or buffer, length delimited.
@@ -4005,7 +3345,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgCreateCdp;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgCreateCdp;
 
             /**
              * Verifies a MsgCreateCdp message.
@@ -4019,7 +3359,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgCreateCdp
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgCreateCdp;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgCreateCdp;
 
             /**
              * Creates a plain object from a MsgCreateCdp message. Also converts values to other types if specified.
@@ -4027,7 +3367,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgCreateCdp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgCreateCdp, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgCreateCdp to JSON.
@@ -4047,23 +3387,23 @@ export namespace botany {
              * Constructs a new MsgCreateCdpResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgCreateCdpResponse);
+            constructor(properties?: ununifi.cdp.IMsgCreateCdpResponse);
 
             /**
-             * Encodes the specified MsgCreateCdpResponse message. Does not implicitly {@link botany.cdp.MsgCreateCdpResponse.verify|verify} messages.
+             * Encodes the specified MsgCreateCdpResponse message. Does not implicitly {@link ununifi.cdp.MsgCreateCdpResponse.verify|verify} messages.
              * @param message MsgCreateCdpResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgCreateCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgCreateCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgCreateCdpResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgCreateCdpResponse.verify|verify} messages.
+             * Encodes the specified MsgCreateCdpResponse message, length delimited. Does not implicitly {@link ununifi.cdp.MsgCreateCdpResponse.verify|verify} messages.
              * @param message MsgCreateCdpResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgCreateCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgCreateCdpResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgCreateCdpResponse message from the specified reader or buffer.
@@ -4073,7 +3413,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgCreateCdpResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgCreateCdpResponse;
 
             /**
              * Decodes a MsgCreateCdpResponse message from the specified reader or buffer, length delimited.
@@ -4082,7 +3422,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgCreateCdpResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgCreateCdpResponse;
 
             /**
              * Verifies a MsgCreateCdpResponse message.
@@ -4096,7 +3436,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgCreateCdpResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgCreateCdpResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgCreateCdpResponse;
 
             /**
              * Creates a plain object from a MsgCreateCdpResponse message. Also converts values to other types if specified.
@@ -4104,7 +3444,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgCreateCdpResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgCreateCdpResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgCreateCdpResponse to JSON.
@@ -4136,7 +3476,7 @@ export namespace botany {
              * Constructs a new MsgDeposit.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgDeposit);
+            constructor(properties?: ununifi.cdp.IMsgDeposit);
 
             /** MsgDeposit depositor. */
             public depositor: string;
@@ -4151,20 +3491,20 @@ export namespace botany {
             public collateral_type: string;
 
             /**
-             * Encodes the specified MsgDeposit message. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
+             * Encodes the specified MsgDeposit message. Does not implicitly {@link ununifi.cdp.MsgDeposit.verify|verify} messages.
              * @param message MsgDeposit message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgDeposit message, length delimited. Does not implicitly {@link botany.cdp.MsgDeposit.verify|verify} messages.
+             * Encodes the specified MsgDeposit message, length delimited. Does not implicitly {@link ununifi.cdp.MsgDeposit.verify|verify} messages.
              * @param message MsgDeposit message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgDeposit, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgDeposit message from the specified reader or buffer.
@@ -4174,7 +3514,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDeposit;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgDeposit;
 
             /**
              * Decodes a MsgDeposit message from the specified reader or buffer, length delimited.
@@ -4183,7 +3523,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDeposit;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgDeposit;
 
             /**
              * Verifies a MsgDeposit message.
@@ -4197,7 +3537,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgDeposit
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDeposit;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgDeposit;
 
             /**
              * Creates a plain object from a MsgDeposit message. Also converts values to other types if specified.
@@ -4205,7 +3545,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgDeposit, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgDeposit, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgDeposit to JSON.
@@ -4225,23 +3565,23 @@ export namespace botany {
              * Constructs a new MsgDepositResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgDepositResponse);
+            constructor(properties?: ununifi.cdp.IMsgDepositResponse);
 
             /**
-             * Encodes the specified MsgDepositResponse message. Does not implicitly {@link botany.cdp.MsgDepositResponse.verify|verify} messages.
+             * Encodes the specified MsgDepositResponse message. Does not implicitly {@link ununifi.cdp.MsgDepositResponse.verify|verify} messages.
              * @param message MsgDepositResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgDepositResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgDepositResponse.verify|verify} messages.
+             * Encodes the specified MsgDepositResponse message, length delimited. Does not implicitly {@link ununifi.cdp.MsgDepositResponse.verify|verify} messages.
              * @param message MsgDepositResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgDepositResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgDepositResponse message from the specified reader or buffer.
@@ -4251,7 +3591,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDepositResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgDepositResponse;
 
             /**
              * Decodes a MsgDepositResponse message from the specified reader or buffer, length delimited.
@@ -4260,7 +3600,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDepositResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgDepositResponse;
 
             /**
              * Verifies a MsgDepositResponse message.
@@ -4274,7 +3614,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgDepositResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDepositResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgDepositResponse;
 
             /**
              * Creates a plain object from a MsgDepositResponse message. Also converts values to other types if specified.
@@ -4282,7 +3622,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgDepositResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgDepositResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgDepositResponse to JSON.
@@ -4314,7 +3654,7 @@ export namespace botany {
              * Constructs a new MsgWithdraw.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgWithdraw);
+            constructor(properties?: ununifi.cdp.IMsgWithdraw);
 
             /** MsgWithdraw depositor. */
             public depositor: string;
@@ -4329,20 +3669,20 @@ export namespace botany {
             public collateral_type: string;
 
             /**
-             * Encodes the specified MsgWithdraw message. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
+             * Encodes the specified MsgWithdraw message. Does not implicitly {@link ununifi.cdp.MsgWithdraw.verify|verify} messages.
              * @param message MsgWithdraw message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgWithdraw, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgWithdraw, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgWithdraw message, length delimited. Does not implicitly {@link botany.cdp.MsgWithdraw.verify|verify} messages.
+             * Encodes the specified MsgWithdraw message, length delimited. Does not implicitly {@link ununifi.cdp.MsgWithdraw.verify|verify} messages.
              * @param message MsgWithdraw message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgWithdraw, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgWithdraw, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgWithdraw message from the specified reader or buffer.
@@ -4352,7 +3692,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgWithdraw;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgWithdraw;
 
             /**
              * Decodes a MsgWithdraw message from the specified reader or buffer, length delimited.
@@ -4361,7 +3701,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgWithdraw;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgWithdraw;
 
             /**
              * Verifies a MsgWithdraw message.
@@ -4375,7 +3715,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgWithdraw
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgWithdraw;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgWithdraw;
 
             /**
              * Creates a plain object from a MsgWithdraw message. Also converts values to other types if specified.
@@ -4383,7 +3723,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgWithdraw, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgWithdraw, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgWithdraw to JSON.
@@ -4403,23 +3743,23 @@ export namespace botany {
              * Constructs a new MsgWithdrawResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgWithdrawResponse);
+            constructor(properties?: ununifi.cdp.IMsgWithdrawResponse);
 
             /**
-             * Encodes the specified MsgWithdrawResponse message. Does not implicitly {@link botany.cdp.MsgWithdrawResponse.verify|verify} messages.
+             * Encodes the specified MsgWithdrawResponse message. Does not implicitly {@link ununifi.cdp.MsgWithdrawResponse.verify|verify} messages.
              * @param message MsgWithdrawResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgWithdrawResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgWithdrawResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgWithdrawResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgWithdrawResponse.verify|verify} messages.
+             * Encodes the specified MsgWithdrawResponse message, length delimited. Does not implicitly {@link ununifi.cdp.MsgWithdrawResponse.verify|verify} messages.
              * @param message MsgWithdrawResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgWithdrawResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgWithdrawResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgWithdrawResponse message from the specified reader or buffer.
@@ -4429,7 +3769,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgWithdrawResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgWithdrawResponse;
 
             /**
              * Decodes a MsgWithdrawResponse message from the specified reader or buffer, length delimited.
@@ -4438,7 +3778,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgWithdrawResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgWithdrawResponse;
 
             /**
              * Verifies a MsgWithdrawResponse message.
@@ -4452,7 +3792,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgWithdrawResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgWithdrawResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgWithdrawResponse;
 
             /**
              * Creates a plain object from a MsgWithdrawResponse message. Also converts values to other types if specified.
@@ -4460,7 +3800,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgWithdrawResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgWithdrawResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgWithdrawResponse to JSON.
@@ -4489,7 +3829,7 @@ export namespace botany {
              * Constructs a new MsgDrawDebt.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgDrawDebt);
+            constructor(properties?: ununifi.cdp.IMsgDrawDebt);
 
             /** MsgDrawDebt sender. */
             public sender: string;
@@ -4501,20 +3841,20 @@ export namespace botany {
             public principal?: (cosmos.base.v1beta1.ICoin|null);
 
             /**
-             * Encodes the specified MsgDrawDebt message. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
+             * Encodes the specified MsgDrawDebt message. Does not implicitly {@link ununifi.cdp.MsgDrawDebt.verify|verify} messages.
              * @param message MsgDrawDebt message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgDrawDebt, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgDrawDebt, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgDrawDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgDrawDebt.verify|verify} messages.
+             * Encodes the specified MsgDrawDebt message, length delimited. Does not implicitly {@link ununifi.cdp.MsgDrawDebt.verify|verify} messages.
              * @param message MsgDrawDebt message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgDrawDebt, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgDrawDebt, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgDrawDebt message from the specified reader or buffer.
@@ -4524,7 +3864,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDrawDebt;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgDrawDebt;
 
             /**
              * Decodes a MsgDrawDebt message from the specified reader or buffer, length delimited.
@@ -4533,7 +3873,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDrawDebt;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgDrawDebt;
 
             /**
              * Verifies a MsgDrawDebt message.
@@ -4547,7 +3887,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgDrawDebt
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDrawDebt;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgDrawDebt;
 
             /**
              * Creates a plain object from a MsgDrawDebt message. Also converts values to other types if specified.
@@ -4555,7 +3895,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgDrawDebt, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgDrawDebt, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgDrawDebt to JSON.
@@ -4575,23 +3915,23 @@ export namespace botany {
              * Constructs a new MsgDrawDebtResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgDrawDebtResponse);
+            constructor(properties?: ununifi.cdp.IMsgDrawDebtResponse);
 
             /**
-             * Encodes the specified MsgDrawDebtResponse message. Does not implicitly {@link botany.cdp.MsgDrawDebtResponse.verify|verify} messages.
+             * Encodes the specified MsgDrawDebtResponse message. Does not implicitly {@link ununifi.cdp.MsgDrawDebtResponse.verify|verify} messages.
              * @param message MsgDrawDebtResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgDrawDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgDrawDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgDrawDebtResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgDrawDebtResponse.verify|verify} messages.
+             * Encodes the specified MsgDrawDebtResponse message, length delimited. Does not implicitly {@link ununifi.cdp.MsgDrawDebtResponse.verify|verify} messages.
              * @param message MsgDrawDebtResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgDrawDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgDrawDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgDrawDebtResponse message from the specified reader or buffer.
@@ -4601,7 +3941,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgDrawDebtResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgDrawDebtResponse;
 
             /**
              * Decodes a MsgDrawDebtResponse message from the specified reader or buffer, length delimited.
@@ -4610,7 +3950,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgDrawDebtResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgDrawDebtResponse;
 
             /**
              * Verifies a MsgDrawDebtResponse message.
@@ -4624,7 +3964,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgDrawDebtResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgDrawDebtResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgDrawDebtResponse;
 
             /**
              * Creates a plain object from a MsgDrawDebtResponse message. Also converts values to other types if specified.
@@ -4632,7 +3972,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgDrawDebtResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgDrawDebtResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgDrawDebtResponse to JSON.
@@ -4661,7 +4001,7 @@ export namespace botany {
              * Constructs a new MsgRepayDebt.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgRepayDebt);
+            constructor(properties?: ununifi.cdp.IMsgRepayDebt);
 
             /** MsgRepayDebt sender. */
             public sender: string;
@@ -4673,20 +4013,20 @@ export namespace botany {
             public payment?: (cosmos.base.v1beta1.ICoin|null);
 
             /**
-             * Encodes the specified MsgRepayDebt message. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
+             * Encodes the specified MsgRepayDebt message. Does not implicitly {@link ununifi.cdp.MsgRepayDebt.verify|verify} messages.
              * @param message MsgRepayDebt message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgRepayDebt, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgRepayDebt, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgRepayDebt message, length delimited. Does not implicitly {@link botany.cdp.MsgRepayDebt.verify|verify} messages.
+             * Encodes the specified MsgRepayDebt message, length delimited. Does not implicitly {@link ununifi.cdp.MsgRepayDebt.verify|verify} messages.
              * @param message MsgRepayDebt message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgRepayDebt, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgRepayDebt, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgRepayDebt message from the specified reader or buffer.
@@ -4696,7 +4036,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgRepayDebt;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgRepayDebt;
 
             /**
              * Decodes a MsgRepayDebt message from the specified reader or buffer, length delimited.
@@ -4705,7 +4045,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgRepayDebt;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgRepayDebt;
 
             /**
              * Verifies a MsgRepayDebt message.
@@ -4719,7 +4059,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgRepayDebt
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgRepayDebt;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgRepayDebt;
 
             /**
              * Creates a plain object from a MsgRepayDebt message. Also converts values to other types if specified.
@@ -4727,7 +4067,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgRepayDebt, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgRepayDebt, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgRepayDebt to JSON.
@@ -4747,23 +4087,23 @@ export namespace botany {
              * Constructs a new MsgRepayDebtResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgRepayDebtResponse);
+            constructor(properties?: ununifi.cdp.IMsgRepayDebtResponse);
 
             /**
-             * Encodes the specified MsgRepayDebtResponse message. Does not implicitly {@link botany.cdp.MsgRepayDebtResponse.verify|verify} messages.
+             * Encodes the specified MsgRepayDebtResponse message. Does not implicitly {@link ununifi.cdp.MsgRepayDebtResponse.verify|verify} messages.
              * @param message MsgRepayDebtResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgRepayDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgRepayDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgRepayDebtResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgRepayDebtResponse.verify|verify} messages.
+             * Encodes the specified MsgRepayDebtResponse message, length delimited. Does not implicitly {@link ununifi.cdp.MsgRepayDebtResponse.verify|verify} messages.
              * @param message MsgRepayDebtResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgRepayDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgRepayDebtResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgRepayDebtResponse message from the specified reader or buffer.
@@ -4773,7 +4113,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgRepayDebtResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgRepayDebtResponse;
 
             /**
              * Decodes a MsgRepayDebtResponse message from the specified reader or buffer, length delimited.
@@ -4782,7 +4122,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgRepayDebtResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgRepayDebtResponse;
 
             /**
              * Verifies a MsgRepayDebtResponse message.
@@ -4796,7 +4136,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgRepayDebtResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgRepayDebtResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgRepayDebtResponse;
 
             /**
              * Creates a plain object from a MsgRepayDebtResponse message. Also converts values to other types if specified.
@@ -4804,7 +4144,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgRepayDebtResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgRepayDebtResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgRepayDebtResponse to JSON.
@@ -4833,7 +4173,7 @@ export namespace botany {
              * Constructs a new MsgLiquidate.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgLiquidate);
+            constructor(properties?: ununifi.cdp.IMsgLiquidate);
 
             /** MsgLiquidate keeper. */
             public keeper: string;
@@ -4845,20 +4185,20 @@ export namespace botany {
             public collateral_type: string;
 
             /**
-             * Encodes the specified MsgLiquidate message. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
+             * Encodes the specified MsgLiquidate message. Does not implicitly {@link ununifi.cdp.MsgLiquidate.verify|verify} messages.
              * @param message MsgLiquidate message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgLiquidate, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgLiquidate, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgLiquidate message, length delimited. Does not implicitly {@link botany.cdp.MsgLiquidate.verify|verify} messages.
+             * Encodes the specified MsgLiquidate message, length delimited. Does not implicitly {@link ununifi.cdp.MsgLiquidate.verify|verify} messages.
              * @param message MsgLiquidate message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgLiquidate, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgLiquidate, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgLiquidate message from the specified reader or buffer.
@@ -4868,7 +4208,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgLiquidate;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgLiquidate;
 
             /**
              * Decodes a MsgLiquidate message from the specified reader or buffer, length delimited.
@@ -4877,7 +4217,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgLiquidate;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgLiquidate;
 
             /**
              * Verifies a MsgLiquidate message.
@@ -4891,7 +4231,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgLiquidate
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgLiquidate;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgLiquidate;
 
             /**
              * Creates a plain object from a MsgLiquidate message. Also converts values to other types if specified.
@@ -4899,7 +4239,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgLiquidate, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgLiquidate, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgLiquidate to JSON.
@@ -4919,23 +4259,23 @@ export namespace botany {
              * Constructs a new MsgLiquidateResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IMsgLiquidateResponse);
+            constructor(properties?: ununifi.cdp.IMsgLiquidateResponse);
 
             /**
-             * Encodes the specified MsgLiquidateResponse message. Does not implicitly {@link botany.cdp.MsgLiquidateResponse.verify|verify} messages.
+             * Encodes the specified MsgLiquidateResponse message. Does not implicitly {@link ununifi.cdp.MsgLiquidateResponse.verify|verify} messages.
              * @param message MsgLiquidateResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IMsgLiquidateResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IMsgLiquidateResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgLiquidateResponse message, length delimited. Does not implicitly {@link botany.cdp.MsgLiquidateResponse.verify|verify} messages.
+             * Encodes the specified MsgLiquidateResponse message, length delimited. Does not implicitly {@link ununifi.cdp.MsgLiquidateResponse.verify|verify} messages.
              * @param message MsgLiquidateResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IMsgLiquidateResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IMsgLiquidateResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgLiquidateResponse message from the specified reader or buffer.
@@ -4945,7 +4285,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.MsgLiquidateResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.MsgLiquidateResponse;
 
             /**
              * Decodes a MsgLiquidateResponse message from the specified reader or buffer, length delimited.
@@ -4954,7 +4294,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.MsgLiquidateResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.MsgLiquidateResponse;
 
             /**
              * Verifies a MsgLiquidateResponse message.
@@ -4968,7 +4308,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgLiquidateResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.MsgLiquidateResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.MsgLiquidateResponse;
 
             /**
              * Creates a plain object from a MsgLiquidateResponse message. Also converts values to other types if specified.
@@ -4976,7 +4316,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.MsgLiquidateResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.MsgLiquidateResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgLiquidateResponse to JSON.
@@ -4989,13 +4329,13 @@ export namespace botany {
         interface IGenesisState {
 
             /** GenesisState params */
-            params?: (botany.cdp.IParams|null);
+            params?: (ununifi.cdp.IParams|null);
 
             /** GenesisState cdps */
-            cdps?: (botany.cdp.ICdp[]|null);
+            cdps?: (ununifi.cdp.ICdp[]|null);
 
             /** GenesisState deposits */
-            deposits?: (botany.cdp.IDeposit[]|null);
+            deposits?: (ununifi.cdp.IDeposit[]|null);
 
             /** GenesisState starting_cdp_id */
             starting_cdp_id?: (Long|null);
@@ -5007,10 +4347,10 @@ export namespace botany {
             gov_denom?: (string|null);
 
             /** GenesisState previous_accumulation_times */
-            previous_accumulation_times?: (botany.cdp.IGenesisAccumulationTime[]|null);
+            previous_accumulation_times?: (ununifi.cdp.IGenesisAccumulationTime[]|null);
 
             /** GenesisState total_principals */
-            total_principals?: (botany.cdp.IGenesisTotalPrincipal[]|null);
+            total_principals?: (ununifi.cdp.IGenesisTotalPrincipal[]|null);
         }
 
         /** Represents a GenesisState. */
@@ -5020,16 +4360,16 @@ export namespace botany {
              * Constructs a new GenesisState.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IGenesisState);
+            constructor(properties?: ununifi.cdp.IGenesisState);
 
             /** GenesisState params. */
-            public params?: (botany.cdp.IParams|null);
+            public params?: (ununifi.cdp.IParams|null);
 
             /** GenesisState cdps. */
-            public cdps: botany.cdp.ICdp[];
+            public cdps: ununifi.cdp.ICdp[];
 
             /** GenesisState deposits. */
-            public deposits: botany.cdp.IDeposit[];
+            public deposits: ununifi.cdp.IDeposit[];
 
             /** GenesisState starting_cdp_id. */
             public starting_cdp_id: Long;
@@ -5041,26 +4381,26 @@ export namespace botany {
             public gov_denom: string;
 
             /** GenesisState previous_accumulation_times. */
-            public previous_accumulation_times: botany.cdp.IGenesisAccumulationTime[];
+            public previous_accumulation_times: ununifi.cdp.IGenesisAccumulationTime[];
 
             /** GenesisState total_principals. */
-            public total_principals: botany.cdp.IGenesisTotalPrincipal[];
+            public total_principals: ununifi.cdp.IGenesisTotalPrincipal[];
 
             /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link botany.cdp.GenesisState.verify|verify} messages.
+             * Encodes the specified GenesisState message. Does not implicitly {@link ununifi.cdp.GenesisState.verify|verify} messages.
              * @param message GenesisState message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link botany.cdp.GenesisState.verify|verify} messages.
+             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link ununifi.cdp.GenesisState.verify|verify} messages.
              * @param message GenesisState message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a GenesisState message from the specified reader or buffer.
@@ -5070,7 +4410,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.GenesisState;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.GenesisState;
 
             /**
              * Decodes a GenesisState message from the specified reader or buffer, length delimited.
@@ -5079,7 +4419,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.GenesisState;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.GenesisState;
 
             /**
              * Verifies a GenesisState message.
@@ -5093,7 +4433,7 @@ export namespace botany {
              * @param object Plain object
              * @returns GenesisState
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.GenesisState;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.GenesisState;
 
             /**
              * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
@@ -5101,7 +4441,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisState to JSON.
@@ -5130,7 +4470,7 @@ export namespace botany {
              * Constructs a new GenesisAccumulationTime.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IGenesisAccumulationTime);
+            constructor(properties?: ununifi.cdp.IGenesisAccumulationTime);
 
             /** GenesisAccumulationTime collateral_type. */
             public collateral_type: string;
@@ -5142,20 +4482,20 @@ export namespace botany {
             public interest_factor: string;
 
             /**
-             * Encodes the specified GenesisAccumulationTime message. Does not implicitly {@link botany.cdp.GenesisAccumulationTime.verify|verify} messages.
+             * Encodes the specified GenesisAccumulationTime message. Does not implicitly {@link ununifi.cdp.GenesisAccumulationTime.verify|verify} messages.
              * @param message GenesisAccumulationTime message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified GenesisAccumulationTime message, length delimited. Does not implicitly {@link botany.cdp.GenesisAccumulationTime.verify|verify} messages.
+             * Encodes the specified GenesisAccumulationTime message, length delimited. Does not implicitly {@link ununifi.cdp.GenesisAccumulationTime.verify|verify} messages.
              * @param message GenesisAccumulationTime message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a GenesisAccumulationTime message from the specified reader or buffer.
@@ -5165,7 +4505,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.GenesisAccumulationTime;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.GenesisAccumulationTime;
 
             /**
              * Decodes a GenesisAccumulationTime message from the specified reader or buffer, length delimited.
@@ -5174,7 +4514,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.GenesisAccumulationTime;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.GenesisAccumulationTime;
 
             /**
              * Verifies a GenesisAccumulationTime message.
@@ -5188,7 +4528,7 @@ export namespace botany {
              * @param object Plain object
              * @returns GenesisAccumulationTime
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.GenesisAccumulationTime;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.GenesisAccumulationTime;
 
             /**
              * Creates a plain object from a GenesisAccumulationTime message. Also converts values to other types if specified.
@@ -5196,7 +4536,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.GenesisAccumulationTime, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.GenesisAccumulationTime, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisAccumulationTime to JSON.
@@ -5222,7 +4562,7 @@ export namespace botany {
              * Constructs a new GenesisTotalPrincipal.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.cdp.IGenesisTotalPrincipal);
+            constructor(properties?: ununifi.cdp.IGenesisTotalPrincipal);
 
             /** GenesisTotalPrincipal collateral_type. */
             public collateral_type: string;
@@ -5231,20 +4571,20 @@ export namespace botany {
             public total_principal: string;
 
             /**
-             * Encodes the specified GenesisTotalPrincipal message. Does not implicitly {@link botany.cdp.GenesisTotalPrincipal.verify|verify} messages.
+             * Encodes the specified GenesisTotalPrincipal message. Does not implicitly {@link ununifi.cdp.GenesisTotalPrincipal.verify|verify} messages.
              * @param message GenesisTotalPrincipal message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.cdp.IGenesisTotalPrincipal, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.cdp.IGenesisTotalPrincipal, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified GenesisTotalPrincipal message, length delimited. Does not implicitly {@link botany.cdp.GenesisTotalPrincipal.verify|verify} messages.
+             * Encodes the specified GenesisTotalPrincipal message, length delimited. Does not implicitly {@link ununifi.cdp.GenesisTotalPrincipal.verify|verify} messages.
              * @param message GenesisTotalPrincipal message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.cdp.IGenesisTotalPrincipal, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.cdp.IGenesisTotalPrincipal, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a GenesisTotalPrincipal message from the specified reader or buffer.
@@ -5254,7 +4594,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.cdp.GenesisTotalPrincipal;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.cdp.GenesisTotalPrincipal;
 
             /**
              * Decodes a GenesisTotalPrincipal message from the specified reader or buffer, length delimited.
@@ -5263,7 +4603,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.cdp.GenesisTotalPrincipal;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.cdp.GenesisTotalPrincipal;
 
             /**
              * Verifies a GenesisTotalPrincipal message.
@@ -5277,7 +4617,7 @@ export namespace botany {
              * @param object Plain object
              * @returns GenesisTotalPrincipal
              */
-            public static fromObject(object: { [k: string]: any }): botany.cdp.GenesisTotalPrincipal;
+            public static fromObject(object: { [k: string]: any }): ununifi.cdp.GenesisTotalPrincipal;
 
             /**
              * Creates a plain object from a GenesisTotalPrincipal message. Also converts values to other types if specified.
@@ -5285,7 +4625,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.cdp.GenesisTotalPrincipal, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.cdp.GenesisTotalPrincipal, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisTotalPrincipal to JSON.
@@ -5314,24 +4654,24 @@ export namespace botany {
              * @param request QueryParamsRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
              */
-            public params(request: botany.incentive.IQueryParamsRequest, callback: botany.incentive.Query.ParamsCallback): void;
+            public params(request: ununifi.incentive.IQueryParamsRequest, callback: ununifi.incentive.Query.ParamsCallback): void;
 
             /**
              * Calls Params.
              * @param request QueryParamsRequest message or plain object
              * @returns Promise
              */
-            public params(request: botany.incentive.IQueryParamsRequest): Promise<botany.incentive.QueryParamsResponse>;
+            public params(request: ununifi.incentive.IQueryParamsRequest): Promise<ununifi.incentive.QueryParamsResponse>;
         }
 
         namespace Query {
 
             /**
-             * Callback as used by {@link botany.incentive.Query#params}.
+             * Callback as used by {@link ununifi.incentive.Query#params}.
              * @param error Error, if any
              * @param [response] QueryParamsResponse
              */
-            type ParamsCallback = (error: (Error|null), response?: botany.incentive.QueryParamsResponse) => void;
+            type ParamsCallback = (error: (Error|null), response?: ununifi.incentive.QueryParamsResponse) => void;
         }
 
         /** Properties of a QueryParamsRequest. */
@@ -5345,23 +4685,23 @@ export namespace botany {
              * Constructs a new QueryParamsRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IQueryParamsRequest);
+            constructor(properties?: ununifi.incentive.IQueryParamsRequest);
 
             /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link botany.incentive.QueryParamsRequest.verify|verify} messages.
+             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link ununifi.incentive.QueryParamsRequest.verify|verify} messages.
              * @param message QueryParamsRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link botany.incentive.QueryParamsRequest.verify|verify} messages.
+             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link ununifi.incentive.QueryParamsRequest.verify|verify} messages.
              * @param message QueryParamsRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryParamsRequest message from the specified reader or buffer.
@@ -5371,7 +4711,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.QueryParamsRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.QueryParamsRequest;
 
             /**
              * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
@@ -5380,7 +4720,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.QueryParamsRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.QueryParamsRequest;
 
             /**
              * Verifies a QueryParamsRequest message.
@@ -5394,7 +4734,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryParamsRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.QueryParamsRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.QueryParamsRequest;
 
             /**
              * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
@@ -5402,7 +4742,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryParamsRequest to JSON.
@@ -5415,7 +4755,7 @@ export namespace botany {
         interface IQueryParamsResponse {
 
             /** QueryParamsResponse params */
-            params?: (botany.incentive.IParams|null);
+            params?: (ununifi.incentive.IParams|null);
         }
 
         /** Represents a QueryParamsResponse. */
@@ -5425,26 +4765,26 @@ export namespace botany {
              * Constructs a new QueryParamsResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IQueryParamsResponse);
+            constructor(properties?: ununifi.incentive.IQueryParamsResponse);
 
             /** QueryParamsResponse params. */
-            public params?: (botany.incentive.IParams|null);
+            public params?: (ununifi.incentive.IParams|null);
 
             /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link botany.incentive.QueryParamsResponse.verify|verify} messages.
+             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link ununifi.incentive.QueryParamsResponse.verify|verify} messages.
              * @param message QueryParamsResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link botany.incentive.QueryParamsResponse.verify|verify} messages.
+             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link ununifi.incentive.QueryParamsResponse.verify|verify} messages.
              * @param message QueryParamsResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryParamsResponse message from the specified reader or buffer.
@@ -5454,7 +4794,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.QueryParamsResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.QueryParamsResponse;
 
             /**
              * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
@@ -5463,7 +4803,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.QueryParamsResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.QueryParamsResponse;
 
             /**
              * Verifies a QueryParamsResponse message.
@@ -5477,7 +4817,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryParamsResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.QueryParamsResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.QueryParamsResponse;
 
             /**
              * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
@@ -5485,7 +4825,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryParamsResponse to JSON.
@@ -5511,7 +4851,7 @@ export namespace botany {
              * Constructs a new BaseClaim.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IBaseClaim);
+            constructor(properties?: ununifi.incentive.IBaseClaim);
 
             /** BaseClaim owner. */
             public owner: string;
@@ -5520,20 +4860,20 @@ export namespace botany {
             public reward?: (cosmos.base.v1beta1.ICoin|null);
 
             /**
-             * Encodes the specified BaseClaim message. Does not implicitly {@link botany.incentive.BaseClaim.verify|verify} messages.
+             * Encodes the specified BaseClaim message. Does not implicitly {@link ununifi.incentive.BaseClaim.verify|verify} messages.
              * @param message BaseClaim message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified BaseClaim message, length delimited. Does not implicitly {@link botany.incentive.BaseClaim.verify|verify} messages.
+             * Encodes the specified BaseClaim message, length delimited. Does not implicitly {@link ununifi.incentive.BaseClaim.verify|verify} messages.
              * @param message BaseClaim message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IBaseClaim, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a BaseClaim message from the specified reader or buffer.
@@ -5543,7 +4883,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.BaseClaim;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.BaseClaim;
 
             /**
              * Decodes a BaseClaim message from the specified reader or buffer, length delimited.
@@ -5552,7 +4892,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.BaseClaim;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.BaseClaim;
 
             /**
              * Verifies a BaseClaim message.
@@ -5566,7 +4906,7 @@ export namespace botany {
              * @param object Plain object
              * @returns BaseClaim
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.BaseClaim;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.BaseClaim;
 
             /**
              * Creates a plain object from a BaseClaim message. Also converts values to other types if specified.
@@ -5574,7 +4914,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.BaseClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.BaseClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this BaseClaim to JSON.
@@ -5600,7 +4940,7 @@ export namespace botany {
              * Constructs a new BaseMultiClaim.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IBaseMultiClaim);
+            constructor(properties?: ununifi.incentive.IBaseMultiClaim);
 
             /** BaseMultiClaim owner. */
             public owner: string;
@@ -5609,20 +4949,20 @@ export namespace botany {
             public reward: cosmos.base.v1beta1.ICoin[];
 
             /**
-             * Encodes the specified BaseMultiClaim message. Does not implicitly {@link botany.incentive.BaseMultiClaim.verify|verify} messages.
+             * Encodes the specified BaseMultiClaim message. Does not implicitly {@link ununifi.incentive.BaseMultiClaim.verify|verify} messages.
              * @param message BaseMultiClaim message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified BaseMultiClaim message, length delimited. Does not implicitly {@link botany.incentive.BaseMultiClaim.verify|verify} messages.
+             * Encodes the specified BaseMultiClaim message, length delimited. Does not implicitly {@link ununifi.incentive.BaseMultiClaim.verify|verify} messages.
              * @param message BaseMultiClaim message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IBaseMultiClaim, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a BaseMultiClaim message from the specified reader or buffer.
@@ -5632,7 +4972,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.BaseMultiClaim;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.BaseMultiClaim;
 
             /**
              * Decodes a BaseMultiClaim message from the specified reader or buffer, length delimited.
@@ -5641,7 +4981,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.BaseMultiClaim;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.BaseMultiClaim;
 
             /**
              * Verifies a BaseMultiClaim message.
@@ -5655,7 +4995,7 @@ export namespace botany {
              * @param object Plain object
              * @returns BaseMultiClaim
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.BaseMultiClaim;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.BaseMultiClaim;
 
             /**
              * Creates a plain object from a BaseMultiClaim message. Also converts values to other types if specified.
@@ -5663,7 +5003,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.BaseMultiClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.BaseMultiClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this BaseMultiClaim to JSON.
@@ -5676,10 +5016,10 @@ export namespace botany {
         interface ICdpMintingClaim {
 
             /** CdpMintingClaim base_claim */
-            base_claim?: (botany.incentive.IBaseClaim|null);
+            base_claim?: (ununifi.incentive.IBaseClaim|null);
 
             /** CdpMintingClaim reward_indexes */
-            reward_indexes?: (botany.incentive.IRewardIndex[]|null);
+            reward_indexes?: (ununifi.incentive.IRewardIndex[]|null);
         }
 
         /** Represents a CdpMintingClaim. */
@@ -5689,29 +5029,29 @@ export namespace botany {
              * Constructs a new CdpMintingClaim.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.ICdpMintingClaim);
+            constructor(properties?: ununifi.incentive.ICdpMintingClaim);
 
             /** CdpMintingClaim base_claim. */
-            public base_claim?: (botany.incentive.IBaseClaim|null);
+            public base_claim?: (ununifi.incentive.IBaseClaim|null);
 
             /** CdpMintingClaim reward_indexes. */
-            public reward_indexes: botany.incentive.IRewardIndex[];
+            public reward_indexes: ununifi.incentive.IRewardIndex[];
 
             /**
-             * Encodes the specified CdpMintingClaim message. Does not implicitly {@link botany.incentive.CdpMintingClaim.verify|verify} messages.
+             * Encodes the specified CdpMintingClaim message. Does not implicitly {@link ununifi.incentive.CdpMintingClaim.verify|verify} messages.
              * @param message CdpMintingClaim message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.ICdpMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.ICdpMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified CdpMintingClaim message, length delimited. Does not implicitly {@link botany.incentive.CdpMintingClaim.verify|verify} messages.
+             * Encodes the specified CdpMintingClaim message, length delimited. Does not implicitly {@link ununifi.incentive.CdpMintingClaim.verify|verify} messages.
              * @param message CdpMintingClaim message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.ICdpMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.ICdpMintingClaim, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a CdpMintingClaim message from the specified reader or buffer.
@@ -5721,7 +5061,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.CdpMintingClaim;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.CdpMintingClaim;
 
             /**
              * Decodes a CdpMintingClaim message from the specified reader or buffer, length delimited.
@@ -5730,7 +5070,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.CdpMintingClaim;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.CdpMintingClaim;
 
             /**
              * Verifies a CdpMintingClaim message.
@@ -5744,7 +5084,7 @@ export namespace botany {
              * @param object Plain object
              * @returns CdpMintingClaim
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.CdpMintingClaim;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.CdpMintingClaim;
 
             /**
              * Creates a plain object from a CdpMintingClaim message. Also converts values to other types if specified.
@@ -5752,7 +5092,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.CdpMintingClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.CdpMintingClaim, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this CdpMintingClaim to JSON.
@@ -5778,7 +5118,7 @@ export namespace botany {
              * Constructs a new RewardIndex.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IRewardIndex);
+            constructor(properties?: ununifi.incentive.IRewardIndex);
 
             /** RewardIndex collateral_type. */
             public collateral_type: string;
@@ -5787,20 +5127,20 @@ export namespace botany {
             public reward_factor: string;
 
             /**
-             * Encodes the specified RewardIndex message. Does not implicitly {@link botany.incentive.RewardIndex.verify|verify} messages.
+             * Encodes the specified RewardIndex message. Does not implicitly {@link ununifi.incentive.RewardIndex.verify|verify} messages.
              * @param message RewardIndex message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified RewardIndex message, length delimited. Does not implicitly {@link botany.incentive.RewardIndex.verify|verify} messages.
+             * Encodes the specified RewardIndex message, length delimited. Does not implicitly {@link ununifi.incentive.RewardIndex.verify|verify} messages.
              * @param message RewardIndex message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IRewardIndex, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a RewardIndex message from the specified reader or buffer.
@@ -5810,7 +5150,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.RewardIndex;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.RewardIndex;
 
             /**
              * Decodes a RewardIndex message from the specified reader or buffer, length delimited.
@@ -5819,7 +5159,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.RewardIndex;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.RewardIndex;
 
             /**
              * Verifies a RewardIndex message.
@@ -5833,7 +5173,7 @@ export namespace botany {
              * @param object Plain object
              * @returns RewardIndex
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.RewardIndex;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.RewardIndex;
 
             /**
              * Creates a plain object from a RewardIndex message. Also converts values to other types if specified.
@@ -5841,7 +5181,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.RewardIndex, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.RewardIndex, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this RewardIndex to JSON.
@@ -5854,10 +5194,10 @@ export namespace botany {
         interface IParams {
 
             /** Params cdp_minting_reward_periods */
-            cdp_minting_reward_periods?: (botany.incentive.IRewardPeriod[]|null);
+            cdp_minting_reward_periods?: (ununifi.incentive.IRewardPeriod[]|null);
 
             /** Params claim_multipliers */
-            claim_multipliers?: (botany.incentive.IMultiplier[]|null);
+            claim_multipliers?: (ununifi.incentive.IMultiplier[]|null);
 
             /** Params claim_end */
             claim_end?: (google.protobuf.ITimestamp|null);
@@ -5870,32 +5210,32 @@ export namespace botany {
              * Constructs a new Params.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IParams);
+            constructor(properties?: ununifi.incentive.IParams);
 
             /** Params cdp_minting_reward_periods. */
-            public cdp_minting_reward_periods: botany.incentive.IRewardPeriod[];
+            public cdp_minting_reward_periods: ununifi.incentive.IRewardPeriod[];
 
             /** Params claim_multipliers. */
-            public claim_multipliers: botany.incentive.IMultiplier[];
+            public claim_multipliers: ununifi.incentive.IMultiplier[];
 
             /** Params claim_end. */
             public claim_end?: (google.protobuf.ITimestamp|null);
 
             /**
-             * Encodes the specified Params message. Does not implicitly {@link botany.incentive.Params.verify|verify} messages.
+             * Encodes the specified Params message. Does not implicitly {@link ununifi.incentive.Params.verify|verify} messages.
              * @param message Params message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.incentive.Params.verify|verify} messages.
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link ununifi.incentive.Params.verify|verify} messages.
              * @param message Params message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a Params message from the specified reader or buffer.
@@ -5905,7 +5245,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.Params;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.Params;
 
             /**
              * Decodes a Params message from the specified reader or buffer, length delimited.
@@ -5914,7 +5254,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.Params;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.Params;
 
             /**
              * Verifies a Params message.
@@ -5928,7 +5268,7 @@ export namespace botany {
              * @param object Plain object
              * @returns Params
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.Params;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.Params;
 
             /**
              * Creates a plain object from a Params message. Also converts values to other types if specified.
@@ -5936,7 +5276,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this Params to JSON.
@@ -5971,7 +5311,7 @@ export namespace botany {
              * Constructs a new RewardPeriod.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IRewardPeriod);
+            constructor(properties?: ununifi.incentive.IRewardPeriod);
 
             /** RewardPeriod active. */
             public active: boolean;
@@ -5989,20 +5329,20 @@ export namespace botany {
             public rewards_per_second?: (cosmos.base.v1beta1.ICoin|null);
 
             /**
-             * Encodes the specified RewardPeriod message. Does not implicitly {@link botany.incentive.RewardPeriod.verify|verify} messages.
+             * Encodes the specified RewardPeriod message. Does not implicitly {@link ununifi.incentive.RewardPeriod.verify|verify} messages.
              * @param message RewardPeriod message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified RewardPeriod message, length delimited. Does not implicitly {@link botany.incentive.RewardPeriod.verify|verify} messages.
+             * Encodes the specified RewardPeriod message, length delimited. Does not implicitly {@link ununifi.incentive.RewardPeriod.verify|verify} messages.
              * @param message RewardPeriod message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IRewardPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a RewardPeriod message from the specified reader or buffer.
@@ -6012,7 +5352,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.RewardPeriod;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.RewardPeriod;
 
             /**
              * Decodes a RewardPeriod message from the specified reader or buffer, length delimited.
@@ -6021,7 +5361,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.RewardPeriod;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.RewardPeriod;
 
             /**
              * Verifies a RewardPeriod message.
@@ -6035,7 +5375,7 @@ export namespace botany {
              * @param object Plain object
              * @returns RewardPeriod
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.RewardPeriod;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.RewardPeriod;
 
             /**
              * Creates a plain object from a RewardPeriod message. Also converts values to other types if specified.
@@ -6043,7 +5383,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.RewardPeriod, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.RewardPeriod, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this RewardPeriod to JSON.
@@ -6072,7 +5412,7 @@ export namespace botany {
              * Constructs a new Multiplier.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IMultiplier);
+            constructor(properties?: ununifi.incentive.IMultiplier);
 
             /** Multiplier name. */
             public name: string;
@@ -6084,20 +5424,20 @@ export namespace botany {
             public factor: string;
 
             /**
-             * Encodes the specified Multiplier message. Does not implicitly {@link botany.incentive.Multiplier.verify|verify} messages.
+             * Encodes the specified Multiplier message. Does not implicitly {@link ununifi.incentive.Multiplier.verify|verify} messages.
              * @param message Multiplier message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Multiplier message, length delimited. Does not implicitly {@link botany.incentive.Multiplier.verify|verify} messages.
+             * Encodes the specified Multiplier message, length delimited. Does not implicitly {@link ununifi.incentive.Multiplier.verify|verify} messages.
              * @param message Multiplier message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IMultiplier, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a Multiplier message from the specified reader or buffer.
@@ -6107,7 +5447,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.Multiplier;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.Multiplier;
 
             /**
              * Decodes a Multiplier message from the specified reader or buffer, length delimited.
@@ -6116,7 +5456,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.Multiplier;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.Multiplier;
 
             /**
              * Verifies a Multiplier message.
@@ -6130,7 +5470,7 @@ export namespace botany {
              * @param object Plain object
              * @returns Multiplier
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.Multiplier;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.Multiplier;
 
             /**
              * Creates a plain object from a Multiplier message. Also converts values to other types if specified.
@@ -6138,7 +5478,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.Multiplier, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.Multiplier, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this Multiplier to JSON.
@@ -6163,24 +5503,24 @@ export namespace botany {
              * @param request MsgClaimCdpMintingReward message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgClaimCdpMintingRewardResponse
              */
-            public claimCdpMintingReward(request: botany.incentive.IMsgClaimCdpMintingReward, callback: botany.incentive.Msg.ClaimCdpMintingRewardCallback): void;
+            public claimCdpMintingReward(request: ununifi.incentive.IMsgClaimCdpMintingReward, callback: ununifi.incentive.Msg.ClaimCdpMintingRewardCallback): void;
 
             /**
              * Calls ClaimCdpMintingReward.
              * @param request MsgClaimCdpMintingReward message or plain object
              * @returns Promise
              */
-            public claimCdpMintingReward(request: botany.incentive.IMsgClaimCdpMintingReward): Promise<botany.incentive.MsgClaimCdpMintingRewardResponse>;
+            public claimCdpMintingReward(request: ununifi.incentive.IMsgClaimCdpMintingReward): Promise<ununifi.incentive.MsgClaimCdpMintingRewardResponse>;
         }
 
         namespace Msg {
 
             /**
-             * Callback as used by {@link botany.incentive.Msg#claimCdpMintingReward}.
+             * Callback as used by {@link ununifi.incentive.Msg#claimCdpMintingReward}.
              * @param error Error, if any
              * @param [response] MsgClaimCdpMintingRewardResponse
              */
-            type ClaimCdpMintingRewardCallback = (error: (Error|null), response?: botany.incentive.MsgClaimCdpMintingRewardResponse) => void;
+            type ClaimCdpMintingRewardCallback = (error: (Error|null), response?: ununifi.incentive.MsgClaimCdpMintingRewardResponse) => void;
         }
 
         /** Properties of a MsgClaimCdpMintingReward. */
@@ -6200,7 +5540,7 @@ export namespace botany {
              * Constructs a new MsgClaimCdpMintingReward.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IMsgClaimCdpMintingReward);
+            constructor(properties?: ununifi.incentive.IMsgClaimCdpMintingReward);
 
             /** MsgClaimCdpMintingReward sender. */
             public sender: string;
@@ -6209,20 +5549,20 @@ export namespace botany {
             public multiplier_name: string;
 
             /**
-             * Encodes the specified MsgClaimCdpMintingReward message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
+             * Encodes the specified MsgClaimCdpMintingReward message. Does not implicitly {@link ununifi.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
              * @param message MsgClaimCdpMintingReward message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgClaimCdpMintingReward message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
+             * Encodes the specified MsgClaimCdpMintingReward message, length delimited. Does not implicitly {@link ununifi.incentive.MsgClaimCdpMintingReward.verify|verify} messages.
              * @param message MsgClaimCdpMintingReward message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IMsgClaimCdpMintingReward, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer.
@@ -6232,7 +5572,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.MsgClaimCdpMintingReward;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.MsgClaimCdpMintingReward;
 
             /**
              * Decodes a MsgClaimCdpMintingReward message from the specified reader or buffer, length delimited.
@@ -6241,7 +5581,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.MsgClaimCdpMintingReward;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.MsgClaimCdpMintingReward;
 
             /**
              * Verifies a MsgClaimCdpMintingReward message.
@@ -6255,7 +5595,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgClaimCdpMintingReward
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.MsgClaimCdpMintingReward;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.MsgClaimCdpMintingReward;
 
             /**
              * Creates a plain object from a MsgClaimCdpMintingReward message. Also converts values to other types if specified.
@@ -6263,7 +5603,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.MsgClaimCdpMintingReward, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.MsgClaimCdpMintingReward, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgClaimCdpMintingReward to JSON.
@@ -6283,23 +5623,23 @@ export namespace botany {
              * Constructs a new MsgClaimCdpMintingRewardResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IMsgClaimCdpMintingRewardResponse);
+            constructor(properties?: ununifi.incentive.IMsgClaimCdpMintingRewardResponse);
 
             /**
-             * Encodes the specified MsgClaimCdpMintingRewardResponse message. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingRewardResponse.verify|verify} messages.
+             * Encodes the specified MsgClaimCdpMintingRewardResponse message. Does not implicitly {@link ununifi.incentive.MsgClaimCdpMintingRewardResponse.verify|verify} messages.
              * @param message MsgClaimCdpMintingRewardResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IMsgClaimCdpMintingRewardResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IMsgClaimCdpMintingRewardResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgClaimCdpMintingRewardResponse message, length delimited. Does not implicitly {@link botany.incentive.MsgClaimCdpMintingRewardResponse.verify|verify} messages.
+             * Encodes the specified MsgClaimCdpMintingRewardResponse message, length delimited. Does not implicitly {@link ununifi.incentive.MsgClaimCdpMintingRewardResponse.verify|verify} messages.
              * @param message MsgClaimCdpMintingRewardResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IMsgClaimCdpMintingRewardResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IMsgClaimCdpMintingRewardResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgClaimCdpMintingRewardResponse message from the specified reader or buffer.
@@ -6309,7 +5649,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.MsgClaimCdpMintingRewardResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.MsgClaimCdpMintingRewardResponse;
 
             /**
              * Decodes a MsgClaimCdpMintingRewardResponse message from the specified reader or buffer, length delimited.
@@ -6318,7 +5658,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.MsgClaimCdpMintingRewardResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.MsgClaimCdpMintingRewardResponse;
 
             /**
              * Verifies a MsgClaimCdpMintingRewardResponse message.
@@ -6332,7 +5672,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgClaimCdpMintingRewardResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.MsgClaimCdpMintingRewardResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.MsgClaimCdpMintingRewardResponse;
 
             /**
              * Creates a plain object from a MsgClaimCdpMintingRewardResponse message. Also converts values to other types if specified.
@@ -6340,7 +5680,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.MsgClaimCdpMintingRewardResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.MsgClaimCdpMintingRewardResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgClaimCdpMintingRewardResponse to JSON.
@@ -6353,16 +5693,16 @@ export namespace botany {
         interface IGenesisState {
 
             /** GenesisState params */
-            params?: (botany.incentive.IParams|null);
+            params?: (ununifi.incentive.IParams|null);
 
             /** GenesisState cdp_accumulation_times */
-            cdp_accumulation_times?: (botany.incentive.IGenesisAccumulationTime[]|null);
+            cdp_accumulation_times?: (ununifi.incentive.IGenesisAccumulationTime[]|null);
 
             /** GenesisState cdp_minting_claims */
-            cdp_minting_claims?: (botany.incentive.ICdpMintingClaim[]|null);
+            cdp_minting_claims?: (ununifi.incentive.ICdpMintingClaim[]|null);
 
             /** GenesisState denoms */
-            denoms?: (botany.incentive.IGenesisDenoms|null);
+            denoms?: (ununifi.incentive.IGenesisDenoms|null);
         }
 
         /** Represents a GenesisState. */
@@ -6372,35 +5712,35 @@ export namespace botany {
              * Constructs a new GenesisState.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IGenesisState);
+            constructor(properties?: ununifi.incentive.IGenesisState);
 
             /** GenesisState params. */
-            public params?: (botany.incentive.IParams|null);
+            public params?: (ununifi.incentive.IParams|null);
 
             /** GenesisState cdp_accumulation_times. */
-            public cdp_accumulation_times: botany.incentive.IGenesisAccumulationTime[];
+            public cdp_accumulation_times: ununifi.incentive.IGenesisAccumulationTime[];
 
             /** GenesisState cdp_minting_claims. */
-            public cdp_minting_claims: botany.incentive.ICdpMintingClaim[];
+            public cdp_minting_claims: ununifi.incentive.ICdpMintingClaim[];
 
             /** GenesisState denoms. */
-            public denoms?: (botany.incentive.IGenesisDenoms|null);
+            public denoms?: (ununifi.incentive.IGenesisDenoms|null);
 
             /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link botany.incentive.GenesisState.verify|verify} messages.
+             * Encodes the specified GenesisState message. Does not implicitly {@link ununifi.incentive.GenesisState.verify|verify} messages.
              * @param message GenesisState message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link botany.incentive.GenesisState.verify|verify} messages.
+             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link ununifi.incentive.GenesisState.verify|verify} messages.
              * @param message GenesisState message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a GenesisState message from the specified reader or buffer.
@@ -6410,7 +5750,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.GenesisState;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.GenesisState;
 
             /**
              * Decodes a GenesisState message from the specified reader or buffer, length delimited.
@@ -6419,7 +5759,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.GenesisState;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.GenesisState;
 
             /**
              * Verifies a GenesisState message.
@@ -6433,7 +5773,7 @@ export namespace botany {
              * @param object Plain object
              * @returns GenesisState
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.GenesisState;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.GenesisState;
 
             /**
              * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
@@ -6441,7 +5781,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisState to JSON.
@@ -6467,7 +5807,7 @@ export namespace botany {
              * Constructs a new GenesisAccumulationTime.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IGenesisAccumulationTime);
+            constructor(properties?: ununifi.incentive.IGenesisAccumulationTime);
 
             /** GenesisAccumulationTime collateral_type. */
             public collateral_type: string;
@@ -6476,20 +5816,20 @@ export namespace botany {
             public previous_accumulation_time?: (google.protobuf.ITimestamp|null);
 
             /**
-             * Encodes the specified GenesisAccumulationTime message. Does not implicitly {@link botany.incentive.GenesisAccumulationTime.verify|verify} messages.
+             * Encodes the specified GenesisAccumulationTime message. Does not implicitly {@link ununifi.incentive.GenesisAccumulationTime.verify|verify} messages.
              * @param message GenesisAccumulationTime message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified GenesisAccumulationTime message, length delimited. Does not implicitly {@link botany.incentive.GenesisAccumulationTime.verify|verify} messages.
+             * Encodes the specified GenesisAccumulationTime message, length delimited. Does not implicitly {@link ununifi.incentive.GenesisAccumulationTime.verify|verify} messages.
              * @param message GenesisAccumulationTime message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IGenesisAccumulationTime, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a GenesisAccumulationTime message from the specified reader or buffer.
@@ -6499,7 +5839,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.GenesisAccumulationTime;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.GenesisAccumulationTime;
 
             /**
              * Decodes a GenesisAccumulationTime message from the specified reader or buffer, length delimited.
@@ -6508,7 +5848,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.GenesisAccumulationTime;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.GenesisAccumulationTime;
 
             /**
              * Verifies a GenesisAccumulationTime message.
@@ -6522,7 +5862,7 @@ export namespace botany {
              * @param object Plain object
              * @returns GenesisAccumulationTime
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.GenesisAccumulationTime;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.GenesisAccumulationTime;
 
             /**
              * Creates a plain object from a GenesisAccumulationTime message. Also converts values to other types if specified.
@@ -6530,7 +5870,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.GenesisAccumulationTime, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.GenesisAccumulationTime, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisAccumulationTime to JSON.
@@ -6556,7 +5896,7 @@ export namespace botany {
              * Constructs a new GenesisDenoms.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.incentive.IGenesisDenoms);
+            constructor(properties?: ununifi.incentive.IGenesisDenoms);
 
             /** GenesisDenoms principal_denom. */
             public principal_denom: string;
@@ -6565,20 +5905,20 @@ export namespace botany {
             public cdp_minting_reward_denom: string;
 
             /**
-             * Encodes the specified GenesisDenoms message. Does not implicitly {@link botany.incentive.GenesisDenoms.verify|verify} messages.
+             * Encodes the specified GenesisDenoms message. Does not implicitly {@link ununifi.incentive.GenesisDenoms.verify|verify} messages.
              * @param message GenesisDenoms message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.incentive.IGenesisDenoms, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.incentive.IGenesisDenoms, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified GenesisDenoms message, length delimited. Does not implicitly {@link botany.incentive.GenesisDenoms.verify|verify} messages.
+             * Encodes the specified GenesisDenoms message, length delimited. Does not implicitly {@link ununifi.incentive.GenesisDenoms.verify|verify} messages.
              * @param message GenesisDenoms message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.incentive.IGenesisDenoms, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.incentive.IGenesisDenoms, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a GenesisDenoms message from the specified reader or buffer.
@@ -6588,7 +5928,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.incentive.GenesisDenoms;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.incentive.GenesisDenoms;
 
             /**
              * Decodes a GenesisDenoms message from the specified reader or buffer, length delimited.
@@ -6597,7 +5937,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.incentive.GenesisDenoms;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.incentive.GenesisDenoms;
 
             /**
              * Verifies a GenesisDenoms message.
@@ -6611,7 +5951,7 @@ export namespace botany {
              * @param object Plain object
              * @returns GenesisDenoms
              */
-            public static fromObject(object: { [k: string]: any }): botany.incentive.GenesisDenoms;
+            public static fromObject(object: { [k: string]: any }): ununifi.incentive.GenesisDenoms;
 
             /**
              * Creates a plain object from a GenesisDenoms message. Also converts values to other types if specified.
@@ -6619,7 +5959,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.incentive.GenesisDenoms, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.incentive.GenesisDenoms, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisDenoms to JSON.
@@ -6648,129 +5988,129 @@ export namespace botany {
              * @param request QueryParamsRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
              */
-            public params(request: botany.pricefeed.IQueryParamsRequest, callback: botany.pricefeed.Query.ParamsCallback): void;
+            public params(request: ununifi.pricefeed.IQueryParamsRequest, callback: ununifi.pricefeed.Query.ParamsCallback): void;
 
             /**
              * Calls Params.
              * @param request QueryParamsRequest message or plain object
              * @returns Promise
              */
-            public params(request: botany.pricefeed.IQueryParamsRequest): Promise<botany.pricefeed.QueryParamsResponse>;
+            public params(request: ununifi.pricefeed.IQueryParamsRequest): Promise<ununifi.pricefeed.QueryParamsResponse>;
 
             /**
              * Calls MarketAll.
              * @param request QueryAllMarketRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryAllMarketResponse
              */
-            public marketAll(request: botany.pricefeed.IQueryAllMarketRequest, callback: botany.pricefeed.Query.MarketAllCallback): void;
+            public marketAll(request: ununifi.pricefeed.IQueryAllMarketRequest, callback: ununifi.pricefeed.Query.MarketAllCallback): void;
 
             /**
              * Calls MarketAll.
              * @param request QueryAllMarketRequest message or plain object
              * @returns Promise
              */
-            public marketAll(request: botany.pricefeed.IQueryAllMarketRequest): Promise<botany.pricefeed.QueryAllMarketResponse>;
+            public marketAll(request: ununifi.pricefeed.IQueryAllMarketRequest): Promise<ununifi.pricefeed.QueryAllMarketResponse>;
 
             /**
              * Calls OracleAll.
              * @param request QueryAllOracleRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryAllOracleResponse
              */
-            public oracleAll(request: botany.pricefeed.IQueryAllOracleRequest, callback: botany.pricefeed.Query.OracleAllCallback): void;
+            public oracleAll(request: ununifi.pricefeed.IQueryAllOracleRequest, callback: ununifi.pricefeed.Query.OracleAllCallback): void;
 
             /**
              * Calls OracleAll.
              * @param request QueryAllOracleRequest message or plain object
              * @returns Promise
              */
-            public oracleAll(request: botany.pricefeed.IQueryAllOracleRequest): Promise<botany.pricefeed.QueryAllOracleResponse>;
+            public oracleAll(request: ununifi.pricefeed.IQueryAllOracleRequest): Promise<ununifi.pricefeed.QueryAllOracleResponse>;
 
             /**
              * Calls Price.
              * @param request QueryGetPriceRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryGetPriceResponse
              */
-            public price(request: botany.pricefeed.IQueryGetPriceRequest, callback: botany.pricefeed.Query.PriceCallback): void;
+            public price(request: ununifi.pricefeed.IQueryGetPriceRequest, callback: ununifi.pricefeed.Query.PriceCallback): void;
 
             /**
              * Calls Price.
              * @param request QueryGetPriceRequest message or plain object
              * @returns Promise
              */
-            public price(request: botany.pricefeed.IQueryGetPriceRequest): Promise<botany.pricefeed.QueryGetPriceResponse>;
+            public price(request: ununifi.pricefeed.IQueryGetPriceRequest): Promise<ununifi.pricefeed.QueryGetPriceResponse>;
 
             /**
              * Calls PriceAll.
              * @param request QueryAllPriceRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryAllPriceResponse
              */
-            public priceAll(request: botany.pricefeed.IQueryAllPriceRequest, callback: botany.pricefeed.Query.PriceAllCallback): void;
+            public priceAll(request: ununifi.pricefeed.IQueryAllPriceRequest, callback: ununifi.pricefeed.Query.PriceAllCallback): void;
 
             /**
              * Calls PriceAll.
              * @param request QueryAllPriceRequest message or plain object
              * @returns Promise
              */
-            public priceAll(request: botany.pricefeed.IQueryAllPriceRequest): Promise<botany.pricefeed.QueryAllPriceResponse>;
+            public priceAll(request: ununifi.pricefeed.IQueryAllPriceRequest): Promise<ununifi.pricefeed.QueryAllPriceResponse>;
 
             /**
              * Calls RawPriceAll.
              * @param request QueryAllRawPriceRequest message or plain object
              * @param callback Node-style callback called with the error, if any, and QueryAllRawPriceResponse
              */
-            public rawPriceAll(request: botany.pricefeed.IQueryAllRawPriceRequest, callback: botany.pricefeed.Query.RawPriceAllCallback): void;
+            public rawPriceAll(request: ununifi.pricefeed.IQueryAllRawPriceRequest, callback: ununifi.pricefeed.Query.RawPriceAllCallback): void;
 
             /**
              * Calls RawPriceAll.
              * @param request QueryAllRawPriceRequest message or plain object
              * @returns Promise
              */
-            public rawPriceAll(request: botany.pricefeed.IQueryAllRawPriceRequest): Promise<botany.pricefeed.QueryAllRawPriceResponse>;
+            public rawPriceAll(request: ununifi.pricefeed.IQueryAllRawPriceRequest): Promise<ununifi.pricefeed.QueryAllRawPriceResponse>;
         }
 
         namespace Query {
 
             /**
-             * Callback as used by {@link botany.pricefeed.Query#params}.
+             * Callback as used by {@link ununifi.pricefeed.Query#params}.
              * @param error Error, if any
              * @param [response] QueryParamsResponse
              */
-            type ParamsCallback = (error: (Error|null), response?: botany.pricefeed.QueryParamsResponse) => void;
+            type ParamsCallback = (error: (Error|null), response?: ununifi.pricefeed.QueryParamsResponse) => void;
 
             /**
-             * Callback as used by {@link botany.pricefeed.Query#marketAll}.
+             * Callback as used by {@link ununifi.pricefeed.Query#marketAll}.
              * @param error Error, if any
              * @param [response] QueryAllMarketResponse
              */
-            type MarketAllCallback = (error: (Error|null), response?: botany.pricefeed.QueryAllMarketResponse) => void;
+            type MarketAllCallback = (error: (Error|null), response?: ununifi.pricefeed.QueryAllMarketResponse) => void;
 
             /**
-             * Callback as used by {@link botany.pricefeed.Query#oracleAll}.
+             * Callback as used by {@link ununifi.pricefeed.Query#oracleAll}.
              * @param error Error, if any
              * @param [response] QueryAllOracleResponse
              */
-            type OracleAllCallback = (error: (Error|null), response?: botany.pricefeed.QueryAllOracleResponse) => void;
+            type OracleAllCallback = (error: (Error|null), response?: ununifi.pricefeed.QueryAllOracleResponse) => void;
 
             /**
-             * Callback as used by {@link botany.pricefeed.Query#price}.
+             * Callback as used by {@link ununifi.pricefeed.Query#price}.
              * @param error Error, if any
              * @param [response] QueryGetPriceResponse
              */
-            type PriceCallback = (error: (Error|null), response?: botany.pricefeed.QueryGetPriceResponse) => void;
+            type PriceCallback = (error: (Error|null), response?: ununifi.pricefeed.QueryGetPriceResponse) => void;
 
             /**
-             * Callback as used by {@link botany.pricefeed.Query#priceAll}.
+             * Callback as used by {@link ununifi.pricefeed.Query#priceAll}.
              * @param error Error, if any
              * @param [response] QueryAllPriceResponse
              */
-            type PriceAllCallback = (error: (Error|null), response?: botany.pricefeed.QueryAllPriceResponse) => void;
+            type PriceAllCallback = (error: (Error|null), response?: ununifi.pricefeed.QueryAllPriceResponse) => void;
 
             /**
-             * Callback as used by {@link botany.pricefeed.Query#rawPriceAll}.
+             * Callback as used by {@link ununifi.pricefeed.Query#rawPriceAll}.
              * @param error Error, if any
              * @param [response] QueryAllRawPriceResponse
              */
-            type RawPriceAllCallback = (error: (Error|null), response?: botany.pricefeed.QueryAllRawPriceResponse) => void;
+            type RawPriceAllCallback = (error: (Error|null), response?: ununifi.pricefeed.QueryAllRawPriceResponse) => void;
         }
 
         /** Properties of a QueryParamsRequest. */
@@ -6784,23 +6124,23 @@ export namespace botany {
              * Constructs a new QueryParamsRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryParamsRequest);
+            constructor(properties?: ununifi.pricefeed.IQueryParamsRequest);
 
             /**
-             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link botany.pricefeed.QueryParamsRequest.verify|verify} messages.
+             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link ununifi.pricefeed.QueryParamsRequest.verify|verify} messages.
              * @param message QueryParamsRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link botany.pricefeed.QueryParamsRequest.verify|verify} messages.
+             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryParamsRequest.verify|verify} messages.
              * @param message QueryParamsRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryParamsRequest message from the specified reader or buffer.
@@ -6810,7 +6150,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryParamsRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryParamsRequest;
 
             /**
              * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
@@ -6819,7 +6159,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryParamsRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryParamsRequest;
 
             /**
              * Verifies a QueryParamsRequest message.
@@ -6833,7 +6173,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryParamsRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryParamsRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryParamsRequest;
 
             /**
              * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
@@ -6841,7 +6181,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryParamsRequest to JSON.
@@ -6854,7 +6194,7 @@ export namespace botany {
         interface IQueryParamsResponse {
 
             /** QueryParamsResponse params */
-            params?: (botany.pricefeed.IParams|null);
+            params?: (ununifi.pricefeed.IParams|null);
         }
 
         /** Represents a QueryParamsResponse. */
@@ -6864,26 +6204,26 @@ export namespace botany {
              * Constructs a new QueryParamsResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryParamsResponse);
+            constructor(properties?: ununifi.pricefeed.IQueryParamsResponse);
 
             /** QueryParamsResponse params. */
-            public params?: (botany.pricefeed.IParams|null);
+            public params?: (ununifi.pricefeed.IParams|null);
 
             /**
-             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link botany.pricefeed.QueryParamsResponse.verify|verify} messages.
+             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link ununifi.pricefeed.QueryParamsResponse.verify|verify} messages.
              * @param message QueryParamsResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link botany.pricefeed.QueryParamsResponse.verify|verify} messages.
+             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryParamsResponse.verify|verify} messages.
              * @param message QueryParamsResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryParamsResponse message from the specified reader or buffer.
@@ -6893,7 +6233,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryParamsResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryParamsResponse;
 
             /**
              * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
@@ -6902,7 +6242,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryParamsResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryParamsResponse;
 
             /**
              * Verifies a QueryParamsResponse message.
@@ -6916,7 +6256,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryParamsResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryParamsResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryParamsResponse;
 
             /**
              * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
@@ -6924,7 +6264,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryParamsResponse to JSON.
@@ -6947,26 +6287,26 @@ export namespace botany {
              * Constructs a new QueryAllMarketRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryAllMarketRequest);
+            constructor(properties?: ununifi.pricefeed.IQueryAllMarketRequest);
 
             /** QueryAllMarketRequest pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageRequest|null);
 
             /**
-             * Encodes the specified QueryAllMarketRequest message. Does not implicitly {@link botany.pricefeed.QueryAllMarketRequest.verify|verify} messages.
+             * Encodes the specified QueryAllMarketRequest message. Does not implicitly {@link ununifi.pricefeed.QueryAllMarketRequest.verify|verify} messages.
              * @param message QueryAllMarketRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryAllMarketRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryAllMarketRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllMarketRequest message, length delimited. Does not implicitly {@link botany.pricefeed.QueryAllMarketRequest.verify|verify} messages.
+             * Encodes the specified QueryAllMarketRequest message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryAllMarketRequest.verify|verify} messages.
              * @param message QueryAllMarketRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryAllMarketRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryAllMarketRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllMarketRequest message from the specified reader or buffer.
@@ -6976,7 +6316,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryAllMarketRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryAllMarketRequest;
 
             /**
              * Decodes a QueryAllMarketRequest message from the specified reader or buffer, length delimited.
@@ -6985,7 +6325,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryAllMarketRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryAllMarketRequest;
 
             /**
              * Verifies a QueryAllMarketRequest message.
@@ -6999,7 +6339,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllMarketRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryAllMarketRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryAllMarketRequest;
 
             /**
              * Creates a plain object from a QueryAllMarketRequest message. Also converts values to other types if specified.
@@ -7007,7 +6347,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryAllMarketRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryAllMarketRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllMarketRequest to JSON.
@@ -7020,7 +6360,7 @@ export namespace botany {
         interface IQueryAllMarketResponse {
 
             /** QueryAllMarketResponse markets */
-            markets?: (botany.pricefeed.IMarket[]|null);
+            markets?: (ununifi.pricefeed.IMarket[]|null);
 
             /** QueryAllMarketResponse pagination */
             pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
@@ -7033,29 +6373,29 @@ export namespace botany {
              * Constructs a new QueryAllMarketResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryAllMarketResponse);
+            constructor(properties?: ununifi.pricefeed.IQueryAllMarketResponse);
 
             /** QueryAllMarketResponse markets. */
-            public markets: botany.pricefeed.IMarket[];
+            public markets: ununifi.pricefeed.IMarket[];
 
             /** QueryAllMarketResponse pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
 
             /**
-             * Encodes the specified QueryAllMarketResponse message. Does not implicitly {@link botany.pricefeed.QueryAllMarketResponse.verify|verify} messages.
+             * Encodes the specified QueryAllMarketResponse message. Does not implicitly {@link ununifi.pricefeed.QueryAllMarketResponse.verify|verify} messages.
              * @param message QueryAllMarketResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryAllMarketResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryAllMarketResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllMarketResponse message, length delimited. Does not implicitly {@link botany.pricefeed.QueryAllMarketResponse.verify|verify} messages.
+             * Encodes the specified QueryAllMarketResponse message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryAllMarketResponse.verify|verify} messages.
              * @param message QueryAllMarketResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryAllMarketResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryAllMarketResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllMarketResponse message from the specified reader or buffer.
@@ -7065,7 +6405,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryAllMarketResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryAllMarketResponse;
 
             /**
              * Decodes a QueryAllMarketResponse message from the specified reader or buffer, length delimited.
@@ -7074,7 +6414,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryAllMarketResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryAllMarketResponse;
 
             /**
              * Verifies a QueryAllMarketResponse message.
@@ -7088,7 +6428,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllMarketResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryAllMarketResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryAllMarketResponse;
 
             /**
              * Creates a plain object from a QueryAllMarketResponse message. Also converts values to other types if specified.
@@ -7096,7 +6436,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryAllMarketResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryAllMarketResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllMarketResponse to JSON.
@@ -7122,7 +6462,7 @@ export namespace botany {
              * Constructs a new QueryAllOracleRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryAllOracleRequest);
+            constructor(properties?: ununifi.pricefeed.IQueryAllOracleRequest);
 
             /** QueryAllOracleRequest market_id. */
             public market_id: string;
@@ -7131,20 +6471,20 @@ export namespace botany {
             public pagination?: (cosmos.base.query.v1beta1.IPageRequest|null);
 
             /**
-             * Encodes the specified QueryAllOracleRequest message. Does not implicitly {@link botany.pricefeed.QueryAllOracleRequest.verify|verify} messages.
+             * Encodes the specified QueryAllOracleRequest message. Does not implicitly {@link ununifi.pricefeed.QueryAllOracleRequest.verify|verify} messages.
              * @param message QueryAllOracleRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryAllOracleRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryAllOracleRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllOracleRequest message, length delimited. Does not implicitly {@link botany.pricefeed.QueryAllOracleRequest.verify|verify} messages.
+             * Encodes the specified QueryAllOracleRequest message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryAllOracleRequest.verify|verify} messages.
              * @param message QueryAllOracleRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryAllOracleRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryAllOracleRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllOracleRequest message from the specified reader or buffer.
@@ -7154,7 +6494,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryAllOracleRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryAllOracleRequest;
 
             /**
              * Decodes a QueryAllOracleRequest message from the specified reader or buffer, length delimited.
@@ -7163,7 +6503,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryAllOracleRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryAllOracleRequest;
 
             /**
              * Verifies a QueryAllOracleRequest message.
@@ -7177,7 +6517,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllOracleRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryAllOracleRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryAllOracleRequest;
 
             /**
              * Creates a plain object from a QueryAllOracleRequest message. Also converts values to other types if specified.
@@ -7185,7 +6525,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryAllOracleRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryAllOracleRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllOracleRequest to JSON.
@@ -7211,7 +6551,7 @@ export namespace botany {
              * Constructs a new QueryAllOracleResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryAllOracleResponse);
+            constructor(properties?: ununifi.pricefeed.IQueryAllOracleResponse);
 
             /** QueryAllOracleResponse oracles. */
             public oracles: string[];
@@ -7220,20 +6560,20 @@ export namespace botany {
             public pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
 
             /**
-             * Encodes the specified QueryAllOracleResponse message. Does not implicitly {@link botany.pricefeed.QueryAllOracleResponse.verify|verify} messages.
+             * Encodes the specified QueryAllOracleResponse message. Does not implicitly {@link ununifi.pricefeed.QueryAllOracleResponse.verify|verify} messages.
              * @param message QueryAllOracleResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryAllOracleResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryAllOracleResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllOracleResponse message, length delimited. Does not implicitly {@link botany.pricefeed.QueryAllOracleResponse.verify|verify} messages.
+             * Encodes the specified QueryAllOracleResponse message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryAllOracleResponse.verify|verify} messages.
              * @param message QueryAllOracleResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryAllOracleResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryAllOracleResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllOracleResponse message from the specified reader or buffer.
@@ -7243,7 +6583,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryAllOracleResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryAllOracleResponse;
 
             /**
              * Decodes a QueryAllOracleResponse message from the specified reader or buffer, length delimited.
@@ -7252,7 +6592,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryAllOracleResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryAllOracleResponse;
 
             /**
              * Verifies a QueryAllOracleResponse message.
@@ -7266,7 +6606,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllOracleResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryAllOracleResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryAllOracleResponse;
 
             /**
              * Creates a plain object from a QueryAllOracleResponse message. Also converts values to other types if specified.
@@ -7274,7 +6614,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryAllOracleResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryAllOracleResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllOracleResponse to JSON.
@@ -7297,26 +6637,26 @@ export namespace botany {
              * Constructs a new QueryGetPriceRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryGetPriceRequest);
+            constructor(properties?: ununifi.pricefeed.IQueryGetPriceRequest);
 
             /** QueryGetPriceRequest market_id. */
             public market_id: string;
 
             /**
-             * Encodes the specified QueryGetPriceRequest message. Does not implicitly {@link botany.pricefeed.QueryGetPriceRequest.verify|verify} messages.
+             * Encodes the specified QueryGetPriceRequest message. Does not implicitly {@link ununifi.pricefeed.QueryGetPriceRequest.verify|verify} messages.
              * @param message QueryGetPriceRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryGetPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryGetPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryGetPriceRequest message, length delimited. Does not implicitly {@link botany.pricefeed.QueryGetPriceRequest.verify|verify} messages.
+             * Encodes the specified QueryGetPriceRequest message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryGetPriceRequest.verify|verify} messages.
              * @param message QueryGetPriceRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryGetPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryGetPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryGetPriceRequest message from the specified reader or buffer.
@@ -7326,7 +6666,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryGetPriceRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryGetPriceRequest;
 
             /**
              * Decodes a QueryGetPriceRequest message from the specified reader or buffer, length delimited.
@@ -7335,7 +6675,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryGetPriceRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryGetPriceRequest;
 
             /**
              * Verifies a QueryGetPriceRequest message.
@@ -7349,7 +6689,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryGetPriceRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryGetPriceRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryGetPriceRequest;
 
             /**
              * Creates a plain object from a QueryGetPriceRequest message. Also converts values to other types if specified.
@@ -7357,7 +6697,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryGetPriceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryGetPriceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryGetPriceRequest to JSON.
@@ -7370,7 +6710,7 @@ export namespace botany {
         interface IQueryGetPriceResponse {
 
             /** QueryGetPriceResponse price */
-            price?: (botany.pricefeed.ICurrentPrice|null);
+            price?: (ununifi.pricefeed.ICurrentPrice|null);
         }
 
         /** Represents a QueryGetPriceResponse. */
@@ -7380,26 +6720,26 @@ export namespace botany {
              * Constructs a new QueryGetPriceResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryGetPriceResponse);
+            constructor(properties?: ununifi.pricefeed.IQueryGetPriceResponse);
 
             /** QueryGetPriceResponse price. */
-            public price?: (botany.pricefeed.ICurrentPrice|null);
+            public price?: (ununifi.pricefeed.ICurrentPrice|null);
 
             /**
-             * Encodes the specified QueryGetPriceResponse message. Does not implicitly {@link botany.pricefeed.QueryGetPriceResponse.verify|verify} messages.
+             * Encodes the specified QueryGetPriceResponse message. Does not implicitly {@link ununifi.pricefeed.QueryGetPriceResponse.verify|verify} messages.
              * @param message QueryGetPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryGetPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryGetPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryGetPriceResponse message, length delimited. Does not implicitly {@link botany.pricefeed.QueryGetPriceResponse.verify|verify} messages.
+             * Encodes the specified QueryGetPriceResponse message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryGetPriceResponse.verify|verify} messages.
              * @param message QueryGetPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryGetPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryGetPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryGetPriceResponse message from the specified reader or buffer.
@@ -7409,7 +6749,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryGetPriceResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryGetPriceResponse;
 
             /**
              * Decodes a QueryGetPriceResponse message from the specified reader or buffer, length delimited.
@@ -7418,7 +6758,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryGetPriceResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryGetPriceResponse;
 
             /**
              * Verifies a QueryGetPriceResponse message.
@@ -7432,7 +6772,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryGetPriceResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryGetPriceResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryGetPriceResponse;
 
             /**
              * Creates a plain object from a QueryGetPriceResponse message. Also converts values to other types if specified.
@@ -7440,7 +6780,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryGetPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryGetPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryGetPriceResponse to JSON.
@@ -7463,26 +6803,26 @@ export namespace botany {
              * Constructs a new QueryAllPriceRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryAllPriceRequest);
+            constructor(properties?: ununifi.pricefeed.IQueryAllPriceRequest);
 
             /** QueryAllPriceRequest pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageRequest|null);
 
             /**
-             * Encodes the specified QueryAllPriceRequest message. Does not implicitly {@link botany.pricefeed.QueryAllPriceRequest.verify|verify} messages.
+             * Encodes the specified QueryAllPriceRequest message. Does not implicitly {@link ununifi.pricefeed.QueryAllPriceRequest.verify|verify} messages.
              * @param message QueryAllPriceRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryAllPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryAllPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllPriceRequest message, length delimited. Does not implicitly {@link botany.pricefeed.QueryAllPriceRequest.verify|verify} messages.
+             * Encodes the specified QueryAllPriceRequest message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryAllPriceRequest.verify|verify} messages.
              * @param message QueryAllPriceRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryAllPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryAllPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllPriceRequest message from the specified reader or buffer.
@@ -7492,7 +6832,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryAllPriceRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryAllPriceRequest;
 
             /**
              * Decodes a QueryAllPriceRequest message from the specified reader or buffer, length delimited.
@@ -7501,7 +6841,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryAllPriceRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryAllPriceRequest;
 
             /**
              * Verifies a QueryAllPriceRequest message.
@@ -7515,7 +6855,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllPriceRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryAllPriceRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryAllPriceRequest;
 
             /**
              * Creates a plain object from a QueryAllPriceRequest message. Also converts values to other types if specified.
@@ -7523,7 +6863,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryAllPriceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryAllPriceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllPriceRequest to JSON.
@@ -7536,7 +6876,7 @@ export namespace botany {
         interface IQueryAllPriceResponse {
 
             /** QueryAllPriceResponse prices */
-            prices?: (botany.pricefeed.ICurrentPrice[]|null);
+            prices?: (ununifi.pricefeed.ICurrentPrice[]|null);
 
             /** QueryAllPriceResponse pagination */
             pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
@@ -7549,29 +6889,29 @@ export namespace botany {
              * Constructs a new QueryAllPriceResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryAllPriceResponse);
+            constructor(properties?: ununifi.pricefeed.IQueryAllPriceResponse);
 
             /** QueryAllPriceResponse prices. */
-            public prices: botany.pricefeed.ICurrentPrice[];
+            public prices: ununifi.pricefeed.ICurrentPrice[];
 
             /** QueryAllPriceResponse pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
 
             /**
-             * Encodes the specified QueryAllPriceResponse message. Does not implicitly {@link botany.pricefeed.QueryAllPriceResponse.verify|verify} messages.
+             * Encodes the specified QueryAllPriceResponse message. Does not implicitly {@link ununifi.pricefeed.QueryAllPriceResponse.verify|verify} messages.
              * @param message QueryAllPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryAllPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryAllPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllPriceResponse message, length delimited. Does not implicitly {@link botany.pricefeed.QueryAllPriceResponse.verify|verify} messages.
+             * Encodes the specified QueryAllPriceResponse message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryAllPriceResponse.verify|verify} messages.
              * @param message QueryAllPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryAllPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryAllPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllPriceResponse message from the specified reader or buffer.
@@ -7581,7 +6921,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryAllPriceResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryAllPriceResponse;
 
             /**
              * Decodes a QueryAllPriceResponse message from the specified reader or buffer, length delimited.
@@ -7590,7 +6930,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryAllPriceResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryAllPriceResponse;
 
             /**
              * Verifies a QueryAllPriceResponse message.
@@ -7604,7 +6944,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllPriceResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryAllPriceResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryAllPriceResponse;
 
             /**
              * Creates a plain object from a QueryAllPriceResponse message. Also converts values to other types if specified.
@@ -7612,7 +6952,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryAllPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryAllPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllPriceResponse to JSON.
@@ -7638,7 +6978,7 @@ export namespace botany {
              * Constructs a new QueryAllRawPriceRequest.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryAllRawPriceRequest);
+            constructor(properties?: ununifi.pricefeed.IQueryAllRawPriceRequest);
 
             /** QueryAllRawPriceRequest market_id. */
             public market_id: string;
@@ -7647,20 +6987,20 @@ export namespace botany {
             public pagination?: (cosmos.base.query.v1beta1.IPageRequest|null);
 
             /**
-             * Encodes the specified QueryAllRawPriceRequest message. Does not implicitly {@link botany.pricefeed.QueryAllRawPriceRequest.verify|verify} messages.
+             * Encodes the specified QueryAllRawPriceRequest message. Does not implicitly {@link ununifi.pricefeed.QueryAllRawPriceRequest.verify|verify} messages.
              * @param message QueryAllRawPriceRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryAllRawPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryAllRawPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllRawPriceRequest message, length delimited. Does not implicitly {@link botany.pricefeed.QueryAllRawPriceRequest.verify|verify} messages.
+             * Encodes the specified QueryAllRawPriceRequest message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryAllRawPriceRequest.verify|verify} messages.
              * @param message QueryAllRawPriceRequest message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryAllRawPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryAllRawPriceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllRawPriceRequest message from the specified reader or buffer.
@@ -7670,7 +7010,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryAllRawPriceRequest;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryAllRawPriceRequest;
 
             /**
              * Decodes a QueryAllRawPriceRequest message from the specified reader or buffer, length delimited.
@@ -7679,7 +7019,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryAllRawPriceRequest;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryAllRawPriceRequest;
 
             /**
              * Verifies a QueryAllRawPriceRequest message.
@@ -7693,7 +7033,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllRawPriceRequest
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryAllRawPriceRequest;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryAllRawPriceRequest;
 
             /**
              * Creates a plain object from a QueryAllRawPriceRequest message. Also converts values to other types if specified.
@@ -7701,7 +7041,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryAllRawPriceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryAllRawPriceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllRawPriceRequest to JSON.
@@ -7714,7 +7054,7 @@ export namespace botany {
         interface IQueryAllRawPriceResponse {
 
             /** QueryAllRawPriceResponse prices */
-            prices?: (botany.pricefeed.IPostedPrice[]|null);
+            prices?: (ununifi.pricefeed.IPostedPrice[]|null);
 
             /** QueryAllRawPriceResponse pagination */
             pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
@@ -7727,29 +7067,29 @@ export namespace botany {
              * Constructs a new QueryAllRawPriceResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IQueryAllRawPriceResponse);
+            constructor(properties?: ununifi.pricefeed.IQueryAllRawPriceResponse);
 
             /** QueryAllRawPriceResponse prices. */
-            public prices: botany.pricefeed.IPostedPrice[];
+            public prices: ununifi.pricefeed.IPostedPrice[];
 
             /** QueryAllRawPriceResponse pagination. */
             public pagination?: (cosmos.base.query.v1beta1.IPageResponse|null);
 
             /**
-             * Encodes the specified QueryAllRawPriceResponse message. Does not implicitly {@link botany.pricefeed.QueryAllRawPriceResponse.verify|verify} messages.
+             * Encodes the specified QueryAllRawPriceResponse message. Does not implicitly {@link ununifi.pricefeed.QueryAllRawPriceResponse.verify|verify} messages.
              * @param message QueryAllRawPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IQueryAllRawPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IQueryAllRawPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified QueryAllRawPriceResponse message, length delimited. Does not implicitly {@link botany.pricefeed.QueryAllRawPriceResponse.verify|verify} messages.
+             * Encodes the specified QueryAllRawPriceResponse message, length delimited. Does not implicitly {@link ununifi.pricefeed.QueryAllRawPriceResponse.verify|verify} messages.
              * @param message QueryAllRawPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IQueryAllRawPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IQueryAllRawPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a QueryAllRawPriceResponse message from the specified reader or buffer.
@@ -7759,7 +7099,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.QueryAllRawPriceResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.QueryAllRawPriceResponse;
 
             /**
              * Decodes a QueryAllRawPriceResponse message from the specified reader or buffer, length delimited.
@@ -7768,7 +7108,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.QueryAllRawPriceResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.QueryAllRawPriceResponse;
 
             /**
              * Verifies a QueryAllRawPriceResponse message.
@@ -7782,7 +7122,7 @@ export namespace botany {
              * @param object Plain object
              * @returns QueryAllRawPriceResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.QueryAllRawPriceResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.QueryAllRawPriceResponse;
 
             /**
              * Creates a plain object from a QueryAllRawPriceResponse message. Also converts values to other types if specified.
@@ -7790,7 +7130,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.QueryAllRawPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.QueryAllRawPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this QueryAllRawPriceResponse to JSON.
@@ -7825,7 +7165,7 @@ export namespace botany {
              * Constructs a new Market.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IMarket);
+            constructor(properties?: ununifi.pricefeed.IMarket);
 
             /** Market market_id. */
             public market_id: string;
@@ -7843,20 +7183,20 @@ export namespace botany {
             public active: boolean;
 
             /**
-             * Encodes the specified Market message. Does not implicitly {@link botany.pricefeed.Market.verify|verify} messages.
+             * Encodes the specified Market message. Does not implicitly {@link ununifi.pricefeed.Market.verify|verify} messages.
              * @param message Market message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IMarket, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IMarket, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Market message, length delimited. Does not implicitly {@link botany.pricefeed.Market.verify|verify} messages.
+             * Encodes the specified Market message, length delimited. Does not implicitly {@link ununifi.pricefeed.Market.verify|verify} messages.
              * @param message Market message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IMarket, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IMarket, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a Market message from the specified reader or buffer.
@@ -7866,7 +7206,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.Market;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.Market;
 
             /**
              * Decodes a Market message from the specified reader or buffer, length delimited.
@@ -7875,7 +7215,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.Market;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.Market;
 
             /**
              * Verifies a Market message.
@@ -7889,7 +7229,7 @@ export namespace botany {
              * @param object Plain object
              * @returns Market
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.Market;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.Market;
 
             /**
              * Creates a plain object from a Market message. Also converts values to other types if specified.
@@ -7897,7 +7237,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.Market, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.Market, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this Market to JSON.
@@ -7923,7 +7263,7 @@ export namespace botany {
              * Constructs a new CurrentPrice.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.ICurrentPrice);
+            constructor(properties?: ununifi.pricefeed.ICurrentPrice);
 
             /** CurrentPrice market_id. */
             public market_id: string;
@@ -7932,20 +7272,20 @@ export namespace botany {
             public price: string;
 
             /**
-             * Encodes the specified CurrentPrice message. Does not implicitly {@link botany.pricefeed.CurrentPrice.verify|verify} messages.
+             * Encodes the specified CurrentPrice message. Does not implicitly {@link ununifi.pricefeed.CurrentPrice.verify|verify} messages.
              * @param message CurrentPrice message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.ICurrentPrice, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.ICurrentPrice, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified CurrentPrice message, length delimited. Does not implicitly {@link botany.pricefeed.CurrentPrice.verify|verify} messages.
+             * Encodes the specified CurrentPrice message, length delimited. Does not implicitly {@link ununifi.pricefeed.CurrentPrice.verify|verify} messages.
              * @param message CurrentPrice message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.ICurrentPrice, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.ICurrentPrice, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a CurrentPrice message from the specified reader or buffer.
@@ -7955,7 +7295,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.CurrentPrice;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.CurrentPrice;
 
             /**
              * Decodes a CurrentPrice message from the specified reader or buffer, length delimited.
@@ -7964,7 +7304,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.CurrentPrice;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.CurrentPrice;
 
             /**
              * Verifies a CurrentPrice message.
@@ -7978,7 +7318,7 @@ export namespace botany {
              * @param object Plain object
              * @returns CurrentPrice
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.CurrentPrice;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.CurrentPrice;
 
             /**
              * Creates a plain object from a CurrentPrice message. Also converts values to other types if specified.
@@ -7986,7 +7326,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.CurrentPrice, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.CurrentPrice, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this CurrentPrice to JSON.
@@ -8018,7 +7358,7 @@ export namespace botany {
              * Constructs a new PostedPrice.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IPostedPrice);
+            constructor(properties?: ununifi.pricefeed.IPostedPrice);
 
             /** PostedPrice market_id. */
             public market_id: string;
@@ -8033,20 +7373,20 @@ export namespace botany {
             public expiry?: (google.protobuf.ITimestamp|null);
 
             /**
-             * Encodes the specified PostedPrice message. Does not implicitly {@link botany.pricefeed.PostedPrice.verify|verify} messages.
+             * Encodes the specified PostedPrice message. Does not implicitly {@link ununifi.pricefeed.PostedPrice.verify|verify} messages.
              * @param message PostedPrice message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IPostedPrice, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IPostedPrice, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified PostedPrice message, length delimited. Does not implicitly {@link botany.pricefeed.PostedPrice.verify|verify} messages.
+             * Encodes the specified PostedPrice message, length delimited. Does not implicitly {@link ununifi.pricefeed.PostedPrice.verify|verify} messages.
              * @param message PostedPrice message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IPostedPrice, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IPostedPrice, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a PostedPrice message from the specified reader or buffer.
@@ -8056,7 +7396,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.PostedPrice;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.PostedPrice;
 
             /**
              * Decodes a PostedPrice message from the specified reader or buffer, length delimited.
@@ -8065,7 +7405,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.PostedPrice;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.PostedPrice;
 
             /**
              * Verifies a PostedPrice message.
@@ -8079,7 +7419,7 @@ export namespace botany {
              * @param object Plain object
              * @returns PostedPrice
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.PostedPrice;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.PostedPrice;
 
             /**
              * Creates a plain object from a PostedPrice message. Also converts values to other types if specified.
@@ -8087,7 +7427,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.PostedPrice, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.PostedPrice, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this PostedPrice to JSON.
@@ -8100,7 +7440,7 @@ export namespace botany {
         interface IParams {
 
             /** Params markets */
-            markets?: (botany.pricefeed.IMarket[]|null);
+            markets?: (ununifi.pricefeed.IMarket[]|null);
         }
 
         /** Represents a Params. */
@@ -8110,26 +7450,26 @@ export namespace botany {
              * Constructs a new Params.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IParams);
+            constructor(properties?: ununifi.pricefeed.IParams);
 
             /** Params markets. */
-            public markets: botany.pricefeed.IMarket[];
+            public markets: ununifi.pricefeed.IMarket[];
 
             /**
-             * Encodes the specified Params message. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
+             * Encodes the specified Params message. Does not implicitly {@link ununifi.pricefeed.Params.verify|verify} messages.
              * @param message Params message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Params message, length delimited. Does not implicitly {@link botany.pricefeed.Params.verify|verify} messages.
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link ununifi.pricefeed.Params.verify|verify} messages.
              * @param message Params message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a Params message from the specified reader or buffer.
@@ -8139,7 +7479,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.Params;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.Params;
 
             /**
              * Decodes a Params message from the specified reader or buffer, length delimited.
@@ -8148,7 +7488,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.Params;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.Params;
 
             /**
              * Verifies a Params message.
@@ -8162,7 +7502,7 @@ export namespace botany {
              * @param object Plain object
              * @returns Params
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.Params;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.Params;
 
             /**
              * Creates a plain object from a Params message. Also converts values to other types if specified.
@@ -8170,7 +7510,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this Params to JSON.
@@ -8195,24 +7535,24 @@ export namespace botany {
              * @param request MsgPostPrice message or plain object
              * @param callback Node-style callback called with the error, if any, and MsgPostPriceResponse
              */
-            public postPrice(request: botany.pricefeed.IMsgPostPrice, callback: botany.pricefeed.Msg.PostPriceCallback): void;
+            public postPrice(request: ununifi.pricefeed.IMsgPostPrice, callback: ununifi.pricefeed.Msg.PostPriceCallback): void;
 
             /**
              * Calls PostPrice.
              * @param request MsgPostPrice message or plain object
              * @returns Promise
              */
-            public postPrice(request: botany.pricefeed.IMsgPostPrice): Promise<botany.pricefeed.MsgPostPriceResponse>;
+            public postPrice(request: ununifi.pricefeed.IMsgPostPrice): Promise<ununifi.pricefeed.MsgPostPriceResponse>;
         }
 
         namespace Msg {
 
             /**
-             * Callback as used by {@link botany.pricefeed.Msg#postPrice}.
+             * Callback as used by {@link ununifi.pricefeed.Msg#postPrice}.
              * @param error Error, if any
              * @param [response] MsgPostPriceResponse
              */
-            type PostPriceCallback = (error: (Error|null), response?: botany.pricefeed.MsgPostPriceResponse) => void;
+            type PostPriceCallback = (error: (Error|null), response?: ununifi.pricefeed.MsgPostPriceResponse) => void;
         }
 
         /** Properties of a MsgPostPrice. */
@@ -8238,7 +7578,7 @@ export namespace botany {
              * Constructs a new MsgPostPrice.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IMsgPostPrice);
+            constructor(properties?: ununifi.pricefeed.IMsgPostPrice);
 
             /** MsgPostPrice from. */
             public from: string;
@@ -8253,20 +7593,20 @@ export namespace botany {
             public expiry?: (google.protobuf.ITimestamp|null);
 
             /**
-             * Encodes the specified MsgPostPrice message. Does not implicitly {@link botany.pricefeed.MsgPostPrice.verify|verify} messages.
+             * Encodes the specified MsgPostPrice message. Does not implicitly {@link ununifi.pricefeed.MsgPostPrice.verify|verify} messages.
              * @param message MsgPostPrice message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IMsgPostPrice, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IMsgPostPrice, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgPostPrice message, length delimited. Does not implicitly {@link botany.pricefeed.MsgPostPrice.verify|verify} messages.
+             * Encodes the specified MsgPostPrice message, length delimited. Does not implicitly {@link ununifi.pricefeed.MsgPostPrice.verify|verify} messages.
              * @param message MsgPostPrice message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IMsgPostPrice, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IMsgPostPrice, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgPostPrice message from the specified reader or buffer.
@@ -8276,7 +7616,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.MsgPostPrice;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.MsgPostPrice;
 
             /**
              * Decodes a MsgPostPrice message from the specified reader or buffer, length delimited.
@@ -8285,7 +7625,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.MsgPostPrice;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.MsgPostPrice;
 
             /**
              * Verifies a MsgPostPrice message.
@@ -8299,7 +7639,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgPostPrice
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.MsgPostPrice;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.MsgPostPrice;
 
             /**
              * Creates a plain object from a MsgPostPrice message. Also converts values to other types if specified.
@@ -8307,7 +7647,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.MsgPostPrice, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.MsgPostPrice, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgPostPrice to JSON.
@@ -8327,23 +7667,23 @@ export namespace botany {
              * Constructs a new MsgPostPriceResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IMsgPostPriceResponse);
+            constructor(properties?: ununifi.pricefeed.IMsgPostPriceResponse);
 
             /**
-             * Encodes the specified MsgPostPriceResponse message. Does not implicitly {@link botany.pricefeed.MsgPostPriceResponse.verify|verify} messages.
+             * Encodes the specified MsgPostPriceResponse message. Does not implicitly {@link ununifi.pricefeed.MsgPostPriceResponse.verify|verify} messages.
              * @param message MsgPostPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IMsgPostPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IMsgPostPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified MsgPostPriceResponse message, length delimited. Does not implicitly {@link botany.pricefeed.MsgPostPriceResponse.verify|verify} messages.
+             * Encodes the specified MsgPostPriceResponse message, length delimited. Does not implicitly {@link ununifi.pricefeed.MsgPostPriceResponse.verify|verify} messages.
              * @param message MsgPostPriceResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IMsgPostPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IMsgPostPriceResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a MsgPostPriceResponse message from the specified reader or buffer.
@@ -8353,7 +7693,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.MsgPostPriceResponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.MsgPostPriceResponse;
 
             /**
              * Decodes a MsgPostPriceResponse message from the specified reader or buffer, length delimited.
@@ -8362,7 +7702,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.MsgPostPriceResponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.MsgPostPriceResponse;
 
             /**
              * Verifies a MsgPostPriceResponse message.
@@ -8376,7 +7716,7 @@ export namespace botany {
              * @param object Plain object
              * @returns MsgPostPriceResponse
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.MsgPostPriceResponse;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.MsgPostPriceResponse;
 
             /**
              * Creates a plain object from a MsgPostPriceResponse message. Also converts values to other types if specified.
@@ -8384,7 +7724,7 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.MsgPostPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.MsgPostPriceResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this MsgPostPriceResponse to JSON.
@@ -8397,10 +7737,10 @@ export namespace botany {
         interface IGenesisState {
 
             /** GenesisState params */
-            params?: (botany.pricefeed.IParams|null);
+            params?: (ununifi.pricefeed.IParams|null);
 
             /** GenesisState posted_prices */
-            posted_prices?: (botany.pricefeed.IPostedPrice[]|null);
+            posted_prices?: (ununifi.pricefeed.IPostedPrice[]|null);
         }
 
         /** Represents a GenesisState. */
@@ -8410,29 +7750,29 @@ export namespace botany {
              * Constructs a new GenesisState.
              * @param [properties] Properties to set
              */
-            constructor(properties?: botany.pricefeed.IGenesisState);
+            constructor(properties?: ununifi.pricefeed.IGenesisState);
 
             /** GenesisState params. */
-            public params?: (botany.pricefeed.IParams|null);
+            public params?: (ununifi.pricefeed.IParams|null);
 
             /** GenesisState posted_prices. */
-            public posted_prices: botany.pricefeed.IPostedPrice[];
+            public posted_prices: ununifi.pricefeed.IPostedPrice[];
 
             /**
-             * Encodes the specified GenesisState message. Does not implicitly {@link botany.pricefeed.GenesisState.verify|verify} messages.
+             * Encodes the specified GenesisState message. Does not implicitly {@link ununifi.pricefeed.GenesisState.verify|verify} messages.
              * @param message GenesisState message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: botany.pricefeed.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: ununifi.pricefeed.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link botany.pricefeed.GenesisState.verify|verify} messages.
+             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link ununifi.pricefeed.GenesisState.verify|verify} messages.
              * @param message GenesisState message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: botany.pricefeed.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: ununifi.pricefeed.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
              * Decodes a GenesisState message from the specified reader or buffer.
@@ -8442,7 +7782,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): botany.pricefeed.GenesisState;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.pricefeed.GenesisState;
 
             /**
              * Decodes a GenesisState message from the specified reader or buffer, length delimited.
@@ -8451,7 +7791,7 @@ export namespace botany {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): botany.pricefeed.GenesisState;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.pricefeed.GenesisState;
 
             /**
              * Verifies a GenesisState message.
@@ -8465,7 +7805,7 @@ export namespace botany {
              * @param object Plain object
              * @returns GenesisState
              */
-            public static fromObject(object: { [k: string]: any }): botany.pricefeed.GenesisState;
+            public static fromObject(object: { [k: string]: any }): ununifi.pricefeed.GenesisState;
 
             /**
              * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
@@ -8473,7 +7813,667 @@ export namespace botany {
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: botany.pricefeed.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: ununifi.pricefeed.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GenesisState to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+    }
+
+    /** Namespace ununifidist. */
+    namespace ununifidist {
+
+        /** Represents a Query */
+        class Query extends $protobuf.rpc.Service {
+
+            /**
+             * Constructs a new Query service.
+             * @param rpcImpl RPC implementation
+             * @param [requestDelimited=false] Whether requests are length-delimited
+             * @param [responseDelimited=false] Whether responses are length-delimited
+             */
+            constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+            /**
+             * Calls Params.
+             * @param request QueryParamsRequest message or plain object
+             * @param callback Node-style callback called with the error, if any, and QueryParamsResponse
+             */
+            public params(request: ununifi.ununifidist.IQueryParamsRequest, callback: ununifi.ununifidist.Query.ParamsCallback): void;
+
+            /**
+             * Calls Params.
+             * @param request QueryParamsRequest message or plain object
+             * @returns Promise
+             */
+            public params(request: ununifi.ununifidist.IQueryParamsRequest): Promise<ununifi.ununifidist.QueryParamsResponse>;
+
+            /**
+             * Calls Balances.
+             * @param request QueryGetBalancesRequest message or plain object
+             * @param callback Node-style callback called with the error, if any, and QueryGetBalancesResponse
+             */
+            public balances(request: ununifi.ununifidist.IQueryGetBalancesRequest, callback: ununifi.ununifidist.Query.BalancesCallback): void;
+
+            /**
+             * Calls Balances.
+             * @param request QueryGetBalancesRequest message or plain object
+             * @returns Promise
+             */
+            public balances(request: ununifi.ununifidist.IQueryGetBalancesRequest): Promise<ununifi.ununifidist.QueryGetBalancesResponse>;
+        }
+
+        namespace Query {
+
+            /**
+             * Callback as used by {@link ununifi.ununifidist.Query#params}.
+             * @param error Error, if any
+             * @param [response] QueryParamsResponse
+             */
+            type ParamsCallback = (error: (Error|null), response?: ununifi.ununifidist.QueryParamsResponse) => void;
+
+            /**
+             * Callback as used by {@link ununifi.ununifidist.Query#balances}.
+             * @param error Error, if any
+             * @param [response] QueryGetBalancesResponse
+             */
+            type BalancesCallback = (error: (Error|null), response?: ununifi.ununifidist.QueryGetBalancesResponse) => void;
+        }
+
+        /** Properties of a QueryParamsRequest. */
+        interface IQueryParamsRequest {
+        }
+
+        /** Represents a QueryParamsRequest. */
+        class QueryParamsRequest implements IQueryParamsRequest {
+
+            /**
+             * Constructs a new QueryParamsRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ununifi.ununifidist.IQueryParamsRequest);
+
+            /**
+             * Encodes the specified QueryParamsRequest message. Does not implicitly {@link ununifi.ununifidist.QueryParamsRequest.verify|verify} messages.
+             * @param message QueryParamsRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ununifi.ununifidist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryParamsRequest message, length delimited. Does not implicitly {@link ununifi.ununifidist.QueryParamsRequest.verify|verify} messages.
+             * @param message QueryParamsRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ununifi.ununifidist.IQueryParamsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryParamsRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryParamsRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.ununifidist.QueryParamsRequest;
+
+            /**
+             * Decodes a QueryParamsRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryParamsRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.ununifidist.QueryParamsRequest;
+
+            /**
+             * Verifies a QueryParamsRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryParamsRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryParamsRequest
+             */
+            public static fromObject(object: { [k: string]: any }): ununifi.ununifidist.QueryParamsRequest;
+
+            /**
+             * Creates a plain object from a QueryParamsRequest message. Also converts values to other types if specified.
+             * @param message QueryParamsRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ununifi.ununifidist.QueryParamsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryParamsRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryParamsResponse. */
+        interface IQueryParamsResponse {
+
+            /** QueryParamsResponse params */
+            params?: (ununifi.ununifidist.IParams|null);
+        }
+
+        /** Represents a QueryParamsResponse. */
+        class QueryParamsResponse implements IQueryParamsResponse {
+
+            /**
+             * Constructs a new QueryParamsResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ununifi.ununifidist.IQueryParamsResponse);
+
+            /** QueryParamsResponse params. */
+            public params?: (ununifi.ununifidist.IParams|null);
+
+            /**
+             * Encodes the specified QueryParamsResponse message. Does not implicitly {@link ununifi.ununifidist.QueryParamsResponse.verify|verify} messages.
+             * @param message QueryParamsResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ununifi.ununifidist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryParamsResponse message, length delimited. Does not implicitly {@link ununifi.ununifidist.QueryParamsResponse.verify|verify} messages.
+             * @param message QueryParamsResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ununifi.ununifidist.IQueryParamsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryParamsResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryParamsResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.ununifidist.QueryParamsResponse;
+
+            /**
+             * Decodes a QueryParamsResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryParamsResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.ununifidist.QueryParamsResponse;
+
+            /**
+             * Verifies a QueryParamsResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryParamsResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryParamsResponse
+             */
+            public static fromObject(object: { [k: string]: any }): ununifi.ununifidist.QueryParamsResponse;
+
+            /**
+             * Creates a plain object from a QueryParamsResponse message. Also converts values to other types if specified.
+             * @param message QueryParamsResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ununifi.ununifidist.QueryParamsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryParamsResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryGetBalancesRequest. */
+        interface IQueryGetBalancesRequest {
+        }
+
+        /** Represents a QueryGetBalancesRequest. */
+        class QueryGetBalancesRequest implements IQueryGetBalancesRequest {
+
+            /**
+             * Constructs a new QueryGetBalancesRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ununifi.ununifidist.IQueryGetBalancesRequest);
+
+            /**
+             * Encodes the specified QueryGetBalancesRequest message. Does not implicitly {@link ununifi.ununifidist.QueryGetBalancesRequest.verify|verify} messages.
+             * @param message QueryGetBalancesRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ununifi.ununifidist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryGetBalancesRequest message, length delimited. Does not implicitly {@link ununifi.ununifidist.QueryGetBalancesRequest.verify|verify} messages.
+             * @param message QueryGetBalancesRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ununifi.ununifidist.IQueryGetBalancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryGetBalancesRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.ununifidist.QueryGetBalancesRequest;
+
+            /**
+             * Decodes a QueryGetBalancesRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryGetBalancesRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.ununifidist.QueryGetBalancesRequest;
+
+            /**
+             * Verifies a QueryGetBalancesRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryGetBalancesRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryGetBalancesRequest
+             */
+            public static fromObject(object: { [k: string]: any }): ununifi.ununifidist.QueryGetBalancesRequest;
+
+            /**
+             * Creates a plain object from a QueryGetBalancesRequest message. Also converts values to other types if specified.
+             * @param message QueryGetBalancesRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ununifi.ununifidist.QueryGetBalancesRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryGetBalancesRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a QueryGetBalancesResponse. */
+        interface IQueryGetBalancesResponse {
+
+            /** QueryGetBalancesResponse balances */
+            balances?: (cosmos.base.v1beta1.ICoin[]|null);
+        }
+
+        /** Represents a QueryGetBalancesResponse. */
+        class QueryGetBalancesResponse implements IQueryGetBalancesResponse {
+
+            /**
+             * Constructs a new QueryGetBalancesResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ununifi.ununifidist.IQueryGetBalancesResponse);
+
+            /** QueryGetBalancesResponse balances. */
+            public balances: cosmos.base.v1beta1.ICoin[];
+
+            /**
+             * Encodes the specified QueryGetBalancesResponse message. Does not implicitly {@link ununifi.ununifidist.QueryGetBalancesResponse.verify|verify} messages.
+             * @param message QueryGetBalancesResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ununifi.ununifidist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QueryGetBalancesResponse message, length delimited. Does not implicitly {@link ununifi.ununifidist.QueryGetBalancesResponse.verify|verify} messages.
+             * @param message QueryGetBalancesResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ununifi.ununifidist.IQueryGetBalancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QueryGetBalancesResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.ununifidist.QueryGetBalancesResponse;
+
+            /**
+             * Decodes a QueryGetBalancesResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QueryGetBalancesResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.ununifidist.QueryGetBalancesResponse;
+
+            /**
+             * Verifies a QueryGetBalancesResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QueryGetBalancesResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QueryGetBalancesResponse
+             */
+            public static fromObject(object: { [k: string]: any }): ununifi.ununifidist.QueryGetBalancesResponse;
+
+            /**
+             * Creates a plain object from a QueryGetBalancesResponse message. Also converts values to other types if specified.
+             * @param message QueryGetBalancesResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ununifi.ununifidist.QueryGetBalancesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QueryGetBalancesResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a Params. */
+        interface IParams {
+
+            /** Params active */
+            active?: (boolean|null);
+
+            /** Params periods */
+            periods?: (ununifi.ununifidist.IPeriod[]|null);
+        }
+
+        /** Represents a Params. */
+        class Params implements IParams {
+
+            /**
+             * Constructs a new Params.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ununifi.ununifidist.IParams);
+
+            /** Params active. */
+            public active: boolean;
+
+            /** Params periods. */
+            public periods: ununifi.ununifidist.IPeriod[];
+
+            /**
+             * Encodes the specified Params message. Does not implicitly {@link ununifi.ununifidist.Params.verify|verify} messages.
+             * @param message Params message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ununifi.ununifidist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Params message, length delimited. Does not implicitly {@link ununifi.ununifidist.Params.verify|verify} messages.
+             * @param message Params message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ununifi.ununifidist.IParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Params message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.ununifidist.Params;
+
+            /**
+             * Decodes a Params message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Params
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.ununifidist.Params;
+
+            /**
+             * Verifies a Params message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Params message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Params
+             */
+            public static fromObject(object: { [k: string]: any }): ununifi.ununifidist.Params;
+
+            /**
+             * Creates a plain object from a Params message. Also converts values to other types if specified.
+             * @param message Params
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ununifi.ununifidist.Params, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Params to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a Period. */
+        interface IPeriod {
+
+            /** Period start */
+            start?: (google.protobuf.ITimestamp|null);
+
+            /** Period end */
+            end?: (google.protobuf.ITimestamp|null);
+
+            /** Period inflation */
+            inflation?: (string|null);
+        }
+
+        /** Represents a Period. */
+        class Period implements IPeriod {
+
+            /**
+             * Constructs a new Period.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ununifi.ununifidist.IPeriod);
+
+            /** Period start. */
+            public start?: (google.protobuf.ITimestamp|null);
+
+            /** Period end. */
+            public end?: (google.protobuf.ITimestamp|null);
+
+            /** Period inflation. */
+            public inflation: string;
+
+            /**
+             * Encodes the specified Period message. Does not implicitly {@link ununifi.ununifidist.Period.verify|verify} messages.
+             * @param message Period message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ununifi.ununifidist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Period message, length delimited. Does not implicitly {@link ununifi.ununifidist.Period.verify|verify} messages.
+             * @param message Period message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ununifi.ununifidist.IPeriod, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Period message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Period
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.ununifidist.Period;
+
+            /**
+             * Decodes a Period message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Period
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.ununifidist.Period;
+
+            /**
+             * Verifies a Period message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Period message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Period
+             */
+            public static fromObject(object: { [k: string]: any }): ununifi.ununifidist.Period;
+
+            /**
+             * Creates a plain object from a Period message. Also converts values to other types if specified.
+             * @param message Period
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ununifi.ununifidist.Period, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Period to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a GenesisState. */
+        interface IGenesisState {
+
+            /** GenesisState params */
+            params?: (ununifi.ununifidist.IParams|null);
+
+            /** GenesisState previous_block_time */
+            previous_block_time?: (google.protobuf.ITimestamp|null);
+
+            /** GenesisState gov_denom */
+            gov_denom?: (string|null);
+        }
+
+        /** Represents a GenesisState. */
+        class GenesisState implements IGenesisState {
+
+            /**
+             * Constructs a new GenesisState.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: ununifi.ununifidist.IGenesisState);
+
+            /** GenesisState params. */
+            public params?: (ununifi.ununifidist.IParams|null);
+
+            /** GenesisState previous_block_time. */
+            public previous_block_time?: (google.protobuf.ITimestamp|null);
+
+            /** GenesisState gov_denom. */
+            public gov_denom: string;
+
+            /**
+             * Encodes the specified GenesisState message. Does not implicitly {@link ununifi.ununifidist.GenesisState.verify|verify} messages.
+             * @param message GenesisState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: ununifi.ununifidist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GenesisState message, length delimited. Does not implicitly {@link ununifi.ununifidist.GenesisState.verify|verify} messages.
+             * @param message GenesisState message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: ununifi.ununifidist.IGenesisState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GenesisState message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GenesisState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ununifi.ununifidist.GenesisState;
+
+            /**
+             * Decodes a GenesisState message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GenesisState
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ununifi.ununifidist.GenesisState;
+
+            /**
+             * Verifies a GenesisState message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GenesisState message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GenesisState
+             */
+            public static fromObject(object: { [k: string]: any }): ununifi.ununifidist.GenesisState;
+
+            /**
+             * Creates a plain object from a GenesisState message. Also converts values to other types if specified.
+             * @param message GenesisState
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: ununifi.ununifidist.GenesisState, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
              * Converts this GenesisState to JSON.

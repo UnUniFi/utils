@@ -1,4 +1,4 @@
-# ununifi
+# UnUniFi utils
 
 Utility tools for project UnUniFi.
 

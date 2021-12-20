@@ -411,6 +411,10 @@ header {
 #s-03 div ul li:nth-of-type(4n) {
   margin-right: 0;
 }
+#s-03 div.lcnem-box ul li {
+  padding: 16px;
+}
+
 
 #s-03 div ul li h3 {
   margin: 0 0;
@@ -420,17 +424,36 @@ header {
   background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
   background-size: 24px auto;
 }
-#s-03 div ul li p {
-  margin: 0 0;
-  padding: 0 0 0 34px;
-  font-size: 13px;
-  font-weight: normal;
-  color: #a1a1a1;
-}
 
 #s-03 div.kava-box ul li h3 {
   background-image: url(~projects/main/src/assets/images/kava.svg);
 }
+
+#s-03 div ul li span {
+  margin: 0;
+  padding: 0 0 0 64px;
+  font-size: 12px;
+  line-height: 14px;
+  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+  background-size: 24px auto;
+  display: block;
+}
+
+#s-03 div ul li.kimura-san-box span {
+  background-image: url(~projects/main/src/assets/images/profile-k.png);
+  background-size: 54px auto;
+}
+
+#s-03 div ul li.shimojima-san-box span {
+  background-image: url(~projects/main/src/assets/images/profile-s.png);
+  background-size: 54px auto;
+}
+#s-03 div ul li.yanagisawa-san-box span {
+  background-image: url(~projects/main/src/assets/images/profile-y.png);
+  background-size: 54px auto;
+}
+
+
 #s-03 div.lcnem-box ul li h3 {
   background-image: url(~projects/main/src/assets/images/lcnem.svg);
   background-size: 24px auto;

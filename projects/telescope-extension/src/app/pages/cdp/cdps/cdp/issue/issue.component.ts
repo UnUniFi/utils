@@ -11,7 +11,7 @@ import { KeyStoreService } from 'projects/telescope-extension/src/app/models/key
 import { IssueCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/issue/issue.component';
 import { combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { rest, botany } from 'ununifi-client';
+import { rest, ununifi } from 'ununifi-client';
 
 @Component({
   selector: 'app-issue',
@@ -22,7 +22,7 @@ export class IssueComponent implements OnInit {
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
   collateralType$: Observable<string>;
-  params$: Observable<botany.cdp.IParams>;
+  params$: Observable<ununifi.cdp.IParams>;
   denom$: Observable<string>;
   principalDenom$: Observable<string>;
   minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
@@ -38,7 +38,7 @@ export class IssueComponent implements OnInit {
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.collateralType$ = this.route.params.pipe(map((params) => params['collateralType']));
     this.params$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
+      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((data) => data.data.params!),
     );
     this.denom$ = combineLatest([this.collateralType$, this.params$]).pipe(
@@ -50,7 +50,7 @@ export class IssueComponent implements OnInit {
       }),
     );
     this.principalDenom$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
+      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((res) => res.data.params?.debt_param?.denom || ''),
     );
     this.minimumGasPrices = this.configS.config.minimumGasPrices;

@@ -1,10 +1,10 @@
-import { botany } from 'ununifi-client';
+import { ununifi } from 'ununifi-client';
 import { InlineResponse2004Cdp } from 'ununifi-client/esm/openapi';
 
 export const getWithdrawLimit = (
   cdp: InlineResponse2004Cdp,
-  cdpParams: botany.cdp.IParams,
-  spotPrice: botany.pricefeed.ICurrentPrice,
+  cdpParams: ununifi.cdp.IParams,
+  spotPrice: ununifi.pricefeed.ICurrentPrice,
 ) => {
   const collateralType = cdp.type;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
@@ -32,8 +32,8 @@ export const getWithdrawLimit = (
 
 export const getIssueLimit = (
   cdp: InlineResponse2004Cdp,
-  cdpParams: botany.cdp.IParams,
-  liquidationPrice: botany.pricefeed.ICurrentPrice,
+  cdpParams: ununifi.cdp.IParams,
+  liquidationPrice: ununifi.pricefeed.ICurrentPrice,
 ) => {
   const collateralType = cdp.type;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);

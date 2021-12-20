@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { botany } from 'ununifi-client';
+import { ununifi } from 'ununifi-client';
 import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'ununifi-client/esm/openapi';
 
 @Component({
@@ -18,7 +18,7 @@ export class CdpComponent implements OnInit {
   denom?: string | null;
 
   @Input()
-  params?: botany.cdp.IParams | null;
+  params?: ununifi.cdp.IParams | null;
 
   @Input()
   cdp?: InlineResponse2004Cdp1 | null;
@@ -27,10 +27,10 @@ export class CdpComponent implements OnInit {
   deposits?: InlineResponse2006Deposits[] | null;
 
   @Input()
-  spotPrice?: botany.pricefeed.ICurrentPrice | null;
+  spotPrice?: ununifi.pricefeed.ICurrentPrice | null;
 
   @Input()
-  liquidationPrice?: botany.pricefeed.ICurrentPrice | null;
+  liquidationPrice?: ununifi.pricefeed.ICurrentPrice | null;
 
   @Input()
   withdrawLimit?: number | null;

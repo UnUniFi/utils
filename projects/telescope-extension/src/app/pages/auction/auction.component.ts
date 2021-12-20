@@ -16,7 +16,7 @@ export class AuctionComponent implements OnInit {
     const timer$ = timer(0, 60 * 1000);
 
     this.params$ = combineLatest([this.cosmosSDK.sdk$, timer$]).pipe(
-      mergeMap(([sdk, _]) => rest.botany.auction.params(sdk.rest)),
+      mergeMap(([sdk, _]) => rest.ununifi.auction.params(sdk.rest)),
       map((res) => res.data.params!),
     );
   }

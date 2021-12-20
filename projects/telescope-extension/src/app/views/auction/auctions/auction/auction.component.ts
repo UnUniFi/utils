@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { botany } from 'ununifi-client';
+import { ununifi } from 'ununifi-client';
 
 @Component({
   selector: 'view-auction',
@@ -8,7 +8,7 @@ import { botany } from 'ununifi-client';
 })
 export class AuctionComponent implements OnInit {
   @Input()
-  auction?: botany.auction.CollateralAuction | null;
+  auction?: ununifi.auction.CollateralAuction | null;
 
   @Input()
   endTime?: Date | null;

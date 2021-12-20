@@ -30,14 +30,14 @@ export class CdpsComponent implements OnInit {
     );
 
     const collateralTypes$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
+      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((res) => res.data?.params?.collateral_params?.map((p) => p.type!) || []),
     );
     this.cdps$ = combineLatest([address$, collateralTypes$, this.cosmosSdk.sdk$]).pipe(
       mergeMap(([address, collateralTypes, sdk]) =>
         Promise.all(
           collateralTypes.map((collateralType) =>
-            rest.botany.cdp.cdp(sdk.rest, address, collateralType),
+            rest.ununifi.cdp.cdp(sdk.rest, address, collateralType),
           ),
         ),
       ),

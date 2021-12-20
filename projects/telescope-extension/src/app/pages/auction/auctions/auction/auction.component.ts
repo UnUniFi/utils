@@ -4,7 +4,7 @@ import { cosmosclient } from '@cosmos-client/core';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
 import { combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { botany, google, rest } from 'ununifi-client';
+import { ununifi, google, rest } from 'ununifi-client';
 
 @Component({
   selector: 'app-auction',
@@ -13,7 +13,7 @@ import { botany, google, rest } from 'ununifi-client';
 })
 export class AuctionComponent implements OnInit {
   auctionID$: Observable<string>;
-  auction$: Observable<botany.auction.CollateralAuction | undefined>;
+  auction$: Observable<ununifi.auction.CollateralAuction | undefined>;
   endTime$: Observable<Date | undefined>;
   maxEndTime$: Observable<Date | undefined>;
 
@@ -21,7 +21,7 @@ export class AuctionComponent implements OnInit {
     this.auctionID$ = this.route.params.pipe(map((params) => params.auction_id));
     this.auction$ = combineLatest([this.cosmosSDK.sdk$, this.auctionID$]).pipe(
       mergeMap(([sdk, id]) =>
-        rest.botany.auction.auction(sdk.rest, id).then((res) => res.data.auction),
+        rest.ununifi.auction.auction(sdk.rest, id).then((res) => res.data.auction),
       ),
       map((auction) => {
         const anyAuction = auction as {
@@ -39,7 +39,7 @@ export class AuctionComponent implements OnInit {
           return anyAuction;
         };
         const unpackAuction = cosmosclient.codec.unpackCosmosAny(parseAuction(anyAuction));
-        if (!(unpackAuction instanceof botany.auction.CollateralAuction)) {
+        if (!(unpackAuction instanceof ununifi.auction.CollateralAuction)) {
           return;
         }
         return unpackAuction;

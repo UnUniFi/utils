@@ -6,7 +6,7 @@ import { cosmosclient } from '@cosmos-client/core';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
 import { combineLatest, Observable, zip } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { rest, botany } from 'ununifi-client';
+import { rest, ununifi } from 'ununifi-client';
 import { InlineResponse2004Cdp1, InlineResponse2006Deposits } from 'ununifi-client/esm/openapi';
 
 @Component({
@@ -18,12 +18,12 @@ export class CdpComponent implements OnInit {
   owner$: Observable<string>;
   collateralType$: Observable<string>;
   denom$: Observable<string>;
-  params$: Observable<botany.cdp.IParams>;
+  params$: Observable<ununifi.cdp.IParams>;
   cdp$: Observable<InlineResponse2004Cdp1>;
   deposits$: Observable<InlineResponse2006Deposits[]>;
 
-  spotPrice$: Observable<botany.pricefeed.ICurrentPrice>;
-  liquidationPrice$: Observable<botany.pricefeed.ICurrentPrice>;
+  spotPrice$: Observable<ununifi.pricefeed.ICurrentPrice>;
+  liquidationPrice$: Observable<ununifi.pricefeed.ICurrentPrice>;
   withdrawLimit$: Observable<number>;
   issueLimit$: Observable<number>;
 
@@ -34,7 +34,7 @@ export class CdpComponent implements OnInit {
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.collateralType$ = this.route.params.pipe(map((params) => params['collateralType']));
     this.params$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => rest.botany.cdp.params(sdk.rest)),
+      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((data) => data.data.params!),
     );
     this.denom$ = combineLatest([this.collateralType$, this.params$]).pipe(
@@ -53,7 +53,7 @@ export class CdpComponent implements OnInit {
 
     this.cdp$ = ownerAndCollateralType$.pipe(
       mergeMap(([ownerAddr, collateralType, sdk]) =>
-        rest.botany.cdp.cdp(
+        rest.ununifi.cdp.cdp(
           sdk.rest,
           cosmosclient.AccAddress.fromString(ownerAddr),
           collateralType,
@@ -64,7 +64,7 @@ export class CdpComponent implements OnInit {
 
     this.deposits$ = ownerAndCollateralType$.pipe(
       mergeMap(([ownerAddr, collateralType, sdk]) =>
-        rest.botany.cdp
+        rest.ununifi.cdp
           .allDeposits(sdk.rest, cosmosclient.AccAddress.fromString(ownerAddr), collateralType)
           .catch((error) => {
             console.error(error);

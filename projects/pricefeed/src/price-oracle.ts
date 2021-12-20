@@ -6,7 +6,7 @@ import { OraclePrice } from './domain/oracle-price';
 import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import Long from 'long';
-import { rest as botanyrest, botany, google } from 'ununifi-client';
+import { rest as ununifirest, ununifi, google } from 'ununifi-client';
 
 require('dotenv').config();
 require('log-timestamp');
@@ -235,7 +235,7 @@ export class PriceOracle {
     // Fetch the previous prices of all markets
     let previousPrices;
     try {
-      const response = await botanyrest.botany.pricefeed.allRawPrices(this.sdk, marketID);
+      const response = await ununifirest.ununifi.pricefeed.allRawPrices(this.sdk, marketID);
       if (response.status === 200) {
         previousPrices = response.data.prices || [];
       } else {
@@ -301,7 +301,7 @@ export class PriceOracle {
     const privKey = await this.privKey;
 
     // build tx
-    const msgPostPrice = new botany.pricefeed.MsgPostPrice({
+    const msgPostPrice = new ununifi.pricefeed.MsgPostPrice({
       from: account.address,
       market_id: marketID,
       price: newPrice,

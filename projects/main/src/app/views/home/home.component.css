@@ -36,12 +36,10 @@ li {
   font-weight: bold;
 }
 
-.fc-jpyx {
-  color: #b67cb6;
+.fc-guu {
+  color: #a1a1a1;
 }
-.fc-eurx {
-  color: #6c8fb6;
-}
+
 
 header {
   position: fixed;
@@ -123,7 +121,7 @@ header {
 
 #hdr-box nav #nav-02 {
   position: absolute;
-  left: 515px;
+  left: 565px;
   top: 30px;
   margin: 0 0;
   padding: 0 0;
@@ -161,24 +159,6 @@ header {
   display: inline-block;
   margin: 0 auto;
   padding: 0 0;
-}
-#hdr-box nav #nav-02 li:nth-of-type(1) a span::before {
-  display: inline-block;
-  content: '';
-  margin: 0 5px 0 0;
-  width: 13px;
-  height: 13px;
-  background: url(~projects/main/src/assets/images/github-jpy.svg) no-repeat left 0 top 0;
-  background-size: 13px auto;
-}
-#hdr-box nav #nav-02 li:nth-of-type(2) a span::before {
-  display: inline-block;
-  content: '';
-  margin: 0 5px 0 0;
-  width: 13px;
-  height: 13px;
-  background: url(~projects/main/src/assets/images/github-eur.svg) no-repeat left 0 top 0;
-  background-size: 13px auto;
 }
 
 #hdr-box nav #nav-btn {
@@ -226,7 +206,7 @@ header {
 #mv h1 {
   margin: 0 0 40px 0;
   padding: 0;
-  font-size: 38px;
+  font-size: 28px;
   line-height: 1.5;
 }
 
@@ -352,37 +332,32 @@ header {
   margin-right: 0;
 }
 
-#s-01 div ul li h3 {
+#s-01 div ul li span {
   margin: 0 0;
-  padding: 0 5px 0 24px;
+  padding: 0 0 0 5px;
   width: 55%;
-  font-size: 14px;
-  border-right: 1px solid #a1a1a1;
-  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
-  background-size: 14px auto;
+  font-size: 12px;
+  color: #5e5e5e;
 }
 #s-01 div ul li p {
   margin: 0;
-  padding: 0 0 0 5px;
+  padding: 0 5px 0 24px;
   width: 45%;
   font-size: 20px;
   font-weight: bold;
+  border-right: 1px solid #a1a1a1;
+  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+  background-size: 20px auto;
 }
 
-#s-01 div.jpyx-box h2,
-#s-01 div.jpyx-box p {
-  color: #b67cb6;
+#s-01 div ul li.guu-box p {
+  background-image: url(~projects/main/src/assets/images/GUU.png);
 }
-#s-01 div.jpyx-box ul li h3 {
-  background-image: url(~projects/main/src/assets/images/circle-a.png);
+#s-01 div ul li.jpu-box p {
+  background-image: url(~projects/main/src/assets/images/JPU.png);
 }
-
-#s-01 div.eurx-box h2,
-#s-01 div.eurx-box p {
-  color: #6c8fb6;
-}
-#s-01 div.eurx-box ul li h3 {
-  background-image: url(~projects/main/src/assets/images/circle-b.png);
+#s-01 div ul li.euu-box p {
+  background-image: url(~projects/main/src/assets/images/EUU.png);
 }
 
 #s-02 {
@@ -436,6 +411,10 @@ header {
 #s-03 div ul li:nth-of-type(4n) {
   margin-right: 0;
 }
+#s-03 div.lcnem-box ul li {
+  padding: 16px;
+}
+
 
 #s-03 div ul li h3 {
   margin: 0 0;
@@ -445,17 +424,36 @@ header {
   background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
   background-size: 24px auto;
 }
-#s-03 div ul li p {
-  margin: 0 0;
-  padding: 0 0 0 34px;
-  font-size: 13px;
-  font-weight: normal;
-  color: #a1a1a1;
-}
 
 #s-03 div.kava-box ul li h3 {
   background-image: url(~projects/main/src/assets/images/kava.svg);
 }
+
+#s-03 div ul li span {
+  margin: 0;
+  padding: 0 0 0 64px;
+  font-size: 12px;
+  line-height: 14px;
+  background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
+  background-size: 24px auto;
+  display: block;
+}
+
+#s-03 div ul li.kimura-san-box span {
+  background-image: url(~projects/main/src/assets/images/profile-k.png);
+  background-size: 54px auto;
+}
+
+#s-03 div ul li.shimojima-san-box span {
+  background-image: url(~projects/main/src/assets/images/profile-s.png);
+  background-size: 54px auto;
+}
+#s-03 div ul li.yanagisawa-san-box span {
+  background-image: url(~projects/main/src/assets/images/profile-y.png);
+  background-size: 54px auto;
+}
+
+
 #s-03 div.lcnem-box ul li h3 {
   background-image: url(~projects/main/src/assets/images/lcnem.svg);
   background-size: 24px auto;
@@ -733,22 +731,21 @@ footer p span {
     padding: 16px;
   }
 
-  #s-01 div ul li h3 {
+  #s-01 div ul li span {
     margin: 0 0 5px 0;
-    padding: 0 5px 5px 24px;
+    padding: 0 0 0 0;
     width: 100%;
     font-size: 14px;
-    border-right: none;
-    border-bottom: 1px solid #a1a1a1;
-    background: url(~projects/main/src/assets/images/circle-c.png) no-repeat left 0 top 0;
-    background-size: 14px auto;
+    color: #5e5e5e;
   }
   #s-01 div ul li p {
     margin: 0;
-    padding: 0 0 0 0;
+    padding: 0 5px 5px 24px;
     width: 100%;
     font-size: 20px;
     font-weight: bold;
+    border-right: none;
+    border-bottom: 1px solid #a1a1a1;
   }
 
   #s-02 {

@@ -73,7 +73,9 @@ export class TxCommonInfrastructureService {
 
     // check broadcast tx error
     if (result.data.tx_response?.code !== 0) {
-      throw Error(result.data.tx_response?.raw_log);
+      throw Error(
+        `TxHash: ${result.data.tx_response?.txhash}, Error: ${result.data.tx_response?.raw_log}`,
+      );
     }
 
     return result.data;

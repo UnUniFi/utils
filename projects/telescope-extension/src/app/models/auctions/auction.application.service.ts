@@ -86,7 +86,7 @@ export class AuctionApplicationService {
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
-        duration: 6000,
+        duration: 0,
       });
       return;
     } finally {

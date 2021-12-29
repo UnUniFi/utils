@@ -89,7 +89,7 @@ export class CdpApplicationService {
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
-        duration: 6000,
+        duration: 0,
       });
       console.error(error);
       return;
@@ -169,7 +169,7 @@ export class CdpApplicationService {
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
-        duration: 6000,
+        duration: 0,
       });
       console.error(error);
       return;
@@ -248,7 +248,7 @@ export class CdpApplicationService {
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
-        duration: 6000,
+        duration: 0,
       });
       console.error(error);
       return;
@@ -331,7 +331,7 @@ export class CdpApplicationService {
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
-        duration: 6000,
+        duration: 0,
       });
       console.error(error);
       return;
@@ -414,7 +414,7 @@ export class CdpApplicationService {
     } catch (error) {
       const msg = (error as Error).toString();
       this.snackBar.open(`Error has occured: ${msg}`, undefined, {
-        duration: 6000,
+        duration: 0,
       });
       console.error(error);
       return;

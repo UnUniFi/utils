@@ -1,11 +1,11 @@
-name: telescope Action Trigger Publish Docker image pricefeed
+name: Publish Docker image for Private Testnet telescope-ununifi
 on:
-  repository_dispatch:
-    types:
-      - repository-telescope-new-release
+  push:
+    branches:
+      - develop
 jobs:
   push_to_registry:
-    name: Push Docker image to Docker Hub
+    name: Push Docker image for Private Testnet to ghcr.io
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -16,11 +16,14 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup variables
+        id: variables
+        run: echo "::set-output name=version::${GITHUB_REF##*/}"
       - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./projects/pricefeed/
-          file: ./projects/pricefeed/Dockerfile
+          context: .
+          file: ./projects/telescope-extension/editions/ununifi/Dockerfile
           push: true
           tags: |
-            ghcr.io/ununifi/pricefeed:latest
+            ghcr.io/ununifi/telescope-ununifi:test

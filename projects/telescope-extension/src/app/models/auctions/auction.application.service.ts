@@ -34,6 +34,8 @@ export class AuctionApplicationService {
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
 
+    const dialogRefSimulating = this.loadingDialog.open('Simulating...');
+
     try {
       simulatedResultData = await this.auction.simulateToPlaceBid(
         key,
@@ -49,6 +51,8 @@ export class AuctionApplicationService {
       const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
       this.snackBar.open(`An error has occur: ${errorMessage}`);
       return;
+    } finally {
+      dialogRefSimulating.close();
     }
 
     // ask the user to confirm the fee with a dialog
@@ -67,7 +71,7 @@ export class AuctionApplicationService {
       return;
     }
 
-    const dialogRef = this.loadingDialog.open('Bidding');
+    const dialogRef = this.loadingDialog.open('Bidding...');
 
     let txhash: string | undefined;
     try {

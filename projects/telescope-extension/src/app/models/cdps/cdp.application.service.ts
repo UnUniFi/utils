@@ -35,6 +35,8 @@ export class CdpApplicationService {
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
 
+    const dialogRefSimulating = this.loadingDialog.open('Simulating...');
+
     try {
       simulatedResultData = await this.cdp.simulateToCreateCDP(
         key,
@@ -51,6 +53,8 @@ export class CdpApplicationService {
       const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
       this.snackBar.open(`An error has occur: ${errorMessage}`);
       return;
+    } finally {
+      dialogRefSimulating.close();
     }
 
     // ask the user to confirm the fee with a dialog
@@ -69,7 +73,7 @@ export class CdpApplicationService {
       return;
     }
 
-    const dialogRef = this.loadingDialog.open('Sending');
+    const dialogRef = this.loadingDialog.open('Sending...');
 
     let txhash: string | undefined;
     try {
@@ -117,6 +121,8 @@ export class CdpApplicationService {
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
 
+    const dialogRefSimulating = this.loadingDialog.open('Simulating...');
+
     try {
       simulatedResultData = await this.cdp.simulateToDrawCDP(
         key,
@@ -132,6 +138,8 @@ export class CdpApplicationService {
       const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
       this.snackBar.open(`An error has occur: ${errorMessage}`);
       return;
+    } finally {
+      dialogRefSimulating.close();
     }
 
     // ask the user to confirm the fee with a dialog
@@ -150,7 +158,7 @@ export class CdpApplicationService {
       return;
     }
 
-    const dialogRef = this.loadingDialog.open('Sending');
+    const dialogRef = this.loadingDialog.open('Sending...');
 
     let txhash: string | undefined;
     try {
@@ -197,6 +205,8 @@ export class CdpApplicationService {
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
 
+    const dialogRefSimulating = this.loadingDialog.open('Simulating...');
+
     try {
       simulatedResultData = await this.cdp.simulateToRepayCDP(
         key,
@@ -212,6 +222,8 @@ export class CdpApplicationService {
       const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
       this.snackBar.open(`An error has occur: ${errorMessage}`);
       return;
+    } finally {
+      dialogRefSimulating.close();
     }
 
     // ask the user to confirm the fee with a dialog
@@ -229,7 +241,7 @@ export class CdpApplicationService {
       this.snackBar.open('Tx was canceled', undefined, { duration: 6000 });
       return;
     }
-    const dialogRef = this.loadingDialog.open('Sending');
+    const dialogRef = this.loadingDialog.open('Sending...');
 
     let txhash: string | undefined;
     try {
@@ -277,6 +289,8 @@ export class CdpApplicationService {
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
 
+    const dialogRefSimulating = this.loadingDialog.open('Simulating...');
+
     try {
       simulatedResultData = await this.cdp.simulateToDepositCDP(
         key,
@@ -293,6 +307,8 @@ export class CdpApplicationService {
       const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
       this.snackBar.open(`An error has occur: ${errorMessage}`);
       return;
+    } finally {
+      dialogRefSimulating.close();
     }
 
     // ask the user to confirm the fee with a dialog
@@ -311,7 +327,7 @@ export class CdpApplicationService {
       return;
     }
 
-    const dialogRef = this.loadingDialog.open('Sending');
+    const dialogRef = this.loadingDialog.open('Sending...');
 
     let txhash: string | undefined;
     try {
@@ -360,6 +376,8 @@ export class CdpApplicationService {
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
 
+    const dialogRefSimulating = this.loadingDialog.open('Simulating...');
+
     try {
       simulatedResultData = await this.cdp.simulateToWithdrawCDP(
         key,
@@ -376,6 +394,8 @@ export class CdpApplicationService {
       const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
       this.snackBar.open(`An error has occur: ${errorMessage}`);
       return;
+    } finally {
+      dialogRefSimulating.close();
     }
 
     // ask the user to confirm the fee with a dialog
@@ -394,7 +414,7 @@ export class CdpApplicationService {
       return;
     }
 
-    const dialogRef = this.loadingDialog.open('Sending');
+    const dialogRef = this.loadingDialog.open('Sending...');
 
     let txhash: string | undefined;
     try {

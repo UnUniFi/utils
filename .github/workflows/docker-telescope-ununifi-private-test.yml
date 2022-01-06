@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./projects/telescope-extension/editions/ununifi/Dockerfile
+          file: ./projects/telescope-extension/editions/ununifi/Dockerfile-private-test
           push: true
           tags: |
             ghcr.io/ununifi/telescope-ununifi:test

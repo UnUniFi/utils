@@ -58,8 +58,9 @@
         <mat-icon>menu</mat-icon>
       </button>
       <view-toolbar
-        [searchValue]="searchValue"
-        (appSubmitSearchValue)="onSubmitSearchValue($event)"
+        [searchResult]="searchResult"
+        (appSubmitSearchResult)="onSubmitSearchResult($event)"
+        (appChangeInputValue)="onChangeInputValue($event)"
       ></view-toolbar>
     </mat-toolbar>
     <div class="container">

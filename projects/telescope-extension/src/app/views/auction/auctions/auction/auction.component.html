@@ -73,7 +73,7 @@
         <span class="column-name"> End Time: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ endTime?.toUTCString() | date: 'yyyy-M-d a h:mm:ss z' }}
+          {{ endTime | date: 'yyyy-M-d a h:mm:ss z' }}
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
@@ -82,7 +82,7 @@
         <span class="column-name"> Max End Time: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ maxEndTime?.toUTCString() | date: 'yyyy-M-d a h:mm:ss z' }}
+          {{ maxEndTime | date: 'yyyy-M-d a h:mm:ss z' }}
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>

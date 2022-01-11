@@ -50,7 +50,8 @@
       <mat-list-item>
         <span class="column-name">Principal: </span>
         <span class="flex-auto"></span>
-        <span class="column-value">{{ cdp?.cdp?.principal?.amount }}
+        <span class="column-value"
+          >{{ cdp?.cdp?.principal?.amount }}
           {{ cdp?.cdp?.principal?.denom }}
           <ng-template [ngIf]="!!issueLimit">
             (Available: {{ issueLimit }} {{ cdp?.cdp?.principal?.denom }})
@@ -104,9 +105,7 @@
       <mat-list-item>
         <span class="column-name">Spot Price: </span>
         <span class="flex-auto"></span>
-        <span class="column-value">
-          {{ spotPrice?.price }} [{{ spotPrice?.market_id }}]
-        </span>
+        <span class="column-value"> {{ spotPrice?.price }} [{{ spotPrice?.market_id }}] </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
 
@@ -134,9 +133,7 @@
       <mat-list>
         <span class="column-name">{{ deposit.depositor }}</span>
         <span class="flex-auto"></span>
-        <span class="column-value">
-          {{ deposit.amount?.amount }} {{ deposit.amount?.denom }}
-        </span>
+        <span class="column-value"> {{ deposit.amount?.amount }} {{ deposit.amount?.denom }} </span>
       </mat-list>
     </ng-template>
   </mat-card>

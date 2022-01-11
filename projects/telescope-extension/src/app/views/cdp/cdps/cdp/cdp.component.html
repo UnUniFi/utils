@@ -94,10 +94,10 @@
       <mat-divider [inset]="true"></mat-divider>
 
       <mat-list-item>
-        <span class="column-name"> Fees Updated </span>
+        <span class="column-name"> Fees Updated: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ cdp?.cdp?.fees_updated }}
+          {{ cdp?.cdp?.fees_updated | date: 'yyyy-M-d a h:mm:ss z' }}
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
@@ -105,7 +105,9 @@
       <mat-list-item>
         <span class="column-name">Spot Price: </span>
         <span class="flex-auto"></span>
-        <span class="column-value"> {{ spotPrice?.price }} [{{ spotPrice?.market_id }}] </span>
+        <span class="column-value">
+          {{ spotPrice?.price | number: '1.9-9' }} [{{ spotPrice?.market_id }}]
+        </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
 
@@ -113,7 +115,7 @@
         <span class="column-name">Liquidation Price: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ liquidationPrice?.price }} [{{ liquidationPrice?.market_id }}]
+          {{ liquidationPrice?.price | number: '1.9-9' }} [{{ liquidationPrice?.market_id }}]
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
@@ -121,7 +123,7 @@
       <mat-list-item>
         <span class="column-name">Collateralization Ratio: </span>
         <span class="flex-auto"></span>
-        <span class="column-value">{{ cdp?.collateralization_ratio }}</span>
+        <span class="column-value">{{ cdp?.collateralization_ratio | number: '1.9-9' }}</span>
       </mat-list-item>
     </mat-list>
   </mat-card>

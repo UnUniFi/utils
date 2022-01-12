@@ -1,3 +1,4 @@
+import { SearchResult } from './toolbar/toolbar.component';
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, NgZone } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Router, NavigationEnd } from '@angular/router';
@@ -13,10 +14,13 @@ export class AppComponent implements OnInit {
   extensionNavigations?: { name: string; link: string; icon: string }[];
 
   @Input()
-  searchValue: string;
+  searchResult?: SearchResult | null;
 
   @Output()
-  appSubmitSearchValue: EventEmitter<string>;
+  appSubmitSearchResult: EventEmitter<SearchResult>;
+
+  @Output()
+  appChangeInputValue: EventEmitter<string>;
 
   @ViewChild('drawer')
   sidenav!: MatSidenav;
@@ -25,8 +29,8 @@ export class AppComponent implements OnInit {
   drawerOpened$ = new BehaviorSubject(true);
 
   constructor(private router: Router, private ngZone: NgZone) {
-    this.searchValue = '';
-    this.appSubmitSearchValue = new EventEmitter();
+    this.appSubmitSearchResult = new EventEmitter();
+    this.appChangeInputValue = new EventEmitter();
 
     window.onresize = (_) => {
       this.ngZone.run(() => {
@@ -55,7 +59,11 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onSubmitSearchValue(value: string) {
-    this.appSubmitSearchValue.emit(value);
+  onSubmitSearchResult(searchResult: SearchResult) {
+    this.appSubmitSearchResult.emit(searchResult);
+  }
+
+  onChangeInputValue(inputValue: string) {
+    this.appChangeInputValue.emit(inputValue);
   }
 }

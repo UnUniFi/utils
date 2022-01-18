@@ -20,21 +20,21 @@ const config = {
     faucet: [
       {
         hasFaucet: true,
-        faucetURL: `${location.protocol}//b.test.ununifi.cauchye.net:8000`,
+        faucetURL: `${location.protocol}//${location.hostname}:8000`,
         denom: 'ubtc',
         creditAmount: 100, // amount to credit in max request
         maxCredit: 99, // account has already maxCredit balance cannot claim anymore
       },
       {
         hasFaucet: true,
-        faucetURL: `${location.protocol}//b.test.ununifi.cauchye.net:8002`,
+        faucetURL: `${location.protocol}//${location.hostname}:8002`,
         denom: 'uguu',
         creditAmount: 2000000,
         maxCredit: 1999999,
       },
       {
         hasFaucet: false,
-        faucetURL: `${location.protocol}//b.test.ununifi.cauchye.net:8004`,
+        faucetURL: `${location.protocol}//${location.hostname}:8004`,
         denom: 'jpu',
         creditAmount: 10,
         maxCredit: 9,

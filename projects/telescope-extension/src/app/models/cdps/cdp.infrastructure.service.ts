@@ -82,7 +82,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privateKeyWithNoWhitespace = privateKey.replace(/\s+/g, '');
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKeyWithNoWhitespace);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
@@ -187,7 +188,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privateKeyWithNoWhitespace = privateKey.replace(/\s+/g, '');
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKeyWithNoWhitespace);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
@@ -290,7 +292,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privateKeyWithNoWhitespace = privateKey.replace(/\s+/g, '');
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKeyWithNoWhitespace);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
@@ -398,7 +401,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privateKeyWithNoWhitespace = privateKey.replace(/\s+/g, '');
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKeyWithNoWhitespace);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
@@ -508,7 +512,8 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privateKeyWithNoWhitespace = privateKey.replace(/\s+/g, '');
+    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKeyWithNoWhitespace);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 

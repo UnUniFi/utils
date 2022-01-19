@@ -107,12 +107,7 @@
 <br />
 
 <h3>Enter Your Bid</h3>
-<form
-  #formRef="ngForm"
-  (submit)="
-    onSubmit(privateKeyRef.value, denomRef.value, amountRef.value, minimumGasPriceRef.value)
-  "
->
+<form #formRef="ngForm" (submit)="onSubmit(privateKeyRef.value, denomRef.value, amountRef.value, minimumGasPriceRef.value)">
   <div>
     <mat-form-field class="w-full">
       <mat-label>Amount</mat-label>
@@ -141,10 +136,7 @@
         required
         (valueChange)="onMinimumGasDenomChanged($event)"
       >
-        <mat-option
-          *ngFor="let minimumGasPrice of minimumGasPrices"
-          [value]="minimumGasPrice.denom"
-        >
+        <mat-option *ngFor="let minimumGasPrice of minimumGasPrices" [value]="minimumGasPrice.denom">
           {{ minimumGasPrice.denom }}
         </mat-option>
       </mat-select>
@@ -162,8 +154,7 @@
       />
     </mat-form-field>
   </div>
-  <mat-slider
-    class="w-full"
+  <mat-slider class="w-full"
     [max]="1"
     [min]="0"
     [step]="0.015"

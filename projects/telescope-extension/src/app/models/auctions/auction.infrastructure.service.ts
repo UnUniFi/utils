@@ -1,6 +1,5 @@
-import { KeyInfrastructureService } from '../keys/key.infrastructure.service';
 import { Key } from '../keys/key.model';
-import { IKeyInfrastructure } from '../keys/key.service';
+import { KeyService } from '../keys/key.service';
 import { TxCommonInfrastructureService } from '../tx-common/tx-common.infrastructure.service';
 import { SimulatedTxResultResponse } from '../tx-common/tx-common.model';
 import { IAuctionInfrastructure } from './auction.service';
@@ -14,14 +13,11 @@ import { ununifi } from 'ununifi-client';
   providedIn: 'root',
 })
 export class AuctionInfrastructureService implements IAuctionInfrastructure {
-  private readonly iKeyInfrastructure: IKeyInfrastructure;
   constructor(
     private readonly cosmosSDK: CosmosSDKService,
-    keyInfrastructure: KeyInfrastructureService,
+    private readonly keyService: KeyService,
     private readonly txCommonInfrastructureService: TxCommonInfrastructureService,
-  ) {
-    this.iKeyInfrastructure = keyInfrastructure;
-  }
+  ) {}
 
   async placeBid(
     key: Key,
@@ -70,8 +66,7 @@ export class AuctionInfrastructureService implements IAuctionInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privateKeyWithNoWhitespace = privateKey.replace(/\s+/g, '');
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKeyWithNoWhitespace);
+    const privKey = this.keyService.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
     const bidder = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 

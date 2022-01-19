@@ -23,15 +23,18 @@ export class KeyService {
   }
 
   getPrivKey(type: KeyType, privateKey: string) {
-    return this.iKeyInfrastructure.getPrivKey(type, privateKey);
+    const privateKeyWithNoWhitespace = privateKey.replace(/\s+/g, '');
+    return this.iKeyInfrastructure.getPrivKey(type, privateKeyWithNoWhitespace);
   }
 
   getPubKey(type: KeyType, publicKey: string) {
-    return this.iKeyInfrastructure.getPubKey(type, publicKey);
+    const publicKeyWithNoWhitespace = publicKey.replace(/\s+/g, '');
+    return this.iKeyInfrastructure.getPubKey(type, publicKeyWithNoWhitespace);
   }
 
   getPrivateKeyFromMnemonic(mnemonic: string) {
-    return this.iKeyInfrastructure.getPrivateKeyFromMnemonic(mnemonic);
+    const mnemonicWithNoWhitespace = mnemonic.trim();
+    return this.iKeyInfrastructure.getPrivateKeyFromMnemonic(mnemonicWithNoWhitespace);
   }
 
   get(id: string) {

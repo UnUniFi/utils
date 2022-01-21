@@ -1,6 +1,5 @@
-import { KeyInfrastructureService } from '../keys/key.infrastructure.service';
 import { Key } from '../keys/key.model';
-import { IKeyInfrastructure } from '../keys/key.service';
+import { KeyService } from '../keys/key.service';
 import { TxCommonInfrastructureService } from '../tx-common/tx-common.infrastructure.service';
 import { SimulatedTxResultResponse } from '../tx-common/tx-common.model';
 import { ICdpInfrastructure } from './cdp.service';
@@ -14,14 +13,11 @@ import { ununifi } from 'ununifi-client';
   providedIn: 'root',
 })
 export class CdpInfrastructureService implements ICdpInfrastructure {
-  private readonly iKeyInfrastructure: IKeyInfrastructure;
   constructor(
     private readonly cosmosSDK: CosmosSDKService,
-    keyInfrastructure: KeyInfrastructureService,
+    private readonly keyService: KeyService,
     private readonly txCommonInfrastructureService: TxCommonInfrastructureService,
-  ) {
-    this.iKeyInfrastructure = keyInfrastructure;
-  }
+  ) {}
 
   async createCDP(
     key: Key,
@@ -82,7 +78,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privKey = this.keyService.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
@@ -187,7 +183,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privKey = this.keyService.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
@@ -290,7 +286,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privKey = this.keyService.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
@@ -398,7 +394,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privKey = this.keyService.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 
@@ -508,7 +504,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
     const sdk = await this.cosmosSDK.sdk();
-    const privKey = this.iKeyInfrastructure.getPrivKey(key.type, privateKey);
+    const privKey = this.keyService.getPrivKey(key.type, privateKey);
     const pubKey = privKey.pubKey();
     const sender = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
 

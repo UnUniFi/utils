@@ -1,7 +1,7 @@
 const config = {
   restURL: `${location.protocol}//${location.hostname}:1317`,
   websocketURL: `${location.protocol.replace('http', 'ws')}//${location.hostname}:26657`,
-  chainID: 'ununifi-6-test',
+  chainID: 'ununifi-7-private-test',
   bech32Prefix: {
     accAddr: 'ununifi',
     accPub: 'ununifipub',
@@ -20,21 +20,21 @@ const config = {
     faucet: [
       {
         hasFaucet: true,
-        faucetURL: `${location.protocol}//b.test.ununifi.cauchye.net:8000`, // a.test.ununifi.cauchye.net is also available.
+        faucetURL: `${location.protocol}//b.private-test.ununifi.cauchye.net:8000`, // a.test.ununifi.cauchye.net is also available.
         denom: 'ubtc',
         creditAmount: 100, // amount to credit in max request
         maxCredit: 99, // account has already maxCredit balance cannot claim anymore
       },
       {
         hasFaucet: true,
-        faucetURL: `${location.protocol}//b.test.ununifi.cauchye.net:8002`, // a.test.ununifi.cauchye.net is also available.
+        faucetURL: `${location.protocol}//b.private-test.ununifi.cauchye.net:8002`, // a.test.ununifi.cauchye.net is also available.
         denom: 'uguu',
         creditAmount: 2000000,
         maxCredit: 1999999,
       },
       {
         hasFaucet: false,
-        faucetURL: `${location.protocol}//b.test.ununifi.cauchye.net:8004`, // a.test.ununifi.cauchye.net is also available.
+        faucetURL: `${location.protocol}//b.private-test.ununifi.cauchye.net:8004`, // a.test.ununifi.cauchye.net is also available.
         denom: 'jpu',
         creditAmount: 10,
         maxCredit: 9,

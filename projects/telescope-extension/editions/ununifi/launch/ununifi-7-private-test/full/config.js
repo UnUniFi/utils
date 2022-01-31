@@ -1,7 +1,7 @@
 const config = {
   restURL: `${location.protocol}//${location.hostname}:1317`,
   websocketURL: `${location.protocol.replace('http', 'ws')}//${location.hostname}:26657`,
-  chainID: 'ununifi-6-test',
+  chainID: 'ununifi-7-private-test',
   bech32Prefix: {
     accAddr: 'ununifi',
     accPub: 'ununifipub',

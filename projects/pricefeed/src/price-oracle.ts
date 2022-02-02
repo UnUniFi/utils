@@ -367,13 +367,13 @@ export class PriceOracle {
       const simulatedGasUsedWithMarginNumber = simulatedGasUsed
         ? parseInt(simulatedGasUsed) * 1.1
         : 200000;
-      const simulatedGasUsedWithMargin = simulatedGasUsedWithMarginNumber.toFixed(0);
+      const simulatedGasUsedWithMargin = Math.ceil(simulatedGasUsedWithMarginNumber).toString();
       const simulatedFeeWithMarginNumber =
         parseInt(simulatedGasUsedWithMargin) *
         parseFloat(
           process.env.MINIMUM_GAS_PRICE_AMOUNT ? process.env.MINIMUM_GAS_PRICE_AMOUNT : '200000',
         );
-      const simulatedFeeWithMargin = simulatedFeeWithMarginNumber.toFixed(0) + 1;
+      const simulatedFeeWithMargin = Math.ceil(simulatedFeeWithMarginNumber).toString();
       console.log({
         simulatedGasUsed,
         simulatedGasUsedWithMargin,

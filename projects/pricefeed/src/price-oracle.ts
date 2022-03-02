@@ -3,6 +3,7 @@ import { IFxClient } from './clients/fx/interface';
 import { FIAT_CURRENCIES } from './constants/currency';
 import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
+import { DataProviderConf } from './domain/data-provider';
 import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import Long from 'long';
@@ -29,6 +30,7 @@ export class PriceOracle {
     mnemonic: string,
     bech32Prefix: string,
     private fxClients: IFxClient[],
+    private dataProviderConf: DataProviderConf,
   ) {
     if (!marketIDs) {
       throw new Error('must specify at least one market ID');
@@ -91,6 +93,9 @@ export class PriceOracle {
     for (let i = 0; i < this.marketIDs.length; ++i) {
       const marketID = this.marketIDs[i];
       const result = await this.fetchPrice(marketID);
+      // todo: delete
+      console.log("🚀 ~ file: price-oracle.ts ~ line 102 ~ PriceOracle ~ postPrices ~ result", result)
+      
 
       if (!this.checkPriceIsValid(result)) {
         return;
@@ -125,35 +130,91 @@ export class PriceOracle {
    */
   async fetchPrice(marketID: string): Promise<{ price: number | null; success: boolean }> {
     try {
-      const tickers = await this.fetchTickers(marketID);
-      // console.log('tickers', tickers);
-      const usdTickers = await this.convertToUsdTickers(tickers);
-      // console.log('usdTickers', usdTickers);
-      const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(usdTickers);
-      // console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
-      const convertedPrice = await this.convertUsdPrice(marketID, aggravatedAverageUsdPrice);
-      // console.log('convertedPrice', convertedPrice);
-      const denominatedPrice = (() => {
-        if (convertedPrice === null) {
-          return null;
-        }
-        switch (marketID) {
-          case 'ubtc:jpy':
-          case 'ubtc:jpy:30':
-          case 'ubtc:eur':
-          case 'ubtc:eur:30':
-            return convertedPrice / 1000000;
-          default:
-            return convertedPrice;
-        }
-      })();
-      console.log('denominatedPrice', denominatedPrice);
-      return { price: denominatedPrice, success: true };
+      // todo: implement
+      // if(this.)
+      // return await this.fetchPriceFromBand(marketID)
+      return await this.fetchPriceFromCCXT(marketID)
     } catch (e) {
       console.error(e);
       console.log(`could not get ${marketID} price from Binance`);
       return { price: null, success: false };
     }
+  }
+
+  /**
+   * Fetches price for a market ID
+   * @param {String} marketID the market's ID
+   */
+  async fetchPriceFromBand(marketID: string): Promise<{ price: number | null; success: boolean }> {
+    // todo: impelement here
+    // current 
+    // const btc_usd = https://laozi1.bandchain.org/api/oracle/v1/request_prices?symbols=BTC
+    // const jpy_usd = https://laozi1.bandchain.org/api/oracle/v1/request_prices?symbols=JPY
+    // const jpy_btc = btc_usd * jpy_usd
+    // average 
+    // get before 30 min record
+    // use lowdb
+    // db  struct
+    // {
+    //   jpy:{
+    //     data:[
+    //       {
+    //         epoch_sec_time:1646233960,
+    //         epoch_time_alias:"202203030010",
+    //         price:5.0,
+    //       }
+    //     ]
+    //   },
+    //   eur:{
+    //     data:[
+    //       {
+    //         epoch_sec_time:1646233960,
+    //         epoch_time_alias:"202203030010",
+    //         price:10.0,
+    //       }
+    //     ]
+    //   },
+    // }
+    // db logic 
+    // get
+    // epoch_time > before_30_min
+    // quuing
+    // array shift -> ( epoch_time > saved_time ) => delete
+    return {
+      price:100,
+      success:true
+    }
+  }
+
+  /**
+   * Fetches price for a market ID
+   * @param {String} marketID the market's ID
+   */
+  async fetchPriceFromCCXT(marketID: string): Promise<{ price: number | null; success: boolean }> {
+    const tickers = await this.fetchTickers(marketID);
+    // console.log('tickers', tickers);
+    const usdTickers = await this.convertToUsdTickers(tickers);
+    // console.log('usdTickers', usdTickers);
+    const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(usdTickers);
+    // console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
+    const convertedPrice = await this.convertUsdPrice(marketID, aggravatedAverageUsdPrice);
+    // console.log('convertedPrice', convertedPrice);
+    const denominatedPrice = (() => {
+      if (convertedPrice === null) {
+        return null;
+      }
+      switch (marketID) {
+        case 'ubtc:jpy':
+        case 'ubtc:jpy:30':
+        case 'ubtc:eur':
+        case 'ubtc:eur:30':
+          return convertedPrice / 1000000;
+        default:
+          return convertedPrice;
+      }
+    })();
+    console.log('denominatedPrice', denominatedPrice);
+    return { price: denominatedPrice, success: true };
   }
 
   async fetchTickers(marketID: string) {
@@ -214,6 +275,7 @@ export class PriceOracle {
 
   async convertUsdPrice(marketID: string, price: number) {
     const priceRate = await this.getLatestFiatCurrencyPrices();
+    console.log("🚀 ~ file: price-oracle.ts ~ line 221 ~ PriceOracle ~ convertUsdPrice ~ priceRate", priceRate)
     const currency = this.getBaseCurrency(marketID);
     if (currency && currency in priceRate.rates) {
       const currencyPrice = priceRate.rates[currency] * price;

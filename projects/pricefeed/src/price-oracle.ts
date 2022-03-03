@@ -1,13 +1,15 @@
 import CcxtClient from './clients/ccxt';
+import BandClient from './clients/band';
 import { IFxClient } from './clients/fx/interface';
 import { FIAT_CURRENCIES } from './constants/currency';
 import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
-import { DataProviderConf } from './domain/data-provider';
+import { DataProviderConf, MarketCurrencyMap } from './domain/data-provider';
 import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import Long from 'long';
 import { rest as ununifirest, ununifi, google } from 'ununifi-client';
+import axios from "axios";
 
 require('dotenv').config();
 require('log-timestamp');
@@ -19,6 +21,7 @@ export class PriceOracle {
   private sdk: cosmosclient.CosmosSDK;
   private privKey: Promise<proto.cosmos.crypto.secp256k1.PrivKey>;
   private ccxt: CcxtClient;
+  private band: BandClient;
 
   constructor(
     private marketIDs: string[],
@@ -72,6 +75,16 @@ export class PriceOracle {
       });
     }
     this.ccxt = new CcxtClient();
+    this.band = new BandClient(
+      dataProviderConf.dataProviderUrl,
+      dataProviderConf.dataProviderStoreType,
+      dataProviderConf.dataProviderStoreLocation,
+      dataProviderConf.dataProviderDataRetentionPeriodMin,
+      )
+    // todo: delete
+    // if(this.useBandData(dataProviderConf)){
+    //   this.band = new BandClient(dataProviderConf.dataProviderUrl)
+    // }
   }
 
   /**
@@ -148,37 +161,14 @@ export class PriceOracle {
   async fetchPriceFromBand(marketID: string): Promise<{ price: number | null; success: boolean }> {
     // todo: impelement here
     // current 
-    // const btc_usd = https://laozi1.bandchain.org/api/oracle/v1/request_prices?symbols=BTC
-    // const jpy_usd = https://laozi1.bandchain.org/api/oracle/v1/request_prices?symbols=JPY
-    // const jpy_btc = btc_usd * jpy_usd
-    // average 
-    // get before 30 min record
-    // use lowdb
-    // db  struct
-    // {
-    //   jpy:{
-    //     data:[
-    //       {
-    //         epoch_sec_time:1646233960,
-    //         epoch_time_alias:"202203030010",
-    //         price:5.0,
-    //       }
-    //     ]
-    //   },
-    //   eur:{
-    //     data:[
-    //       {
-    //         epoch_sec_time:1646233960,
-    //         epoch_time_alias:"202203030010",
-    //         price:10.0,
-    //       }
-    //     ]
-    //   },
-    // }
-    // db logic 
-    // get
-    // epoch_time > before_30_min
-    // quuing
+    const currency = MarketCurrencyMap[marketID]
+    if(!currency){
+      throw new Error(`not supported marketID:${marketID}`)
+    }
+    const currencyUbtc = await this.band.getCurrentPrice(currency)
+    const avecurrencyUbtc = await this.band.getAveragePrice(currency)
+    console.log("🚀 ~ file: price-oracle.ts ~ line 170 ~ PriceOracle ~ fetchPriceFromBand ~ avecurrencyUbtc", avecurrencyUbtc)
+    console.log("🚀 ~ file: price-oracle.ts ~ line 162 ~ PriceOracle ~ fetchPriceFromBand ~ currencyUbtc", currencyUbtc)
     // array shift -> ( epoch_time > saved_time ) => delete
     return {
       price:100,
@@ -275,7 +265,6 @@ export class PriceOracle {
 
   async convertUsdPrice(marketID: string, price: number) {
     const priceRate = await this.getLatestFiatCurrencyPrices();
-    console.log("🚀 ~ file: price-oracle.ts ~ line 221 ~ PriceOracle ~ convertUsdPrice ~ priceRate", priceRate)
     const currency = this.getBaseCurrency(marketID);
     if (currency && currency in priceRate.rates) {
       const currencyPrice = priceRate.rates[currency] * price;
@@ -520,5 +509,8 @@ export class PriceOracle {
       default:
         throw new Error(`Unsupported martketId: ${marketId}`);
     }
+  }
+  useBandData(conf:DataProviderConf):boolean{
+    return conf.dataProviderType == "Band"
   }
 }

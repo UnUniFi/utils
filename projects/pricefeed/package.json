@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/lcnem/pricefeed#readme",
   "dependencies": {
+    "@commonify/lowdb": "^3.0.0",
     "axios": "^0.21.1",
     "ununifi-client": "^0.44.3",
     "ccxt": "^1.57.37",

@@ -17,14 +17,14 @@ const cronTab = process.env.CRONTAB || "";
 const openExchangeRateAppId = process.env.OPEN_EXCHANGE_RATES_APP_ID || "";
 
 const dataProviderType = process.env.DATA_PROVIDER_TYPE || "default";
-const dataProviderUrl = process.env.DATA_PROVIDER_URL || "";
-const dataProviderDataRetentionPeriod = process.env.DATA_DATA_RETENTION_PERIOD || "";
+const dataProviderUrl = process.env.DATA_PROVIDER_URL || "https://laozi1.bandchain.org";
+const dataProviderDataRetentionPeriodMin = process.env.DATA_DATA_RETENTION_PERIOD_MIN || "";
 const dataProviderStoreType = process.env.DATA_PROVIDER_STORE_TYPE || "memory";
-const dataProviderStoreLocation = process.env.DATA_PROVIDER_STORE_LOCATION || ".";
-const dataProiverConf  =  {
+const dataProviderStoreLocation = process.env.DATA_PROVIDER_STORE_LOCATION || "./price_data.json";
+const dataProviderConf  =  {
   dataProviderType,
   dataProviderUrl,
-  dataProviderDataRetentionPeriod,
+  dataProviderDataRetentionPeriodMin,
   dataProviderStoreType,
   dataProviderStoreLocation,
 }
@@ -45,10 +45,15 @@ const oracle = new PriceOracle(
   mnemonic,
   bech32Prefix,
   fxClients,
-  dataProiverConf
+  dataProviderConf
 );
 
-oracle.postPrices();
-cron.schedule(cronTab, () => {
-  oracle.postPrices();
-});
+// oracle.postPrices();
+oracle.fetchPriceFromBand("ubtc:jpy");
+// oracle.fetchPriceFromCCXT("ubtc:jpy");
+
+// oracle.fetchPriceFromBand("ubtc:eur");
+// oracle.fetchPriceFromCCXT("ubtc:eur");
+// cron.schedule(cronTab, () => {
+//   oracle.postPrices();
+// });

@@ -18,7 +18,7 @@ const openExchangeRateAppId = process.env.OPEN_EXCHANGE_RATES_APP_ID || "";
 
 const dataProviderType = process.env.DATA_PROVIDER_TYPE || "default";
 const dataProviderUrl = process.env.DATA_PROVIDER_URL || "https://laozi1.bandchain.org";
-const dataProviderDataRetentionPeriodMin = process.env.DATA_DATA_RETENTION_PERIOD_MIN || "";
+const dataProviderDataRetentionPeriodMin = process.env.DATA_DATA_RETENTION_PERIOD_MIN || "30";
 const dataProviderStoreType = process.env.DATA_PROVIDER_STORE_TYPE || "memory";
 const dataProviderStoreLocation = process.env.DATA_PROVIDER_STORE_LOCATION || "./price_data.json";
 const dataProviderConf  =  {
@@ -48,12 +48,6 @@ const oracle = new PriceOracle(
   dataProviderConf
 );
 
-// oracle.postPrices();
-oracle.fetchPriceFromBand("ubtc:jpy");
-// oracle.fetchPriceFromCCXT("ubtc:jpy");
-
-// oracle.fetchPriceFromBand("ubtc:eur");
-// oracle.fetchPriceFromCCXT("ubtc:eur");
-// cron.schedule(cronTab, () => {
-//   oracle.postPrices();
-// });
+cron.schedule(cronTab, () => {
+  oracle.postPrices();
+});

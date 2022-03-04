@@ -9,7 +9,6 @@ import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import Long from 'long';
 import { rest as ununifirest, ununifi, google } from 'ununifi-client';
-import axios from "axios";
 
 require('dotenv').config();
 require('log-timestamp');
@@ -81,10 +80,6 @@ export class PriceOracle {
       dataProviderConf.dataProviderStoreLocation,
       dataProviderConf.dataProviderDataRetentionPeriodMin,
       )
-    // todo: delete
-    // if(this.useBandData(dataProviderConf)){
-    //   this.band = new BandClient(dataProviderConf.dataProviderUrl)
-    // }
   }
 
   /**
@@ -106,8 +101,6 @@ export class PriceOracle {
     for (let i = 0; i < this.marketIDs.length; ++i) {
       const marketID = this.marketIDs[i];
       const result = await this.fetchPrice(marketID);
-      // todo: delete
-      console.log("🚀 ~ file: price-oracle.ts ~ line 102 ~ PriceOracle ~ postPrices ~ result", result)
       
 
       if (!this.checkPriceIsValid(result)) {
@@ -143,13 +136,16 @@ export class PriceOracle {
    */
   async fetchPrice(marketID: string): Promise<{ price: number | null; success: boolean }> {
     try {
-      // todo: implement
-      // if(this.)
-      // return await this.fetchPriceFromBand(marketID)
-      return await this.fetchPriceFromCCXT(marketID)
+      if(this.useBandData(this.dataProviderConf)){
+        console.log("use band protocol");
+        return await this.fetchPriceFromBand(marketID)
+      }else{
+        console.log("use ccxt");
+        return await this.fetchPriceFromCCXT(marketID)
+      }
     } catch (e) {
       console.error(e);
-      console.log(`could not get ${marketID} price from Binance`);
+      console.log(`could not get ${marketID} price from data provider`);
       return { price: null, success: false };
     }
   }
@@ -159,19 +155,13 @@ export class PriceOracle {
    * @param {String} marketID the market's ID
    */
   async fetchPriceFromBand(marketID: string): Promise<{ price: number | null; success: boolean }> {
-    // todo: impelement here
-    // current 
     const currency = MarketCurrencyMap[marketID]
     if(!currency){
       throw new Error(`not supported marketID:${marketID}`)
     }
-    const currencyUbtc = await this.band.getCurrentPrice(currency)
-    const avecurrencyUbtc = await this.band.getAveragePrice(currency)
-    console.log("🚀 ~ file: price-oracle.ts ~ line 170 ~ PriceOracle ~ fetchPriceFromBand ~ avecurrencyUbtc", avecurrencyUbtc)
-    console.log("🚀 ~ file: price-oracle.ts ~ line 162 ~ PriceOracle ~ fetchPriceFromBand ~ currencyUbtc", currencyUbtc)
-    // array shift -> ( epoch_time > saved_time ) => delete
+    const currencyUbtc = await this.band.getPrice(currency)
     return {
-      price:100,
+      price:currencyUbtc,
       success:true
     }
   }

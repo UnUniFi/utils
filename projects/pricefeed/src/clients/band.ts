@@ -1,5 +1,5 @@
 
-import { SupportCurrency } from '../domain/data-provider';
+import { SupportCurrency, SupportCurrencyAva } from '../domain/data-provider';
 import axios,{AxiosInstance} from "axios";
 import lowdb, { Low, LowSync, JSONFileSync, Memory } from '@commonify/lowdb'
 import path from 'path'
@@ -21,9 +21,17 @@ export default class BandClient {
     });
     this.db = new JsonDbClint(dbType, dbPath, parseInt(limitMin))
   }
-  async getData(currency: SupportCurrency):Promise<number>{
-    // if()
-    return await this.getCurrentPrice(currency)
+  async getPrice(currency: SupportCurrency|SupportCurrencyAva):Promise<number>{
+    switch(currency){
+      case "JPY":
+        return await this.getCurrentPrice(currency)
+      case "EUR":
+        return await this.getCurrentPrice(currency)
+      case "JPY30":
+        return await this.getAveragePrice("JPY", 30)
+      case "EUR30":
+        return await this.getAveragePrice("EUR", 30)
+    }
   }
 
   async getCurrentPrice(currency: SupportCurrency):Promise<number>{
@@ -39,10 +47,10 @@ export default class BandClient {
     return currencyUbtc
   }
 
-  async getAveragePrice(currency: SupportCurrency):Promise<number>{
-    const now = Math.round(Date.now() / 1000)
-    const before30 = now - 30*60
-    const priceList = this.db.getTimeRangeData(currency, before30, now)
+  async getAveragePrice(currency: SupportCurrency, spanMin: number):Promise<number>{
+    const now = this.nanoSecToSec(Date.now())
+    const start = now - this.minToSec(spanMin)
+    const priceList = this.db.getTimeRangeData(currency, start, now)
     if(priceList.length ==  0){
       return await this.getCurrentPrice(currency)
     }
@@ -50,6 +58,14 @@ export default class BandClient {
      return acc + elem.price 
     },0)
     return sumPrice / priceList.length
+  }
+
+  private minToSec(targetMin: number):number{
+    return targetMin * 60
+  }
+
+  private nanoSecToSec(targetNanoSec: number):number{
+    return Math.round(targetNanoSec / 1000)
   }
 }
 
@@ -67,9 +83,11 @@ type CurrencyDataType = {
 class JsonDbClint {
   private db: lowdb.Low<CurrencyDataType>| lowdb.LowSync<CurrencyDataType>;
   private dataSavedLimitMin: number;
+  private sliceExecuteCount: number;
+  private sliceExecuteNumber: number  = 10;
   constructor(type: string, filePath: string, dataSavedLimitMin: number){
-    // todo write each syscle
     this.dataSavedLimitMin = dataSavedLimitMin
+    this.sliceExecuteCount = 0
     if(type  == "json"){
       const adapter = new JSONFileSync<CurrencyDataType>(path.resolve(filePath))
       this.db = new LowSync(adapter)
@@ -94,7 +112,7 @@ class JsonDbClint {
   async insertData(currency: SupportCurrency, price: number){
     const date = new Date()
     const insertData: CurrencyRecordDataType = {
-      epoch_sec_time:Math.round(date.getTime() / 1000),
+      epoch_sec_time:this.nanoSecToSec(date.getTime()),
       epoch_time_alias:date.toLocaleString(),
       price
     }
@@ -103,6 +121,19 @@ class JsonDbClint {
     }
     this.db.data[currency].data.push(insertData)
     this.db.write()
+    this.sliceExecuteCount++
+    if(this.sliceExecuteCount == this.sliceExecuteNumber){
+      this.sliceData(currency, this.nanoSecToSec(date.getTime()) - this.minToSec(this.dataSavedLimitMin))
+      this.sliceExecuteCount = 0
+    }
+  }
+
+  private nanoSecToSec(targetNanoSec: number):number{
+    return Math.round(targetNanoSec / 1000)
+  }
+  
+  private minToSec(targetMin: number):number{
+    return targetMin * 60
   }
 
   getData(currency: SupportCurrency):CurrencyRecordDataType|null{
@@ -132,7 +163,6 @@ class JsonDbClint {
     return result
   }
 
-  // todo: implement
   private sliceData(currency: SupportCurrency ,limit_time: number){
     if(!this.db.data){
       return

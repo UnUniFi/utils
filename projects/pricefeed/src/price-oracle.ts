@@ -1,10 +1,10 @@
 import CcxtClient from './clients/ccxt';
 import BandClient from './clients/band';
 import { IFxClient } from './clients/fx/interface';
-import { FIAT_CURRENCIES } from './constants/currency';
+import { FIAT_CURRENCIES, MARKET_CURRENCY_MAP } from './constants/currency';
 import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
-import { DataProviderConf, MarketCurrencyMap } from './domain/data-provider';
+import { DataProviderConf } from './domain/data-provider';
 import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import Long from 'long';
@@ -155,7 +155,7 @@ export class PriceOracle {
    * @param {String} marketID the market's ID
    */
   async fetchPriceFromBand(marketID: string): Promise<{ price: number | null; success: boolean }> {
-    const currency = MarketCurrencyMap[marketID]
+    const currency = MARKET_CURRENCY_MAP[marketID]
     if(!currency){
       throw new Error(`not supported marketID:${marketID}`)
     }

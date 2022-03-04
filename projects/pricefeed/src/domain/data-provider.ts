@@ -18,16 +18,8 @@ export const supportCurrencyAva = {
 } as const;
 export type SupportCurrencyAva = typeof supportCurrencyAva[keyof typeof supportCurrencyAva];
 
-type MarketCurrencyType = {
+export type MarketCurrencyType = {
   [key:string]:SupportCurrency | SupportCurrencyAva,
-};
-
-// todo: move constant
-export const MarketCurrencyMap:MarketCurrencyType = {
-  'ubtc:jpy':"JPY",
-  'ubtc:jpy:30':"JPY30",
-  'ubtc:eur':"EUR",
-  'ubtc:eur:30':"EUR30"
 };
 
  

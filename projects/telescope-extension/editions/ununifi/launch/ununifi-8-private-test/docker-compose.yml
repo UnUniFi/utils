@@ -1,0 +1,13 @@
+version: '3'
+services:
+  telescope-ununifi:
+    container_name: telescope-ununifi
+    image: ghcr.io/ununifi/telescope-ununifi:test
+    volumes:
+      - ./config.js:/usr/share/nginx/html/assets/config.js
+      - ./config.js:/usr/share/nginx/html/ununifi/assets/config.js
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    # ports:
+    #   - 80:80
+    network_mode: host
+    restart: always

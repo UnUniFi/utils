@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    # ports:
+    #   - 1317:1317
+    #   - 9090:9090
+    #   - 26656:26656
+    #   - 26657:26657
+    volumes:
+      - ./band:/root/.band
+      - .:/go/src/github.com/band/chain
+    # command: echo "hello"
+    command: /bin/ash
+    tty: true
+    # network_mode: host
+    # restart: always

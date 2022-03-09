@@ -10,7 +10,7 @@ services:
     #   - 26657:26657
     volumes:
       - ./band:/root/.band
-    command: /bin/ash
+    command: ./setup_and_run.sh
     tty: true
     # network_mode: host
     # restart: always

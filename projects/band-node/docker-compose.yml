@@ -10,8 +10,6 @@ services:
     #   - 26657:26657
     volumes:
       - ./band:/root/.band
-      - .:/go/src/github.com/band/chain
-    # command: echo "hello"
     command: /bin/ash
     tty: true
     # network_mode: host

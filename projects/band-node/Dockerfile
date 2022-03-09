@@ -25,6 +25,6 @@ RUN make install
 
 WORKDIR /opt/band
 COPY mnt.txt mnt.txt
-COPY data_get.sh data_get.sh
+COPY setup_and_run.sh setup_and_run.sh
 
 CMD ["/bin/ash"]

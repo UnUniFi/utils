@@ -14,6 +14,7 @@ else
   sed -E -i "s/seeds = \".*\"/seeds = \"$SEEDS\"/" $HOME/.band/config/config.toml
   sed -i '/\[api\]/,+3 s/enable = false/enable = true/' $HOME/.band/config/app.toml
   sed -E -i "s/enabled-unsafe-cors = false/enabled-unsafe-cors = true/" $HOME/.band/config/app.toml
+  sed -E -i "s/pruning = \"default\"/pruning = \"everything\"/" $HOME/.band/config/app.toml
   wget $GENESIS_FILE_URL -O $HOME/.band/config/genesis.json
   wget -qO- $BIN_FILES_URL | tar xvz -C $HOME/.band/
   bandd keys add $WALLET_NAME --recover --keyring-backend test < mnt.txt

@@ -1,5 +1,6 @@
 import { TxFeeConfirmDialogComponent } from '../../views/tx-fee-confirm-dialog/tx-fee-confirm-dialog.component';
 import { Key } from '../keys/key.model';
+import { KeyService } from '../keys/key.service';
 import { SimulatedTxResultResponse } from '../tx-common/tx-common.model';
 import { AuctionService } from './auction.service';
 import { Injectable } from '@angular/core';
@@ -20,6 +21,7 @@ export class AuctionApplicationService {
     private readonly dialog: MatDialog,
     private readonly loadingDialog: LoadingDialogService,
     private readonly auction: AuctionService,
+    private readonly key: KeyService,
   ) {}
 
   async placeBid(
@@ -37,6 +39,12 @@ export class AuctionApplicationService {
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
 
     try {
+      // validation
+      if (!(await this.key.validatePrivKey(key, privateKey))) {
+        this.snackBar.open(`Invalid private key.`, 'Close');
+        return;
+      }
+
       simulatedResultData = await this.auction.simulateToPlaceBid(
         key,
         privateKey,

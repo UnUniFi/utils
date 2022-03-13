@@ -31,6 +31,12 @@ export class AuctionApplicationService {
     amount: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    // validation
+    if (!(await this.key.validatePrivKey(key, privateKey))) {
+      this.snackBar.open(`Invalid private key.`, 'Close');
+      return;
+    }
+
     // simulate
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
@@ -39,12 +45,6 @@ export class AuctionApplicationService {
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
 
     try {
-      // validation
-      if (!(await this.key.validatePrivKey(key, privateKey))) {
-        this.snackBar.open(`Invalid private key.`, 'Close');
-        return;
-      }
-
       simulatedResultData = await this.auction.simulateToPlaceBid(
         key,
         privateKey,

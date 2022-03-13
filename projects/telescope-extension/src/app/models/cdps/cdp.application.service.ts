@@ -32,6 +32,12 @@ export class CdpApplicationService {
     principal: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    //input private key validation
+    if (!(await this.key.validatePrivKey(key, privateKey))) {
+      this.snackBar.open(`Invalid private key.`, 'Close');
+      return;
+    }
+
     // simulate
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
@@ -40,12 +46,6 @@ export class CdpApplicationService {
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
 
     try {
-      //input private key validation
-      if (!(await this.key.validatePrivKey(key, privateKey))) {
-        this.snackBar.open(`Invalid private key.`, 'Close');
-        return;
-      }
-
       simulatedResultData = await this.cdp.simulateToCreateCDP(
         key,
         privateKey,
@@ -124,6 +124,12 @@ export class CdpApplicationService {
     principal: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    //input private key validation
+    if (!(await this.key.validatePrivKey(key, privateKey))) {
+      this.snackBar.open(`Invalid private key.`, 'Close');
+      return;
+    }
+
     // simulate
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
@@ -132,12 +138,6 @@ export class CdpApplicationService {
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
 
     try {
-      //input private key validation
-      if (!(await this.key.validatePrivKey(key, privateKey))) {
-        this.snackBar.open(`Invalid private key.`, 'Close');
-        return;
-      }
-
       simulatedResultData = await this.cdp.simulateToDrawCDP(
         key,
         privateKey,
@@ -214,6 +214,12 @@ export class CdpApplicationService {
     payment: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    //input private key validation
+    if (!(await this.key.validatePrivKey(key, privateKey))) {
+      this.snackBar.open(`Invalid private key.`, 'Close');
+      return;
+    }
+
     // simulate
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
@@ -222,12 +228,6 @@ export class CdpApplicationService {
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
 
     try {
-      //input private key validation
-      if (!(await this.key.validatePrivKey(key, privateKey))) {
-        this.snackBar.open(`Invalid private key.`, 'Close');
-        return;
-      }
-
       simulatedResultData = await this.cdp.simulateToRepayCDP(
         key,
         privateKey,
@@ -304,6 +304,12 @@ export class CdpApplicationService {
     collateral: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    //input private key validation
+    if (!(await this.key.validatePrivKey(key, privateKey))) {
+      this.snackBar.open(`Invalid private key.`, 'Close');
+      return;
+    }
+
     // simulate
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
@@ -312,12 +318,6 @@ export class CdpApplicationService {
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
 
     try {
-      //input private key validation
-      if (!(await this.key.validatePrivKey(key, privateKey))) {
-        this.snackBar.open(`Invalid private key.`, 'Close');
-        return;
-      }
-
       simulatedResultData = await this.cdp.simulateToDepositCDP(
         key,
         privateKey,
@@ -397,6 +397,12 @@ export class CdpApplicationService {
     collateral: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    //input private key validation
+    if (!(await this.key.validatePrivKey(key, privateKey))) {
+      this.snackBar.open(`Invalid private key.`, 'Close');
+      return;
+    }
+
     // simulate
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
@@ -405,12 +411,6 @@ export class CdpApplicationService {
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
 
     try {
-      //input private key validation
-      if (!(await this.key.validatePrivKey(key, privateKey))) {
-        this.snackBar.open(`Invalid private key.`, 'Close');
-        return;
-      }
-
       simulatedResultData = await this.cdp.simulateToWithdrawCDP(
         key,
         privateKey,

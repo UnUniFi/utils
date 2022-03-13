@@ -1,5 +1,6 @@
 import { TxFeeConfirmDialogComponent } from '../../views/tx-fee-confirm-dialog/tx-fee-confirm-dialog.component';
 import { Key } from '../keys/key.model';
+import { KeyService } from '../keys/key.service';
 import { SimulatedTxResultResponse } from '../tx-common/tx-common.model';
 import { AuctionService } from './auction.service';
 import { Injectable } from '@angular/core';
@@ -20,6 +21,7 @@ export class AuctionApplicationService {
     private readonly dialog: MatDialog,
     private readonly loadingDialog: LoadingDialogService,
     private readonly auction: AuctionService,
+    private readonly key: KeyService,
   ) {}
 
   async placeBid(
@@ -29,6 +31,12 @@ export class AuctionApplicationService {
     amount: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ) {
+    // validation
+    if (!(await this.key.validatePrivKey(key, privateKey))) {
+      this.snackBar.open(`Invalid private key.`, 'Close');
+      return;
+    }
+
     // simulate
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
@@ -49,7 +57,7 @@ export class AuctionApplicationService {
     } catch (error) {
       console.error(error);
       const errorMessage = `Tx simulation failed: ${(error as Error).toString()}`;
-      this.snackBar.open(`An error has occur: ${errorMessage}`);
+      this.snackBar.open(`An error has occur: ${errorMessage}`, 'Close');
       return;
     } finally {
       dialogRefSimulating.close();

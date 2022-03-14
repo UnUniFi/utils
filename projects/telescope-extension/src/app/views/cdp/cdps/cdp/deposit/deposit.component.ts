@@ -9,6 +9,7 @@ export type DepositCdpOnSubmitEvent = {
   collateralType: string;
   collateral: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
+  balances: proto.cosmos.base.v1beta1.ICoin[];
 };
 
 @Component({
@@ -27,10 +28,13 @@ export class DepositComponent implements OnInit {
   collateralType?: string | null;
 
   @Input()
-  denom?: string | null;
+  denom?: proto.cosmos.base.v1beta1.ICoin | null;
 
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
+
+  @Input()
+  balances?: proto.cosmos.base.v1beta1.ICoin[] | null;
 
   @Output()
   appSubmit: EventEmitter<DepositCdpOnSubmitEvent>;
@@ -63,6 +67,12 @@ export class DepositComponent implements OnInit {
       return;
     }
     this.selectedGasPrice.amount = minimumGasPrice;
+
+    if (!this.balances) {
+      console.error('balances', this.balances);
+      return;
+    }
+
     this.appSubmit.emit({
       key: this.key!,
       privateKey: privateKey,
@@ -73,6 +83,7 @@ export class DepositComponent implements OnInit {
         amount: collateralAmount,
       },
       minimumGasPrice: this.selectedGasPrice,
+      balances: this.balances,
     });
   }
 

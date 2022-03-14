@@ -1,7 +1,7 @@
 #!/bin/ash
 set -eu
 if [ -d $HOME/.band/config ]; then
-  bandd start
+  # do nothing
 else
   CHAIN_ID=laozi-mainnet
   WALLET_NAME=my_validator
@@ -26,5 +26,6 @@ else
   wget -O - $SYNC_FILES_URL | lz4 -d | tar -xvf -
   cd $HOME/.band/config
   wget https://quicksync.io/addrbook.band.json
-  bandd start
 fi
+
+bandd start --with-pricer "3,4"

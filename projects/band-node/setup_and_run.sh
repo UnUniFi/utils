@@ -1,8 +1,6 @@
 #!/bin/ash
 set -eu
-if [ -d $HOME/.band/config ]; then
-  # do nothing
-else
+if [ ! -d $HOME/.band/config ]; then
   CHAIN_ID=laozi-mainnet
   WALLET_NAME=my_validator
   MONIKER=band_test1;

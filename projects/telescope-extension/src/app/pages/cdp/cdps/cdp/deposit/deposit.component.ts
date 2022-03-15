@@ -8,7 +8,7 @@ import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model'
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { DepositCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/deposit/deposit.component';
 import { timer, of, combineLatest, Observable } from 'rxjs';
-import { map, mergeMap, withLatestFrom } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { rest, ununifi } from 'ununifi-client';
 
 @Component({
@@ -71,8 +71,6 @@ export class DepositComponent implements OnInit {
         const matchedDenoms = params.collateral_params?.filter(
           (param) => param.type === collateralType,
         );
-        console.log(collateralType, params, matchedDenoms);
-
         const collateralDenom = matchedDenoms
           ? matchedDenoms[0].denom
             ? matchedDenoms[0].denom

@@ -69,7 +69,7 @@ export class DepositComponent implements OnInit {
     this.selectedGasPrice.amount = minimumGasPrice;
 
     if (!this.balances) {
-      console.error('balances', this.balances);
+      console.error('deposit-balances', this.balances);
       return;
     }
 

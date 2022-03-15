@@ -20,7 +20,6 @@
       name="collateral-type"
       matInput
       readonly
-      required
     />
   </mat-form-field>
   <div>
@@ -28,11 +27,10 @@
       <mat-label>Payment Denom</mat-label>
       <input
         #paymentDenomRef
-        [(ngModel)]="paymentDenom"
+        [(ngModel)]="paymentDenom && paymentDenom.denom"
         name="payment-denom"
         matInput
         readonly
-        required
       />
     </mat-form-field>
     <mat-form-field class="w-full">
@@ -45,6 +43,7 @@
         type="number"
         pattern="^\d+$"
         [min]="1"
+        [max]="paymentDenom?.amount || 0"
         required
       />
     </mat-form-field>

@@ -9,6 +9,7 @@ export type ClearCdpOnSubmitEvent = {
   collateralType: string;
   payment: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
+  balances: proto.cosmos.base.v1beta1.ICoin[];
 };
 
 @Component({
@@ -27,13 +28,13 @@ export class ClearComponent implements OnInit {
   collateralType?: string | null;
 
   @Input()
-  denom?: string | null;
-
-  @Input()
-  paymentDenom?: string | null;
+  paymentDenom?: proto.cosmos.base.v1beta1.ICoin | null;
 
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
+
+  @Input()
+  balances?: proto.cosmos.base.v1beta1.ICoin[] | null;
 
   @Output()
   appSubmit: EventEmitter<ClearCdpOnSubmitEvent>;
@@ -65,7 +66,13 @@ export class ClearComponent implements OnInit {
     if (this.selectedGasPrice === undefined) {
       return;
     }
-    this.selectedGasPrice.amount = minimumGasPrice.toString();
+    this.selectedGasPrice.amount = minimumGasPrice;
+
+    if (!this.balances) {
+      console.error('deposit-balances', this.balances);
+      return;
+    }
+
     this.appSubmit.emit({
       key: this.key!,
       privateKey,
@@ -76,6 +83,7 @@ export class ClearComponent implements OnInit {
         amount: paymentAmount,
       },
       minimumGasPrice: this.selectedGasPrice,
+      balances: this.balances,
     });
   }
 

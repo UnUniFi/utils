@@ -264,7 +264,7 @@ export class CdpApplicationService {
     const simulatedFee = fee.amount ? parseInt(fee.amount) : 0;
     if (simulatedFee > balance) {
       this.snackBar.open(
-        `Insufficient fee margin for Clear!\n Simulated fee: ${simulatedFee}${feeDenom} > Balance: ${balance}${feeDenom}`,
+        `Insufficient fee margin for clear!\n Simulated fee: ${simulatedFee}${feeDenom} > Balance: ${balance}${feeDenom}`,
         'Close',
       );
       return;
@@ -444,6 +444,7 @@ export class CdpApplicationService {
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+    balances: proto.cosmos.base.v1beta1.ICoin[],
   ) {
     // validation
     if (!(await this.key.validatePrivKey(key, privateKey))) {
@@ -455,8 +456,21 @@ export class CdpApplicationService {
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
-
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
+
+    // confirm whether account has enough gas denom for simulation
+    const feeDenom = minimumGasPrice.denom;
+    const simulationFeeAmount = 1;
+    const tempBalance = balances.find((balance) => balance.denom === minimumGasPrice.denom)?.amount;
+    const balance = tempBalance ? parseInt(tempBalance) : 0;
+    if (simulationFeeAmount > balance) {
+      this.snackBar.open(
+        `Insufficient fee margin for simulation!\n Simulation fee: ${simulationFeeAmount}${feeDenom} > Balance: ${balance}${feeDenom}`,
+        'Close',
+      );
+      dialogRefSimulating.close();
+      return;
+    }
 
     try {
       simulatedResultData = await this.cdp.simulateToWithdrawCDP(
@@ -476,6 +490,16 @@ export class CdpApplicationService {
       return;
     } finally {
       dialogRefSimulating.close();
+    }
+
+    // check whether the fee exceeded
+    const simulatedFee = fee.amount ? parseInt(fee.amount) : 0;
+    if (simulatedFee > balance) {
+      this.snackBar.open(
+        `Insufficient fee margin for withdraw!\n Simulated fee: ${simulatedFee}${feeDenom} > Balance: ${balance}${feeDenom}`,
+        'Close',
+      );
+      return;
     }
 
     // ask the user to confirm the fee with a dialog

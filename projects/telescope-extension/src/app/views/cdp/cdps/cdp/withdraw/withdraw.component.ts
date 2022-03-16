@@ -9,6 +9,7 @@ export type WithdrawCdpOnSubmitEvent = {
   collateralType: string;
   collateral: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
+  balances: proto.cosmos.base.v1beta1.ICoin[];
 };
 
 @Component({
@@ -28,6 +29,12 @@ export class WithdrawComponent implements OnInit {
 
   @Input()
   denom?: string | null;
+
+  @Input()
+  withdrawLimit?: number | null;
+
+  @Input()
+  balances?: proto.cosmos.base.v1beta1.ICoin[] | null;
 
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
@@ -63,6 +70,11 @@ export class WithdrawComponent implements OnInit {
       return;
     }
     this.selectedGasPrice.amount = minimumGasPrice.toString();
+    if (!this.balances) {
+      console.error('withdraw-balances', this.balances);
+      return;
+    }
+
     this.appSubmit.emit({
       key: this.key!,
       privateKey: privateKey,
@@ -73,6 +85,7 @@ export class WithdrawComponent implements OnInit {
         amount: collateralAmount,
       },
       minimumGasPrice: this.selectedGasPrice,
+      balances: this.balances,
     });
   }
 

@@ -9,6 +9,7 @@ export type IssueCdpOnSubmitEvent = {
   collateralType: string;
   principal: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
+  balances: proto.cosmos.base.v1beta1.ICoin[];
 };
 
 @Component({
@@ -27,10 +28,13 @@ export class IssueComponent implements OnInit {
   collateralType?: string | null;
 
   @Input()
-  denom?: string | null;
+  principalDenom?: string | null;
 
   @Input()
-  principalDenom?: string | null;
+  issueLimit?: number | null;
+
+  @Input()
+  balances?: proto.cosmos.base.v1beta1.ICoin[] | null;
 
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
@@ -66,6 +70,11 @@ export class IssueComponent implements OnInit {
       return;
     }
     this.selectedGasPrice.amount = minimumGasPrice.toString();
+    if (!this.balances) {
+      console.error('issue-balances', this.balances);
+      return;
+    }
+
     this.appSubmit.emit({
       key: this.key!,
       privateKey,
@@ -76,6 +85,7 @@ export class IssueComponent implements OnInit {
         amount: principalAmount,
       },
       minimumGasPrice: this.selectedGasPrice,
+      balances: this.balances,
     });
   }
 

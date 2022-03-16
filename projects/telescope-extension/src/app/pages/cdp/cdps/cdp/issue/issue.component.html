@@ -2,8 +2,9 @@
   [key]="key$ | async"
   [owner]="owner$ | async"
   [collateralType]="collateralType$ | async"
-  [denom]="denom$ | async"
   [principalDenom]="principalDenom$ | async"
+  [balances]="balances$ | async"
+  [issueLimit]="issueLimit$ | async"
   [minimumGasPrices]="minimumGasPrices"
   (appSubmit)="onSubmit($event)"
 ></view-issue>

@@ -41,6 +41,7 @@
             mat-stroked-button
             href="cdp/cdps/{{ owner }}/{{ collateralType }}/withdraw"
             target="_blank"
+            [disabled]="withdrawLimit === 0 || !withdrawLimit"
             >Withdraw</a
           >
         </span>
@@ -68,6 +69,7 @@
             mat-stroked-button
             href="cdp/cdps/{{ owner }}/{{ collateralType }}/issue"
             target="_blank"
+            [disabled]="issueLimit === 0 || !issueLimit"
           >
             Issue
           </a>

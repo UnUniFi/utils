@@ -69,7 +69,7 @@ export class ClearComponent implements OnInit {
     this.selectedGasPrice.amount = minimumGasPrice;
 
     if (!this.balances) {
-      console.error('deposit-balances', this.balances);
+      console.error('clear-balances', this.balances);
       return;
     }
 

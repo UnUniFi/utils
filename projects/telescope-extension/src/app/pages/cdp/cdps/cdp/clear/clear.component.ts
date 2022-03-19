@@ -9,7 +9,7 @@ import { KeyStoreService } from 'projects/telescope-extension/src/app/models/key
 import { ClearCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/clear/clear.component';
 import { timer, of, combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { rest, ununifi } from 'ununifi-client';
+import { rest } from 'ununifi-client';
 
 @Component({
   selector: 'app-clear',
@@ -20,7 +20,6 @@ export class ClearComponent implements OnInit {
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
   collateralType$: Observable<string>;
-  params$: Observable<ununifi.cdp.IParams>;
   paymentDenomString$: Observable<string>;
   paymentDenom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
 
@@ -39,21 +38,6 @@ export class ClearComponent implements OnInit {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.collateralType$ = this.route.params.pipe(map((params) => params['collateralType']));
-    this.params$ = this.cosmosSDK.sdk$.pipe(
-      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
-      map((data) => data.data.params!),
-    );
-
-    /*
-    this.denom$ = combineLatest([this.collateralType$, this.params$]).pipe(
-      map(([collateralType, params]) => {
-        const matchedDenoms = params.collateral_params?.filter(
-          (param) => param.type === collateralType,
-        );
-        return matchedDenoms ? (matchedDenoms[0].denom ? matchedDenoms[0].denom : '') : '';
-      }),
-    );
-    */
 
     //get account balance information
     this.address$ = this.owner$.pipe(

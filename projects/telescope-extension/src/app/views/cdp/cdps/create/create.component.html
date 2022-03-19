@@ -53,6 +53,8 @@
         type="number"
         pattern="^\d+$"
         [min]="1"
+        [max]="collateralLimit || 0"
+        (ngModelChange)="onCollateralAmountChanged($event)"
         required
       />
     </mat-form-field>
@@ -83,6 +85,7 @@
         type="number"
         pattern="^\d+$"
         [min]="1"
+        [max]="principalLimit || 0"
         required
       />
     </mat-form-field>

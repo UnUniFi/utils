@@ -5,6 +5,11 @@
   [selectedCollateralType]="selectedCollateralType$ | async"
   [selectedCollateralParam]="selectedCollateralParam$ | async"
   [minimumGasPrices]="minimumGasPrices"
+  [balances]="balances$ | async"
+  [collateralLimit]="collateralLimit$ | async"
+  [principalLimit]="principalLimit$ | async"
+  [cdp]="cdp$ | async"
   (appSubmit)="onSubmit($event)"
   (appSelectedCollateralTypeChanged)="onSelectedCollateralTypeChanged($event)"
+  (appCollateralAmountChanged)="onCollateralAmountChanged($event)"
 ></view-create>

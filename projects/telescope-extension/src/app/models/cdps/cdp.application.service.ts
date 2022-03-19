@@ -31,21 +31,35 @@ export class CdpApplicationService {
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
+    balances: proto.cosmos.base.v1beta1.ICoin[],
   ) {
+    // validation
+    if (!(await this.key.validatePrivKey(key, privateKey))) {
+      this.snackBar.open(`Invalid private key.`, 'Close');
+      return;
+    }
+
     // simulate
     let simulatedResultData: SimulatedTxResultResponse;
     let gas: proto.cosmos.base.v1beta1.ICoin;
     let fee: proto.cosmos.base.v1beta1.ICoin;
-
     const dialogRefSimulating = this.loadingDialog.open('Simulating...');
 
-    try {
-      // validation
-      if (!(await this.key.validatePrivKey(key, privateKey))) {
-        this.snackBar.open(`Invalid private key.`, 'Close');
-        return;
-      }
+    // confirm whether account has enough gas denom for simulation
+    const feeDenom = minimumGasPrice.denom;
+    const simulationFeeAmount = 1;
+    const tempBalance = balances.find((balance) => balance.denom === minimumGasPrice.denom)?.amount;
+    const balance = tempBalance ? parseInt(tempBalance) : 0;
+    if (simulationFeeAmount > balance) {
+      this.snackBar.open(
+        `Insufficient fee margin for simulation!\n Simulation fee: ${simulationFeeAmount}${feeDenom} > Balance: ${balance}${feeDenom}`,
+        'Close',
+      );
+      dialogRefSimulating.close();
+      return;
+    }
 
+    try {
       simulatedResultData = await this.cdp.simulateToCreateCDP(
         key,
         privateKey,
@@ -63,6 +77,16 @@ export class CdpApplicationService {
       return;
     } finally {
       dialogRefSimulating.close();
+    }
+
+    // check whether the fee exceeded
+    const simulatedFee = fee.amount ? parseInt(fee.amount) : 0;
+    if (simulatedFee > balance) {
+      this.snackBar.open(
+        `Insufficient fee margin for Create!\n Simulated fee: ${simulatedFee}${feeDenom} > Balance: ${balance}${feeDenom}`,
+        'Close',
+      );
+      return;
     }
 
     // ask the user to confirm the fee with a dialog

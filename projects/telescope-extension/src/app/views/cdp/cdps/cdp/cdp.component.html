@@ -108,7 +108,11 @@
         <span class="column-name">Spot Price: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ spotPrice?.price | number: '1.9-9' }} [{{ spotPrice?.market_id }}]
+          <span class="ml-2 break-all">
+            <span>{{ spotPrice?.price | floor }}</span>
+            <span class="text-gray-500 text-sm">{{ spotPrice?.price | decimals: 9 }} </span>
+          </span>
+          [{{ spotPrice?.market_id }}]
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
@@ -117,7 +121,11 @@
         <span class="column-name">Liquidation Price: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ liquidationPrice?.price | number: '1.9-9' }} [{{ liquidationPrice?.market_id }}]
+          <span class="ml-2 break-all">
+            <span>{{ liquidationPrice?.price | floor }}</span>
+            <span class="text-gray-500 text-sm">{{ liquidationPrice?.price | decimals: 9 }} </span>
+          </span>
+          [{{ liquidationPrice?.market_id }}]
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
@@ -125,7 +133,12 @@
       <mat-list-item>
         <span class="column-name">Collateralization Ratio: </span>
         <span class="flex-auto"></span>
-        <span class="column-value">{{ cdp?.collateralization_ratio | number: '1.9-9' }}</span>
+        <span class="ml-2 break-all">
+          <span>{{ cdp?.collateralization_ratio | floor }}</span>
+          <span class="text-gray-500 text-sm"
+            >{{ cdp?.collateralization_ratio | decimals: 9 }}
+          </span>
+        </span>
       </mat-list-item>
     </mat-list>
   </mat-card>

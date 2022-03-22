@@ -24,7 +24,10 @@
     <mat-list-item>
       <span>Liquidation Ratio:</span>
       <span class="flex-auto"></span>
-      <span>{{ collateral.liquidation_ratio | number: '1.6-6' }}</span>
+      <span class="ml-2 break-all">
+        <span>{{ collateral.liquidation_ratio | floor }}</span>
+        <span class="text-gray-500 text-sm">{{ collateral.liquidation_ratio | decimals: 6 }} </span>
+      </span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
     <mat-list-item>
@@ -49,7 +52,12 @@
     <mat-list-item>
       <span>Liquidation Penalty:</span>
       <span class="flex-auto"></span>
-      <span>{{ collateral.liquidation_penalty | number: '1.6-6' }}</span>
+      <span class="ml-2 break-all">
+        <span>{{ collateral.liquidation_penalty | floor }}</span>
+        <span class="text-gray-500 text-sm"
+          >{{ collateral.liquidation_penalty | decimals: 6 }}
+        </span>
+      </span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
     <mat-list-item>
@@ -67,7 +75,12 @@
     <mat-list-item>
       <span>Keeper Reward Percentage:</span>
       <span class="flex-auto"></span>
-      <span>{{ collateral.keeper_reward_percentage | number: '1.9-9' }}</span>
+      <span class="ml-2 break-all">
+        <span>{{ collateral.keeper_reward_percentage | floor }}</span>
+        <span class="text-gray-500 text-sm"
+          >{{ collateral.keeper_reward_percentage | decimals: 9 }}
+        </span>
+      </span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
     <mat-list-item>

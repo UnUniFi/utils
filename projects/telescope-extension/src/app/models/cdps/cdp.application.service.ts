@@ -26,7 +26,7 @@ export class CdpApplicationService {
 
   async createCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
@@ -143,7 +143,7 @@ export class CdpApplicationService {
 
   async drawCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
@@ -257,7 +257,7 @@ export class CdpApplicationService {
 
   async repayCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     payment: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
@@ -370,7 +370,7 @@ export class CdpApplicationService {
 
   async depositCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
@@ -487,7 +487,7 @@ export class CdpApplicationService {
 
   async withdrawCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,

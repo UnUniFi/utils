@@ -7,7 +7,7 @@ import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
 
 export type CreateCdpOnSubmitEvent = {
   key: Key;
-  privateKey: string;
+  privateKey: Uint8Array;
   collateralType: string;
   collateral: proto.cosmos.base.v1beta1.ICoin;
   principal: proto.cosmos.base.v1beta1.ICoin;
@@ -82,7 +82,7 @@ export class CreateComponent implements OnInit {
     collateralAmount: string,
     principalDenom: string,
     principalAmount: string,
-    privateKey: string,
+    privateKeyString: string,
     minimumGasPrice: string,
   ) {
     if (!collateralAmount || !principalAmount) {
@@ -102,6 +102,10 @@ export class CreateComponent implements OnInit {
       );
       return;
     }
+
+    const privateKeyWithNoWhitespace = privateKeyString.replace(/\s+/g, '');
+    const privateKeyBuffer = Buffer.from(privateKeyWithNoWhitespace, 'hex');
+    const privateKey = Uint8Array.from(privateKeyBuffer);
 
     this.appSubmit.emit({
       key: this.key!,

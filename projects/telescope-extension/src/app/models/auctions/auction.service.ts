@@ -8,7 +8,7 @@ import { InlineResponse20075 } from '@cosmos-client/core/esm/openapi';
 export interface IAuctionInfrastructure {
   placeBid(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     auction_id: string,
     amount: proto.cosmos.base.v1beta1.ICoin,
     gas: proto.cosmos.base.v1beta1.ICoin,
@@ -17,7 +17,7 @@ export interface IAuctionInfrastructure {
 
   simulateToPlaceBid(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     auction_id: string,
     amount: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
@@ -35,7 +35,7 @@ export class AuctionService {
 
   placeBid(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     auction_id: string,
     amount: proto.cosmos.base.v1beta1.ICoin,
     gas: proto.cosmos.base.v1beta1.ICoin,
@@ -46,7 +46,7 @@ export class AuctionService {
 
   simulateToPlaceBid(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     auction_id: string,
     amount: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,

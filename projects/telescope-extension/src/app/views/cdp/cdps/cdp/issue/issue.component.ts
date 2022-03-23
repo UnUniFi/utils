@@ -4,7 +4,7 @@ import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model'
 
 export type IssueCdpOnSubmitEvent = {
   key: Key;
-  privateKey: string;
+  privateKey: Uint8Array;
   ownerAddr: cosmosclient.AccAddress;
   collateralType: string;
   principal: proto.cosmos.base.v1beta1.ICoin;
@@ -59,7 +59,7 @@ export class IssueComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(
-    privateKey: string,
+    privateKeyString: string,
     ownerAddr: string,
     collateralType: string,
     principalDenom: string,
@@ -74,6 +74,10 @@ export class IssueComponent implements OnInit {
       console.error('issue-balances', this.balances);
       return;
     }
+
+    const privateKeyWithNoWhitespace = privateKeyString.replace(/\s+/g, '');
+    const privateKeyBuffer = Buffer.from(privateKeyWithNoWhitespace, 'hex');
+    const privateKey = Uint8Array.from(privateKeyBuffer);
 
     this.appSubmit.emit({
       key: this.key!,

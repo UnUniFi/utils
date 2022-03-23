@@ -26,7 +26,7 @@ export class AuctionApplicationService {
 
   async placeBid(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     auction_id: string,
     amount: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,

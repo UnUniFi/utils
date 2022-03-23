@@ -19,8 +19,8 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
     });
   }
 
-  getPrivKey(type: KeyType, privateKey: string) {
-    const privKeyBuffer = Buffer.from(privateKey, 'hex');
+  getPrivKey(type: KeyType, privateKey: Uint8Array) {
+    const privKeyBuffer = Buffer.from(privateKey);
     switch (type) {
       case KeyType.SECP256K1:
         return new proto.cosmos.crypto.secp256k1.PrivKey({ key: privKeyBuffer });
@@ -88,7 +88,7 @@ export class KeyInfrastructureService implements IKeyInfrastructure {
    * @param type
    * @param privateKey
    */
-  async set(id: string, type: KeyType, privateKey: string) {
+  async set(id: string, type: KeyType, privateKey: Uint8Array) {
     const key = await this.get(id);
     if (key !== undefined) {
       console.log('Already exists');

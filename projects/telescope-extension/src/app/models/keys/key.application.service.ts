@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { LoadingDialogService } from 'ng-loading-dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { KeyType } from './key.model';
 import { KeyService } from './key.service';
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { LoadingDialogService } from 'ng-loading-dialog';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class KeyApplicationService {
     private readonly key: KeyService,
   ) {}
 
-  async create(id: string, type: KeyType, privateKey: string) {
+  async create(id: string, type: KeyType, privateKey: Uint8Array) {
     const key = await this.key.get(id);
     if (key !== undefined) {
       this.snackBar.open('ID is already used', undefined, {

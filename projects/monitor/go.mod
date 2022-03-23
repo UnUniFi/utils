@@ -1,4 +1,4 @@
-module github.com/CauchyE/telescope/projects/monitor
+module github.com/UnUniFi/utils/projects/monitor
 
 go 1.16
 

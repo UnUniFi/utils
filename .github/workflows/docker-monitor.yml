@@ -25,5 +25,5 @@ jobs:
           file: ./projects/monitor/Dockerfile
           push: true
           tags: |
-            ghcr.io/ununifi/telescope-monitor:${{ steps.variables.outputs.version }}
-            ghcr.io/ununifi/telescope-monitor:latest
+            ghcr.io/ununifi/monitor:${{ steps.variables.outputs.version }}
+            ghcr.io/ununifi/monitor:latest

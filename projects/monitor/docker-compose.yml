@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  monitor:
+    container_name: monitor
+    image: ghcr.io/ununifi/monitor
+    # ports:
+    #   - 9000:9000
+    volumes:
+      - ~/monitor/config.json:/root/monitor/config.json
+      - ~/monitor/db:/root/monitor/db
+    command: monitor serve 9000
+    network_mode: host
+    restart: always

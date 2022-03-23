@@ -1,13 +1,13 @@
-<h2>View CDPs</h2>
-<mat-card>
+<h2 class="mb-0">View CDPs</h2>
+<mat-card class="mb-4">
   <mat-nav-list>
     <mat-list-item routerLink="/cdp/cdps">You owned CDPs</mat-list-item>
   </mat-nav-list>
 </mat-card>
 
-<h2>CDP parameters</h2>
-<h3>Collateral Params</h3>
-<mat-card>
+<h2 class="mb-0">CDP parameters</h2>
+<h3 class="mb-0 ml-4">Collateral Params</h3>
+<mat-card class="mb-4">
   <mat-list *ngFor="let collateral of params?.collateral_params">
     <mat-list-item>
       <span>Denom:</span>
@@ -97,8 +97,8 @@
   </mat-list>
 </mat-card>
 
-<h3>Debt Params</h3>
-<mat-card>
+<h3 class="mb-0 ml-4">Debt Params</h3>
+<mat-card class="mb-4">
   <mat-list>
     <mat-list-item>
       <span>Denom:</span>
@@ -126,8 +126,8 @@
   </mat-list>
 </mat-card>
 
-<h3>Other Status</h3>
-<mat-card>
+<h3 class="mb-0 ml-4">Other Status</h3>
+<mat-card class="mb-4">
   <mat-list>
     <mat-list-item>
       <span>Global Debt Limit:</span>

@@ -1,10 +1,10 @@
-<h2>CDP</h2>
+<h2 class="mb-0">CDP</h2>
 <ng-container *ngIf="cdp === null; then empty; else exist"> </ng-container>
 <ng-template #loading>
   <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
 </ng-template>
 <ng-template #exist>
-  <mat-card>
+  <mat-card class="mb-4">
     <mat-list>
       <mat-list-item>
         <span class="column-name">Owner: </span>
@@ -143,8 +143,8 @@
     </mat-list>
   </mat-card>
 
-  <h4>Deposits</h4>
-  <mat-card>
+  <h3 class="mb-0 ml-4">Deposits</h3>
+  <mat-card class="mb-4">
     <ng-template ngFor let-deposit [ngForOf]="deposits">
       <mat-list>
         <span class="column-name">{{ deposit.depositor }}</span>

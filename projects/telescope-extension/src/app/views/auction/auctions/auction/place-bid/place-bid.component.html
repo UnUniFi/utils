@@ -1,6 +1,6 @@
-<h2>Auction Place Bid</h2>
-<h3>Base Auction</h3>
-<mat-card>
+<h2 class="mb-0">Auction Place Bid</h2>
+<h3 class="mb-0 ml-4">Base Auction</h3>
+<mat-card class="mb-2">
   <mat-list>
     <mat-list-item>
       <span class="column-name"> ID: </span>
@@ -78,8 +78,8 @@
     </mat-list-item>
   </mat-list>
 </mat-card>
-<br />
-<mat-card>
+
+<mat-card class="mb-2">
   <mat-list>
     <mat-list-item>
       <span class="column-name"> Corresponding Debt: </span>
@@ -91,8 +91,8 @@
     </mat-list-item>
   </mat-list>
 </mat-card>
-<br />
-<mat-card>
+
+<mat-card class="mb-4">
   <mat-list>
     <mat-list-item>
       <span class="column-name"> Max Bid: </span>
@@ -104,10 +104,14 @@
     </mat-list-item>
   </mat-list>
 </mat-card>
-<br />
 
-<h3>Enter Your Bid</h3>
-<form #formRef="ngForm" (submit)="onSubmit(privateKeyRef.value, denomRef.value, amountRef.value, minimumGasPriceRef.value)">
+<h3 class="mb-0">Enter Your Bid</h3>
+<form
+  #formRef="ngForm"
+  (submit)="
+    onSubmit(privateKeyRef.value, denomRef.value, amountRef.value, minimumGasPriceRef.value)
+  "
+>
   <div>
     <mat-form-field class="w-full">
       <mat-label>Amount</mat-label>
@@ -136,7 +140,10 @@
         required
         (valueChange)="onMinimumGasDenomChanged($event)"
       >
-        <mat-option *ngFor="let minimumGasPrice of minimumGasPrices" [value]="minimumGasPrice.denom">
+        <mat-option
+          *ngFor="let minimumGasPrice of minimumGasPrices"
+          [value]="minimumGasPrice.denom"
+        >
           {{ minimumGasPrice.denom }}
         </mat-option>
       </mat-select>
@@ -154,7 +161,8 @@
       />
     </mat-form-field>
   </div>
-  <mat-slider class="w-full"
+  <mat-slider
+    class="w-full"
     [max]="1"
     [min]="0"
     [step]="0.015"

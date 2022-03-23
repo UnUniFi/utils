@@ -1,62 +1,60 @@
-<div class="flex flex-row justify-between content-start items-start">
-  <h2>Auctions</h2>
-</div>
-<div>
-  <mat-card>
+<h2 class="mb-0">Auctions</h2>
+<mat-card class="mb-4">
+  <mat-list>
+    <mat-list-item>
+      <span class="break-all truncate pr-4">ID</span>
+      <span class="flex-auto"></span>
+      <span class="break-all truncate">Lot</span>
+      <span class="flex-auto"></span>
+      <span class="break-all truncate">Bidder</span>
+      <span class="flex-auto"></span>
+      <span class="break-all truncate">Bid</span>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+  <ng-container *ngIf="auctions === undefined || null; then empty; else exist"></ng-container>
+  <ng-template #empty></ng-template>
+  <ng-template #exist>
     <mat-nav-list>
-      <ng-container *ngIf="auctions === undefined || null; then empty; else exist"></ng-container>
-      <ng-template #empty></ng-template>
-      <ng-template #exist>
-        <mat-list-item>
-          <span class="break-all truncate pr-4">ID</span>
+      <ng-container *ngFor="let auction of auctions">
+        <mat-list-item routerLink="/auction/auctions/{{ auction?.base_auction?.id }}">
+          <span class="pr-4">{{ auction?.base_auction?.id }}</span>
           <span class="flex-auto"></span>
-          <span class="break-all truncate">Lot</span>
+          <span class="break-all truncate">
+            {{ auction?.base_auction?.lot?.amount }}
+            {{ auction?.base_auction?.lot?.denom }}
+          </span>
           <span class="flex-auto"></span>
-          <span class="break-all truncate">Bidder</span>
-          <span class="flex-auto"></span>
-          <span class="break-all truncate">Bid</span>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <ng-container *ngFor="let auction of auctions">
-          <mat-list-item routerLink="/auction/auctions/{{ auction?.base_auction?.id }}">
-            <span class="pr-4">{{ auction?.base_auction?.id }}</span>
-            <span class="flex-auto"></span>
-            <span class="break-all truncate">
-              {{ auction?.base_auction?.lot?.amount }}
-              {{ auction?.base_auction?.lot?.denom }}
-            </span>
-            <span class="flex-auto"></span>
-            <ng-container
-              *ngIf="!auction?.base_auction?.has_received_bids; then empty; else exist"
-            ></ng-container>
-            <ng-template #exist>
-              <mat-chip-list>
-                <mat-chip color="primary" selected>{{ auction?.base_auction?.bidder }}</mat-chip>
-              </mat-chip-list>
-            </ng-template>
-            <ng-template #empty>
-              <mat-chip-list>
-                <mat-chip color="warn" selected>No Bidder</mat-chip>
-              </mat-chip-list>
-            </ng-template>
+          <ng-container
+            *ngIf="!auction?.base_auction?.has_received_bids; then empty; else exist"
+          ></ng-container>
+          <ng-template #exist>
+            <mat-chip-list>
+              <mat-chip color="primary" selected>{{ auction?.base_auction?.bidder }}</mat-chip>
+            </mat-chip-list>
+          </ng-template>
+          <ng-template #empty>
+            <mat-chip-list>
+              <mat-chip color="warn" selected>No Bidder</mat-chip>
+            </mat-chip-list>
+          </ng-template>
 
-            <span class="flex-auto"></span>
-            <span class="pr-4"
-              >{{ auction?.base_auction?.bid?.amount }}{{ auction?.base_auction?.bid?.denom }}</span
-            >
-          </mat-list-item>
+          <span class="flex-auto"></span>
+          <span class="pr-4"
+            >{{ auction?.base_auction?.bid?.amount }}{{ auction?.base_auction?.bid?.denom }}</span
+          >
           <mat-divider></mat-divider>
-        </ng-container>
+        </mat-list-item>
+      </ng-container>
 
-        <mat-paginator
-          [length]="pageLength"
-          [pageSize]="pageSize"
-          [pageIndex]="pageNumber ? pageNumber - 1 : 0"
-          [pageSizeOptions]="pageSizeOptions ? pageSizeOptions : []"
-          (page)="onPaginationChange($event)"
-        >
-        </mat-paginator>
-      </ng-template>
+      <mat-paginator
+        [length]="pageLength"
+        [pageSize]="pageSize"
+        [pageIndex]="pageNumber ? pageNumber - 1 : 0"
+        [pageSizeOptions]="pageSizeOptions ? pageSizeOptions : []"
+        (page)="onPaginationChange($event)"
+      >
+      </mat-paginator>
     </mat-nav-list>
-  </mat-card>
-</div>
+  </ng-template>
+</mat-card>

@@ -1,8 +1,10 @@
 import CcxtClient from './clients/ccxt';
+import BandClient from './clients/band';
 import { IFxClient } from './clients/fx/interface';
-import { FIAT_CURRENCIES } from './constants/currency';
+import { FIAT_CURRENCIES, MARKET_CURRENCY_MAP } from './constants/currency';
 import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
+import { DataProviderConf } from './domain/data-provider';
 import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import Long from 'long';
@@ -18,6 +20,7 @@ export class PriceOracle {
   private sdk: cosmosclient.CosmosSDK;
   private privKey: Promise<proto.cosmos.crypto.secp256k1.PrivKey>;
   private ccxt: CcxtClient;
+  private band: BandClient;
 
   constructor(
     private marketIDs: string[],
@@ -29,6 +32,7 @@ export class PriceOracle {
     mnemonic: string,
     bech32Prefix: string,
     private fxClients: IFxClient[],
+    private dataProviderConf: DataProviderConf,
   ) {
     if (!marketIDs) {
       throw new Error('must specify at least one market ID');
@@ -70,6 +74,12 @@ export class PriceOracle {
       });
     }
     this.ccxt = new CcxtClient();
+    this.band = new BandClient(
+      dataProviderConf.dataProviderUrl,
+      dataProviderConf.dataProviderStoreType,
+      dataProviderConf.dataProviderStoreLocation,
+      dataProviderConf.dataProviderDataRetentionPeriodMin,
+      )
   }
 
   /**
@@ -91,6 +101,7 @@ export class PriceOracle {
     for (let i = 0; i < this.marketIDs.length; ++i) {
       const marketID = this.marketIDs[i];
       const result = await this.fetchPrice(marketID);
+      
 
       if (!this.checkPriceIsValid(result)) {
         return;
@@ -125,35 +136,65 @@ export class PriceOracle {
    */
   async fetchPrice(marketID: string): Promise<{ price: number | null; success: boolean }> {
     try {
-      const tickers = await this.fetchTickers(marketID);
-      // console.log('tickers', tickers);
-      const usdTickers = await this.convertToUsdTickers(tickers);
-      // console.log('usdTickers', usdTickers);
-      const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(usdTickers);
-      // console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
-      const convertedPrice = await this.convertUsdPrice(marketID, aggravatedAverageUsdPrice);
-      // console.log('convertedPrice', convertedPrice);
-      const denominatedPrice = (() => {
-        if (convertedPrice === null) {
-          return null;
-        }
-        switch (marketID) {
-          case 'ubtc:jpy':
-          case 'ubtc:jpy:30':
-          case 'ubtc:eur':
-          case 'ubtc:eur:30':
-            return convertedPrice / 1000000;
-          default:
-            return convertedPrice;
-        }
-      })();
-      console.log('denominatedPrice', denominatedPrice);
-      return { price: denominatedPrice, success: true };
+      if(this.useBandData(this.dataProviderConf)){
+        console.log("use band protocol");
+        return await this.fetchPriceFromBand(marketID)
+      }else{
+        console.log("use ccxt");
+        return await this.fetchPriceFromCCXT(marketID)
+      }
     } catch (e) {
       console.error(e);
-      console.log(`could not get ${marketID} price from Binance`);
+      console.log(`could not get ${marketID} price from data provider`);
       return { price: null, success: false };
     }
+  }
+
+  /**
+   * Fetches price for a market ID
+   * @param {String} marketID the market's ID
+   */
+  async fetchPriceFromBand(marketID: string): Promise<{ price: number | null; success: boolean }> {
+    const currency = MARKET_CURRENCY_MAP[marketID]
+    if(!currency){
+      throw new Error(`not supported marketID:${marketID}`)
+    }
+    const currencyUbtc = await this.band.getPrice(currency)
+    return {
+      price:currencyUbtc,
+      success:true
+    }
+  }
+
+  /**
+   * Fetches price for a market ID
+   * @param {String} marketID the market's ID
+   */
+  async fetchPriceFromCCXT(marketID: string): Promise<{ price: number | null; success: boolean }> {
+    const tickers = await this.fetchTickers(marketID);
+    // console.log('tickers', tickers);
+    const usdTickers = await this.convertToUsdTickers(tickers);
+    // console.log('usdTickers', usdTickers);
+    const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(usdTickers);
+    // console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
+    const convertedPrice = await this.convertUsdPrice(marketID, aggravatedAverageUsdPrice);
+    // console.log('convertedPrice', convertedPrice);
+    const denominatedPrice = (() => {
+      if (convertedPrice === null) {
+        return null;
+      }
+      switch (marketID) {
+        case 'ubtc:jpy':
+        case 'ubtc:jpy:30':
+        case 'ubtc:eur':
+        case 'ubtc:eur:30':
+          return convertedPrice / 1000000;
+        default:
+          return convertedPrice;
+      }
+    })();
+    console.log('denominatedPrice', denominatedPrice);
+    return { price: denominatedPrice, success: true };
   }
 
   async fetchTickers(marketID: string) {
@@ -458,5 +499,8 @@ export class PriceOracle {
       default:
         throw new Error(`Unsupported martketId: ${marketId}`);
     }
+  }
+  useBandData(conf:DataProviderConf):boolean{
+    return conf.dataProviderType == "Band"
   }
 }

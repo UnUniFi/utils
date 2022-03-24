@@ -16,6 +16,19 @@ const bech32Prefix = process.env.BECH32PREFIX || "";
 const cronTab = process.env.CRONTAB || "";
 const openExchangeRateAppId = process.env.OPEN_EXCHANGE_RATES_APP_ID || "";
 
+const dataProviderType = process.env.DATA_PROVIDER_TYPE || "default";
+const dataProviderUrl = process.env.DATA_PROVIDER_URL || "https://laozi1.bandchain.org";
+const dataProviderDataRetentionPeriodMin = process.env.DATA_DATA_RETENTION_PERIOD_MIN || "30";
+const dataProviderStoreType = process.env.DATA_PROVIDER_STORE_TYPE || "memory";
+const dataProviderStoreLocation = process.env.DATA_PROVIDER_STORE_LOCATION || "./price_data.json";
+const dataProviderConf  =  {
+  dataProviderType,
+  dataProviderUrl,
+  dataProviderDataRetentionPeriodMin,
+  dataProviderStoreType,
+  dataProviderStoreLocation,
+}
+
 const fxClients = [];
 if (openExchangeRateAppId) {
   fxClients.push(new OpenExchangeRatesClient(openExchangeRateAppId));
@@ -32,6 +45,7 @@ const oracle = new PriceOracle(
   mnemonic,
   bech32Prefix,
   fxClients,
+  dataProviderConf
 );
 
 cron.schedule(cronTab, () => {

@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   faucet-ubtc:
@@ -6,6 +6,10 @@ services:
     image: ghcr.io/tendermint/faucet
     volumes:
       - ~/faucet/ununifid:/usr/local/bin/ununifid
+      - ~/faucet/libwasmvm.so:/usr/lib/libwasmvm.so
+      - ~/faucet/ld-musl-x86_64.so.1:/usr/lib/ld-musl-x86_64.so.1
+      - ~/faucet/libgcc_s.so.1:/usr/lib/libgcc_s.so.1
+      - ~/faucet/ld-linux-x86-64.so.2:/usr/lib/ld-linux-x86-64.so.2
       - ~/.ununifi:/root/.ununifi
     command: faucet --cli-name ununifid --denoms ubtc --keyring-backend test --account-name faucet --port 7000 --credit-amount=100 --max-credit=99
     # ports:
@@ -17,6 +21,10 @@ services:
     image: ghcr.io/tendermint/faucet
     volumes:
       - ~/faucet/ununifid:/usr/local/bin/ununifid
+      - ~/faucet/libwasmvm.so:/usr/lib/libwasmvm.so
+      - ~/faucet/ld-musl-x86_64.so.1:/usr/lib/ld-musl-x86_64.so.1
+      - ~/faucet/libgcc_s.so.1:/usr/lib/libgcc_s.so.1
+      - ~/faucet/ld-linux-x86-64.so.2:/usr/lib/ld-linux-x86-64.so.2
       - ~/.ununifi:/root/.ununifi
     command: faucet --cli-name ununifid --denoms uguu --keyring-backend test --account-name faucet --port 7002 --credit-amount=2000000 --max-credit=1999999
     # ports:
@@ -28,6 +36,10 @@ services:
     image: ghcr.io/tendermint/faucet
     volumes:
       - ~/faucet/ununifid:/usr/local/bin/ununifid
+      - ~/faucet/libwasmvm.so:/usr/lib/libwasmvm.so
+      - ~/faucet/ld-musl-x86_64.so.1:/usr/lib/ld-musl-x86_64.so.1
+      - ~/faucet/libgcc_s.so.1:/usr/lib/libgcc_s.so.1
+      - ~/faucet/ld-linux-x86-64.so.2:/usr/lib/ld-linux-x86-64.so.2
       - ~/.ununifi:/root/.ununifi
     command: faucet --cli-name ununifid --denoms jpu --keyring-backend test --account-name faucet --port 7004 --credit-amount=10 --max-credit=9
     # ports:
@@ -39,6 +51,10 @@ services:
     image: ghcr.io/tendermint/faucet
     volumes:
       - ~/faucet/ununifid:/usr/local/bin/ununifid
+      - ~/faucet/libwasmvm.so:/usr/lib/libwasmvm.so
+      - ~/faucet/ld-musl-x86_64.so.1:/usr/lib/ld-musl-x86_64.so.1
+      - ~/faucet/libgcc_s.so.1:/usr/lib/libgcc_s.so.1
+      - ~/faucet/ld-linux-x86-64.so.2:/usr/lib/ld-linux-x86-64.so.2
       - ~/.ununifi:/root/.ununifi
     command: faucet --cli-name ununifid --denoms ueth --keyring-backend test --account-name faucet --port 7006 --credit-amount=1000 --max-credit=999
     # ports:
@@ -50,6 +66,10 @@ services:
     image: ghcr.io/tendermint/faucet
     volumes:
       - ~/faucet/ununifid:/usr/local/bin/ununifid
+      - ~/faucet/libwasmvm.so:/usr/lib/libwasmvm.so
+      - ~/faucet/ld-musl-x86_64.so.1:/usr/lib/ld-musl-x86_64.so.1
+      - ~/faucet/libgcc_s.so.1:/usr/lib/libgcc_s.so.1
+      - ~/faucet/ld-linux-x86-64.so.2:/usr/lib/ld-linux-x86-64.so.2
       - ~/.ununifi:/root/.ununifi
     command: faucet --cli-name ununifid --denoms euu --keyring-backend test --account-name faucet --port 7008 --credit-amount=10 --max-credit=9
     # ports:

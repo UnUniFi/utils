@@ -20,8 +20,8 @@ export class ClearComponent implements OnInit {
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
   collateralType$: Observable<string>;
-  paymentDenomString$: Observable<string>;
-  paymentDenom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
+  repaymentDenomString$: Observable<string>;
+  repaymentDenom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
 
   address$: Observable<cosmosclient.AccAddress | undefined>;
   balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
@@ -63,17 +63,17 @@ export class ClearComponent implements OnInit {
       }),
     );
 
-    this.paymentDenomString$ = this.cosmosSDK.sdk$.pipe(
+    this.repaymentDenomString$ = this.cosmosSDK.sdk$.pipe(
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((param) => param.data.params?.debt_param?.denom || ''),
     );
 
-    this.paymentDenom$ = combineLatest([this.paymentDenomString$, this.balances$]).pipe(
-      map(([paymentDenom, balances]) => {
-        const paymentDenomWithBalance = balances?.find(
-          (balances) => balances.denom === paymentDenom,
+    this.repaymentDenom$ = combineLatest([this.repaymentDenomString$, this.balances$]).pipe(
+      map(([repaymentDenom, balances]) => {
+        const repaymentDenomWithBalance = balances?.find(
+          (balances) => balances.denom === repaymentDenom,
         );
-        return paymentDenomWithBalance;
+        return repaymentDenomWithBalance;
       }),
     );
     this.minimumGasPrices = this.configS.config.minimumGasPrices;
@@ -88,7 +88,7 @@ export class ClearComponent implements OnInit {
       $event.key,
       $event.privateKey,
       $event.collateralType,
-      $event.payment,
+      $event.repayment,
       $event.minimumGasPrice,
       $event.balances,
     );

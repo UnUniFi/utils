@@ -236,7 +236,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     key: Key,
     privateKey: Uint8Array,
     collateralType: string,
-    payment: proto.cosmos.base.v1beta1.ICoin,
+    repayment: proto.cosmos.base.v1beta1.ICoin,
     gas: proto.cosmos.base.v1beta1.ICoin,
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075> {
@@ -244,7 +244,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       key,
       privateKey,
       collateralType,
-      payment,
+      repayment,
       gas,
       fee,
     );
@@ -255,7 +255,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     key: Key,
     privateKey: Uint8Array,
     collateralType: string,
-    payment: proto.cosmos.base.v1beta1.ICoin,
+    repayment: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<SimulatedTxResultResponse> {
     const dummyFee: proto.cosmos.base.v1beta1.ICoin = {
@@ -270,7 +270,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       key,
       privateKey,
       collateralType,
-      payment,
+      repayment,
       dummyGas,
       dummyFee,
     );
@@ -281,7 +281,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     key: Key,
     privateKey: Uint8Array,
     collateralType: string,
-    payment: proto.cosmos.base.v1beta1.ICoin,
+    repayment: proto.cosmos.base.v1beta1.ICoin,
     gas: proto.cosmos.base.v1beta1.ICoin,
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
@@ -303,7 +303,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     const msgRepayDebt = new ununifi.cdp.MsgRepayDebt({
       sender: sender.toString(),
       collateral_type: collateralType,
-      payment,
+      payment: repayment,
     });
 
     const txBody = new proto.cosmos.tx.v1beta1.TxBody({

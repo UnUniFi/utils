@@ -259,7 +259,7 @@ export class CdpApplicationService {
     key: Key,
     privateKey: Uint8Array,
     collateralType: string,
-    payment: proto.cosmos.base.v1beta1.ICoin,
+    repayment: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
     balances: proto.cosmos.base.v1beta1.ICoin[],
   ) {
@@ -294,7 +294,7 @@ export class CdpApplicationService {
         key,
         privateKey,
         collateralType,
-        payment,
+        repayment,
         minimumGasPrice,
       );
       gas = simulatedResultData.estimatedGasUsedWithMargin;
@@ -341,7 +341,7 @@ export class CdpApplicationService {
         key,
         privateKey,
         collateralType,
-        payment,
+        repayment,
         gas,
         fee,
       );

@@ -1,6 +1,7 @@
 import { CdpApplicationService, CosmosSDKService } from '../../../../models/index';
 import { Key } from '../../../../models/keys/key.model';
 import { KeyService } from '../../../../models/keys/key.service';
+import { getCreateLimit } from '../../../../utils/function';
 import { getLiquidationPriceStream } from '../../../../utils/stream';
 import { CreateCdpOnSubmitEvent } from '../../../../views/cdp/cdps/create/create.component';
 import { Component, OnInit } from '@angular/core';
@@ -121,29 +122,13 @@ export class CreateComponent implements OnInit {
       mergeMap((sdk) => getLiquidationPriceStream(sdk.rest, this.collateralType$, this.cdpParams$)),
     );
     this.principalLimit$ = combineLatest([
-      this.selectedCollateralType$,
+      this.collateralType$,
       this.cdpParams$,
       this.LiquidationPrice$,
       this.collateralInputValue.asObservable(),
     ]).pipe(
-      map(([collateralType, params, liquidationPrice, collateral]) => {
-        const currentCollateralAmount = collateral;
-        const price = Number.parseFloat(liquidationPrice.price!);
-        const collateralParams = params.collateral_params?.find(
-          (param) => param.type === collateralType,
-        );
-        const liquidationRatio = Number.parseFloat(collateralParams?.liquidation_ratio || '0');
-        const principalConversionFactor = Number.parseInt(
-          params.debt_param?.conversion_factor || '0',
-        );
-        const collateralConversionFactor = Number.parseInt(
-          collateralParams?.conversion_factor || '0',
-        );
-        const conversionFactor = Math.pow(
-          10,
-          principalConversionFactor - collateralConversionFactor,
-        );
-        return Math.floor((currentCollateralAmount * price * conversionFactor) / liquidationRatio);
+      map(([collateralType, params, liquidationPrice, collateralAmount]) => {
+        return getCreateLimit(collateralAmount, collateralType, params, liquidationPrice);
       }),
     );
 

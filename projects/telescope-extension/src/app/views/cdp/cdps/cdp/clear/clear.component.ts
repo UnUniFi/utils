@@ -7,7 +7,7 @@ export type ClearCdpOnSubmitEvent = {
   privateKey: Uint8Array;
   ownerAddr: cosmosclient.AccAddress;
   collateralType: string;
-  payment: proto.cosmos.base.v1beta1.ICoin;
+  repayment: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
   balances: proto.cosmos.base.v1beta1.ICoin[];
 };
@@ -28,7 +28,7 @@ export class ClearComponent implements OnInit {
   collateralType?: string | null;
 
   @Input()
-  paymentDenom?: proto.cosmos.base.v1beta1.ICoin | null;
+  repaymentDenom?: proto.cosmos.base.v1beta1.ICoin | null;
 
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
@@ -39,12 +39,12 @@ export class ClearComponent implements OnInit {
   @Output()
   appSubmit: EventEmitter<ClearCdpOnSubmitEvent>;
 
-  public payment_amount: string;
+  public repayment_amount: string;
   public selectedGasPrice?: proto.cosmos.base.v1beta1.ICoin;
 
   constructor() {
     this.appSubmit = new EventEmitter();
-    this.payment_amount = '';
+    this.repayment_amount = '';
   }
 
   ngOnChanges(): void {
@@ -59,8 +59,8 @@ export class ClearComponent implements OnInit {
     privateKeyString: string,
     ownerAddr: string,
     collateralType: string,
-    paymentDenom: string,
-    paymentAmount: string,
+    repaymentDenom: string,
+    repaymentAmount: string,
     minimumGasPrice: string,
   ) {
     if (this.selectedGasPrice === undefined) {
@@ -82,9 +82,9 @@ export class ClearComponent implements OnInit {
       privateKey,
       ownerAddr: cosmosclient.AccAddress.fromString(ownerAddr),
       collateralType: collateralType,
-      payment: {
-        denom: paymentDenom,
-        amount: paymentAmount,
+      repayment: {
+        denom: repaymentDenom,
+        amount: repaymentAmount,
       },
       minimumGasPrice: this.selectedGasPrice,
       balances: this.balances,

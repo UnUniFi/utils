@@ -6,8 +6,8 @@
       privateKeyRef.value,
       ownerRef.value,
       collateralTypeRef.value,
-      paymentDenomRef.value,
-      paymentAmountRef.value,
+      repaymentDenomRef.value,
+      repaymentAmountRef.value,
       minimumGasPriceRef.value
     )
   "
@@ -24,26 +24,26 @@
   </mat-form-field>
   <div>
     <mat-form-field class="w-full">
-      <mat-label>Payment Denom</mat-label>
+      <mat-label>Repayment Denom</mat-label>
       <input
-        #paymentDenomRef
-        [(ngModel)]="paymentDenom && paymentDenom.denom"
-        name="payment-denom"
+        #repaymentDenomRef
+        [(ngModel)]="repaymentDenom && repaymentDenom.denom"
+        name="repayment-denom"
         matInput
         readonly
       />
     </mat-form-field>
     <mat-form-field class="w-full">
-      <mat-label>Payment Amount</mat-label>
+      <mat-label>Repayment Amount</mat-label>
       <input
-        #paymentAmountRef
-        [(ngModel)]="payment_amount"
-        name="payment-amount"
+        #repaymentAmountRef
+        [(ngModel)]="repayment_amount"
+        name="repayment-amount"
         matInput
         type="number"
         pattern="^\d+$"
         [min]="1"
-        [max]="paymentDenom?.amount || 0"
+        [max]="repaymentDenom?.amount || 0"
         required
       />
     </mat-form-field>

@@ -117,33 +117,34 @@ export class CreateComponent implements OnInit {
     );
 
     // get principal limit
+    // check cdp
     this.collateralType$ = this.selectedCollateralType$.pipe(map((type) => (type ? type : '')));
+    this.cdp$ = combineLatest([this.address$, this.collateralType$, this.cosmosSDK.sdk$]).pipe(
+      mergeMap(([ownerAddr, collateralType, sdk]) =>
+        rest.ununifi.cdp.cdp(sdk.rest, ownerAddr, collateralType),
+      ),
+      map((res) => res.data.cdp!),
+    );
     this.LiquidationPrice$ = this.cosmosSDK.sdk$.pipe(
       mergeMap((sdk) => getLiquidationPriceStream(sdk.rest, this.collateralType$, this.cdpParams$)),
     );
     this.principalLimit$ = combineLatest([
+      this.cdp$,
       this.collateralType$,
       this.cdpParams$,
       this.LiquidationPrice$,
       this.collateralInputValue.asObservable(),
     ]).pipe(
-      map(([collateralType, params, liquidationPrice, collateralAmount]) => {
-        return getCreateLimit(collateralAmount, collateralType, params, liquidationPrice);
+      map(([cdp, collateralType, params, liquidationPrice, collateralAmount]) => {
+        return getCreateLimit(cdp?.cdp!, params, collateralAmount, collateralType, liquidationPrice);
       }),
     );
 
-    // check cdp
-    this.cdp$ = combineLatest([this.address$, this.collateralType$, this.cosmosSDK.sdk$]).pipe(
-      mergeMap(([ownerAddr, collateralType, sdk]) =>
-        rest.ununifi.cdp.cdp(sdk.rest, ownerAddr, collateralType),
-      ),
-      map((res) => res.data.cdp),
-    );
 
     this.minimumGasPrices = this.configS.config.minimumGasPrices;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit($event: CreateCdpOnSubmitEvent) {
     this.cdpApplicationService.createCDP(

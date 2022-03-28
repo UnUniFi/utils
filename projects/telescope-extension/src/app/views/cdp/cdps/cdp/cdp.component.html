@@ -1,10 +1,10 @@
-<h2>CDP</h2>
+<h2 class="mb-0">CDP</h2>
 <ng-container *ngIf="cdp === null; then empty; else exist"> </ng-container>
 <ng-template #loading>
   <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
 </ng-template>
 <ng-template #exist>
-  <mat-card>
+  <mat-card class="mb-4">
     <mat-list>
       <mat-list-item>
         <span class="column-name">Owner: </span>
@@ -41,6 +41,7 @@
             mat-stroked-button
             href="cdp/cdps/{{ owner }}/{{ collateralType }}/withdraw"
             target="_blank"
+            [disabled]="withdrawLimit === 0 || !withdrawLimit"
             >Withdraw</a
           >
         </span>
@@ -68,6 +69,7 @@
             mat-stroked-button
             href="cdp/cdps/{{ owner }}/{{ collateralType }}/issue"
             target="_blank"
+            [disabled]="issueLimit === 0 || !issueLimit"
           >
             Issue
           </a>
@@ -106,7 +108,11 @@
         <span class="column-name">Spot Price: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ spotPrice?.price | number: '1.9-9' }} [{{ spotPrice?.market_id }}]
+          <span class="ml-2 break-all">
+            <span>{{ spotPrice?.price | floor }}</span>
+            <span class="text-gray-500 text-sm">{{ spotPrice?.price | decimals: 9 }} </span>
+          </span>
+          [{{ spotPrice?.market_id }}]
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
@@ -115,7 +121,11 @@
         <span class="column-name">Liquidation Price: </span>
         <span class="flex-auto"></span>
         <span class="column-value">
-          {{ liquidationPrice?.price | number: '1.9-9' }} [{{ liquidationPrice?.market_id }}]
+          <span class="ml-2 break-all">
+            <span>{{ liquidationPrice?.price | floor }}</span>
+            <span class="text-gray-500 text-sm">{{ liquidationPrice?.price | decimals: 9 }} </span>
+          </span>
+          [{{ liquidationPrice?.market_id }}]
         </span>
       </mat-list-item>
       <mat-divider [inset]="true"></mat-divider>
@@ -123,13 +133,18 @@
       <mat-list-item>
         <span class="column-name">Collateralization Ratio: </span>
         <span class="flex-auto"></span>
-        <span class="column-value">{{ cdp?.collateralization_ratio | number: '1.9-9' }}</span>
+        <span class="ml-2 break-all">
+          <span>{{ cdp?.collateralization_ratio | floor }}</span>
+          <span class="text-gray-500 text-sm"
+            >{{ cdp?.collateralization_ratio | decimals: 9 }}
+          </span>
+        </span>
       </mat-list-item>
     </mat-list>
   </mat-card>
 
-  <h4>Deposits</h4>
-  <mat-card>
+  <h3 class="mb-0 ml-4">Deposits</h3>
+  <mat-card class="mb-4">
     <ng-template ngFor let-deposit [ngForOf]="deposits">
       <mat-list>
         <span class="column-name">{{ deposit.depositor }}</span>

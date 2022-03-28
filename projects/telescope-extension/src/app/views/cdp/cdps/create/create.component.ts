@@ -1,15 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { proto } from '@cosmos-client/core';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { ununifi } from 'ununifi-client';
+import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
 
 export type CreateCdpOnSubmitEvent = {
   key: Key;
-  privateKey: string;
+  privateKey: Uint8Array;
   collateralType: string;
   collateral: proto.cosmos.base.v1beta1.ICoin;
   principal: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
+  balances: proto.cosmos.base.v1beta1.ICoin[];
 };
 
 @Component({
@@ -36,17 +39,33 @@ export class CreateComponent implements OnInit {
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
 
+  @Input()
+  balances?: proto.cosmos.base.v1beta1.ICoin[] | null;
+
+  @Input()
+  principalLimit?: number | null;
+
+  @Input()
+  collateralLimit?: number | null;
+
+  @Input()
+  cdp?: InlineResponse2004Cdp1 | null;
+
   @Output()
   appSubmit: EventEmitter<CreateCdpOnSubmitEvent>;
 
   @Output()
   appSelectedCollateralTypeChanged: EventEmitter<string>;
 
+  @Output()
+  appCollateralAmountChanged: EventEmitter<number>;
+
   selectedGasPrice?: proto.cosmos.base.v1beta1.ICoin;
 
-  constructor() {
+  constructor(private readonly snackBar: MatSnackBar) {
     this.appSubmit = new EventEmitter();
     this.appSelectedCollateralTypeChanged = new EventEmitter();
+    this.appCollateralAmountChanged = new EventEmitter();
   }
 
   ngOnChanges(): void {
@@ -63,7 +82,7 @@ export class CreateComponent implements OnInit {
     collateralAmount: string,
     principalDenom: string,
     principalAmount: string,
-    privateKey: string,
+    privateKeyString: string,
     minimumGasPrice: string,
   ) {
     if (!collateralAmount || !principalAmount) {
@@ -72,6 +91,22 @@ export class CreateComponent implements OnInit {
     if (this.selectedGasPrice === undefined) {
       return;
     }
+    if (!this.balances) {
+      console.error('create-balances', this.balances);
+      return;
+    }
+    if (this.cdp && this.cdp.cdp?.type === collateralType) {
+      this.snackBar.open(
+        `Already have : ${collateralType} CDP. \n ID: ${this.cdp.cdp?.id}`,
+        'Close',
+      );
+      return;
+    }
+
+    const privateKeyWithNoWhitespace = privateKeyString.replace(/\s+/g, '');
+    const privateKeyBuffer = Buffer.from(privateKeyWithNoWhitespace, 'hex');
+    const privateKey = Uint8Array.from(privateKeyBuffer);
+
     this.appSubmit.emit({
       key: this.key!,
       privateKey,
@@ -85,6 +120,7 @@ export class CreateComponent implements OnInit {
         amount: principalAmount,
       },
       minimumGasPrice: this.selectedGasPrice,
+      balances: this.balances,
     });
   }
 
@@ -102,5 +138,9 @@ export class CreateComponent implements OnInit {
     if (this.selectedGasPrice) {
       this.selectedGasPrice.amount = amount;
     }
+  }
+
+  onCollateralAmountChanged(amount: number): void {
+    this.appCollateralAmountChanged.emit(amount);
   }
 }

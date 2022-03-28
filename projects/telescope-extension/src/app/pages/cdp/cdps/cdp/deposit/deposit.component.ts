@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { proto } from '@cosmos-client/core';
+import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
 import { CdpApplicationService } from 'projects/telescope-extension/src/app/models/index';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { DepositCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/deposit/deposit.component';
-import { combineLatest, Observable } from 'rxjs';
+import { timer, of, combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { rest, ununifi } from 'ununifi-client';
 
@@ -21,8 +21,11 @@ export class DepositComponent implements OnInit {
   owner$: Observable<string>;
   collateralType$: Observable<string>;
   params$: Observable<ununifi.cdp.IParams>;
-  denom$: Observable<string>;
+  denom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
+  address$: Observable<cosmosclient.AccAddress | undefined>;
+  balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
   minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
+  pollingInterval = 30;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -38,12 +41,46 @@ export class DepositComponent implements OnInit {
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((data) => data.data.params!),
     );
-    this.denom$ = combineLatest([this.collateralType$, this.params$]).pipe(
-      map(([collateralType, params]) => {
+
+    //get account balance information
+    this.address$ = this.owner$.pipe(
+      map((address) => {
+        try {
+          const accAddress = cosmosclient.AccAddress.fromString(address);
+          return accAddress;
+        } catch (error) {
+          console.error(error);
+          return undefined;
+        }
+      }),
+    );
+    const timer$ = timer(0, this.pollingInterval * 1000);
+    this.balances$ = combineLatest([timer$, this.cosmosSDK.sdk$, this.address$]).pipe(
+      mergeMap(([n, sdk, address]) => {
+        if (address === undefined) {
+          return of([]);
+        }
+        return restCosmos.bank
+          .allBalances(sdk.rest, address)
+          .then((res) => res.data.balances || []);
+      }),
+    );
+
+    this.denom$ = combineLatest([this.collateralType$, this.params$, this.balances$]).pipe(
+      map(([collateralType, params, balances]) => {
         const matchedDenoms = params.collateral_params?.filter(
           (param) => param.type === collateralType,
         );
-        return matchedDenoms ? (matchedDenoms[0].denom ? matchedDenoms[0].denom : '') : '';
+        const collateralDenom = matchedDenoms
+          ? matchedDenoms[0].denom
+            ? matchedDenoms[0].denom
+            : ''
+          : '';
+        const collateralDenomWithBalance = balances?.find(
+          (balances) => balances.denom === collateralDenom,
+        );
+
+        return collateralDenomWithBalance;
       }),
     );
     this.minimumGasPrices = this.configS.config.minimumGasPrices;
@@ -59,6 +96,7 @@ export class DepositComponent implements OnInit {
       $event.collateralType,
       $event.collateral,
       $event.minimumGasPrice,
+      $event.balances,
     );
   }
 }

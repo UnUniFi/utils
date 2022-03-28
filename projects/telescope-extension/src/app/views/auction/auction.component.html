@@ -1,36 +1,45 @@
-<h2>View Auctions</h2>
-<mat-card>
+<h2 class="mb-0">View Auctions</h2>
+<mat-card class="mb-4">
   <mat-nav-list>
     <mat-list-item routerLink="/auction/auctions">Auctions List</mat-list-item>
   </mat-nav-list>
 </mat-card>
 
-<h2>Auction parameters</h2>
-<h3>Increment Params</h3>
-<mat-card>
+<h2 class="mb-0">Auction parameters</h2>
+<h3 class="mb-0 ml-4">Increment Params</h3>
+<mat-card class="mb-4">
   <mat-list>
     <mat-list-item>
       <span>Increment Collateral:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.increment_collateral | number: '1.9-9' }}</span>
+      <span class="ml-2 break-all">
+        <span>{{ params?.increment_collateral | floor }}</span>
+        <span class="text-gray-500 text-sm">{{ params?.increment_collateral | decimals: 9 }} </span>
+      </span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
     <mat-list-item>
       <span>Increment Debt:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.increment_debt | number: '1.9-9' }}</span>
+      <span class="ml-2 break-all">
+        <span>{{ params?.increment_debt | floor }}</span>
+        <span class="text-gray-500 text-sm">{{ params?.increment_debt | decimals: 9 }} </span>
+      </span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
     <mat-list-item>
       <span>Increment Surplus:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.increment_surplus | number: '1.9-9' }}</span>
+      <span class="ml-2 break-all">
+        <span>{{ params?.increment_surplus | floor }}</span>
+        <span class="text-gray-500 text-sm">{{ params?.increment_surplus | decimals: 9 }} </span>
+      </span>
     </mat-list-item>
   </mat-list>
 </mat-card>
 
-<h3>Duration Params</h3>
-<mat-card>
+<h3 class="mb-0 ml-4">Duration Params</h3>
+<mat-card class="mb-4">
   <mat-list>
     <mat-list-item>
       <span>Bid Duration:</span>

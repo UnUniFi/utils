@@ -5,7 +5,7 @@ import { ununifi } from 'ununifi-client';
 
 export type PlaceBidOnSubmitEvent = {
   key: Key;
-  privateKey: string;
+  privateKey: Uint8Array;
   auctionID: string;
   amount: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
@@ -52,7 +52,7 @@ export class BidComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(privateKey: string, Denom: string, Amount: string, minimumGasPrice: string) {
+  onSubmit(privateKeyString: string, Denom: string, Amount: string, minimumGasPrice: string) {
     if (!this.auctionID) {
       console.error(this.auctionID);
       return;
@@ -60,7 +60,12 @@ export class BidComponent implements OnInit {
     if (this.selectedGasPrice === undefined) {
       return;
     }
-    this.selectedGasPrice.amount = minimumGasPrice.toString();
+    this.selectedGasPrice.amount = minimumGasPrice;
+
+    const privateKeyWithNoWhitespace = privateKeyString.replace(/\s+/g, '');
+    const privateKeyBuffer = Buffer.from(privateKeyWithNoWhitespace, 'hex');
+    const privateKey = Uint8Array.from(privateKeyBuffer);
+
     this.appSubmit.emit({
       key: this.key!,
       privateKey: privateKey,

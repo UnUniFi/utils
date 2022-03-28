@@ -11,7 +11,10 @@ export const getWithdrawLimit = (
   const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
   const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
-  const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
+  const principalDebtParam = cdpParams.debt_params?.find(
+    (debtParam) => debtParam.debt_denom == cdp.collateral?.denom,
+  );
+  const principalConversionFactor = Number.parseInt(principalDebtParam?.conversion_factor || '0');
 
   const collateralParams = cdpParams.collateral_params?.find(
     (param) => param.type === collateralType,
@@ -38,7 +41,10 @@ export const getIssueLimit = (
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
   const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
-  const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
+  const principalDebtParam = cdpParams.debt_params?.find(
+    (debtParam) => debtParam.debt_denom == cdp.collateral?.denom,
+  );
+  const principalConversionFactor = Number.parseInt(principalDebtParam?.conversion_factor || '0');
   const price = Number.parseFloat(liquidationPrice.price!);
 
   const collateralType = cdp.type;
@@ -63,16 +69,20 @@ export const getIssueLimit = (
 };
 
 export const getCreateLimit = (
+  cdp: InlineResponse2004Cdp,
+  cdpParams: ununifi.cdp.IParams,
   InputCollateralAmount: number,
   selectedCollateralType: string,
-  cdpParams: ununifi.cdp.IParams,
   liquidationPrice: ununifi.pricefeed.ICurrentPrice,
 ) => {
   const collateralParams = cdpParams.collateral_params?.find(
     (param) => param.type === selectedCollateralType,
   );
   const liquidationRatio = Number.parseFloat(collateralParams?.liquidation_ratio || '0');
-  const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
+  const principalDebtParam = cdpParams.debt_params?.find(
+    (debtParam) => debtParam.debt_denom == cdp.collateral?.denom,
+  );
+  const principalConversionFactor = Number.parseInt(principalDebtParam?.conversion_factor || '0');
   const collateralConversionFactor = Number.parseInt(collateralParams?.conversion_factor || '0');
   const price = Number.parseFloat(liquidationPrice.price!);
 

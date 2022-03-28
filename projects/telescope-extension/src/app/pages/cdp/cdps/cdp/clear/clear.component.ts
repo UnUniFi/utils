@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { proto } from '@cosmos-client/core';
+import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
-import {
-  CdpApplicationService,
-  CosmosSDKService,
-} from 'projects/telescope-extension/src/app/models/index';
+import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
+import { CdpApplicationService } from 'projects/telescope-extension/src/app/models/index';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { ClearCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/clear/clear.component';
-import { combineLatest, Observable } from 'rxjs';
+import { timer, of, combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { rest, ununifi } from 'ununifi-client';
+import { rest } from 'ununifi-client';
 
 @Component({
   selector: 'app-clear',
@@ -22,36 +20,61 @@ export class ClearComponent implements OnInit {
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
   collateralType$: Observable<string>;
-  params$: Observable<ununifi.cdp.IParams>;
-  denom$: Observable<string>;
-  paymentDenom$: Observable<string>;
+  repaymentDenomString$: Observable<string>;
+  repaymentDenom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
+
+  address$: Observable<cosmosclient.AccAddress | undefined>;
+  balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
   minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
+  pollingInterval = 30;
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly keyStore: KeyStoreService,
     private readonly cdpApplicationService: CdpApplicationService,
-    private readonly cosmosSdk: CosmosSDKService,
+    private readonly cosmosSDK: CosmosSDKService,
     private readonly configS: ConfigService,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.collateralType$ = this.route.params.pipe(map((params) => params['collateralType']));
-    this.params$ = this.cosmosSdk.sdk$.pipe(
-      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
-      map((data) => data.data.params!),
-    );
-    this.denom$ = combineLatest([this.collateralType$, this.params$]).pipe(
-      map(([collateralType, params]) => {
-        const matchedDenoms = params.collateral_params?.filter(
-          (param) => param.type === collateralType,
-        );
-        return matchedDenoms ? (matchedDenoms[0].denom ? matchedDenoms[0].denom : '') : '';
+
+    //get account balance information
+    this.address$ = this.owner$.pipe(
+      map((address) => {
+        try {
+          const accAddress = cosmosclient.AccAddress.fromString(address);
+          return accAddress;
+        } catch (error) {
+          console.error(error);
+          return undefined;
+        }
       }),
     );
-    this.paymentDenom$ = this.cosmosSdk.sdk$.pipe(
+    const timer$ = timer(0, this.pollingInterval * 1000);
+    this.balances$ = combineLatest([timer$, this.cosmosSDK.sdk$, this.address$]).pipe(
+      mergeMap(([n, sdk, address]) => {
+        if (address === undefined) {
+          return of([]);
+        }
+        return restCosmos.bank
+          .allBalances(sdk.rest, address)
+          .then((res) => res.data.balances || []);
+      }),
+    );
+
+    this.repaymentDenomString$ = this.cosmosSDK.sdk$.pipe(
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((param) => param.data.params?.debt_param?.denom || ''),
+    );
+
+    this.repaymentDenom$ = combineLatest([this.repaymentDenomString$, this.balances$]).pipe(
+      map(([repaymentDenom, balances]) => {
+        const repaymentDenomWithBalance = balances?.find(
+          (balances) => balances.denom === repaymentDenom,
+        );
+        return repaymentDenomWithBalance;
+      }),
     );
     this.minimumGasPrices = this.configS.config.minimumGasPrices;
   }
@@ -65,8 +88,9 @@ export class ClearComponent implements OnInit {
       $event.key,
       $event.privateKey,
       $event.collateralType,
-      $event.payment,
+      $event.repayment,
       $event.minimumGasPrice,
+      $event.balances,
     );
   }
 }

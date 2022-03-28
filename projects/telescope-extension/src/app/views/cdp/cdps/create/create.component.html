@@ -1,4 +1,7 @@
-<form #formRef="ngForm" (submit)="
+<h2 class="mb-4">CDP Create</h2>
+<form
+  #formRef="ngForm"
+  (submit)="
     onSubmit(
       collateralTypeRef.value,
       collateralDenomRef.value,
@@ -8,13 +11,19 @@
       privateKeyRef.value,
       minimumGasPriceRef.value
     )
-  ">
-  <h2>CDP Create</h2>
-
+  "
+>
   <div>
     <mat-form-field class="w-full">
       <mat-label>Collateral Type</mat-label>
-      <mat-select #collateralTypeRef [(ngModel)]="selectedCollateralType" name="collateral-type" matInput required (valueChange)="onSelectedCollateralTypeChanged($event)">
+      <mat-select
+        #collateralTypeRef
+        [(ngModel)]="selectedCollateralType"
+        name="collateral-type"
+        matInput
+        required
+        (valueChange)="onSelectedCollateralTypeChanged($event)"
+      >
         <ng-template ngFor let-param [ngForOf]="collateralParams || []">
           <mat-option [value]="param.type">{{ param.type }}</mat-option>
         </ng-template>
@@ -25,11 +34,28 @@
   <div>
     <mat-form-field class="w-full">
       <mat-label>Collateral Denom</mat-label>
-      <input #collateralDenomRef [(ngModel)]="selectedCollateralParam && selectedCollateralParam.denom" name="collateral-denom" matInput readonly />
+      <input
+        #collateralDenomRef
+        [(ngModel)]="selectedCollateralParam && selectedCollateralParam.denom"
+        name="collateral-denom"
+        matInput
+        readonly
+      />
     </mat-form-field>
     <mat-form-field class="w-full">
       <mat-label>Collateral Amount</mat-label>
-      <input #collateralAmountRef ngModel name="collateral-amount" matInput type="number" pattern="^\d+$" [min]="1" required />
+      <input
+        #collateralAmountRef
+        ngModel
+        name="collateral-amount"
+        matInput
+        type="number"
+        pattern="^\d+$"
+        [min]="1"
+        [max]="collateralLimit || 0"
+        (ngModelChange)="onCollateralAmountChanged($event)"
+        required
+      />
     </mat-form-field>
   </div>
 
@@ -44,12 +70,23 @@
           selectedCollateralParam.debt_limit.denom
         "
         name="principal-denom"
-        matInput readonly
+        matInput
+        readonly
       />
     </mat-form-field>
     <mat-form-field class="w-full">
       <mat-label>Principal Amount</mat-label>
-      <input #principalAmountRef ngModel name="principal-amount" matInput type="number" pattern="^\d+$" [min]="1" required />
+      <input
+        #principalAmountRef
+        ngModel
+        name="principal-amount"
+        matInput
+        type="number"
+        pattern="^\d+$"
+        [min]="1"
+        [max]="principalLimit || 0"
+        required
+      />
     </mat-form-field>
   </div>
 
@@ -63,7 +100,10 @@
         required
         (valueChange)="onMinimumGasDenomChanged($event)"
       >
-        <mat-option *ngFor="let minimumGasPrice of minimumGasPrices" [value]="minimumGasPrice.denom">
+        <mat-option
+          *ngFor="let minimumGasPrice of minimumGasPrices"
+          [value]="minimumGasPrice.denom"
+        >
           {{ minimumGasPrice.denom }}
         </mat-option>
       </mat-select>
@@ -81,7 +121,8 @@
       />
     </mat-form-field>
   </div>
-  <mat-slider class="w-full"
+  <mat-slider
+    class="w-full"
     [max]="1"
     [min]="0"
     [step]="0.015"
@@ -93,11 +134,27 @@
   <h3 class="pt-3">Signer</h3>
   <mat-form-field class="w-full">
     <mat-label>ID</mat-label>
-    <input #idRef type="text" name="id" [ngModel]="key?.id" autocomplete="username" matInput readonly />
+    <input
+      #idRef
+      type="text"
+      name="id"
+      [ngModel]="key?.id"
+      autocomplete="username"
+      matInput
+      readonly
+    />
   </mat-form-field>
   <mat-form-field class="w-full">
     <mat-label>Private key</mat-label>
-    <input #privateKeyRef ngModel type="password" name="privateKey" autocomplete="current-password" matInput required />
+    <input
+      #privateKeyRef
+      ngModel
+      type="password"
+      name="privateKey"
+      autocomplete="current-password"
+      matInput
+      required
+    />
   </mat-form-field>
   <button mat-flat-button class="w-full" color="accent" [disabled]="formRef.invalid">Submit</button>
 </form>

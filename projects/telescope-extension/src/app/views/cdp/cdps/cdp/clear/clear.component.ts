@@ -4,11 +4,12 @@ import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model'
 
 export type ClearCdpOnSubmitEvent = {
   key: Key;
-  privateKey: string;
+  privateKey: Uint8Array;
   ownerAddr: cosmosclient.AccAddress;
   collateralType: string;
-  payment: proto.cosmos.base.v1beta1.ICoin;
+  repayment: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
+  balances: proto.cosmos.base.v1beta1.ICoin[];
 };
 
 @Component({
@@ -27,23 +28,23 @@ export class ClearComponent implements OnInit {
   collateralType?: string | null;
 
   @Input()
-  denom?: string | null;
-
-  @Input()
-  paymentDenom?: string | null;
+  repaymentDenom?: proto.cosmos.base.v1beta1.ICoin | null;
 
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
 
+  @Input()
+  balances?: proto.cosmos.base.v1beta1.ICoin[] | null;
+
   @Output()
   appSubmit: EventEmitter<ClearCdpOnSubmitEvent>;
 
-  public payment_amount: string;
+  public repayment_amount: string;
   public selectedGasPrice?: proto.cosmos.base.v1beta1.ICoin;
 
   constructor() {
     this.appSubmit = new EventEmitter();
-    this.payment_amount = '';
+    this.repayment_amount = '';
   }
 
   ngOnChanges(): void {
@@ -55,27 +56,38 @@ export class ClearComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(
-    privateKey: string,
+    privateKeyString: string,
     ownerAddr: string,
     collateralType: string,
-    paymentDenom: string,
-    paymentAmount: string,
+    repaymentDenom: string,
+    repaymentAmount: string,
     minimumGasPrice: string,
   ) {
     if (this.selectedGasPrice === undefined) {
       return;
     }
-    this.selectedGasPrice.amount = minimumGasPrice.toString();
+    this.selectedGasPrice.amount = minimumGasPrice;
+
+    if (!this.balances) {
+      console.error('clear-balances', this.balances);
+      return;
+    }
+
+    const privateKeyWithNoWhitespace = privateKeyString.replace(/\s+/g, '');
+    const privateKeyBuffer = Buffer.from(privateKeyWithNoWhitespace, 'hex');
+    const privateKey = Uint8Array.from(privateKeyBuffer);
+
     this.appSubmit.emit({
       key: this.key!,
       privateKey,
       ownerAddr: cosmosclient.AccAddress.fromString(ownerAddr),
       collateralType: collateralType,
-      payment: {
-        denom: paymentDenom,
-        amount: paymentAmount,
+      repayment: {
+        denom: repaymentDenom,
+        amount: repaymentAmount,
       },
       minimumGasPrice: this.selectedGasPrice,
+      balances: this.balances,
     });
   }
 

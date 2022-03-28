@@ -1,3 +1,4 @@
+import { PipesModule } from './../../../../pipes/pipes.module';
 import { CdpComponent } from './cdp.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,7 @@ import { MaterialModule } from 'projects/telescope-extension/src/app/views/mater
 
 @NgModule({
   declarations: [CdpComponent],
-  imports: [CommonModule, RouterModule, FormsModule, MaterialModule],
+  imports: [CommonModule, RouterModule, FormsModule, MaterialModule, PipesModule],
   exports: [CdpComponent],
 })
 export class CdpModule {}

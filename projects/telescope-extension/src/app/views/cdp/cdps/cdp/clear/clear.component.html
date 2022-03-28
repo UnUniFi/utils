@@ -1,4 +1,4 @@
-<h2>CDP Clear</h2>
+<h2 class="mb-4">CDP Clear</h2>
 <form
   #formRef="ngForm"
   (submit)="
@@ -6,24 +6,46 @@
       privateKeyRef.value,
       ownerRef.value,
       collateralTypeRef.value,
-      paymentDenomRef.value,
-      paymentAmountRef.value,
+      repaymentDenomRef.value,
+      repaymentAmountRef.value,
       minimumGasPriceRef.value
     )
-  ">
+  "
+>
   <mat-form-field class="w-full">
     <mat-label>Collateral Type</mat-label>
-    <input #collateralTypeRef [(ngModel)]="collateralType" name="collateral-type" matInput readonly required />
+    <input
+      #collateralTypeRef
+      [(ngModel)]="collateralType"
+      name="collateral-type"
+      matInput
+      readonly
+    />
   </mat-form-field>
   <div>
     <mat-form-field class="w-full">
-      <mat-label>Payment Denom</mat-label>
-      <input #paymentDenomRef [(ngModel)]="paymentDenom" name="payment-denom" matInput readonly required />
+      <mat-label>Repayment Denom</mat-label>
+      <input
+        #repaymentDenomRef
+        [(ngModel)]="repaymentDenom && repaymentDenom.denom"
+        name="repayment-denom"
+        matInput
+        readonly
+      />
     </mat-form-field>
     <mat-form-field class="w-full">
-      <mat-label>Payment Amount</mat-label>
-      <input #paymentAmountRef [(ngModel)]="payment_amount" name="payment-amount" matInput type="number" pattern="^\d+$"
-        [min]="1" required />
+      <mat-label>Repayment Amount</mat-label>
+      <input
+        #repaymentAmountRef
+        [(ngModel)]="repayment_amount"
+        name="repayment-amount"
+        matInput
+        type="number"
+        pattern="^\d+$"
+        [min]="1"
+        [max]="repaymentDenom?.amount || 0"
+        required
+      />
     </mat-form-field>
   </div>
   <mat-form-field class="w-full">
@@ -41,7 +63,10 @@
         required
         (valueChange)="onMinimumGasDenomChanged($event)"
       >
-        <mat-option *ngFor="let minimumGasPrice of minimumGasPrices" [value]="minimumGasPrice.denom">
+        <mat-option
+          *ngFor="let minimumGasPrice of minimumGasPrices"
+          [value]="minimumGasPrice.denom"
+        >
           {{ minimumGasPrice.denom }}
         </mat-option>
       </mat-select>
@@ -59,7 +84,8 @@
       />
     </mat-form-field>
   </div>
-  <mat-slider class="w-full"
+  <mat-slider
+    class="w-full"
     [max]="1"
     [min]="0"
     [step]="0.015"
@@ -71,11 +97,28 @@
   <h3 class="mt-3">Signer</h3>
   <mat-form-field class="w-full">
     <mat-label>ID</mat-label>
-    <input #idRef type="text" name="id" [ngModel]="key?.id" autocomplete="username" matInput readonly required />
+    <input
+      #idRef
+      type="text"
+      name="id"
+      [ngModel]="key?.id"
+      autocomplete="username"
+      matInput
+      readonly
+      required
+    />
   </mat-form-field>
   <mat-form-field class="w-full">
     <mat-label>Private key</mat-label>
-    <input #privateKeyRef ngModel type="password" name="privateKey" autocomplete="current-password" matInput required />
+    <input
+      #privateKeyRef
+      ngModel
+      type="password"
+      name="privateKey"
+      autocomplete="current-password"
+      matInput
+      required
+    />
   </mat-form-field>
   <button mat-flat-button [disabled]="formRef.invalid" color="accent">Submit</button>
 </form>

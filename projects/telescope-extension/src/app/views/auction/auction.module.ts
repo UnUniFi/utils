@@ -1,3 +1,4 @@
+import { PipesModule } from '../../pipes/pipes.module';
 import { AuctionComponent } from './auction.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,7 @@ import { MaterialModule } from 'projects/telescope-extension/src/app/views/mater
 
 @NgModule({
   declarations: [AuctionComponent],
-  imports: [CommonModule, RouterModule, FormsModule, MaterialModule],
+  imports: [CommonModule, RouterModule, FormsModule, MaterialModule, PipesModule],
   exports: [AuctionComponent],
 })
 export class AuctionModule {}

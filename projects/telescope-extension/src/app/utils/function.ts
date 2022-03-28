@@ -35,13 +35,13 @@ export const getIssueLimit = (
   cdpParams: ununifi.cdp.IParams,
   liquidationPrice: ununifi.pricefeed.ICurrentPrice,
 ) => {
-  const collateralType = cdp.type;
   const currentCollateralAmount = Number.parseInt(cdp.collateral?.amount!);
   const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
-  const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
   const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
+  const price = Number.parseFloat(liquidationPrice.price!);
 
+  const collateralType = cdp.type;
   const collateralParams = cdpParams.collateral_params?.find(
     (param) => param.type === collateralType,
   );
@@ -50,18 +50,54 @@ export const getIssueLimit = (
   }
   const liquidationRatio = Number.parseFloat(collateralParams.liquidation_ratio || '0');
   const collateralConversionFactor = Number.parseInt(collateralParams.conversion_factor || '0');
-  const price = Number.parseFloat(liquidationPrice.price!);
 
-  const conversionFactor = Math.pow(10, principalConversionFactor - collateralConversionFactor);
-
-  console.log({
+  return calculateIssueLimit(
     currentCollateralAmount,
     price,
-    conversionFactor,
+    collateralConversionFactor,
+    principalConversionFactor,
     liquidationRatio,
-    principalTotal,
-  });
+    currentPrincipalAmount,
+    currentAccumulatedFees,
+  );
+};
 
+export const getCreateLimit = (
+  InputCollateralAmount: number,
+  selectedCollateralType: string,
+  cdpParams: ununifi.cdp.IParams,
+  liquidationPrice: ununifi.pricefeed.ICurrentPrice,
+) => {
+  const collateralParams = cdpParams.collateral_params?.find(
+    (param) => param.type === selectedCollateralType,
+  );
+  const liquidationRatio = Number.parseFloat(collateralParams?.liquidation_ratio || '0');
+  const principalConversionFactor = Number.parseInt(cdpParams.debt_param?.conversion_factor || '0');
+  const collateralConversionFactor = Number.parseInt(collateralParams?.conversion_factor || '0');
+  const price = Number.parseFloat(liquidationPrice.price!);
+
+  return calculateIssueLimit(
+    InputCollateralAmount,
+    price,
+    collateralConversionFactor,
+    principalConversionFactor,
+    liquidationRatio,
+    0,
+    0,
+  );
+};
+
+const calculateIssueLimit = (
+  currentCollateralAmount: number,
+  price: number,
+  collateralConversionFactor: number,
+  principalConversionFactor: number,
+  liquidationRatio: number,
+  currentPrincipalAmount: number,
+  currentAccumulatedFees: number,
+) => {
+  const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
+  const conversionFactor = Math.pow(10, principalConversionFactor - collateralConversionFactor);
   return Math.floor(
     (currentCollateralAmount * price * conversionFactor) / liquidationRatio - principalTotal,
   );

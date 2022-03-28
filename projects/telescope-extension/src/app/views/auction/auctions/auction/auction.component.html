@@ -1,5 +1,5 @@
 <div class="flex flex-row">
-  <h2>Auction</h2>
+  <h2 class="mb-0">Auction</h2>
   <span class="flex-auto"></span>
   <button
     mat-flat-button
@@ -17,8 +17,8 @@
 </ng-template>
 
 <ng-template #exist>
-  <h3>Base Auction</h3>
-  <mat-card>
+  <h3 class="mb-0 ml-4">Base Auction</h3>
+  <mat-card class="mb-2">
     <mat-list>
       <mat-list-item>
         <span class="column-name"> ID: </span>
@@ -96,8 +96,8 @@
       </mat-list-item>
     </mat-list>
   </mat-card>
-  <br />
-  <mat-card>
+
+  <mat-card class="mb-2">
     <mat-list>
       <mat-list-item>
         <span class="column-name"> Corresponding Debt: </span>
@@ -109,8 +109,8 @@
       </mat-list-item>
     </mat-list>
   </mat-card>
-  <br />
-  <mat-card>
+
+  <mat-card class="mb-4">
     <mat-list>
       <mat-list-item>
         <span class="column-name"> Max Bid: </span>
@@ -122,11 +122,10 @@
       </mat-list-item>
     </mat-list>
   </mat-card>
-  <br />
-  <h3>Lot Returns</h3>
 
+  <h3 class="mb-0 ml-4">Lot Returns</h3>
   <ng-container *ngFor="let return of auction?.lot_returns">
-    <mat-card>
+    <mat-card class="mb-4">
       <mat-list>
         <mat-list-item>
           <span class="column-name"> Address: </span>

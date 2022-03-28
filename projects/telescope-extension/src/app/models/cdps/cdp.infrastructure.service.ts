@@ -21,7 +21,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async createCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
@@ -42,7 +42,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async simulateToCreateCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
@@ -70,7 +70,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async buildCreateCDPTx(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
     principal: proto.cosmos.base.v1beta1.ICoin,
@@ -131,7 +131,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async drawCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
     gas: proto.cosmos.base.v1beta1.ICoin,
@@ -150,7 +150,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async simulateToDrawCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
@@ -176,7 +176,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async buildDrawCDPTx(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
     principal: proto.cosmos.base.v1beta1.ICoin,
     gas: proto.cosmos.base.v1beta1.ICoin,
@@ -234,9 +234,9 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async repayCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
-    payment: proto.cosmos.base.v1beta1.ICoin,
+    repayment: proto.cosmos.base.v1beta1.ICoin,
     gas: proto.cosmos.base.v1beta1.ICoin,
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<InlineResponse20075> {
@@ -244,7 +244,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       key,
       privateKey,
       collateralType,
-      payment,
+      repayment,
       gas,
       fee,
     );
@@ -253,9 +253,9 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async simulateToRepayCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
-    payment: proto.cosmos.base.v1beta1.ICoin,
+    repayment: proto.cosmos.base.v1beta1.ICoin,
     minimumGasPrice: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<SimulatedTxResultResponse> {
     const dummyFee: proto.cosmos.base.v1beta1.ICoin = {
@@ -270,7 +270,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
       key,
       privateKey,
       collateralType,
-      payment,
+      repayment,
       dummyGas,
       dummyFee,
     );
@@ -279,9 +279,9 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async buildRepayCDPTx(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     collateralType: string,
-    payment: proto.cosmos.base.v1beta1.ICoin,
+    repayment: proto.cosmos.base.v1beta1.ICoin,
     gas: proto.cosmos.base.v1beta1.ICoin,
     fee: proto.cosmos.base.v1beta1.ICoin,
   ): Promise<cosmosclient.TxBuilder> {
@@ -303,7 +303,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
     const msgRepayDebt = new ununifi.cdp.MsgRepayDebt({
       sender: sender.toString(),
       collateral_type: collateralType,
-      payment,
+      payment: repayment,
     });
 
     const txBody = new proto.cosmos.tx.v1beta1.TxBody({
@@ -337,7 +337,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async depositCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
@@ -358,7 +358,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async simulateToDepositCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
@@ -386,7 +386,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async buildDepositCDPTx(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
@@ -447,7 +447,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async withdrawCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
@@ -468,7 +468,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async simulateToWithdrawCDP(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,
@@ -496,7 +496,7 @@ export class CdpInfrastructureService implements ICdpInfrastructure {
 
   async buildWithdrawCDPTx(
     key: Key,
-    privateKey: string,
+    privateKey: Uint8Array,
     ownerAddr: cosmosclient.AccAddress,
     collateralType: string,
     collateral: proto.cosmos.base.v1beta1.ICoin,

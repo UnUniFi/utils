@@ -12,7 +12,7 @@ export const getWithdrawLimit = (
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
   const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
   const principalDebtParam = cdpParams.debt_params?.find(
-    (debtParam) => debtParam.debt_denom == cdp.collateral?.denom,
+    (debtParam) => debtParam.debt_denom == cdp.principal?.denom,
   );
   const principalConversionFactor = Number.parseInt(principalDebtParam?.conversion_factor || '0');
 
@@ -42,7 +42,7 @@ export const getIssueLimit = (
   const currentPrincipalAmount = Number.parseInt(cdp.principal?.amount!);
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
   const principalDebtParam = cdpParams.debt_params?.find(
-    (debtParam) => debtParam.debt_denom == cdp.collateral?.denom,
+    (debtParam) => debtParam.debt_denom == cdp.principal?.denom,
   );
   const principalConversionFactor = Number.parseInt(principalDebtParam?.conversion_factor || '0');
   const price = Number.parseFloat(liquidationPrice.price!);
@@ -80,7 +80,7 @@ export const getCreateLimit = (
   );
   const liquidationRatio = Number.parseFloat(collateralParams?.liquidation_ratio || '0');
   const principalDebtParam = cdpParams.debt_params?.find(
-    (debtParam) => debtParam.debt_denom == cdp.collateral?.denom,
+    (debtParam) => debtParam.debt_denom == cdp.principal?.denom,
   );
   const principalConversionFactor = Number.parseInt(principalDebtParam?.conversion_factor || '0');
   const collateralConversionFactor = Number.parseInt(collateralParams?.conversion_factor || '0');

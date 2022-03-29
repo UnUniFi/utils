@@ -8,7 +8,7 @@
 <h2 class="mb-0">CDP parameters</h2>
 <h3 class="mb-0 ml-4">Collateral Params</h3>
 <ng-template ngFor let-collateral [ngForOf]="collateralParams || []">
-  <h4 class="mb-0 ml-4">Params of {{ collateral.type }}</h4>
+  <h4 class="mb-0 ml-8">Params of {{ collateral.type }}</h4>
   <mat-card class="mb-4">
     <mat-list>
       <mat-list-item>
@@ -104,7 +104,7 @@
 
 <h3 class="mb-0 ml-4">Debt Params</h3>
 <ng-template ngFor let-debt [ngForOf]="debtParams || []">
-  <h4 class="mb-0 ml-4">Params of {{ debt.denom }}</h4>
+  <h4 class="mb-0 ml-8">Params of {{ debt.denom }}</h4>
   <mat-card class="mb-4">
     <mat-list>
       <mat-list-item>

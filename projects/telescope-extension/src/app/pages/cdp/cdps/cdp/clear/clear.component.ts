@@ -7,7 +7,7 @@ import { CdpApplicationService } from 'projects/telescope-extension/src/app/mode
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { ClearCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/clear/clear.component';
-import { timer, of, combineLatest, Observable } from 'rxjs';
+import { of, combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { rest } from 'ununifi-client';
 
@@ -51,9 +51,8 @@ export class ClearComponent implements OnInit {
         }
       }),
     );
-    const timer$ = timer(0, this.pollingInterval * 1000);
-    this.balances$ = combineLatest([timer$, this.cosmosSDK.sdk$, this.address$]).pipe(
-      mergeMap(([n, sdk, address]) => {
+    this.balances$ = combineLatest([this.cosmosSDK.sdk$, this.address$]).pipe(
+      mergeMap(([sdk, address]) => {
         if (address === undefined) {
           return of([]);
         }

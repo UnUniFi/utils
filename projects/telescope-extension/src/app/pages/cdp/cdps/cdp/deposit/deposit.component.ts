@@ -7,7 +7,7 @@ import { CdpApplicationService } from 'projects/telescope-extension/src/app/mode
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { DepositCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/deposit/deposit.component';
-import { timer, of, combineLatest, Observable } from 'rxjs';
+import { of, combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { rest, ununifi } from 'ununifi-client';
 
@@ -25,7 +25,6 @@ export class DepositComponent implements OnInit {
   address$: Observable<cosmosclient.AccAddress | undefined>;
   balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
   minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
-  pollingInterval = 30;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -54,9 +53,9 @@ export class DepositComponent implements OnInit {
         }
       }),
     );
-    const timer$ = timer(0, this.pollingInterval * 1000);
-    this.balances$ = combineLatest([timer$, this.cosmosSDK.sdk$, this.address$]).pipe(
-      mergeMap(([n, sdk, address]) => {
+
+    this.balances$ = combineLatest([this.cosmosSDK.sdk$, this.address$]).pipe(
+      mergeMap(([sdk, address]) => {
         if (address === undefined) {
           return of([]);
         }

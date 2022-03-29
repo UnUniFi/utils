@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
-import { timer, of, combineLatest, BehaviorSubject, Observable, Subject } from 'rxjs';
+import { of, combineLatest, BehaviorSubject, Observable, Subject } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
 import { ununifi, rest } from 'ununifi-client';
 import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
@@ -29,7 +29,6 @@ export class CreateComponent implements OnInit {
 
   address$: Observable<cosmosclient.AccAddress>;
   balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
-  pollingInterval = 30;
 
   collateralType$: Observable<string>;
   collateralLimit$: Observable<number>;
@@ -88,9 +87,8 @@ export class CreateComponent implements OnInit {
         cosmosclient.AccAddress.fromPublicKey(this.key.getPubKey(key!.type, key.public_key)),
       ),
     );
-    const timer$ = timer(0, this.pollingInterval * 1000);
-    this.balances$ = combineLatest([timer$, this.cosmosSDK.sdk$, this.address$]).pipe(
-      mergeMap(([n, sdk, address]) => {
+    this.balances$ = combineLatest([this.cosmosSDK.sdk$, this.address$]).pipe(
+      mergeMap(([sdk, address]) => {
         if (address === undefined) {
           return of([]);
         }

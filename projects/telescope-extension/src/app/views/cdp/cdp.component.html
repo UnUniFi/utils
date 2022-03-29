@@ -7,95 +7,100 @@
 
 <h2 class="mb-0">CDP parameters</h2>
 <h3 class="mb-0 ml-4">Collateral Params</h3>
-<mat-card class="mb-4">
-  <mat-list *ngFor="let collateral of collateralParams">
-    <mat-list-item>
-      <span>Denom:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.denom }}</span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Type:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.type }}</span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Liquidation Ratio:</span>
-      <span class="flex-auto"></span>
-      <span class="ml-2 break-all">
-        <span>{{ collateral.liquidation_ratio | floor }}</span>
-        <span class="text-gray-500 text-sm">{{ collateral.liquidation_ratio | decimals: 6 }} </span>
-      </span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Debt Limit:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.debt_limit?.amount | number: '1.0-0' }}</span>
-      <span class="ml-1">{{ collateral.debt_limit?.denom }}</span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Stability Fee:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.stability_fee }}</span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Auction Size:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.auction_size | number: '1.0-0' }}</span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Liquidation Penalty:</span>
-      <span class="flex-auto"></span>
-      <span class="ml-2 break-all">
-        <span>{{ collateral.liquidation_penalty | floor }}</span>
-        <span class="text-gray-500 text-sm"
-          >{{ collateral.liquidation_penalty | decimals: 6 }}
+<ng-template ngFor let-collateral [ngForOf]="collateralParams || []">
+  <h4 class="mb-0 ml-4">Params of {{ collateral.type }}</h4>
+  <mat-card class="mb-4">
+    <mat-list>
+      <mat-list-item>
+        <span>Denom:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.denom }}</span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Type:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.type }}</span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Liquidation Ratio:</span>
+        <span class="flex-auto"></span>
+        <span class="ml-2 break-all">
+          <span>{{ collateral.liquidation_ratio | floor }}</span>
+          <span class="text-gray-500 text-sm"
+            >{{ collateral.liquidation_ratio | decimals: 6 }}
+          </span>
         </span>
-      </span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Spot Market ID:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.spot_market_id }}</span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Liquidation Market ID:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.liquidation_market_id }}</span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Keeper Reward Percentage:</span>
-      <span class="flex-auto"></span>
-      <span class="ml-2 break-all">
-        <span>{{ collateral.keeper_reward_percentage | floor }}</span>
-        <span class="text-gray-500 text-sm"
-          >{{ collateral.keeper_reward_percentage | decimals: 9 }}
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Debt Limit:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.debt_limit?.amount | number: '1.0-0' }}</span>
+        <span class="ml-1">{{ collateral.debt_limit?.denom }}</span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Stability Fee:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.stability_fee }}</span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Auction Size:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.auction_size | number: '1.0-0' }}</span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Liquidation Penalty:</span>
+        <span class="flex-auto"></span>
+        <span class="ml-2 break-all">
+          <span>{{ collateral.liquidation_penalty | floor }}</span>
+          <span class="text-gray-500 text-sm"
+            >{{ collateral.liquidation_penalty | decimals: 6 }}
+          </span>
         </span>
-      </span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Check Collateralization Index Count:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.check_collateralization_index_count | number: '1.0-0' }}</span>
-    </mat-list-item>
-    <mat-divider [inset]="true"></mat-divider>
-    <mat-list-item>
-      <span>Conversion Factor:</span>
-      <span class="flex-auto"></span>
-      <span>{{ collateral.conversion_factor }}</span>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Spot Market ID:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.spot_market_id }}</span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Liquidation Market ID:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.liquidation_market_id }}</span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Keeper Reward Percentage:</span>
+        <span class="flex-auto"></span>
+        <span class="ml-2 break-all">
+          <span>{{ collateral.keeper_reward_percentage | floor }}</span>
+          <span class="text-gray-500 text-sm"
+            >{{ collateral.keeper_reward_percentage | decimals: 9 }}
+          </span>
+        </span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Check Collateralization Index Count:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.check_collateralization_index_count | number: '1.0-0' }}</span>
+      </mat-list-item>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-list-item>
+        <span>Conversion Factor:</span>
+        <span class="flex-auto"></span>
+        <span>{{ collateral.conversion_factor }}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</ng-template>
 
 <h3 class="mb-0 ml-4">Debt Params</h3>
 <ng-template ngFor let-debt [ngForOf]="debtParams || []">

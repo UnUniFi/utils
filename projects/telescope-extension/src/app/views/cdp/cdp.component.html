@@ -8,7 +8,7 @@
 <h2 class="mb-0">CDP parameters</h2>
 <h3 class="mb-0 ml-4">Collateral Params</h3>
 <mat-card class="mb-4">
-  <mat-list *ngFor="let collateral of params?.collateral_params">
+  <mat-list *ngFor="let collateral of collateralParams">
     <mat-list-item>
       <span>Denom:</span>
       <span class="flex-auto"></span>
@@ -99,71 +99,71 @@
 
 <h3 class="mb-0 ml-4">Debt Params</h3>
 <mat-card class="mb-4">
-  <mat-list>
+  <mat-list *ngFor="let debt of debtParams">
     <mat-list-item>
       <span>Denom:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.debt_param?.denom }}</span>
+      <span>{{ debt.denom }}</span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
     <mat-list-item>
       <span>Reference Asset:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.debt_param?.reference_asset }}</span>
+      <span>{{ debt.reference_asset }}</span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
     <mat-list-item>
       <span>Conversion Factor:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.debt_param?.conversion_factor }}</span>
+      <span>{{ debt.conversion_factor }}</span>
     </mat-list-item>
     <mat-divider [inset]="true"></mat-divider>
     <mat-list-item>
       <span>Debt Floor:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.debt_param?.debt_floor }}</span>
+      <span>{{ debt.debt_floor }}</span>
     </mat-list-item>
   </mat-list>
 </mat-card>
 
 <h3 class="mb-0 ml-4">Other Status</h3>
 <mat-card class="mb-4">
-  <mat-list>
+  <mat-list *ngFor="let debt of debtParams">
     <mat-list-item>
       <span>Global Debt Limit:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.global_debt_limit?.amount | number: '1.0-0' }}</span>
-      <span class="ml-1">{{ params?.global_debt_limit?.denom }}</span>
+      <span>{{ debt.global_debt_limit?.amount | number: '1.0-0' }}</span>
+      <span class="ml-1">{{ debt.global_debt_limit?.denom }}</span>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
       <span>Surplus Auction Threshold:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.surplus_auction_threshold | number: '1.0-0' }}</span>
+      <span>{{ debt.surplus_auction_threshold | number: '1.0-0' }}</span>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
       <span>Surplus Auction Lot:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.surplus_auction_lot | number: '1.0-0' }}</span>
+      <span>{{ debt.surplus_auction_lot | number: '1.0-0' }}</span>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
       <span>Debt Auction Threshold:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.debt_auction_threshold | number: '1.0-0' }}</span>
+      <span>{{ debt.debt_auction_threshold | number: '1.0-0' }}</span>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
       <span>Debt Auction Lot:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.debt_auction_lot | number: '1.0-0' }}</span>
+      <span>{{ debt.debt_auction_lot | number: '1.0-0' }}</span>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
       <span>Circuit Breaker:</span>
       <span class="flex-auto"></span>
-      <span>{{ params?.circuit_breaker }}</span>
+      <span>{{ debt.circuit_breaker }}</span>
     </mat-list-item>
   </mat-list>
 </mat-card>

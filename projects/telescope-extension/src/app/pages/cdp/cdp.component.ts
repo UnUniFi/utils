@@ -10,14 +10,19 @@ import { ununifi, rest } from 'ununifi-client';
   styleUrls: ['./cdp.component.css'],
 })
 export class CdpComponent implements OnInit {
-  params$: Observable<ununifi.cdp.IParams>;
+  cdpParams$: Observable<ununifi.cdp.IParams>;
+  collateralParams$: Observable<ununifi.cdp.ICollateralParam[] | null | undefined>;
+  debtParams$: Observable<ununifi.cdp.IDebtParam[] | null | undefined>;
+
   constructor(private cosmosSDK: CosmosSDKService) {
     const timer$ = timer(0, 60 * 1000);
 
-    this.params$ = combineLatest([this.cosmosSDK.sdk$, timer$]).pipe(
+    this.cdpParams$ = combineLatest([this.cosmosSDK.sdk$, timer$]).pipe(
       mergeMap(([sdk, _]) => rest.ununifi.cdp.params(sdk.rest)),
       map((res) => res.data.params!),
     );
+    this.collateralParams$ = this.cdpParams$.pipe(map((cdpParams) => cdpParams?.collateral_params));
+    this.debtParams$ = this.cdpParams$.pipe(map((cdpParams) => cdpParams.debt_params));
   }
 
   ngOnInit(): void {}

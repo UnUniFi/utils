@@ -2,7 +2,8 @@ import { CosmosSDKService } from '../../models/cosmos-sdk.service';
 import { Component, OnInit } from '@angular/core';
 import { combineLatest, Observable, timer } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { ununifi, rest } from 'ununifi-client';
+import { rest } from 'ununifi-client';
+import { InlineResponse2007Params } from 'ununifi-client/esm/openapi';
 
 @Component({
   selector: 'app-cdp',
@@ -10,7 +11,7 @@ import { ununifi, rest } from 'ununifi-client';
   styleUrls: ['./cdp.component.css'],
 })
 export class CdpComponent implements OnInit {
-  params$: Observable<ununifi.cdp.IParams>;
+  params$: Observable<InlineResponse2007Params>;
   constructor(private cosmosSDK: CosmosSDKService) {
     const timer$ = timer(0, 60 * 1000);
 

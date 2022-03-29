@@ -136,15 +136,20 @@ export class CreateComponent implements OnInit {
       this.collateralInputValue.asObservable(),
     ]).pipe(
       map(([cdp, collateralType, params, liquidationPrice, collateralAmount]) => {
-        return getCreateLimit(cdp?.cdp!, params, collateralAmount, collateralType, liquidationPrice);
+        return getCreateLimit(
+          cdp?.cdp!,
+          params,
+          collateralAmount,
+          collateralType,
+          liquidationPrice,
+        );
       }),
     );
-
 
     this.minimumGasPrices = this.configS.config.minimumGasPrices;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onSubmit($event: CreateCdpOnSubmitEvent) {
     this.cdpApplicationService.createCDP(

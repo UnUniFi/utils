@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ununifi } from 'ununifi-client';
+import { InlineResponse2007Params } from 'ununifi-client/esm/openapi';
 
 @Component({
   selector: 'view-cdp',
@@ -8,7 +8,7 @@ import { ununifi } from 'ununifi-client';
 })
 export class CdpComponent implements OnInit {
   @Input()
-  params?: ununifi.cdp.IParams | null;
+  params?: InlineResponse2007Params | null;
 
   constructor() {}
 

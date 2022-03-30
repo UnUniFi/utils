@@ -49,10 +49,6 @@ export class IssueComponent implements OnInit {
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((data) => data.data.params!),
     );
-    this.principalDenom$ = this.cosmosSDK.sdk$.pipe(
-      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
-      map((res) => res.data.params?.debt_param?.denom || ''),
-    );
 
     //get account balance information
     this.address$ = this.owner$.pipe(
@@ -87,6 +83,13 @@ export class IssueComponent implements OnInit {
         ),
       ),
       map((res) => res.data.cdp!),
+    );
+
+    this.principalDenom$ = combineLatest([this.params$, this.cdp$]).pipe(
+      map(([params, cdp]) =>
+        params.debt_params?.find((debtParam) => debtParam.denom == cdp.cdp?.principal?.denom),
+      ),
+      map((res) => res?.denom!),
     );
 
     this.liquidationPrice$ = this.cosmosSDK.sdk$.pipe(

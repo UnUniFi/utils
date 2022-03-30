@@ -12,7 +12,7 @@ export const getWithdrawLimit = (
   const currentAccumulatedFees = Number.parseInt(cdp.accumulated_fees?.amount!);
   const principalTotal = currentPrincipalAmount + currentAccumulatedFees;
   const principalDebtParam = cdpParams.debt_params?.find(
-    (debtParam) => debtParam.debt_denom == cdp.principal?.denom,
+    (debtParam) => debtParam.denom == cdp.principal?.denom,
   );
   const principalConversionFactor = Number.parseInt(principalDebtParam?.conversion_factor || '0');
 

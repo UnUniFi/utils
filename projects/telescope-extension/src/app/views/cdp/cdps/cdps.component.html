@@ -17,11 +17,13 @@
   </ng-template>
   <ng-template #exist>
     <ng-container *ngFor="let cdp of cdps">
-      <mat-list-item [routerLink]="[cdp.cdp?.owner, cdp.cdp?.type]">
-        <mat-icon matListIcon [ngStyle]="{ color: getColorCode(cdp) }"> circle </mat-icon>
-        <span>{{ cdp.cdp?.type }}</span>
-      </mat-list-item>
-      <mat-divider></mat-divider>
+      <ng-container *ngIf="cdp">
+        <mat-list-item [routerLink]="[cdp.cdp?.owner, cdp.cdp?.type]">
+          <mat-icon matListIcon [ngStyle]="{ color: getColorCode(cdp) }"> circle </mat-icon>
+          <span>{{ cdp.cdp?.type }}</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
     </ng-container>
   </ng-template>
   <ng-template #empty>

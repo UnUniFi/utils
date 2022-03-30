@@ -9,7 +9,7 @@ import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
 })
 export class CdpsComponent implements OnInit {
   @Input()
-  cdps?: InlineResponse2004Cdp1[] | null;
+  cdps?: (InlineResponse2004Cdp1 | undefined)[] | null;
 
   constructor() {}
 

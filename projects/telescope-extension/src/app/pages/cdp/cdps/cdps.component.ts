@@ -22,20 +22,17 @@ export class CdpsComponent implements OnInit {
     private readonly cosmosSdk: CosmosSDKService,
   ) {
     const key$ = this.keyStore.currentKey$.asObservable();
-    key$.subscribe((a) => console.log(a));
     const address$ = key$.pipe(
       filter((key: Key | undefined): key is Key => key !== undefined),
       map((key: Key) =>
         cosmosclient.AccAddress.fromPublicKey(this.key.getPubKey(key.type, key.public_key)),
       ),
     );
-    address$.subscribe((a) => console.log(a));
 
     const collateralTypes$ = this.cosmosSdk.sdk$.pipe(
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((res) => res.data?.params?.collateral_params?.map((p) => p.type!) || []),
     );
-    collateralTypes$.subscribe((a) => console.log(a));
     this.cdps$ = combineLatest([address$, collateralTypes$, this.cosmosSdk.sdk$]).pipe(
       mergeMap(([address, collateralTypes, sdk]) =>
         Promise.all(

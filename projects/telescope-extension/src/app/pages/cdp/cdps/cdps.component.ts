@@ -14,7 +14,7 @@ import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
   styleUrls: ['./cdps.component.css'],
 })
 export class CdpsComponent implements OnInit {
-  cdps$: Observable<InlineResponse2004Cdp1[]>;
+  cdps$: Observable<(InlineResponse2004Cdp1 | undefined)[]>;
 
   constructor(
     private readonly key: KeyService,
@@ -22,31 +22,32 @@ export class CdpsComponent implements OnInit {
     private readonly cosmosSdk: CosmosSDKService,
   ) {
     const key$ = this.keyStore.currentKey$.asObservable();
+    key$.subscribe((a) => console.log(a));
     const address$ = key$.pipe(
       filter((key: Key | undefined): key is Key => key !== undefined),
       map((key: Key) =>
         cosmosclient.AccAddress.fromPublicKey(this.key.getPubKey(key.type, key.public_key)),
       ),
     );
+    address$.subscribe((a) => console.log(a));
 
     const collateralTypes$ = this.cosmosSdk.sdk$.pipe(
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((res) => res.data?.params?.collateral_params?.map((p) => p.type!) || []),
     );
+    collateralTypes$.subscribe((a) => console.log(a));
     this.cdps$ = combineLatest([address$, collateralTypes$, this.cosmosSdk.sdk$]).pipe(
       mergeMap(([address, collateralTypes, sdk]) =>
         Promise.all(
           collateralTypes.map((collateralType) =>
-            rest.ununifi.cdp.cdp(sdk.rest, address, collateralType),
+            rest.ununifi.cdp.cdp(sdk.rest, address, collateralType).catch((err) => {
+              console.log(err);
+              return;
+            }),
           ),
         ),
       ),
-      map((result) => result.map((res) => res.data)),
-      map((data) => data.map((e) => e.cdp!)),
-      catchError((error) => {
-        console.error(error);
-        return of([]);
-      }),
+      map((result) => result.map((res) => (res ? res.data.cdp! : undefined))),
     );
   }
 

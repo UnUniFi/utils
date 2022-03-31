@@ -136,7 +136,7 @@ export class CreateComponent implements OnInit {
     this.cdp$ = combineLatest([this.address$, this.collateralType$, this.cosmosSDK.sdk$]).pipe(
       mergeMap(([ownerAddr, collateralType, sdk]) =>
         rest.ununifi.cdp.cdp(sdk.rest, ownerAddr, collateralType).catch((err) => {
-          console.log('no cdp of ' + collateralType);
+          console.error(err);
           return;
         }),
       ),

@@ -77,7 +77,6 @@ export const getCreateLimit = (
   const collateralParams = cdpParams.collateral_params?.find(
     (param) => param.type === selectedCollateralType,
   );
-  console.log(collateralParams);
   const liquidationRatio = Number.parseFloat(collateralParams?.liquidation_ratio || '0');
   const principalDebtParam = cdpParams.debt_params?.find(
     (debtParam) => debtParam.denom == collateralParams?.debt_limit?.denom,

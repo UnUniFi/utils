@@ -117,33 +117,30 @@ export class CreateComponent implements OnInit {
     );
 
     // get principal limit
-    // check cdp
     this.collateralType$ = this.selectedCollateralType$.pipe(map((type) => (type ? type : '')));
-    this.cdp$ = combineLatest([this.address$, this.collateralType$, this.cosmosSDK.sdk$]).pipe(
-      mergeMap(([ownerAddr, collateralType, sdk]) =>
-        rest.ununifi.cdp.cdp(sdk.rest, ownerAddr, collateralType),
-      ),
-      map((res) => res.data.cdp!),
-    );
     this.LiquidationPrice$ = this.cosmosSDK.sdk$.pipe(
       mergeMap((sdk) => getLiquidationPriceStream(sdk.rest, this.collateralType$, this.cdpParams$)),
     );
     this.principalLimit$ = combineLatest([
-      this.cdp$,
       this.collateralType$,
       this.cdpParams$,
       this.LiquidationPrice$,
       this.collateralInputValue.asObservable(),
     ]).pipe(
-      map(([cdp, collateralType, params, liquidationPrice, collateralAmount]) => {
-        return getCreateLimit(
-          cdp?.cdp!,
-          params,
-          collateralAmount,
-          collateralType,
-          liquidationPrice,
-        );
+      map(([collateralType, params, liquidationPrice, collateralAmount]) => {
+        return getCreateLimit(params, collateralAmount, collateralType, liquidationPrice);
       }),
+    );
+
+    // check cdp
+    this.cdp$ = combineLatest([this.address$, this.collateralType$, this.cosmosSDK.sdk$]).pipe(
+      mergeMap(([ownerAddr, collateralType, sdk]) =>
+        rest.ununifi.cdp.cdp(sdk.rest, ownerAddr, collateralType).catch((err) => {
+          console.log('no cdp of ' + collateralType);
+          return;
+        }),
+      ),
+      map((res) => (res ? res.data.cdp : undefined)),
     );
 
     this.minimumGasPrices = this.configS.config.minimumGasPrices;

@@ -69,7 +69,6 @@ export const getIssueLimit = (
 };
 
 export const getCreateLimit = (
-  cdp: InlineResponse2004Cdp,
   cdpParams: ununifi.cdp.IParams,
   InputCollateralAmount: number,
   selectedCollateralType: string,
@@ -78,9 +77,10 @@ export const getCreateLimit = (
   const collateralParams = cdpParams.collateral_params?.find(
     (param) => param.type === selectedCollateralType,
   );
+  console.log(collateralParams);
   const liquidationRatio = Number.parseFloat(collateralParams?.liquidation_ratio || '0');
   const principalDebtParam = cdpParams.debt_params?.find(
-    (debtParam) => debtParam.denom == cdp.principal?.denom,
+    (debtParam) => debtParam.denom == collateralParams?.debt_limit?.denom,
   );
   const principalConversionFactor = Number.parseInt(principalDebtParam?.conversion_factor || '0');
   const collateralConversionFactor = Number.parseInt(collateralParams?.conversion_factor || '0');

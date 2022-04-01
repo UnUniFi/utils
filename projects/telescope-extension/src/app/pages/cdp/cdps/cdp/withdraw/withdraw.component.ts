@@ -1,6 +1,7 @@
 import { getWithdrawLimit } from '../../../../../utils/function';
 import { getSpotPriceStream } from '../../../../../utils/stream';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
@@ -40,6 +41,7 @@ export class WithdrawComponent implements OnInit {
     private readonly keyStore: KeyStoreService,
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly configS: ConfigService,
+    private readonly snackBar: MatSnackBar,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -53,7 +55,11 @@ export class WithdrawComponent implements OnInit {
         const matchedDenoms = params.collateral_params?.filter(
           (param) => param.type === collateralType,
         );
-        return matchedDenoms ? (matchedDenoms[0].denom ? matchedDenoms[0].denom : '') : '';
+        if (!matchedDenoms?.[0].denom) {
+          this.snackBar.open('Invalid collateral Type / collateral param', 'close');
+          return '';
+        }
+        return matchedDenoms[0].denom;
       }),
     );
 
@@ -65,6 +71,7 @@ export class WithdrawComponent implements OnInit {
           return accAddress;
         } catch (error) {
           console.error(error);
+          this.snackBar.open('Invalid address!', 'close');
           return undefined;
         }
       }),

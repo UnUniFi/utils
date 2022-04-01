@@ -1,5 +1,5 @@
 <h2 class="mb-4">CDP Clear</h2>
-<ng-container *ngIf="!repaymentDenom; then loading; else loaded"> </ng-container>
+<ng-container *ngIf="!principalDenom; then loading; else loaded"> </ng-container>
 <ng-template #loading>
   <mat-progress-spinner [diameter]="60" [mode]="'indeterminate'"></mat-progress-spinner>
 </ng-template>
@@ -11,8 +11,8 @@
         privateKeyRef.value,
         ownerRef.value,
         collateralTypeRef.value,
-        repaymentDenomRef.value,
-        repaymentAmountRef.value,
+        principalDenomRef.value,
+        principalAmountRef.value,
         minimumGasPriceRef.value
       )
     "
@@ -29,26 +29,26 @@
     </mat-form-field>
     <div>
       <mat-form-field class="w-full">
-        <mat-label>Repayment Denom</mat-label>
+        <mat-label>Principal Denom</mat-label>
         <input
-          #repaymentDenomRef
-          [(ngModel)]="repaymentDenom && repaymentDenom.denom"
-          name="repayment-denom"
+          #principalDenomRef
+          [(ngModel)]="principalDenom && principalDenom.denom"
+          name="principal-denom"
           matInput
           readonly
         />
       </mat-form-field>
       <mat-form-field class="w-full">
-        <mat-label>Repayment Amount</mat-label>
+        <mat-label>Principal Amount</mat-label>
         <input
-          #repaymentAmountRef
-          [(ngModel)]="repayment_amount"
-          name="repayment-amount"
+          #principalAmountRef
+          [(ngModel)]="principal_amount"
+          name="principal-amount"
           matInput
           type="number"
           pattern="^\d+$"
           [min]="1"
-          [max]="repaymentDenom?.amount || 0"
+          [max]="principalDenom?.amount || 0"
           required
         />
       </mat-form-field>

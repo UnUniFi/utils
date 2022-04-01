@@ -5,6 +5,7 @@ import { getCreateLimit } from '../../../../utils/function';
 import { getLiquidationPriceStream } from '../../../../utils/stream';
 import { CreateCdpOnSubmitEvent } from '../../../../views/cdp/cdps/create/create.component';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
@@ -45,6 +46,7 @@ export class CreateComponent implements OnInit {
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly cosmosSDK: CosmosSDKService,
     private readonly configS: ConfigService,
+    private readonly snackBar: MatSnackBar,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.cdpParams$ = this.cosmosSDK.sdk$.pipe(
@@ -90,6 +92,7 @@ export class CreateComponent implements OnInit {
     this.balances$ = combineLatest([this.cosmosSDK.sdk$, this.address$]).pipe(
       mergeMap(([sdk, address]) => {
         if (address === undefined) {
+          this.snackBar.open('Invalid key!', 'close');
           return of([]);
         }
         return restCosmos.bank

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
@@ -32,6 +33,7 @@ export class DepositComponent implements OnInit {
     private readonly keyStore: KeyStoreService,
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly configS: ConfigService,
+    private readonly snackBar: MatSnackBar,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -49,6 +51,7 @@ export class DepositComponent implements OnInit {
           return accAddress;
         } catch (error) {
           console.error(error);
+          this.snackBar.open('Invalid address!', 'close');
           return undefined;
         }
       }),
@@ -70,15 +73,10 @@ export class DepositComponent implements OnInit {
         const matchedDenoms = params.collateral_params?.filter(
           (param) => param.type === collateralType,
         );
-        const collateralDenom = matchedDenoms
-          ? matchedDenoms[0].denom
-            ? matchedDenoms[0].denom
-            : ''
-          : '';
+        const collateralDenom = matchedDenoms?.[0].denom;
         const collateralDenomWithBalance = balances?.find(
           (balances) => balances.denom === collateralDenom,
         );
-
         return collateralDenomWithBalance;
       }),
     );

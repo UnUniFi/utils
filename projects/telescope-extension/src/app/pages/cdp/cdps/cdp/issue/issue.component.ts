@@ -1,6 +1,7 @@
 import { getIssueLimit } from '../../../../../utils/function';
 import { getLiquidationPriceStream } from '../../../../../utils/stream';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
@@ -40,6 +41,7 @@ export class IssueComponent implements OnInit {
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly cosmosSDK: CosmosSDKService,
     private readonly configS: ConfigService,
+    private readonly snackBar: MatSnackBar,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -61,6 +63,7 @@ export class IssueComponent implements OnInit {
           return accAddress;
         } catch (error) {
           console.error(error);
+          this.snackBar.open('Invalid address!', 'close');
           return undefined;
         }
       }),

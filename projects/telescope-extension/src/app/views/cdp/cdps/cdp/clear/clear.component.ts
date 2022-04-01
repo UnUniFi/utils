@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { cosmosclient, proto } from '@cosmos-client/core';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
@@ -7,7 +8,7 @@ export type ClearCdpOnSubmitEvent = {
   privateKey: Uint8Array;
   ownerAddr: cosmosclient.AccAddress;
   collateralType: string;
-  repayment: proto.cosmos.base.v1beta1.ICoin;
+  principal: proto.cosmos.base.v1beta1.ICoin;
   minimumGasPrice: proto.cosmos.base.v1beta1.ICoin;
   balances: proto.cosmos.base.v1beta1.ICoin[];
 };
@@ -28,7 +29,7 @@ export class ClearComponent implements OnInit {
   collateralType?: string | null;
 
   @Input()
-  repaymentDenom?: proto.cosmos.base.v1beta1.ICoin | null;
+  principalDenom?: proto.cosmos.base.v1beta1.ICoin | null;
 
   @Input()
   minimumGasPrices?: proto.cosmos.base.v1beta1.ICoin[];
@@ -39,12 +40,12 @@ export class ClearComponent implements OnInit {
   @Output()
   appSubmit: EventEmitter<ClearCdpOnSubmitEvent>;
 
-  public repayment_amount: string;
+  public principal_amount: string;
   public selectedGasPrice?: proto.cosmos.base.v1beta1.ICoin;
 
-  constructor() {
+  constructor(private readonly snackBar: MatSnackBar) {
     this.appSubmit = new EventEmitter();
-    this.repayment_amount = '';
+    this.principal_amount = '';
   }
 
   ngOnChanges(): void {
@@ -59,8 +60,8 @@ export class ClearComponent implements OnInit {
     privateKeyString: string,
     ownerAddr: string,
     collateralType: string,
-    repaymentDenom: string,
-    repaymentAmount: string,
+    principalDenom: string,
+    principalAmount: string,
     minimumGasPrice: string,
   ) {
     if (this.selectedGasPrice === undefined) {
@@ -73,6 +74,14 @@ export class ClearComponent implements OnInit {
       return;
     }
 
+    if (!principalDenom) {
+      this.snackBar.open(
+        `Invalid Principal. \n You need to wait until the correct principal information is loaded. \n Please try again.`,
+        'Close',
+      );
+      return;
+    }
+
     const privateKeyWithNoWhitespace = privateKeyString.replace(/\s+/g, '');
     const privateKeyBuffer = Buffer.from(privateKeyWithNoWhitespace, 'hex');
     const privateKey = Uint8Array.from(privateKeyBuffer);
@@ -82,9 +91,9 @@ export class ClearComponent implements OnInit {
       privateKey,
       ownerAddr: cosmosclient.AccAddress.fromString(ownerAddr),
       collateralType: collateralType,
-      repayment: {
-        denom: repaymentDenom,
-        amount: repaymentAmount,
+      principal: {
+        denom: principalDenom,
+        amount: principalAmount,
       },
       minimumGasPrice: this.selectedGasPrice,
       balances: this.balances,

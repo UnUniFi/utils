@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
@@ -20,8 +21,8 @@ export class ClearComponent implements OnInit {
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
   collateralType$: Observable<string>;
-  repaymentDenomString$: Observable<string>;
-  repaymentDenom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
+  principalDenomString$: Observable<string>;
+  principalDenom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
 
   address$: Observable<cosmosclient.AccAddress | undefined>;
   balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
@@ -34,6 +35,7 @@ export class ClearComponent implements OnInit {
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly cosmosSDK: CosmosSDKService,
     private readonly configS: ConfigService,
+    private readonly snackBar: MatSnackBar,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -47,6 +49,7 @@ export class ClearComponent implements OnInit {
           return accAddress;
         } catch (error) {
           console.error(error);
+          this.snackBar.open('Invalid address!', 'close');
           return undefined;
         }
       }),
@@ -62,17 +65,17 @@ export class ClearComponent implements OnInit {
       }),
     );
 
-    this.repaymentDenomString$ = this.cosmosSDK.sdk$.pipe(
+    this.principalDenomString$ = this.cosmosSDK.sdk$.pipe(
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((param) => param.data.params?.debt_param?.denom || ''),
     );
 
-    this.repaymentDenom$ = combineLatest([this.repaymentDenomString$, this.balances$]).pipe(
-      map(([repaymentDenom, balances]) => {
-        const repaymentDenomWithBalance = balances?.find(
-          (balances) => balances.denom === repaymentDenom,
+    this.principalDenom$ = combineLatest([this.principalDenomString$, this.balances$]).pipe(
+      map(([principalDenom, balances]) => {
+        const principalDenomWithBalance = balances?.find(
+          (balances) => balances.denom === principalDenom,
         );
-        return repaymentDenomWithBalance;
+        return principalDenomWithBalance;
       }),
     );
     this.minimumGasPrices = this.configS.config.minimumGasPrices;
@@ -87,7 +90,7 @@ export class ClearComponent implements OnInit {
       $event.key,
       $event.privateKey,
       $event.collateralType,
-      $event.repayment,
+      $event.principal,
       $event.minimumGasPrice,
       $event.balances,
     );

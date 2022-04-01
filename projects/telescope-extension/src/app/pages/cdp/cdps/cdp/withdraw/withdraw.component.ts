@@ -1,6 +1,7 @@
 import { getWithdrawLimit } from '../../../../../utils/function';
 import { getSpotPriceStream } from '../../../../../utils/stream';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
@@ -9,7 +10,7 @@ import { CdpApplicationService } from 'projects/telescope-extension/src/app/mode
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { WithdrawCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/withdraw/withdraw.component';
-import { timer, of, zip, combineLatest, Observable } from 'rxjs';
+import { of, zip, combineLatest, Observable } from 'rxjs';
 import { mergeMap, map } from 'rxjs/operators';
 import { rest, ununifi } from 'ununifi-client';
 import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
@@ -33,7 +34,6 @@ export class WithdrawComponent implements OnInit {
   address$: Observable<cosmosclient.AccAddress | undefined>;
   balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
   minimumGasPrices: proto.cosmos.base.v1beta1.ICoin[];
-  pollingInterval = 30;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -41,6 +41,7 @@ export class WithdrawComponent implements OnInit {
     private readonly keyStore: KeyStoreService,
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly configS: ConfigService,
+    private readonly snackBar: MatSnackBar,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -54,7 +55,11 @@ export class WithdrawComponent implements OnInit {
         const matchedDenoms = params.collateral_params?.filter(
           (param) => param.type === collateralType,
         );
-        return matchedDenoms ? (matchedDenoms[0].denom ? matchedDenoms[0].denom : '') : '';
+        if (!matchedDenoms?.[0].denom) {
+          this.snackBar.open('Invalid collateral Type / collateral param', 'close');
+          return '';
+        }
+        return matchedDenoms[0].denom;
       }),
     );
 
@@ -66,13 +71,13 @@ export class WithdrawComponent implements OnInit {
           return accAddress;
         } catch (error) {
           console.error(error);
+          this.snackBar.open('Invalid address!', 'close');
           return undefined;
         }
       }),
     );
-    const timer$ = timer(0, this.pollingInterval * 1000);
-    this.balances$ = combineLatest([timer$, this.cosmosSDK.sdk$, this.address$]).pipe(
-      mergeMap(([n, sdk, address]) => {
+    this.balances$ = combineLatest([this.cosmosSDK.sdk$, this.address$]).pipe(
+      mergeMap(([sdk, address]) => {
         if (address === undefined) {
           return of([]);
         }

@@ -2,7 +2,10 @@ const configs = [
   {
     node: 'a.private-test.ununifi.cauchye.net',
     restURL: `${location.protocol}//a.private-test.ununifi.cauchye.net:1317`,
-    websocketURL: `${location.protocol.replace('http', 'ws')}//a.private-test.ununifi.cauchye.net:26657`,
+    websocketURL: `${location.protocol.replace(
+      'http',
+      'ws',
+    )}//a.private-test.ununifi.cauchye.net:26657`,
     chainID: 'ununifi-8-private-test',
     bech32Prefix: {
       accAddr: 'ununifi',
@@ -93,7 +96,10 @@ const configs = [
   {
     node: 'b.private-test.ununifi.cauchye.net',
     restURL: `${location.protocol}//b.private-test.ununifi.cauchye.net:1317`,
-    websocketURL: `${location.protocol.replace('http', 'ws')}//b.private-test.ununifi.cauchye.net:26657`,
+    websocketURL: `${location.protocol.replace(
+      'http',
+      'ws',
+    )}//b.private-test.ununifi.cauchye.net:26657`,
     chainID: 'ununifi-8-private-test',
     bech32Prefix: {
       accAddr: 'ununifi',

@@ -1,6 +1,7 @@
 const configs = [
+  // A node without Monitor
   {
-    node: 'a.private-test.ununifi.cauchye.net',
+    id: 'a.private-test.ununifi.cauchye.net',
     restURL: `${location.protocol}//a.private-test.ununifi.cauchye.net:1317`,
     websocketURL: `${location.protocol.replace(
       'http',
@@ -59,21 +60,8 @@ const configs = [
           maxCredit: 9,
         },
       ],
-      monitor: {
-        monitorURL: `${location.protocol}//${location.hostname}:9000`,
-      },
-      navigations: [
-        {
-          name: 'Monitor',
-          link: '/monitor',
-          icon: 'monitor',
-        },
-        {
-          name: 'UnUniFi',
-          link: '/ununifi/',
-          icon: 'toll',
-        },
-      ],
+      monitor: {},
+      navigations: [],
       messageModules: [
         'bank',
         'auth',
@@ -93,8 +81,9 @@ const configs = [
       ],
     },
   },
+  // B node without Monitor
   {
-    node: 'b.private-test.ununifi.cauchye.net',
+    id: 'b.private-test.ununifi.cauchye.net',
     restURL: `${location.protocol}//b.private-test.ununifi.cauchye.net:1317`,
     websocketURL: `${location.protocol.replace(
       'http',
@@ -153,21 +142,8 @@ const configs = [
           maxCredit: 9,
         },
       ],
-      monitor: {
-        monitorURL: `${location.protocol}//b.private-test.ununifi.cauchye.net:9000`,
-      },
-      navigations: [
-        {
-          name: 'Monitor',
-          link: '/monitor',
-          icon: 'monitor',
-        },
-        {
-          name: 'UnUniFi',
-          link: '/ununifi/',
-          icon: 'toll',
-        },
-      ],
+      monitor: {},
+      navigations: [],
       messageModules: [
         'bank',
         'auth',

@@ -60,7 +60,6 @@ const configs = [
           maxCredit: 9,
         },
       ],
-      monitor: {},
       navigations: [],
       messageModules: [
         'bank',
@@ -142,7 +141,6 @@ const configs = [
           maxCredit: 9,
         },
       ],
-      monitor: {},
       navigations: [],
       messageModules: [
         'bank',

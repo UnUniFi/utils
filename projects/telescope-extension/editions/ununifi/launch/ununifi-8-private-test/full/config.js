@@ -60,18 +60,7 @@ const configs = [
       monitor: {
         monitorURL: `${location.protocol}//${location.hostname}:9000`,
       },
-      navigations: [
-        {
-          name: 'Monitor',
-          link: '/monitor',
-          icon: 'monitor',
-        },
-        {
-          name: 'UnUniFi',
-          link: '/ununifi/',
-          icon: 'toll',
-        },
-      ],
+      navigations: [],
       messageModules: [
         'bank',
         'auth',
@@ -155,13 +144,7 @@ const configs = [
       monitor: {
         monitorURL: `${location.protocol}//${location.hostname}:9000`,
       },
-      navigations: [
-        {
-          name: 'Monitor',
-          link: '/monitor',
-          icon: 'monitor',
-        },
-      ],
+      navigations: [],
       messageModules: [
         'bank',
         'auth',
@@ -245,13 +228,7 @@ const configs = [
       monitor: {
         monitorURL: `${location.protocol}//b.private-test.ununifi.cauchye.net:9000`,
       },
-      navigations: [
-        {
-          name: 'Monitor',
-          link: '/monitor',
-          icon: 'monitor',
-        },
-      ],
+      navigations: [],
       messageModules: [
         'bank',
         'auth',

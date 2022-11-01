@@ -1,4 +1,19 @@
 #!/bin/sh
+
+###### hermes setup
+# sudo apt-get install pkg-config libssl-dev
+# sudo apt install librust-openssl-dev build-essentia
+# mkdir -p $HOME/hermes
+# git clone https://github.com/informalsystems/ibc-rs.git hermes
+# cd hermes
+# git checkout tags/v1.0.0
+# cargo install ibc-relayer-cli --bin hermes --lockedrt --home=$HOME/.osmosisd
+
+###### query heres
+# hermes query packet commitments --chain ununifi-test-private-m1 --port transfer --channel channel-0;
+# ununifid q ibc channel channels;
+# osmosisd q ibc channel channels;
+
 rm -rf $HOME/.hermes;
 mkdir -p $HOME/.hermes;
 mkdir -p $HOME/.hermes/keys;

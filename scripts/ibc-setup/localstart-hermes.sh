@@ -44,6 +44,7 @@ trust_threshold = { numerator = '1', denominator = '3' }
 policy = 'allow'
 list = [
    ['transfer', 'channel-0'], # osmo-test
+   ['ica*', '*'],
 ]
 
 [[chains]]
@@ -71,11 +72,12 @@ trust_threshold = { numerator = '1', denominator = '3' }
 policy = 'allow'
 list = [
   ['transfer', 'channel-0'], # ununif
+  ['ica*', '*'],
 ]" >> ~/.hermes/config.toml
 
 
 echo "figure web rescue rice quantum sustain alert citizen woman cable wasp eyebrow monster teach hockey giant monitor hero oblige picnic ball never lamp distance" > mnt.txt;
-hermes keys add --chain ununifi-test-private-m1 --mnemonic-file mnt.txt;
-hermes keys add --chain osmo-test --mnemonic-file mnt.txt;
+hermes keys add --chain ununifi-test-private-m1 --mnemonic-file ./mnt.txt;
+hermes keys add --chain osmo-test --mnemonic-file ./mnt.txt;
 hermes create channel --a-chain ununifi-test-private-m1 --b-chain osmo-test --a-port transfer --b-port transfer --new-client-connection --yes;
 hermes start

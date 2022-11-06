@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { cosmosclient, proto } from '@cosmos-client/core';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
@@ -46,7 +45,7 @@ export class IssueComponent implements OnInit {
   public principal_amount: string;
   public selectedGasPrice?: proto.cosmos.base.v1beta1.ICoin;
 
-  constructor(private readonly snackBar: MatSnackBar) {
+  constructor() {
     this.appSubmit = new EventEmitter();
     this.principal_amount = '';
   }
@@ -73,14 +72,6 @@ export class IssueComponent implements OnInit {
     this.selectedGasPrice.amount = minimumGasPrice.toString();
     if (!this.balances) {
       console.error('issue-balances', this.balances);
-      return;
-    }
-
-    if (!principalDenom) {
-      this.snackBar.open(
-        `Invalid Principal. \n You need to wait until the correct principal information is loaded. \n Please try again.`,
-        'Close',
-      );
       return;
     }
 

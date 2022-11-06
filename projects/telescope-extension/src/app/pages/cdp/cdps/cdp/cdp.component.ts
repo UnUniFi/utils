@@ -1,6 +1,7 @@
 import { getWithdrawLimit, getIssueLimit } from '../../../../utils/function';
 import { getSpotPriceStream, getLiquidationPriceStream } from '../../../../utils/stream';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient } from '@cosmos-client/core';
 import { CosmosSDKService } from 'projects/telescope-extension/src/app/models/index';
@@ -30,6 +31,7 @@ export class CdpComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly cosmosSdk: CosmosSDKService,
+    private readonly snackBar: MatSnackBar,
   ) {
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
     this.collateralType$ = this.route.params.pipe(map((params) => params['collateralType']));
@@ -42,7 +44,11 @@ export class CdpComponent implements OnInit {
         const matchedDenoms = params.collateral_params?.filter(
           (param) => param.type === collateralType,
         );
-        return matchedDenoms ? (matchedDenoms[0].denom ? matchedDenoms[0].denom : '') : '';
+        if (!matchedDenoms?.[0].denom) {
+          this.snackBar.open('Invalid collateral Type / collateral param', 'close');
+          return '';
+        }
+        return matchedDenoms[0].denom;
       }),
     );
     const ownerAndCollateralType$ = combineLatest([
@@ -68,6 +74,8 @@ export class CdpComponent implements OnInit {
           .allDeposits(sdk.rest, cosmosclient.AccAddress.fromString(ownerAddr), collateralType)
           .catch((error) => {
             console.error(error);
+            // Todo: fix always allDeposits return error
+            // this.snackBar.open('Invalid address or collateral type!', 'close');
             return undefined;
           }),
       ),

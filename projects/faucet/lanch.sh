@@ -48,4 +48,4 @@ echo "
     }
   }
 
-" >> /etc/nginx/conf.d/uniunifi.conf
+" >> /etc/nginx/conf.d/ununifi.conf

@@ -138,6 +138,8 @@ export class PriceOracle {
           return null;
         }
         switch (marketID) {
+          case 'ubtc:usd':
+          case 'ubtc:usd:30':
           case 'ubtc:jpy':
           case 'ubtc:jpy:30':
           case 'ubtc:eur':
@@ -158,10 +160,16 @@ export class PriceOracle {
 
   async fetchTickers(marketID: string) {
     switch (marketID) {
+      case 'ubtc:usd':
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:jpy':
         return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:eur':
         return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
+      case 'ubtc:usd:30': {
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
+        return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
+      }
       case 'ubtc:jpy:30': {
         const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
@@ -201,6 +209,9 @@ export class PriceOracle {
 
   getBaseCurrency(marketID: string) {
     switch (marketID) {
+      case 'ubtc:usd':
+      case 'ubtc:usd:30':
+        return 'USD';
       case 'ubtc:jpy':
       case 'ubtc:jpy:30':
         return 'JPY';
@@ -449,6 +460,9 @@ export class PriceOracle {
 
   marketIdToCcxtSymbol(marketId: string) {
     switch (marketId) {
+      case 'ubtc:usd':
+      case 'ubtc:usd:30':
+        return 'BTC/USD';
       case 'ubtc:jpy':
       case 'ubtc:jpy:30':
         return 'BTC/JPY';

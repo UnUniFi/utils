@@ -12,6 +12,7 @@ import { rest as ununifirest, ununifi, google } from 'ununifi-client';
 
 require('dotenv').config();
 require('log-timestamp');
+const IS_DEBUG_MODE = process.env.MODE == "debug";
 
 /**
  * Price oracle class for posting prices to Kava.
@@ -101,9 +102,14 @@ export class PriceOracle {
     for (let i = 0; i < this.marketIDs.length; ++i) {
       const marketID = this.marketIDs[i];
       const result = await this.fetchPrice(marketID);
-      
+      if(IS_DEBUG_MODE){
+        console.log("result", result);
+      }
 
       if (!this.checkPriceIsValid(result)) {
+        if(IS_DEBUG_MODE){
+          console.log(`skip posting ${marketID} price`);
+        }
         return;
       }
 
@@ -114,7 +120,9 @@ export class PriceOracle {
 
       try {
         const res: any = await this.postNewPrice(result.price, marketID, account, i);
-        //console.log("res", res);
+        if(IS_DEBUG_MODE){
+          console.log("res", res);
+        }
         // if (res.data.code !== undefined) {
         //   throw new Error(res.data.raw_log);
         // }
@@ -188,6 +196,8 @@ export class PriceOracle {
         case 'ubtc:jpy:30':
         case 'ubtc:eur':
         case 'ubtc:eur:30':
+        case 'ubtc:usd':
+        case 'ubtc:usd:30':
           return convertedPrice / 1000000;
         default:
           return convertedPrice;
@@ -201,6 +211,8 @@ export class PriceOracle {
     switch (marketID) {
       case 'ubtc:jpy':
         return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
+      case 'ubtc:usd':
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:eur':
         return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:jpy:30': {
@@ -208,6 +220,10 @@ export class PriceOracle {
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
       case 'ubtc:eur:30': {
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
+        return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
+      }
+      case 'ubtc:usd:30': {
         const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
@@ -249,13 +265,20 @@ export class PriceOracle {
       case 'ubtc:eur:30': {
         return 'EUR';
       }
+      case 'ubtc:usd':
+      case 'ubtc:usd:30': {
+        return 'USD';
+      }
     }
     return null;
   }
 
   async convertUsdPrice(marketID: string, price: number) {
-    const priceRate = await this.getLatestFiatCurrencyPrices();
     const currency = this.getBaseCurrency(marketID);
+    if (currency == "USD") {
+      return price;
+    }
+    const priceRate = await this.getLatestFiatCurrencyPrices();
     if (currency && currency in priceRate.rates) {
       const currencyPrice = priceRate.rates[currency] * price;
       return currencyPrice;

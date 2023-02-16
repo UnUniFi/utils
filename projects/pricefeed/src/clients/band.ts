@@ -31,6 +31,8 @@ export default class BandClient {
         return await this.getAveragePrice("JPY", 30)
       case "EUR30":
         return await this.getAveragePrice("EUR", 30)
+      default:
+        throw new Error(`invalid currency`)
     }
   }
 
@@ -55,7 +57,7 @@ export default class BandClient {
       return await this.getCurrentPrice(currency)
     }
     const sumPrice = priceList.reduce((acc:number, elem:CurrencyRecordDataType) => {
-     return acc + elem.price 
+     return acc + elem.price
     },0)
     return sumPrice / priceList.length
   }
@@ -103,6 +105,9 @@ class JsonDbClint {
         },
         EUR:{
           data:[]
+        },
+        USD:{
+          data:[]
         }
       }
       this.db.write()
@@ -131,7 +136,7 @@ class JsonDbClint {
   private nanoSecToSec(targetNanoSec: number):number{
     return Math.round(targetNanoSec / 1000)
   }
-  
+
   private minToSec(targetMin: number):number{
     return targetMin * 60
   }
@@ -168,7 +173,7 @@ class JsonDbClint {
       return
     }
     this.db.data[currency].data = this.db.data[currency].data.filter((elem: CurrencyRecordDataType) => {
-      return elem.epoch_sec_time > limit_time 
+      return elem.epoch_sec_time > limit_time
     })
     this.db.write()
   }

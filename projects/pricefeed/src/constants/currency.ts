@@ -7,6 +7,6 @@ export const MARKET_CURRENCY_MAP:MarketCurrencyType = {
   'ubtc:jpy:30':"JPY30",
   'ubtc:eur':"EUR",
   'ubtc:eur:30':"EUR30",
-  'uubtc:usd':"USD",
-  'uubtc:usd:30':"USD30"
+  'uusdc:usd':"USD",
+  'uusdc:usd:30':"USD30"
 };

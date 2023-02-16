@@ -23,7 +23,7 @@
     "@commonify/lowdb": "^3.0.0",
     "@cosmos-client/core": "^0.45.1",
     "axios": "^0.21.1",
-    "ccxt": "^1.57.37",
+    "ccxt": "^1.95.43",
     "dotenv": "^8.2.0",
     "log-timestamp": "^0.3.0",
     "node-cron": "^2.0.3",

@@ -199,6 +199,8 @@ export class PriceOracle {
         case 'ubtc:usd':
         case 'ubtc:usd:30':
           return convertedPrice / 1000000;
+        case 'usdc:usd':
+        case 'usdc:usd:30':
         default:
           return convertedPrice;
       }
@@ -225,6 +227,12 @@ export class PriceOracle {
       }
       case 'ubtc:usd:30': {
         const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
+        return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
+      }
+      case 'usdc:usd':
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'USDC');
+      case 'usdc:usd:30': {
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'USDC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
       default:
@@ -266,7 +274,9 @@ export class PriceOracle {
         return 'EUR';
       }
       case 'ubtc:usd':
-      case 'ubtc:usd:30': {
+      case 'ubtc:usd:30':
+      case 'usdc:usd':
+      case 'usdc:usd:30': {
         return 'USD';
       }
     }

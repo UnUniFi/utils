@@ -235,6 +235,14 @@ export class PriceOracle {
         const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'USDC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
+      // TODO: remove below two cases
+      case 'ubtc:uusdc':
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
+      case 'ubtc:uusdc:30': {
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
+        return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
+      }
+
       default:
         throw new Error(`Invalid market id: ${marketID}`);
     }
@@ -284,6 +292,14 @@ export class PriceOracle {
   }
 
   async convertUsdPrice(marketID: string, price: number) {
+    // TODO: remove below two cases
+    switch (marketID) {
+      case 'ubtc:uusdc':
+      case 'ubtc:uusdc:30': {
+        return price;
+      }
+    }
+
     const currency = this.getBaseCurrency(marketID);
     if (currency == "USD") {
       return price;

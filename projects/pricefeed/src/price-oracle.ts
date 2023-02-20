@@ -110,12 +110,12 @@ export class PriceOracle {
         if(IS_DEBUG_MODE){
           console.log(`skip posting ${marketID} price`);
         }
-        return;
+        continue;
       }
 
       const shouldPost = await this.validatePricePosting(address, marketID, result.price);
       if (!shouldPost) {
-        return;
+        continue;
       }
 
       try {

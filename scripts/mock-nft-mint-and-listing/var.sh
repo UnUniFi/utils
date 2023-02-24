@@ -1,0 +1,15 @@
+#!/bin/bash
+# change it
+# chainid=ununifi-bubble-test-v6
+chainid=ununifi-test-private-m1
+
+user1=ununifi155u042u8wk3al32h3vzxu989jj76k4zcu44v6w
+user2=ununifi1v0h8j7x7kfys29kj4uwdudcc9y0nx6twwxahla
+user3=ununifi1y3t7sp0nfe2nfda7r9gf628g6ym6e7d44evfv6
+user4=ununifi1pp2ruuhs0k7ayaxjupwj4k5qmgh0d72wrdyjyu
+
+classid=ununifi-9F11790D3667F6D2AF661D5B7BD73C3660D21125
+
+ipfscids=(Qmd73atWWU7qHi3zWXUkeSmwyaXbnweeXLAprWrtKWrGPn Qmex8LVdRYbvM3eKkSaYPN1nSBQkEL79AKzVwLdBqxiZRU QmUaYWDc7RGuT7S72KfTivSn6S8bCkrrRsfUnYwSGF66TY QmZqnD2oVHRQy7sUwt7gVYvw56emUY7gydNAmjVi2Bh1Ux QmeixsCVircZWfjL7ChFfwfSkHorrn3NVA3AYZaddNivKR QmRgteLbibwiLY1QHmx55XqL5MZGfaHqcHoBsEy34prEfD)
+
+ucounter=0

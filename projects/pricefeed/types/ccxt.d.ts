@@ -549,8 +549,8 @@ declare module "ccxt" {
   export class binanceus extends binance {}
   export class bit2c extends Exchange {}
   export class bitbank extends Exchange {}
-  // export class bitbay extends Exchange {}
-  // export class bitfinex extends Exchange {}
+  export class bitbay extends Exchange {}
+  export class bitfinex extends Exchange {}
   export class bitfinex2 extends bitfinex {}
   export class bitflyer extends Exchange {}
   export class bitforex extends Exchange {}
@@ -579,7 +579,7 @@ declare module "ccxt" {
   export class bw extends Exchange {}
   export class bybit extends Exchange {}
   export class bytetrade extends Exchange {}
-  // export class cex extends Exchange {}
+  export class cex extends Exchange {}
   export class chilebit extends foxbit {}
   export class coinbase extends Exchange {}
   export class coinbaseprime extends coinbasepro {}
@@ -601,9 +601,9 @@ declare module "ccxt" {
   export class digifinex extends Exchange {}
   export class dsx extends Exchange {}
   export class eterbase extends Exchange {}
-  // export class exmo extends Exchange {}
+  export class exmo extends Exchange {}
   export class exx extends Exchange {}
-  export class fcoin extends Exchange { }
+  export class fcoin extends Exchange {}
   export class fcoinjp extends fcoin {}
   export class flowbtc extends Exchange {}
   export class foxbit extends Exchange {}
@@ -623,14 +623,14 @@ declare module "ccxt" {
   export class itbit extends Exchange {}
   export class kraken extends Exchange {}
   export class kucoin extends Exchange {}
-  // export class kuna extends acx {}
+  export class kuna extends acx {}
   export class lakebtc extends Exchange {}
   export class latoken extends Exchange {}
   export class lbank extends Exchange {}
   export class liquid extends Exchange {}
   export class livecoin extends Exchange {}
   export class luno extends Exchange {}
-  // export class lykke extends Exchange {}
+  export class lykke extends Exchange {}
   export class mercado extends Exchange {}
   export class mixcoins extends Exchange {}
   export class oceanex extends Exchange {}
@@ -647,7 +647,7 @@ declare module "ccxt" {
   export class stronghold extends Exchange {}
   export class surbitcoin extends foxbit {}
   export class therock extends Exchange {}
-  // export class tidebit extends Exchange {}
+  export class tidebit extends Exchange {}
   export class tidex extends Exchange {}
   export class timex extends Exchange {}
   export class upbit extends Exchange {}

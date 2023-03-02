@@ -1,7 +1,7 @@
 import CcxtClient from './clients/ccxt';
 import BandClient from './clients/band';
 import { IFxClient } from './clients/fx/interface';
-import { DOLLAR, EURO, MARKET_CURRENCY_MAP, YEN } from './constants/currency';
+import { FIAT_CURRENCIES, MARKET_CURRENCY_MAP } from './constants/currency';
 import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
 import { DataProviderConf } from './domain/data-provider';
@@ -98,7 +98,7 @@ export class PriceOracle {
       throw Error('not a BaseAccount');
     }
 
-    // await this.getLatestFiatCurrencyPrices();
+    await this.getLatestFiatCurrencyPrices();
 
     for (let i = 0; i < this.marketIDs.length; ++i) {
       const marketID = this.marketIDs[i];
@@ -135,9 +135,9 @@ export class PriceOracle {
     }
   }
 
-  // async getLatestFiatCurrencyPrices() {
-  //   return await Promise.race(this.fxClients.map((client) => client.getLatestRates()));
-  // }
+  async getLatestFiatCurrencyPrices() {
+    return await Promise.race(this.fxClients.map((client) => client.getLatestRates()));
+  }
 
   /**
    * Fetches price for a market ID
@@ -182,12 +182,14 @@ export class PriceOracle {
   async fetchPriceFromCCXT(marketID: string): Promise<{ price: number | null; success: boolean }> {
     const tickers = await this.fetchTickers(marketID);
     // console.log('tickers', tickers);
-    // const usdTickers = await this.convertToUsdTickers(tickers);
-    const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(tickers);
+    const usdTickers = await this.convertToUsdTickers(tickers);
+    // console.log('usdTickers', usdTickers);
+    const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(usdTickers);
     // console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
+    const convertedPrice = await this.convertUsdPrice(marketID, aggravatedAverageUsdPrice);
     // console.log('convertedPrice', convertedPrice);
     const denominatedPrice = (() => {
-      if (aggravatedAverageUsdPrice === null) {
+      if (convertedPrice === null) {
         return null;
       }
       switch (marketID) {
@@ -199,9 +201,9 @@ export class PriceOracle {
         case 'ubtc:usd:30':
         case 'uusdc:usd':
         case 'uusdc:usd:30':
-          return aggravatedAverageUsdPrice / 1000000;
+          return convertedPrice / 1000000;
         default:
-          return aggravatedAverageUsdPrice;
+          return convertedPrice;
       }
     })();
     console.log('denominatedPrice', denominatedPrice);
@@ -211,34 +213,34 @@ export class PriceOracle {
   async fetchTickers(marketID: string) {
     switch (marketID) {
       case 'ubtc:jpy':
-        return this.ccxt.fetchTickers(YEN, 'BTC');
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:usd':
-        return this.ccxt.fetchTickers(DOLLAR, 'BTC');
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:eur':
-        return this.ccxt.fetchTickers(EURO, 'BTC');
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:jpy:30': {
-        const candleSticls = await this.ccxt.fetchCandleSticks(YEN, 'BTC', '1m', 30);
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
       case 'ubtc:eur:30': {
-        const candleSticls = await this.ccxt.fetchCandleSticks(EURO, 'BTC', '1m', 30);
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
       case 'ubtc:usd:30': {
-        const candleSticls = await this.ccxt.fetchCandleSticks(DOLLAR, 'BTC', '1m', 30);
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
       case 'uusdc:usd':
-        return this.ccxt.fetchTickers(DOLLAR, 'USDC');
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'USDC');
       case 'uusdc:usd:30': {
-        const candleSticls = await this.ccxt.fetchCandleSticks(DOLLAR, 'USDC', '1m', 30);
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'USDC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
       // TODO: remove below two cases
       case 'ubtc:uusdc':
-        return this.ccxt.fetchTickers(DOLLAR, 'BTC');
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:uusdc:30': {
-        const candleSticls = await this.ccxt.fetchCandleSticks(DOLLAR, 'BTC', '1m', 30);
+        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
 
@@ -247,29 +249,29 @@ export class PriceOracle {
     }
   }
 
-  // async convertToUsdTickers(tickers: Ticker[]) {
-  //   // const priceRate = await this.getLatestFiatCurrencyPrices();
+  async convertToUsdTickers(tickers: Ticker[]) {
+    const priceRate = await this.getLatestFiatCurrencyPrices();
 
-  //   const convertedTickers: Ticker[] = [];
-  //   tickers.forEach((ticker) => {
-  //     if (ticker.market.quote === 'USD') {
-  //       convertedTickers.push(ticker);
-  //       return;
-  //     }
-  //     // if (ticker.market.quote in priceRate.rates) {
-  //     //   const usdPrice = ticker.data.lastPrice / priceRate.rates[ticker.market.quote];
+    const convertedTickers: Ticker[] = [];
+    tickers.forEach((ticker) => {
+      if (ticker.market.quote === 'USD') {
+        convertedTickers.push(ticker);
+        return;
+      }
+      if (ticker.market.quote in priceRate.rates) {
+        const usdPrice = ticker.data.lastPrice / priceRate.rates[ticker.market.quote];
 
-  //     //   convertedTickers.push({
-  //     //     market: ticker.market,
-  //     //     data: {
-  //     //       ...ticker.data,
-  //     //       lastPrice: usdPrice,
-  //     //     },
-  //     //   });
-  //     // }
-  //   });
-  //   return convertedTickers;
-  // }
+        convertedTickers.push({
+          market: ticker.market,
+          data: {
+            ...ticker.data,
+            lastPrice: usdPrice,
+          },
+        });
+      }
+    });
+    return convertedTickers;
+  }
 
   getBaseCurrency(marketID: string) {
     switch (marketID) {
@@ -290,27 +292,26 @@ export class PriceOracle {
     return null;
   }
 
-  // async convertUsdPrice(marketID: string, price: number) {
-  //   // TODO: remove below two cases
-  //   switch (marketID) {
-  //     case 'ubtc:uusdc':
-  //     case 'ubtc:uusdc:30': {
-  //       return price;
-  //     }
-  //   }
+  async convertUsdPrice(marketID: string, price: number) {
+    // TODO: remove below two cases
+    switch (marketID) {
+      case 'ubtc:uusdc':
+      case 'ubtc:uusdc:30': {
+        return price;
+      }
+    }
 
-  //   const currency = this.getBaseCurrency(marketID);
-  //   if (currency == "USD") {
-  //     return price;
-  //   }
-
-  //   // const priceRate = await this.getLatestFiatCurrencyPrices();
-  //   // if (currency && currency in priceRate.rates) {
-  //     // const currencyPrice = priceRate.rates[currency] * price;
-  //     // return currencyPrice;
-  //   // }
-  //   return null;
-  // }
+    const currency = this.getBaseCurrency(marketID);
+    if (currency == "USD") {
+      return price;
+    }
+    const priceRate = await this.getLatestFiatCurrencyPrices();
+    if (currency && currency in priceRate.rates) {
+      const currencyPrice = priceRate.rates[currency] * price;
+      return currencyPrice;
+    }
+    return null;
+  }
 
   /**
    * Validates price post against expiration time and derivation threshold
@@ -464,8 +465,8 @@ export class PriceOracle {
         tx: txForSimulation,
         tx_bytes: simulatedTxBuilder.txBytes(),
       });
-      // console.log('simulate');
-      // console.log(simulatedResult);
+      console.log('simulate');
+      console.log(simulatedResult);
       const simulatedGasUsed = simulatedResult.data.gas_info?.gas_used;
       const simulatedGasUsedWithMarginNumber = simulatedGasUsed
         ? parseInt(simulatedGasUsed) * 1.1
@@ -477,12 +478,12 @@ export class PriceOracle {
           process.env.MINIMUM_GAS_PRICE_AMOUNT ? process.env.MINIMUM_GAS_PRICE_AMOUNT : '200000',
         );
       const simulatedFeeWithMargin = Math.ceil(simulatedFeeWithMarginNumber).toString();
-      // console.log({
-        // simulatedGasUsed,
-        // simulatedGasUsedWithMargin,
-        // simulatedFeeWithMarginNumber,
-        // simulatedFeeWithMargin,
-      // });
+      console.log({
+        simulatedGasUsed,
+        simulatedGasUsedWithMargin,
+        simulatedFeeWithMarginNumber,
+        simulatedFeeWithMargin,
+      });
       gas = {
         denom: process.env.MINIMUM_GAS_PRICE_DENOM,
         amount: simulatedGasUsedWithMargin,

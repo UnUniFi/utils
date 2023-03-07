@@ -9,6 +9,7 @@ import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import Long from 'long';
 import { rest as ununifirest, ununifi, google } from 'ununifi-client';
+import { AccAddress } from '@cosmos-client/core/cjs/types';
 
 require('dotenv').config();
 require('log-timestamp');
@@ -119,7 +120,7 @@ export class PriceOracle {
       }
 
       try {
-        const res: any = await this.postNewPrice(result.price, marketID, account, i);
+        const res: any = await this.postNewPrice(result.price, marketID, address);
         if(IS_DEBUG_MODE){
           console.log("res", res);
         }
@@ -347,6 +348,11 @@ export class PriceOracle {
       address.toString(),
     );
 
+    if (previousPrice === undefined) {
+      console.log(`no previous price for ${marketID}, posting...`);
+      return false;
+    }
+
     if (previousPrice !== undefined && !this.checkPriceExpiring(previousPrice)) {
       const percentChange = utils.getPercentChange(
         Number.parseFloat(previousPrice.price),
@@ -373,8 +379,9 @@ export class PriceOracle {
   async postNewPrice(
     fetchedPrice: number,
     marketID: string,
-    account: proto.cosmos.auth.v1beta1.BaseAccount,
-    index: number,
+    address: AccAddress,
+    // account: proto.cosmos.auth.v1beta1.BaseAccount,
+    // index: number,
   ) {
     if (!fetchedPrice) {
       throw new Error('a retreived price is required in order to post a new price');
@@ -384,7 +391,14 @@ export class PriceOracle {
     const newPrice = fetchedPrice.toFixed(18).toString();
     let expiryDate = new Date();
     expiryDate = new Date(expiryDate.getTime() + Number.parseInt(this.expiry) * 1000);
-    const sequence = account.sequence.add(index);
+    const account = await rest.auth
+      .account(this.sdk, address)
+      .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account));
+
+    if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
+      throw Error('not a BaseAccount');
+    }
+    const sequence = account.sequence;
 
     console.log(`posting price ${newPrice} for ${marketID} with sequence ${sequence.toString()}`);
 

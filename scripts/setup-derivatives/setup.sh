@@ -1,7 +1,7 @@
 #!/bin/bash
 # repalce it
 NODE_HOME=$HOME/.ununifi
-PRICEFEED_ADDRESS=$PRICEFEED_ADDRESS
+PRICEFEED_ADDRESS=ununifi1h7ulktk5p2gt7tnxwhqzlq0yegq47hum0fahcr
 
 
 jq '.app_state.pricefeed.params.markets = [

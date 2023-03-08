@@ -114,11 +114,6 @@ export class PriceOracle {
         continue;
       }
 
-      const shouldPost = await this.validatePricePosting(address, marketID, result.price);
-      if (!shouldPost) {
-        continue;
-      }
-
       try {
         const res: any = await this.postNewPrice(result.price, marketID, address);
         if(IS_DEBUG_MODE){

@@ -10,4 +10,6 @@ if [ -f ~/.ununifi/cosmovisor/genesis/bin/ununifid ]; then
 fi
 cp ~/go/bin/ununifid $DAEMON_HOME/cosmovisor/genesis/bin
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-$SCRIPT_DIR/../reset_debug_node/run.sh
+# $SCRIPT_DIR/../reset_debug_node/run.sh
+
+sudo systemctl start cosmovisor

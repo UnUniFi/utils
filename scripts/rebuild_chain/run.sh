@@ -3,6 +3,7 @@ set -xe
 
 sudo systemctl stop cosmovisor
 cd ~/chain_repo
+git pull
 make install
 # check file is exist rm file
 if [ -f ~/.ununifi/cosmovisor/genesis/bin/ununifid ]; then

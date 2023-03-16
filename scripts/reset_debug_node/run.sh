@@ -55,4 +55,4 @@ jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/gen
 ../setup_derivatives/setup.sh;
 ../setup_nftmarket/setup.sh;
 
-sudo systemctl start cosmovisor
+sudo systemctl start cosmovisor.service;

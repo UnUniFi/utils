@@ -1,4 +1,6 @@
-source ./setup_env.sh
+#!/bin/bash
+set -xe
+source ./env.sh
 ./setup_lib.sh
 ./chain_install.sh
 ./setup_cosmovisor.sh

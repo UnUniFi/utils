@@ -52,7 +52,7 @@ jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/gen
   $DAEMON_NAME collect-gentxs;
 
 
-../setup_derivatives/setup.sh;
-../setup_nftmarket/setup.sh;
+$SCRIPT_DIR/../setup_derivatives/setup.sh;
+$SCRIPT_DIR/../setup_nftmarket/setup.sh;
 
 sudo systemctl start cosmovisor.service;

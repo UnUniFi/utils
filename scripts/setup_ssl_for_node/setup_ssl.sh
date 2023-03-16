@@ -23,9 +23,9 @@ sudo chmod 777 *.sh;
 #!/bin/bash
 if [ -z $RUNNING_FRONT ]; then
     # front stop then get certfile then restart front
-    sudo certbot --nginx certonly -d $DOMEIN_CAUCHYE --email info@cauchye.com --agree-tos --non-interactive --no-eff-email
+    sudo certbot --nginx certonly -d $DOMEIN_CAUCHYE --email info@cauchye.com --agree-tos --non-interactive --no-eff-email --verbose
 else
-    sudo certbot --nginx certonly --pre-hook ./pre.sh --post-hook ./after.sh -d $DOMEIN_CAUCHYE --email info@cauchye.com --agree-tos --non-interactive --no-eff-email
+    sudo certbot --nginx certonly --pre-hook ./pre.sh --post-hook ./after.sh -d $DOMEIN_CAUCHYE --email info@cauchye.com --agree-tos --non-interactive --no-eff-email --verbose
 
 fi
 

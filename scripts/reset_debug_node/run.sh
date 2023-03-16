@@ -1,13 +1,14 @@
 #!/bin/bash
 set -xe
 sudo systemctl stop cosmovisor
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+#load env
+source $SCRIPT_DIR/../setup_node/env.sh;
 # killall node
 # clenup
 rm -rf ~/.ununifi/config/;
  rm -rf ~/.ununifi/data/;
  rm -rf ~/.ununifi/keyring-test/;
-#load env
-source ../setup_node/env.sh;
 export USER1=user1;
 export USER2=user2;
 export USER3=user3;
@@ -20,8 +21,8 @@ export USER_MNEMONIC_4="charge split umbrella day gauge two orphan random human 
 export PRICEFEED_MNEMONIC="jelly fortune hire delay impose daughter praise amazing patch gesture easy achieve intact genre swamp gossip aisle arrest item seek inherit cradle hover involve";
 
 $DAEMON_NAME init --chain-id $CHAIN_ID "$MONIKER";
-$DAEMON_NAME keys add my_validator --recover < ../setup_node/mnt.txt;
-$DAEMON_NAME keys add faucet --recover < ../setup_node/faucet_mnt.txt;
+$DAEMON_NAME keys add my_validator --recover < $SCRIPT_DIR/../setup_node/mnt.txt;
+$DAEMON_NAME keys add faucet --recover < $SCRIPT_DIR/../setup_node/faucet_mnt.txt;
 
 echo $USER_MNEMONIC_1    | $DAEMON_NAME keys add $USER1  --recover ;
 echo $USER_MNEMONIC_2    | $DAEMON_NAME keys add $USER2  --recover ;

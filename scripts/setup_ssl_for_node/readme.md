@@ -1,7 +1,6 @@
 
 
-cosmovisorでセットアップして、実行するセットアップスクリプトです
-
+nodeをssl対応させる方法
 実行方法
 ```
 source  ./env.sh

@@ -14,3 +14,6 @@ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz
 echo 'PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 echo 'PATH=$PATH:~/go/bin' >> ~/.bashrc
 source ~/.bashrc
+
+# node install
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs

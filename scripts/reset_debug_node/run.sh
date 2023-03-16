@@ -7,7 +7,7 @@ rm -rf ~/.ununifi/config/;
  rm -rf ~/.ununifi/data/;
  rm -rf ~/.ununifi/keyring-test/;
 #load env
-source ../setup_node/setup_env.sh;
+source ../setup_node/env.sh;
 export USER1=user1;
 export USER2=user2;
 export USER3=user3;

@@ -1,3 +1,6 @@
+#!/bin/bash
+NODE_HOME=$HOME/.ununifi
+
 jq '.app_state.nftmint.class_attributes_list = [
   {
     "base_token_uri": "ipfs://testcid/",

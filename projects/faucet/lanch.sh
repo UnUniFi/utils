@@ -1,8 +1,8 @@
 #!/bin/bash
 wget https://github.com/tendermint/faucet/releases/download/v0.0.3/faucet_0.0.3_linux_amd64.tar.gz
 tar -xvf ./faucet_0.0.3_linux_amd64.tar.gz
-./faucet --cli-name ununifid --denoms ubtc --keyring-backend test --account-name faucet --port 7000 --credit-amount=100 --max-credit=100 --home=/root/.ununifi &
-./faucet --cli-name ununifid --denoms uguu,uusdc --keyring-backend test --account-name faucet --port 7002 --credit-amount=20000 --max-credit=2000000 --home=/root/.ununifi &
+./faucet --cli-name ununifid --denoms ubtc --keyring-backend test --account-name faucet --port 7000 --credit-amount=100 --max-credit=2000000 --home=/root/.ununifi &
+./faucet --cli-name ununifid --denoms uguu,uusdc --keyring-backend test --account-name faucet --port 7002 --credit-amount=20000 --max-credit=2000000000 --home=/root/.ununifi &
 echo "
   server {
     listen 8000;

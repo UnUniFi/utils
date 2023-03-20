@@ -46,7 +46,7 @@ jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/gen
   $DAEMON_NAME add-genesis-account user2 100000000000uguu,100000000000ubtc,50000000000uusdc;
   $DAEMON_NAME add-genesis-account user3 100000000000uguu,100000000000ubtc,50000000000uusdc;
   $DAEMON_NAME add-genesis-account user4 100000000000uguu,100000000000ubtc,50000000000uusdc;
-  $DAEMON_NAME add-genesis-account faucet 500000000000uguu,5000000000ubtc,50000000000ueth,50000000000uusdc;
+  $DAEMON_NAME add-genesis-account faucet 50000000000000uguu,500000000000ubtc,50000000000ueth,50000000000000uusdc;
   $DAEMON_NAME add-genesis-account $PRICEFEED 100000000000uguu,100000000000000ubtc,100000000000000uusdc;
   $DAEMON_NAME gentx my_validator 1000000000uguu --chain-id $CHAIN_ID --keyring-backend test;
   $DAEMON_NAME collect-gentxs;

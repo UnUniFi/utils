@@ -253,7 +253,11 @@ hermes -c ./network/hermes/config.toml create channel osmo-test-4 ununifi-testne
 
 # query channel ids with osmosis and ununifi
 ununifid q ibc channel channels;
-# ununifi side - channel-id: channel-0
+# ununifi side - connection: $UNUNIFI_CLIENT
+# ununifi side - connection: $UNUNIFI_CONNECTION
+# ununifi side - channel-id: $UNUNIFI_TRANSFER_CHANNEL
+# osmosis side - connection: $OSMOSIS_CLIENT
+# osmosis side - connection: $OSMOSIS_CONNECTION
 # osmosis side - channel-id: $OSMOSIS_TRANSFER_CHANNEL
 
 
@@ -314,12 +318,12 @@ paths:
   ununifi-osmosis:
     src:
       chain-id: ununifi-testnet-iya
-      client-id: 07-tendermint-1
-      connection-id: connection-1
+      client-id: $UNUNIFI_CLIENT
+      connection-id: $UNUNIFI_CONNECTION
     dst:
       chain-id: osmo-test-4
-      client-id: 07-tendermint-3778
-      connection-id: connection-3241
+      client-id: $OSMOSIS_CLIENT
+      connection-id: $OSMOSIS_CONNECTION
     src-channel-filter:
       rule: ""
       channel-list: []

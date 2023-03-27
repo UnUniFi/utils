@@ -2,7 +2,7 @@
 set -xe
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 # restrt pricefeed
-process=$(ps aux | grep "npm run start:dev" | grep -v "grep")
+process=$(ps aux | grep "node --inspect=5859 -r ts-node/register ./src/index.ts" | grep -v "grep")
 
 if [ -n "$process" ]; then
   pid=$(echo $process | awk '{print $2}')
@@ -25,6 +25,7 @@ nohup npm run start:dev > output.log 2>&1 &
 process=$(ps aux | grep "faucet" | grep -v "grep")
 
 if [ -n "$process" ]; then
+  echo "kill faucet"
   killall faucet
   sleep 1
 fi
@@ -33,7 +34,7 @@ fi
 $SCRIPT_DIR/../../projects/faucet/run_bk.sh
 
 
-process=$(ps aux | grep "npm run start:serve" | grep -v "grep")
+process=$(ps aux | grep "node index.js" | grep -v "grep")
 
 if [ -n "$process" ]; then
   pid=$(echo $process | awk '{print $2}')

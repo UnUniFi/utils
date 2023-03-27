@@ -17,7 +17,7 @@ fi
 
 # execuute pricefeed
 # todo move
-cd $SCRIPT_DIR/../../project/pricefeed
+cd $SCRIPT_DIR/../../projects/pricefeed
 nohup npm run start:dev > output.log 2>&1 &
 
 
@@ -30,7 +30,7 @@ if [ -n "$process" ]; then
 fi
 
 # todo restrt faucet
-$SCRIPT_DIR/../../project/faucet/run_bk.sh
+$SCRIPT_DIR/../../projects/faucet/run_bk.sh
 
 
 process=$(ps aux | grep "npm run start:serve" | grep -v "grep")

@@ -51,8 +51,13 @@ jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/gen
   $DAEMON_NAME gentx my_validator 1000000000uguu --chain-id $CHAIN_ID --keyring-backend test;
   $DAEMON_NAME collect-gentxs;
 
-
+# setup modules genesis
 $SCRIPT_DIR/../setup_derivatives/setup.sh;
 $SCRIPT_DIR/../setup_nftmarket/setup.sh;
 $SCRIPT_DIR/../setup_nftmint/setup.sh;
 sudo systemctl start cosmovisor.service;
+
+sleep 3
+
+# restart faucet,pricefeed and CI server
+$SCRIPT_DIR/../restart_utils/run.sh

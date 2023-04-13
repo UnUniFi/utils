@@ -47,8 +47,7 @@ if [ -n "$process" ]; then
   done
 fi
 
-# execuute pricefeed
-# todo move
+# execuute CI/CD server
 cd ~/simple_kick_script-_nodejs_server
 git pull
 nohup npm run start:serve > output.log 2>&1 &

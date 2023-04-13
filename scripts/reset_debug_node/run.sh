@@ -4,6 +4,8 @@ sudo systemctl stop cosmovisor
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 #load env
 source $SCRIPT_DIR/../setup_node/env.sh;
+# update util repo
+git pull
 # killall node
 # clenup
 rm -rf ~/.ununifi/config/;

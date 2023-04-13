@@ -1,5 +1,8 @@
 #!/bin/bash
-set -xe
+
+# for debug
+# set -xe
+
 sudo systemctl stop cosmovisor
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 #load env

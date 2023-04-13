@@ -1,5 +1,8 @@
 #!/bin/bash
-set -xe
+
+# for debug
+# set -xe
+
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 # restrt pricefeed
 process=$(ps aux | grep "node --inspect=5859 -r ts-node/register ./src/index.ts" | grep -v "grep")

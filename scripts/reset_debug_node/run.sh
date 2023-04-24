@@ -8,6 +8,7 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 #load env
 source $SCRIPT_DIR/../setup_node/env.sh;
 # update util repo
+cd $SCRIPT_DIR
 git pull
 # killall node
 # clenup

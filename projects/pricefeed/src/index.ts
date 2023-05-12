@@ -28,6 +28,7 @@ const dataProviderConf  =  {
   dataProviderStoreType,
   dataProviderStoreLocation,
 }
+const IS_DEBUG_MODE = process.env.MODE == "debug";
 
 const fxClients = [];
 if (openExchangeRateAppId) {
@@ -51,3 +52,8 @@ const oracle = new PriceOracle(
 cron.schedule(cronTab, () => {
   oracle.postPrices();
 });
+
+// if DEBUG_MODE is true, post prices immediately
+if(IS_DEBUG_MODE){
+  oracle.postPrices();
+}

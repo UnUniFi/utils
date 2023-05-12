@@ -1,7 +1,7 @@
 import CcxtClient from './clients/ccxt';
 import BandClient from './clients/band';
 import { IFxClient } from './clients/fx/interface';
-import { FIAT_CURRENCIES, MARKET_CURRENCY_MAP } from './constants/currency';
+import { DOLLAR, EURO, MARKET_CURRENCY_MAP, YEN } from './constants/currency';
 import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
 import { DataProviderConf } from './domain/data-provider';
@@ -9,9 +9,11 @@ import * as utils from './utils';
 import { cosmosclient, rest, proto } from '@cosmos-client/core';
 import Long from 'long';
 import { rest as ununifirest, ununifi, google } from 'ununifi-client';
+import { AccAddress } from '@cosmos-client/core/cjs/types';
 
 require('dotenv').config();
 require('log-timestamp');
+const IS_DEBUG_MODE = process.env.MODE == "debug";
 
 /**
  * Price oracle class for posting prices to Kava.
@@ -96,25 +98,27 @@ export class PriceOracle {
       throw Error('not a BaseAccount');
     }
 
-    await this.getLatestFiatCurrencyPrices();
+    // await this.getLatestFiatCurrencyPrices();
 
     for (let i = 0; i < this.marketIDs.length; ++i) {
       const marketID = this.marketIDs[i];
       const result = await this.fetchPrice(marketID);
-      
-
-      if (!this.checkPriceIsValid(result)) {
-        return;
+      if(IS_DEBUG_MODE){
+        console.log("result", result);
       }
 
-      const shouldPost = await this.validatePricePosting(address, marketID, result.price);
-      if (!shouldPost) {
-        return;
+      if (!this.checkPriceIsValid(result)) {
+        if(IS_DEBUG_MODE){
+          console.log(`skip posting ${marketID} price`);
+        }
+        continue;
       }
 
       try {
-        const res: any = await this.postNewPrice(result.price, marketID, account, i);
-        //console.log("res", res);
+        const res: any = await this.postNewPrice(result.price, marketID, address);
+        if(IS_DEBUG_MODE){
+          console.log("res", res);
+        }
         // if (res.data.code !== undefined) {
         //   throw new Error(res.data.raw_log);
         // }
@@ -126,9 +130,9 @@ export class PriceOracle {
     }
   }
 
-  async getLatestFiatCurrencyPrices() {
-    return await Promise.race(this.fxClients.map((client) => client.getLatestRates()));
-  }
+  // async getLatestFiatCurrencyPrices() {
+  //   return await Promise.race(this.fxClients.map((client) => client.getLatestRates()));
+  // }
 
   /**
    * Fetches price for a market ID
@@ -173,14 +177,12 @@ export class PriceOracle {
   async fetchPriceFromCCXT(marketID: string): Promise<{ price: number | null; success: boolean }> {
     const tickers = await this.fetchTickers(marketID);
     // console.log('tickers', tickers);
-    const usdTickers = await this.convertToUsdTickers(tickers);
-    // console.log('usdTickers', usdTickers);
-    const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(usdTickers);
+    // const usdTickers = await this.convertToUsdTickers(tickers);
+    const aggravatedAverageUsdPrice = utils.calculateAggravatedAverageFromTickers(tickers);
     // console.log('aggravatedAverageUsdPrice', aggravatedAverageUsdPrice);
-    const convertedPrice = await this.convertUsdPrice(marketID, aggravatedAverageUsdPrice);
     // console.log('convertedPrice', convertedPrice);
     const denominatedPrice = (() => {
-      if (convertedPrice === null) {
+      if (aggravatedAverageUsdPrice === null) {
         return null;
       }
       switch (marketID) {
@@ -188,9 +190,13 @@ export class PriceOracle {
         case 'ubtc:jpy:30':
         case 'ubtc:eur':
         case 'ubtc:eur:30':
-          return convertedPrice / 1000000;
+        case 'ubtc:usd':
+        case 'ubtc:usd:30':
+        case 'uusdc:usd':
+        case 'uusdc:usd:30':
+          return aggravatedAverageUsdPrice / 1000000;
         default:
-          return convertedPrice;
+          return aggravatedAverageUsdPrice;
       }
     })();
     console.log('denominatedPrice', denominatedPrice);
@@ -200,45 +206,65 @@ export class PriceOracle {
   async fetchTickers(marketID: string) {
     switch (marketID) {
       case 'ubtc:jpy':
-        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
+        return this.ccxt.fetchTickers(YEN, 'BTC');
+      case 'ubtc:usd':
+        return this.ccxt.fetchTickers(DOLLAR, 'BTC');
       case 'ubtc:eur':
-        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
+        return this.ccxt.fetchTickers(EURO, 'BTC');
       case 'ubtc:jpy:30': {
-        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
+        const candleSticls = await this.ccxt.fetchCandleSticks(YEN, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
       case 'ubtc:eur:30': {
-        const candleSticls = await this.ccxt.fetchCandleSticks(FIAT_CURRENCIES, 'BTC', '1m', 30);
+        const candleSticls = await this.ccxt.fetchCandleSticks(EURO, 'BTC', '1m', 30);
         return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
       }
+      case 'ubtc:usd:30': {
+        const candleSticls = await this.ccxt.fetchCandleSticks(DOLLAR, 'BTC', '1m', 30);
+        return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
+      }
+      case 'uusdc:usd':
+        return this.ccxt.fetchTickers(DOLLAR, 'USDC');
+      case 'uusdc:usd:30': {
+        const candleSticls = await this.ccxt.fetchCandleSticks(DOLLAR, 'USDC', '1m', 30);
+        return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
+      }
+      // TODO: remove below two cases
+      case 'ubtc:uusdc':
+        return this.ccxt.fetchTickers(DOLLAR, 'BTC');
+      case 'ubtc:uusdc:30': {
+        const candleSticls = await this.ccxt.fetchCandleSticks(DOLLAR, 'BTC', '1m', 30);
+        return candleSticls.map((cs) => utils.calculateAverageFromCandleSticks(cs));
+      }
+
       default:
         throw new Error(`Invalid market id: ${marketID}`);
     }
   }
 
-  async convertToUsdTickers(tickers: Ticker[]) {
-    const priceRate = await this.getLatestFiatCurrencyPrices();
+  // async convertToUsdTickers(tickers: Ticker[]) {
+  //   // const priceRate = await this.getLatestFiatCurrencyPrices();
 
-    const convertedTickers: Ticker[] = [];
-    tickers.forEach((ticker) => {
-      if (ticker.market.quote === 'USD') {
-        convertedTickers.push(ticker);
-        return;
-      }
-      if (ticker.market.quote in priceRate.rates) {
-        const usdPrice = ticker.data.lastPrice / priceRate.rates[ticker.market.quote];
+  //   const convertedTickers: Ticker[] = [];
+  //   tickers.forEach((ticker) => {
+  //     if (ticker.market.quote === 'USD') {
+  //       convertedTickers.push(ticker);
+  //       return;
+  //     }
+  //     // if (ticker.market.quote in priceRate.rates) {
+  //     //   const usdPrice = ticker.data.lastPrice / priceRate.rates[ticker.market.quote];
 
-        convertedTickers.push({
-          market: ticker.market,
-          data: {
-            ...ticker.data,
-            lastPrice: usdPrice,
-          },
-        });
-      }
-    });
-    return convertedTickers;
-  }
+  //     //   convertedTickers.push({
+  //     //     market: ticker.market,
+  //     //     data: {
+  //     //       ...ticker.data,
+  //     //       lastPrice: usdPrice,
+  //     //     },
+  //     //   });
+  //     // }
+  //   });
+  //   return convertedTickers;
+  // }
 
   getBaseCurrency(marketID: string) {
     switch (marketID) {
@@ -249,19 +275,37 @@ export class PriceOracle {
       case 'ubtc:eur:30': {
         return 'EUR';
       }
+      case 'ubtc:usd':
+      case 'ubtc:usd:30':
+      case 'uusdc:usd':
+      case 'uusdc:usd:30': {
+        return 'USD';
+      }
     }
     return null;
   }
 
-  async convertUsdPrice(marketID: string, price: number) {
-    const priceRate = await this.getLatestFiatCurrencyPrices();
-    const currency = this.getBaseCurrency(marketID);
-    if (currency && currency in priceRate.rates) {
-      const currencyPrice = priceRate.rates[currency] * price;
-      return currencyPrice;
-    }
-    return null;
-  }
+  // async convertUsdPrice(marketID: string, price: number) {
+  //   // TODO: remove below two cases
+  //   switch (marketID) {
+  //     case 'ubtc:uusdc':
+  //     case 'ubtc:uusdc:30': {
+  //       return price;
+  //     }
+  //   }
+
+  //   const currency = this.getBaseCurrency(marketID);
+  //   if (currency == "USD") {
+  //     return price;
+  //   }
+
+  //   // const priceRate = await this.getLatestFiatCurrencyPrices();
+  //   // if (currency && currency in priceRate.rates) {
+  //     // const currencyPrice = priceRate.rates[currency] * price;
+  //     // return currencyPrice;
+  //   // }
+  //   return null;
+  // }
 
   /**
    * Validates price post against expiration time and derivation threshold
@@ -298,6 +342,11 @@ export class PriceOracle {
       address.toString(),
     );
 
+    if (previousPrice === undefined) {
+      console.log(`no previous price for ${marketID}, posting...`);
+      return false;
+    }
+
     if (previousPrice !== undefined && !this.checkPriceExpiring(previousPrice)) {
       const percentChange = utils.getPercentChange(
         Number.parseFloat(previousPrice.price),
@@ -324,8 +373,9 @@ export class PriceOracle {
   async postNewPrice(
     fetchedPrice: number,
     marketID: string,
-    account: proto.cosmos.auth.v1beta1.BaseAccount,
-    index: number,
+    address: AccAddress,
+    // account: proto.cosmos.auth.v1beta1.BaseAccount,
+    // index: number,
   ) {
     if (!fetchedPrice) {
       throw new Error('a retreived price is required in order to post a new price');
@@ -335,7 +385,14 @@ export class PriceOracle {
     const newPrice = fetchedPrice.toFixed(18).toString();
     let expiryDate = new Date();
     expiryDate = new Date(expiryDate.getTime() + Number.parseInt(this.expiry) * 1000);
-    const sequence = account.sequence.add(index);
+    const account = await rest.auth
+      .account(this.sdk, address)
+      .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account));
+
+    if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
+      throw Error('not a BaseAccount');
+    }
+    const sequence = account.sequence;
 
     console.log(`posting price ${newPrice} for ${marketID} with sequence ${sequence.toString()}`);
 
@@ -402,8 +459,8 @@ export class PriceOracle {
         tx: txForSimulation,
         tx_bytes: simulatedTxBuilder.txBytes(),
       });
-      console.log('simulate');
-      console.log(simulatedResult);
+      // console.log('simulate');
+      // console.log(simulatedResult);
       const simulatedGasUsed = simulatedResult.data.gas_info?.gas_used;
       const simulatedGasUsedWithMarginNumber = simulatedGasUsed
         ? parseInt(simulatedGasUsed) * 1.1
@@ -412,15 +469,15 @@ export class PriceOracle {
       const simulatedFeeWithMarginNumber =
         parseInt(simulatedGasUsedWithMargin) *
         parseFloat(
-          process.env.MINIMUM_GAS_PRICE_AMOUNT ? process.env.MINIMUM_GAS_PRICE_AMOUNT : '200000',
+          process.env.MINIMUM_GAS_PRICE_AMOUNT ? process.env.MINIMUM_GAS_PRICE_AMOUNT : '0',
         );
       const simulatedFeeWithMargin = Math.ceil(simulatedFeeWithMarginNumber).toString();
-      console.log({
-        simulatedGasUsed,
-        simulatedGasUsedWithMargin,
-        simulatedFeeWithMarginNumber,
-        simulatedFeeWithMargin,
-      });
+      // console.log({
+        // simulatedGasUsed,
+        // simulatedGasUsedWithMargin,
+        // simulatedFeeWithMarginNumber,
+        // simulatedFeeWithMargin,
+      // });
       gas = {
         denom: process.env.MINIMUM_GAS_PRICE_DENOM,
         amount: simulatedGasUsedWithMargin,

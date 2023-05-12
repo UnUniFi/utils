@@ -14,7 +14,7 @@ fi
 $DAEMON_NAME init --chain-id $CHAIN_ID "$MONIKER";
 
 if [ -z $SETUP_NODE_MASTER ]; then
-# 
+#
   echo "-----------------"
   echo "slave node setup env"
   echo "-----------------"
@@ -45,10 +45,10 @@ else
   jq ".app_state.pricefeed.params.markets = [{ \"market_id\": \"ubtc:jpy\", \"base_asset\": \"ubtc\", \"quote_asset\": \"jpy\", \"oracles\": [ \"`$DAEMON_NAME keys show my_validator -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:jpy:30\", \"base_asset\": \"ubtc\", \"quote_asset\": \"jpy\", \"oracles\": [ \"`$DAEMON_NAME keys show my_validator -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:eur\", \"base_asset\": \"ubtc\", \"quote_asset\": \"eur\", \"oracles\": [ \"`$DAEMON_NAME keys show my_validator -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:eur:30\", \"base_asset\": \"ubtc\", \"quote_asset\": \"eur\", \"oracles\": [ \"`$DAEMON_NAME keys show my_validator -a`\" ], \"active\": true }]"  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
   jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 
-  $DAEMON_NAME add-genesis-account my_validator 100000000000uguu,100000000000ubtc;
-  $DAEMON_NAME add-genesis-account faucet 500000000000uguu,5000000000ubtc,50000000000ueth;
-  $DAEMON_NAME gentx my_validator 100000000uguu --chain-id $CHAIN_ID --keyring-backend test;
-  $DAEMON_NAME collect-gentxs;
+  $DAEMON_NAME genesis add-genesis-account my_validator 100000000000uguu,100000000000ubtc;
+  $DAEMON_NAME genesis add-genesis-account faucet 500000000000uguu,5000000000ubtc,50000000000ueth;
+  $DAEMON_NAME genesis gentx my_validator 100000000uguu --chain-id $CHAIN_ID --keyring-backend test;
+  $DAEMON_NAME genesis collect-gentxs;
   # rm mnt.txt
 fi
 

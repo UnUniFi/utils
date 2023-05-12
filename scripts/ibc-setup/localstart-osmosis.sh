@@ -9,10 +9,10 @@ osmo_chain_id=osmo-test
 osmosisd init --chain-id=$osmo_chain_id osmo-test --home=$HOME/.osmosisd
 osmosisd keys add validator --keyring-backend=test --home=$HOME/.osmosisd
 osmosisd keys add user1 --recover --keyring-backend=test < ./mnt.txt;
-osmosisd add-genesis-account $(osmosisd keys show validator -a --keyring-backend=test --home=$HOME/.osmosisd) 100000000000stake,100000000000valtoken --home=$HOME/.osmosisd
-osmosisd add-genesis-account $(osmosisd keys show user1 -a --keyring-backend=test --home=$HOME/.osmosisd) 10000000stake,10000000valtoken --home=$HOME/.osmosisd
-osmosisd gentx validator 500000000stake --keyring-backend=test --home=$HOME/.osmosisd --chain-id=$osmo_chain_id
-osmosisd collect-gentxs --home=$HOME/.osmosisd
+osmosisd genesis add-genesis-account $(osmosisd keys show validator -a --keyring-backend=test --home=$HOME/.osmosisd) 100000000000stake,100000000000valtoken --home=$HOME/.osmosisd
+osmosisd genesis add-genesis-account $(osmosisd keys show user1 -a --keyring-backend=test --home=$HOME/.osmosisd) 10000000stake,10000000valtoken --home=$HOME/.osmosisd
+osmosisd genesis gentx validator 500000000stake --keyring-backend=test --home=$HOME/.osmosisd --chain-id=$osmo_chain_id
+osmosisd genesis collect-gentxs --home=$HOME/.osmosisd
 
 # update staking genesis
 #cat $HOME/.osmosisd/config/genesis.json | jq '.app_state["staking"]["params"]["unbonding_time"]="120s"' > $HOME/.osmosisd/config/tmp_genesis.json && mv $HOME/.osmosisd/config/tmp_genesis.json $HOME/.osmosisd/config/genesis.json

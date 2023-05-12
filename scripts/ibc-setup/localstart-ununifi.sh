@@ -24,7 +24,7 @@ sed -i 's/:26656/:26756/' ~/.ununifi/config/config.toml;
 echo "figure web rescue rice quantum sustain alert citizen woman cable wasp eyebrow monster teach hockey giant monitor hero oblige picnic ball never lamp distance" > mnt.txt;
 
 ununifid keys add my_validator --recover < mnt.txt;
-ununifid add-genesis-account my_validator 100000000000uguu,100000000000ubtc;
-ununifid gentx my_validator 100000000uguu --chain-id ununifi-test-private-m1 --keyring-backend test;
-ununifid collect-gentxs;
+ununifid genesis add-genesis-account my_validator 100000000000uguu,100000000000ubtc;
+ununifid genesis gentx my_validator 100000000uguu --chain-id ununifi-test-private-m1 --keyring-backend test;
+ununifid genesis collect-gentxs;
 ununifid start;

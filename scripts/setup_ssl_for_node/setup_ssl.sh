@@ -101,9 +101,35 @@ server {
 " >> /etc/nginx/conf.d/ununifi.conf
 fi
 
+# Open tendermint-rpc port
+echo "
+#for rest api endpoint
+server {
+        listen 443 ssl;
+        server_name $DOMEIN_CAUCHYE;
+        ssl_certificate /etc/letsencrypt/live/$DOMEIN_CAUCHYE/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/$DOMEIN_CAUCHYE/privkey.pem;
+
+
+        # for redirct http to https
+        # error_page 497 301 =307 https://$host:$server_port$request_uri;
+        location / {
+                proxy_pass http://127.0.0.1:26657;
+                proxy_http_version 1.1;
+                # for redirct http to https
+                #proxy_redirect off;
+                #proxy_set_header Host $host:$server_port;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                #proxy_set_header X-Forwarded-Ssl on;
+        }
+}
+" > /etc/nginx/conf.d/uniunifi.conf
+
 sudo systemctl restart nginx.service
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 1318
+sudo ufw allow 26657
+sudo ufw allow 443
 sudo ufw reload
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)

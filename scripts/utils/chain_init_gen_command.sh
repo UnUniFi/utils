@@ -5,6 +5,8 @@ if [ $# -lt 1 ]; then
   execute_command="init"
 fi
 
+echo "Executing $execute_command command..."
+
 version=$($DAEMON_NAME version --long | grep cosmos_sdk_version | awk -F: '{print $2}' | tr -d '[:space:]')
 
 # バージョン番号の "v" を削除
@@ -58,7 +60,5 @@ elif [ "$execute_command" = "reset-node" ]; then
     $DAEMON_NAME gentx my_validator 1000000000uguu --chain-id $CHAIN_ID --keyring-backend test;
     $DAEMON_NAME collect-gentxs;
   fi
+  exit 0;
 fi
-
-
-

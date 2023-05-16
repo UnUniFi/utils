@@ -31,14 +31,14 @@ $DAEMON_NAME init --chain-id $CHAIN_ID "$MONIKER";
 # $DAEMON_NAME keys add faucet --recover < $SCRIPT_DIR/../setup_node/faucet_mnt.txt;
 VAL_MNEMONIC=$(cat $SCRIPT_DIR/../setup_node/mnt.txt)
 FAUCET_MNEMONIC=$(cat $SCRIPT_DIR/../setup_node/faucet_mnt.txt)
-echo $VAL_MNEMONIC    | $DAEMON_NAME keys add my_validator  --recover;
-echo $FAUCET_MNEMONIC | $DAEMON_NAME keys add faucet  --recover;
 
-echo $USER_MNEMONIC_1    | $DAEMON_NAME keys add $USER1  --recover ;
-echo $USER_MNEMONIC_2    | $DAEMON_NAME keys add $USER2  --recover ;
-echo $USER_MNEMONIC_3    | $DAEMON_NAME keys add $USER3  --recover ;
-echo $USER_MNEMONIC_4    | $DAEMON_NAME keys add $USER4  --recover;
-echo $PRICEFEED_MNEMONIC | $DAEMON_NAME keys add $PRICEFEED --recover;
+echo $VAL_MNEMONIC    | $DAEMON_NAME keys add my_validator  --recover --keyring-backend=test;
+echo $FAUCET_MNEMONIC | $DAEMON_NAME keys add faucet        --recover --keyring-backend=test;
+echo $USER_MNEMONIC_1    | $DAEMON_NAME keys add $USER1  --recover --keyring-backend=test
+echo $USER_MNEMONIC_2    | $DAEMON_NAME keys add $USER2  --recover --keyring-backend=test
+echo $USER_MNEMONIC_3    | $DAEMON_NAME keys add $USER3  --recover --keyring-backend=test
+echo $USER_MNEMONIC_4    | $DAEMON_NAME keys add $USER4  --recover --keyring-backend=test
+echo $PRICEFEED_MNEMONIC | $DAEMON_NAME keys add $PRICEFEED --recover --keyring-backend=test
 
 
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.ununifi/config/app.toml;

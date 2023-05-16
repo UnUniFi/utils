@@ -15,6 +15,8 @@ git pull
 rm -rf ~/.ununifi/config/;
  rm -rf ~/.ununifi/data/;
  rm -rf ~/.ununifi/keyring-test/;
+export VAL=my_validator;
+export FAUCET=faucet;
 export USER1=user1;
 export USER2=user2;
 export USER3=user3;
@@ -32,8 +34,8 @@ $DAEMON_NAME init --chain-id $CHAIN_ID "$MONIKER";
 VAL_MNEMONIC=$(cat $SCRIPT_DIR/../setup_node/mnt.txt)
 FAUCET_MNEMONIC=$(cat $SCRIPT_DIR/../setup_node/faucet_mnt.txt)
 
-echo $VAL_MNEMONIC    | $DAEMON_NAME keys add my_validator  --recover --keyring-backend=test;
-echo $FAUCET_MNEMONIC | $DAEMON_NAME keys add faucet        --recover --keyring-backend=test;
+echo $VAL_MNEMONIC    | $DAEMON_NAME keys add $VAL    --recover --keyring-backend=test
+echo $FAUCET_MNEMONIC | $DAEMON_NAME keys add $FAUCET --recover --keyring-backend=test
 echo $USER_MNEMONIC_1    | $DAEMON_NAME keys add $USER1  --recover --keyring-backend=test
 echo $USER_MNEMONIC_2    | $DAEMON_NAME keys add $USER2  --recover --keyring-backend=test
 echo $USER_MNEMONIC_3    | $DAEMON_NAME keys add $USER3  --recover --keyring-backend=test

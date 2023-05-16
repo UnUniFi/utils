@@ -47,15 +47,7 @@ sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.ununifi/co
 jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 
 
-  $DAEMON_NAME add-genesis-account my_validator 1000000000000uguu,100000000000ubtc;
-  $DAEMON_NAME add-genesis-account user1 100000000000uguu,100000000000ubtc,50000000000uusdc;
-  $DAEMON_NAME add-genesis-account user2 100000000000uguu,100000000000ubtc,50000000000uusdc;
-  $DAEMON_NAME add-genesis-account user3 100000000000uguu,100000000000ubtc,50000000000uusdc;
-  $DAEMON_NAME add-genesis-account user4 100000000000uguu,100000000000ubtc,50000000000uusdc;
-  $DAEMON_NAME add-genesis-account faucet 50000000000000uguu,500000000000ubtc,50000000000ueth,50000000000000uusdc;
-  $DAEMON_NAME add-genesis-account $PRICEFEED 100000000000uguu,100000000000000ubtc,100000000000000uusdc;
-  $DAEMON_NAME gentx my_validator 1000000000uguu --chain-id $CHAIN_ID --keyring-backend test;
-  $DAEMON_NAME collect-gentxs;
+$SCRIPT_DIR/../utils/chain_init_gen_command.sh reset-node;
 
 # setup modules genesis
 $SCRIPT_DIR/../setup_derivatives/setup.sh;

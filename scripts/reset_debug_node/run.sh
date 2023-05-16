@@ -27,8 +27,12 @@ export USER_MNEMONIC_4="charge split umbrella day gauge two orphan random human 
 export PRICEFEED_MNEMONIC="jelly fortune hire delay impose daughter praise amazing patch gesture easy achieve intact genre swamp gossip aisle arrest item seek inherit cradle hover involve";
 
 $DAEMON_NAME init --chain-id $CHAIN_ID "$MONIKER";
-$DAEMON_NAME keys add my_validator --recover < $SCRIPT_DIR/../setup_node/mnt.txt;
-$DAEMON_NAME keys add faucet --recover < $SCRIPT_DIR/../setup_node/faucet_mnt.txt;
+# $DAEMON_NAME keys add my_validator --recover < $SCRIPT_DIR/../setup_node/mnt.txt;
+# $DAEMON_NAME keys add faucet --recover < $SCRIPT_DIR/../setup_node/faucet_mnt.txt;
+VAL_MNEMONIC=$(cat $SCRIPT_DIR/../setup_node/mnt.txt)
+FAUCET_MNEMONIC=$(cat $SCRIPT_DIR/../setup_node/faucet_mnt.txt)
+echo $VAL_MNEMONIC    | $DAEMON_NAME keys add my_validator  --recover;
+echo $FAUCET_MNEMONIC | $DAEMON_NAME keys add faucet  --recover;
 
 echo $USER_MNEMONIC_1    | $DAEMON_NAME keys add $USER1  --recover ;
 echo $USER_MNEMONIC_2    | $DAEMON_NAME keys add $USER2  --recover ;

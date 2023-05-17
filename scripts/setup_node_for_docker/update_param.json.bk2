@@ -1,0 +1,12 @@
+{
+  "title": "Foo",
+  "description": "Bar",
+  "changes": [
+    {
+      "subspace": "staking",
+      "key": "MaxValidators",
+      "value": 105
+    }
+  ],
+  "deposit": "10000000uguu"
+}

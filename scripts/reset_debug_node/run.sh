@@ -44,7 +44,6 @@ echo $PRICEFEED_MNEMONIC | $DAEMON_NAME keys add $PRICEFEED --recover --keyring-
 
 
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.ununifi/config/app.toml;
-sed -i 's/stake/uguu/g' ~/.ununifi/config/genesis.json;
 sed -i -e 's/\bstake\b/uguu/g' ~/.ununifi/config/genesis.json
 sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0uguu"/' ~/.ununifi/config/app.toml;
 sed -i 's/mode = "full"/mode = "validator"/' ~/.ununifi/config/config.toml;

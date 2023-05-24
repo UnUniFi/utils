@@ -1,6 +1,6 @@
 {
-  "title": "Foo",
-  "description": "Bar",
+  "title": "CosmWasm: Param Update for uploadAccess & instantiateAccess",
+  "description": "Allow wasm code uploads for everybody & set chain default instantiation settings to everybody.",
   "changes": [
     {
       "subspace": "wasm",
@@ -8,7 +8,12 @@
       "value": {
         "permission": "Everybody"
       }
+    },
+    {
+      "subspace": "wasm",
+      "key": "instantiateAccess",
+      "value": "Everybody"
     }
   ],
-  "deposit": "10000000uguu"
+  "deposit": "10000000000uguu"
 }

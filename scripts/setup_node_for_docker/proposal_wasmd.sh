@@ -7,42 +7,42 @@ VAL1=val
 FAUCET=faucet
 USER1=user1
 
-
 current_height=$(ununifid q block 2>&1 | jq . | grep height|head -n 1 | grep -o -E '[0-9]+')
-
 echo "current_height: $current_height"
-echo "current_height: $current_height"
-echo "current_height: $current_height"
-echo "current_height: $current_height"
-echo "current_height: $current_height"
-echo "current_height: $current_height"
-UP_HEIGHT=$((current_height+7))
-echo "up_height: $UP_HEIGHT"
-echo "up_height: $UP_HEIGHT"
-echo "up_height: $UP_HEIGHT"
-echo "up_height: $UP_HEIGHT"
 
 BIN_UNI=~/.ununifi/cosmovisor/current/bin/ununifid
+
 $BIN_UNI tx gov submit-legacy-proposal param-change ./update_param.json \
---from val  \
+--from $VAL1  \
 --yes \
 --keyring-backend test \
 --chain-id $CHAIN_ID
 
-$BIN_UNI query gov proposals;
-
 sleep 5
 
-$BIN_UNI tx gov deposit 2 \
+$BIN_UNI query gov proposals
+
+$BIN_UNI tx gov deposit 1 \
 10000000000uguu --from val --yes \
 --keyring-backend test \
---chain-id $CHAIN_ID|jq .;
+--chain-id $CHAIN_ID
+
+$BIN_UNI tx gov deposit 1 \
+500000000000uguu --from faucet --yes \
+--keyring-backend test \
+--chain-id $CHAIN_ID
 
 sleep 5
 
-$BIN_UNI tx gov vote 2 \
+$BIN_UNI tx gov vote 1 \
 yes --from val \
 --keyring-backend test \
---yes --chain-id $CHAIN_ID|jq .;
+--yes --chain-id $CHAIN_ID
 
-$BIN_UNI query gov proposals;
+$BIN_UNI tx gov vote 1 \
+yes --from faucet \
+--keyring-backend test \
+--yes --chain-id $CHAIN_ID
+
+$BIN_UNI query gov proposals
+$BIN_UNI query wasm params

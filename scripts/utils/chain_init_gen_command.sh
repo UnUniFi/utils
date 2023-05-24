@@ -70,4 +70,25 @@ elif [ "$execute_command" = "reset-node" ]; then
     $DAEMON_NAME collect-gentxs;
   fi
   exit 0;
+elif [ "$execute_command" = "exec-docker" ]; then
+  VAL=val
+  FAUCET=faucet
+  USER1=user1
+  PRICEFEED=pricefeed
+  if (( major_version > 0 || minor_version >= 47 )); then
+    echo "This is version 0.47 or later."
+    $DAEMON_NAME genesis add-genesis-account $($DAEMON_NAME keys show $VAL --keyring-backend test -a) 1000000000000uguu,100000000000ubtc;
+    $DAEMON_NAME genesis add-genesis-account $($DAEMON_NAME keys show $USER1 --keyring-backend test -a) 100000000000uguu,100000000000ubtc,50000000000uusdc;
+    $DAEMON_NAME genesis add-genesis-account $($DAEMON_NAME keys show $FAUCET --keyring-backend test -a) 50000000000000uguu,500000000000ubtc,50000000000ueth,50000000000000uusdc;
+    $DAEMON_NAME genesis gentx $VAL 100000000uguu --chain-id $CHAIN_ID --keyring-backend test;
+    $DAEMON_NAME genesis collect-gentxs;
+  else
+    echo "This is before version 0.47."
+    $DAEMON_NAME add-genesis-account $VAL 100000000000uguu,100000000000ubtc;
+    $DAEMON_NAME add-genesis-account $FAUCET 500000000000uguu,5000000000ubtc,50000000000ueth;
+    $DAEMON_NAME add-genesis-account $USER1 1000000uguu;
+    $DAEMON_NAME gentx $VAL 1000000000000uguu --chain-id $CHAIN_ID --keyring-backend test;
+    $DAEMON_NAME collect-gentxs;
+  fi
+  exit 0;
 fi

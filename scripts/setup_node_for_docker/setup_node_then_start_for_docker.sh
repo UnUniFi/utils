@@ -15,6 +15,7 @@ if [ -d ~/.ununifi/config ]; then
   # fi
 fi
 
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
 VAL_MNEMONIC_1="figure web rescue rice quantum sustain alert citizen woman cable wasp eyebrow monster teach hockey giant monitor hero oblige picnic ball never lamp distance"
 FAUCET_MNEMONIC_1="chimney diesel tone pipe mouse detect vibrant video first jewel vacuum winter grant almost trim crystal similar giraffe dizzy hybrid trigger muffin awake leader"
 USER_MNEMONIC_1="supply release type ostrich rib inflict increase bench wealth course enter pond spare neutral exact retire thing update inquiry atom health number lava taste"
@@ -42,16 +43,13 @@ sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.ununifi/co
 jq ".app_state.cdp.params.collateral_params =[{ \"auction_size\": \"50000000000\", \"conversion_factor\": \"6\", \"debt_limit\": { \"amount\": \"20000000000000\", \"denom\": \"jpu\" }, \"denom\": \"ubtc\", \"liquidation_market_id\": \"ubtc:jpy:30\", \"liquidation_penalty\": \"0.075000000000000000\", \"liquidation_ratio\": \"1.500000000000000000\", \"prefix\": 0, \"spot_market_id\": \"ubtc:jpy\", \"stability_fee\": \"1.000000001547125958\", \"type\": \"ubtc-a\", \"check_collateralization_index_count\": \"1000\", \"keeper_reward_percentage\": \"0.000001\" },{\"auction_size\": \"50000000000\", \"conversion_factor\": \"6\",\"debt_limit\": {\"amount\":\"20000000000000\",\"denom\": \"euu\" },\"denom\": \"ubtc\", \"liquidation_market_id\": \"ubtc:eur:30\",  \"liquidation_penalty\": \"0.075000000000000000\",  \"liquidation_ratio\": \"1.500000000000000000\",  \"prefix\": 1,  \"spot_market_id\": \"ubtc:eur\",  \"stability_fee\": \"1.000000001547125958\",  \"type\": \"ubtc-b\",  \"check_collateralization_index_count\": \"1000\", \"keeper_reward_percentage\": \"0.000001\"}]"  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 jq ".app_state.cdp.params.debt_params[0].global_debt_limit.amount = \"200000000000000\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 jq ".app_state.cdp.params.debt_params[1].global_debt_limit.amount = \"200000000000000\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
-jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
-jq ".app_state.pricefeed.params.markets = [{ \"market_id\": \"ubtc:jpy\", \"base_asset\": \"ubtc\", \"quote_asset\": \"jpy\", \"oracles\": [ \"`$DAEMON_NAME keys show $VAL1 -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:jpy:30\", \"base_asset\": \"ubtc\", \"quote_asset\": \"jpy\", \"oracles\": [ \"`$DAEMON_NAME keys show $VAL1 -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:eur\", \"base_asset\": \"ubtc\", \"quote_asset\": \"eur\", \"oracles\": [ \"`$DAEMON_NAME keys show $VAL1 -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:eur:30\", \"base_asset\": \"ubtc\", \"quote_asset\": \"eur\", \"oracles\": [ \"`$DAEMON_NAME keys show $VAL1 -a`\" ], \"active\": true }]"  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq ".app_state.gov.voting_params.voting_period = \"30s\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq ".app_state.gov.params.voting_period = \"30s\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq ".app_state.pricefeed.params.markets = [{ \"market_id\": \"ubtc:jpy\", \"base_asset\": \"ubtc\", \"quote_asset\": \"jpy\", \"oracles\": [ \"`$DAEMON_NAME keys show $VAL1 --keyring-backend test -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:jpy:30\", \"base_asset\": \"ubtc\", \"quote_asset\": \"jpy\", \"oracles\": [ \"`$DAEMON_NAME keys show $VAL1 --keyring-backend test -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:eur\", \"base_asset\": \"ubtc\", \"quote_asset\": \"eur\", \"oracles\": [ \"`$DAEMON_NAME keys show $VAL1 --keyring-backend test -a`\" ], \"active\": true }, { \"market_id\": \"ubtc:eur:30\", \"base_asset\": \"ubtc\", \"quote_asset\": \"eur\", \"oracles\": [ \"`$DAEMON_NAME keys show $VAL1 --keyring-backend test -a`\" ], \"active\": true }]"  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 jq '.app_state.bank.params.default_send_enabled = false' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 jq ".app_state.wasm.params.code_upload_access.permission = \"Nobody\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 jq ".app_state.wasm.params.instantiate_default_permission = \"Nobody\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 
-$DAEMON_NAME add-genesis-account $VAL1 100000000000uguu,100000000000ubtc;
-$DAEMON_NAME add-genesis-account $FAUCET 500000000000uguu,5000000000ubtc,50000000000ueth;
-$DAEMON_NAME add-genesis-account $USER1 1000000uguu;
-$DAEMON_NAME gentx $VAL1 100000000uguu --chain-id $CHAIN_ID --keyring-backend test;
-$DAEMON_NAME collect-gentxs;
+$SCRIPT_DIR/../utils/chain_init_gen_command.sh exec-docker;
 cosmovisor start
 

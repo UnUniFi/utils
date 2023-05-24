@@ -44,7 +44,7 @@ echo $PRICEFEED_MNEMONIC | $DAEMON_NAME keys add $PRICEFEED --recover --keyring-
 
 
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.ununifi/config/app.toml;
-sed -i 's/stake/uguu/g' ~/.ununifi/config/genesis.json;
+sed -i -e 's/\bstake\b/uguu/g' ~/.ununifi/config/genesis.json
 sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0uguu"/' ~/.ununifi/config/app.toml;
 sed -i 's/mode = "full"/mode = "validator"/' ~/.ununifi/config/config.toml;
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.ununifi/config/app.toml;
@@ -59,6 +59,7 @@ $SCRIPT_DIR/../utils/chain_init_gen_command.sh reset-node;
 $SCRIPT_DIR/../setup_derivatives/setup.sh;
 $SCRIPT_DIR/../setup_nftmarket/setup.sh;
 $SCRIPT_DIR/../setup_nftmint/setup.sh;
+$SCRIPT_DIR/../setup_iya/setup.sh;
 sudo systemctl start cosmovisor.service;
 
 sleep 3

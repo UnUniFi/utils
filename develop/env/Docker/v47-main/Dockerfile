@@ -20,7 +20,7 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 WORKDIR $HOME
 
 ENV CHAIN_REPO https://github.com/UnUniFi/chain
-ENV CHAIN_REPO_BRANCHE=v1.0.0-beta.4
+ENV CHAIN_REPO_BRANCHE=v2.0.0
 ENV TARGET=ununifid
 ENV TARGET_HOME=.ununifi
 ENV CHAIN_ID=test

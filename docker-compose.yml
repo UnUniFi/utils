@@ -1,10 +1,10 @@
-version: "3"
+version: '3'
 
 services:
   ununifid:
     container_name: ununifid
     build:
-      context: develop/env/Docker/v45-main
+      context: develop/env/Docker/v47-main
       dockerfile: Dockerfile
     volumes:
       - .:/utils

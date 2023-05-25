@@ -15,6 +15,7 @@ BIN_UNI=~/.ununifi/cosmovisor/current/bin/ununifid
 $BIN_UNI tx gov submit-legacy-proposal param-change ./update_param.json \
 --from $VAL1  \
 --yes \
+--gas 20000000 \
 --keyring-backend test \
 --chain-id $CHAIN_ID
 

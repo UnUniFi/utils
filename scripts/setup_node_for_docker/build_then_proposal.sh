@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./build_chain.sh && ./proposal.sh
+./build_chain.sh && ./proposal_v2.0.sh

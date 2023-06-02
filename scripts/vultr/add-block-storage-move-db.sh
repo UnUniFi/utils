@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## It is safe to copy and paste them one by one.
+
 lsblk
 ### Mount blockstorage
 parted -s /dev/vdb mklabel gpt
@@ -24,6 +26,8 @@ cp -rvp $DAEMON_HOME /mnt/blockstorage
 ### Recreate symbolic link
 ### change current version & directory
 ln -nfs /mnt/blockstorage/.ununifi/cosmovisor/upgrades/v2_1 /mnt/blockstorage/.ununifi/cosmovisor/current
+
+## Rename old ununifi directory.
 
 # Restart
 systemctl daemon-reload

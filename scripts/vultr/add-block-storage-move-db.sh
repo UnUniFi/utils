@@ -21,6 +21,7 @@ cp -rvp $DAEMON_HOME /mnt/blockstorage
 ## Environment="DAEMON_HOME=/mnt/blockstorage/.ununifi"
 ## ExecStart=/root/go/bin/cosmovisor start --home /mnt/blockstorage/.ununifi
 
+### Recreate symbolic link
 ### change current version & directory
 ln -nfs /mnt/blockstorage/.ununifi/cosmovisor/upgrades/v2_1 /mnt/blockstorage/.ununifi/cosmovisor/current
 

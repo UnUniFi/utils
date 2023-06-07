@@ -4,12 +4,12 @@ services:
   ununifid:
     container_name: ununifid
     build:
-      context: develop/env/Docker/v47-main
+      context: develop/env/Docker/v2.1.0
       dockerfile: Dockerfile
     volumes:
       - .:/utils
-      - ../chain4:/chain_repo2
-      - ../chain4/debug_data:/root/sync_data
+      - ../chain:/chain_repo2
+      - ../chain/debug_data:/root/sync_data
       # - /home/miyagi/go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.2.1/internal/api:/root/go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.2.1/internal/api
     tty: true
     privileged: true

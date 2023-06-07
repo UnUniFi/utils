@@ -17,7 +17,7 @@ systemctl stop cosmovisor.service
 cp -rvp $DAEMON_HOME /mnt/blockstorage
 
 
-### Require!! edit lib/systemd/system/cosmovisor.service
+### Require!! edit /lib/systemd/system/cosmovisor.service
 ## Environment="DAEMON_HOME=/mnt/blockstorage/.ununifi"
 ## ExecStart=/root/go/bin/cosmovisor start --home /mnt/blockstorage/.ununifi
 

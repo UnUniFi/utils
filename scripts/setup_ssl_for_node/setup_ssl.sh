@@ -105,7 +105,7 @@ fi
 echo "
 #for rpc endpoint
 server {
-        listen 26657 ssl;
+        listen 26658 ssl;
         server_name $DOMEIN_CAUCHYE;
         ssl_certificate /etc/letsencrypt/live/$DOMEIN_CAUCHYE/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/$DOMEIN_CAUCHYE/privkey.pem;
@@ -129,7 +129,7 @@ server {
 echo "
 #for grpc endpoint
 server {
-        listen 9090 ssl;
+        listen 9092 ssl;
         server_name $DOMEIN_CAUCHYE;
         ssl_certificate /etc/letsencrypt/live/$DOMEIN_CAUCHYE/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/$DOMEIN_CAUCHYE/privkey.pem;
@@ -152,9 +152,8 @@ server {
 sudo systemctl restart nginx.service
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 1318
-sudo ufw allow 26657
-sudo ufw allow 9090
-sudo ufw allow 443
+sudo ufw allow 26658
+sudo ufw allow 9092
 sudo ufw reload
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)

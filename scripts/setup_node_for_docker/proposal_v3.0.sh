@@ -9,10 +9,10 @@
 # make build -B
 # cp ./build/ununifid ~/.ununifi/cosmovisor/upgrades/v2_1/bin
 
-echo copy from local
-mkdir -p ~/.ununifi/cosmovisor/upgrades/v3/bin
-cp ./ununifid ~/.ununifi/cosmovisor/upgrades/v3/bin
-chmod 755 ~/.ununifi/cosmovisor/upgrades/v3/bin/ununifid
+# echo copy from local
+# mkdir -p ~/.ununifi/cosmovisor/upgrades/v3/bin
+# cp ./ununifid ~/.ununifi/cosmovisor/upgrades/v3/bin
+# chmod 755 ~/.ununifi/cosmovisor/upgrades/v3/bin/ununifid
 
 VAL_MNEMONIC_1="figure web rescue rice quantum sustain alert citizen woman cable wasp eyebrow monster teach hockey giant monitor hero oblige picnic ball never lamp distance"
 FAUCET_MNEMONIC_1="chimney diesel tone pipe mouse detect vibrant video first jewel vacuum winter grant almost trim crystal similar giraffe dizzy hybrid trigger muffin awake leader"
@@ -43,8 +43,8 @@ echo "up_height: $UP_HEIGHT"
 echo "up_height: $UP_HEIGHT"
 echo "up_height: $UP_HEIGHT"
 
-MD5=4102d1fb9d3bacd334eaf4ba67bd76c2
-BIN_URL=https://github.com/Senna46/share-ununifid/releases/download/v3.0.0-rc2/ununifid
+MD5=bf6e90dba806a8ac1c2f7d1c581d0834
+BIN_URL=https://github.com/Senna46/share-ununifid/releases/download/v3.0.0-rc4/ununifid
 
 $BIN_UNI tx gov submit-legacy-proposal software-upgrade v3 \
 --title upgrade_v3.0.0 \

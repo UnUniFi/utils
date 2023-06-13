@@ -18,9 +18,6 @@ done
 
 BIN_UNI=~/.ununifi/cosmovisor/current/bin/ununifid
 
-$BIN_UNI q bank balances $VAL1ADDR --chain-id
-$BIN_UNI q bank balances $USER1ADDR --chain-id
-
 $BIN_UNI tx bank send $VAL1ADDR $USER1ADDR 1000uguu \
 --from val  \
 --keyring-backend test \

@@ -373,7 +373,7 @@ export class PriceOracle {
     }
 
     // Set up post price transaction parameters
-    const newPrice = fetchedPrice.toFixed(18).toString();
+    const newPrice = Math.floor(fetchedPrice * 10 ** 18).toString()
     let expiryDate = new Date();
     expiryDate = new Date(expiryDate.getTime() + Number.parseInt(this.expiry) * 1000);
     const account = await cosmosclient.rest.auth
@@ -502,7 +502,7 @@ export class PriceOracle {
       ],
       fee: {
         amount: [fee],
-        gas_limit: Long.fromString(gas.amount ? gas.amount : '200000'),
+        gas_limit: Long.fromString('200000'),
       },
     });
 

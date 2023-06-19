@@ -9,6 +9,7 @@ import cosmosclient from '@cosmos-client/core';
 import Long from 'long';
 import ununificlient from 'ununifi-client';
 import { AccAddress } from '@cosmos-client/core/cjs/types';
+import { convertUnknownAccountToBaseAccount } from './converter';
 
 require('dotenv').config();
 require('log-timestamp');
@@ -383,10 +384,11 @@ export class PriceOracle {
         ),
       )
       .catch((_) => undefined);
-    if (!(account instanceof cosmosclient.proto.cosmos.auth.v1beta1.BaseAccount)) {
-      throw Error('not a BaseAccount');
+    const baseAccount = convertUnknownAccountToBaseAccount(account);
+    if (!baseAccount) {
+      throw Error('Unused Account or Unsupported Account Type!');
     }
-    const sequence = account.sequence;
+    const sequence = baseAccount.sequence;
 
     console.log(`posting price ${newPrice} for ${marketID} with sequence ${sequence.toString()}`);
 
@@ -394,7 +396,7 @@ export class PriceOracle {
 
     // build tx
     const msgPostPrice = new ununificlient.proto.ununifi.pricefeed.MsgPostPrice({
-      from: account.address,
+      from: baseAccount.address,
       market_id: marketID,
       price: newPrice,
       expiry: new ununificlient.proto.google.protobuf.Timestamp({
@@ -431,7 +433,7 @@ export class PriceOracle {
     });
 
     const simulatedTxBuilder = new cosmosclient.TxBuilder(this.sdk, txBody, simulatedAuthInfo);
-    const simulatedSignDocBytes = simulatedTxBuilder.signDocBytes(account.account_number);
+    const simulatedSignDocBytes = simulatedTxBuilder.signDocBytes(baseAccount.account_number);
     simulatedTxBuilder.addSignature(privKey.sign(simulatedSignDocBytes));
     const txForSimulation = JSON.parse(simulatedTxBuilder.protoJSONStringify());
     delete txForSimulation.auth_info.signer_infos[0].mode_info.multi;
@@ -506,7 +508,7 @@ export class PriceOracle {
 
     // sign
     const txBuilder = new cosmosclient.TxBuilder(this.sdk, txBody, authInfo);
-    const signDocBytes = txBuilder.signDocBytes(account.account_number);
+    const signDocBytes = txBuilder.signDocBytes(baseAccount.account_number);
     txBuilder.addSignature(privKey.sign(signDocBytes));
 
     // broadcast

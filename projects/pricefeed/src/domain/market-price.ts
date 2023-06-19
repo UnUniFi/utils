@@ -19,3 +19,8 @@ export type CandleSticks = {
   market: Market;
   data: Price[];
 };
+
+export type CurrentPriceData = {
+  marketID: string;
+  price:number;
+};

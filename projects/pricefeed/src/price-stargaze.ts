@@ -38,6 +38,14 @@ export class PriceStargaze {
   async getPrice(marketID: string): Promise<{ price: string; fixed: boolean; success: boolean }> {
     try {
       const client = await CosmWasmClient.connect(this.stargazeRest);
+      if (marketID === "") {
+        console.log("no collection id")
+        return {
+          price: '',
+          fixed: false,
+          success: false,
+        };
+      }
       const collectionAddress = NFT_COLLECTION_MAP[marketID];
       const response = await client.queryContractSmart(this.marketplaceAddr, {
         asks_sorted_by_price: { collection: collectionAddress, include_inactive: false },

@@ -243,7 +243,7 @@ export class PostPrice {
     try {
       const res = await rest.tx.broadcastTx(this.sdk, {
         tx_bytes: txBuilder.txBytes(),
-        mode: rest.tx.BroadcastTxMode.Block,
+        mode: rest.tx.BroadcastTxMode.Sync,
       });
       console.log('broadcast');
       console.log(res);

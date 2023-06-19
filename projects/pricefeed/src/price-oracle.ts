@@ -2,25 +2,24 @@ import CcxtClient from './clients/ccxt';
 import BandClient from './clients/band';
 import { IFxClient } from './clients/fx/interface';
 import { DOLLAR, EURO, MARKET_CURRENCY_MAP, YEN } from './constants/currency';
-import { Ticker } from './domain/market-price';
 import { OraclePrice } from './domain/oracle-price';
 import { DataProviderConf } from './domain/data-provider';
 import * as utils from './utils';
-import { cosmosclient, rest, proto } from '@cosmos-client/core';
+import cosmosclient from '@cosmos-client/core';
 import Long from 'long';
-import { rest as ununifirest, ununifi, google } from 'ununifi-client';
+import ununificlient from 'ununifi-client';
 import { AccAddress } from '@cosmos-client/core/cjs/types';
 
 require('dotenv').config();
 require('log-timestamp');
-const IS_DEBUG_MODE = process.env.MODE == "debug";
+const IS_DEBUG_MODE = process.env.MODE == 'debug';
 
 /**
  * Price oracle class for posting prices to Kava.
  */
 export class PriceOracle {
   private sdk: cosmosclient.CosmosSDK;
-  private privKey: Promise<proto.cosmos.crypto.secp256k1.PrivKey>;
+  private privKey: Promise<cosmosclient.proto.cosmos.crypto.secp256k1.PrivKey>;
   private ccxt: CcxtClient;
   private band: BandClient;
 
@@ -52,7 +51,7 @@ export class PriceOracle {
     this.sdk = new cosmosclient.CosmosSDK(url, chainID);
     this.privKey = cosmosclient
       .generatePrivKeyFromMnemonic(mnemonic)
-      .then((buffer) => new proto.cosmos.crypto.secp256k1.PrivKey({ key: buffer }));
+      .then((buffer) => new cosmosclient.proto.cosmos.crypto.secp256k1.PrivKey({ key: buffer }));
     if (bech32Prefix) {
       cosmosclient.config.setBech32Prefix({
         accAddr: bech32Prefix,
@@ -81,7 +80,7 @@ export class PriceOracle {
       dataProviderConf.dataProviderStoreType,
       dataProviderConf.dataProviderStoreLocation,
       dataProviderConf.dataProviderDataRetentionPeriodMin,
-      )
+    );
   }
 
   /**
@@ -90,25 +89,16 @@ export class PriceOracle {
   async postPrices() {
     const privKey = await this.privKey;
     const address = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
-    const account = await rest.auth
-      .account(this.sdk, address)
-      .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account));
-
-    if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
-      throw Error('not a BaseAccount');
-    }
-
-    // await this.getLatestFiatCurrencyPrices();
 
     for (let i = 0; i < this.marketIDs.length; ++i) {
       const marketID = this.marketIDs[i];
       const result = await this.fetchPrice(marketID);
-      if(IS_DEBUG_MODE){
-        console.log("result", result);
+      if (IS_DEBUG_MODE) {
+        console.log('result', result);
       }
 
       if (!this.checkPriceIsValid(result)) {
-        if(IS_DEBUG_MODE){
+        if (IS_DEBUG_MODE) {
           console.log(`skip posting ${marketID} price`);
         }
         continue;
@@ -116,8 +106,8 @@ export class PriceOracle {
 
       try {
         const res: any = await this.postNewPrice(result.price, marketID, address);
-        if(IS_DEBUG_MODE){
-          console.log("res", res);
+        if (IS_DEBUG_MODE) {
+          console.log('res', res);
         }
         // if (res.data.code !== undefined) {
         //   throw new Error(res.data.raw_log);
@@ -140,12 +130,12 @@ export class PriceOracle {
    */
   async fetchPrice(marketID: string): Promise<{ price: number | null; success: boolean }> {
     try {
-      if(this.useBandData(this.dataProviderConf)){
-        console.log("use band protocol");
-        return await this.fetchPriceFromBand(marketID)
-      }else{
-        console.log("use ccxt");
-        return await this.fetchPriceFromCCXT(marketID)
+      if (this.useBandData(this.dataProviderConf)) {
+        console.log('use band protocol');
+        return await this.fetchPriceFromBand(marketID);
+      } else {
+        console.log('use ccxt');
+        return await this.fetchPriceFromCCXT(marketID);
       }
     } catch (e) {
       console.error(e);
@@ -159,15 +149,15 @@ export class PriceOracle {
    * @param {String} marketID the market's ID
    */
   async fetchPriceFromBand(marketID: string): Promise<{ price: number | null; success: boolean }> {
-    const currency = MARKET_CURRENCY_MAP[marketID]
-    if(!currency){
-      throw new Error(`not supported marketID:${marketID}`)
+    const currency = MARKET_CURRENCY_MAP[marketID];
+    if (!currency) {
+      throw new Error(`not supported marketID:${marketID}`);
     }
-    const currencyUbtc = await this.band.getPrice(currency)
+    const currencyUbtc = await this.band.getPrice(currency);
     return {
-      price:currencyUbtc,
-      success:true
-    }
+      price: currencyUbtc,
+      success: true,
+    };
   }
 
   /**
@@ -320,7 +310,7 @@ export class PriceOracle {
     // Fetch the previous prices of all markets
     let previousPrices;
     try {
-      const response = await ununifirest.ununifi.pricefeed.allRawPrices(this.sdk, marketID);
+      const response = await ununificlient.rest.pricefeed.allRawPrices(this.sdk, marketID);
       if (response.status === 200) {
         previousPrices = response.data.prices || [];
       } else {
@@ -385,11 +375,15 @@ export class PriceOracle {
     const newPrice = fetchedPrice.toFixed(18).toString();
     let expiryDate = new Date();
     expiryDate = new Date(expiryDate.getTime() + Number.parseInt(this.expiry) * 1000);
-    const account = await rest.auth
+    const account = await cosmosclient.rest.auth
       .account(this.sdk, address)
-      .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account));
-
-    if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
+      .then((res) =>
+        cosmosclient.codec.protoJSONToInstance(
+          cosmosclient.codec.castProtoJSONOfProtoAny(res.data?.account),
+        ),
+      )
+      .catch((_) => undefined);
+    if (!(account instanceof cosmosclient.proto.cosmos.auth.v1beta1.BaseAccount)) {
       throw Error('not a BaseAccount');
     }
     const sequence = account.sequence;
@@ -399,27 +393,27 @@ export class PriceOracle {
     const privKey = await this.privKey;
 
     // build tx
-    const msgPostPrice = new ununifi.pricefeed.MsgPostPrice({
+    const msgPostPrice = new ununificlient.proto.ununifi.pricefeed.MsgPostPrice({
       from: account.address,
       market_id: marketID,
       price: newPrice,
-      expiry: new proto.google.protobuf.Timestamp({
+      expiry: new ununificlient.proto.google.protobuf.Timestamp({
         seconds: Long.fromNumber(expiryDate.getTime() / 1000),
       }),
     });
 
-    const txBody = new proto.cosmos.tx.v1beta1.TxBody({
-      messages: [cosmosclient.codec.packAny(msgPostPrice)],
+    const txBody = new cosmosclient.proto.cosmos.tx.v1beta1.TxBody({
+      messages: [cosmosclient.codec.instanceToProtoAny(msgPostPrice)],
     });
 
     // auth info for simulation
-    const simulatedAuthInfo = new proto.cosmos.tx.v1beta1.AuthInfo({
+    const simulatedAuthInfo = new cosmosclient.proto.cosmos.tx.v1beta1.AuthInfo({
       signer_infos: [
         {
-          public_key: cosmosclient.codec.packAny(privKey.pubKey()),
+          public_key: cosmosclient.codec.instanceToProtoAny(privKey.pubKey()),
           mode_info: {
             single: {
-              mode: proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+              mode: cosmosclient.proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
             },
           },
           sequence: sequence,
@@ -432,30 +426,30 @@ export class PriceOracle {
             amount: '1',
           },
         ],
-        gas_limit: cosmosclient.Long.fromString('1'),
+        gas_limit: Long.fromString('1'),
       },
     });
 
     const simulatedTxBuilder = new cosmosclient.TxBuilder(this.sdk, txBody, simulatedAuthInfo);
     const simulatedSignDocBytes = simulatedTxBuilder.signDocBytes(account.account_number);
     simulatedTxBuilder.addSignature(privKey.sign(simulatedSignDocBytes));
-    const txForSimulation = JSON.parse(simulatedTxBuilder.cosmosJSONStringify());
+    const txForSimulation = JSON.parse(simulatedTxBuilder.protoJSONStringify());
     delete txForSimulation.auth_info.signer_infos[0].mode_info.multi;
 
     // Note: google.protobuf.Timestamp type must be converted to rfc3339 string, because it is unmarshaled in backend go process.
-    const googleProtobufTimestamp = google.protobuf.Timestamp.fromObject(
+    const googleProtobufTimestamp = ununificlient.proto.google.protobuf.Timestamp.fromObject(
       txForSimulation.body.messages[0].expiry,
     );
     const goTimeString = cosmosclient.codec.protobufTimestampToJsDate(googleProtobufTimestamp);
     txForSimulation.body.messages[0].expiry = goTimeString;
 
     let simulatedResult;
-    let gas: proto.cosmos.base.v1beta1.ICoin;
-    let fee: proto.cosmos.base.v1beta1.ICoin;
+    let gas: cosmosclient.proto.cosmos.base.v1beta1.ICoin;
+    let fee: cosmosclient.proto.cosmos.base.v1beta1.ICoin;
 
     // simulate
     try {
-      simulatedResult = await rest.tx.simulate(this.sdk, {
+      simulatedResult = await cosmosclient.rest.tx.simulate(this.sdk, {
         tx: txForSimulation,
         tx_bytes: simulatedTxBuilder.txBytes(),
       });
@@ -473,10 +467,10 @@ export class PriceOracle {
         );
       const simulatedFeeWithMargin = Math.ceil(simulatedFeeWithMarginNumber).toString();
       // console.log({
-        // simulatedGasUsed,
-        // simulatedGasUsedWithMargin,
-        // simulatedFeeWithMarginNumber,
-        // simulatedFeeWithMargin,
+      // simulatedGasUsed,
+      // simulatedGasUsedWithMargin,
+      // simulatedFeeWithMarginNumber,
+      // simulatedFeeWithMargin,
       // });
       gas = {
         denom: process.env.MINIMUM_GAS_PRICE_DENOM,
@@ -492,13 +486,13 @@ export class PriceOracle {
     }
 
     // auth info for announce
-    const authInfo = new proto.cosmos.tx.v1beta1.AuthInfo({
+    const authInfo = new cosmosclient.proto.cosmos.tx.v1beta1.AuthInfo({
       signer_infos: [
         {
-          public_key: cosmosclient.codec.packAny(privKey.pubKey()),
+          public_key: cosmosclient.codec.instanceToProtoAny(privKey.pubKey()),
           mode_info: {
             single: {
-              mode: proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+              mode: cosmosclient.proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
             },
           },
           sequence: sequence,
@@ -506,7 +500,7 @@ export class PriceOracle {
       ],
       fee: {
         amount: [fee],
-        gas_limit: cosmosclient.Long.fromString(gas.amount ? gas.amount : '200000'),
+        gas_limit: Long.fromString(gas.amount ? gas.amount : '200000'),
       },
     });
 
@@ -517,9 +511,9 @@ export class PriceOracle {
 
     // broadcast
     try {
-      const res = await rest.tx.broadcastTx(this.sdk, {
+      const res = await cosmosclient.rest.tx.broadcastTx(this.sdk, {
         tx_bytes: txBuilder.txBytes(),
-        mode: rest.tx.BroadcastTxMode.Sync,
+        mode: cosmosclient.rest.tx.BroadcastTxMode.Sync,
       });
       console.log('broadcast');
       console.log(res);
@@ -557,7 +551,7 @@ export class PriceOracle {
         throw new Error(`Unsupported martketId: ${marketId}`);
     }
   }
-  useBandData(conf:DataProviderConf):boolean{
-    return conf.dataProviderType == "Band"
+  useBandData(conf: DataProviderConf): boolean {
+    return conf.dataProviderType == 'Band';
   }
 }

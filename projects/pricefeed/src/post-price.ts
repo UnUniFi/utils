@@ -1,7 +1,7 @@
 import { CurrentPriceData } from './domain/market-price';
-import { cosmosclient, rest, proto } from '@cosmos-client/core';
+import cosmosclient from '@cosmos-client/core';
 import Long from 'long';
-import { ununifi, google } from 'ununifi-client';
+import ununificlient from 'ununifi-client';
 import { AccAddress } from '@cosmos-client/core/cjs/types';
 
 require('dotenv').config();
@@ -13,7 +13,7 @@ const IS_DEBUG_MODE = process.env.MODE == 'debug';
  */
 export class PostPrice {
   private sdk: cosmosclient.CosmosSDK;
-  private privKey: Promise<proto.cosmos.crypto.secp256k1.PrivKey>;
+  private privKey: Promise<cosmosclient.proto.cosmos.crypto.secp256k1.PrivKey>;
 
   constructor(
     private expiry: string,
@@ -29,7 +29,7 @@ export class PostPrice {
     this.sdk = new cosmosclient.CosmosSDK(url, chainID);
     this.privKey = cosmosclient
       .generatePrivKeyFromMnemonic(mnemonic)
-      .then((buffer) => new proto.cosmos.crypto.secp256k1.PrivKey({ key: buffer }));
+      .then((buffer) => new cosmosclient.proto.cosmos.crypto.secp256k1.PrivKey({ key: buffer }));
     if (bech32Prefix) {
       cosmosclient.config.setBech32Prefix({
         accAddr: bech32Prefix,
@@ -60,15 +60,6 @@ export class PostPrice {
   async postPrices(prices: CurrentPriceData[]) {
     const privKey = await this.privKey;
     const address = cosmosclient.AccAddress.fromPublicKey(privKey.pubKey());
-    const account = await rest.auth
-      .account(this.sdk, address)
-      .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account));
-
-    if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
-      throw Error('not a BaseAccount');
-    }
-
-    // await this.getLatestFiatCurrencyPrices();
 
     for (const priceData of prices) {
       try {
@@ -109,11 +100,15 @@ export class PostPrice {
     const newPrice = fetchedPrice.toFixed(18).toString();
     let expiryDate = new Date();
     expiryDate = new Date(expiryDate.getTime() + Number.parseInt(this.expiry) * 1000);
-    const account = await rest.auth
+    const account = await cosmosclient.rest.auth
       .account(this.sdk, address)
-      .then((res) => res.data.account && cosmosclient.codec.unpackCosmosAny(res.data.account));
-
-    if (!(account instanceof proto.cosmos.auth.v1beta1.BaseAccount)) {
+      .then((res) =>
+        cosmosclient.codec.protoJSONToInstance(
+          cosmosclient.codec.castProtoJSONOfProtoAny(res.data?.account),
+        ),
+      )
+      .catch((_) => undefined);
+    if (!(account instanceof cosmosclient.proto.cosmos.auth.v1beta1.BaseAccount)) {
       throw Error('not a BaseAccount');
     }
     const sequence = account.sequence;
@@ -123,27 +118,27 @@ export class PostPrice {
     const privKey = await this.privKey;
 
     // build tx
-    const msgPostPrice = new ununifi.pricefeed.MsgPostPrice({
+    const msgPostPrice = new ununificlient.proto.ununifi.pricefeed.MsgPostPrice({
       from: account.address,
       market_id: marketID,
       price: newPrice,
-      expiry: new proto.google.protobuf.Timestamp({
+      expiry: new ununificlient.proto.google.protobuf.Timestamp({
         seconds: Long.fromNumber(expiryDate.getTime() / 1000),
       }),
     });
 
-    const txBody = new proto.cosmos.tx.v1beta1.TxBody({
-      messages: [cosmosclient.codec.packAny(msgPostPrice)],
+    const txBody = new cosmosclient.proto.cosmos.tx.v1beta1.TxBody({
+      messages: [cosmosclient.codec.instanceToProtoAny(msgPostPrice)],
     });
 
     // auth info for simulation
-    const simulatedAuthInfo = new proto.cosmos.tx.v1beta1.AuthInfo({
+    const simulatedAuthInfo = new cosmosclient.proto.cosmos.tx.v1beta1.AuthInfo({
       signer_infos: [
         {
-          public_key: cosmosclient.codec.packAny(privKey.pubKey()),
+          public_key: cosmosclient.codec.instanceToProtoAny(privKey.pubKey()),
           mode_info: {
             single: {
-              mode: proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+              mode: cosmosclient.proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
             },
           },
           sequence: sequence,
@@ -156,30 +151,30 @@ export class PostPrice {
             amount: '1',
           },
         ],
-        gas_limit: cosmosclient.Long.fromString('1'),
+        gas_limit: Long.fromString('1'),
       },
     });
 
     const simulatedTxBuilder = new cosmosclient.TxBuilder(this.sdk, txBody, simulatedAuthInfo);
     const simulatedSignDocBytes = simulatedTxBuilder.signDocBytes(account.account_number);
     simulatedTxBuilder.addSignature(privKey.sign(simulatedSignDocBytes));
-    const txForSimulation = JSON.parse(simulatedTxBuilder.cosmosJSONStringify());
+    const txForSimulation = JSON.parse(simulatedTxBuilder.protoJSONStringify());
     delete txForSimulation.auth_info.signer_infos[0].mode_info.multi;
 
     // Note: google.protobuf.Timestamp type must be converted to rfc3339 string, because it is unmarshaled in backend go process.
-    const googleProtobufTimestamp = google.protobuf.Timestamp.fromObject(
+    const googleProtobufTimestamp = ununificlient.proto.google.protobuf.Timestamp.fromObject(
       txForSimulation.body.messages[0].expiry,
     );
     const goTimeString = cosmosclient.codec.protobufTimestampToJsDate(googleProtobufTimestamp);
     txForSimulation.body.messages[0].expiry = goTimeString;
 
     let simulatedResult;
-    let gas: proto.cosmos.base.v1beta1.ICoin;
-    let fee: proto.cosmos.base.v1beta1.ICoin;
+    let gas: cosmosclient.proto.cosmos.base.v1beta1.ICoin;
+    let fee: cosmosclient.proto.cosmos.base.v1beta1.ICoin;
 
     // simulate
     try {
-      simulatedResult = await rest.tx.simulate(this.sdk, {
+      simulatedResult = await cosmosclient.rest.tx.simulate(this.sdk, {
         tx: txForSimulation,
         tx_bytes: simulatedTxBuilder.txBytes(),
       });
@@ -216,13 +211,13 @@ export class PostPrice {
     }
 
     // auth info for announce
-    const authInfo = new proto.cosmos.tx.v1beta1.AuthInfo({
+    const authInfo = new cosmosclient.proto.cosmos.tx.v1beta1.AuthInfo({
       signer_infos: [
         {
-          public_key: cosmosclient.codec.packAny(privKey.pubKey()),
+          public_key: cosmosclient.codec.instanceToProtoAny(privKey.pubKey()),
           mode_info: {
             single: {
-              mode: proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+              mode: cosmosclient.proto.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
             },
           },
           sequence: sequence,
@@ -230,7 +225,7 @@ export class PostPrice {
       ],
       fee: {
         amount: [fee],
-        gas_limit: cosmosclient.Long.fromString(gas.amount ? gas.amount : '200000'),
+        gas_limit: Long.fromString(gas.amount ? gas.amount : '200000'),
       },
     });
 
@@ -241,9 +236,9 @@ export class PostPrice {
 
     // broadcast
     try {
-      const res = await rest.tx.broadcastTx(this.sdk, {
+      const res = await cosmosclient.rest.tx.broadcastTx(this.sdk, {
         tx_bytes: txBuilder.txBytes(),
-        mode: rest.tx.BroadcastTxMode.Sync,
+        mode: cosmosclient.rest.tx.BroadcastTxMode.Sync,
       });
       console.log('broadcast');
       console.log(res);

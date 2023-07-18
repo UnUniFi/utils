@@ -1,7 +1,7 @@
 #!/bin/bash
 NODE_HOME=$HOME/.ununifi
 
-jq '.app_state.nftmint.class_attributes_list = [
+jq '.app_state.nftfactory.class_attributes_list = [
   {
     "base_token_uri": "ipfs://testcid/",
     "class_id": "ununifi-1AFC3C85B52311F13161F724B284EF900458E3B3",

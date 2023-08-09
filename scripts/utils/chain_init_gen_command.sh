@@ -80,7 +80,7 @@ elif [ "$execute_command" = "exec-docker" ]; then
     $DAEMON_NAME genesis add-genesis-account $($DAEMON_NAME keys show $VAL --keyring-backend test -a) 1000000000000uguu,100000000000ubtc;
     $DAEMON_NAME genesis add-genesis-account $($DAEMON_NAME keys show $USER1 --keyring-backend test -a) 100000000000uguu,100000000000ubtc,50000000000uusdc;
     $DAEMON_NAME genesis add-genesis-account $($DAEMON_NAME keys show $FAUCET --keyring-backend test -a) 50000000000000uguu,500000000000ubtc,50000000000ueth,50000000000000uusdc;
-    $DAEMON_NAME genesis gentx $VAL 100000000uguu --chain-id $CHAIN_ID --keyring-backend test;
+    $DAEMON_NAME genesis gentx $VAL 1000000000000uguu --chain-id $CHAIN_ID --keyring-backend test;
     $DAEMON_NAME genesis collect-gentxs;
   else
     echo "This is before version 0.47."

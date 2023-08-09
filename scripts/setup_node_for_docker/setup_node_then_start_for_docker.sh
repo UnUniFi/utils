@@ -50,6 +50,23 @@ jq '.app_state.bank.params.default_send_enabled = false' ~/.ununifi/config/genes
 jq ".app_state.wasm.params.code_upload_access.permission = \"Nobody\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 jq ".app_state.wasm.params.instantiate_default_permission = \"Nobody\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 
+# for stakeibc
+jq '.app_state.stakeibc.params.deposit_interval = "1"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.delegate_interval = "1"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.rewards_interval = "1"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.redemption_rate_interval = "1"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.ununifi_commission = "1"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.reinvest_interval = "1"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.validator_rebalancing_threshold = "100"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.ica_timeout_nanos = "600000000000"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.buffer_size = "5"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.ibc_timeout_blocks = "300"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.fee_transfer_timeout_nanos = "1800000000000"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.max_stake_ica_calls_per_epoch = "100"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.safety_min_redemption_rate_threshold = "90"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.safety_max_redemption_rate_threshold = "150"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+jq '.app_state.stakeibc.params.ibc_transfer_timeout_nanos = "1800000000000"' ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
+
 $SCRIPT_DIR/../utils/chain_init_gen_command.sh exec-docker;
 cosmovisor start
 

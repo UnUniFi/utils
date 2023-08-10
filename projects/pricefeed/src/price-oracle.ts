@@ -196,6 +196,8 @@ export class PriceOracle {
 
   async fetchTickers(marketID: string) {
     switch (marketID) {
+      case 'ubtc:usd':
+        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:jpy':
         return this.ccxt.fetchTickers(YEN, 'BTC');
       case 'ubtc:usd':
@@ -259,6 +261,9 @@ export class PriceOracle {
 
   getBaseCurrency(marketID: string) {
     switch (marketID) {
+      case 'ubtc:usd':
+      case 'ubtc:usd:30':
+        return 'USD';
       case 'ubtc:jpy':
       case 'ubtc:jpy:30':
         return 'JPY';
@@ -543,6 +548,9 @@ export class PriceOracle {
 
   marketIdToCcxtSymbol(marketId: string) {
     switch (marketId) {
+      case 'ubtc:usd':
+      case 'ubtc:usd:30':
+        return 'BTC/USD';
       case 'ubtc:jpy':
       case 'ubtc:jpy:30':
         return 'BTC/JPY';

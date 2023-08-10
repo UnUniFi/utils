@@ -1,15 +1,15 @@
-import CcxtClient from './clients/ccxt';
 import BandClient from './clients/band';
+import CcxtClient from './clients/ccxt';
 import { IFxClient } from './clients/fx/interface';
 import { DOLLAR, EURO, MARKET_CURRENCY_MAP, YEN } from './constants/currency';
-import { OraclePrice } from './domain/oracle-price';
+import { convertUnknownAccountToBaseAccount } from './converter';
 import { DataProviderConf } from './domain/data-provider';
+import { OraclePrice } from './domain/oracle-price';
 import * as utils from './utils';
 import cosmosclient from '@cosmos-client/core';
+import { AccAddress } from '@cosmos-client/core/cjs/types';
 import Long from 'long';
 import ununificlient from 'ununifi-client';
-import { AccAddress } from '@cosmos-client/core/cjs/types';
-import { convertUnknownAccountToBaseAccount } from './converter';
 
 require('dotenv').config();
 require('log-timestamp');
@@ -196,8 +196,6 @@ export class PriceOracle {
 
   async fetchTickers(marketID: string) {
     switch (marketID) {
-      case 'ubtc:usd':
-        return this.ccxt.fetchTickers(FIAT_CURRENCIES, 'BTC');
       case 'ubtc:jpy':
         return this.ccxt.fetchTickers(YEN, 'BTC');
       case 'ubtc:usd':
@@ -261,9 +259,6 @@ export class PriceOracle {
 
   getBaseCurrency(marketID: string) {
     switch (marketID) {
-      case 'ubtc:usd':
-      case 'ubtc:usd:30':
-        return 'USD';
       case 'ubtc:jpy':
       case 'ubtc:jpy:30':
         return 'JPY';
@@ -378,7 +373,7 @@ export class PriceOracle {
     }
 
     // Set up post price transaction parameters
-    const newPrice = Math.floor(fetchedPrice * 10 ** 18).toString()
+    const newPrice = Math.floor(fetchedPrice * 10 ** 18).toString();
     let expiryDate = new Date();
     expiryDate = new Date(expiryDate.getTime() + Number.parseInt(this.expiry) * 1000);
     const account = await cosmosclient.rest.auth
@@ -548,9 +543,6 @@ export class PriceOracle {
 
   marketIdToCcxtSymbol(marketId: string) {
     switch (marketId) {
-      case 'ubtc:usd':
-      case 'ubtc:usd:30':
-        return 'BTC/USD';
       case 'ubtc:jpy':
       case 'ubtc:jpy:30':
         return 'BTC/JPY';

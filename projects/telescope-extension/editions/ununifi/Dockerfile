@@ -6,6 +6,6 @@ RUN npm i -g npm
 RUN npm ci
 RUN npm run build:telescope:ununifi
 
-FROM ghcr.io/cauchye/telescope
+FROM ghcr.io/cauchye/telescope:latest
 
 COPY --from=build-stage /root/app/dist/telescope-extension/ /usr/share/nginx/html/ununifi/

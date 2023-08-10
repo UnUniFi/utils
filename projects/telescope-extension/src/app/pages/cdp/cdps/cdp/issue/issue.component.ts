@@ -1,7 +1,6 @@
 import { getIssueLimit } from '../../../../../utils/function';
 import { getLiquidationPriceStream } from '../../../../../utils/stream';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
@@ -10,7 +9,7 @@ import { CdpApplicationService } from 'projects/telescope-extension/src/app/mode
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { IssueCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/issue/issue.component';
-import { of, zip, combineLatest, Observable } from 'rxjs';
+import { timer, of, zip, combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { rest, ununifi } from 'ununifi-client';
 import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
@@ -34,6 +33,7 @@ export class IssueComponent implements OnInit {
 
   address$: Observable<cosmosclient.AccAddress | undefined>;
   balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
+  pollingInterval = 30;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -41,7 +41,6 @@ export class IssueComponent implements OnInit {
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly cosmosSDK: CosmosSDKService,
     private readonly configS: ConfigService,
-    private readonly snackBar: MatSnackBar,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -49,10 +48,6 @@ export class IssueComponent implements OnInit {
     this.params$ = this.cosmosSDK.sdk$.pipe(
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
       map((data) => data.data.params!),
-    );
-    this.principalDenom$ = this.cosmosSDK.sdk$.pipe(
-      mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
-      map((res) => res.data.params?.debt_param?.denom || ''),
     );
 
     //get account balance information
@@ -63,13 +58,13 @@ export class IssueComponent implements OnInit {
           return accAddress;
         } catch (error) {
           console.error(error);
-          this.snackBar.open('Invalid address!', 'close');
           return undefined;
         }
       }),
     );
-    this.balances$ = combineLatest([this.cosmosSDK.sdk$, this.address$]).pipe(
-      mergeMap(([sdk, address]) => {
+    const timer$ = timer(0, this.pollingInterval * 1000);
+    this.balances$ = combineLatest([timer$, this.cosmosSDK.sdk$, this.address$]).pipe(
+      mergeMap(([n, sdk, address]) => {
         if (address === undefined) {
           return of([]);
         }
@@ -88,6 +83,13 @@ export class IssueComponent implements OnInit {
         ),
       ),
       map((res) => res.data.cdp!),
+    );
+
+    this.principalDenom$ = combineLatest([this.params$, this.cdp$]).pipe(
+      map(([params, cdp]) =>
+        params.debt_params?.find((debtParam) => debtParam.denom == cdp.cdp?.principal?.denom),
+      ),
+      map((res) => res?.denom!),
     );
 
     this.liquidationPrice$ = this.cosmosSDK.sdk$.pipe(

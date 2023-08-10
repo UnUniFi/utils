@@ -1,6 +1,6 @@
 {
   "name": "pricefeed",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -20,18 +20,21 @@
   },
   "homepage": "https://github.com/lcnem/pricefeed#readme",
   "dependencies": {
+    "@commonify/lowdb": "^3.0.0",
+    "@cosmos-client/core": "^0.47.1",
     "axios": "^0.21.1",
-    "ununifi-client": "^0.44.3",
-    "ccxt": "^1.57.37",
-    "@cosmos-client/core": "^0.44.4",
+    "ccxt": "^1.95.43",
+    "cosmwasm": "^1.1.1",
     "dotenv": "^8.2.0",
     "log-timestamp": "^0.3.0",
     "node-cron": "^2.0.3",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "ununifi-client": "^3.0.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/ledgerhq__hw-transport": "^4.21.4",
     "@types/node": "^14.6.0",
     "@types/node-cron": "^2.0.3",
     "nodemon": "^2.0.4"

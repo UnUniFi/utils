@@ -14,7 +14,7 @@ import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
   styleUrls: ['./cdps.component.css'],
 })
 export class CdpsComponent implements OnInit {
-  cdps$: Observable<InlineResponse2004Cdp1[]>;
+  cdps$: Observable<(InlineResponse2004Cdp1 | undefined)[]>;
 
   constructor(
     private readonly key: KeyService,
@@ -37,16 +37,14 @@ export class CdpsComponent implements OnInit {
       mergeMap(([address, collateralTypes, sdk]) =>
         Promise.all(
           collateralTypes.map((collateralType) =>
-            rest.ununifi.cdp.cdp(sdk.rest, address, collateralType),
+            rest.ununifi.cdp.cdp(sdk.rest, address, collateralType).catch((err) => {
+              console.log(err);
+              return;
+            }),
           ),
         ),
       ),
-      map((result) => result.map((res) => res.data)),
-      map((data) => data.map((e) => e.cdp!)),
-      catchError((error) => {
-        console.error(error);
-        return of([]);
-      }),
+      map((result) => result.map((res) => (res ? res.data.cdp! : undefined))),
     );
   }
 

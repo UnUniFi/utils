@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  ununifid:
+    container_name: ununifid
+    build:
+      context: develop/env/Docker/v3.1.0
+      dockerfile: Dockerfile
+    volumes:
+      - .:/utils
+      - ../chain:/chain_repo2
+      - ../chain/debug_data:/root/sync_data
+      # - /home/miyagi/go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.2.1/internal/api:/root/go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.2.1/internal/api
+    tty: true
+    privileged: true
+    working_dir: /utils/scripts/setup_node_for_docker
+    environment:
+      - DAEMON_NAME=ununifid
+      - DAEMON_HOME=/root/.ununifi
+      - DAEMON_ALLOW_DOWNLOAD_BINARIES=true
+      - DAEMON_LOG_BUFFER_SIZE=512
+      - DAEMON_RESTART_AFTER_UPGRADE=true
+      - UNSAFE_SKIP_BACKUP=true
+    # command: ./setup_node_then_start_for_docker.sh
+    # user: root
+    # command: bash -c "bash ./setup_node_then_start_for_docker.sh"

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { cosmosclient, proto, rest as restCosmos } from '@cosmos-client/core';
 import { ConfigService } from 'projects/telescope-extension/src/app/models/config.service';
@@ -8,9 +7,10 @@ import { CdpApplicationService } from 'projects/telescope-extension/src/app/mode
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 import { KeyStoreService } from 'projects/telescope-extension/src/app/models/keys/key.store.service';
 import { ClearCdpOnSubmitEvent } from 'projects/telescope-extension/src/app/views/cdp/cdps/cdp/clear/clear.component';
-import { of, combineLatest, Observable } from 'rxjs';
+import { timer, of, combineLatest, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { rest } from 'ununifi-client';
+import { rest, ununifi } from 'ununifi-client';
+import { InlineResponse2004Cdp1 } from 'ununifi-client/esm/openapi';
 
 @Component({
   selector: 'app-clear',
@@ -21,8 +21,11 @@ export class ClearComponent implements OnInit {
   key$: Observable<Key | undefined>;
   owner$: Observable<string>;
   collateralType$: Observable<string>;
-  principalDenomString$: Observable<string>;
-  principalDenom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
+  params$: Observable<ununifi.cdp.IParams>;
+  repaymentDenomString$: Observable<string>;
+  repaymentDenom$: Observable<proto.cosmos.base.v1beta1.ICoin | undefined>;
+
+  cdp$: Observable<InlineResponse2004Cdp1>;
 
   address$: Observable<cosmosclient.AccAddress | undefined>;
   balances$: Observable<proto.cosmos.base.v1beta1.ICoin[] | undefined>;
@@ -35,7 +38,6 @@ export class ClearComponent implements OnInit {
     private readonly cdpApplicationService: CdpApplicationService,
     private readonly cosmosSDK: CosmosSDKService,
     private readonly configS: ConfigService,
-    private readonly snackBar: MatSnackBar,
   ) {
     this.key$ = this.keyStore.currentKey$.asObservable();
     this.owner$ = this.route.params.pipe(map((params) => params['owner']));
@@ -49,13 +51,13 @@ export class ClearComponent implements OnInit {
           return accAddress;
         } catch (error) {
           console.error(error);
-          this.snackBar.open('Invalid address!', 'close');
           return undefined;
         }
       }),
     );
-    this.balances$ = combineLatest([this.cosmosSDK.sdk$, this.address$]).pipe(
-      mergeMap(([sdk, address]) => {
+    const timer$ = timer(0, this.pollingInterval * 1000);
+    this.balances$ = combineLatest([timer$, this.cosmosSDK.sdk$, this.address$]).pipe(
+      mergeMap(([n, sdk, address]) => {
         if (address === undefined) {
           return of([]);
         }
@@ -65,17 +67,35 @@ export class ClearComponent implements OnInit {
       }),
     );
 
-    this.principalDenomString$ = this.cosmosSDK.sdk$.pipe(
+    this.params$ = this.cosmosSDK.sdk$.pipe(
       mergeMap((sdk) => rest.ununifi.cdp.params(sdk.rest)),
-      map((param) => param.data.params?.debt_param?.denom || ''),
+      map((data) => data.data.params!),
     );
 
-    this.principalDenom$ = combineLatest([this.principalDenomString$, this.balances$]).pipe(
-      map(([principalDenom, balances]) => {
-        const principalDenomWithBalance = balances?.find(
-          (balances) => balances.denom === principalDenom,
+    this.cdp$ = combineLatest([this.owner$, this.collateralType$, this.cosmosSDK.sdk$]).pipe(
+      mergeMap(([ownerAddr, collateralType, sdk]) =>
+        rest.ununifi.cdp.cdp(
+          sdk.rest,
+          cosmosclient.AccAddress.fromString(ownerAddr),
+          collateralType,
+        ),
+      ),
+      map((res) => res.data.cdp!),
+    );
+
+    this.repaymentDenomString$ = combineLatest([this.params$, this.cdp$]).pipe(
+      map(([params, cdp]) =>
+        params.debt_params?.find((debtParam) => debtParam.denom == cdp.cdp?.principal?.denom),
+      ),
+      map((res) => res?.denom!),
+    );
+
+    this.repaymentDenom$ = combineLatest([this.repaymentDenomString$, this.balances$]).pipe(
+      map(([repaymentDenom, balances]) => {
+        const repaymentDenomWithBalance = balances?.find(
+          (balances) => balances.denom === repaymentDenom,
         );
-        return principalDenomWithBalance;
+        return repaymentDenomWithBalance;
       }),
     );
     this.minimumGasPrices = this.configS.config.minimumGasPrices;
@@ -90,7 +110,7 @@ export class ClearComponent implements OnInit {
       $event.key,
       $event.privateKey,
       $event.collateralType,
-      $event.principal,
+      $event.repayment,
       $event.minimumGasPrice,
       $event.balances,
     );

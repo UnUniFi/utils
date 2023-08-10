@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { cosmosclient, proto } from '@cosmos-client/core';
 import { Key } from 'projects/telescope-extension/src/app/models/keys/key.model';
 
@@ -46,7 +45,7 @@ export class WithdrawComponent implements OnInit {
   public collateral_amount: string;
   public selectedGasPrice?: proto.cosmos.base.v1beta1.ICoin;
 
-  constructor(private readonly snackBar: MatSnackBar) {
+  constructor() {
     this.appSubmit = new EventEmitter();
     this.collateral_amount = '';
   }
@@ -73,13 +72,6 @@ export class WithdrawComponent implements OnInit {
     this.selectedGasPrice.amount = minimumGasPrice.toString();
     if (!this.balances) {
       console.error('withdraw-balances', this.balances);
-      return;
-    }
-    if (!collateralDenom) {
-      this.snackBar.open(
-        `Invalid Collateral. \n You need to wait until the correct collateral information is loaded. \n Please try again.`,
-        'Close',
-      );
       return;
     }
 

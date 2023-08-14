@@ -43,8 +43,8 @@ echo "up_height: $UP_HEIGHT"
 echo "up_height: $UP_HEIGHT"
 echo "up_height: $UP_HEIGHT"
 
-MD5=eea7e2985ce165491a5275b85f1181d8
-BIN_URL=https://github.com/Senna46/share-ununifid/releases/download/v3.2.0-rc1/ununifid
+MD5=ace0a582c9f505f10b4c2ba2ce831578
+BIN_URL=https://github.com/Senna46/share-ununifid/releases/download/v3.2.0-rc3/ununifid
 
 $BIN_UNI tx gov submit-legacy-proposal software-upgrade v3_2 \
 --title "upgrade v3.2.0" \
@@ -58,24 +58,24 @@ $BIN_UNI tx gov submit-legacy-proposal software-upgrade v3_2 \
 
 sleep 5
 
-$BIN_UNI tx gov deposit 3 \
+$BIN_UNI tx gov deposit 1 \
 10000000000uguu --from val --yes \
 --keyring-backend test \
 --chain-id $CHAIN_ID
 
-$BIN_UNI tx gov deposit 3 \
+$BIN_UNI tx gov deposit 1 \
 500000000000uguu --from faucet --yes \
 --keyring-backend test \
 --chain-id $CHAIN_ID
 
 sleep 5
 
-$BIN_UNI tx gov vote 3 \
+$BIN_UNI tx gov vote 1 \
 yes --from val \
 --keyring-backend test \
 --yes --chain-id $CHAIN_ID
 
-$BIN_UNI tx gov vote 3 \
+$BIN_UNI tx gov vote 1 \
 yes --from faucet \
 --keyring-backend test \
 --yes --chain-id $CHAIN_ID

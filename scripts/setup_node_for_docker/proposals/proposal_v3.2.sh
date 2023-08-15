@@ -43,8 +43,8 @@ echo "up_height: $UP_HEIGHT"
 echo "up_height: $UP_HEIGHT"
 echo "up_height: $UP_HEIGHT"
 
-MD5=ace0a582c9f505f10b4c2ba2ce831578
-BIN_URL=https://github.com/Senna46/share-ununifid/releases/download/v3.2.0-rc3/ununifid
+MD5=9008cfd83dae385d228c3cc3a94c8b64
+BIN_URL=https://github.com/UnUniFi/chain/releases/download/v3.2.0/ununifid
 
 $BIN_UNI tx gov submit-legacy-proposal software-upgrade v3_2 \
 --title "upgrade v3.2.0" \

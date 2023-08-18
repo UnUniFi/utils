@@ -63,9 +63,9 @@ $SCRIPT_DIR/../utils/chain_init_gen_command.sh reset-node;
 
 # setup modules genesis
 $SCRIPT_DIR/../setup_derivatives/setup.sh;
-$SCRIPT_DIR/../setup_nftmarket/setup.sh;
-$SCRIPT_DIR/../setup_nftmint/setup.sh;
-$SCRIPT_DIR/../setup_iya/setup.sh;
+$SCRIPT_DIR/../setup_nftbackedloan/setup.sh;
+$SCRIPT_DIR/../setup_nftfactory/setup.sh;
+$SCRIPT_DIR/../setup_yieldaggregator/setup.sh;
 sudo systemctl start cosmovisor.service;
 
 sleep 3

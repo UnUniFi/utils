@@ -4,7 +4,7 @@ services:
   ununifid:
     container_name: ununifid
     build:
-      context: develop/env/Docker/v3.2.1
+      context: develop/env/Docker/v4.0.0
       dockerfile: Dockerfile
     volumes:
       - .:/utils

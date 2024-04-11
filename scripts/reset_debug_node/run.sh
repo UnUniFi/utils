@@ -55,6 +55,8 @@ sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0uguu"/' ~/.ununifi/conf
 sed -i 's/mode = "full"/mode = "validator"/' ~/.ununifi/config/config.toml;
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.ununifi/config/app.toml;
 
+sed -i 's/localhost/0.0.0.0/g' ~/.ununifi/config/app.toml;
+sed -i 's/localhost/0.0.0.0/g' ~/.ununifi/config/config.toml;
 
 jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 
@@ -63,9 +65,9 @@ $SCRIPT_DIR/../utils/chain_init_gen_command.sh reset-node;
 
 # setup modules genesis
 $SCRIPT_DIR/../setup_derivatives/setup.sh;
-$SCRIPT_DIR/../setup_nftmarket/setup.sh;
-$SCRIPT_DIR/../setup_nftmint/setup.sh;
-$SCRIPT_DIR/../setup_iya/setup.sh;
+$SCRIPT_DIR/../setup_nftbackedloan/setup.sh;
+$SCRIPT_DIR/../setup_nftfactory/setup.sh;
+$SCRIPT_DIR/../setup_yieldaggregator/setup.sh;
 sudo systemctl start cosmovisor.service;
 
 sleep 3

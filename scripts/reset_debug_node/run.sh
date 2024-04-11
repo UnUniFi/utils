@@ -55,6 +55,8 @@ sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0uguu"/' ~/.ununifi/conf
 sed -i 's/mode = "full"/mode = "validator"/' ~/.ununifi/config/config.toml;
 sed -i 's/enabled-unsafe-cors = false/enabled-unsafe-cors = true/' ~/.ununifi/config/app.toml;
 
+sed -i 's/localhost/0.0.0.0/g' ~/.ununifi/config/app.toml;
+sed -i 's/localhost/0.0.0.0/g' ~/.ununifi/config/config.toml;
 
 jq ".app_state.gov.voting_params.voting_period = \"20s\""  ~/.ununifi/config/genesis.json > temp.json ; mv temp.json ~/.ununifi/config/genesis.json;
 
